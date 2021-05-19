@@ -21,13 +21,14 @@ public class MisCursos {
         this.IdUsuario = IdUsuario;
     }
 
-    public Integer getIdTipoCurso() {
+    public TipoCurso getIdTipoCurso() {
         return idTipoCurso;
     }
 
     public void setIdTipoCurso(TipoCurso idTipoCurso) {
         this.idTipoCurso = idTipoCurso;
     }
+
     
     
 }
