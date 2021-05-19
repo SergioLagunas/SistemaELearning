@@ -46,12 +46,22 @@ public class Modulo {
     public void setleccion(String leccion) {
         this.leccion = leccion;
     }
-    
-        public String getidTipoCurso() {
-        return idTipoCurso;
+
+    public String getUnidad() {
+        return unidad;
     }
 
-    public void setidTipoCurso(String idTipoCurso) {
-        this.idTipoCurso = idTipoCurso;
+    public void setUnidad(String unidad) {
+        this.unidad = unidad;
     }
+
+    public String getLeccion() {
+        return leccion;
+    }
+
+    public void setLeccion(String leccion) {
+        this.leccion = leccion;
+    }
+    
+
 }
