@@ -4,7 +4,6 @@ package Elearning.dto;
 
 import java.util.Date;
 
-
 public class TipoCurso {
     
     private Integer idTipoCurso;
