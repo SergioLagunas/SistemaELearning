@@ -8,36 +8,12 @@ public class Modulo {
     private String leccion;
     private TipoCurso  idTipoCurso;
 
-    public TipoCurso getIdTipoCurso() {
-        return idTipoCurso;
-    }
-
-    public void setIdTipoCurso(TipoCurso idTipoCurso) {
-        this.idTipoCurso = idTipoCurso;
-    }
-    
-        public Integer getIdModulo() {
+    public Integer getIdModulo() {
         return idModulo;
     }
 
     public void setIdModulo(Integer idModulo) {
         this.idModulo = idModulo;
-    }
-    
-        public String getunidad() {
-        return unidad;
-    }
-
-    public void setunidad(String unidad) {
-        this.unidad = unidad;
-    }
-    
-        public String getleccion() {
-        return leccion;
-    }
-
-    public void setleccion(String leccion) {
-        this.leccion = leccion;
     }
 
     public String getUnidad() {
@@ -55,6 +31,14 @@ public class Modulo {
     public void setLeccion(String leccion) {
         this.leccion = leccion;
     }
-    
+
+    public TipoCurso getIdTipoCurso() {
+        return idTipoCurso;
+    }
+
+    public void setIdTipoCurso(TipoCurso idTipoCurso) {
+        this.idTipoCurso = idTipoCurso;
+    }
+
 
 }

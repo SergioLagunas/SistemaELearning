@@ -11,7 +11,6 @@ public class TipoCurso {
     private Date fInicio;
     private Date fTermino;
     private Integer progreso;
-
     private Curso idCurso;
 
     

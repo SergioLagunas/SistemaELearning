@@ -40,6 +40,7 @@ public class Archivos {
     public void setIdModulo(Modulo idModulo) {
         this.idModulo = idModulo;
     }
-    
+
+  
     
 }

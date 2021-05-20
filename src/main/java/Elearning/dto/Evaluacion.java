@@ -1,8 +1,8 @@
 package Elearning.dto;
 
-import java.sql.*;
 
 public class Evaluacion {
+    
     private Integer idEvaluacion;
     private String tipo;
     private float calificacion;

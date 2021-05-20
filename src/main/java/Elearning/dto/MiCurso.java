@@ -1,34 +1,33 @@
 package Elearning.dto;
 
 public class MiCurso {
-    private Integer IdMisCursos;
-    private Integer IdUsuario;
-    private TipoCurso idTipoCurso;
+    private Integer idMiCurso;
+    private Curso idCurso;
+    private Usuario IdUsuario;
 
-    public Integer getIdMisCursos() {
-        return IdMisCursos;
+    public Integer getIdMiCurso() {
+        return idMiCurso;
     }
 
-    public void setIdMisCursos(Integer IdMisCursos) {
-        this.IdMisCursos = IdMisCursos;
+    public void setIdMiCurso(Integer idMiCurso) {
+        this.idMiCurso = idMiCurso;
     }
 
-    public Integer getIdUsuario() {
+    public Usuario getIdUsuario() {
         return IdUsuario;
     }
 
-    public void setIdUsuario(Integer IdUsuario) {
+    public void setIdUsuario(Usuario IdUsuario) {
         this.IdUsuario = IdUsuario;
     }
 
-    public TipoCurso getIdTipoCurso() {
-        return idTipoCurso;
+    public Curso getIdCurso() {
+        return idCurso;
     }
 
-    public void setIdTipoCurso(TipoCurso idTipoCurso) {
-        this.idTipoCurso = idTipoCurso;
+    public void setIdCurso(Curso idCurso) {
+        this.idCurso = idCurso;
     }
 
-    
     
 }
