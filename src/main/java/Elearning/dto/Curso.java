@@ -22,12 +22,12 @@ public class Curso {
         this.nombre = nombre;
     }
 
-    public String getIdTipoCurso() {
+    public String getDescripcion() {
         return descripcion;
     }
 
-    public void setIdTipoCurso(String idTipoCurso) {
-        this.descripcion = idTipoCurso;
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
     
 }
