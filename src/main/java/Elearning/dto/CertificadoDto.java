@@ -4,12 +4,12 @@ package Elearning.dto;
 import java.util.Date;
 
 
-public class Certificado {
+public class CertificadoDto {
     
     private Integer idCertificado;
     private Date fEntrega;
     private String descripcion;
-    private Evaluacion idEvaluacion;
+    private EvaluacionDto idEvaluacion;
 
     public Integer getIdCertificado() {
         return idCertificado;
@@ -35,11 +35,11 @@ public class Certificado {
         this.descripcion = descripcion;
     }
 
-    public Evaluacion getIdEvaluacion() {
+    public EvaluacionDto getIdEvaluacion() {
         return idEvaluacion;
     }
 
-    public void setIdEvaluacion(Evaluacion idEvaluacion) {
+    public void setIdEvaluacion(EvaluacionDto idEvaluacion) {
         this.idEvaluacion = idEvaluacion;
     }
     

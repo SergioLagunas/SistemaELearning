@@ -2,7 +2,7 @@
 package Elearning.dto;
 
 
-public class Usuario {
+public class UsuarioDto{
    
     private Integer idUsuario;
     private String nombre;
@@ -13,6 +13,7 @@ public class Usuario {
     private String contrasena;
     private String tUsuario;
     private String rfc;
+
 
     public Integer getIdUsuario() {
         return idUsuario;

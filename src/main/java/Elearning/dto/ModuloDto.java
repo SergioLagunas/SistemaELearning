@@ -2,11 +2,11 @@
 package Elearning.dto;
 
 
-public class Modulo {
+public class ModuloDto {
     private Integer idModulo;
     private String unidad;
     private String leccion;
-    private TipoCurso  idTipoCurso;
+    private TipoCursoDto  idTipoCurso;
 
     public Integer getIdModulo() {
         return idModulo;
@@ -32,11 +32,11 @@ public class Modulo {
         this.leccion = leccion;
     }
 
-    public TipoCurso getIdTipoCurso() {
+    public TipoCursoDto getIdTipoCurso() {
         return idTipoCurso;
     }
 
-    public void setIdTipoCurso(TipoCurso idTipoCurso) {
+    public void setIdTipoCurso(TipoCursoDto idTipoCurso) {
         this.idTipoCurso = idTipoCurso;
     }
 

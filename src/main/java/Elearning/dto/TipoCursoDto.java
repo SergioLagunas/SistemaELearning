@@ -4,14 +4,14 @@ package Elearning.dto;
 
 import java.util.Date;
 
-public class TipoCurso {
+public class TipoCursoDto {
     
     private Integer idTipoCurso;
     private String titulo;
     private Date fInicio;
     private Date fTermino;
     private Integer progreso;
-    private Curso idCurso;
+    private CursoDto idCurso;
 
     
     public Integer getIdTipoCurso() {
@@ -54,11 +54,11 @@ public class TipoCurso {
         this.progreso = progreso;
     }
 
-    public Curso getIdCurso() {
+    public CursoDto getIdCurso() {
         return idCurso;
     }
 
-    public void setIdCurso(Curso idCurso) {
+    public void setIdCurso(CursoDto idCurso) {
         this.idCurso = idCurso;
     }
 

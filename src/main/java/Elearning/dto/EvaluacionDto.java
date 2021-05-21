@@ -1,13 +1,13 @@
 package Elearning.dto;
 
 
-public class Evaluacion {
+public class EvaluacionDto {
     
     private Integer idEvaluacion;
     private String tipo;
     private float calificacion;
     private String aprobacion;
-    private Modulo idModulo;
+    private ModuloDto idModulo;
 
     public Integer getIdEvaluacion() {
         return idEvaluacion;
@@ -41,11 +41,11 @@ public class Evaluacion {
         this.aprobacion = aprobacion;
     }
 
-    public Modulo getIdModulo() {
+    public ModuloDto getIdModulo() {
         return idModulo;
     }
 
-    public void setIdModulo(Modulo idModulo) {
+    public void setIdModulo(ModuloDto idModulo) {
         this.idModulo = idModulo;
     }
 }

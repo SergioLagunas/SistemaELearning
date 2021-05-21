@@ -1,6 +1,6 @@
 package Elearning.dto;
 
-public class Curso {
+public class CursoDto {
 
     private Integer idCurso;
     private String nombre;

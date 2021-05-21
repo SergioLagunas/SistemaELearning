@@ -2,12 +2,12 @@
 package Elearning.dto;
 
 
-public class Archivos {
+public class ArchivosDto {
     
     private Integer idArchivos;
     private String tipo;
     private String nombre;
-    private Modulo idModulo;
+    private ModuloDto idModulo;
 
     public Integer getIdArchivos() {
         return idArchivos;
@@ -33,11 +33,11 @@ public class Archivos {
         this.nombre = nombre;
     }
 
-    public Modulo getIdModulo() {
+    public ModuloDto getIdModulo() {
         return idModulo;
     }
 
-    public void setIdModulo(Modulo idModulo) {
+    public void setIdModulo(ModuloDto idModulo) {
         this.idModulo = idModulo;
     }
 
