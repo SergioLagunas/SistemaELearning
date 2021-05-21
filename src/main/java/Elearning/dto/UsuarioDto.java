@@ -14,7 +14,6 @@ public class UsuarioDto{
     private String tUsuario;
     private String rfc;
 
-
     public Integer getIdUsuario() {
         return idUsuario;
     }
