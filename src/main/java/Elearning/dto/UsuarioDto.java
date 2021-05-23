@@ -14,6 +14,17 @@ public class UsuarioDto{
     private String tUsuario;
     private String rfc;
 
+    public UsuarioDto(String nombre, String aPaterno, String aMaterno, String genero, String email, String contrasena, String tUsuario, String rfc) {
+        this.nombre = nombre;
+        this.aPaterno = aPaterno;
+        this.aMaterno = aMaterno;
+        this.genero = genero;
+        this.email = email;
+        this.contrasena = contrasena;
+        this.tUsuario = tUsuario;
+        this.rfc = rfc;
+    }
+    
     public Integer getIdUsuario() {
         return idUsuario;
     }
