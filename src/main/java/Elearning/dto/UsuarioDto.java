@@ -14,6 +14,9 @@ public class UsuarioDto{
     private String tUsuario;
     private String rfc;
 
+    public UsuarioDto() {
+    }
+    
     public UsuarioDto(String nombre, String aPaterno, String aMaterno, String genero, String email, String contrasena, String tUsuario, String rfc) {
         this.nombre = nombre;
         this.aPaterno = aPaterno;

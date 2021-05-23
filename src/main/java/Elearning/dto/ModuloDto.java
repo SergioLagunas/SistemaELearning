@@ -8,6 +8,16 @@ public class ModuloDto {
     private String leccion;
     private TipoCursoDto  idTipoCurso;
 
+    public ModuloDto() {
+    }
+     
+
+    public ModuloDto(String unidad, String leccion, TipoCursoDto idTipoCurso) {
+        this.unidad = unidad;
+        this.leccion = leccion;
+        this.idTipoCurso = idTipoCurso;
+    }
+
     public Integer getIdModulo() {
         return idModulo;
     }

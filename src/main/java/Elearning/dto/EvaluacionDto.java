@@ -9,6 +9,17 @@ public class EvaluacionDto {
     private String aprobacion;
     private ModuloDto idModulo;
 
+    public EvaluacionDto() {
+    }
+
+    public EvaluacionDto(String tipo, float calificacion, String aprobacion, ModuloDto idModulo) {
+        this.tipo = tipo;
+        this.calificacion = calificacion;
+        this.aprobacion = aprobacion;
+        this.idModulo = idModulo;
+    }
+
+
     public Integer getIdEvaluacion() {
         return idEvaluacion;
     }

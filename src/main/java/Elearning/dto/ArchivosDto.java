@@ -9,6 +9,16 @@ public class ArchivosDto {
     private String nombre;
     private ModuloDto idModulo;
 
+    public ArchivosDto() {
+    }
+
+    public ArchivosDto(String tipo, String nombre, ModuloDto idModulo) {
+        this.tipo = tipo;
+        this.nombre = nombre;
+        this.idModulo = idModulo;
+    }
+
+
     public Integer getIdArchivos() {
         return idArchivos;
     }

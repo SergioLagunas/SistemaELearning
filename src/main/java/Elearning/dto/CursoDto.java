@@ -5,6 +5,14 @@ public class CursoDto {
     private Integer idCurso;
     private String nombre;
     private String descripcion;
+
+    public CursoDto() {
+    }
+
+    public CursoDto(String nombre, String descripcion) {
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+    }
     
     public int getIdCurso() {
         return idCurso;

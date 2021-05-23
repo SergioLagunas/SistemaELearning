@@ -13,6 +13,18 @@ public class TipoCursoDto {
     private Integer progreso;
     private CursoDto idCurso;
 
+    public TipoCursoDto() {
+    }
+  
+
+    public TipoCursoDto(String titulo, Date fInicio, Date fTermino, Integer progreso, CursoDto idCurso) {
+        this.titulo = titulo;
+        this.fInicio = fInicio;
+        this.fTermino = fTermino;
+        this.progreso = progreso;
+        this.idCurso = idCurso;
+    }
+    
     
     public Integer getIdTipoCurso() {
         return idTipoCurso;

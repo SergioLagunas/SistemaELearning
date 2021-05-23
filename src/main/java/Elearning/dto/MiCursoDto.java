@@ -5,6 +5,14 @@ public class MiCursoDto {
     private CursoDto idCurso;
     private UsuarioDto idUsuario;
 
+    public MiCursoDto() {
+    }
+
+    public MiCursoDto(CursoDto idCurso, UsuarioDto idUsuario) {
+        this.idCurso = idCurso;
+        this.idUsuario = idUsuario;
+    }
+
     public Integer getIdMiCurso() {
         return idMiCurso;
     }

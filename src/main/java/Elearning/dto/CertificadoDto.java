@@ -11,6 +11,16 @@ public class CertificadoDto {
     private String descripcion;
     private EvaluacionDto idEvaluacion;
 
+    public CertificadoDto() {
+    }
+
+    public CertificadoDto(Date fEntrega, String descripcion, EvaluacionDto idEvaluacion) {
+        this.fEntrega = fEntrega;
+        this.descripcion = descripcion;
+        this.idEvaluacion = idEvaluacion;
+    }
+    
+
     public Integer getIdCertificado() {
         return idCertificado;
     }
