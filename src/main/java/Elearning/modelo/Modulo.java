@@ -13,7 +13,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="TipoCurso")
+@Table(name="Modulo")
 public class Modulo implements Serializable{
     
     @Id
