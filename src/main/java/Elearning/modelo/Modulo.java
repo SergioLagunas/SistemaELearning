@@ -1,7 +1,6 @@
 
 package Elearning.modelo;
 
-import Elearning.dto.TipoCursoDto;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.CascadeType;
