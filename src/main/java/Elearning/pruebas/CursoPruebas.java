@@ -18,11 +18,11 @@ public class CursoPruebas {
      
             session.beginTransaction();
             //Obtiene el usuario de la tabla usuario de a BD
-            Usuario usuario2=session.get(Usuario.class,2);
+            Usuario usuario2=session.get(Usuario.class,4);
             System.out.println(usuario2);
            
             //Crear Cursos de Usuario
-            Curso curso1 = new Curso("Hibernate","Curso de Hibernate");
+            Curso curso1 = new Curso("Otro Curso","Curso de Hibernate");
             Curso curso2 = new Curso("Spring","Curso de Spring");
             Curso curso3 = new Curso("Java","Curso de Java");
                         

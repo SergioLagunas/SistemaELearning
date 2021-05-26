@@ -7,7 +7,7 @@ import org.hibernate.Session;
 
 
 public class UsuarioPruebas {
-/*
+
   public static void main(String[] args) {
 
         Session session = HibernateUtil.getSessionFactory().openSession();
@@ -16,8 +16,8 @@ public class UsuarioPruebas {
             
             //******Prueba para Usuarios*******
            // Usuario usuario1 = new Usuario("Prueba", "nose", "nose", "Masculino", "karina@gmail.com", "contrasena", "semillero", "sdasd");
-            Usuario usuario1 = new Usuario("Sergio", "Lagunas", "Garcia", "Masculino", "sergio@gmail.com", "contrasena", "semillero", "sdasd");
-            Usuario usuario2 = new Usuario("Karina", "nose", "nose", "Femenino", "karina@gmail.com", "contrasena", "semillero", "sdasd");
+            Usuario usuario1 = new Usuario("Emilio", "Lagunas", "Garcia", "Masculino", "sergio@gmail.com", "contrasena", "semillero", "sdasd");
+            Usuario usuario2 = new Usuario("Said", "nose", "nose", "Masculino", "said@gmail.com", "contrasena", "semillero", "sdasd");
             //************Insercion de Usuario*****************
             session.beginTransaction();
             session.save(usuario1);
@@ -48,9 +48,9 @@ public class UsuarioPruebas {
             miUsuario.setNombre("Said");
             
             session.getTransaction().commit();//puede ser con rollback tambien 
-            System.out.println("Registro Actualizado correctamente");
-            */
-           /* 
+            System.out.println("Registro Actualizado correctamente");*/
+            
+           /*
             //***********Consultas de Actualizacion (Segunda forma usando HQL)************
             session.beginTransaction();
             session.createQuery("update Usuario set nombre = 'Sergio' where nombre like 'S%'").executeUpdate();
@@ -64,8 +64,8 @@ public class UsuarioPruebas {
             session.getTransaction().commit();
             System.out.println("Registro Eliminado Correctamente"); */
 
-            //Cierra la secion 
-         /*   session.close();
+          //Cierra la secion 
+            session.close();
 
         } finally {
             session.close();
@@ -73,6 +73,6 @@ public class UsuarioPruebas {
 
 
 }
-*/
+
 
 }
