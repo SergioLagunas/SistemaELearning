@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface UsuarioDao {
     
-    public List<Usuario> getUsuarios();
+    public List<Usuario> findAll();
     
     
 }
