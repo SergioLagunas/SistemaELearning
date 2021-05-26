@@ -6,19 +6,22 @@ import javax.swing.JOptionPane;
 import org.hibernate.Session;
 
 
-public class pruebas {
-
-    public static void main(String[] args) {
+public class UsuarioPruebas {
+/*
+  public static void main(String[] args) {
 
         Session session = HibernateUtil.getSessionFactory().openSession();
 
         try {
-            Usuario usuario1 = new Usuario("Prueba", "nose", "nose", "Masculino", "karina@gmail.com", "contrasena", "semillero", "sdasd");
-            //Usuario usuario = new Usuario("Sergio", "Lagunas", "Garcia", "Masculino", "sergio@gmail.com", "contrasena", "semillero", "sdasd")
-          
+            
+            //******Prueba para Usuarios*******
+           // Usuario usuario1 = new Usuario("Prueba", "nose", "nose", "Masculino", "karina@gmail.com", "contrasena", "semillero", "sdasd");
+            Usuario usuario1 = new Usuario("Sergio", "Lagunas", "Garcia", "Masculino", "sergio@gmail.com", "contrasena", "semillero", "sdasd");
+            Usuario usuario2 = new Usuario("Karina", "nose", "nose", "Femenino", "karina@gmail.com", "contrasena", "semillero", "sdasd");
             //************Insercion de Usuario*****************
             session.beginTransaction();
             session.save(usuario1);
+             session.save(usuario2);
             session.getTransaction().commit();//puede ser con rollback tambien 
             System.out.println("Registro Insertado Correctamente");
 
@@ -34,7 +37,7 @@ public class pruebas {
             session.getTransaction().commit();
             System.out.println("Terminado");
             
-            
+          /*
             //***********Consultas de Actualizacion (Primera forma)************
             int   idAcUsuario = 13;   
             session.beginTransaction();
@@ -46,16 +49,30 @@ public class pruebas {
             
             session.getTransaction().commit();//puede ser con rollback tambien 
             System.out.println("Registro Actualizado correctamente");
-            
+            */
+           /* 
             //***********Consultas de Actualizacion (Segunda forma usando HQL)************
+            session.beginTransaction();
+            session.createQuery("update Usuario set nombre = 'Sergio' where nombre like 'S%'").executeUpdate();
+            session.getTransaction().commit();
+            System.out.println("Registro Actualizado correctamente");
             
+            
+            //*********Consultas para eliminar************
+            session.beginTransaction();
+            session.createQuery("delete Usuario where nombre='Prueba'").executeUpdate();
+            session.getTransaction().commit();
+            System.out.println("Registro Eliminado Correctamente"); */
 
             //Cierra la secion 
-            session.close();
+         /*   session.close();
 
         } finally {
             session.close();
         }
 
-    }
+
+}
+*/
+
 }
