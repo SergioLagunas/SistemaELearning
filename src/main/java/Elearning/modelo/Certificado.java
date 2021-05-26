@@ -36,10 +36,9 @@ public class Certificado implements Serializable{
     public Certificado() {
     }
 
-    public Certificado(Date fEntrega, String descripcion, List<Evaluacion> idEvaluacion) {
+    public Certificado(Date fEntrega, String descripcion) {
         this.fEntrega = fEntrega;
         this.descripcion = descripcion;
-        this.idEvaluacion = idEvaluacion;
     }
 
     public Integer getIdCertificado() {

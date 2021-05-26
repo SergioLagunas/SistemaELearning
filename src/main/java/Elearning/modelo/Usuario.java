@@ -2,13 +2,19 @@
 package Elearning.modelo;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+//Mapero ORM
 @Entity
 @Table(name="Usuario")
 public class Usuario implements Serializable{
@@ -41,6 +47,10 @@ public class Usuario implements Serializable{
     
     @Column(name="rfc")
     private String rfc;
+    
+    //Indicar donde estoy mapeando
+    @OneToMany(mappedBy = "Usuario", cascade={CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    private List<Curso> cursos;
 
     public Usuario() {
     }
@@ -127,10 +137,20 @@ public class Usuario implements Serializable{
     public void setRfc(String rfc) {
         this.rfc = rfc;
     }
+    
+    
+    public void agregarMisCurso(Curso MisCursos){
+        if(cursos!=null){
+            cursos = new ArrayList<>();
+            cursos.add(MisCursos);
+            MisCursos.setUsuario(this);
+        }
+    }
 
     @Override
     public String toString() {
         return "Usuario{" + "idUsuario=" + idUsuario + ", nombre=" + nombre + ", aPaterno=" + aPaterno + ", aMaterno=" + aMaterno + ", genero=" + genero + ", email=" + email + ", contrasena=" + contrasena + ", tUsuario=" + tUsuario + ", rfc=" + rfc + '}';
     }
+
     
 }

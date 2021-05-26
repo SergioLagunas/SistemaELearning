@@ -14,12 +14,12 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Archivos")
-public class Archivos implements Serializable{
+@Table(name="Archivo")
+public class Archivo implements Serializable{
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="idArchivos")
+    @Column(name="idArchivo")
     private Integer idArchivos;
     
     @Column(name="tipo")
@@ -29,16 +29,15 @@ public class Archivos implements Serializable{
     private String nombre;
     
     @ManyToOne(cascade=CascadeType.ALL)
-    @JoinColumn(name="idModulo")
-    List<Modulo> idModulo;
+    @JoinColumn(name="idLeccion")
+    List<Leccion> idLeccion;
 
-    public Archivos() {
+    public Archivo() {
     }
 
-    public Archivos(String tipo, String nombre, List<Modulo> idModulo) {
+    public Archivo(String tipo, String nombre) {
         this.tipo = tipo;
         this.nombre = nombre;
-        this.idModulo = idModulo;
     }
 
     public Integer getIdArchivos() {
@@ -65,17 +64,17 @@ public class Archivos implements Serializable{
         this.nombre = nombre;
     }
 
-    public List<Modulo> getIdModulo() {
-        return idModulo;
+    public List<Leccion> getIdLeccion() {
+        return idLeccion;
     }
 
-    public void setIdModulo(List<Modulo> idModulo) {
-        this.idModulo = idModulo;
+    public void setIdLeccion(List<Leccion> idLeccion) {
+        this.idLeccion = idLeccion;
     }
 
     @Override
     public String toString() {
-        return "Archivos{" + "idArchivos=" + idArchivos + ", tipo=" + tipo + ", nombre=" + nombre + ", idModulo=" + idModulo + '}';
+        return "Archivo{" + "idArchivos=" + idArchivos + ", tipo=" + tipo + ", nombre=" + nombre + ", idLeccion=" + idLeccion + '}';
     }
     
 }

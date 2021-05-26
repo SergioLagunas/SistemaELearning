@@ -32,17 +32,16 @@ public class Evaluacion implements Serializable{
     private String aprobacion;
           
     @ManyToOne(cascade=CascadeType.ALL)
-    @JoinColumn(name="idModulo")
-    List<Modulo> idModulo;
+    @JoinColumn(name="idLeccion")
+    List<Leccion> idLeccion;
 
     public Evaluacion() {
     }
 
-    public Evaluacion(String tipo, float calificacion, String aprobacion, List<Modulo> idModulo) {
+    public Evaluacion(String tipo, float calificacion, String aprobacion) {
         this.tipo = tipo;
         this.calificacion = calificacion;
         this.aprobacion = aprobacion;
-        this.idModulo = idModulo;
     }
 
     public Integer getIdEvaluacion() {
@@ -77,17 +76,18 @@ public class Evaluacion implements Serializable{
         this.aprobacion = aprobacion;
     }
 
-    public List<Modulo> getIdModulo() {
-        return idModulo;
+    public List<Leccion> getIdLeccion() {
+        return idLeccion;
     }
 
-    public void setIdModulo(List<Modulo> idModulo) {
-        this.idModulo = idModulo;
+    public void setIdLeccion(List<Leccion> idLeccion) {
+        this.idLeccion = idLeccion;
     }
 
     @Override
     public String toString() {
-        return "Evaluacion{" + "idEvaluacion=" + idEvaluacion + ", tipo=" + tipo + ", calificacion=" + calificacion + ", aprobacion=" + aprobacion + ", idModulo=" + idModulo + '}';
+        return "Evaluacion{" + "idEvaluacion=" + idEvaluacion + ", tipo=" + tipo + ", calificacion=" + calificacion + ", aprobacion=" + aprobacion + ", idLeccion=" + idLeccion + '}';
     }
+
     
 }

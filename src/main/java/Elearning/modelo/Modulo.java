@@ -2,6 +2,7 @@
 package Elearning.modelo;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -13,6 +14,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+
 @Entity
 @Table(name="Modulo")
 public class Modulo implements Serializable{
@@ -20,62 +22,86 @@ public class Modulo implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="idModulo")
-    private Integer idModulo;
+    private Integer idTipoCurso;
     
-    @Column(name="unidad")
-    private String unidad;
+    @Column(name="titulo")
+    private String titulo;
     
-    @Column(name="leccion")
-    private String leccion;
+    @Column(name="fInicio")
+    private Date fInicio;
+    
+    @Column(name="fTermino")
+    private Date fTermino;
+    
+    @Column(name="progreso")
+    private Integer progreso;
     
     @ManyToOne(cascade=CascadeType.ALL)
-    @JoinColumn(name="idTipoCurso")
-    List<TipoCurso> idTipoCurso;
+    @JoinColumn(name="idCurso")
+    List<Curso> idCurso;
 
     public Modulo() {
     }
 
-    public Modulo(String unidad, String leccion, List<TipoCurso> idTipoCurso) {
-        this.unidad = unidad;
-        this.leccion = leccion;
-        this.idTipoCurso = idTipoCurso;
+    public Modulo(String titulo, Date fInicio, Date fTermino, Integer progreso, List<Curso> idCurso) {
+        this.titulo = titulo;
+        this.fInicio = fInicio;
+        this.fTermino = fTermino;
+        this.progreso = progreso;
+        this.idCurso = idCurso;
     }
 
-    public Integer getIdModulo() {
-        return idModulo;
-    }
-
-    public void setIdModulo(Integer idModulo) {
-        this.idModulo = idModulo;
-    }
-
-    public String getUnidad() {
-        return unidad;
-    }
-
-    public void setUnidad(String unidad) {
-        this.unidad = unidad;
-    }
-
-    public String getLeccion() {
-        return leccion;
-    }
-
-    public void setLeccion(String leccion) {
-        this.leccion = leccion;
-    }
-
-    public List<TipoCurso> getIdTipoCurso() {
+    public Integer getIdTipoCurso() {
         return idTipoCurso;
     }
 
-    public void setIdTipoCurso(List<TipoCurso> idTipoCurso) {
+    public void setIdTipoCurso(Integer idTipoCurso) {
         this.idTipoCurso = idTipoCurso;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public Date getfInicio() {
+        return fInicio;
+    }
+
+    public void setfInicio(Date fInicio) {
+        this.fInicio = fInicio;
+    }
+
+    public Date getfTermino() {
+        return fTermino;
+    }
+
+    public void setfTermino(Date fTermino) {
+        this.fTermino = fTermino;
+    }
+
+    public Integer getProgreso() {
+        return progreso;
+    }
+
+    public void setProgreso(Integer progreso) {
+        this.progreso = progreso;
+    }
+
+    public List<Curso> getIdCurso() {
+        return idCurso;
+    }
+
+    public void setIdCurso(List<Curso> idCurso) {
+        this.idCurso = idCurso;
     }
 
     @Override
     public String toString() {
-        return "Modulo{" + "idModulo=" + idModulo + ", unidad=" + unidad + ", leccion=" + leccion + ", idTipoCurso=" + idTipoCurso + '}';
+        return "TipoCurso{" + "idTipoCurso=" + idTipoCurso + ", titulo=" + titulo + ", fInicio=" + fInicio + ", fTermino=" + fTermino + ", progreso=" + progreso + ", idCurso=" + idCurso + '}';
     }
     
 }
