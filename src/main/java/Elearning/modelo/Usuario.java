@@ -1,57 +1,66 @@
-
 package Elearning.modelo;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 //Mapero ORM
 @Entity
-@Table(name="Usuario")
-public class Usuario implements Serializable{
-    
+@Table(name = "Usuario")
+public class Usuario implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="idUsuario")
+    @Column(name = "idUsuario")
     private Integer idUsuario;
-    
-    @Column(name="nombre")
+
+    @Column(name = "nombre")
     private String nombre;
-    
-    @Column(name="aPaterno")
+
+    @Column(name = "aPaterno")
     private String aPaterno;
-    
-    @Column(name="aMaterno")
+
+    @Column(name = "aMaterno")
     private String aMaterno;
-    
-    @Column(name="genero")
+
+    @Column(name = "genero")
     private String genero;
-    
-    @Column(name="email")
+
+    @Column(name = "email")
     private String email;
-    
-    @Column(name="contrasena")
+
+    @Column(name = "contrasena")
     private String contrasena;
-    
-    @Column(name="tUsuario")
+
+    @Column(name = "tUsuario")
     private String tUsuario;
-    
-    @Column(name="rfc")
+
+    @Column(name = "rfc")
     private String rfc;
-    
+
+    @ManyToMany(fetch = FetchType.LAZY,cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinTable(name = "MiCurso",joinColumns = {@JoinColumn(name = "idUsuario")},inverseJoinColumns = {@JoinColumn(name = "idCruso")})
+    private List<Curso> cursos;
+
+    /*
     //Indicar donde estoy mapeando
     @OneToMany(mappedBy = "Usuario", cascade={CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
     private List<Curso> cursos;
-
+     */
     public Usuario() {
     }
 
@@ -137,20 +146,28 @@ public class Usuario implements Serializable{
     public void setRfc(String rfc) {
         this.rfc = rfc;
     }
-    
-    
+
+    public List<Curso> getCursos() {
+        return cursos;
+    }
+
+    public void setCursos(List<Curso> cursos) {
+        this.cursos = cursos;
+    }
+
+
     public void agregarMisCurso(Curso MisCursos){
         if(cursos!=null){
             cursos = new ArrayList<>();
             cursos.add(MisCursos);
-            MisCursos.setUsuario(this);
+            MisCursos.setUsuarios((List<Usuario>) this);
         }
     }
-
+    
+    
     @Override
     public String toString() {
         return "Usuario{" + "idUsuario=" + idUsuario + ", nombre=" + nombre + ", aPaterno=" + aPaterno + ", aMaterno=" + aMaterno + ", genero=" + genero + ", email=" + email + ", contrasena=" + contrasena + ", tUsuario=" + tUsuario + ", rfc=" + rfc + '}';
     }
 
-    
 }

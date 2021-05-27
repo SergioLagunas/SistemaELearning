@@ -71,7 +71,6 @@ public class UsuarioDaoImpl implements UsuarioDao {
 
     @Override
     public Usuario getUsuario(Integer idUsuario) {
-
         //Obtener la secion 
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         //Ocupamos la transaccion en caso de error la base de datos se restaura a como estaba

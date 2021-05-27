@@ -2,20 +2,27 @@
 package Elearning.dto;
 
 
+import java.util.Date;
+
 public class ModuloDto {
+    
     private Integer idModulo;
-    private String unidad;
-    private String leccion;
-    private TipoCursoDto  idTipoCurso;
+    private String titulo;
+    private Date fInicio;
+    private Date fTermino;
+    private Integer progreso;
+    private CursoDto idCurso;
 
     public ModuloDto() {
     }
-     
+  
 
-    public ModuloDto(String unidad, String leccion, TipoCursoDto idTipoCurso) {
-        this.unidad = unidad;
-        this.leccion = leccion;
-        this.idTipoCurso = idTipoCurso;
+    public ModuloDto(String titulo, Date fInicio, Date fTermino, Integer progreso, CursoDto idCurso) {
+        this.titulo = titulo;
+        this.fInicio = fInicio;
+        this.fTermino = fTermino;
+        this.progreso = progreso;
+        this.idCurso = idCurso;
     }
 
     public Integer getIdModulo() {
@@ -25,30 +32,49 @@ public class ModuloDto {
     public void setIdModulo(Integer idModulo) {
         this.idModulo = idModulo;
     }
+    
 
-    public String getUnidad() {
-        return unidad;
+    public String getTitulo() {
+        return titulo;
     }
 
-    public void setUnidad(String unidad) {
-        this.unidad = unidad;
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
     }
 
-    public String getLeccion() {
-        return leccion;
+    public Date getfInicio() {
+        return fInicio;
     }
 
-    public void setLeccion(String leccion) {
-        this.leccion = leccion;
+    public void setfInicio(Date fInicio) {
+        this.fInicio = fInicio;
     }
 
-    public TipoCursoDto getIdTipoCurso() {
-        return idTipoCurso;
+    public Date getfTermino() {
+        return fTermino;
     }
 
-    public void setIdTipoCurso(TipoCursoDto idTipoCurso) {
-        this.idTipoCurso = idTipoCurso;
+    public void setfTermino(Date fTermino) {
+        this.fTermino = fTermino;
+    }
+
+    public Integer getProgreso() {
+        return progreso;
+    }
+
+    public void setProgreso(Integer progreso) {
+        this.progreso = progreso;
+    }
+
+    public CursoDto getIdCurso() {
+        return idCurso;
+    }
+
+    public void setIdCurso(CursoDto idCurso) {
+        this.idCurso = idCurso;
     }
 
 
+    
 }
+

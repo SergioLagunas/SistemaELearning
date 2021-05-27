@@ -7,18 +7,16 @@ public class EvaluacionDto {
     private String tipo;
     private float calificacion;
     private String aprobacion;
-    private ModuloDto idModulo;
+    private LeccionDto idLeccion;
 
     public EvaluacionDto() {
     }
 
-    public EvaluacionDto(String tipo, float calificacion, String aprobacion, ModuloDto idModulo) {
+    public EvaluacionDto(String tipo, float calificacion, String aprobacion) {
         this.tipo = tipo;
         this.calificacion = calificacion;
         this.aprobacion = aprobacion;
-        this.idModulo = idModulo;
     }
-
 
     public Integer getIdEvaluacion() {
         return idEvaluacion;
@@ -52,11 +50,13 @@ public class EvaluacionDto {
         this.aprobacion = aprobacion;
     }
 
-    public ModuloDto getIdModulo() {
-        return idModulo;
+    public LeccionDto getIdLeccion() {
+        return idLeccion;
     }
 
-    public void setIdModulo(ModuloDto idModulo) {
-        this.idModulo = idModulo;
+    public void setIdLeccion(LeccionDto idLeccion) {
+        this.idLeccion = idLeccion;
     }
+
+    
 }

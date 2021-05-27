@@ -22,7 +22,7 @@ public class Modulo implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="idModulo")
-    private Integer idTipoCurso;
+    private Integer idModulo;
     
     @Column(name="titulo")
     private String titulo;
@@ -51,12 +51,12 @@ public class Modulo implements Serializable{
         this.idCurso = idCurso;
     }
 
-    public Integer getIdTipoCurso() {
-        return idTipoCurso;
+    public Integer getIdModulo() {
+        return idModulo;
     }
 
-    public void setIdTipoCurso(Integer idTipoCurso) {
-        this.idTipoCurso = idTipoCurso;
+    public void setIdModulo(Integer idModulo) {
+        this.idModulo = idModulo;
     }
 
     public String getTitulo() {
@@ -101,7 +101,8 @@ public class Modulo implements Serializable{
 
     @Override
     public String toString() {
-        return "TipoCurso{" + "idTipoCurso=" + idTipoCurso + ", titulo=" + titulo + ", fInicio=" + fInicio + ", fTermino=" + fTermino + ", progreso=" + progreso + ", idCurso=" + idCurso + '}';
+        return "Modulo{" + "idModulo=" + idModulo + ", titulo=" + titulo + ", fInicio=" + fInicio + ", fTermino=" + fTermino + ", progreso=" + progreso + ", idCurso=" + idCurso + '}';
     }
+    
     
 }

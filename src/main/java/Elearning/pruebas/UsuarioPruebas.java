@@ -7,7 +7,7 @@ import org.hibernate.Session;
 
 
 public class UsuarioPruebas {
-
+/*
   public static void main(String[] args) {
 
         Session session = HibernateUtil.getSessionFactory().openSession();
@@ -21,7 +21,7 @@ public class UsuarioPruebas {
             //************Insercion de Usuario*****************
             session.beginTransaction();
             session.save(usuario1);
-             session.save(usuario2);
+            session.save(usuario2);
             session.getTransaction().commit();//puede ser con rollback tambien 
             System.out.println("Registro Insertado Correctamente");
 
@@ -65,7 +65,7 @@ public class UsuarioPruebas {
             System.out.println("Registro Eliminado Correctamente"); */
 
           //Cierra la secion 
-            session.close();
+    /*       session.close();
 
         } finally {
             session.close();

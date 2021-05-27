@@ -7,17 +7,15 @@ public class ArchivosDto {
     private Integer idArchivos;
     private String tipo;
     private String nombre;
-    private ModuloDto idModulo;
+    private LeccionDto idLeccion;
 
     public ArchivosDto() {
     }
 
-    public ArchivosDto(String tipo, String nombre, ModuloDto idModulo) {
+    public ArchivosDto(String tipo, String nombre) {
         this.tipo = tipo;
         this.nombre = nombre;
-        this.idModulo = idModulo;
     }
-
 
     public Integer getIdArchivos() {
         return idArchivos;
@@ -43,14 +41,11 @@ public class ArchivosDto {
         this.nombre = nombre;
     }
 
-    public ModuloDto getIdModulo() {
-        return idModulo;
+    public LeccionDto getIdLeccion() {
+        return idLeccion;
     }
 
-    public void setIdModulo(ModuloDto idModulo) {
-        this.idModulo = idModulo;
+    public void setIdLeccion(LeccionDto idLeccion) {
+        this.idLeccion = idLeccion;
     }
-
-  
-    
 }

@@ -5,16 +5,16 @@ public class CursoDto {
     private Integer idCurso;
     private String nombre;
     private String descripcion;
+    private UsuarioDto idUsuario;
 
     public CursoDto() {
     }
 
-    public CursoDto(String nombre, String descripcion) {
+    public CursoDto(String nombre) {
         this.nombre = nombre;
-        this.descripcion = descripcion;
     }
-    
-    public int getIdCurso() {
+
+    public Integer getIdCurso() {
         return idCurso;
     }
 
@@ -30,12 +30,20 @@ public class CursoDto {
         this.nombre = nombre;
     }
 
-    public String getIdTipoCurso() {
+    public String getDescripcion() {
         return descripcion;
     }
 
-    public void setIdTipoCurso(String idTipoCurso) {
-        this.descripcion = idTipoCurso;
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public UsuarioDto getIdUsuario() {
+        return idUsuario;
+    }
+
+    public void setIdUsuario(UsuarioDto idUsario) {
+        this.idUsuario = idUsario;
     }
     
 }
