@@ -5,14 +5,15 @@ public class CursoDto {
     private Integer idCurso;
     private String nombre;
     private String descripcion;
-    private UsuarioDto idUsuario;
+   
 
     public CursoDto() {
     }
 
-    public CursoDto(String nombre) {
+    public CursoDto(String nombre, String descripcion) {
         this.nombre = nombre;
-    }
+        this.descripcion = descripcion;
+    } 
 
     public Integer getIdCurso() {
         return idCurso;
@@ -38,12 +39,8 @@ public class CursoDto {
         this.descripcion = descripcion;
     }
 
-    public UsuarioDto getIdUsuario() {
-        return idUsuario;
-    }
+   
 
-    public void setIdUsuario(UsuarioDto idUsario) {
-        this.idUsuario = idUsario;
-    }
+    
     
 }

@@ -28,9 +28,9 @@ public class Leccion implements Serializable{
     @Column(name="objetivo")
     private String objetivo;
     
-    @ManyToOne(cascade=CascadeType.ALL)
-    @JoinColumn(name="idModulo")
-    List<Modulo> idModulo;
+    @Column(name="idModulo")
+    private Integer idModulo ;
+    
 
     public Leccion() {
     }
@@ -64,13 +64,13 @@ public class Leccion implements Serializable{
         this.objetivo = objetivo;
     }
 
-    public List<Modulo> getIdModulo() {
+    public Integer getIdModulo() {
         return idModulo;
     }
 
-    public void setIdModulo(List<Modulo> idModulo) {
+    public void setIdModulo(Integer idModulo) {
         this.idModulo = idModulo;
-    }
+    } 
 
     @Override
     public String toString() {

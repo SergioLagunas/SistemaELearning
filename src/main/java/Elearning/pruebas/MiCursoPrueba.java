@@ -8,7 +8,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import org.hibernate.Session;
-
+/*
 public class MiCursoPrueba {
 
     public static void main(String[] args) {
@@ -16,33 +16,31 @@ public class MiCursoPrueba {
         Session session = HibernateUtil.getSessionFactory().openSession();
         
           
-         try {
-     
-            session.beginTransaction();
-            //Obtiene el usuario de la tabla usuario de a BD
-            
-            Usuario usuario2=session.get(Usuario.class,1);
-            Usuario usuario3=session.get(Usuario.class,2);
-            
-          
-            
-            Curso curso1=session.get(Curso.class, 11);
-            Curso curso2=session.get(Curso.class, 12);
-            
-      
+         try {      
+            //Creacion de Usuarios
+            Usuario usuario1 = new Usuario("Ricardo", "Lagunas", "Garcia", "Masculino", "sergio@gmail.com", "contrasena", "semillero", "sdasd");
            
-            //Agregar los Cursos al Usuario
+            //Creacion de Cursos
+            Curso curso1 = new Curso("Pesadilla Hibernate","Vas a sufir XDdddd");
+            Curso curso2 = new Curso("Pesadilla Java","Vas a sufir XDddddd");
             
+            //Asignamos los cursos al Usuario
         
-            usuario2.agregarMisCurso(curso1);
-            usuario3.agregarMisCurso(curso2);
-
+            //usuario1.getCursos().add(curso1);
+            //usuario1.getCursos().add(curso1);
             
+            
+            //curso1.getUsuarios().add(usuario1);
+            //curso2.getUsuarios().add(usuario1);
             //Guardar los cursos en tabla Curso
            
+            session.beginTransaction();
+            session.save(usuario1);
+            session.save(usuario1);
             
-           session.getTransaction().rollback();//puede ser con rollback tambien 
+            session.getTransaction().commit();//puede ser con rollback tambien 
             System.out.println("Registros Insertado Correctamente");
+            session.close();
 
         }catch(Exception e){
             

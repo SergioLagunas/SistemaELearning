@@ -52,9 +52,9 @@ public class Usuario implements Serializable {
     @Column(name = "rfc")
     private String rfc;
 
-    @ManyToMany(fetch = FetchType.LAZY,cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    @JoinTable(name = "MiCurso",joinColumns = {@JoinColumn(name = "idUsuario")},inverseJoinColumns = {@JoinColumn(name = "idCruso")})
-    private List<Curso> cursos;
+  /*  @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(name = "MiCurso",joinColumns = {@JoinColumn(name = "idUsuario")},inverseJoinColumns = {@JoinColumn(name = "idCurso")})
+    private Set<Curso> cursos= new HashSet<>();*/
 
     /*
     //Indicar donde estoy mapeando
@@ -146,24 +146,6 @@ public class Usuario implements Serializable {
     public void setRfc(String rfc) {
         this.rfc = rfc;
     }
-
-    public List<Curso> getCursos() {
-        return cursos;
-    }
-
-    public void setCursos(List<Curso> cursos) {
-        this.cursos = cursos;
-    }
-
-
-    public void agregarMisCurso(Curso MisCursos){
-        if(cursos!=null){
-            cursos = new ArrayList<>();
-            cursos.add(MisCursos);
-            MisCursos.setUsuarios((List<Usuario>) this);
-        }
-    }
-    
     
     @Override
     public String toString() {

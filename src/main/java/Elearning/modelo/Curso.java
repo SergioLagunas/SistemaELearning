@@ -34,8 +34,8 @@ public class Curso implements Serializable{
     @Column(name="descripcion")
     private String descripcion;
     
-    @ManyToMany(fetch = FetchType.LAZY,cascade =CascadeType.ALL, mappedBy="cursos")
-    private List<Usuario> usuarios;
+    /*@ManyToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL, mappedBy="cursos")
+    private Set<Usuario> usuarios = new HashSet<>();*/
     
     /*@ManyToOne(cascade={CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
     @JoinColumn(name="idUsuario")
@@ -72,17 +72,6 @@ public class Curso implements Serializable{
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
-
-    public List<Usuario> getUsuarios() {
-        return usuarios;
-    }
-
-    public void setUsuarios(List<Usuario> usuarios) {
-        this.usuarios = usuarios;
-    }
-
-   
-
     
     @Override
     public String toString() {

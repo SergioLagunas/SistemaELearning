@@ -9,7 +9,7 @@ import org.hibernate.Session;
 public class UsuarioPruebas {
 /*
   public static void main(String[] args) {
-
+/*
         Session session = HibernateUtil.getSessionFactory().openSession();
 
         try {
@@ -65,7 +65,7 @@ public class UsuarioPruebas {
             System.out.println("Registro Eliminado Correctamente"); */
 
           //Cierra la secion 
-    /*       session.close();
+  /*         session.close();
 
         } finally {
             session.close();
@@ -73,6 +73,6 @@ public class UsuarioPruebas {
 
 
 }
-
+*/
 
 }

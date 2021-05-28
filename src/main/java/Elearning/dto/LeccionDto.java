@@ -6,7 +6,7 @@ public class LeccionDto {
     private Integer idLeccion;
     private String titulo;
     private String objetivo;
-    private ModuloDto  idModulo;
+    private Integer  idModulo;
 
     public LeccionDto() {
     }
@@ -40,17 +40,12 @@ public class LeccionDto {
         this.objetivo = objetivo;
     }
 
-    public ModuloDto getIdModulo() {
+    public Integer getIdModulo() {
         return idModulo;
     }
 
-    public void setIdModulo(ModuloDto idModulo) {
+    public void setIdModulo(Integer idModulo) {
         this.idModulo = idModulo;
     }
-
-    @Override
-    public String toString() {
-        return "LeccionDto{" + "idLeccion=" + idLeccion + ", titulo=" + titulo + ", objetivo=" + objetivo + ", idModulo=" + idModulo + '}';
-    }
-
+    
 }

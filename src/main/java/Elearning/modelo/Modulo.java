@@ -36,19 +36,17 @@ public class Modulo implements Serializable{
     @Column(name="progreso")
     private Integer progreso;
     
-    @ManyToOne(cascade=CascadeType.ALL)
-    @JoinColumn(name="idCurso")
-    List<Curso> idCurso;
+    @Column(name="idCurso")
+    private Integer idCurso;
 
     public Modulo() {
     }
 
-    public Modulo(String titulo, Date fInicio, Date fTermino, Integer progreso, List<Curso> idCurso) {
+    public Modulo(String titulo, Date fInicio, Date fTermino, Integer progreso) {
         this.titulo = titulo;
         this.fInicio = fInicio;
         this.fTermino = fTermino;
         this.progreso = progreso;
-        this.idCurso = idCurso;
     }
 
     public Integer getIdModulo() {
@@ -91,13 +89,15 @@ public class Modulo implements Serializable{
         this.progreso = progreso;
     }
 
-    public List<Curso> getIdCurso() {
+    public Integer getIdCurso() {
         return idCurso;
     }
 
-    public void setIdCurso(List<Curso> idCurso) {
+    public void setIdCurso(Integer idCurso) {
         this.idCurso = idCurso;
     }
+
+    
 
     @Override
     public String toString() {
