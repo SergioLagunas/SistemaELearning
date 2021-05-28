@@ -28,9 +28,8 @@ public class Archivo implements Serializable{
     @Column(name="nombre")
     private String nombre;
     
-    @ManyToOne(cascade=CascadeType.ALL)
-    @JoinColumn(name="idLeccion")
-    List<Leccion> idLeccion;
+    @Column(name="idLeccion")
+    private Integer idLeccion;
 
     public Archivo() {
     }
@@ -64,14 +63,15 @@ public class Archivo implements Serializable{
         this.nombre = nombre;
     }
 
-    public List<Leccion> getIdLeccion() {
+    public Integer getIdLeccion() {
         return idLeccion;
     }
 
-    public void setIdLeccion(List<Leccion> idLeccion) {
+    public void setIdLeccion(Integer idLeccion) {
         this.idLeccion = idLeccion;
     }
 
+    
     @Override
     public String toString() {
         return "Archivo{" + "idArchivos=" + idArchivos + ", tipo=" + tipo + ", nombre=" + nombre + ", idLeccion=" + idLeccion + '}';

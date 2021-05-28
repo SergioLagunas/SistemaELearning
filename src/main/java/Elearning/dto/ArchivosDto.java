@@ -7,7 +7,7 @@ public class ArchivosDto {
     private Integer idArchivos;
     private String tipo;
     private String nombre;
-    private LeccionDto idLeccion;
+    private Integer idLeccion;
 
     public ArchivosDto() {
     }
@@ -41,11 +41,13 @@ public class ArchivosDto {
         this.nombre = nombre;
     }
 
-    public LeccionDto getIdLeccion() {
+    public Integer getIdLeccion() {
         return idLeccion;
     }
 
-    public void setIdLeccion(LeccionDto idLeccion) {
+    public void setIdLeccion(Integer idLeccion) {
         this.idLeccion = idLeccion;
     }
+
+    
 }

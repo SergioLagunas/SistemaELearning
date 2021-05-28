@@ -9,7 +9,7 @@ public class CertificadoDto {
     private Integer idCertificado;
     private Date fEntrega;
     private String descripcion;
-    private EvaluacionDto idEvaluacion;
+    private Integer idEvaluacion;
 
     public CertificadoDto() {
     }

@@ -30,10 +30,10 @@ public class Evaluacion implements Serializable{
    
     @Column(name="aprobacion")
     private String aprobacion;
-          
-    @ManyToOne(cascade=CascadeType.ALL)
-    @JoinColumn(name="idLeccion")
-    List<Leccion> idLeccion;
+    
+    @Column(name="idLeccion")
+    private Integer idLeccion;
+    
 
     public Evaluacion() {
     }
@@ -76,11 +76,11 @@ public class Evaluacion implements Serializable{
         this.aprobacion = aprobacion;
     }
 
-    public List<Leccion> getIdLeccion() {
+    public Integer getIdLeccion() {
         return idLeccion;
     }
 
-    public void setIdLeccion(List<Leccion> idLeccion) {
+    public void setIdLeccion(Integer idLeccion) {
         this.idLeccion = idLeccion;
     }
 
@@ -88,6 +88,5 @@ public class Evaluacion implements Serializable{
     public String toString() {
         return "Evaluacion{" + "idEvaluacion=" + idEvaluacion + ", tipo=" + tipo + ", calificacion=" + calificacion + ", aprobacion=" + aprobacion + ", idLeccion=" + idLeccion + '}';
     }
-
     
 }

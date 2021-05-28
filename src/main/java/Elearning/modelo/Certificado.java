@@ -29,9 +29,8 @@ public class Certificado implements Serializable{
     @Column(name="descripcion")
     private String descripcion;
     
-    @ManyToOne(cascade=CascadeType.ALL)
-    @JoinColumn(name="idEvaluacion")
-    List<Evaluacion> idEvaluacion;
+    @Column(name="idEvaluacion")
+    private String idEvaluacion;
 
     public Certificado() {
     }
@@ -65,11 +64,11 @@ public class Certificado implements Serializable{
         this.descripcion = descripcion;
     }
 
-    public List<Evaluacion> getIdEvaluacion() {
+    public String getIdEvaluacion() {
         return idEvaluacion;
     }
 
-    public void setIdEvaluacion(List<Evaluacion> idEvaluacion) {
+    public void setIdEvaluacion(String idEvaluacion) {
         this.idEvaluacion = idEvaluacion;
     }
 
