@@ -2,26 +2,26 @@
 package Elearning.dto;
 
 
-public class ArchivosDto {
+public class ArchivoDto {
     
     private Integer idArchivos;
     private String tipo;
     private String nombre;
     private Integer idLeccion;
 
-    public ArchivosDto() {
+    public ArchivoDto() {
     }
 
-    public ArchivosDto(String tipo, String nombre) {
+    public ArchivoDto(String tipo, String nombre) {
         this.tipo = tipo;
         this.nombre = nombre;
     }
 
-    public Integer getIdArchivos() {
+    public Integer getIdArchivo() {
         return idArchivos;
     }
 
-    public void setIdArchivos(Integer idArchivos) {
+    public void setIdArchivo(Integer idArchivos) {
         this.idArchivos = idArchivos;
     }
 
