@@ -10,6 +10,7 @@ import org.hibernate.Transaction;
 import org.springframework.stereotype.Repository;
 import org.hibernate.query.Query;
 
+
 @Repository("CursoDao")
 public class CursoDaoImpl implements CursoDao{
 
