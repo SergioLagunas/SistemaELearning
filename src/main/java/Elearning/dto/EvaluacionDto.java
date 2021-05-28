@@ -7,7 +7,7 @@ public class EvaluacionDto {
     private String tipo;
     private float calificacion;
     private String aprobacion;
-    private LeccionDto idLeccion;
+    private Integer idLeccion;
 
     public EvaluacionDto() {
     }
@@ -50,13 +50,12 @@ public class EvaluacionDto {
         this.aprobacion = aprobacion;
     }
 
-    public LeccionDto getIdLeccion() {
+    public Integer getIdLeccion() {
         return idLeccion;
     }
 
-    public void setIdLeccion(LeccionDto idLeccion) {
+    public void setIdLeccion(Integer idLeccion) {
         this.idLeccion = idLeccion;
     }
 
-    
 }

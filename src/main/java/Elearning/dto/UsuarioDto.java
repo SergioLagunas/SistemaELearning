@@ -98,7 +98,5 @@ public class UsuarioDto{
     public void setRfc(String rfc) {
         this.rfc = rfc;
     }
-    
-    
-    
+
 }

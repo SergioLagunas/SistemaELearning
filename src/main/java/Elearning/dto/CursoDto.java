@@ -39,8 +39,4 @@ public class CursoDto {
         this.descripcion = descripcion;
     }
 
-   
-
-    
-    
 }
