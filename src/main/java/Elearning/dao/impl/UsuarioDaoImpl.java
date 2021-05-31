@@ -26,7 +26,7 @@ public class UsuarioDaoImpl implements UsuarioDao {
             //Iniciamos Transaccion
             transaccion.begin();
             //crea la consulta Query
-            Query<Usuario> miQuery = session.createQuery("from Usuario", Usuario.class);
+            Query<Usuario> miQuery = session.createQuery("from Usuario id order by id.idUsuario");
             //Amacenamos los datos en la lista declarada anteriormente 
             lista = miQuery.list();
             //regresa el commit

@@ -1,34 +1,35 @@
 
 package Elearning.dao.impl;
-import Elarning.dao.CursoDao;
-import Elearning.modelo.Curso;
+
+import Elarning.dao.ModuloDao;
+import Elearning.modelo.Modulo;
 import Elearning.util.HibernateUtil;
 import java.util.List;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import org.springframework.stereotype.Repository;
 import org.hibernate.query.Query;
+import org.springframework.stereotype.Repository;
 
 
-@Repository("CursoDao")
-public class CursoDaoImpl implements CursoDao{
+@Repository("ModuloDao")
+public class ModuloDaoImpl implements ModuloDao{
 
     @Override
-    public List<Curso> findAll() {
-        
+    public List<Modulo> findAll() {
+         
          //Obtener la secion 
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         //Ocupamos la transaccion en caso de error la base de datos se restaura a como estaba
         Transaction transaccion = session.getTransaction();
         //Declaramos la lista donde almacenara el conjunto de datos de la tabla 
-        List<Curso> lista = null;
+        List<Modulo> lista = null;
 
         try {
             //Iniciamos Transaccion
             transaccion.begin();
             //crea la consulta Query
-            Query<Curso> miQuery = session.createQuery("from Curso id order by id.idCurso");
+            Query<Modulo> miQuery = session.createQuery("from Modulo id order by id.idModulo");
             //Amacenamos los datos en la lista declarada anteriormente 
             lista = miQuery.list();
             //regresa el commit
@@ -47,8 +48,8 @@ public class CursoDaoImpl implements CursoDao{
     }
 
     @Override
-    public Curso create(Curso elCurso) {  
-         //Obtener la secion 
+    public Modulo create(Modulo elModulo) {
+            //Obtener la secion 
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         //Ocupamos la transaccion en caso de error la base de datos se restaura a como estaba
         Transaction transaccion = session.getTransaction();
@@ -57,7 +58,7 @@ public class CursoDaoImpl implements CursoDao{
             //Iniciamos Transaccion
             transaccion.begin();
             //Guardamos la transaccion
-            session.save(elCurso);
+            session.save(elModulo);
             transaccion.commit();
 
         } catch (HibernateException e) {
@@ -69,22 +70,21 @@ public class CursoDaoImpl implements CursoDao{
             //Finalmente cerramos la sesion 
             session.close();
         }
-        return elCurso;
-   
+        return elModulo;
     }
 
     @Override
-    public Curso getCurso(Integer idCurso) {
-        //Obtener la secion 
+    public Modulo getModulo(Integer idModulo) {
+       //Obtener la secion 
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         //Ocupamos la transaccion en caso de error la base de datos se restaura a como estaba
         Transaction transaccion = session.getTransaction();
-        Curso entidad = null;
+        Modulo entidad = null;
         try {
             //Iniciamos Transaccion
             transaccion.begin();
             //Obtener por medio del id llamamos a la Tabla usuario y que haga de parametro el idUsuario
-            entidad = session.get(Curso.class, idCurso);
+            entidad = session.get(Modulo.class, idModulo);
             transaccion.commit();
 
         } catch (HibernateException e) {
@@ -101,7 +101,8 @@ public class CursoDaoImpl implements CursoDao{
     }
 
     @Override
-    public Curso update(Curso elCurso) {
+    public Modulo update(Modulo elModulo) {
+        
         //Obtener la secion 
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         //Ocupamos la transaccion en caso de error la base de datos se restaura a como estaba
@@ -111,7 +112,7 @@ public class CursoDaoImpl implements CursoDao{
             //Iniciamos Transaccion
             transaccion.begin();
             //Actualizamos los datos 
-            session.update(elCurso);
+            session.update(elModulo);
             transaccion.commit();
 
         } catch (HibernateException e) {
@@ -124,12 +125,13 @@ public class CursoDaoImpl implements CursoDao{
             session.close();
         }
 
-        return elCurso;
+        return elModulo;
+        
     }
 
     @Override
-    public boolean delete(Curso elCurso) {
-         //Obtener la secion 
+    public boolean delete(Modulo elModulo) {
+        //Obtener la secion 
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         //Ocupamos la transaccion en caso de error la base de datos se restaura a como estaba
         Transaction transaccion = session.getTransaction();
@@ -139,7 +141,7 @@ public class CursoDaoImpl implements CursoDao{
             //Iniciamos Transaccion
             transaccion.begin();
             //Actualizamos los datos 
-            session.delete(elCurso);
+            session.delete(elModulo);
             transaccion.commit();
 
         } catch (HibernateException e) {
@@ -155,5 +157,6 @@ public class CursoDaoImpl implements CursoDao{
         }
 
         return flag;
-    } 
+    }
+    
 }

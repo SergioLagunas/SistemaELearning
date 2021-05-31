@@ -10,13 +10,9 @@ import javax.persistence.Id;
 public class MiCurso implements Serializable{
   
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="idMiCurso")
-    private Integer idMiCurso;
-    
     @Column(name="idUsuario")
     private Integer idUsuario;
-    
+    @Id
     @Column(name="idCurso")
     private Integer idCurso;
 
@@ -26,14 +22,6 @@ public class MiCurso implements Serializable{
     public MiCurso(Integer idUsuario, Integer idCurso) {
         this.idUsuario = idUsuario;
         this.idCurso = idCurso;
-    }
-
-    public Integer getIdMiCurso() {
-        return idMiCurso;
-    }
-
-    public void setIdMiCurso(Integer idMiCurso) {
-        this.idMiCurso = idMiCurso;
     }
 
     public Integer getIdUsuario() {
@@ -51,11 +39,12 @@ public class MiCurso implements Serializable{
     public void setIdCurso(Integer idCurso) {
         this.idCurso = idCurso;
     }
- 
 
     @Override
     public String toString() {
-        return "MiCurso{" + "idMiCurso=" + idMiCurso + ", idUsuario=" + idUsuario + ", idCurso=" + idCurso + '}';
+        return "MiCurso{" + "idUsuario=" + idUsuario + ", idCurso=" + idCurso + '}';
     }
+ 
 
+    
 }
