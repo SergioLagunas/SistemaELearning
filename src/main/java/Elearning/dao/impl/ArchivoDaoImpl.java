@@ -56,8 +56,9 @@ public class ArchivoDaoImpl implements ArchivoDao{
             //Iniciamos Transaccion
             transaccion.begin();
             //Guardamos la transaccion
-            session.save(elArchivo);
+            Integer id= (Integer) session.save(elArchivo);
             transaccion.commit();
+            elArchivo.setIdArchivo(id);
 
         } catch (HibernateException e) {
             //Si la transaccion esta bacia y ademas esta activa que regrese el estado en el que se encontraba la Base de Dato

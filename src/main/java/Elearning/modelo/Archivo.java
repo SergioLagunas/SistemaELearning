@@ -39,11 +39,11 @@ public class Archivo implements Serializable{
         this.nombre = nombre;
     }
 
-    public Integer getIdArchivos() {
+    public Integer getIdArchivo() {
         return idArchivos;
     }
 
-    public void setIdArchivos(Integer idArchivos) {
+    public void setIdArchivo(Integer idArchivos) {
         this.idArchivos = idArchivos;
     }
 

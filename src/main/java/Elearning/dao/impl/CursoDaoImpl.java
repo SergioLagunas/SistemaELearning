@@ -57,8 +57,9 @@ public class CursoDaoImpl implements CursoDao{
             //Iniciamos Transaccion
             transaccion.begin();
             //Guardamos la transaccion
-            session.save(elCurso);
+            Integer id= (Integer) session.save(elCurso);
             transaccion.commit();
+            elCurso.setIdCurso(id);
 
         } catch (HibernateException e) {
             //Si la transaccion esta bacia y ademas esta activa que regrese el estado en el que se encontraba la Base de Dato

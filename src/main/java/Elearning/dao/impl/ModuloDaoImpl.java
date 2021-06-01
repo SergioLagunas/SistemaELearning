@@ -58,8 +58,9 @@ public class ModuloDaoImpl implements ModuloDao{
             //Iniciamos Transaccion
             transaccion.begin();
             //Guardamos la transaccion
-            session.save(elModulo);
+            Integer id= (Integer) session.save(elModulo);
             transaccion.commit();
+            elModulo.setIdModulo(id);
 
         } catch (HibernateException e) {
             //Si la transaccion esta bacia y ademas esta activa que regrese el estado en el que se encontraba la Base de Dato

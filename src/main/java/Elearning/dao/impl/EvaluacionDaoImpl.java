@@ -57,8 +57,9 @@ public class EvaluacionDaoImpl implements EvaluacionDao{
             //Iniciamos Transaccion
             transaccion.begin();
             //Actualizamos los datos 
-            session.update(laEvaluacion);
+            Integer id= (Integer) session.save(laEvaluacion);
             transaccion.commit();
+            laEvaluacion.setIdEvaluacion(id);
 
         } catch (HibernateException e) {
             //Si la transaccion esta bacia y ademas esta activa que regrese el estado en el que se encontraba la Base de Dato

@@ -9,8 +9,9 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
+import org.springframework.stereotype.Repository;
 
-
+@Repository("MiCursoDao")
 public class MiCursoDaoImpl implements MiCursoDao{
 
     @Override
@@ -51,7 +52,7 @@ public class MiCursoDaoImpl implements MiCursoDao{
         Transaction transaccion = session.getTransaction();
 
         try {
-            //Iniciamos Transaccion
+             //Iniciamos Transaccion
             transaccion.begin();
             //Guardamos la transaccion
             session.save(entidad);

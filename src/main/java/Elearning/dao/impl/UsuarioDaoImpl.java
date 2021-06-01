@@ -54,8 +54,9 @@ public class UsuarioDaoImpl implements UsuarioDao {
             //Iniciamos Transaccion
             transaccion.begin();
             //Guardamos la transaccion
-            session.save(elUsuario);
+            Integer id= (Integer) session.save(elUsuario);
             transaccion.commit();
+            elUsuario.setIdUsuario(id);
 
         } catch (HibernateException e) {
             //Si la transaccion esta bacia y ademas esta activa que regrese el estado en el que se encontraba la Base de Dato

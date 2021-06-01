@@ -57,8 +57,9 @@ public class LeccionDaoImpl implements LeccionDao{
             //Iniciamos Transaccion
             transaccion.begin();
             //Guardamos la transaccion
-            session.save(laLeccion);
+            Integer id= (Integer) session.save(laLeccion);
             transaccion.commit();
+            laLeccion.setIdLeccion(id);
 
         } catch (HibernateException e) {
             //Si la transaccion esta bacia y ademas esta activa que regrese el estado en el que se encontraba la Base de Dato

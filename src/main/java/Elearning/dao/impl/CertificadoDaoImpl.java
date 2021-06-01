@@ -56,8 +56,9 @@ public class CertificadoDaoImpl implements CertificadoDao{
             //Iniciamos Transaccion
             transaccion.begin();
             //Guardamos la transaccion
-            session.save(elCertificado);
+            Integer id= (Integer) session.save(elCertificado);
             transaccion.commit();
+            elCertificado.setIdCertificado(id);
 
         } catch (HibernateException e) {
             //Si la transaccion esta bacia y ademas esta activa que regrese el estado en el que se encontraba la Base de Dato
