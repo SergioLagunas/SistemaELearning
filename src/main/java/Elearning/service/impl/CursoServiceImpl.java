@@ -1,0 +1,125 @@
+
+package Elearning.service.impl;
+
+import Elearning.service.CursoService;
+import java.util.Map;
+import javax.servlet.http.HttpServletRequest;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import Elarning.dao.CursoDao;
+import Elarning.dao.MiCursoDao;
+import Elearning.dto.CursoDto;
+import Elearning.modelo.Curso;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import org.codehaus.jackson.JsonProcessingException;
+import org.codehaus.jackson.map.ObjectMapper;
+
+
+
+@Service("CursoService")
+public class CursoServiceImpl implements CursoService{
+    
+    @Autowired
+    private CursoDao cursoDao;    
+    @Autowired
+    private MiCursoDao miCursoDao;
+
+    @Override
+    public String readService() {
+        
+        List<CursoDto> lista = new ArrayList();
+        List<Curso> lista2 = new ArrayList();
+        String data="";
+        
+        for(int i=0;i<lista2.size();i++){
+            CursoDto dto= new CursoDto();
+            dto.setIdCurso(lista2.get(i).getIdCurso());
+            dto.setNombre(lista2.get(i).getNombre());
+            dto.setDescripcion(lista2.get(i).getDescripcion());
+            lista.add(dto);
+        }
+        
+        try {   
+             ObjectMapper mapper = new ObjectMapper();
+            data=mapper.writeValueAsString(lista);
+            
+        } catch (IOException ex) {
+            
+            Logger.getLogger(CursoServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return data;
+    }
+    
+    @Override
+    public String createNewCurso(HttpServletRequest request) {    
+       
+        Integer idCurso=Integer.parseInt(request.getParameter("idCurso"));
+        String nombre=request.getParameter("nombre");
+        String descripcion=request.getParameter("descripcion");  
+        Curso curso = new Curso();
+        curso.setIdCurso(idCurso);
+        curso.setNombre(nombre);
+        curso.setDescripcion(descripcion);
+        curso = cursoDao.create(curso);
+        
+        CursoDto dto = new CursoDto(curso.getNombre(),curso.getDescripcion());
+        String data="";
+        
+        try {   
+             ObjectMapper mapper = new ObjectMapper();
+            data=mapper.writeValueAsString(dto);
+            
+        } catch (IOException ex) {
+            
+            Logger.getLogger(CursoServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return data;
+    }
+
+    @Override
+    public String updateCurso(HttpServletRequest request) {
+         
+        Integer id=Integer.parseInt(request.getParameter("idCurso"));
+        String nombre=request.getParameter("nombre");
+        String descripcion=request.getParameter("descripcion"); 
+       
+        Curso editCurso = new Curso(nombre,descripcion);
+        editCurso = cursoDao.update(editCurso);
+        
+        CursoDto dto = new CursoDto(editCurso.getNombre(),editCurso.getDescripcion());
+        String data="";
+        
+        try {   
+             ObjectMapper mapper = new ObjectMapper();
+             data=mapper.writeValueAsString(dto);
+            
+        } catch (IOException ex) {
+            
+            Logger.getLogger(CursoServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return data;
+        
+    }
+
+    @Override
+    public String deleteCurso(Map<String, String> requestParam) {
+        
+          Integer idCurso=Integer.parseInt(requestParam.get("IdCurso"));
+          Curso elimCurso = new Curso();
+          elimCurso.setIdCurso(idCurso);
+          boolean flag=cursoDao.delete(elimCurso);
+         if(flag){
+             return  "{\"valid\"}";
+         }
+         return "{\"valid\"}";
+        
+    }
+    
+}
