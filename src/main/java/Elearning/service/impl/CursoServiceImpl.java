@@ -10,13 +10,13 @@ import Elarning.dao.CursoDao;
 import Elarning.dao.MiCursoDao;
 import Elearning.dto.CursoDto;
 import Elearning.modelo.Curso;
-import java.io.IOException;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import org.codehaus.jackson.JsonProcessingException;
-import org.codehaus.jackson.map.ObjectMapper;
+
 
 
 
@@ -31,8 +31,8 @@ public class CursoServiceImpl implements CursoService{
     @Override
     public String readService() {
         
-        List<CursoDto> lista = new ArrayList();
-        List<Curso> lista2 = new ArrayList();
+        List<CursoDto> lista = new ArrayList<CursoDto>();
+        List<Curso> lista2 = cursoDao.findAll();
         String data="";
         
         for(int i=0;i<lista2.size();i++){
@@ -44,11 +44,10 @@ public class CursoServiceImpl implements CursoService{
         }
         
         try {   
-             ObjectMapper mapper = new ObjectMapper();
+            ObjectMapper mapper = new ObjectMapper();
             data=mapper.writeValueAsString(lista);
             
-        } catch (IOException ex) {
-            
+        } catch (JsonProcessingException ex) {
             Logger.getLogger(CursoServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
 
@@ -61,6 +60,7 @@ public class CursoServiceImpl implements CursoService{
         Integer idCurso=Integer.parseInt(request.getParameter("idCurso"));
         String nombre=request.getParameter("nombre");
         String descripcion=request.getParameter("descripcion");  
+       
         Curso curso = new Curso();
         curso.setIdCurso(idCurso);
         curso.setNombre(nombre);
@@ -72,10 +72,8 @@ public class CursoServiceImpl implements CursoService{
         
         try {   
              ObjectMapper mapper = new ObjectMapper();
-            data=mapper.writeValueAsString(dto);
-            
-        } catch (IOException ex) {
-            
+             data=mapper.writeValueAsString(dto);            
+        } catch (JsonProcessingException ex) {         
             Logger.getLogger(CursoServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
 
@@ -99,8 +97,7 @@ public class CursoServiceImpl implements CursoService{
              ObjectMapper mapper = new ObjectMapper();
              data=mapper.writeValueAsString(dto);
             
-        } catch (IOException ex) {
-            
+        } catch (JsonProcessingException ex) {
             Logger.getLogger(CursoServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
 
@@ -109,8 +106,7 @@ public class CursoServiceImpl implements CursoService{
     }
 
     @Override
-    public String deleteCurso(Map<String, String> requestParam) {
-        
+    public String deleteCurso(Map<String, String> requestParam) {   
           Integer idCurso=Integer.parseInt(requestParam.get("IdCurso"));
           Curso elimCurso = new Curso();
           elimCurso.setIdCurso(idCurso);
@@ -121,5 +117,4 @@ public class CursoServiceImpl implements CursoService{
          return "{\"valid\"}";
         
     }
-    
 }
