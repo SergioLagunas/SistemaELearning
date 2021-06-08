@@ -45,7 +45,14 @@ public class MiCursoServiceImpl implements MiCursoService {
 
     @Override
     public String createNewMiCurso(HttpServletRequest request) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+     /*   String nombre = request.getParameter("nombre");
+        String[] cursos = request.getParameterValues("cursos[]");
+        Usuario entidad = new Usuario();
+        
+        entidad.setNombre(nombre);
+        entidad=*/
+        
+     return null;
     }
 
     @Override

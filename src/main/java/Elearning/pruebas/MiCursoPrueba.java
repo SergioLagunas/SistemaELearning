@@ -1,19 +1,16 @@
-package Elearning.pruebas;
 
+package Elearning.pruebas;
 import Elearning.modelo.Curso;
 import Elearning.modelo.Usuario;
 import Elearning.util.HibernateUtil;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
 import org.hibernate.Session;
-/*
+
+
 public class MiCursoPrueba {
-
-    public static void main(String[] args) {
-
-        Session session = HibernateUtil.getSessionFactory().openSession();
+    
+     public static void main(String[] args) {
+         
+           Session session = HibernateUtil.getSessionFactory().openSession();
         
           
          try {      
@@ -49,7 +46,6 @@ public class MiCursoPrueba {
         }finally {
             session.close();
         }
-
-        
-    }
+     }
+    
 }

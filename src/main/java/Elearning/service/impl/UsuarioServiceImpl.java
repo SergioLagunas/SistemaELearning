@@ -1,8 +1,12 @@
 package Elearning.service.impl;
 
+import Elarning.dao.CursoDao;
 import Elarning.dao.MiCursoDao;
 import Elarning.dao.UsuarioDao;
+import Elearning.dto.CursoDto;
 import Elearning.dto.UsuarioDto;
+import Elearning.modelo.Curso;
+import Elearning.modelo.MiCurso;
 import Elearning.modelo.Usuario;
 import Elearning.service.UsuarioService;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -22,6 +26,8 @@ public class UsuarioServiceImpl implements UsuarioService {
     private UsuarioDao usuarioDao;
     @Autowired
     private MiCursoDao miCursoDao;
+    @Autowired
+    private CursoDao cursoDao;
 
     @Override
     public String readUsuario() {
@@ -31,17 +37,17 @@ public class UsuarioServiceImpl implements UsuarioService {
         String data = "";
 
         for (int i = 0; i < lista2.size(); i++) {
+            List<MiCurso> misCursos = miCursoDao.getMiCurso(lista2.get(i).getIdUsuario());
             UsuarioDto dto = new UsuarioDto();
+            
+            for(int j=0;j<misCursos.size();j++){
+                Curso entidad =cursoDao.getCurso(Integer.valueOf(misCursos.get(j).getIdCurso()));
+                //dto.get
+            }
             dto.setIdUsuario(lista2.get(i).getIdUsuario());
             dto.setNombre(lista2.get(i).getNombre());
-            dto.setaPaterno(lista2.get(i).getaPaterno());
-            dto.setaMaterno(lista2.get(i).getaMaterno());
-            dto.setGenero(lista2.get(i).getGenero());
-            dto.setEmail(lista2.get(i).getEmail());
-            dto.setContrasena(lista2.get(i).getContrasena());
-            dto.settUsuario(lista2.get(i).gettUsuario());
-            dto.setRfc(lista2.get(i).getRfc());
-            lista.add(dto);
+           // lista2.add(dto);
+                    
         }
 
         try {
@@ -67,6 +73,7 @@ public class UsuarioServiceImpl implements UsuarioService {
         String contrasena = request.getParameter("contrasena");
         String tUsuario = request.getParameter("tUsuario");
         String rfc = request.getParameter("rfc");
+        String[] cursos = request.getParameterValues("curso[]");
 
         Usuario usuario = new Usuario();
         usuario.setIdUsuario(idUsuario);
@@ -79,7 +86,21 @@ public class UsuarioServiceImpl implements UsuarioService {
         usuario.settUsuario(tUsuario);
         usuario.setRfc(rfc);
         usuario = usuarioDao.create(usuario);
+       
+        // Relacion de muchos a muchos 
+        MiCurso entidad_relacional=new MiCurso();
+        List<CursoDto> lista=new ArrayList<CursoDto>();
+        for(int i=0;i<cursos.length;i++){
+            entidad_relacional.setIdUsuario(usuario.getIdUsuario());
+            entidad_relacional.setIdCurso(Integer.parseInt(cursos[i]));
+           
+            Curso curso = cursoDao.getCurso(Integer.valueOf(cursos[i]));
+            CursoDto dto = new CursoDto(curso.getNombre(),curso.getDescripcion());
+            lista.add(dto);
+            miCursoDao.create(entidad_relacional);
+        }
 
+        //Checar el contructor 
         UsuarioDto dto = new UsuarioDto(usuario.getNombre(), usuario.getaPaterno(), usuario.getaMaterno(),
                 usuario.getGenero(), usuario.getEmail(), usuario.getContrasena(), usuario.gettUsuario(),
                 usuario.getRfc());
@@ -108,10 +129,56 @@ public class UsuarioServiceImpl implements UsuarioService {
         String contrasena = request.getParameter("contrasena");
         String tUsuario = request.getParameter("tUsuario");
         String rfc = request.getParameter("rfc");
+       
+        String[] cursos = request.getParameterValues("curso[]");
+        List<MiCurso> auxMiCurso = new ArrayList<MiCurso>(); 
+        List<MiCurso> MiCurso = miCursoDao.getMiCurso(idUsuario);
+        MiCurso miCurso =new MiCurso();
+        List<CursoDto> lista=new ArrayList<CursoDto>();
+        
+         for(int i=0;i<cursos.length;i++){
+             boolean flag=true;
+             for(int j=0;j<MiCurso.size();j++){
+                 if(Integer.parseInt(cursos[i])== MiCurso.get(j).getIdCurso()){
+                     flag=false;
+                     break;
+                 }
+             }
+             if(flag){
+                miCurso.setIdCurso(Integer.parseInt(cursos[i]));
+                miCurso.setIdUsuario(idUsuario);
+                miCursoDao.create(miCurso);           
+             }
+       
+         }
+         
+         for(int i=0;i<cursos.length;i++){
+             boolean flag=true;
+             for(int j=0;j<MiCurso.size();j++){
+                 if(Integer.parseInt(cursos[j])== MiCurso.get(i).getIdCurso()){
+                     flag=false;
+                     break;
+                 }
+             }
+             if(flag){
+               miCursoDao.delete(MiCurso.get(i));
+             }
+       
+         }
         
         Usuario editUsuario = new Usuario(nombre,aPaterno,aMaterno,genero,email,contrasena,tUsuario,rfc);
         editUsuario = usuarioDao.update(editUsuario);
-  
+        
+        for(int i=0;i<cursos.length;i++){
+            miCurso.setIdUsuario(editUsuario.getIdUsuario());
+            miCurso.setIdCurso(Integer.parseInt(cursos[i]));
+            
+            Curso curso = cursoDao.getCurso(Integer.valueOf(cursos[i]));
+            CursoDto dto = new CursoDto(curso.getNombre(),curso.getDescripcion());
+            lista.add(dto);
+        }
+        
+        //Checar El contructor 
         UsuarioDto dto = new UsuarioDto(editUsuario.getNombre(),editUsuario.getaPaterno(),editUsuario.getaMaterno(),
                 editUsuario.getGenero(),editUsuario.getEmail(),editUsuario.getContrasena(),editUsuario.gettUsuario(),editUsuario.getRfc());
         String data="";

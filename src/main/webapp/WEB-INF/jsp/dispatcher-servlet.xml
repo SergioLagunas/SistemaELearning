@@ -25,18 +25,14 @@
           http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd
 ">
     <!-- Enables the Spring MVC @Controller programming model -->
-    <mvc:annotation-driven/>
-    <mvc:resources mapping="/resources/**" location="/resources/"/>
-
-    <context:component-scan base-package="org.example.app.controller" />
-    <context:annotation-config/>
-
-    <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource"
-          p:basename="/WEB-INF/i18n/messages"
-          p:cacheSeconds="5"/>
-
-    <bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer"
-          p:definitions="/WEB-INF/tiles/tiles.xml,/WEB-INF/views/**/views.xml"/>
-
-    <bean id="tilesViewResolver" class="org.springframework.web.servlet.view.tiles3.TilesViewResolver"/>
+    <context:component-scan base-package="net.itinajero.app.controller" />
+	<mvc:annotation-driven />	
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix">
+			<value>/WEB-INF/views/</value>
+		</property>
+		<property name="suffix">
+			<value>.jsp</value>
+		</property>
+	</bean>
 </beans>
