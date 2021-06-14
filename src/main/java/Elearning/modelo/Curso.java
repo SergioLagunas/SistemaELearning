@@ -34,6 +34,12 @@ public class Curso implements Serializable{
     @Column(name="descripcion")
     private String descripcion;
     
+    @Column(name="caratula")
+    private String caratula;
+    
+    @Column(name="categoria")
+    private String categoria;
+    
     /*@ManyToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL, mappedBy="cursos")
     private Set<Usuario> usuarios = new HashSet<>();*/
     
@@ -44,9 +50,11 @@ public class Curso implements Serializable{
     public Curso() {
     }
 
-    public Curso(String nombre, String descripcion) {
+    public Curso(String nombre, String descripcion, String caratula, String categoria) {
         this.nombre = nombre;
         this.descripcion = descripcion;
+        this.caratula = caratula;
+        this.categoria = categoria;
     }
 
     public Integer getIdCurso() {
@@ -72,10 +80,25 @@ public class Curso implements Serializable{
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
-    
-    @Override
-    public String toString() {
-        return "Curso{" + "idCurso=" + idCurso + ", nombre=" + nombre + ", descripcion=" + descripcion + '}';
+
+    public String getCaratula() {
+        return caratula;
     }
 
+    public void setCaratula(String caratula) {
+        this.caratula = caratula;
+    }
+
+    public String getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
+    }
+
+    @Override
+    public String toString() {
+        return "Curso{" + "idCurso=" + idCurso + ", nombre=" + nombre + ", descripcion=" + descripcion + ", caratula=" + caratula + ", categoria=" + categoria + '}';
+    }
 }

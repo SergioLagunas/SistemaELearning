@@ -8,9 +8,7 @@ public class ModuloDto {
     
     private Integer idModulo;
     private String titulo;
-    private Date fInicio;
-    private Date fTermino;
-    private Integer progreso;
+    private Integer descripcion;
     private Integer idCurso;
 
     public ModuloDto() {
@@ -19,9 +17,7 @@ public class ModuloDto {
     public ModuloDto(Integer idModulo, String titulo, Date fInicio, Date fTermino, Integer progreso) {
         this.idModulo = idModulo;
         this.titulo = titulo;
-        this.fInicio = fInicio;
-        this.fTermino = fTermino;
-        this.progreso = progreso;
+        this.descripcion = progreso;
     }
 
     public Integer getIdModulo() {
@@ -40,28 +36,12 @@ public class ModuloDto {
         this.titulo = titulo;
     }
 
-    public Date getfInicio() {
-        return fInicio;
-    }
-
-    public void setfInicio(Date fInicio) {
-        this.fInicio = fInicio;
-    }
-
-    public Date getfTermino() {
-        return fTermino;
-    }
-
-    public void setfTermino(Date fTermino) {
-        this.fTermino = fTermino;
-    }
-
     public Integer getProgreso() {
-        return progreso;
+        return descripcion;
     }
 
     public void setProgreso(Integer progreso) {
-        this.progreso = progreso;
+        this.descripcion = progreso;
     }
 
     public Integer getIdCurso() {

@@ -97,8 +97,6 @@ public class Modulo implements Serializable{
         this.idCurso = idCurso;
     }
 
-    
-
     @Override
     public String toString() {
         return "Modulo{" + "idModulo=" + idModulo + ", titulo=" + titulo + ", fInicio=" + fInicio + ", fTermino=" + fTermino + ", progreso=" + progreso + ", idCurso=" + idCurso + '}';

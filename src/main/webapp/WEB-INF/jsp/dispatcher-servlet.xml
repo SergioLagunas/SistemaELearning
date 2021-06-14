@@ -25,14 +25,14 @@
           http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd
 ">
     <!-- Enables the Spring MVC @Controller programming model -->
-    <context:component-scan base-package="net.itinajero.app.controller" />
-	<mvc:annotation-driven />	
-	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<property name="prefix">
-			<value>/WEB-INF/views/</value>
-		</property>
-		<property name="suffix">
-			<value>.jsp</value>
-		</property>
-	</bean>
+    
+    <bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping"> 
+        <property name="mappings"> 
+            <props>
+                <prop key="index.html">controlador</prop>  
+            </props>
+        </property>
+    </bean>
+    
+    
 </beans>

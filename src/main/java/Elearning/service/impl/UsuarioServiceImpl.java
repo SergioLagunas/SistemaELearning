@@ -95,8 +95,8 @@ public class UsuarioServiceImpl implements UsuarioService {
             entidad_relacional.setIdCurso(Integer.parseInt(cursos[i]));
            
             Curso curso = cursoDao.getCurso(Integer.valueOf(cursos[i]));
-            CursoDto dto = new CursoDto(curso.getNombre(),curso.getDescripcion());
-            lista.add(dto);
+//            CursoDto dto = new CursoDto(curso.getNombre(),curso.getDescripcion());
+     //       lista.add(dto);
             miCursoDao.create(entidad_relacional);
         }
 
@@ -174,8 +174,8 @@ public class UsuarioServiceImpl implements UsuarioService {
             miCurso.setIdCurso(Integer.parseInt(cursos[i]));
             
             Curso curso = cursoDao.getCurso(Integer.valueOf(cursos[i]));
-            CursoDto dto = new CursoDto(curso.getNombre(),curso.getDescripcion());
-            lista.add(dto);
+            //CursoDto dto = new CursoDto(curso.getNombre(),curso.getDescripcion());
+            //lista.add(dto);
         }
         
         //Checar El contructor 

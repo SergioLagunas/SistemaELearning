@@ -16,12 +16,12 @@ public class CursoPruebas {
             
             //******Prueba para Usuarios*******
            // Usuario usuario1 = new Usuario("Prueba", "nose", "nose", "Masculino", "karina@gmail.com", "contrasena", "semillero", "sdasd");
-            Curso curso1 = new Curso("Pesadilla Hibernate","Vas a sufir XD");
-            Curso curso2 = new Curso("Pesadilla Java","Vas a sufir XD");
+            //Curso curso1 = new Curso("Pesadilla Hibernate","Vas a sufir XD");
+           // Curso curso2 = new Curso("Pesadilla Java","Vas a sufir XD");
             //************Insercion de Usuario*****************
             session.beginTransaction();
-            session.save(curso1);
-            session.save(curso2);
+           // session.save(curso1);
+          //  session.save(curso2);
             session.getTransaction().commit();//puede ser con rollback tambien 
             System.out.println("Registro Insertado Correctamente");
 

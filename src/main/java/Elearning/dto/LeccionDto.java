@@ -1,7 +1,6 @@
 
 package Elearning.dto;
 
-
 public class LeccionDto {
     private Integer idLeccion;
     private String titulo;

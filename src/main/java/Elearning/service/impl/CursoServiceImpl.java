@@ -18,7 +18,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
-
+/*
 
 @Service("CursoService")
 public class CursoServiceImpl implements CursoService{
@@ -67,7 +67,7 @@ public class CursoServiceImpl implements CursoService{
         curso.setDescripcion(descripcion);
         curso = cursoDao.create(curso);
         
-        CursoDto dto = new CursoDto(curso.getNombre(),curso.getDescripcion());
+        //CursoDto dto = new CursoDto(curso.getNombre(),curso.getDescripcion());
         String data="";
         
         try {   
@@ -90,12 +90,12 @@ public class CursoServiceImpl implements CursoService{
         Curso editCurso = new Curso(nombre,descripcion);
         editCurso = cursoDao.update(editCurso);
         
-        CursoDto dto = new CursoDto(editCurso.getNombre(),editCurso.getDescripcion());
+        //CursoDto dto = new CursoDto(editCurso.getNombre(),editCurso.getDescripcion());
         String data="";
         
         try {   
              ObjectMapper mapper = new ObjectMapper();
-             data=mapper.writeValueAsString(dto);
+           //  data=mapper.writeValueAsString(dto);
             
         } catch (JsonProcessingException ex) {
             Logger.getLogger(CursoServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
@@ -118,3 +118,4 @@ public class CursoServiceImpl implements CursoService{
         
     }
 }
+*/

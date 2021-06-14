@@ -18,8 +18,8 @@ public class MiCursoPrueba {
             Usuario usuario1 = new Usuario("Ricardo", "Lagunas", "Garcia", "Masculino", "sergio@gmail.com", "contrasena", "semillero", "sdasd");
            
             //Creacion de Cursos
-            Curso curso1 = new Curso("Pesadilla Hibernate","Vas a sufir XDdddd");
-            Curso curso2 = new Curso("Pesadilla Java","Vas a sufir XDddddd");
+           // Curso curso1 = new Curso("Pesadilla Hibernate","Vas a sufir XDdddd");
+            //Curso curso2 = new Curso("Pesadilla Java","Vas a sufir XDddddd");
             
             //Asignamos los cursos al Usuario
         
