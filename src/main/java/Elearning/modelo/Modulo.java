@@ -27,15 +27,9 @@ public class Modulo implements Serializable{
     @Column(name="titulo")
     private String titulo;
     
-    @Column(name="fInicio")
-    private Date fInicio;
-    
-    @Column(name="fTermino")
-    private Date fTermino;
-    
-    @Column(name="progreso")
-    private Integer progreso;
-    
+    @Column(name="descripcion")
+    private String descripcion;
+
     @Id
     @Column(name="idCurso")
     private Integer idCurso;
@@ -43,11 +37,10 @@ public class Modulo implements Serializable{
     public Modulo() {
     }
 
-    public Modulo(String titulo, Date fInicio, Date fTermino, Integer progreso) {
+    public Modulo(String titulo, String descripcion, Integer idCurso) {
         this.titulo = titulo;
-        this.fInicio = fInicio;
-        this.fTermino = fTermino;
-        this.progreso = progreso;
+        this.descripcion = descripcion;
+        this.idCurso = idCurso;
     }
 
     public Integer getIdModulo() {
@@ -66,28 +59,12 @@ public class Modulo implements Serializable{
         this.titulo = titulo;
     }
 
-    public Date getfInicio() {
-        return fInicio;
+    public String getDescripcion() {
+        return descripcion;
     }
 
-    public void setfInicio(Date fInicio) {
-        this.fInicio = fInicio;
-    }
-
-    public Date getfTermino() {
-        return fTermino;
-    }
-
-    public void setfTermino(Date fTermino) {
-        this.fTermino = fTermino;
-    }
-
-    public Integer getProgreso() {
-        return progreso;
-    }
-
-    public void setProgreso(Integer progreso) {
-        this.progreso = progreso;
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
     public Integer getIdCurso() {
@@ -100,7 +77,7 @@ public class Modulo implements Serializable{
 
     @Override
     public String toString() {
-        return "Modulo{" + "idModulo=" + idModulo + ", titulo=" + titulo + ", fInicio=" + fInicio + ", fTermino=" + fTermino + ", progreso=" + progreso + ", idCurso=" + idCurso + '}';
+        return "Modulo{" + "idModulo=" + idModulo + ", titulo=" + titulo + ", descripcion=" + descripcion + ", idCurso=" + idCurso + '}';
     }
     
     

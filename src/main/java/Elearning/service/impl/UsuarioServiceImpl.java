@@ -129,8 +129,8 @@ public class UsuarioServiceImpl implements UsuarioService {
         String contrasena = request.getParameter("contrasena");
         String tUsuario = request.getParameter("tUsuario");
         String rfc = request.getParameter("rfc");
-       
         String[] cursos = request.getParameterValues("curso[]");
+        
         List<MiCurso> auxMiCurso = new ArrayList<MiCurso>(); 
         List<MiCurso> MiCurso = miCursoDao.getMiCurso(idUsuario);
         MiCurso miCurso =new MiCurso();

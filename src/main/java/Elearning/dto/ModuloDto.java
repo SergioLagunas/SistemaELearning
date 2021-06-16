@@ -14,10 +14,10 @@ public class ModuloDto {
     public ModuloDto() {
     }
 
-    public ModuloDto(Integer idModulo, String titulo, Date fInicio, Date fTermino, Integer progreso) {
-        this.idModulo = idModulo;
+    public ModuloDto(String titulo, Integer descripcion, Integer idCurso) {
         this.titulo = titulo;
-        this.descripcion = progreso;
+        this.descripcion = descripcion;
+        this.idCurso = idCurso;
     }
 
     public Integer getIdModulo() {

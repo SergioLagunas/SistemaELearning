@@ -5,6 +5,9 @@
  */
 package Elearning.service;
 
+import java.util.Map;
+import javax.servlet.http.HttpServletRequest;
+
 /**
  *
  * @author sergi
@@ -12,8 +15,8 @@ package Elearning.service;
 public interface EvaluacionService {
     
     public String readEvaluacion();
-    public String createNewEvaluacion();
-    public String updateEvaluacion();
-    public String deleteEvaluacion();
+    public String createNewEvaluacion(final HttpServletRequest request);
+    public String updateEvaluacion(final HttpServletRequest request);
+    public String deleteEvaluacion(final Map<String,String> requestParam);
     
 }

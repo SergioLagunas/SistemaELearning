@@ -13,16 +13,18 @@ public class PruebasDao {
     
     public static void main(String[] args) {
         
-        Session session = HibernateUtil.getSessionFactory().openSession();
+      //  Session session = HibernateUtil.getSessionFactory().openSession();
         
         UsuarioDaoImpl user = new UsuarioDaoImpl();
         //Usuario usuario1 = new Usuario("Prueba", "nose", "nose", "Masculino", "karina@gmail.com", "contrasena", "semillero", "sdasd");
         
-        int idUs=4;
+       /* int idUs=15;
         Usuario newUser = session.get(Usuario.class, idUs);
         newUser.setNombre("Sergio");
         newUser.setContrasena("12345454");  
-        user.update(newUser);
+        user.update(newUser);*/
+     
+     
         
         
       /* int idUser = 21;
@@ -33,12 +35,15 @@ public class PruebasDao {
        user.update(miUsuario);
         */
       
-      
-        
-      
-        
+      /*
+      int idUsuario=4;
+      Usuario elimUsuario = new Usuario();
+      elimUsuario.setIdUsuario(idUsuario);
+      user.getUsuario(idUsuario);
+        System.out.println(user);
+ 
        
-        
+        */
     }
     
 }
