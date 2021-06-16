@@ -36,6 +36,7 @@ public class Modulo implements Serializable{
     @Column(name="progreso")
     private Integer progreso;
     
+    @Id
     @Column(name="idCurso")
     private Integer idCurso;
 

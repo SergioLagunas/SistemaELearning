@@ -54,7 +54,7 @@ public class UsuarioDaoImpl implements UsuarioDao {
             //Iniciamos Transaccion
             transaccion.begin();
             //Guardamos la transaccion
-            Integer id= (Integer) session.save(elUsuario);
+            Integer id = (Integer) session.save(elUsuario);
             transaccion.commit();
             elUsuario.setIdUsuario(id);
 
@@ -131,22 +131,24 @@ public class UsuarioDaoImpl implements UsuarioDao {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         //Ocupamos la transaccion en caso de error la base de datos se restaura a como estaba
         Transaction transaccion = session.getTransaction();
-        boolean flag=true;
-   
+
+        boolean flag = false;
         try {
+            
             //Iniciamos Transaccion
             transaccion.begin();
             //Actualizamos los datos 
             session.delete(elUsuario);
             transaccion.commit();
+            flag = true;
 
         } catch (HibernateException e) {
             //Si la transaccion esta bacia y ademas esta activa que regrese el estado en el que se encontraba la Base de Dato
             if (transaccion != null && transaccion.isActive()) {
                 transaccion.rollback();
             }
-            flag=false;
-            
+            flag = false;
+
         } finally {
             //Finalmente cerramos la sesion 
             session.close();

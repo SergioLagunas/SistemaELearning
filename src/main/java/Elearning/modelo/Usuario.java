@@ -52,7 +52,7 @@ public class Usuario implements Serializable {
     @Column(name = "rfc")
     private String rfc;
 
-  /*  @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    /*@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "MiCurso",joinColumns = {@JoinColumn(name = "idUsuario")},inverseJoinColumns = {@JoinColumn(name = "idCurso")})
     private Set<Curso> cursos= new HashSet<>();*/
 

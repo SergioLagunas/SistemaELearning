@@ -9,7 +9,7 @@ import org.hibernate.Session;
 public class UsuarioPruebas {
 /*
   public static void main(String[] args) {
-/*
+
         Session session = HibernateUtil.getSessionFactory().openSession();
 
         try {

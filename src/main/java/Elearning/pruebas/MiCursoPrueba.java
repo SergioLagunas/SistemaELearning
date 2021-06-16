@@ -5,7 +5,7 @@ import Elearning.modelo.Usuario;
 import Elearning.util.HibernateUtil;
 import org.hibernate.Session;
 
-
+/*
 public class MiCursoPrueba {
     
      public static void main(String[] args) {
@@ -49,3 +49,4 @@ public class MiCursoPrueba {
      }
     
 }
+*/
