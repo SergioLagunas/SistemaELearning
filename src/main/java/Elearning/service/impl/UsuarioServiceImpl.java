@@ -131,6 +131,8 @@ public class UsuarioServiceImpl implements UsuarioService {
         String rfc = request.getParameter("rfc");
         String[] cursos = request.getParameterValues("curso[]");
         
+        
+        //Relacion de tablas 
         List<MiCurso> auxMiCurso = new ArrayList<MiCurso>(); 
         List<MiCurso> MiCurso = miCursoDao.getMiCurso(idUsuario);
         MiCurso miCurso =new MiCurso();
@@ -165,10 +167,13 @@ public class UsuarioServiceImpl implements UsuarioService {
              }
        
          }
-        
+        //aca todavia no 
+         
         Usuario editUsuario = new Usuario(nombre,aPaterno,aMaterno,genero,email,contrasena,tUsuario,rfc);
         editUsuario = usuarioDao.update(editUsuario);
+       
         
+        //comparacion de relacion de tablas 
         for(int i=0;i<cursos.length;i++){
             miCurso.setIdUsuario(editUsuario.getIdUsuario());
             miCurso.setIdCurso(Integer.parseInt(cursos[i]));
