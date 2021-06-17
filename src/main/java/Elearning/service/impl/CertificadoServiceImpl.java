@@ -20,6 +20,8 @@ public class CertificadoServiceImpl implements CertificadoService {
 
     @Autowired
     private CertificadoDao certificadoDao;
+    
+    @Autowired
 
     @Override
     public String readCertificado() {
@@ -38,7 +40,6 @@ public class CertificadoServiceImpl implements CertificadoService {
 
     @Override
     public String deleteCertificado(Map<String, String> requestParam) {
-
         Integer idCertificado = Integer.parseInt(requestParam.get("IdCertificado"));
         Certificado elimCertificado = new Certificado();
         elimCertificado.setIdCertificado(idCertificado);
@@ -49,5 +50,4 @@ public class CertificadoServiceImpl implements CertificadoService {
         return "{\"valid\"}";
 
     }
-
 }

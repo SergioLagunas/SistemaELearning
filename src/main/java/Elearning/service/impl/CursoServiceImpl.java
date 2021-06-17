@@ -18,7 +18,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
-/*
 
 @Service("CursoService")
 public class CursoServiceImpl implements CursoService{
@@ -30,7 +29,7 @@ public class CursoServiceImpl implements CursoService{
 
     @Override
     public String readService() {
-        
+        /*
         List<CursoDto> lista = new ArrayList<CursoDto>();
         List<Curso> lista2 = cursoDao.findAll();
         String data="";
@@ -50,8 +49,8 @@ public class CursoServiceImpl implements CursoService{
         } catch (JsonProcessingException ex) {
             Logger.getLogger(CursoServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
-
-        return data;
+*/
+        return null;
     }
     
     @Override
@@ -59,15 +58,19 @@ public class CursoServiceImpl implements CursoService{
        
         Integer idCurso=Integer.parseInt(request.getParameter("idCurso"));
         String nombre=request.getParameter("nombre");
-        String descripcion=request.getParameter("descripcion");  
+        String descripcion=request.getParameter("descripcion");
+        String caratula=request.getParameter("caratula");
+        String categoria=request.getParameter("categoria");  
        
         Curso curso = new Curso();
         curso.setIdCurso(idCurso);
         curso.setNombre(nombre);
         curso.setDescripcion(descripcion);
+        curso.setCaratula(caratula);
+        curso.setCategoria(categoria);
         curso = cursoDao.create(curso);
         
-        //CursoDto dto = new CursoDto(curso.getNombre(),curso.getDescripcion());
+        CursoDto dto = new CursoDto(curso.getNombre(),curso.getDescripcion(),curso.getCaratula(),curso.getCategoria());
         String data="";
         
         try {   
@@ -83,19 +86,22 @@ public class CursoServiceImpl implements CursoService{
     @Override
     public String updateCurso(HttpServletRequest request) {
          
-        Integer id=Integer.parseInt(request.getParameter("idCurso"));
+        Integer idCurso=Integer.parseInt(request.getParameter("idCurso"));
         String nombre=request.getParameter("nombre");
-        String descripcion=request.getParameter("descripcion"); 
+        String descripcion=request.getParameter("descripcion");
+        String caratula=request.getParameter("caratula");
+        String categoria=request.getParameter("categoria");  
        
-        Curso editCurso = new Curso(nombre,descripcion);
+        Curso editCurso = new Curso(nombre,descripcion,caratula,categoria);
         editCurso = cursoDao.update(editCurso);
         
-        //CursoDto dto = new CursoDto(editCurso.getNombre(),editCurso.getDescripcion());
+        CursoDto dto = new CursoDto(editCurso.getNombre(),editCurso.getDescripcion(),editCurso.getCaratula(),
+        editCurso.getCategoria());
         String data="";
         
         try {   
              ObjectMapper mapper = new ObjectMapper();
-           //  data=mapper.writeValueAsString(dto);
+             data=mapper.writeValueAsString(dto);
             
         } catch (JsonProcessingException ex) {
             Logger.getLogger(CursoServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
@@ -118,4 +124,3 @@ public class CursoServiceImpl implements CursoService{
         
     }
 }
-*/

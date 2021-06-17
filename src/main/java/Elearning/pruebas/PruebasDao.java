@@ -13,7 +13,7 @@ public class PruebasDao {
     
     public static void main(String[] args) {
         
-      //  Session session = HibernateUtil.getSessionFactory().openSession();
+      Session session = HibernateUtil.getSessionFactory().openSession();
         
         UsuarioDaoImpl user = new UsuarioDaoImpl();
         //Usuario usuario1 = new Usuario("Prueba", "nose", "nose", "Masculino", "karina@gmail.com", "contrasena", "semillero", "sdasd");
@@ -26,15 +26,15 @@ public class PruebasDao {
      
      
         
-        
-      /* int idUser = 21;
+        /*
+       int idUser = 21;
        Usuario miUsuario = session.get(Usuario.class, idUser);
        miUsuario.setEmail("sergio@hotmail.com");
        miUsuario.setRfc("LAGS9712");
        
        user.update(miUsuario);
-        */
-      
+        
+      */
       /*
       int idUsuario=4;
       Usuario elimUsuario = new Usuario();
