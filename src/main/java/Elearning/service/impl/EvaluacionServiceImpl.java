@@ -19,7 +19,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class EvaluacionServiceImpl implements EvaluacionService{
     
     @Autowired
-    private EvaluacionDao evalucionDao;
+    private EvaluacionDao evaluacionDao;
+    
+
 
     @Override
     public String readEvaluacion() {
@@ -28,11 +30,31 @@ public class EvaluacionServiceImpl implements EvaluacionService{
 
     @Override
     public String createNewEvaluacion(HttpServletRequest request) {
+        Integer idEvaluacion = Integer.parseInt(request.getParameter("idEvaluacion"));
+        String tipo = request.getParameter("tipo");
+        String calificacion = request.getParameter("calificacion");
+        String aprobacion = request.getParameter("aprobacion");
+        String [] leccion = request.getParameterValues("leccion []");
+        
+        Evaluacion evaluacion = new Evaluacion ();
+        evaluacion.setIdEvaluacion(idEvaluacion);
+        evaluacion.setTipo(tipo);
+        evaluacion.setCalificacion(0);
+        evaluacion.setAprobacion(aprobacion);
+        evaluacion = evaluacionDao.create (evaluacion);
+        
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public String updateEvaluacion(HttpServletRequest request) {
+        Integer idEvaluacion = Integer.parseInt(request.getParameter("idEvaluacion"));
+        String tipo = request.getParameter("tipo");
+        String calificacion = request.getParameter("calificacion");
+        String aprobacion = request.getParameter ("aprobacion");
+        String [] leccion = request.getParameterValues("leccion []");
+        
+        
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -41,7 +63,7 @@ public class EvaluacionServiceImpl implements EvaluacionService{
         Integer idEvaluacion = Integer.parseInt(requestParam.get("IdEvaluacion"));
         Evaluacion elimEvaluacion = new Evaluacion();
         elimEvaluacion.setIdEvaluacion(idEvaluacion);
-        boolean flag = evalucionDao.delete(elimEvaluacion);
+        boolean flag = evaluacionDao.delete(elimEvaluacion);
         if (flag) {
             return "{\"valid\"}";
         }
