@@ -24,7 +24,7 @@ public class Certificado implements Serializable{
     private Integer idCertificado;
     
     @Column(name="fEntrega")
-    private Date fEntrega;
+    private String fEntrega;
     
     @Column(name="descripcion")
     private String descripcion;
@@ -35,7 +35,7 @@ public class Certificado implements Serializable{
     public Certificado() {
     }
 
-    public Certificado(Date fEntrega, String descripcion) {
+    public Certificado(String fEntrega, String descripcion) {
         this.fEntrega = fEntrega;
         this.descripcion = descripcion;
     }
@@ -48,11 +48,11 @@ public class Certificado implements Serializable{
         this.idCertificado = idCertificado;
     }
 
-    public Date getfEntrega() {
+    public String getfEntrega() {
         return fEntrega;
     }
 
-    public void setfEntrega(Date fEntrega) {
+    public void setfEntrega(String fEntrega) {
         this.fEntrega = fEntrega;
     }
 
@@ -76,5 +76,6 @@ public class Certificado implements Serializable{
     public String toString() {
         return "Certificado{" + "idCertificado=" + idCertificado + ", fEntrega=" + fEntrega + ", descripcion=" + descripcion + ", idEvaluacion=" + idEvaluacion + '}';
     }
+
     
 }

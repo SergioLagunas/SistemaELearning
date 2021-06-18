@@ -1,4 +1,3 @@
-
 package Elearning.modelo;
 
 import java.io.Serializable;
@@ -14,33 +13,31 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-
 @Entity
-@Table(name="Modulo")
-public class Modulo implements Serializable{
-    
+@Table(name = "Modulo")
+public class Modulo implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="idModulo")
+    @Column(name = "idModulo")
     private Integer idModulo;
-    
-    @Column(name="titulo")
+
+    @Column(name = "titulo")
     private String titulo;
-    
-    @Column(name="descripcion")
+
+    @Column(name = "descripcion")
     private String descripcion;
 
     @Id
-    @Column(name="idCurso")
+    @Column(name = "idCurso")
     private Integer idCurso;
 
     public Modulo() {
     }
 
-    public Modulo(String titulo, String descripcion, Integer idCurso) {
+    public Modulo(String titulo, String descripcion) {
         this.titulo = titulo;
         this.descripcion = descripcion;
-        this.idCurso = idCurso;
     }
 
     public Integer getIdModulo() {
@@ -79,6 +76,5 @@ public class Modulo implements Serializable{
     public String toString() {
         return "Modulo{" + "idModulo=" + idModulo + ", titulo=" + titulo + ", descripcion=" + descripcion + ", idCurso=" + idCurso + '}';
     }
-    
-    
+
 }

@@ -8,8 +8,13 @@ package Elearning.service.impl;
 import Elarning.dao.CertificadoDao;
 import Elearning.modelo.Certificado;
 import Elearning.service.CertificadoService;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.Instant;
 import java.util.Date;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,8 +28,6 @@ public class CertificadoServiceImpl implements CertificadoService {
 
     @Autowired
     private CertificadoDao certificadoDao;
-    
-    @Autowired
 
     @Override
     public String readCertificado() {
@@ -33,16 +36,20 @@ public class CertificadoServiceImpl implements CertificadoService {
 
     @Override
     public String createNewCertificado(HttpServletRequest request) {
+        
+       
         Integer idCertificado = Integer.parseInt(request.getParameter("idCertificado"));
-        //Date fEntrega = request.getParameter();
+        String fEntrega = request.getParameter("fEntrega");
         String descripcion = request.getParameter("descripcion");
         String [] Evaluacion = request.getParameterValues("Evaluacion[]");
         
         Certificado certificado = new Certificado();
         certificado.setIdCertificado(idCertificado);
-       // certificado.setfEntrega(fEntrega);
+        certificado.setfEntrega(fEntrega);
         certificado.setDescripcion(descripcion);
         certificado = certificadoDao.create (certificado);
+        
+        
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

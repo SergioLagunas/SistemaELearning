@@ -6,22 +6,21 @@
 package Elearning.service.impl;
 
 import Elarning.dao.EvaluacionDao;
+import Elearning.dto.EvaluacionDto;
 import Elearning.modelo.Evaluacion;
 import Elearning.service.EvaluacionService;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.logging.Logger;
+import java.util.logging.Level;
 
-/**
- *
- * @author sergi
- */
-public class EvaluacionServiceImpl implements EvaluacionService{
-    
+public class EvaluacionServiceImpl implements EvaluacionService {
+
     @Autowired
     private EvaluacionDao evaluacionDao;
-    
-
 
     @Override
     public String readEvaluacion() {
@@ -32,30 +31,57 @@ public class EvaluacionServiceImpl implements EvaluacionService{
     public String createNewEvaluacion(HttpServletRequest request) {
         Integer idEvaluacion = Integer.parseInt(request.getParameter("idEvaluacion"));
         String tipo = request.getParameter("tipo");
-        String calificacion = request.getParameter("calificacion");
+        float calificacion = Float.parseFloat(tipo);
+        //String calificacion = request.getParameter("calificacion");
         String aprobacion = request.getParameter("aprobacion");
-        String [] leccion = request.getParameterValues("leccion []");
-        
-        Evaluacion evaluacion = new Evaluacion ();
+        String[] leccion = request.getParameterValues("leccion []");
+
+        Evaluacion evaluacion = new Evaluacion();
         evaluacion.setIdEvaluacion(idEvaluacion);
         evaluacion.setTipo(tipo);
-        evaluacion.setCalificacion(0);
+        evaluacion.setCalificacion(calificacion);
         evaluacion.setAprobacion(aprobacion);
-        evaluacion = evaluacionDao.create (evaluacion);
-        
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        evaluacion = evaluacionDao.create(evaluacion);
+
+        EvaluacionDto dto = new EvaluacionDto(evaluacion.getTipo(), evaluacion.getCalificacion(), evaluacion.getAprobacion());
+        String data = "";
+
+        try {
+            ObjectMapper mapper = new ObjectMapper();
+            data = mapper.writeValueAsString(dto);
+        } catch (JsonProcessingException ex) {
+            Logger.getLogger(UsuarioServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return data;
+
     }
 
     @Override
     public String updateEvaluacion(HttpServletRequest request) {
         Integer idEvaluacion = Integer.parseInt(request.getParameter("idEvaluacion"));
         String tipo = request.getParameter("tipo");
-        String calificacion = request.getParameter("calificacion");
-        String aprobacion = request.getParameter ("aprobacion");
-        String [] leccion = request.getParameterValues("leccion []");
-        
-        
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        float calificacion = Float.parseFloat(request.getParameter("califcaion"));
+        //String calificacion = request.getParameter("calificacion");
+        String aprobacion = request.getParameter("aprobacion");
+        String[] leccion = request.getParameterValues("leccion []");
+
+        Evaluacion actEvaluacion = new Evaluacion(tipo, calificacion, aprobacion);
+        actEvaluacion = evaluacionDao.update(actEvaluacion);
+
+        EvaluacionDto dto = new EvaluacionDto(actEvaluacion.getTipo(), actEvaluacion.getCalificacion(), actEvaluacion.getAprobacion());
+        String data = "";
+
+        try {
+            ObjectMapper mapper = new ObjectMapper();
+            data = mapper.writeValueAsString(dto);
+
+        } catch (JsonProcessingException ex) {
+            Logger.getLogger(UsuarioServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return data;
+
     }
 
     @Override
@@ -69,5 +95,5 @@ public class EvaluacionServiceImpl implements EvaluacionService{
         }
         return "{\"valid\"}";
     }
-    
+
 }
