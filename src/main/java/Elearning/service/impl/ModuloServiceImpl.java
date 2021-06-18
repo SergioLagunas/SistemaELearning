@@ -28,12 +28,50 @@ public class ModuloServiceImpl implements ModuloService {
 
     @Override
     public String createNewModulo(HttpServletRequest request) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Integer idModulo = Integer.parseInt(request.getParameter("idModulo"));
+        String titulo = request.getParameter("titulo");
+        String descripcion = request.getParameter("descripcion");
+        String[] curso = request.getParameterValues("curso[]");
+
+        Modulo modulo = new Modulo();
+        modulo.setIdModulo(idModulo);
+        modulo.setTitulo(titulo);
+        modulo.setDescripcion(descripcion);
+
+        modulo = moduloDao.create(modulo);
+
+        ModuloDto moduloDto = new ModuloDto(modulo.getTitulo(),modulo.getDescripcion()); 
+        String data = "";
+
+        try{
+            ObjectMapper mapper = new ObjectMapper();
+            data = mapper.writeValueAsString(moduloDto);
+        } catch (JsonProcessingException ex) {
+            Logger.getLogger(ModuloServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return data;
     }
 
     @Override
     public String updateModulo(HttpServletRequest request) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Integer idModulo = Integer.parseInt(request.getParameter("idModulo"));
+        String titulo = request.getParameter("titulo");
+        String descripcion = request.getParameter("descripcion");
+        String[] curso = request.getParameterValues("curso[]");
+
+        Modulo modulo = new Modulo(titulo, descripcion);
+        modulo = moduloDao.update(modulo);
+
+        ModuloDto moduloDto = new ModuloDto(modulo.getTitulo(),modulo.getDescripcion()); 
+        String data = "";
+
+        try{
+            ObjectMapper mapper = new ObjectMapper();
+            data = mapper.writeValueAsString(moduloDto);
+        } catch (JsonProcessingException ex) {
+            Logger.getLogger(ModuloServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return data;
     }
 
     @Override
