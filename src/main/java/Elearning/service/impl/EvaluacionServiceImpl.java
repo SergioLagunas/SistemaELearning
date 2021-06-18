@@ -77,7 +77,7 @@ public class EvaluacionServiceImpl implements EvaluacionService {
             data = mapper.writeValueAsString(dto);
 
         } catch (JsonProcessingException ex) {
-            Logger.getLogger(UsuarioServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(EvaluacionServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         return data;
