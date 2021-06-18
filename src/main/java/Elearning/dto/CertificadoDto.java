@@ -7,18 +7,17 @@ import java.util.Date;
 public class CertificadoDto {
     
     private Integer idCertificado;
-    private Date fEntrega;
+    private String fEntrega;
     private String descripcion;
     private Integer idEvaluacion;
 
     public CertificadoDto() {
     }
 
-    public CertificadoDto(Date fEntrega, String descripcion) {
+    public CertificadoDto(String fEntrega, String descripcion) {
         this.fEntrega = fEntrega;
         this.descripcion = descripcion;
     }
-    
 
     public Integer getIdCertificado() {
         return idCertificado;
@@ -28,11 +27,11 @@ public class CertificadoDto {
         this.idCertificado = idCertificado;
     }
 
-    public Date getfEntrega() {
+    public String getfEntrega() {
         return fEntrega;
     }
 
-    public void setfEntrega(Date fEntrega) {
+    public void setfEntrega(String fEntrega) {
         this.fEntrega = fEntrega;
     }
 
@@ -51,5 +50,5 @@ public class CertificadoDto {
     public void setIdEvaluacion(Integer idEvaluacion) {
         this.idEvaluacion = idEvaluacion;
     }
-    
+
 }
