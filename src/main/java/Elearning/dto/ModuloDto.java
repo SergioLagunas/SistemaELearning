@@ -8,16 +8,15 @@ public class ModuloDto {
     
     private Integer idModulo;
     private String titulo;
-    private Integer descripcion;
+    private String descripcion;
     private Integer idCurso;
 
     public ModuloDto() {
     }
 
-    public ModuloDto(String titulo, Integer descripcion, Integer idCurso) {
+    public ModuloDto(String titulo, String descripcion) {
         this.titulo = titulo;
         this.descripcion = descripcion;
-        this.idCurso = idCurso;
     }
 
     public Integer getIdModulo() {
@@ -36,12 +35,12 @@ public class ModuloDto {
         this.titulo = titulo;
     }
 
-    public Integer getProgreso() {
+    public String getDescripcion() {
         return descripcion;
     }
 
-    public void setProgreso(Integer progreso) {
-        this.descripcion = progreso;
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
     public Integer getIdCurso() {
@@ -51,6 +50,13 @@ public class ModuloDto {
     public void setIdCurso(Integer idCurso) {
         this.idCurso = idCurso;
     }
+
+    @Override
+    public String toString() {
+        return "ModuloDto{" + "idModulo=" + idModulo + ", titulo=" + titulo + ", descripcion=" + descripcion + ", idCurso=" + idCurso + '}';
+    }
+
+    
     
 }
 

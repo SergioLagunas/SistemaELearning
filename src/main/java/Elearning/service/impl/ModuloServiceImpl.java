@@ -7,10 +7,16 @@ package Elearning.service.impl;
 
 import Elarning.dao.ModuloDao;
 import Elearning.modelo.Modulo;
+import Elearning.dto.ModuloDto;
 import Elearning.service.ModuloService;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -39,8 +45,10 @@ public class ModuloServiceImpl implements ModuloService {
         modulo.setDescripcion(descripcion);
 
         modulo = moduloDao.create(modulo);
-
+        
         ModuloDto moduloDto = new ModuloDto(modulo.getTitulo(),modulo.getDescripcion()); 
+
+      
         String data = "";
 
         try{
