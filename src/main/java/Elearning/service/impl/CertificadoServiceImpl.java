@@ -36,8 +36,7 @@ public class CertificadoServiceImpl implements CertificadoService {
 
     @Override
     public String createNewCertificado(HttpServletRequest request) {
-        
-       
+
         Integer idCertificado = Integer.parseInt(request.getParameter("idCertificado"));
         String fEntrega = request.getParameter("fEntrega");
         String descripcion = request.getParameter("descripcion");

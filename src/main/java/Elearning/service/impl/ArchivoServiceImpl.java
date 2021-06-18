@@ -44,7 +44,7 @@ public class ArchivoServiceImpl implements ArchivoService {
             ObjectMapper mapper = new ObjectMapper();
             data = mapper.writeValueAsString(dto);
         } catch (JsonProcessingException ex) {
-            Logger.getLogger(UsuarioServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ArchivoServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         return data;
@@ -70,7 +70,7 @@ public class ArchivoServiceImpl implements ArchivoService {
              data=mapper.writeValueAsString(dto);
             
         } catch (JsonProcessingException ex) {
-            Logger.getLogger(UsuarioServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ArchivoServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         return data;
