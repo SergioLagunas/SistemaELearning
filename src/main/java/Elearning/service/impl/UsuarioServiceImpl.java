@@ -93,7 +93,6 @@ public class UsuarioServiceImpl implements UsuarioService {
         for(int i=0;i<cursos.length;i++){
             entidad_relacional.setIdUsuario(usuario.getIdUsuario());
             entidad_relacional.setIdCurso(Integer.parseInt(cursos[i]));
-           
             Curso curso = cursoDao.getCurso(Integer.valueOf(cursos[i]));
 //            CursoDto dto = new CursoDto(curso.getNombre(),curso.getDescripcion());
      //       lista.add(dto);

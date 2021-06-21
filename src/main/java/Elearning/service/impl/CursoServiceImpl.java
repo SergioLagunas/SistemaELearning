@@ -29,7 +29,7 @@ public class CursoServiceImpl implements CursoService{
 
     @Override
     public String readService() {
-        /*
+        
         List<CursoDto> lista = new ArrayList<CursoDto>();
         List<Curso> lista2 = cursoDao.findAll();
         String data="";
@@ -39,6 +39,8 @@ public class CursoServiceImpl implements CursoService{
             dto.setIdCurso(lista2.get(i).getIdCurso());
             dto.setNombre(lista2.get(i).getNombre());
             dto.setDescripcion(lista2.get(i).getDescripcion());
+            dto.setCaratula(lista2.get(i).getCaratula());
+            dto.setCategoria(lista2.get(i).getCategoria());
             lista.add(dto);
         }
         
@@ -49,8 +51,8 @@ public class CursoServiceImpl implements CursoService{
         } catch (JsonProcessingException ex) {
             Logger.getLogger(CursoServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
-*/
-        return null;
+
+        return data;
     }
     
     @Override

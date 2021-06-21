@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Elearning.service.impl;
 
 import Elarning.dao.ModuloDao;
@@ -46,9 +42,7 @@ public class ModuloServiceImpl implements ModuloService {
 
         modulo = moduloDao.create(modulo);
         
-        ModuloDto moduloDto = new ModuloDto(modulo.getTitulo(),modulo.getDescripcion()); 
-
-      
+        ModuloDto moduloDto = new ModuloDto(modulo.getTitulo(),modulo.getDescripcion());       
         String data = "";
 
         try{
