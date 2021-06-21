@@ -6,6 +6,8 @@ import Elearning.modelo.Archivo;
 import Elearning.service.ArchivoService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -25,7 +27,7 @@ public class ArchivoServiceImpl implements ArchivoService {
         
         for(int i=0;i<lista2.size();i++){
             ArchivoDto dto= new ArchivoDto();
-            dto.setIdArchivos(lista2.get(i).getIdArchivos());
+            dto.setIdArchivo(lista2.get(i).getIdArchivo());
             dto.setTipo(lista2.get(i).getTipo());
             dto.setNombre(lista2.get(i).getNombre());
             dto.setIdLeccion(lista2.get(i).getIdLeccion());

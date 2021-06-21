@@ -11,6 +11,8 @@ import Elearning.modelo.Certificado;
 import Elearning.service.CertificadoService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -39,7 +41,7 @@ public class CertificadoServiceImpl implements CertificadoService {
             dto.setIdCertificado(lista2.get(i).getIdCertificado());
             dto.setfEntrega(lista2.get(i).getfEntrega());
             dto.setDescripcion(lista2.get(i).getDescripcion());
-            dto.setIdEvaluacion(lista2.get(i).getIdEvaluacion());
+            //dto.setIdEvaluacion(lista2.get(i).getIdEvaluacion());
             lista.add(dto);
         }
         
