@@ -27,12 +27,31 @@ public class CertificadoServiceImpl implements CertificadoService {
 
     @Autowired
     private CertificadoDao certificadoDao;
-    
-    @Autowired
 
     @Override
     public String readCertificado() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<CertificadoDto> lista = new ArrayList<CertificadoDto>();
+        List<Certificado> lista2 = certificadoDao.findAll();
+        String data="";
+        
+        for(int i=0;i<lista2.size();i++){
+            CertificadoDto dto= new CertificadoDto();
+            dto.setIdCertificado(lista2.get(i).getIdCertificado());
+            dto.setfEntrega(lista2.get(i).getfEntrega());
+            dto.setDescripcion(lista2.get(i).getDescripcion());
+            dto.setIdEvaluacion(lista2.get(i).getIdEvaluacion());
+            lista.add(dto);
+        }
+        
+        try {   
+            ObjectMapper mapper = new ObjectMapper();
+            data=mapper.writeValueAsString(lista);
+            
+        } catch (JsonProcessingException ex) {
+            Logger.getLogger(CertificadoServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return data;
     }
 
     @Override

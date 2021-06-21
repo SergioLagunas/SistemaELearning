@@ -19,7 +19,28 @@ public class ArchivoServiceImpl implements ArchivoService {
 
     @Override
     public String readArchivo() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<ArchivoDto> lista = new ArrayList<ArchivoDto>();
+        List<Archivo> lista2 = archivoDao.findAll();
+        String data="";
+        
+        for(int i=0;i<lista2.size();i++){
+            ArchivoDto dto= new ArchivoDto();
+            dto.setIdArchivos(lista2.get(i).getIdArchivos());
+            dto.setTipo(lista2.get(i).getTipo());
+            dto.setNombre(lista2.get(i).getNombre());
+            dto.setIdLeccion(lista2.get(i).getIdLeccion());
+            lista.add(dto);
+        }
+        
+        try {   
+            ObjectMapper mapper = new ObjectMapper();
+            data=mapper.writeValueAsString(lista);
+            
+        } catch (JsonProcessingException ex) {
+            Logger.getLogger(ArchivoServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return data;
     }
 
     @Override
