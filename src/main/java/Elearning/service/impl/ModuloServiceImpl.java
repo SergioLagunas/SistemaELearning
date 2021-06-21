@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -25,7 +27,29 @@ public class ModuloServiceImpl implements ModuloService {
 
     @Override
     public String readModulo() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            
+        List<ModuloDto> lista = new ArrayList<ModuloDto>();
+        List<Modulo> lista2 = moduloDao.findAll();
+        String data="";
+        
+        for(int i=0;i<lista2.size();i++){
+            ModuloDto dto= new ModuloDto();
+            dto.setIdModulo(lista2.get(i).getIdModulo());
+            dto.setTitulo(lista2.get(i).getTitulo());
+            dto.setDescripcion(lista2.get(i).getDescripcion());
+            lista.add(dto);
+        }
+        
+        try {   
+            ObjectMapper mapper = new ObjectMapper();
+            data=mapper.writeValueAsString(lista);
+            
+        } catch (JsonProcessingException ex) {
+            Logger.getLogger(ModuloServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return data;
+       
     }
 
     @Override

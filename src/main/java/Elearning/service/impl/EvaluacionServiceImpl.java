@@ -14,6 +14,8 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Logger;
 import java.util.logging.Level;
 
@@ -24,7 +26,31 @@ public class EvaluacionServiceImpl implements EvaluacionService {
 
     @Override
     public String readEvaluacion() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+        List<EvaluacionDto> lista = new ArrayList<EvaluacionDto>();
+        List<Evaluacion> lista2 = evaluacionDao.findAll();
+        String data="";
+        
+        for(int i=0;i<lista2.size();i++){
+            EvaluacionDto dto= new EvaluacionDto();
+            dto.setIdEvaluacion(lista2.get(i).getIdEvaluacion());
+            dto.setTipo(lista2.get(i).getTipo());
+            dto.setCalificacion(lista2.get(i).getCalificacion());
+            dto.setAprobacion(lista2.get(i).getAprobacion());
+            lista.add(dto);
+        }
+        
+        try {   
+            ObjectMapper mapper = new ObjectMapper();
+            data=mapper.writeValueAsString(lista);
+            
+        } catch (JsonProcessingException ex) {
+            Logger.getLogger(EvaluacionServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return data;
+        
+        
     }
 
     @Override

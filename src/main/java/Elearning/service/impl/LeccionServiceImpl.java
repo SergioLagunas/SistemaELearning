@@ -11,6 +11,8 @@ import Elearning.modelo.Leccion;
 import Elearning.service.LeccionService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -28,7 +30,29 @@ public class LeccionServiceImpl implements LeccionService{
 
     @Override
     public String readLeccion() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+        List<LeccionDto> lista = new ArrayList<LeccionDto>();
+        List<Leccion> lista2 = leccionDao.findAll();
+        String data="";
+        
+        for(int i=0;i<lista2.size();i++){
+            LeccionDto dto= new LeccionDto();
+            dto.setIdLeccion (lista2.get(i).getIdLeccion());
+            dto.setTitulo(lista2.get(i).getTitulo());
+            dto.setObjetivo(lista2.get(i).getObjetivo());
+            lista.add(dto);
+        }
+        
+        try {   
+            ObjectMapper mapper = new ObjectMapper();
+            data=mapper.writeValueAsString(lista);
+            
+        } catch (JsonProcessingException ex) {
+            Logger.getLogger(LeccionServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return data;
+
     }
 
     @Override
