@@ -49,11 +49,13 @@ public class PruebasDao {
        
         */
       
-      List<Usuario> cursos = user.findAll();
+      //Pruebas LisAll
+      /*
+      List<Usuario> usuarios = user.findAll();
       
-      for(Usuario c : cursos){
-          System.out.println(c);
-      }
+      for(Usuario u : usuarios){
+          System.out.println(u);
+      }*/
       
     }
     
