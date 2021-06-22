@@ -1,9 +1,12 @@
 
 package Elearning.pruebas;
 
+import Elearning.dao.impl.CursoDaoImpl;
 import Elearning.dao.impl.UsuarioDaoImpl;
+import Elearning.modelo.Curso;
 import Elearning.modelo.Usuario;
 import Elearning.util.HibernateUtil;
+import java.util.List;
 import org.hibernate.Session;
 /**
  *
@@ -16,6 +19,7 @@ public class PruebasDao {
       Session session = HibernateUtil.getSessionFactory().openSession();
         
         UsuarioDaoImpl user = new UsuarioDaoImpl();
+        CursoDaoImpl cur = new CursoDaoImpl();
         //Usuario usuario1 = new Usuario("Prueba", "nose", "nose", "Masculino", "karina@gmail.com", "contrasena", "semillero", "sdasd");
         
        /* int idUs=15;
@@ -44,6 +48,13 @@ public class PruebasDao {
  
        
         */
+      
+      List<Usuario> cursos = user.findAll();
+      
+      for(Usuario c : cursos){
+          System.out.println(c);
+      }
+      
     }
     
 }

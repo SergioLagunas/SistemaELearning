@@ -1,6 +1,8 @@
 
 package Elearning.dto;
 
+import java.util.List;
+
 public class UsuarioDto{
    
     private Integer idUsuario;
@@ -12,6 +14,7 @@ public class UsuarioDto{
     private String contrasena;
     private String tUsuario;
     private String rfc;
+    private List<CursoDto> cursos;
 
     public UsuarioDto() {
     }
@@ -26,6 +29,20 @@ public class UsuarioDto{
         this.tUsuario = tUsuario;
         this.rfc = rfc;
     }
+
+    public UsuarioDto(String nombre, String aPaterno, String aMaterno, String genero, String email, String contrasena, String tUsuario, String rfc, List<CursoDto> cursos) {
+        this.nombre = nombre;
+        this.aPaterno = aPaterno;
+        this.aMaterno = aMaterno;
+        this.genero = genero;
+        this.email = email;
+        this.contrasena = contrasena;
+        this.tUsuario = tUsuario;
+        this.rfc = rfc;
+        this.cursos = cursos;
+    }
+    
+  
     
     public Integer getIdUsuario() {
         return idUsuario;

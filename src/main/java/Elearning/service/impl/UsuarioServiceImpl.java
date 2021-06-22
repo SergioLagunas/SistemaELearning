@@ -90,19 +90,20 @@ public class UsuarioServiceImpl implements UsuarioService {
         // Relacion de muchos a muchos 
         MiCurso entidad_relacional=new MiCurso();
         List<CursoDto> lista=new ArrayList<CursoDto>();
+        
         for(int i=0;i<cursos.length;i++){
             entidad_relacional.setIdUsuario(usuario.getIdUsuario());
             entidad_relacional.setIdCurso(Integer.parseInt(cursos[i]));
             Curso curso = cursoDao.getCurso(Integer.valueOf(cursos[i]));
-//            CursoDto dto = new CursoDto(curso.getNombre(),curso.getDescripcion());
-     //       lista.add(dto);
+            CursoDto dto = new CursoDto(curso.getNombre(),curso.getDescripcion(),curso.getCaratula(),curso.getCategoria());
+            lista.add(dto);
             miCursoDao.create(entidad_relacional);
         }
 
         //Checar el contructor 
         UsuarioDto dto = new UsuarioDto(usuario.getNombre(), usuario.getaPaterno(), usuario.getaMaterno(),
                 usuario.getGenero(), usuario.getEmail(), usuario.getContrasena(), usuario.gettUsuario(),
-                usuario.getRfc());
+                usuario.getRfc(),lista);
         String data = "";
 
         try {
@@ -178,8 +179,8 @@ public class UsuarioServiceImpl implements UsuarioService {
             miCurso.setIdCurso(Integer.parseInt(cursos[i]));
             
             Curso curso = cursoDao.getCurso(Integer.valueOf(cursos[i]));
-            //CursoDto dto = new CursoDto(curso.getNombre(),curso.getDescripcion());
-            //lista.add(dto);
+            CursoDto dto = new CursoDto(curso.getNombre(),curso.getDescripcion(),curso.getCaratula(),curso.getCategoria());
+            lista.add(dto);
         }
         
         //Checar El contructor 
