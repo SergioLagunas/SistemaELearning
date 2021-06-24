@@ -50,12 +50,12 @@ public class PruebasDao {
         */
       
       //Pruebas LisAll
-      /*
+      
       List<Usuario> usuarios = user.findAll();
       
       for(Usuario u : usuarios){
           System.out.println(u);
-      }*/
+      }
       
     }
     

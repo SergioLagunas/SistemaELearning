@@ -12,6 +12,7 @@
        xmlns:p="http://www.springframework.org/schema/p"
        xmlns:tx="http://www.springframework.org/schema/tx"
        xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
 
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
           http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
@@ -23,15 +24,41 @@
           http://www.springframework.org/schema/osgi http://www.springframework.org/schema/osgi/spring-osgi-1.2.xsd
           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
           http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd
-">
+          http://www.springframework.org/schema/mvc 
+	  http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
     <!-- Enables the Spring MVC @Controller programming model -->
     
     <bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping"> 
         <property name="mappings"> 
             <props>
                 <prop key="index.html">controlador</prop>  
+                
+                
+                
+                
+                
+                
             </props>
         </property>
     </bean>
+    
+    <bean id="viewResolver" 
+          class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+          p:prefix="/WEB-INF/jsp/" p:suffix=".jsp"/>
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"></bean>
+   
+    <bean name="UsuarioControler" class="Elearning.controler.UsuarioControler"/>
+    
+   
+ 
+    <mvc:resources mapping="/resources/**" location="/resources/" />
+    <mvc:annotation-driven />
+
+
+    <context:annotation-config />
+    <context:component-scan base-package="Elenarnin"/>
+    <mvc:default-servlet-handler/>
+
 
 </beans>
