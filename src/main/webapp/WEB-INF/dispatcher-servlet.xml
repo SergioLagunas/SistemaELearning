@@ -27,32 +27,25 @@
           http://www.springframework.org/schema/mvc 
 	  http://www.springframework.org/schema/mvc/spring-mvc.xsd"
 >
+    
+    <bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping"/>
 
+    <!-- Aca es donde indicaremos todos nuestros controladores y la paguina a la que esta direccionada-->
     <bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping"> 
         <property name="mappings"> 
             <props>
-                <prop key="home.html">HomeController</prop>  
+                <prop key="index.htm">HomeController</prop>  
             </props>
         </property>
     </bean>
     
+    <!--Aca estamos indicando de donde va a obtener nuestras vistas con extencion .jsp-->
     <bean id="viewResolver" 
           class="org.springframework.web.servlet.view.InternalResourceViewResolver"
-          p:prefix="/resources/" p:suffix=".jsp"/>
+          p:prefix="/WEB-INF/jsp/" p:suffix=".jsp"/>
    
-    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"></bean>
-   
-    <bean name="HomeController" class="Elearning.controler.HomeController"/>
     
    
- 
-    <mvc:resources mapping="/resources/**" location="/resources/" />
-    <mvc:annotation-driven />
-
-
-    <context:annotation-config />
-    <context:component-scan base-package="Elearning."/>
-    <mvc:default-servlet-handler/>
-
-	
+    <!--Aca vamos a declarar todas las ubicaciones de nuestros controladores y su nombre -->
+    <bean name="HomeController" class="Elearning.controler.HomeController"/>
 </beans>
