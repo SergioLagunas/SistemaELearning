@@ -61,6 +61,4 @@
     <context:component-scan base-package="Elearning"/>
     <mvc:default-servlet-handler/>
 
-
-
 </beans>
