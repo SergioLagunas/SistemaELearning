@@ -5,7 +5,7 @@
  */
 package Elearning.service.impl;
 
-import Elarning.dao.CertificadoDao;
+import Elearning.dao.CertificadoDao;
 import Elearning.dto.CertificadoDto;
 import Elearning.modelo.Certificado;
 import Elearning.service.CertificadoService;

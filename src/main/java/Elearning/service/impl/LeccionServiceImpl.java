@@ -5,7 +5,7 @@
  */
 package Elearning.service.impl;
 
-import Elarning.dao.LeccionDao;
+import Elearning.dao.LeccionDao;
 import Elearning.dto.LeccionDto;
 import Elearning.modelo.Leccion;
 import Elearning.service.LeccionService;

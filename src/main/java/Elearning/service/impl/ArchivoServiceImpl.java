@@ -1,6 +1,6 @@
 package Elearning.service.impl;
 
-import Elarning.dao.ArchivoDao;
+import Elearning.dao.ArchivoDao;
 import Elearning.dto.ArchivoDto;
 import Elearning.modelo.Archivo;
 import Elearning.service.ArchivoService;

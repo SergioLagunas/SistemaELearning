@@ -1,7 +1,7 @@
 
 package Elearning.dao.impl;
 
-import Elarning.dao.MiCursoDao;
+import Elearning.dao.MiCursoDao;
 import Elearning.modelo.MiCurso;
 import Elearning.util.HibernateUtil;
 import java.util.List;

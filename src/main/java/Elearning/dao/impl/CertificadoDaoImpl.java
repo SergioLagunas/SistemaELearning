@@ -2,7 +2,7 @@
 package Elearning.dao.impl;
 
 import org.springframework.stereotype.Repository;
-import Elarning.dao.CertificadoDao;
+import Elearning.dao.CertificadoDao;
 import Elearning.modelo.Certificado;
 import Elearning.util.HibernateUtil;
 import java.util.List;

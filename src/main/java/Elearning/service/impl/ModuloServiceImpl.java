@@ -1,7 +1,7 @@
 
 package Elearning.service.impl;
 
-import Elarning.dao.ModuloDao;
+import Elearning.dao.ModuloDao;
 import Elearning.modelo.Modulo;
 import Elearning.dto.ModuloDto;
 import Elearning.service.ModuloService;

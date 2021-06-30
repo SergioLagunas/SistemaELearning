@@ -5,7 +5,7 @@
  */
 package Elearning.service.impl;
 
-import Elarning.dao.EvaluacionDao;
+import Elearning.dao.EvaluacionDao;
 import Elearning.dto.EvaluacionDto;
 import Elearning.modelo.Evaluacion;
 import Elearning.service.EvaluacionService;

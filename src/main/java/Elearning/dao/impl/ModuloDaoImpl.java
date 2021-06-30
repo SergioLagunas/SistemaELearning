@@ -1,7 +1,7 @@
 
 package Elearning.dao.impl;
 
-import Elarning.dao.ModuloDao;
+import Elearning.dao.ModuloDao;
 import Elearning.modelo.Modulo;
 import Elearning.util.HibernateUtil;
 import java.util.List;

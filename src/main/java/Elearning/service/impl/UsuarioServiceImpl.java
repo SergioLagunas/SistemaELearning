@@ -1,8 +1,8 @@
 package Elearning.service.impl;
 
-import Elarning.dao.CursoDao;
-import Elarning.dao.MiCursoDao;
-import Elarning.dao.UsuarioDao;
+import Elearning.dao.CursoDao;
+import Elearning.dao.MiCursoDao;
+import Elearning.dao.UsuarioDao;
 import Elearning.dto.CursoDto;
 import Elearning.dto.UsuarioDto;
 import Elearning.modelo.Curso;

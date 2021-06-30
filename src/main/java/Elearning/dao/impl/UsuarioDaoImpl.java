@@ -1,6 +1,6 @@
 package Elearning.dao.impl;
 
-import Elarning.dao.UsuarioDao;
+import Elearning.dao.UsuarioDao;
 import Elearning.modelo.Usuario;
 import Elearning.util.HibernateUtil;
 import java.util.List;
