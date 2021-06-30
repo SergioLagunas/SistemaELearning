@@ -1,37 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:aop="http://www.springframework.org/schema/aop"
-       xmlns:c="http://www.springframework.org/schema/c"
-       xmlns:context="http://www.springframework.org/schema/context"
-       xmlns:flow="http://www.springframework.org/schema/webflow-config"
-       xmlns:jee="http://www.springframework.org/schema/jee"
-       xmlns:jms="http://www.springframework.org/schema/jms"
-       xmlns:lang="http://www.springframework.org/schema/lang"
-       xmlns:osgi="http://www.springframework.org/schema/osgi"
        xmlns:p="http://www.springframework.org/schema/p"
        xmlns:tx="http://www.springframework.org/schema/tx"
-       xmlns:util="http://www.springframework.org/schema/util"
-       xmlns:mvc="http://www.springframework.org/schema/mvc"
 
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
-          http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
-          http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
-          http://www.springframework.org/schema/webflow-config http://www.springframework.org/schema/webflow-config/spring-webflow-config-2.0.xsd
-          http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-4.3.xsd
-          http://www.springframework.org/schema/jms http://www.springframework.org/schema/jms/spring-jms-4.3.xsd
-          http://www.springframework.org/schema/lang http://www.springframework.org/schema/lang/spring-lang-4.3.xsd
-          http://www.springframework.org/schema/osgi http://www.springframework.org/schema/osgi/spring-osgi-1.2.xsd
-          http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd
-          http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd
-          http://www.springframework.org/schema/mvc  http://www.springframework.org/schema/mvc/spring-mvc.xsd
-	 
-	 
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd  
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/mvc  http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd
 ">
     
-    <bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping"/>
-
-    <!-- Aca es donde indicaremos todos nuestros controladores y la paguina a la que esta direccionada-->
+    <!--<bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping"/>
+    Aca es donde indicaremos todos nuestros controladores y la paguina a la que esta direccionada
+    
+    <mvc:annotation-driven />  <mvc:default-servlet-handler/>-->
+  
+    
+    
+    
     <bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping"> 
         <property name="mappings"> 
             <props>
@@ -53,17 +43,22 @@
     <bean name="HomeController" class="Elearning.controler.HomeController"/>
     
     
+    <!--Validacion de Autorid y Repositories de Spring-->
+    <context:annotation-config />
+    <context:component-scan base-package="Elearning.controler"/>
+    <context:component-scan base-package="Elearning.dao.impl"/>
+    <context:component-scan base-package="Elearning.service.impl"/>
+  
+    <!--
     <context:component-scan base-package="Elearning.">
         <context:include-filter type="aspectj" expression="Elearning.*" />
     </context:component-scan>
     
-    <!--
-    Contextos para que funcionen las anotaciones de Spring   
-    <mvc:annotation-driven />
-    <context:annotation-config />
-    <context:component-scan base-package="Elearning"/> 
+  
+    Contextos para que funcionen las anotaciones de Spring    
+  
+    <mvc:annotation-driven /> 
     <mvc:default-servlet-handler/>
-    
-    -->
+    <context:annotation-config/>-->
    
 </beans>

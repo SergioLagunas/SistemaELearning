@@ -11,7 +11,7 @@ import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
 
-//@Repository("MiCursoDao")
+@Repository("MiCursoDao")
 public class MiCursoDaoImpl implements MiCursoDao{
 
     @Override
