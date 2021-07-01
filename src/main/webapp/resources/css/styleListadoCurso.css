@@ -1,0 +1,96 @@
+body{
+    margin: 0%;
+    padding: 0%;
+    font-variant: normal;
+    background: #fff;
+    color: black;
+    font-family: 'Varela Round', sans-serif;
+}
+
+.derecho{
+    height:100vh;
+    width: 50%;
+    background-color:#fff;
+}
+
+.izquierdo{
+    background-size: cover;
+    background-position: center;
+    width: 50%;
+    height: 100vh;
+    margin-bottom: 50px;
+}
+
+#pantallaDiv{
+    display: flex;
+}
+
+h1,h2{
+    font-size: 40px;
+    margin: auto;
+    margin-bottom: 40px;
+    margin-left: 60px;
+    margin-top: 50px;
+}
+
+p {
+    font-size: 20px;
+    line-height: 30px;
+    width: 80%;
+    margin: auto;
+    margin-left: 60px;
+}
+
+.video{
+    text-align: center;
+    margin-top: 20%;
+}
+
+/*Estilo header*/
+nav {
+    height: 80px;
+    width: 100%;
+    background:#84b6f4;
+}
+label.logo {
+    font-size: 35px;
+    font-weight: bold;
+    color: black;
+    padding: 0 50px;
+    line-height: 80px;
+    
+}
+.box {
+    position: absolute;
+    top: 6%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+input.src {
+    padding: 4px 10px 4px 32px;
+    outline: none;
+    font-size: 18px;
+    border-radius: 10px;
+    border: 1px solid white;
+    flex-wrap: wrap;
+}
+#perfil {
+    width: 10%;
+    float: right;
+    margin-top: 1.5%;
+    margin-right: 3%;
+}
+
+/*Estilo footer*/
+
+.footer-wrapper {
+    background:#84b6f4;/*Color de fondo del pie de página*/
+    padding-top: 40px;/*Altura del pie de página*/
+    padding-bottom: 40px;/*Altura del pie de página*/
+    width: 100%;
+    text-align: center;
+    font: normal normal 11px Arial;/*Tipografía y Tamaño*/
+    color:white;/*Color del texto del pie de página*/
+    text-transform: uppercase;/*Esta línea decódigo es para poner las letras en mayúsculas */
+    letter-spacing: 2px;/*Espacio entre letras*/
+}

@@ -15,12 +15,10 @@
 ">
     
     <!--<bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping"/>
-    Aca es donde indicaremos todos nuestros controladores y la paguina a la que esta direccionada
+    
+Aca es donde indicaremos todos nuestros controladores y la paguina a la que esta direccionada
     
     <mvc:annotation-driven />  <mvc:default-servlet-handler/>-->
-  
-    
-    
     
     <bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping"> 
         <property name="mappings"> 

@@ -1,0 +1,62 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    background: #00204a;
+    font-family: 'Varela Round', sans-serif;
+}
+/*Estilo header*/
+nav {
+    height: 80px;
+    width: 100%;
+    background: #e1e2e4;
+}
+label.logo {
+    font-size: 35px;
+    font-weight: bold;
+    color: black;
+    padding: 0 50px;
+    line-height: 80px;
+    
+}
+.box {
+    position: absolute;
+    top: 6%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+input.src {
+    padding: 4px 10px 4px 32px;
+    outline: none;
+    font-size: 18px;
+    border-radius: 10px;
+    border: 1px solid gray;
+    flex-wrap: wrap;
+}
+#perfil {
+    width: 10%;
+    float: right;
+    margin-top: 1.5%;
+    margin-right: 3%;
+}
+
+#multimedia {
+    margin-top: 7%;
+    margin-left: 400px;
+}
+
+.primary {
+    width: 20%;
+    margin-left: 5%;
+    margin-top: 2%;
+    margin-bottom: 5px;
+    font-size: 22px;
+    background: #3acace;
+    cursor: pointer;
+}
+.primary:hover{
+    background: cadetblue;
+}
+

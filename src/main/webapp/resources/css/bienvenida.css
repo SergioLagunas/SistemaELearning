@@ -1,0 +1,129 @@
+body {
+    background-color: white;
+    font-family: 'Varela Round', sans-serif;
+    color: rgb(0, 144, 211);
+}
+
+#container {
+    max-width: 90%;
+    max-height: fit-content;
+    margin: auto;
+}
+
+#scrollView .photo {
+    display: inline-block;
+    height: 100%;
+    width: 33%;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
+
+.photo1 {
+    background-image: url("../imagenes/Marketing.jpg");
+}
+
+.photo2 {
+    background-image: url("../imagenes/BD.png");
+}
+
+.photo3 {
+    background-image: url("../imagenes/Web.png");
+}
+
+.photo4 {
+    background-image: url("../imagenes/Programacion.jpg");
+}
+
+.photo5 {
+    background-image: url("../imagenes/Redes.png");
+}
+
+.photo6 {
+    background-image: url("../imagenes/Ciberseguridad.jpg");
+}
+
+#Titulo,
+#Subtitulo {
+    text-align: center;
+}
+
+#Subtitulo {
+    margin-bottom: 25px;
+}
+
+#Fila1,
+#Fila2 {
+    text-align: center;
+}
+
+#Fila1 button,
+#Fila2 button {
+    border-radius: 40px;
+    width: 10%;
+    background-color: white;
+    color: rgba(109, 109, 109, 0.74);
+    margin-right: 25px;
+    margin-bottom: 15px;
+}
+
+#Button1 {
+    border: 2px solid rgb(208, 255, 0);
+    transition-duration: 0.4s;
+}
+
+#Button1:hover {
+    background-color: rgb(208, 255, 0);
+    color: white;
+}
+
+#Button2 {
+    border: 2px solid rgb(9, 255, 0);
+    transition-duration: 0.4s;
+}
+
+#Button2:hover {
+    background-color: rgb(9, 255, 0);
+    color: white;
+}
+
+#Button3 {
+    border: 2px solid rgb(255, 0, 0);
+    transition-duration: 0.4s;
+}
+
+#Button3:hover {
+    background-color: rgb(255, 0, 0);
+    color: white;
+}
+
+#Button4 {
+    border: 2px solid rgb(0, 247, 255);
+    transition-duration: 0.4s;
+}
+
+#Button4:hover {
+    background-color: rgb(0, 247, 255);
+    color: white;
+}
+
+#Button5 {
+    border: 2px solid rgb(255, 0, 242);
+    transition-duration: 0.4s;
+}
+
+#Button5:hover {
+    background-color: rgb(255, 0, 242);
+    color: white;
+}
+
+#Button6 {
+    border: 2px solid rgb(255, 145, 0);
+    transition-duration: 0.4s;
+}
+
+#Button6:hover {
+    background-color: rgb(255, 145, 0);
+    color: white;
+}

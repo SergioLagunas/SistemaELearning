@@ -9,20 +9,20 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 
-@RestController
 public class UsuarioControler {
-    
+    /*   
     @Autowired
     private UsuarioService usuarioService;
-            
+       
     @RequestMapping(value = "/index")
     public  @ResponseBody String crearUsuario(HttpServletRequest request){
         return usuarioService.updateUsuario(request);
     }
-    
+  
+     /* 
     @RequestMapping(value="/index")
     public @ResponseBody String updateUsuario(HttpServletRequest request){
         return usuarioService.updateUsuario(request);
     }
-  
+  */
 }

@@ -1,0 +1,31 @@
+body {
+    background-color: rgb(255, 255, 255);
+    font-family: 'Varela Round', sans-serif;
+    color: rgb(0, 144, 211);
+}
+
+#container {
+    max-width: 90%;
+    max-height: fit-content;
+    margin: auto;
+    background-color: #fff;
+
+}
+
+#Titulo {
+    text-align: center;
+
+}
+
+#nombreC{
+width: 50%;
+}
+
+form p{
+    text-align: center;
+}
+
+#pmodulos {
+    margin-left: 21%;
+}
+

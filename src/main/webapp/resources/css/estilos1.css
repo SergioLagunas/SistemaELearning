@@ -1,0 +1,80 @@
+body {
+    background-color: #2471A3;
+    font-family: 'Varela Round', sans-serif;
+}
+
+.form {
+    font: bold 1em sans-serif;
+    background: #fff;
+    width: 30%;
+    height: 100%;
+    margin-top: 9%;
+    margin-right: 8%;
+    border-radius: 2%;
+    border: 3px solid #707070;
+    padding: 15px;
+    float: right;  
+}
+.contenedor{
+    width: 100%;
+    padding: 15px;
+}
+
+#video {
+    width: 50%;
+    height: 100%;
+    float: left;
+}
+#exampleform{
+    font: bold 1em sans-serif;
+}
+
+#logo {
+    width: 50%;
+    height: 50%;
+}
+
+#multimedia{
+    width: 100%;
+    height: 100%;
+    margin-top: 13%;
+    margin-left: 13%;
+
+}
+
+.primary {
+    width: 100%;
+    margin-bottom: 5px;
+    font-size: 22px;
+    background: #3acace;
+    cursor: pointer;
+}
+.primary:hover{
+    background: cadetblue;
+}
+.k-secundary {
+    width: 100%;
+    margin-bottom: 5px;
+    font-size: 22px;
+    background:#148f77;
+    cursor: pointer;
+}
+.k-secundary:hover{
+    background: cadetblue;
+}
+
+#contraseña {
+    width: 30%;
+    height: 100%;
+    margin-top: 10%;
+}
+
+.link {
+    margin-left: 27%;
+    font: 1em sans-serif;
+    color: blue;
+    cursor: pointer;
+}
+#exampleform1{
+    font: bold 1em sans-serif;
+}
