@@ -23,7 +23,7 @@ Aca es donde indicaremos todos nuestros controladores y la paguina a la que esta
     <bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping"> 
         <property name="mappings"> 
             <props>
-                <prop key="index.html">HomeController</prop>  
+                <prop key="index.html">UsuarioControler</prop>  
             </props>
         </property>
     </bean>
@@ -38,7 +38,7 @@ Aca es donde indicaremos todos nuestros controladores y la paguina a la que esta
     
    
     <!--Aca vamos a declarar todas las ubicaciones de nuestros controladores y su nombre -->
-    <bean name="HomeController" class="Elearning.controler.HomeController"/>
+    <bean name="UsuarioControler" class="Elearning.controler.UsuarioControler"/>
     
     
     <!--Validacion de Autorid y Repositories de Spring-->

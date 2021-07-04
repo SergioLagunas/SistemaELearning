@@ -13,7 +13,7 @@ import org.hibernate.Session;
  * @author sergi
  */
 public class PruebasDao {
-    
+    /*
     public static void main(String[] args) {
         
       Session session = HibernateUtil.getSessionFactory().openSession();
@@ -21,7 +21,7 @@ public class PruebasDao {
         UsuarioDaoImpl user = new UsuarioDaoImpl();
         CursoDaoImpl cur = new CursoDaoImpl();
         //Usuario usuario1 = new Usuario("Prueba", "nose", "nose", "Masculino", "karina@gmail.com", "contrasena", "semillero", "sdasd");
-        
+        */
        /* int idUs=15;
         Usuario newUser = session.get(Usuario.class, idUs);
         newUser.setNombre("Sergio");
@@ -50,7 +50,7 @@ public class PruebasDao {
         */
       
       //Pruebas LisAll
-      
+   /*   
       List<Usuario> usuarios = user.findAll();
       
       for(Usuario u : usuarios){
@@ -58,5 +58,5 @@ public class PruebasDao {
       }
       
     }
-    
+    */
 }

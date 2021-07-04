@@ -64,7 +64,7 @@ public class UsuarioServiceImpl implements UsuarioService {
     @Override
     public String createNewUsuario(HttpServletRequest request) {
 
-        Integer idUsuario = Integer.parseInt(request.getParameter("idUsuario"));
+        // Integer idUsuario = Integer.parseInt(request.getParameter("idUsuario"));
         String nombre = request.getParameter("nombre");
         String aPaterno = request.getParameter("aPaterno");
         String aMaterno = request.getParameter("aMaterno");
@@ -73,10 +73,10 @@ public class UsuarioServiceImpl implements UsuarioService {
         String contrasena = request.getParameter("contrasena");
         String tUsuario = request.getParameter("tUsuario");
         String rfc = request.getParameter("rfc");
-        String[] cursos = request.getParameterValues("curso[]");
+       // String[] cursos = request.getParameterValues("curso[]");
 
         Usuario usuario = new Usuario();
-        usuario.setIdUsuario(idUsuario);
+       // usuario.setIdUsuario(idUsuario);
         usuario.setNombre(nombre);
         usuario.setaPaterno(aPaterno);
         usuario.setaMaterno(aMaterno);
@@ -87,6 +87,7 @@ public class UsuarioServiceImpl implements UsuarioService {
         usuario.setRfc(rfc);
         usuario = usuarioDao.create(usuario);
        
+        /*
         // Relacion de muchos a muchos 
         MiCurso entidad_relacional=new MiCurso();
         List<CursoDto> lista=new ArrayList<CursoDto>();
@@ -98,12 +99,12 @@ public class UsuarioServiceImpl implements UsuarioService {
             CursoDto dto = new CursoDto(curso.getNombre(),curso.getDescripcion(),curso.getCaratula(),curso.getCategoria());
             lista.add(dto);
             miCursoDao.create(entidad_relacional);
-        }
+        }*/
 
-        //Checar el contructor 
+        //Checar el contructor con la lista de cursos
         UsuarioDto dto = new UsuarioDto(usuario.getNombre(), usuario.getaPaterno(), usuario.getaMaterno(),
                 usuario.getGenero(), usuario.getEmail(), usuario.getContrasena(), usuario.gettUsuario(),
-                usuario.getRfc(),lista);
+                usuario.getRfc());
         String data = "";
 
         try {

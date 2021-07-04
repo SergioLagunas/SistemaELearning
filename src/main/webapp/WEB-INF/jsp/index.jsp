@@ -59,7 +59,7 @@
             </div>
             <!-- MODAL OLVIDASTE LA CONTRASEÑA -->
             <div>
-                <div id="EditDialog1" action="index.html"  metod="GET" ></div>
+                <div id="EditDialog1"></div>
                 <div id="dialogUsuarios1"></div>
                 <div id="example1"></div>
             </div>
@@ -92,7 +92,7 @@
                 function onOpenformulario() {
                     var dialog = $('#EditDialog');
                     dialog.empty();
-                    dialog.append("<form id='exampleform'</form>");
+                    dialog.append("<form id='exampleform' action='index.html' methot='GET'></form>");
                     var form = $('#exampleform')
                     form.kendoForm({
                         layout: "grid",
