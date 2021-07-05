@@ -6,7 +6,9 @@ import javax.servlet.http.HttpServletRequest;
 
 public interface UsuarioService {
     public String readUsuario();
-    public String createNewUsuario(final HttpServletRequest request);
+    public String createNewSemillero(final HttpServletRequest request);
+    public String createNewAdminsitrador(final HttpServletRequest request);
+    public void loginUser(HttpServletRequest request);
     public String updateUsuario(final HttpServletRequest request);
     public String deleteUsusario(final Map<String,String> requestParam);
 }

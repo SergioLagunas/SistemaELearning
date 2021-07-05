@@ -62,7 +62,7 @@ public class UsuarioServiceImpl implements UsuarioService {
     }
 
     @Override
-    public String createNewUsuario(HttpServletRequest request) {
+    public String createNewSemillero(HttpServletRequest request) {
 
         // Integer idUsuario = Integer.parseInt(request.getParameter("idUsuario"));
         String nombre = request.getParameter("nombre");
@@ -71,7 +71,7 @@ public class UsuarioServiceImpl implements UsuarioService {
         String genero = request.getParameter("genero");
         String email = request.getParameter("email");
         String contrasena = request.getParameter("contrasena");
-        String tUsuario = request.getParameter("tUsuario");
+        String tUsuario = "Semillero";
         String rfc = request.getParameter("rfc");
        // String[] cursos = request.getParameterValues("curso[]");
 
@@ -117,6 +117,62 @@ public class UsuarioServiceImpl implements UsuarioService {
         return data;
 
     }
+    
+     @Override
+    public String createNewAdminsitrador(HttpServletRequest request) {
+        
+          // Integer idUsuario = Integer.parseInt(request.getParameter("idUsuario"));
+        String nombre = request.getParameter("nombre");
+        String aPaterno = request.getParameter("aPaterno");
+        String aMaterno = request.getParameter("aMaterno");
+        String genero = request.getParameter("genero");
+        String email = request.getParameter("email");
+        String contrasena = request.getParameter("contrasena");
+        String tUsuario = "Administrador";
+        String rfc = request.getParameter("rfc");
+       // String[] cursos = request.getParameterValues("curso[]");
+
+        Usuario usuario = new Usuario();
+       // usuario.setIdUsuario(idUsuario);
+        usuario.setNombre(nombre);
+        usuario.setaPaterno(aPaterno);
+        usuario.setaMaterno(aMaterno);
+        usuario.setGenero(genero);
+        usuario.setEmail(email);
+        usuario.setContrasena(contrasena);
+        usuario.settUsuario(tUsuario);
+        usuario.setRfc(rfc);
+        usuario = usuarioDao.create(usuario);
+        
+        UsuarioDto dto = new UsuarioDto(usuario.getNombre(), usuario.getaPaterno(), usuario.getaMaterno(),
+                usuario.getGenero(), usuario.getEmail(), usuario.getContrasena(), usuario.gettUsuario(),
+                usuario.getRfc());
+        String data = "";
+
+        try {
+            ObjectMapper mapper = new ObjectMapper();
+            data = mapper.writeValueAsString(dto);
+        } catch (JsonProcessingException ex) {
+            Logger.getLogger(UsuarioServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return data;
+        
+    }
+    
+    @Override
+    public void loginUser(HttpServletRequest request) {
+        String correo = request.getParameter("correo");
+        String contraseña = request.getParameter("contraseña");
+        
+        Usuario user = new Usuario();
+        user.setEmail(correo);
+        user.setContrasena(contraseña);
+        
+        user = usuarioDao.loginUsuario(user);
+       
+    }
+
 
     @Override
     public String updateUsuario(HttpServletRequest request) {
@@ -213,4 +269,5 @@ public class UsuarioServiceImpl implements UsuarioService {
          return "{\"valid\"}";
     }
 
+   
 }

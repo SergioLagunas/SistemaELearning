@@ -1,4 +1,3 @@
-
 package Elearning.pruebas;
 
 import Elearning.dao.impl.CursoDaoImpl;
@@ -8,29 +7,27 @@ import Elearning.modelo.Usuario;
 import Elearning.util.HibernateUtil;
 import java.util.List;
 import org.hibernate.Session;
+
 /**
  *
  * @author sergi
  */
 public class PruebasDao {
-    /*
+
     public static void main(String[] args) {
-        
-      Session session = HibernateUtil.getSessionFactory().openSession();
-        
+
+     //   Session session = HibernateUtil.getSessionFactory().openSession();
+
         UsuarioDaoImpl user = new UsuarioDaoImpl();
-        CursoDaoImpl cur = new CursoDaoImpl();
+      //  CursoDaoImpl cur = new CursoDaoImpl();
         //Usuario usuario1 = new Usuario("Prueba", "nose", "nose", "Masculino", "karina@gmail.com", "contrasena", "semillero", "sdasd");
-        */
-       /* int idUs=15;
+
+        /* int idUs=15;
         Usuario newUser = session.get(Usuario.class, idUs);
         newUser.setNombre("Sergio");
         newUser.setContrasena("12345454");  
         user.update(newUser);*/
-     
-     
-        
-        /*
+ /*
        int idUser = 21;
        Usuario miUsuario = session.get(Usuario.class, idUser);
        miUsuario.setEmail("sergio@hotmail.com");
@@ -38,8 +35,8 @@ public class PruebasDao {
        
        user.update(miUsuario);
         
-      */
-      /*
+         */
+ /*
       int idUsuario=4;
       Usuario elimUsuario = new Usuario();
       elimUsuario.setIdUsuario(idUsuario);
@@ -47,16 +44,47 @@ public class PruebasDao {
         System.out.println(user);
  
        
-        */
-      
-      //Pruebas LisAll
-   /*   
+         */
+        //Pruebas LisAll
+        /*
       List<Usuario> usuarios = user.findAll();
       
       for(Usuario u : usuarios){
           System.out.println(u);
-      }
+      }*/
+        //Prueba para el query del login 
+        /* 
+      Usuario admin1 = new Usuario("Administrado0", "nose", "nose", "Masculino", "ricardo@gmail.com", "contrasena", "Administrador", "sdasd");
+      Usuario admin2 = new Usuario("Administrado1", "nose", "nose", "Masculino", "ricardo@gmail.com", "contrasena", "Administrador", "sdasd");
       
+      user.create(admin1);
+      user.create(admin2);
+         */
+        // List<Usuario> newUser = user.findAll();
+        /*int idUs = 31;
+        Usuario newUser = session.get(Usuario.class, idUs);
+        newUser.getEmail();
+        newUser.getContrasena();
+        newUser.gettUsuario();
+        user.loginUsuario(newUser);
+        
+       // System.out.println(user);
+
+        List<Usuario> usuarios = user.findAll();
+
+        for (Usuario u : usuarios) {
+            System.out.println(u);
+        }
+*/
+        
+        
+        Usuario userL = new Usuario();
+        userL.setEmail("sergio@gamil.com");
+        userL.setContrasena("12345454");
+        user.loginUsuario(userL);
+        System.out.println(user);
+        
+   
     }
-    */
+
 }

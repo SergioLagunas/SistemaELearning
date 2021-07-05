@@ -92,7 +92,7 @@
                 function onOpenformulario() {
                     var dialog = $('#EditDialog');
                     dialog.empty();
-                    dialog.append("<form id='exampleform' action='index.html' methot='GET'></form>");
+                    dialog.append("<form id='exampleform' action='crearUsuario.html' methot='GET'></form>");
                     var form = $('#exampleform')
                     form.kendoForm({
                         layout: "grid",

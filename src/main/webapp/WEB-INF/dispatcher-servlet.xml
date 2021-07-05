@@ -23,7 +23,8 @@ Aca es donde indicaremos todos nuestros controladores y la paguina a la que esta
     <bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping"> 
         <property name="mappings"> 
             <props>
-                <prop key="index.html">UsuarioControler</prop>  
+                <prop key="index.html">UsuarioControler</prop>
+                <prop key="crearUsuario.html">UsuarioControler</prop>   
             </props>
         </property>
     </bean>
