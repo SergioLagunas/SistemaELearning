@@ -14,17 +14,25 @@
         http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd
 ">
     
+    
     <!--<bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping"/>
     
 Aca es donde indicaremos todos nuestros controladores y la paguina a la que esta direccionada
     
     <mvc:annotation-driven />  <mvc:default-servlet-handler/>-->
     
+    
     <bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping"> 
         <property name="mappings"> 
             <props>
-                <prop key="index.html">UsuarioControler</prop>
-                <prop key="crearUsuario.html">UsuarioControler</prop>   
+                <prop key="index.html">homeController</prop>
+                <prop key="validador.html">homeController</prop>
+                <prop key="admin.html">homeController</prop>
+                <prop key="error.html">homeController</prop>
+                <prop key="semillero.html">homeController</prop>
+                <prop key="semilleroRegistro.html">homeController</prop>
+                <prop key="existe.html">homeController</prop>
+                <prop key="exito.html">homeController</prop>
             </props>
         </property>
     </bean>
@@ -39,7 +47,7 @@ Aca es donde indicaremos todos nuestros controladores y la paguina a la que esta
     
    
     <!--Aca vamos a declarar todas las ubicaciones de nuestros controladores y su nombre -->
-    <bean name="UsuarioControler" class="Elearning.controler.UsuarioControler"/>
+    <bean name="homeController" class="Elearning.controler.HomeController"/>
     
     
     <!--Validacion de Autorid y Repositories de Spring-->
@@ -47,8 +55,15 @@ Aca es donde indicaremos todos nuestros controladores y la paguina a la que esta
     <context:component-scan base-package="Elearning.controler"/>
     <context:component-scan base-package="Elearning.dao.impl"/>
     <context:component-scan base-package="Elearning.service.impl"/>
+
+
   
-    <!--
+  
+  
+    <!--  
+
+    <mvc:annotation-driven />  
+    <mvc:default-servlet-handler/>
     <context:component-scan base-package="Elearning.">
         <context:include-filter type="aspectj" expression="Elearning.*" />
     </context:component-scan>

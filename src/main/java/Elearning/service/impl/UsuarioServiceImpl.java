@@ -16,6 +16,7 @@ import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -63,7 +64,7 @@ public class UsuarioServiceImpl implements UsuarioService {
 
     @Override
     public String createNewSemillero(HttpServletRequest request) {
-
+        
         // Integer idUsuario = Integer.parseInt(request.getParameter("idUsuario"));
         String nombre = request.getParameter("nombre");
         String aPaterno = request.getParameter("aPaterno");
@@ -74,6 +75,13 @@ public class UsuarioServiceImpl implements UsuarioService {
         String tUsuario = "Semillero";
         String rfc = request.getParameter("rfc");
        // String[] cursos = request.getParameterValues("curso[]");
+        
+        Usuario usuarioC = new Usuario();
+        usuarioC.setEmail(email);
+        usuarioC = usuarioDao.getEmail(email);
+        if(usuarioC != null){
+            return "existente";
+        }
 
         Usuario usuario = new Usuario();
        // usuario.setIdUsuario(idUsuario);
@@ -87,20 +95,6 @@ public class UsuarioServiceImpl implements UsuarioService {
         usuario.setRfc(rfc);
         usuario = usuarioDao.create(usuario);
        
-        /*
-        // Relacion de muchos a muchos 
-        MiCurso entidad_relacional=new MiCurso();
-        List<CursoDto> lista=new ArrayList<CursoDto>();
-        
-        for(int i=0;i<cursos.length;i++){
-            entidad_relacional.setIdUsuario(usuario.getIdUsuario());
-            entidad_relacional.setIdCurso(Integer.parseInt(cursos[i]));
-            Curso curso = cursoDao.getCurso(Integer.valueOf(cursos[i]));
-            CursoDto dto = new CursoDto(curso.getNombre(),curso.getDescripcion(),curso.getCaratula(),curso.getCategoria());
-            lista.add(dto);
-            miCursoDao.create(entidad_relacional);
-        }*/
-
         //Checar el contructor con la lista de cursos
         UsuarioDto dto = new UsuarioDto(usuario.getNombre(), usuario.getaPaterno(), usuario.getaMaterno(),
                 usuario.getGenero(), usuario.getEmail(), usuario.getContrasena(), usuario.gettUsuario(),
@@ -160,17 +154,36 @@ public class UsuarioServiceImpl implements UsuarioService {
         
     }
     
+    //Service Implmet del login Identificando roles automaticamente 
     @Override
-    public void loginUser(HttpServletRequest request) {
-        String correo = request.getParameter("correo");
-        String contraseña = request.getParameter("contraseña");
+    public String loginUser(HttpServletRequest request) {
+        String correo = request.getParameter("email");
+        String contraseña = request.getParameter("contrasena");
         
         Usuario user = new Usuario();
+        String rol ="";
         user.setEmail(correo);
         user.setContrasena(contraseña);
-        
         user = usuarioDao.loginUsuario(user);
-       
+         
+        HttpSession session = request.getSession();
+        if(user != null){
+            rol = user.gettUsuario();
+            if(rol.equals("Administrador")){
+                session.setAttribute("usuario", user);
+                session.setAttribute("tUsuario", rol);
+                return rol;
+ 
+            }else if(rol.equals("Semillero")){
+                session.setAttribute("usuario", user);
+                session.setAttribute("tUsuario", rol); 
+                return rol;
+            }else {
+                return "error";
+            }
+        }
+        
+        return "error";
     }
 
 
@@ -268,6 +281,8 @@ public class UsuarioServiceImpl implements UsuarioService {
          }
          return "{\"valid\"}";
     }
+    
+    
 
    
 }

@@ -159,7 +159,6 @@ public class UsuarioDaoImpl implements UsuarioDao {
 
     @Override
     public Usuario loginUsuario(Usuario elUsuario) {
-
         //Obtener la secion 
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         //Ocupamos la transaccion en caso de error la base de datos se restaura a como estaba
@@ -196,7 +195,45 @@ public class UsuarioDaoImpl implements UsuarioDao {
         return entidades;
 
     }
-    
+
+    @Override
+    public Usuario getEmail(String email) {
+        //Obtener la secion 
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        //Ocupamos la transaccion en caso de error la base de datos se restaura a como estaba
+        Transaction transaccion = session.getTransaction();
+
+        List lista = null;
+        Usuario entidades = null;
+
+        try {
+            //Iniciamos Transaccion
+            transaccion.begin();
+
+            Query query = session.createSQLQuery("select * from Usuario c where c.email=:u").addEntity(Usuario.class)
+                    .setParameter("u", email);
+  
+            lista = query.list();
+            transaccion.commit();
+            
+            if(lista.size()>0){
+                entidades = (Usuario)lista.get(0);
+            }
+
+        } catch (HibernateException e) {
+            //Si la transaccion esta bacia y ademas esta activa que regrese el estado en el que se encontraba la Base de Dato
+            if (transaccion != null && transaccion.isActive()) {
+                transaccion.rollback();
+            }
+        } finally {
+            //Finalmente cerramos la sesion 
+            session.close();
+        }
+
+        return entidades;
+
+      
+    }
     
 
   }

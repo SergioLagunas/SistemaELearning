@@ -6,6 +6,7 @@ import Elearning.modelo.Curso;
 import Elearning.modelo.Usuario;
 import Elearning.util.HibernateUtil;
 import java.util.List;
+import javax.swing.JOptionPane;
 import org.hibernate.Session;
 
 /**
@@ -14,11 +15,11 @@ import org.hibernate.Session;
  */
 public class PruebasDao {
 
-    public static void main(String[] args) {
+   // public static void main(String[] args) {
 
-     //   Session session = HibernateUtil.getSessionFactory().openSession();
+       Session session = HibernateUtil.getSessionFactory().openSession();
 
-        UsuarioDaoImpl user = new UsuarioDaoImpl();
+       UsuarioDaoImpl user = new UsuarioDaoImpl();
       //  CursoDaoImpl cur = new CursoDaoImpl();
         //Usuario usuario1 = new Usuario("Prueba", "nose", "nose", "Masculino", "karina@gmail.com", "contrasena", "semillero", "sdasd");
 
@@ -76,15 +77,45 @@ public class PruebasDao {
             System.out.println(u);
         }
 */
+       /* 
+        String email ="otro@gmail.com";
+        String contrasena = "contrasena123";
         
+        Usuario user1 = new Usuario();
+        user1.setEmail(email);
+        user1.setContrasena(contrasena);
+        user1 = user.loginUsuario(user1);
+ 
+       if(user1 != null){
+           String priv = user1.gettUsuario();
+           if(priv.equals("semillero")){
+               System.out.println("Semillero de nombre: "+user1.getNombre());
+           }else if(priv.equals("Administrador")){
+               System.out.println("Es admin de nombre: "+user1.getNombre());
+           }
+       }else{
+           System.out.println("No existe en la BD");
+       }
+        */
+        /* if(user1 != null){
+            JOptionPane.showMessageDialog(null, "El usuario diguitado si existe en la BD con el nombre "
+                    +user1.getNombre()+ " y con el rol de "+user1.gettUsuario());
+            System.out.println("");
+        }else{
+            JOptionPane.showMessageDialog(null, "El usuario diguitado no existe");
+        }
         
-        Usuario userL = new Usuario();
-        userL.setEmail("sergio@gamil.com");
-        userL.setContrasena("12345454");
-        user.loginUsuario(userL);
-        System.out.println(user);
+        */
+        /*
         
+        OtrasPruebas otra = new OtrasPruebas();
+        String email ="ricardo@gmail.com";
+        String contrasena = "contrasena";
+        
+        String prue=otra.DemoLogin(email, contrasena);
+        System.out.println(prue);
+   */
+  //  }
    
-    }
-
+   
 }
