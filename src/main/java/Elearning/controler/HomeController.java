@@ -4,6 +4,7 @@ package Elearning.controler;
 import Elearning.service.UsuarioService;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,7 +28,7 @@ public class HomeController {
     }
     
     
-    @RequestMapping(value="semilleroRegistro.html",method = RequestMethod.GET)
+    @RequestMapping(value="semilleroRegistro.html",method = RequestMethod.POST)
     public String semilleroRegistro(HttpServletRequest request){
          ModelAndView mo = new ModelAndView();
         if(usuarioService.createNewSemillero(request).equals("existente")){
@@ -38,7 +39,7 @@ public class HomeController {
     }
     
      
-    @RequestMapping(name = "validador.html",method = RequestMethod.GET)
+    @RequestMapping(name = "validador.html",method = RequestMethod.POST)
     public ModelAndView validador(HttpServletRequest request, HttpServletResponse response){
         ModelAndView mo = new ModelAndView();
          switch (usuarioService.loginUser(request)) {
@@ -76,8 +77,14 @@ public class HomeController {
         mo.setViewName("semillero");
         return mo;
     }
-    
-   
+     
+    @RequestMapping(name = "cerrarSession.html")
+     public ModelAndView cerrarSession(HttpServletRequest request){
+        ModelAndView mo = new ModelAndView();
+        HttpSession session = request.getSession();
+        session.invalidate();
+        mo.setViewName("index");
+        return mo;
+    }
 
-   
 }

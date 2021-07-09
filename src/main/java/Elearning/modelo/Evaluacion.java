@@ -31,8 +31,8 @@ public class Evaluacion implements Serializable{
     @Column(name="aprobacion")
     private String aprobacion;
     
-    @Column(name="idLeccion")
-    private Integer idLeccion;
+    @Column(name="idModulo")
+    private Integer idModulo;
     
 
     public Evaluacion() {
@@ -76,17 +76,18 @@ public class Evaluacion implements Serializable{
         this.aprobacion = aprobacion;
     }
 
-    public Integer getIdLeccion() {
-        return idLeccion;
+    public Integer getIdModulo() {
+        return idModulo;
     }
 
-    public void setIdLeccion(Integer idLeccion) {
-        this.idLeccion = idLeccion;
+    public void setIdModulo(Integer idModulo) {
+        this.idModulo = idModulo;
     }
 
     @Override
     public String toString() {
-        return "Evaluacion{" + "idEvaluacion=" + idEvaluacion + ", tipo=" + tipo + ", calificacion=" + calificacion + ", aprobacion=" + aprobacion + ", idLeccion=" + idLeccion + '}';
+        return "Evaluacion{" + "idEvaluacion=" + idEvaluacion + ", tipo=" + tipo + ", calificacion=" + calificacion + ", aprobacion=" + aprobacion + ", idModulo=" + idModulo + '}';
     }
+
     
 }

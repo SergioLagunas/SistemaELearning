@@ -6,15 +6,17 @@ public class CursoDto {
     private String nombre;
     private String descripcion;
     private String caratula;
+    private int progreso;
     private String categoria;
 
     public CursoDto() {
     }
 
-    public CursoDto(String nombre, String descripcion, String caratula, String categoria) {
+    public CursoDto(String nombre, String descripcion, String caratula, int progreso, String categoria) {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.caratula = caratula;
+        this.progreso = progreso;
         this.categoria = categoria;
     }
 
@@ -59,9 +61,17 @@ public class CursoDto {
         this.categoria = categoria;
     }
 
+    public int getProgreso() {
+        return progreso;
+    }
+
+    public void setProgreso(int progreso) {
+        this.progreso = progreso;
+    }
+
     @Override
     public String toString() {
-        return "CursoDto{" + "idCurso=" + idCurso + ", caratula=" + caratula + ", nombre=" + nombre + ", descripcion=" + descripcion + ", categoria=" + categoria + '}';
+        return "CursoDto{" + "idCurso=" + idCurso + ", nombre=" + nombre + ", descripcion=" + descripcion + ", caratula=" + caratula + ", progreso=" + progreso + ", categoria=" + categoria + '}';
     }
     
 }

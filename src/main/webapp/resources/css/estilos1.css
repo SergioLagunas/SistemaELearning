@@ -1,18 +1,19 @@
 body {
-    background-color: #2471A3;
+    background: rgb(16,166,101);
+    background: linear-gradient(90deg, rgba(16,166,101,0.7707457983193278) 0%, rgba(0,79,82,0.7875525210084033) 100%);
     font-family: 'Varela Round', sans-serif;
 }
 
 .form {
     font: bold 1em sans-serif;
-    background: #fff;
+    background: rgba(255, 255, 255, 0.274);
+    /*background: linear-gradient(35deg, rgba(82, 5, 89, 0.432) 0%, rgba(238, 238, 244, 0.308) 49%, rgba(47, 198, 228, 0.301) 100%);*/
     width: 30%;
     height: 100%;
     margin-top: 9%;
-    margin-right: 8%;
+    margin-right: 5%;
     border-radius: 2%;
-    border: 3px solid #707070;
-    padding: 15px;
+       padding: 15px;
     float: right;  
 }
 .contenedor{
@@ -37,42 +38,79 @@ body {
 #multimedia{
     width: 100%;
     height: 100%;
-    margin-top: 13%;
+    margin-top: 2%;
     margin-left: 13%;
+   
+}
+h2{
+  
+   font-size: 4.9vw;
+    color:  #6e054b;
+    -webkit-text-stroke: 0.3vw #8a095f;
+    text-transform: uppercase;
 
 }
+h2::before{
+   content: attr(data-text);
+   position: absolute;
+   top:30%;
+   left:1%;
+   width: 0;
+   height: 50%;
+   color: black;
+   -webkit-text-stroke: 0vw #8a095f;
+  
+   overflow: hidden;
+    animation: animate 15s linear infinite;
 
+}
+@keyframes animate{
+    0%,10%,60%
+    {
+        width:0;
+    }
+    70%
+    {
+        width:100%;
+    }
+}
 .primary {
     width: 100%;
     margin-bottom: 5px;
     font-size: 22px;
-    background: #3acace;
+    background: #828586b6;
+    border-radius: 15px;
     cursor: pointer;
 }
 .primary:hover{
-    background: cadetblue;
+    background: #069229;
+    border-radius: 15px;
+    
 }
 .k-secundary {
     width: 100%;
     margin-bottom: 5px;
     font-size: 22px;
-    background:#148f77;
+    background: #828586b6;
+    border-radius: 15px;
     cursor: pointer;
 }
 .k-secundary:hover{
-    background: cadetblue;
+    background: #069229;
+    border-radius: 15px;
 }
 
 #contraseña {
     width: 30%;
     height: 100%;
     margin-top: 10%;
+    border: 20%;
 }
 
 .link {
     margin-left: 27%;
     font: 1em sans-serif;
-    color: blue;
+    color: black;
     cursor: pointer;
 }
 #exampleform1{

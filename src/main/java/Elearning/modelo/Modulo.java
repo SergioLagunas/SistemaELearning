@@ -27,6 +27,9 @@ public class Modulo implements Serializable {
 
     @Column(name = "descripcion")
     private String descripcion;
+    
+    @Column(name = "url")
+    private String url;
 
     @Id
     @Column(name = "idCurso")
@@ -35,10 +38,23 @@ public class Modulo implements Serializable {
     public Modulo() {
     }
 
-    public Modulo(String titulo, String descripcion) {
+    public Modulo(String titulo, String descripcion, String url) {
         this.titulo = titulo;
         this.descripcion = descripcion;
+        this.url = url;
     }
+
+    
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+    
+
 
     public Integer getIdModulo() {
         return idModulo;
@@ -74,7 +90,8 @@ public class Modulo implements Serializable {
 
     @Override
     public String toString() {
-        return "Modulo{" + "idModulo=" + idModulo + ", titulo=" + titulo + ", descripcion=" + descripcion + ", idCurso=" + idCurso + '}';
+        return "Modulo{" + "idModulo=" + idModulo + ", titulo=" + titulo + ", descripcion=" + descripcion + ", url=" + url + ", idCurso=" + idCurso + '}';
     }
+
 
 }

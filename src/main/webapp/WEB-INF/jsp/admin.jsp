@@ -12,6 +12,14 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Ventana de Administrador</h1>
+        <h1>Hola <%=request.getSession().getAttribute("usuario")%> , Bienvenido</h1>
+
+        <h2>Tu rol es de: ${tUsuario} </h2>
+        
+ 
+  
+        
+        
+        
     </body>
 </html>

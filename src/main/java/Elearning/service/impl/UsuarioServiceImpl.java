@@ -125,6 +125,13 @@ public class UsuarioServiceImpl implements UsuarioService {
         String tUsuario = "Administrador";
         String rfc = request.getParameter("rfc");
        // String[] cursos = request.getParameterValues("curso[]");
+       
+        Usuario usuarioC = new Usuario();
+        usuarioC.setEmail(email);
+        usuarioC = usuarioDao.getEmail(email);
+        if(usuarioC != null){
+            return "existente";
+        }
 
         Usuario usuario = new Usuario();
        // usuario.setIdUsuario(idUsuario);
@@ -170,12 +177,12 @@ public class UsuarioServiceImpl implements UsuarioService {
         if(user != null){
             rol = user.gettUsuario();
             if(rol.equals("Administrador")){
-                session.setAttribute("usuario", user);
+                session.setAttribute("usuario", user.getNombre());
                 session.setAttribute("tUsuario", rol);
                 return rol;
  
             }else if(rol.equals("Semillero")){
-                session.setAttribute("usuario", user);
+                session.setAttribute("usuario", user.getNombre());
                 session.setAttribute("tUsuario", rol); 
                 return rol;
             }else {
@@ -190,7 +197,7 @@ public class UsuarioServiceImpl implements UsuarioService {
     @Override
     public String updateUsuario(HttpServletRequest request) {
         
-        Integer idUsuario = Integer.parseInt(request.getParameter("idUsuario"));
+        //Integer idUsuario = Integer.parseInt(request.getParameter("idUsuario"));
         String nombre = request.getParameter("nombre");
         String aPaterno = request.getParameter("aPaterno");
         String aMaterno = request.getParameter("aMaterno");
@@ -199,63 +206,18 @@ public class UsuarioServiceImpl implements UsuarioService {
         String contrasena = request.getParameter("contrasena");
         String tUsuario = request.getParameter("tUsuario");
         String rfc = request.getParameter("rfc");
-        String[] cursos = request.getParameterValues("curso[]");
+        //String[] cursos = request.getParameterValues("curso[]");
         
         
-        //Relacion de tablas 
-        List<MiCurso> auxMiCurso = new ArrayList<MiCurso>(); 
-        List<MiCurso> MiCurso = miCursoDao.getMiCurso(idUsuario);
-        MiCurso miCurso =new MiCurso();
-        List<CursoDto> lista=new ArrayList<CursoDto>();
-        
-         for(int i=0;i<cursos.length;i++){
-             boolean flag=true;
-             for(int j=0;j<MiCurso.size();j++){
-                 if(Integer.parseInt(cursos[i])== MiCurso.get(j).getIdCurso()){
-                     flag=false;
-                     break;
-                 }
-             }
-             if(flag){
-                miCurso.setIdCurso(Integer.parseInt(cursos[i]));
-                miCurso.setIdUsuario(idUsuario);
-                miCursoDao.create(miCurso);           
-             }
-       
-         }
-         
-         for(int i=0;i<cursos.length;i++){
-             boolean flag=true;
-             for(int j=0;j<MiCurso.size();j++){
-                 if(Integer.parseInt(cursos[j])== MiCurso.get(i).getIdCurso()){
-                     flag=false;
-                     break;
-                 }
-             }
-             if(flag){
-               miCursoDao.delete(MiCurso.get(i));
-             }
-       
-         }
-        //aca todavia no 
+      
          
         Usuario editUsuario = new Usuario(nombre,aPaterno,aMaterno,genero,email,contrasena,tUsuario,rfc);
         editUsuario = usuarioDao.update(editUsuario);
-       
-        
-        //comparacion de relacion de tablas 
-        for(int i=0;i<cursos.length;i++){
-            miCurso.setIdUsuario(editUsuario.getIdUsuario());
-            miCurso.setIdCurso(Integer.parseInt(cursos[i]));
-            
-            Curso curso = cursoDao.getCurso(Integer.valueOf(cursos[i]));
-            CursoDto dto = new CursoDto(curso.getNombre(),curso.getDescripcion(),curso.getCaratula(),curso.getCategoria());
-            lista.add(dto);
-        }
+      
         
         //Checar El contructor 
         UsuarioDto dto = new UsuarioDto(editUsuario.getNombre(),editUsuario.getaPaterno(),editUsuario.getaMaterno(),
-                editUsuario.getGenero(),editUsuario.getEmail(),editUsuario.getContrasena(),editUsuario.gettUsuario(),editUsuario.getRfc(),lista);
+                editUsuario.getGenero(),editUsuario.getEmail(),editUsuario.getContrasena(),editUsuario.gettUsuario(),editUsuario.getRfc());
         String data="";
         
         try {   

@@ -2,21 +2,21 @@
 package Elearning.dto;
 
 
-import java.util.Date;
-
 public class ModuloDto {
     
     private Integer idModulo;
     private String titulo;
     private String descripcion;
+    private String url;
     private Integer idCurso;
 
     public ModuloDto() {
     }
 
-    public ModuloDto(String titulo, String descripcion) {
+    public ModuloDto(String titulo, String descripcion, String url) {
         this.titulo = titulo;
         this.descripcion = descripcion;
+        this.url = url;
     }
 
     public Integer getIdModulo() {
@@ -51,11 +51,19 @@ public class ModuloDto {
         this.idCurso = idCurso;
     }
 
-    @Override
-    public String toString() {
-        return "ModuloDto{" + "idModulo=" + idModulo + ", titulo=" + titulo + ", descripcion=" + descripcion + ", idCurso=" + idCurso + '}';
+    public String getUrl() {
+        return url;
     }
 
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    @Override
+    public String toString() {
+        return "ModuloDto{" + "idModulo=" + idModulo + ", titulo=" + titulo + ", descripcion=" + descripcion + ", url=" + url + ", idCurso=" + idCurso + '}';
+    }
+ 
     
     
 }

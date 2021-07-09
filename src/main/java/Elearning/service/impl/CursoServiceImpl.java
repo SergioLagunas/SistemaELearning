@@ -40,6 +40,7 @@ public class CursoServiceImpl implements CursoService{
             dto.setNombre(lista2.get(i).getNombre());
             dto.setDescripcion(lista2.get(i).getDescripcion());
             dto.setCaratula(lista2.get(i).getCaratula());
+            dto.setProgreso(lista2.get(i).getProgreso());
             dto.setCategoria(lista2.get(i).getCategoria());
             lista.add(dto);
         }
@@ -58,21 +59,23 @@ public class CursoServiceImpl implements CursoService{
     @Override
     public String createNewCurso(HttpServletRequest request) {    
        
-        Integer idCurso=Integer.parseInt(request.getParameter("idCurso"));
+        //Integer idCurso=Integer.parseInt(request.getParameter("idCurso"));
         String nombre=request.getParameter("nombre");
         String descripcion=request.getParameter("descripcion");
         String caratula=request.getParameter("caratula");
+        int progreso=Integer.parseInt(request.getParameter("progreso"));
         String categoria=request.getParameter("categoria");  
        
         Curso curso = new Curso();
-        curso.setIdCurso(idCurso);
+       // curso.setIdCurso(idCurso);
         curso.setNombre(nombre);
         curso.setDescripcion(descripcion);
         curso.setCaratula(caratula);
         curso.setCategoria(categoria);
+        curso.setProgreso(progreso);
         curso = cursoDao.create(curso);
         
-        CursoDto dto = new CursoDto(curso.getNombre(),curso.getDescripcion(),curso.getCaratula(),curso.getCategoria());
+        CursoDto dto = new CursoDto(curso.getNombre(),curso.getDescripcion(),curso.getCaratula(),curso.getProgreso(),curso.getCategoria());
         String data="";
         
         try {   
@@ -88,16 +91,17 @@ public class CursoServiceImpl implements CursoService{
     @Override
     public String updateCurso(HttpServletRequest request) {
          
-        Integer idCurso=Integer.parseInt(request.getParameter("idCurso"));
+        //Integer idCurso=Integer.parseInt(request.getParameter("idCurso"));
         String nombre=request.getParameter("nombre");
         String descripcion=request.getParameter("descripcion");
         String caratula=request.getParameter("caratula");
+        int progreso=Integer.parseInt(request.getParameter("progreso"));
         String categoria=request.getParameter("categoria");  
        
-        Curso editCurso = new Curso(nombre,descripcion,caratula,categoria);
+        Curso editCurso = new Curso(nombre,descripcion,caratula,progreso,categoria);
         editCurso = cursoDao.update(editCurso);
         
-        CursoDto dto = new CursoDto(editCurso.getNombre(),editCurso.getDescripcion(),editCurso.getCaratula(),
+        CursoDto dto = new CursoDto(editCurso.getNombre(),editCurso.getDescripcion(),editCurso.getCaratula(),editCurso.getProgreso(),
         editCurso.getCategoria());
         String data="";
         

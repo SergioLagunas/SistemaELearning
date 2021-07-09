@@ -14,4 +14,7 @@
     <body>
         <h1>Error contraseña o usuario incorrecto</h1>
     </body>
+    
+    
+    <a href="index.html">Regresar</a>
 </html>

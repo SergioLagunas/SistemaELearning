@@ -12,6 +12,13 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Vnetana de Semillero</h1>
+        <h1>Hola <%=request.getSession().getAttribute("usuario")%> , Bienvenido</h1>
+        
+        <h2>Tu rol es de: ${tUsuario} </h2>
+        
+        
+        <button name="cerrarSession.html"> Cerrar Session </button>
+        
+        
     </body>
 </html>

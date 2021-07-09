@@ -7,7 +7,7 @@ public class EvaluacionDto {
     private String tipo;
     private float calificacion;
     private String aprobacion;
-    private Integer idLeccion;
+    private Integer idModulo;
 
     public EvaluacionDto() {
     }
@@ -50,12 +50,17 @@ public class EvaluacionDto {
         this.aprobacion = aprobacion;
     }
 
-    public Integer getIdLeccion() {
-        return idLeccion;
+    public Integer getIdModulo() {
+        return idModulo;
     }
 
-    public void setIdLeccion(Integer idLeccion) {
-        this.idLeccion = idLeccion;
+    public void setIdModulo(Integer idModulo) {
+        this.idModulo = idModulo;
+    }
+
+    @Override
+    public String toString() {
+        return "EvaluacionDto{" + "idEvaluacion=" + idEvaluacion + ", tipo=" + tipo + ", calificacion=" + calificacion + ", aprobacion=" + aprobacion + ", idModulo=" + idModulo + '}';
     }
 
 }
