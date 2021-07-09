@@ -2,6 +2,7 @@
 package Elearning.controler;
 
 import Elearning.service.UsuarioService;
+import javax.servlet.FilterChain;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -78,6 +79,8 @@ public class HomeController {
         return mo;
     }
      
+     
+     //Controlador para cerrar session 
     @RequestMapping(name = "cerrarSession.html")
      public ModelAndView cerrarSession(HttpServletRequest request){
         ModelAndView mo = new ModelAndView();
@@ -86,5 +89,15 @@ public class HomeController {
         mo.setViewName("index");
         return mo;
     }
+    //Controlador para denegar acceso a usuarios de paguinas de adminsitrador 
+    @RequestMapping(name="noAutorizado.html")
+    public ModelAndView noAutorizado(HttpServletRequest request, HttpServletResponse response, FilterChain chain ){
+         ModelAndView mo = new ModelAndView();
+         HttpSession session = request.getSession();
+         
+         
+         return mo;
+    }
+     
 
 }

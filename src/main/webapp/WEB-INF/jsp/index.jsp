@@ -48,10 +48,11 @@
                 <a href=""><button id="BotonIS" class="primary">Iniciar sesión</button></a>
 
             </p>
-            <a class="link" >¿Olvidaste tu contraseña?</a>
             <p>
                 <button id="BotonFormulario" class="k-secundary">Crear Cuenta</button>
             </p>
+            <a class="link" >¿Olvidaste tu contraseña?</a>
+            
         </div>
     </div>
     <!-- MODAL OLVIDASTE LA CONTRASEÑA -->
