@@ -15,6 +15,13 @@ import java.util.*;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.AddressException;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -242,6 +249,54 @@ public class UsuarioServiceImpl implements UsuarioService {
              return  "{\"valid\"}";
          }
          return "{\"valid\"}";
+    }
+
+    @Override
+    public boolean recuperarContraseña(HttpServletRequest request) {
+        String correo = request.getParameter("email");
+        Usuario usu = new Usuario();
+        usu = usuarioDao.getEmail(correo);
+        if (usu != null) {  
+            try {
+                Properties props = new Properties();
+                props.setProperty("mail.smtp.host", "smtp.gmail.com");
+                props.setProperty("mail.smtp.starttls.enable", "true");
+                props.setProperty("mail.smtp.port", "587");
+                props.setProperty("mail.smtp.auth", "true");
+                
+                Session session = Session.getDefaultInstance(props);
+                
+                String correoRemitente = "b1soft.semilleros@gmail.com";
+                String passwordRemitente = "b1soft2021";
+                String correoReceptor = correo;
+                String asunto = "Recuperacion de Contraseña";
+                String mensaje = "Hola " + usu.getNombre()+" "+usu.getaPaterno()+" "+usu.getaMaterno()+"" + " Su contraseña resgistrada en la plataforma es: "  + usu.getContrasena();
+                
+                MimeMessage message = new MimeMessage(session);
+                message.setFrom(new InternetAddress(correoRemitente));
+                message.addRecipient(Message.RecipientType.TO,new InternetAddress(correoReceptor));
+                message.setSubject(asunto);
+                message.setText(mensaje);
+                
+                Transport t = session.getTransport("smtp");
+                t.connect(correoRemitente, passwordRemitente);
+                t.sendMessage(message, message.getRecipients(Message.RecipientType.TO));
+                t.close();
+                
+                System.out.println("La contraseña del usuario: " + usu.getNombre() + " es " + usu.getContrasena());
+                System.out.println("Eviar la contraseña: " + usu.getContrasena());             
+                System.out.println("Se envio la contraseña a tu correo");
+            
+            } catch (AddressException ex) {
+                Logger.getLogger(UsuarioServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (MessagingException ex) {
+                Logger.getLogger(UsuarioServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            return true;
+        } else {
+            System.out.println("Este correo no ha sido registrado");
+        }
+        return false;
     }
     
     
