@@ -5,6 +5,7 @@ import Elearning.dao.impl.UsuarioDaoImpl;
 import Elearning.modelo.Curso;
 import Elearning.modelo.Usuario;
 import Elearning.util.HibernateUtil;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import org.hibernate.Session;
@@ -15,9 +16,9 @@ import org.hibernate.Session;
  */
 public class PruebasDao {
 
-   // public static void main(String[] args) {
+    public static void main(String[] args) {
 
-       Session session = HibernateUtil.getSessionFactory().openSession();
+       //Session session = HibernateUtil.getSessionFactory().openSession();
 
        UsuarioDaoImpl user = new UsuarioDaoImpl();
       //  CursoDaoImpl cur = new CursoDaoImpl();
@@ -68,7 +69,7 @@ public class PruebasDao {
         newUser.getContrasena();
         newUser.gettUsuario();
         user.loginUsuario(newUser);
-        
+        */
        // System.out.println(user);
 
         List<Usuario> usuarios = user.findAll();
@@ -76,7 +77,7 @@ public class PruebasDao {
         for (Usuario u : usuarios) {
             System.out.println(u);
         }
-*/
+       
        /* 
         String email ="otro@gmail.com";
         String contrasena = "contrasena123";
@@ -115,7 +116,7 @@ public class PruebasDao {
         String prue=otra.DemoLogin(email, contrasena);
         System.out.println(prue);
    */
-  //  }
+    }
    
    
 }

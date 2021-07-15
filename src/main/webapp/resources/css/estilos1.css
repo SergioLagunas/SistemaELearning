@@ -116,3 +116,12 @@ h2::before{
 #exampleform1{
     font: bold 1em sans-serif;
 }
+
+#BtnRegistrar{
+    width: 100%;
+    margin-bottom: 5px;
+    font-size: 22px;
+    background: #828586b6;
+    border-radius: 15px;
+    cursor: pointer;
+}

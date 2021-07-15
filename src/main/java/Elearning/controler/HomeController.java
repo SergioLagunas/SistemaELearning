@@ -29,7 +29,7 @@ public class HomeController {
     }
     
     
-    @RequestMapping(value="semilleroRegistro.html",method = RequestMethod.POST)
+    @RequestMapping(value="semilleroRegistro.html",method = RequestMethod.GET)
     public String semilleroRegistro(HttpServletRequest request){
          ModelAndView mo = new ModelAndView();
         if(usuarioService.createNewSemillero(request).equals("existente")){
@@ -40,7 +40,7 @@ public class HomeController {
     }
     
      
-    @RequestMapping(name = "validador.html",method = RequestMethod.POST)
+    @RequestMapping(name = "validador.html",method = RequestMethod.GET)
     public ModelAndView validador(HttpServletRequest request, HttpServletResponse response){
         ModelAndView mo = new ModelAndView();
          switch (usuarioService.loginUser(request)) {

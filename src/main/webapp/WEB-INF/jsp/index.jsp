@@ -35,7 +35,7 @@
         <div class="form">
             <!-- contenedor (fondo en blanco del login) -->
             <div class="contenedor"> </div>
-            <form id="login" action=""></form>
+            <form id="login" action="validador.html" method="GET"></form>
             <!-- MODAL CREAR CUENTA -->
             <div id="EditDialog"></div>
             <div id="dialogUsuarios"></div>
@@ -44,10 +44,10 @@
 
             <div id="dialog">
             </div>
-            <p>
+            <!--<p>
                 <a href=""><button id="BotonIS" class="primary">Iniciar sesión</button></a>
 
-            </p>
+            </p>-->
             <p>
                 <button id="BotonFormulario" class="k-secundary">Crear Cuenta</button>
             </p>
@@ -65,33 +65,33 @@
     //formulario index
     $(document).ready(function () {
 
-        $("#login").kendoForm({
-            orientation: "vertical",
-            items: [
+            $("#login").kendoForm({
+                orientation: "vertical",
+                items: [
                 {
-                    field: "correo",
-                    label: "Correo:",
-                    validation: {required: true}
-                },
-                {
-                    field: "password",
-                    label: "Contraseña:",
-                    validation: {required: true},
-                    editor: function (container, options) {
-                        container.append($("<input type='password' class='k-textbox k-valid' id='Password' name='Password' title='Password' required='required' autocomplete='off' aria-labelledby='Password-form-label' data-bind='value:Password' aria-describedby='Password-form-hint' >"));
+                        field: "email",
+                        label: "Correo:",
+                        validation: { required: true }
+                    },
+                    {
+                        field: "contrasena",
+                        label: "Contraseña:",
+                        validation: { required: true },
+                        editor: function (container, options) {
+                            container.append($("<input type='password' class='k-textbox k-valid' id='contrasena' name='contrasena' required='required' autocomplete='off' aria-labelledby='Password-form-label' data-bind='value:Password' aria-describedby='Password-form-hint' >"));
+                        }
                     }
-                }
-            ],
-            // "evita que aparezcan los botones de kendo"
-            buttonsTemplate: "",
+                ],
+                // "evita que aparezcan los botones de kendo"
+                buttonsTemplate: "<input type='submit' value='Iniciar sesión' id='BotonIS' class='primary'>"
+            });
         });
-    });
 // formulario crear cuenta
     function onOpenformulario() {
         var dialog = $('#EditDialog');
         dialog.empty();
-        dialog.append("<form id='exampleform'</form>");
-        var form = $('#exampleform')
+        dialog.append("<form id='exampleform' action='semilleroRegistro.html' method='GET'></form>");
+        var form = $('#exampleform');
         form.kendoForm({
             layout: "grid",
             grid: {
@@ -106,7 +106,7 @@
                     grid: {cols: 1, gutter: 10},
                     items: [
                         {
-                            field: "Nombre",
+                            field: "nombre",
                             label: "Nombre:",
                             validation: {required: true}
                         },
@@ -116,7 +116,7 @@
                             validation: {required: true}
                         },
                         {
-                            field: "Correo",
+                            field: "email",
                             label: "Correo:",
                             validation: {required: true}
                         },
@@ -127,7 +127,7 @@
                             editor: function (container, options) {
                                 container.append($("<input type='password' class='k-textbox k-valid' id='Password' name='Password' title='Password' required='required' autocomplete='off' aria-labelledby='Password-form-label' data-bind='value:Password' aria-describedby='Password-form-hint'>"));
                             }
-                        },
+                        }
                     ]
                 },
                 {
@@ -143,7 +143,7 @@
                             validation: {required: true}
                         },
                         {
-                            field: "Genero",
+                            field: "genero",
                             editor: "DropDownList",
                             label: "Genero",
                             validation: {required: true},
@@ -155,31 +155,27 @@
                                     {Name: "Masculino", Id: 2}
                                 ],
                                 dataTextField: "Name",
-                                dataValueField: "Id"
+                                dataValueField: "Name"
                             }
                         },
                         {
-                            field: "password",
+                            field: "contrasena",
                             label: "Contraseña:",
                             colSpan: 2,
                             validation: {required: true},
                             editor: function (container, options) {
-                                container.append($("<input type='password' class='k-textbox k-valid' id='Password1' name='Password' title='Password' required='required' autocomplete='off' aria-labelledby='Password-form-label' data-bind='value:Password' aria-describedby='Password-form-hint'>"));
+                                container.append($("<input type='password' class='k-textbox k-valid' id='Password1' name='contrasena' title='Password' required='required' autocomplete='off' aria-labelledby='Password-form-label' data-bind='value:Password' aria-describedby='Password-form-hint'>"));
                             }
                         },
                         {
-                            field: "RFC",
+                            field: "rfc",
                             label: "RFC:",
-                            colSpan: 2,
-                            validation: {
-                                required: true,
-                                email: true
-                            }
+                            colSpan: 2
                         }
                     ]
                 }
             ],
-            buttonsTemplate: "",
+            buttonsTemplate: "<input class='k-secundary' type='submit' value='Registrar'>"
         });
 
 
@@ -194,10 +190,7 @@
                 close: {
                     effects: "fade:out"
                 }
-            },
-            actions: [
-
-                {text: 'Ingresar'}]
+            }
         });
         dialog.data("kendoDialog").open();
     }
@@ -233,7 +226,7 @@
         var dialog = $('#EditDialog1');
         dialog.empty();
         dialog.append("<form id='exampleform1'</form>");
-        var form = $('#exampleform1')
+        var form = $('#exampleform1');
         form.kendoForm({
             layout: "grid",
             grid: {
