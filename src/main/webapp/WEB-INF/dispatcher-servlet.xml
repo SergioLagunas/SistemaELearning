@@ -21,7 +21,9 @@ Aca es donde indicaremos todos nuestros controladores y la paguina a la que esta
     
     <mvc:annotation-driven />  <mvc:default-servlet-handler/>-->
     
-    
+     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"></bean>
+   
+   
     <bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping"> 
         <property name="mappings"> 
             <props>
@@ -34,21 +36,25 @@ Aca es donde indicaremos todos nuestros controladores y la paguina a la que esta
                 <prop key="existe.html">homeController</prop>
                 <prop key="exito.html">homeController</prop>
                 <prop key="cerrarSession.html">homeController</prop>
+                <prop key="addCurso.html">cursoControler</prop>
+                <prop key="crearCurso.html">cursoControler</prop>
+               
             </props>
         </property>
     </bean>
-    
+
     
     
     <!--Aca estamos indicando de donde va a obtener nuestras vistas con extencion .jsp-->
     <bean id="viewResolver" 
           class="org.springframework.web.servlet.view.InternalResourceViewResolver"
           p:prefix="/WEB-INF/jsp/" p:suffix=".jsp"/>
-   
+      
     
    
     <!--Aca vamos a declarar todas las ubicaciones de nuestros controladores y su nombre -->
     <bean name="homeController" class="Elearning.controler.HomeController"/>
+    <bean name="cursoControler" class="Elearning.controler.CursoControler"/>
     
     
     <!--Validacion de Autorid y Repositories de Spring-->
@@ -56,12 +62,13 @@ Aca es donde indicaremos todos nuestros controladores y la paguina a la que esta
     <context:component-scan base-package="Elearning.controler"/>
     <context:component-scan base-package="Elearning.dao.impl"/>
     <context:component-scan base-package="Elearning.service.impl"/>
+  
 
 
-  
-  
-  
+
+   
     <!--  
+<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"></bean>
 
     <mvc:annotation-driven />  
     <mvc:default-servlet-handler/>

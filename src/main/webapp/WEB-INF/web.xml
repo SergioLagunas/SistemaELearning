@@ -8,13 +8,19 @@
         <param-name>contextConfigLocation</param-name>
         <param-value>/WEB-INF/applicationContext.xml</param-value>
     </context-param>
+    
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
+    
     <servlet>
         <servlet-name>dispatcher</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
+        
+        <multipart-config>
+            <location>c:\temp</location>
+        </multipart-config>
     </servlet>
     
     <servlet-mapping>
@@ -28,8 +34,8 @@
         </session-timeout>
     </session-config>
     
-      <welcome-file-list>
+    <welcome-file-list>
         <welcome-file>redirect.jsp</welcome-file>
     </welcome-file-list>
-
+    
 </web-app>

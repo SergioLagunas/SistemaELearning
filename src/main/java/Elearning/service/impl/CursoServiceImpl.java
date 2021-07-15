@@ -10,8 +10,12 @@ import Elearning.dao.CursoDao;
 import Elearning.dao.MiCursoDao;
 import Elearning.dto.CursoDto;
 import Elearning.modelo.Curso;
+import Elearning.util.JavaDropBox;
+import com.dropbox.core.DbxException;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -39,7 +43,7 @@ public class CursoServiceImpl implements CursoService{
             dto.setIdCurso(lista2.get(i).getIdCurso());
             dto.setNombre(lista2.get(i).getNombre());
             dto.setDescripcion(lista2.get(i).getDescripcion());
-            dto.setCaratula(lista2.get(i).getCaratula());
+           // dto.setCaratula(lista2.get(i).getCaratula());
             dto.setProgreso(lista2.get(i).getProgreso());
             dto.setCategoria(lista2.get(i).getCategoria());
             lista.add(dto);
@@ -58,22 +62,33 @@ public class CursoServiceImpl implements CursoService{
     
     @Override
     public String createNewCurso(HttpServletRequest request) {    
-       
         //Integer idCurso=Integer.parseInt(request.getParameter("idCurso"));
         String nombre=request.getParameter("nombre");
         String descripcion=request.getParameter("descripcion");
         String caratula=request.getParameter("caratula");
-        int progreso=Integer.parseInt(request.getParameter("progreso"));
+        int progreso=0;
         String categoria=request.getParameter("categoria");  
        
         Curso curso = new Curso();
+        try {
        // curso.setIdCurso(idCurso);
         curso.setNombre(nombre);
         curso.setDescripcion(descripcion);
         curso.setCaratula(caratula);
         curso.setCategoria(categoria);
         curso.setProgreso(progreso);
+        
+        String enlace = guardarDropBox(curso);
+        if(!enlace.equals("")){
+            
+        }else{
+            
+        }
+        
         curso = cursoDao.create(curso);
+        //String enlace = guardarDropBox(curso);
+         } catch (Exception e) {
+        }
         
         CursoDto dto = new CursoDto(curso.getNombre(),curso.getDescripcion(),curso.getCaratula(),curso.getProgreso(),curso.getCategoria());
         String data="";
@@ -129,4 +144,24 @@ public class CursoServiceImpl implements CursoService{
          return "{\"valid\"}";
         
     }
+    
+    private String guardarDropBox(Curso curso) throws IOException, FileNotFoundException, DbxException{
+        JavaDropBox jv = new JavaDropBox();
+        String enlace = "";
+        String caratula = curso.getCaratula()+"_Imagen"+ getExtention(curso.getCaratula());
+        jv.uploadToDropbox(curso.getCaratula().getBytes(),"/"+caratula);
+        String urlImagen= jv.createURL(caratula);
+        
+        if(!urlImagen.equals("")){
+            enlace = urlImagen;
+        }
+   
+        return enlace;
+    }
+    
+    private String getExtention(String string){
+        return string.substring(string.lastIndexOf("."),string.length());
+    
+}
+    
 }
