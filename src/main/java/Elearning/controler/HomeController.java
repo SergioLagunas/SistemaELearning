@@ -104,13 +104,15 @@ public class HomeController {
         ModelAndView mo = new ModelAndView();
         
         if(usuarioService.recuperarContraseña(request)){
-            System.out.println("No se envio el correo");
-        } else {
             System.out.println("Se envio el correo");
             mo.setViewName("index");
+        } else {
+            System.out.println("No se envio el correo");
         }       
         return mo;  
     }
+    
+  
     
 
 }

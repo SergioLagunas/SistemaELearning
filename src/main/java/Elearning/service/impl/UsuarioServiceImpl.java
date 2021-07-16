@@ -313,7 +313,7 @@ public class UsuarioServiceImpl implements UsuarioService {
         } else {
             System.out.println("Este correo no ha sido registrado");
         }
-        return false;
+        return true;
     }
     
     
