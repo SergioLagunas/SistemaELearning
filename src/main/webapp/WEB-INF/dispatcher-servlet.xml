@@ -38,7 +38,7 @@ Aca es donde indicaremos todos nuestros controladores y la paguina a la que esta
                 <prop key="cerrarSession.html">homeController</prop>
                 <prop key="addCurso.html">cursoControler</prop>
                 <prop key="crearCurso.html">cursoControler</prop>
-               
+                <prop key="enviarCorreo.html">homeController</prop>
             </props>
         </property>
     </bean>

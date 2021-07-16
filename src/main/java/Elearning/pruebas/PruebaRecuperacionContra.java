@@ -11,20 +11,25 @@ import Elearning.service.impl.UsuarioServiceImpl;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.activation.DataHandler;
+import javax.activation.FileDataSource;
+import javax.mail.BodyPart;
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
 
 /**
  *
  * @author sergi
  */
 public class PruebaRecuperacionContra {
-/*
+
     public static void main(String[] args) {
         //Aca te puedes crear un usuario para que este en la base de datos y si exista un correo electronico que introduscas en el string 
         //Usuario usuario1 = new Usuario("Emilio", "Lagunas", "Garcia", "Masculino", "sergio@gmail.com", "contrasena", "semillero", "sdasd");
@@ -33,7 +38,7 @@ public class PruebaRecuperacionContra {
         //Este inserta el usuario con los datos que pongas arriba    
         //user.create(usuario1);
 
-        String correo = "sergiolags96@gmail.com";
+        String correo = "britojjhb@gmail.com";
         Usuario usu = new Usuario();
         usu = user.getEmail(correo);
 
@@ -47,18 +52,35 @@ public class PruebaRecuperacionContra {
 
                 Session session = Session.getDefaultInstance(props);
 
-                String correoRemitente = "b1soft.semilleros@gmail.com";
-                String passwordRemitente = "b1soft2021";
+                String correoRemitente = "chefoherbri@gmail.com";
+                String passwordRemitente = "031098libra";
                 String correoReceptor = correo;
                 String asunto = "Recuperacion de Contraseña";
-                String mensaje = "Hola " + usu.getNombre() + " Su contraseña es: " + usu.getContrasena();
+                String mensaje ="Hola <b>" + usu.getNombre() + " " + usu.getaPaterno() + " " + usu.getaMaterno() + "</b> tu contraseña registrada es la siguiente: <b> <u>" + usu.getContrasena() + "</u> </b>";
+                
+                /* Parte del mensaje en texto plano 
+                BodyPart texto = new MimeBodyPart();
+                texto.setText("Hola " + usu.getNombre() + " " + usu.getaPaterno() + " " + usu.getaMaterno() + " Su contraseña resgistrada en la plataforma es: " + usu.getContrasena());
+                
+                Parte del mensaje imagen 
+                BodyPart adjunto = new MimeBodyPart();
+                adjunto.setDataHandler(new DataHandler(new FileDataSource("C:/UsersJose/Desktop/NuevoEquipo/SistemaELearning/imagenes/B1sOFT.png")));
+                
+                Union de la imagen y el texto 
+                
+                MimeMultipart multiParte = new MimeMultipart();
 
+                multiParte.addBodyPart(texto);
+                multiParte.addBodyPart(adjunto);
+                */
+                
                 MimeMessage message = new MimeMessage(session);
                 message.setFrom(new InternetAddress(correoRemitente));
                 message.addRecipient(Message.RecipientType.TO, new InternetAddress(correoReceptor));
                 message.setSubject(asunto);
-                message.setText(mensaje);
-
+                message.setText(mensaje, "ISO-8859-1", "html");
+                
+                
                 Transport t = session.getTransport("smtp");
                 t.connect(correoRemitente, passwordRemitente);
                 t.sendMessage(message, message.getRecipients(Message.RecipientType.TO));
@@ -79,5 +101,5 @@ public class PruebaRecuperacionContra {
         }
 
     }
-*/
+
 }

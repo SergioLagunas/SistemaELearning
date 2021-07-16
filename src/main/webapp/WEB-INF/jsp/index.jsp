@@ -225,7 +225,7 @@
     function onOpenformulario1() {
         var dialog = $('#EditDialog1');
         dialog.empty();
-        dialog.append("<form id='exampleform1'</form>");
+        dialog.append("<form id='exampleform1' action='enviarCorreo.html' method='GET'> </form>");
         var form = $('#exampleform1');
         form.kendoForm({
             layout: "grid",
@@ -243,13 +243,14 @@
 
                     items: [
                         {
-                            field: "correo",
+                            field: "email",
                             label: "Correo:",
                             validation: {required: true}
-                        },
-                    ],
-                },
+                        }
+                    ]
+                }
             ],
+            buttonsTemplate: "<input class='k-secundary' type='submit' value='Continuar'>"
         });
 
         dialog.kendoDialog({
@@ -263,10 +264,10 @@
                 close: {
                     effects: "fade:out"
                 }
-            },
-            actions: [
-
-                {text: 'Continuar'}]
+            }
+//            actions: [
+//
+//                {text: 'Continuar'}]
         });
         dialog.data("kendoDialog").open();
     }

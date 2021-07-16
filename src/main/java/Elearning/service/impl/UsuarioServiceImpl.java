@@ -256,43 +256,60 @@ public class UsuarioServiceImpl implements UsuarioService {
         String correo = request.getParameter("email");
         Usuario usu = new Usuario();
         usu = usuarioDao.getEmail(correo);
-        if (usu != null) {  
+        if (usu != null) {
             try {
                 Properties props = new Properties();
                 props.setProperty("mail.smtp.host", "smtp.gmail.com");
                 props.setProperty("mail.smtp.starttls.enable", "true");
                 props.setProperty("mail.smtp.port", "587");
                 props.setProperty("mail.smtp.auth", "true");
-                
+
                 Session session = Session.getDefaultInstance(props);
-                
-                String correoRemitente = "b1soft.semilleros@gmail.com";
-                String passwordRemitente = "b1soft2021";
+
+                String correoRemitente = "chefoherbri@gmail.com";
+                String passwordRemitente = "031098libra";
                 String correoReceptor = correo;
                 String asunto = "Recuperacion de Contraseña";
-                String mensaje = "Hola " + usu.getNombre()+" "+usu.getaPaterno()+" "+usu.getaMaterno()+"" + " Su contraseña resgistrada en la plataforma es: "  + usu.getContrasena();
+                String mensaje ="Hola <b>" + usu.getNombre() + " " + usu.getaPaterno() + " " + usu.getaMaterno() + "</b> tu contraseña registrada es la siguiente: <b> <u>" + usu.getContrasena() + "</u> </b>";
+                
+                /* Parte del mensaje en texto plano 
+                BodyPart texto = new MimeBodyPart();
+                texto.setText("Hola " + usu.getNombre() + " " + usu.getaPaterno() + " " + usu.getaMaterno() + " Su contraseña resgistrada en la plataforma es: " + usu.getContrasena());
+                
+                Parte del mensaje imagen 
+                BodyPart adjunto = new MimeBodyPart();
+                adjunto.setDataHandler(new DataHandler(new FileDataSource("C:/UsersJose/Desktop/NuevoEquipo/SistemaELearning/imagenes/B1sOFT.png")));
+                
+                Union de la imagen y el texto 
+                
+                MimeMultipart multiParte = new MimeMultipart();
+
+                multiParte.addBodyPart(texto);
+                multiParte.addBodyPart(adjunto);
+                */
                 
                 MimeMessage message = new MimeMessage(session);
                 message.setFrom(new InternetAddress(correoRemitente));
-                message.addRecipient(Message.RecipientType.TO,new InternetAddress(correoReceptor));
+                message.addRecipient(Message.RecipientType.TO, new InternetAddress(correoReceptor));
                 message.setSubject(asunto);
-                message.setText(mensaje);
+                message.setText(mensaje, "ISO-8859-1", "html");
+                
                 
                 Transport t = session.getTransport("smtp");
                 t.connect(correoRemitente, passwordRemitente);
                 t.sendMessage(message, message.getRecipients(Message.RecipientType.TO));
                 t.close();
-                
+
                 System.out.println("La contraseña del usuario: " + usu.getNombre() + " es " + usu.getContrasena());
-                System.out.println("Eviar la contraseña: " + usu.getContrasena());             
+                System.out.println("Eviar la contraseña: " + usu.getContrasena());
                 System.out.println("Se envio la contraseña a tu correo");
-            
+
             } catch (AddressException ex) {
                 Logger.getLogger(UsuarioServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
             } catch (MessagingException ex) {
                 Logger.getLogger(UsuarioServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
             }
-            return true;
+
         } else {
             System.out.println("Este correo no ha sido registrado");
         }

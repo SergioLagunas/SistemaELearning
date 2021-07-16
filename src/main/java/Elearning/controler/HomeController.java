@@ -99,5 +99,18 @@ public class HomeController {
          return mo;
     }
      
+    @RequestMapping(name = "enviarCorreo.html",method = RequestMethod.GET)
+    public ModelAndView enviarCorreo(HttpServletRequest request, HttpServletResponse response){
+        ModelAndView mo = new ModelAndView();
+        
+        if(usuarioService.recuperarContraseña(request)){
+            System.out.println("No se envio el correo");
+        } else {
+            System.out.println("Se envio el correo");
+            mo.setViewName("index");
+        }       
+        return mo;  
+    }
+    
 
 }
