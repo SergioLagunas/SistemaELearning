@@ -1,5 +1,5 @@
 body {
-    background-color: rgb(255, 255, 255);
+
     font-family: 'Varela Round', sans-serif;
     color: rgb(0, 144, 211);
 }
@@ -8,7 +8,7 @@ body {
     max-width: 90%;
     max-height: fit-content;
     margin: auto;
-    background-color: #fff;
+
 
 }
 
