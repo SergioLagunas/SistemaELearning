@@ -71,7 +71,7 @@ public class PruebasDao {
         user.loginUsuario(newUser);
         */
        // System.out.println(user);
-
+/*
         List<Usuario> usuarios = user.findAll();
 
         for (Usuario u : usuarios) {

@@ -6,6 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -58,6 +59,7 @@
         </div>
         
     <h1>Añade un nuevo Curso</h1>
+    
     <div id="example">
         <div class="demo-section k-content">
             <ul class="fieldlist">

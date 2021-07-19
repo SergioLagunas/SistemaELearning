@@ -10,6 +10,7 @@ import Elearning.dao.CursoDao;
 import Elearning.dao.MiCursoDao;
 import Elearning.dto.CursoDto;
 import Elearning.modelo.Curso;
+import Elearning.modelo.formModel.CursoModel;
 import Elearning.util.JavaDropBox;
 import com.dropbox.core.DbxException;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -20,6 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import org.springframework.web.servlet.ModelAndView;
 
 
 
@@ -61,46 +63,35 @@ public class CursoServiceImpl implements CursoService{
     }
     
     @Override
-    public String createNewCurso(HttpServletRequest request) {    
-        //Integer idCurso=Integer.parseInt(request.getParameter("idCurso"));
-        String nombre=request.getParameter("nombre");
-        String descripcion=request.getParameter("descripcion");
-        String caratula=request.getParameter("caratula");
-        int progreso=0;
-        String categoria=request.getParameter("categoria");  
-       
-        Curso curso = new Curso();
+    public ModelAndView createNewCurso(CursoModel CursoF) {    
+        ModelAndView mo = new ModelAndView("html_utf8");
+        
         try {
-       // curso.setIdCurso(idCurso);
-        curso.setNombre(nombre);
-        curso.setDescripcion(descripcion);
-        curso.setCaratula(caratula);
-        curso.setCategoria(categoria);
-        curso.setProgreso(progreso);
-        
-        String enlace = guardarDropBox(curso);
-        if(!enlace.equals("")){
+            Curso entidad = new Curso();
+            entidad.setNombre(CursoF.getNombre());
+            entidad.setDescripcion(CursoF.getDescripcion());
+            entidad.setProgreso(0);
+            entidad.setCategoria(CursoF.getCategoria());
             
-        }else{
+            String enlace = guardarDropBox(CursoF);
+            if(!enlace.equals("")){
+                entidad.setCaratula(enlace);
+                System.out.println("La Imagen se Guardo correctamente y ya esta creada la url de DropBox");
+            }else{
+                mo.setViewName("error");
+                System.out.println("Error al crear la Url de DropBox");
+                return mo;
+            }
             
+            entidad = cursoDao.create(entidad);
+            mo.setViewName("redirect:");
+        } catch (Exception e) {
+            e.printStackTrace();
+            Logger.getLogger(CursoServiceImpl.class.getName()).log(Level.SEVERE, null,e);
+            mo.setViewName("");
         }
-        
-        curso = cursoDao.create(curso);
-        //String enlace = guardarDropBox(curso);
-         } catch (Exception e) {
-        }
-        
-        CursoDto dto = new CursoDto(curso.getNombre(),curso.getDescripcion(),curso.getCaratula(),curso.getProgreso(),curso.getCategoria());
-        String data="";
-        
-        try {   
-             ObjectMapper mapper = new ObjectMapper();
-             data=mapper.writeValueAsString(dto);            
-        } catch (JsonProcessingException ex) {         
-            Logger.getLogger(CursoServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        return data;
+       
+       return mo;
     }
 
     @Override
@@ -145,11 +136,11 @@ public class CursoServiceImpl implements CursoService{
         
     }
     
-    private String guardarDropBox(Curso curso) throws IOException, FileNotFoundException, DbxException{
+    private String guardarDropBox(CursoModel CursoF) throws IOException, FileNotFoundException, DbxException{
         JavaDropBox jv = new JavaDropBox();
         String enlace = "";
-        String caratula = curso.getCaratula()+"_Imagen"+ getExtention(curso.getCaratula());
-        jv.uploadToDropbox(curso.getCaratula().getBytes(),"/"+caratula);
+        String caratula = CursoF.getCaratula()+"_Imagen"+ getExtention(CursoF.getCaratula().getOriginalFilename());
+        jv.uploadToDropbox(CursoF.getCaratula().getBytes(),"/"+caratula);
         String urlImagen= jv.createURL(caratula);
         
         if(!urlImagen.equals("")){
