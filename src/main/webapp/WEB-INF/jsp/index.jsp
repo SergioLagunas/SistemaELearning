@@ -18,6 +18,7 @@
         <script src="${pageContext.request.contextPath}/resources/js/jquery.min.js"></script> 
         <script src="${pageContext.request.contextPath}/resources/js/kendo.all.min.js"></script>
         <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <title>Index</title>
     </head>
     <body background="">
@@ -251,7 +252,10 @@
                 }
             ],
             buttonsTemplate: "<input class='k-secundary' type='submit' value='Continuar'>"
+            
         });
+        
+       
 
         dialog.kendoDialog({
             width: "450px",
@@ -271,6 +275,7 @@
         });
         dialog.data("kendoDialog").open();
     }
+
 
     function onOpenAdministrador() {
         $("#dialogUsuarios1").html("<div><form id='form1' novalidate></form></div>" +

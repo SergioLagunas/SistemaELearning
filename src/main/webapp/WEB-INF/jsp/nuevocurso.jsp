@@ -43,14 +43,14 @@
         <a href="bienvenida.jsp"> <img src="${pageContext.request.contextPath}/resources/imagenes/def1.gif"  width="160px" height="90" > </a> 
         <nav>
             <ul class="nav__links">
-                <li><a href="perfiladmin.jsp">Mi perfil </a></li>
-                <li><a href="administradores.jsp">Admin.</a></li>
-                <li><a href="semilleros.jsp">Semilleros</a></li>
-                <li><a href="Cursos.jsp">Cursos</a></li>
-                <li><a href="nuevocurso.jsp">Agregar nuevo curso</a></li>
+                <li><a href="perfiladmin.html">Mi perfil </a></li>
+                <li><a href="administradores.html">Admin.</a></li>
+                <li><a href="semilleros.html">Semilleros</a></li>
+                <li><a href="Cursos.html">Cursos</a></li>
+                <li><a href="nuevocurso.html">Agregar nuevo curso</a></li>
             </ul>
         </nav> 
-        <a class="cta" href="index.jsp"><button>Cerrar sesión</button></a>
+        <a class="cta" href="index.html"><button>Cerrar sesión</button></a>
      </header>
     
     <div id="container">
@@ -59,27 +59,28 @@
         </div>
         
     <h1>Añade un nuevo Curso</h1>
-    
+    <form:form id="form" action="crearCurso.html" method="POST" enctype="multipart/form-data">
+     
     <div id="example">
         <div class="demo-section k-content">
             <ul class="fieldlist">
                 <li>
-                    <input id="simple-input" type="text" placeholder="Nombre" class="k-textbox" style="width: 100%;" />
+                    <input id="simple-input" type="text" placeholder="Nombre" class="k-textbox" style="width: 100%;" name="nombre" />
                 </li>
                 <li>
-                    <input id="simple-input" type="text" placeholder="Descripción" class="k-textbox" style="width: 100%;" />
+                    <input id="simple-input" type="text" placeholder="Descripción" class="k-textbox" style="width: 100%;" name="descripcion"  />
                 </li>
                 <li>
-                    <input id="simple-input" type="text" placeholder="Categoria" class="k-textbox" style="width: 100%;" />
+                    <input id="simple-input" type="text" placeholder="Categoria" class="k-textbox" style="width: 100%;" name="categoria" />
                 </li>
                 
                 <li>
-                    <span class="btn btn-primary btn-file">Caratula del curso: <input type="file"></span>
+                    <span class="btn btn-primary btn-file">Caratula del curso: <input type="file" accept=".jpg,.png" name="caratula" ></span>
                 </li>
 
                 <li>
-                    <button class="k-button">Guardar</button>&nbsp;
-                  <a href="agregarmodulos.jsp"> <button class="k-button k-primary">Continuar</button> </a> 
+                    <button class="k-button" type="submit">Guardar</button>&nbsp;
+                  <a href="agregarmodulos.html"> <button class="k-button k-primary">Continuar</button> </a> 
                 </li>
                 <br>
                 <br>
@@ -113,6 +114,7 @@
         </div>
     </div>
 </div>
+    </form:form>        
 <!--Footer-->
 <br>
 <br>

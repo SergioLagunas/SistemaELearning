@@ -106,13 +106,11 @@ public class HomeController {
         if(usuarioService.recuperarContraseña(request)){
             System.out.println("Se envio el correo");
             mo.setViewName("index");
+            
         } else {
             System.out.println("No se envio el correo");
+            
         }       
-        return mo;  
+        return mo;
     }
-    
-  
-    
-
 }

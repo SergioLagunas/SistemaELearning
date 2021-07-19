@@ -27,10 +27,17 @@ public class CursoControler {
     @Autowired
     private CursoService cursoService;
 
-    @RequestMapping(value = "addCurso.html", method = RequestMethod.GET)
-    public ModelAndView home() {
+    @RequestMapping(value = "nuevocurso.html", method = RequestMethod.GET)
+    public ModelAndView nuevocurso() {
         ModelAndView mo = new ModelAndView();
-        mo.setViewName("addCurso");
+        mo.setViewName("nuevocurso");
+        return mo;
+    }
+    
+    @RequestMapping(value = "Cursos.html", method = RequestMethod.GET)
+    public ModelAndView Cursos() {
+        ModelAndView mo = new ModelAndView();
+        mo.setViewName("Cursos");
         return mo;
     }
     
