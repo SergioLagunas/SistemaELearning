@@ -32,7 +32,7 @@ import javax.swing.JFileChooser;
 
 public class JavaDropBox {
 
-    private static final String ACCESS_TOKEN_TEST = "sl.A0-VPpwMI7E6Yr-Bz3moTr6_PNBXiEAU3QJLSAe3Pn8JqY5qHYFsxSiVTjy-JHlGTEkecns8A5El3kCUH_hOKZVCFYoDHtKRR4K3T8BfOFZqFvTXSPKw_o5tuFpBUNRfcU-sXW-MSEiA"; //token de prueba, MODIFICAR!!
+    private static final String ACCESS_TOKEN_TEST = "cAuHqppztMYAAAAAAAAAAb5zaxsIc3MPp7w0drnS_oO1_76P8GnTJUFK-Xe_THXl"; //token de prueba, MODIFICAR!!
 
     private DbxClientV2 getClient() {
         // Create Dropbox client

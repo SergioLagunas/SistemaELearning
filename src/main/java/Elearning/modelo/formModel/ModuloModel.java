@@ -1,0 +1,47 @@
+
+package Elearning.modelo.formModel;
+
+import org.springframework.web.multipart.MultipartFile;
+
+public class ModuloModel {
+    
+    private String titulo;
+    private String descripcion;
+    private MultipartFile url;
+
+    public ModuloModel(String tirulo, String descripcion, MultipartFile url) {
+        this.titulo = tirulo;
+        this.descripcion = descripcion;
+        this.url = url;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(String tirulo) {
+        this.titulo = tirulo;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public MultipartFile getUrl() {
+        return url;
+    }
+
+    public void setUrl(MultipartFile url) {
+        this.url = url;
+    }
+
+    @Override
+    public String toString() {
+        return "ModuloModel{" + "tirulo=" + titulo + ", descripcion=" + descripcion + ", url=" + url + '}';
+    } 
+    
+}
