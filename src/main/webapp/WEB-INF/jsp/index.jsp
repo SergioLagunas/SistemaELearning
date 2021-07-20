@@ -275,6 +275,8 @@
         });
         dialog.data("kendoDialog").open();
     }
+    
+    
 
 
     function onOpenAdministrador() {

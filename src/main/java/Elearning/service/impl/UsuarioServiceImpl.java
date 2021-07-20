@@ -26,6 +26,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.servlet.ModelAndView;
 
 @Service("UsuarioService")
 public class UsuarioServiceImpl implements UsuarioService {
@@ -253,6 +254,8 @@ public class UsuarioServiceImpl implements UsuarioService {
 
     @Override
     public boolean recuperarContraseña(HttpServletRequest request) {
+        ModelAndView mo = new ModelAndView ();
+        
         String correo = request.getParameter("email");
         Usuario usu = new Usuario();
         usu = usuarioDao.getEmail(correo);
@@ -303,12 +306,15 @@ public class UsuarioServiceImpl implements UsuarioService {
                 System.out.println("La contraseña del usuario: " + usu.getNombre() + " es " + usu.getContrasena());
                 System.out.println("Eviar la contraseña: " + usu.getContrasena());
                 System.out.println("Se envio la contraseña a tu correo");
-
+                
+                
+                
             } catch (AddressException ex) {
                 Logger.getLogger(UsuarioServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
             } catch (MessagingException ex) {
                 Logger.getLogger(UsuarioServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
             }
+        
 
         } else {
             System.out.println("Este correo no ha sido registrado");

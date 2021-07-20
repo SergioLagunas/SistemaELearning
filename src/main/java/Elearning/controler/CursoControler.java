@@ -42,8 +42,11 @@ public class CursoControler {
     }
     
     @RequestMapping(value="crearCurso.html",method = RequestMethod.POST)
-    public ModelAndView crearCurso(@ModelAttribute CursoModel CursoF){     
-        return cursoService.createNewCurso(CursoF);
+    public ModelAndView crearCurso(@ModelAttribute CursoModel CursoF){
+        ModelAndView mo = new ModelAndView();
+        cursoService.createNewCurso(CursoF);
+        mo.setViewName("agregarmodulos");
+        return mo;
     }
 
     

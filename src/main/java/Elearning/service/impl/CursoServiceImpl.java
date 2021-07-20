@@ -84,7 +84,7 @@ public class CursoServiceImpl implements CursoService{
             }
             
             entidad = cursoDao.create(entidad);
-            mo.setViewName("redirect:");
+            mo.setViewName("agregarmodulos");
         } catch (Exception e) {
             e.printStackTrace();
             Logger.getLogger(CursoServiceImpl.class.getName()).log(Level.SEVERE, null,e);
