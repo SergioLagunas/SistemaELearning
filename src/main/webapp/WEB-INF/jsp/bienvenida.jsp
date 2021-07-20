@@ -51,7 +51,7 @@
     <div id="container">
         <div id="Scroll">
             <div id="Titulo">
-                <h1><font color="#fff">Bienvenido usuario a Capacitate</font></h1>
+                <h1>Hola <%=request.getSession().getAttribute("usuario")%> , Bienvenido</h1>
                 
             </div>
             <div style="margin:auto; max-width:100%">

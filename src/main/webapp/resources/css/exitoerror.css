@@ -1,0 +1,32 @@
+.primary {
+    width: 80%;
+    margin-left: 10%;
+    margin-bottom: 5px;
+    font-size: 22px;
+    background: #828586b6;
+    border-radius: 15px;
+    cursor: pointer;
+}
+.primary:hover{
+    background: #069229;
+    border-radius: 15px;   
+}
+.contenedor {
+    width: 30%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.603);
+    margin-left: 35%;
+    margin-top: 8%;
+    border-radius: 15px;
+}
+.img{
+    margin-left: 40%;
+    margin-top: 2%;
+}
+
+b{
+    margin-left: 12%;
+}
+.texto {
+    margin-left: 15%;
+}
