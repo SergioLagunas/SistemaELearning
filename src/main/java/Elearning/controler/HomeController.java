@@ -21,7 +21,7 @@ public class HomeController {
     @Autowired
     private UsuarioService usuarioService;
     
-    @RequestMapping(value = "index.html", method = RequestMethod.GET)
+    @RequestMapping(value = "index.html", method = RequestMethod.POST)
     public ModelAndView home(){
         ModelAndView mo = new ModelAndView();
         mo.setViewName("index");
@@ -29,29 +29,40 @@ public class HomeController {
     }
     
     
-    @RequestMapping(value="semilleroRegistro.html",method = RequestMethod.GET)
-    public String semilleroRegistro(HttpServletRequest request){
+    @RequestMapping(value="semilleroRegistro.html",method = RequestMethod.POST)
+    public ModelAndView semilleroRegistro(HttpServletRequest request, HttpServletResponse response){
          ModelAndView mo = new ModelAndView();
-        if(usuarioService.createNewSemillero(request).equals("existente")){
+        /*if(usuarioService.createNewSemillero(request).equals("existente")){
             System.out.println("");
             System.out.println("Correo ya registrado");
+            mo.setViewName("error");
+        }*/
+        switch (usuarioService.createNewSemillero(request)) {
+            case "existente":
+                mo.setViewName("error");
+                break;
+            default:
+                //mo.addObject("error", "Contraseña o Usuario Incorrecto");
+                mo.setViewName("exito");
+                break;
         }
-        return usuarioService.createNewSemillero(request);
+         return mo;
+        
     }
     
      
-    @RequestMapping(name = "validador.html",method = RequestMethod.GET)
+    @RequestMapping(name = "validador.html",method = RequestMethod.POST)
     public ModelAndView validador(HttpServletRequest request, HttpServletResponse response){
         ModelAndView mo = new ModelAndView();
          switch (usuarioService.loginUser(request)) {
             case "Semillero":
-                mo.setViewName("semillero");
+                mo.setViewName("bienvenida");
                 break;
             case "Administrador":
                 mo.setViewName("admin");
                 break;
             default:
-                mo.addObject("error", "Contraseña o Usuario Incorrecto");
+                //mo.addObject("error", "Contraseña o Usuario Incorrecto");
                 mo.setViewName("error");
                 break;
         }
@@ -65,6 +76,13 @@ public class HomeController {
         return mo;
     }
     
+    @RequestMapping("exito.html")
+    public ModelAndView exito(){
+        ModelAndView mo = new ModelAndView();
+        mo.setViewName("exito");
+        return mo;
+    }
+    
     @RequestMapping("admin.html")
     public ModelAndView admin(){
          ModelAndView mo = new ModelAndView();
@@ -72,10 +90,10 @@ public class HomeController {
         return mo;
     }
     
-     @RequestMapping("semillero.html")
+     @RequestMapping("bienvenida.html")
      public ModelAndView semillero(){
          ModelAndView mo = new ModelAndView();
-        mo.setViewName("semillero");
+        mo.setViewName("bienvenida");
         return mo;
     }
      

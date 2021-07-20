@@ -36,7 +36,7 @@
         <div class="form">
             <!-- contenedor (fondo en blanco del login) -->
             <div class="contenedor"> </div>
-            <form id="login" action="validador.html" method="GET"></form>
+            <form id="login" action="validador.html" method="POST"></form>
             <!-- MODAL CREAR CUENTA -->
             <div id="EditDialog"></div>
             <div id="dialogUsuarios"></div>
@@ -91,7 +91,7 @@
     function onOpenformulario() {
         var dialog = $('#EditDialog');
         dialog.empty();
-        dialog.append("<form id='exampleform' action='semilleroRegistro.html' method='GET'></form>");
+        dialog.append("<form id='exampleform' action='semilleroRegistro.html' method='POST'></form>");
         var form = $('#exampleform');
         form.kendoForm({
             layout: "grid",
