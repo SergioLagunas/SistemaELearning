@@ -43,12 +43,8 @@ public class Curso implements Serializable{
     @Column(name="categoria")
     private String categoria;
     
-    /*@ManyToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL, mappedBy="cursos")
-    private Set<Usuario> usuarios = new HashSet<>();*/
-    
-    /*@ManyToOne(cascade={CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
-    @JoinColumn(name="idUsuario")
-    private Usuario Usuario;*/
+    @OneToMany(mappedBy = "idCurso",fetch=FetchType.LAZY,cascade = {CascadeType.ALL,CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH})
+    private List<Modulo> idModulo;
 
     public Curso() {
     }
@@ -111,6 +107,24 @@ public class Curso implements Serializable{
         this.categoria = categoria;
     }
 
+    public List<Modulo> getIdModulo() {
+        return idModulo;
+    }
+
+    public void setIdModulo(List<Modulo> idModulo) {
+        this.idModulo = idModulo;
+    }
+    
+    
+    public void addModulos(Modulo modulo){   
+        if(idModulo!=null){
+            idModulo=new ArrayList<>();
+            idModulo.add(modulo);
+            modulo.setIdCurso(this);
+        }    
+    }
+    
+  
     @Override
     public String toString() {
         return "Curso{" + "idCurso=" + idCurso + ", nombre=" + nombre + ", descripcion=" + descripcion + ", caratula=" + caratula + ", progreso=" + progreso + ", categoria=" + categoria + '}';

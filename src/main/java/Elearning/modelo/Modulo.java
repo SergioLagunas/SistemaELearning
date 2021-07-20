@@ -31,9 +31,10 @@ public class Modulo implements Serializable {
     @Column(name = "url")
     private String url;
 
-    @Id
-    @Column(name = "idCurso")
-    private Integer idCurso;
+   
+    @ManyToOne(cascade = {CascadeType.ALL,CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH})
+    @JoinColumn(name="idCurso")
+    private Curso idCurso;
 
     public Modulo() {
     }
@@ -80,13 +81,14 @@ public class Modulo implements Serializable {
         this.descripcion = descripcion;
     }
 
-    public Integer getIdCurso() {
+    public Curso getIdCurso() {
         return idCurso;
     }
 
-    public void setIdCurso(Integer idCurso) {
+    public void setIdCurso(Curso idCurso) {
         this.idCurso = idCurso;
     }
+    
 
     @Override
     public String toString() {

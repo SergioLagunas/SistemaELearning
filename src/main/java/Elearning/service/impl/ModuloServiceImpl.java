@@ -1,5 +1,6 @@
 package Elearning.service.impl;
 
+import Elearning.dao.CursoDao;
 import Elearning.dao.ModuloDao;
 import Elearning.modelo.Modulo;
 import Elearning.dto.ModuloDto;
@@ -30,6 +31,9 @@ public class ModuloServiceImpl implements ModuloService {
 
     @Autowired
     private ModuloDao moduloDao;
+    
+    @Autowired
+    private CursoDao cursoDao;
 
     @Override
     public String readModulo() {
@@ -61,10 +65,11 @@ public class ModuloServiceImpl implements ModuloService {
 
     @Override
     public ModelAndView createNewModulo(ModuloModel moduloM) {
+       
         ModelAndView mo = new ModelAndView("html_utf8");
-    
         Modulo entidad = new Modulo();
         try {
+            
             entidad.setTitulo(moduloM.getTitulo());
             entidad.setDescripcion(moduloM.getDescripcion());
             
@@ -78,6 +83,7 @@ public class ModuloServiceImpl implements ModuloService {
                 System.out.println("Error al crear la Url de DropBox");
                 return mo;
             }
+             
              
              entidad = moduloDao.create(entidad);
              mo.setViewName("redirect:");
