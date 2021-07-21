@@ -45,7 +45,13 @@ public class CursoControler {
     public ModelAndView crearCurso(@ModelAttribute CursoModel CursoF){
         return cursoService.createNewCurso(CursoF);
     }
-
+    
+    @RequestMapping(value = "mediacursos.html", method = RequestMethod.GET)
+    public ModelAndView mediacursos() {
+        ModelAndView mo = new ModelAndView();
+        mo.setViewName("mediacursos");
+        return mo;
+    }
     
 
 }

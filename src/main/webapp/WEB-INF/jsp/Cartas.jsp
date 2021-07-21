@@ -42,18 +42,18 @@
         <a href="bienvenida.jsp"> <img src="${pageContext.request.contextPath}/resources/imagenes/def1.gif"  width="160px" height="90" > </a> 
         <nav>
             <ul class="nav__links">
-                <li><a href="perfilsem.jsp">Mi perfil </a></li>
-                <li><a href="ProgressBar.jsp">Mis cursos</a></li>
+                <li><a href="perfilsem.html">Mi perfil </a></li>
+                <li><a href="ProgressBar.html">Mis cursos</a></li>
             </ul>
         </nav> 
-        <a class="cta" href="index.jsp"><button>Cerrar sesión</button></a>
+        <a class="cta" href="index.html"><button>Cerrar sesión</button></a>
      </header>
     <!-- Titulo de la Página -->
     <h1>Diseño</h1>
     <!-- Contenedor de las cartas -->
     <div class="cards-container">
         <div class="k-card">
-            <a href="mediacursos.jsp"><img class="k-card-image" src="https://www.bufa.es/wp-content/themes/bufa/images/category/css.png" /></a>
+            <a href="mediacursos.html"><img class="k-card-image" src="https://www.bufa.es/wp-content/themes/bufa/images/category/css.png" /></a>
             <div class="k-card-body">
                 <h4>Nombre del curso</h4>
                 <h5>Nombre del profesor</h5>
@@ -62,7 +62,7 @@
         </div>
         <!-- Cartas -->
         <div class="k-card">
-            <a href="mediacursos.jsp"><img class="k-card-image" src="https://kmmx.mx/wp-content/uploads/2020/04/Curso-de-Prototipado-y-UX-UI-Design-con-Adobe-XD.png" /></a>
+            <a href="mediacursos.html"><img class="k-card-image" src="https://kmmx.mx/wp-content/uploads/2020/04/Curso-de-Prototipado-y-UX-UI-Design-con-Adobe-XD.png" /></a>
             <div class="k-card-body">
                 <h4>Nombre del curso</h4>
                 <h5>Nombre del profesor</h5>
@@ -71,7 +71,7 @@
         </div>
 
         <div class="k-card">
-            <a href="mediacursos.jsp"><img class="k-card-image" src="https://www.hebergementwebs.com/image/5d/5db92c0f548f0b0d064f5e7e7db9e5e0.png/28-tutoriales-de-photoshop-para-crear-un-logotipo-2019-1.png" /></a>
+            <a href="mediacursos.html"><img class="k-card-image" src="https://www.hebergementwebs.com/image/5d/5db92c0f548f0b0d064f5e7e7db9e5e0.png/28-tutoriales-de-photoshop-para-crear-un-logotipo-2019-1.png" /></a>
             <div class="k-card-body">
                 <h4>Nombre del curso</h4>
                 <h5>Nombre del profesor</h5>
@@ -81,7 +81,7 @@
         </div>
 
         <div class="k-card">
-            <a href="mediacursos.jsp"><img class="k-card-image" src="https://i.servimg.com/u/f11/18/18/55/83/indesi10.jpg" /></a>
+            <a href="mediacursos.html"><img class="k-card-image" src="https://i.servimg.com/u/f11/18/18/55/83/indesi10.jpg" /></a>
             <div class="k-card-body">
                 <h4>Nombre del curso</h4>
                 <h5>Nombre del profesor</h5>

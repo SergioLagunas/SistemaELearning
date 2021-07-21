@@ -38,14 +38,14 @@
     </div>
     <!-- Navigation-->
     <header>
-        <a href="bienvenida.jsp"> <img src="${pageContext.request.contextPath}/resources/imagenes/def1.gif"  width="160px" height="90" > </a> 
+        <a href="bienvenida.html"> <img src="${pageContext.request.contextPath}/resources/imagenes/def1.gif"  width="160px" height="90" > </a> 
         <nav>
             <ul class="nav__links">
-                <li><a href="perfilsem.jsp">Mi perfil </a></li>
-                <li><a href="ProgressBar.jsp">Mis cursos</a></li>
+                <li><a href="perfilsem.html">Mi perfil </a></li>
+                <li><a href="ProgressBar.html">Mis cursos</a></li>
             </ul>
         </nav> 
-        <a class="cta" href="index.jsp"><button>Cerrar sesión</button></a>
+        <a class="cta" href="index.html"><button>Cerrar sesión</button></a>
      </header>
 
     <div id="container">
@@ -88,34 +88,34 @@
                 <h2><font color="#fff">Áreas de Interés</font></h2>
             </div>
             <p id="Fila1">
-              <center>  <a href="Cartas.jsp" class="btn-neon">
+              <center>  <a href="Cartas.html" class="btn-neon">
                    
                      Marketing
                  </a>
                 
 
-                 <a href="Cartas.jsp" class="btn-neon">
+                 <a href="Cartas.html" class="btn-neon">
                    
                       Bases de datos 
                  </a>
-                 <a href="Cartas.jsp" class="btn-neon">
+                 <a href="Cartas.html" class="btn-neon">
                    
                      Diseño Web html
                  </a>
             </p></center>
             <p id="Fila2">
                <center>
-               <a href="Cartas.jsp" class="btn-neon">
+               <a href="Cartas.html" class="btn-neon">
                  
                     Javascript
                </a>
                  
 
-               <a href="Cartas.jsp" class="btn-neon">
+               <a href="Cartas.html" class="btn-neon">
                
                   Redes
              </a>
-             <a href="Cartas.jsp" class="btn-neon">
+             <a href="Cartas.html" class="btn-neon">
                
                Introduccion a seguridad informática
            </a>

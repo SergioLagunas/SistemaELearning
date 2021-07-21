@@ -46,9 +46,17 @@ Aca es donde indicaremos todos nuestros controladores y la paguina a la que esta
                 
                 <prop key="nuevocurso.html">cursoControler</prop>
                 <prop key="Cursos.html">cursoControler</prop>
+                <prop key="mediacursos.html">cursoControler</prop>
                 
                 <prop key="agregarmodulos.html">moduloControler</prop>
                 
+                
+                <prop key="Cartas.html">usuarioControler</prop>
+                <prop key="perfilsem.html">usuarioControler</prop>
+                <prop key="ProgressBar.html">usuarioControler</prop>
+                <prop key="perfiladmin.html">usuarioControler</prop>
+                <prop key="semilleros.html">usuarioControler</prop>
+                <prop key="administradores.html">usuarioControler</prop>
                 
             </props>
         </property>
@@ -67,6 +75,7 @@ Aca es donde indicaremos todos nuestros controladores y la paguina a la que esta
     <bean name="homeController" class="Elearning.controler.HomeController"/>
     <bean name="cursoControler" class="Elearning.controler.CursoControler"/>
     <bean name="moduloControler" class="Elearning.controler.ModuloControler"/>
+    <bean name="usuarioControler" class="Elearning.controler.UsuarioControler"/>
     
     
     <!--Validacion de Autorid y Repositories de Spring-->

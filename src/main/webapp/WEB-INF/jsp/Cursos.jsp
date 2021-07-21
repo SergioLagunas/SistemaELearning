@@ -37,17 +37,17 @@
         </div>
         <!-- Navigation-->
         <header>
-            <a href="bienvenida.jsp"> <img src="${pageContext.request.contextPath}/resources/imagenes/def1.gif"  width="160px" height="90" > </a> 
+            <a href="bienvenida.html"> <img src="${pageContext.request.contextPath}/resources/imagenes/def1.gif"  width="160px" height="90" > </a> 
             <nav>
                 <ul class="nav__links">
-                    <li><a href="perfiladmin.jsp">Mi perfil </a></li>
-                    <li><a href="administradores.jsp">Admin.</a></li>
-                    <li><a href="semilleros.jsp">Semilleros</a></li>
-                    <li><a href="Cursos.jsp">Cursos</a></li>
-                    <li><a href="nuevocurso.jsp">Agregar nuevo curso</a></li>
+                    <li><a href="perfiladmin.html">Mi perfil </a></li>
+                    <li><a href="administradores.html">Admin.</a></li>
+                    <li><a href="semilleros.html">Semilleros</a></li>
+                    <li><a href="Cursos.html">Cursos</a></li>
+                    <li><a href="nuevocurso.html">Agregar nuevo curso</a></li>
                 </ul>
             </nav> 
-            <a class="cta" href="index.jsp"><button>Cerrar sesión</button></a>
+            <a class="cta" href="index.html"><button>Cerrar sesión</button></a>
          </header>
 
         <div class="container">
