@@ -45,7 +45,7 @@
             </div>
             <br>
             <br>
-            <a href="index.jsp"><button id="BotonIS" class="primary">REGRESAR</button></a>
+            <button id="BotonIS" class="primary" onclick="location.href='index.html'">REGRESAR</button>
         </div>
         <!--Footer-->
 

@@ -7,7 +7,7 @@
        xmlns:p="http://www.springframework.org/schema/p"
        xmlns:tx="http://www.springframework.org/schema/tx"
 
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd  
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
         http://www.springframework.org/schema/mvc  http://www.springframework.org/schema/mvc/spring-mvc.xsd
         http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
@@ -27,18 +27,23 @@ Aca es donde indicaremos todos nuestros controladores y la paguina a la que esta
     <bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping"> 
         <property name="mappings"> 
             <props>
+                
                 <prop key="index.html">homeController</prop>
                 <prop key="validador.html">homeController</prop>
                 <prop key="admin.html">homeController</prop>
                 <prop key="error.html">homeController</prop>
                 <prop key="semillero.html">homeController</prop>
+                <prop key="bienvenida.html">homeController</prop>
                 <prop key="semilleroRegistro.html">homeController</prop>
                 <prop key="existe.html">homeController</prop>
                 <prop key="exito.html">homeController</prop>
                 <prop key="cerrarSession.html">homeController</prop>
                 <prop key="addCurso.html">cursoControler</prop>
                 <prop key="crearCurso.html">cursoControler</prop>
+               <prop key="regresa.html">homeController</prop>
                 <prop key="enviarCorreo.html">homeController</prop>
+                
+                
                 <prop key="nuevocurso.html">cursoControler</prop>
                 <prop key="Cursos.html">cursoControler</prop>
                 

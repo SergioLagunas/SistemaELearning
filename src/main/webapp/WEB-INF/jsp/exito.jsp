@@ -43,7 +43,7 @@
             <p><b>¡REGISTRO EXITOSO!</b></p>
             <br>
             <br>
-            <a href="index.jsp"><button id="BotonIS" class="primary">REGRESAR</button></a>
+            <button onclick="location.href='index.html'" id="BotonIS" class="primary">REGRESAR</button>
         </div>
         <!--Footer-->
         <br>

@@ -72,8 +72,7 @@ public class UsuarioServiceImpl implements UsuarioService {
 
     @Override
     public String createNewSemillero(HttpServletRequest request) {
-        
-        // Integer idUsuario = Integer.parseInt(request.getParameter("idUsuario"));
+      
         String nombre = request.getParameter("nombre");
         String aPaterno = request.getParameter("aPaterno");
         String aMaterno = request.getParameter("aMaterno");
@@ -82,7 +81,6 @@ public class UsuarioServiceImpl implements UsuarioService {
         String contrasena = request.getParameter("contrasena");
         String tUsuario = "Semillero";
         String rfc = request.getParameter("rfc");
-       // String[] cursos = request.getParameterValues("curso[]");
         
         Usuario usuarioC = new Usuario();
         usuarioC.setEmail(email);
@@ -122,8 +120,7 @@ public class UsuarioServiceImpl implements UsuarioService {
     
      @Override
     public String createNewAdminsitrador(HttpServletRequest request) {
-        
-          // Integer idUsuario = Integer.parseInt(request.getParameter("idUsuario"));
+
         String nombre = request.getParameter("nombre");
         String aPaterno = request.getParameter("aPaterno");
         String aMaterno = request.getParameter("aMaterno");
@@ -142,7 +139,7 @@ public class UsuarioServiceImpl implements UsuarioService {
         }
 
         Usuario usuario = new Usuario();
-       // usuario.setIdUsuario(idUsuario);
+
         usuario.setNombre(nombre);
         usuario.setaPaterno(aPaterno);
         usuario.setaMaterno(aMaterno);
@@ -239,23 +236,10 @@ public class UsuarioServiceImpl implements UsuarioService {
         return data;
         
     }
-
-    @Override
-    public String deleteUsusario(Map<String, String> requestParam) {
-          Integer idUsuario=Integer.parseInt(requestParam.get("IdUsuario"));
-          Usuario elimUsuario = new Usuario();
-          elimUsuario.setIdUsuario(idUsuario);
-          boolean flag=usuarioDao.delete(elimUsuario);
-         if(flag){
-             return  "{\"valid\"}";
-         }
-         return "{\"valid\"}";
-    }
-
+    
     @Override
     public boolean recuperarContraseña(HttpServletRequest request) {
         ModelAndView mo = new ModelAndView ();
-        
         String correo = request.getParameter("email");
         Usuario usu = new Usuario();
         usu = usuarioDao.getEmail(correo);
@@ -269,8 +253,8 @@ public class UsuarioServiceImpl implements UsuarioService {
 
                 Session session = Session.getDefaultInstance(props);
 
-                String correoRemitente = "chefoherbri@gmail.com";
-                String passwordRemitente = "031098libra";
+                String correoRemitente = "b1soft.semilleros@gmail.com";
+                String passwordRemitente = "b1soft2021";
                 String correoReceptor = correo;
                 String asunto = "Recuperacion de Contraseña";
                 String mensaje ="Hola <b>" + usu.getNombre() + " " + usu.getaPaterno() + " " + usu.getaMaterno() + "</b> tu contraseña registrada es la siguiente: <b> <u>" + usu.getContrasena() + "</u> </b>";
@@ -306,8 +290,8 @@ public class UsuarioServiceImpl implements UsuarioService {
                 System.out.println("La contraseña del usuario: " + usu.getNombre() + " es " + usu.getContrasena());
                 System.out.println("Eviar la contraseña: " + usu.getContrasena());
                 System.out.println("Se envio la contraseña a tu correo");
-                
-                
+
+                return true;
                 
             } catch (AddressException ex) {
                 Logger.getLogger(UsuarioServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
@@ -318,11 +302,21 @@ public class UsuarioServiceImpl implements UsuarioService {
 
         } else {
             System.out.println("Este correo no ha sido registrado");
+            return false;
         }
-        return true;
+       return true;
     }
-    
-    
 
-   
+    @Override
+    public String deleteUsusario(Map<String, String> requestParam) {
+          Integer idUsuario=Integer.parseInt(requestParam.get("IdUsuario"));
+          Usuario elimUsuario = new Usuario();
+          elimUsuario.setIdUsuario(idUsuario);
+          boolean flag=usuarioDao.delete(elimUsuario);
+         if(flag){
+             return  "{\"valid\"}";
+         }
+         return "{\"valid\"}";
+    }
+
 }

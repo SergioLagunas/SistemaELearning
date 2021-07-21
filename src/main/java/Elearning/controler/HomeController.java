@@ -11,7 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.bind.annotation.RestController;
+
 
 
 @Controller
@@ -21,7 +21,7 @@ public class HomeController {
     @Autowired
     private UsuarioService usuarioService;
     
-    @RequestMapping(value = "index.html", method = RequestMethod.POST)
+    @RequestMapping(value = "index.html", method = RequestMethod.GET)
     public ModelAndView home(){
         ModelAndView mo = new ModelAndView();
         mo.setViewName("index");
@@ -32,17 +32,11 @@ public class HomeController {
     @RequestMapping(value="semilleroRegistro.html",method = RequestMethod.POST)
     public ModelAndView semilleroRegistro(HttpServletRequest request, HttpServletResponse response){
          ModelAndView mo = new ModelAndView();
-        /*if(usuarioService.createNewSemillero(request).equals("existente")){
-            System.out.println("");
-            System.out.println("Correo ya registrado");
-            mo.setViewName("error");
-        }*/
         switch (usuarioService.createNewSemillero(request)) {
             case "existente":
                 mo.setViewName("error");
                 break;
             default:
-                //mo.addObject("error", "Contraseña o Usuario Incorrecto");
                 mo.setViewName("exito");
                 break;
         }
@@ -62,7 +56,6 @@ public class HomeController {
                 mo.setViewName("admin");
                 break;
             default:
-                //mo.addObject("error", "Contraseña o Usuario Incorrecto");
                 mo.setViewName("error");
                 break;
         }
@@ -112,25 +105,17 @@ public class HomeController {
     public ModelAndView noAutorizado(HttpServletRequest request, HttpServletResponse response, FilterChain chain ){
          ModelAndView mo = new ModelAndView();
          HttpSession session = request.getSession();
-         
-         
          return mo;
     }
-     
+    
     @RequestMapping(name = "enviarCorreo.html",method = RequestMethod.GET)
-    public ModelAndView enviarCorreo(HttpServletRequest request, HttpServletResponse response){
+    public ModelAndView enviarCorreo(HttpServletRequest request,HttpServletResponse response){
         ModelAndView mo = new ModelAndView();
-        
         if(usuarioService.recuperarContraseña(request)){
-            System.out.println("Se envio el correo");
             mo.setViewName("index");
-            
         } else {
-            System.out.println("No se envio el correo");
-            
+            mo.setViewName("error");           
         }       
         return mo;
     }
-    
-   
 }
