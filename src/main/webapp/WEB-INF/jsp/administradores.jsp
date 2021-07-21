@@ -92,10 +92,6 @@
                             key: "genero"
                         },
                         {
-                            text: "Tusuario",
-                            key: "tusuario"
-                        },
-                        {
                             text: "RFC",
                             key: "rfc"
                         },
@@ -109,7 +105,6 @@
                             correo:'ingresa tu e-mail',
                             contraseña:'ingresa tu contraseña',
                             genero:'indica tu genero',
-                            tusuario:'indica ',
                             rfc:'indica el rfc',
                         },
                        
@@ -132,9 +127,6 @@
                             return '<input type="password" class="form-control" />';
                         }
                         if (columnKey == "genero") {
-                            return '<input type="text" class="form-control" />';
-                        }
-                        if (columnKey == "tusuario") {
                             return '<input type="text" class="form-control" />';
                         }
                         if (columnKey == "rfc") {
