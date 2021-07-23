@@ -21,6 +21,7 @@ public class HomeController {
     @Autowired
     private UsuarioService usuarioService;
     
+    //Este contrlador para nada debe cambiar de Metodo DEVER SER SI O SI GET
     @RequestMapping(value = "index.html", method = RequestMethod.GET)
     public ModelAndView home(){
         ModelAndView mo = new ModelAndView();
@@ -44,7 +45,6 @@ public class HomeController {
         
     }
     
-     
     @RequestMapping(name = "validador.html",method = RequestMethod.POST)
     public ModelAndView validador(HttpServletRequest request, HttpServletResponse response){
         ModelAndView mo = new ModelAndView();
@@ -61,7 +61,39 @@ public class HomeController {
         }
          return mo;
     }
-  
+   
+   
+    @RequestMapping(name = "enviarCorreo.html",method = RequestMethod.GET)
+    public ModelAndView enviarCorreo(HttpServletRequest request,HttpServletResponse response){
+        ModelAndView mo = new ModelAndView();
+        if(usuarioService.recuperarContraseña(request)){
+            mo.setViewName("index");
+            System.out.println("Correo Emviado");
+        } else {
+            mo.setViewName("error");
+            System.out.println("Correo no Emviado");
+        }       
+        return mo;
+    } 
+    
+     //Controlador para cerrar session
+    @RequestMapping(name = "cerrarSession.html")
+     public ModelAndView cerrarSession(HttpServletRequest request){
+        ModelAndView mo = new ModelAndView();
+        HttpSession session = request.getSession();
+        session.invalidate();
+        mo.setViewName("index");
+        return mo;
+    }
+    //Controlador para denegar acceso a usuarios de paginas de adminsitrador 
+    @RequestMapping(name="noAutorizado.html")
+    public ModelAndView noAutorizado(HttpServletRequest request, HttpServletResponse response, FilterChain chain ){
+         ModelAndView mo = new ModelAndView();
+         HttpSession session = request.getSession();
+         return mo;
+    }
+    
+    
     @RequestMapping("error.html")
     public ModelAndView error(){
         ModelAndView mo = new ModelAndView();
@@ -87,35 +119,6 @@ public class HomeController {
      public ModelAndView semillero(){
          ModelAndView mo = new ModelAndView();
         mo.setViewName("bienvenida");
-        return mo;
-    }
-     
-     
-     //Controlador para cerrar session 
-    @RequestMapping(name = "cerrarSession.html")
-     public ModelAndView cerrarSession(HttpServletRequest request){
-        ModelAndView mo = new ModelAndView();
-        HttpSession session = request.getSession();
-        session.invalidate();
-        mo.setViewName("index");
-        return mo;
-    }
-    //Controlador para denegar acceso a usuarios de paguinas de adminsitrador 
-    @RequestMapping(name="noAutorizado.html")
-    public ModelAndView noAutorizado(HttpServletRequest request, HttpServletResponse response, FilterChain chain ){
-         ModelAndView mo = new ModelAndView();
-         HttpSession session = request.getSession();
-         return mo;
-    }
-    
-    @RequestMapping(name = "enviarCorreo.html",method = RequestMethod.GET)
-    public ModelAndView enviarCorreo(HttpServletRequest request,HttpServletResponse response){
-        ModelAndView mo = new ModelAndView();
-        if(usuarioService.recuperarContraseña(request)){
-            mo.setViewName("index");
-        } else {
-            mo.setViewName("error");           
-        }       
         return mo;
     }
 }

@@ -9,6 +9,7 @@ import Elearning.dao.CursoDao;
 import Elearning.dao.ModuloDao;
 import Elearning.dto.CursoDto;
 import Elearning.modelo.Curso;
+import Elearning.modelo.Modulo;
 import Elearning.modelo.formModel.CursoModel;
 import Elearning.util.JavaDropBox;
 import com.dropbox.core.DbxException;
@@ -21,9 +22,12 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Service("CursoService")
 public class CursoServiceImpl implements CursoService {
+    
+    static int elcurso=0;
 
     @Autowired
     private CursoDao cursoDao;
@@ -60,36 +64,32 @@ public class CursoServiceImpl implements CursoService {
     }
 
     @Override
-    public ModelAndView createNewCurso(CursoModel CursoF) {
-        ModelAndView mo = new ModelAndView("html_utf8");
-
+    public String createNewCurso(CursoModel CursoF) {
         try {
             Curso entidad = new Curso();
             entidad.setNombre(CursoF.getNombre());
             entidad.setDescripcion(CursoF.getDescripcion());
             entidad.setProgreso(0);
             entidad.setCategoria(CursoF.getCategoria());
-
+            
             String enlace = guardarDropBox(CursoF);
             if (!enlace.equals("")) {
                 entidad.setCaratula(enlace);
                 entidad = cursoDao.create(entidad);
-                mo.setViewName("agregarmodulos");
+                elcurso = entidad.getIdCurso();
                 System.out.println("La Imagen se Guardo correctamente y ya esta creada la url de DropBox");
+                return "redirect:/añadirmodulos.html";
             } else {
-                mo.setViewName("error");
                 System.out.println("Error al crear la Url de DropBox");
-                return mo;
+                return "redirect:/error.html";
+
             }
-           // entidad = cursoDao.create(entidad);
-           // mo.setViewName("agregarmodulos");
         } catch (Exception e) {
             e.printStackTrace();
             Logger.getLogger(CursoServiceImpl.class.getName()).log(Level.SEVERE, null, e);
-            mo.setViewName("");
+            return "redirect:/error.html";
         }
-
-        return mo;
+        
     }
 
     @Override
@@ -140,11 +140,9 @@ public class CursoServiceImpl implements CursoService {
         String caratula = CursoF.getCaratula() + "_Imagen" + getExtention(CursoF.getCaratula().getOriginalFilename());
         jv.uploadToDropbox(CursoF.getCaratula().getBytes(), "/" + caratula);
         String urlImagen = jv.createURL(caratula);
-
         if (!urlImagen.equals("")) {
             enlace = urlImagen;
         }
-
         return enlace;
     }
 

@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -32,7 +33,7 @@ public class Modulo implements Serializable {
     private String url;
 
    
-    @ManyToOne(cascade = {CascadeType.ALL,CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH})
+    @ManyToOne(fetch = FetchType.LAZY,cascade = {CascadeType.ALL,CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH})
     @JoinColumn(name="idCurso")
     private Curso idCurso;
 
@@ -44,8 +45,6 @@ public class Modulo implements Serializable {
         this.descripcion = descripcion;
         this.url = url;
     }
-
-    
 
     public String getUrl() {
         return url;

@@ -14,20 +14,14 @@
         http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd
 ">
     
-    
-    <!--<bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping"/>
-    
-Aca es donde indicaremos todos nuestros controladores y la paguina a la que esta direccionada
-    
-    <mvc:annotation-driven />  <mvc:default-servlet-handler/>-->
-    
-     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"></bean>
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"></bean>
    
    
     <bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping"> 
         <property name="mappings"> 
             <props>
                 
+                <!--Mapeo del Login-->
                 <prop key="index.html">homeController</prop>
                 <prop key="validador.html">homeController</prop>
                 <prop key="admin.html">homeController</prop>
@@ -37,20 +31,24 @@ Aca es donde indicaremos todos nuestros controladores y la paguina a la que esta
                 <prop key="semilleroRegistro.html">homeController</prop>
                 <prop key="existe.html">homeController</prop>
                 <prop key="exito.html">homeController</prop>
-                <prop key="cerrarSession.html">homeController</prop>
-                <prop key="addCurso.html">cursoControler</prop>
-                <prop key="crearCurso.html">cursoControler</prop>
-               <prop key="regresa.html">homeController</prop>
+                <prop key="cerrarSession.html">homeController</prop>       
+                <prop key="regresa.html">homeController</prop>
                 <prop key="enviarCorreo.html">homeController</prop>
                 
                 
+                <!--Mapeo de los Cursos--> 
+                <prop key="addCurso.html">cursoControler</prop>
+                <prop key="crearCurso.html">cursoControler</prop>
+                <prop key="enviarCorreo.html">homeController</prop>
                 <prop key="nuevocurso.html">cursoControler</prop>
                 <prop key="Cursos.html">cursoControler</prop>
                 <prop key="mediacursos.html">cursoControler</prop>
                 
-                <prop key="agregarmodulos.html">moduloControler</prop>
+                <!--Mapeo de los Modulos-->
+                <prop key="añadirmodulos.html">moduloControler</prop>
+                <prop key="addModulo.html">moduloControler</prop>
                 
-                
+                <!--Mapeo del administrador-->
                 <prop key="Cartas.html">usuarioControler</prop>
                 <prop key="perfilsem.html">usuarioControler</prop>
                 <prop key="ProgressBar.html">usuarioControler</prop>
@@ -76,32 +74,11 @@ Aca es donde indicaremos todos nuestros controladores y la paguina a la que esta
     <bean name="cursoControler" class="Elearning.controler.CursoControler"/>
     <bean name="moduloControler" class="Elearning.controler.ModuloControler"/>
     <bean name="usuarioControler" class="Elearning.controler.UsuarioControler"/>
-    
-    
+
     <!--Validacion de Autorid y Repositories de Spring-->
     <context:annotation-config />
     <context:component-scan base-package="Elearning.controler"/>
     <context:component-scan base-package="Elearning.dao.impl"/>
     <context:component-scan base-package="Elearning.service.impl"/>
-  
-
-
-
-   
-    <!--  
-<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"></bean>
-
-    <mvc:annotation-driven />  
-    <mvc:default-servlet-handler/>
-    <context:component-scan base-package="Elearning.">
-        <context:include-filter type="aspectj" expression="Elearning.*" />
-    </context:component-scan>
-    
-  
-    Contextos para que funcionen las anotaciones de Spring    
-  
-    <mvc:annotation-driven /> 
-    <mvc:default-servlet-handler/>
-    <context:annotation-config/>-->
    
 </beans>

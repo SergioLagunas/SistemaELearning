@@ -24,6 +24,7 @@ public class UsuarioControler {
         return mo;   
     }
     
+    
     @RequestMapping(value = "perfilsem.html", method = RequestMethod.GET)
     public ModelAndView perfilsem(){
         ModelAndView mo = new ModelAndView();

@@ -9,6 +9,10 @@ public class ModuloModel {
     private String descripcion;
     private MultipartFile url;
 
+    public ModuloModel() {
+    }
+
+
     public ModuloModel(String tirulo, String descripcion, MultipartFile url) {
         this.titulo = tirulo;
         this.descripcion = descripcion;

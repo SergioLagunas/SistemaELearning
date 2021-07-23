@@ -4,6 +4,7 @@ import Elearning.dao.CursoDao;
 import Elearning.dao.ModuloDao;
 import Elearning.modelo.Modulo;
 import Elearning.dto.ModuloDto;
+import Elearning.modelo.Curso;
 import Elearning.modelo.formModel.CursoModel;
 import Elearning.modelo.formModel.ModuloModel;
 import Elearning.service.ModuloService;
@@ -21,17 +22,22 @@ import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.enterprise.inject.Model;
+import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
  *
  * @author sergi
  */
+
+@Service("ModuloService")
 public class ModuloServiceImpl implements ModuloService {
 
     @Autowired
     private ModuloDao moduloDao;
-    
+
     @Autowired
     private CursoDao cursoDao;
 
@@ -65,32 +71,29 @@ public class ModuloServiceImpl implements ModuloService {
 
     @Override
     public ModelAndView createNewModulo(ModuloModel moduloM) {
-       
+
         ModelAndView mo = new ModelAndView("html_utf8");
+        int curso= CursoServiceImpl.elcurso;
         Modulo entidad = new Modulo();
         try {
-            
             entidad.setTitulo(moduloM.getTitulo());
             entidad.setDescripcion(moduloM.getDescripcion());
-            
             String enlace = guardarDropBox(moduloM);
-            
-             if(!enlace.equals("")){
+
+            if (!enlace.equals("")) {
                 entidad.setUrl(enlace);
                 System.out.println("El video se Guardo correctamente y ya esta creada la url de DropBox");
-            }else{
+                entidad = moduloDao.create(entidad);
+                mo.setViewName("redirect:");
+            } else {
                 mo.setViewName("error");
                 System.out.println("Error al crear la Url de DropBox");
                 return mo;
             }
-             
-             
-             entidad = moduloDao.create(entidad);
-             mo.setViewName("redirect:");
         } catch (Exception e) {
             e.printStackTrace();
-            Logger.getLogger(ModuloServiceImpl.class.getName()).log(Level.SEVERE, null,e);
-            mo.setViewName("");
+            Logger.getLogger(ModuloServiceImpl.class.getName()).log(Level.SEVERE, null, e);
+            mo.setViewName("error");
         }
         return mo;
     }
@@ -133,7 +136,7 @@ public class ModuloServiceImpl implements ModuloService {
     private String guardarDropBox(ModuloModel moduloM) throws IOException, FileNotFoundException, DbxException {
         JavaDropBox jv = new JavaDropBox();
         String enlace = "";
-        String caratula = moduloM.getUrl()+ "_Video" + getExtention(moduloM.getUrl().getOriginalFilename());
+        String caratula = moduloM.getUrl() + "_Video" + getExtention(moduloM.getUrl().getOriginalFilename());
         jv.uploadToDropbox(moduloM.getUrl().getBytes(), "/" + caratula);
         String urlVideo = jv.createURL(caratula);
 

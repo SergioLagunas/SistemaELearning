@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -34,18 +35,18 @@ public class CursoControler {
         return mo;
     }
     
+    @RequestMapping(value="crearCurso.html",method = RequestMethod.POST)
+    public String crearCurso(@ModelAttribute CursoModel CursoF){
+        return cursoService.createNewCurso(CursoF);
+    }
+    
     @RequestMapping(value = "Cursos.html", method = RequestMethod.GET)
     public ModelAndView Cursos() {
         ModelAndView mo = new ModelAndView();
         mo.setViewName("Cursos");
         return mo;
     }
-    
-    @RequestMapping(value="crearCurso.html",method = RequestMethod.POST)
-    public ModelAndView crearCurso(@ModelAttribute CursoModel CursoF){
-        return cursoService.createNewCurso(CursoF);
-    }
-    
+
     @RequestMapping(value = "mediacursos.html", method = RequestMethod.GET)
     public ModelAndView mediacursos() {
         ModelAndView mo = new ModelAndView();

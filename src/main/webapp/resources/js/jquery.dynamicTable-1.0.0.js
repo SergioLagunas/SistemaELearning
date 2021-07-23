@@ -7,7 +7,7 @@
         var settings = $.extend({}, {
             showActionColumn: true,
             buttons: {
-                addButton: '<input type="button" value="Agregar" class="btn btn-warning "style="border-radius: 15px;" />',
+                addButton: '<input type="submit" value="Agregar" class="btn btn-warning "style="border-radius: 15px;" />',
                 cancelButton: '<input type="button" value="Cancelar" class="btn btn-primary" style="border-radius: 15px;"/>',
                 deleteButton: '<input type="button" value="Eliminar" class="btn btn-danger" style="border-radius: 15px;"/>',
                 editButton: '<input type="button" value="Editar" class="btn btn-success"style="border-radius: 15px;" />',
@@ -26,7 +26,7 @@
                     cancelButton: $(tableCell).find('*[data-codeapi-cancelcommand]'),
                     deleteButton: $(tableCell).find('*[data-codeapi-deletecommand]'),
                     editButton: $(tableCell).find('*[data-codeapi-editcommand]'),
-                  
+
                     saveButton: $(tableCell).find('*[data-codeapi-savecommand]')
                 };
 
