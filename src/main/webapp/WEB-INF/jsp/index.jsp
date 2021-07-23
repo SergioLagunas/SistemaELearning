@@ -1,9 +1,3 @@
-<%-- 
-    Document   : index
-    Created on : 8/07/2021, 06:07:20 PM
-    Author     : sergi
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
@@ -36,7 +30,7 @@
         <div class="form">
             <!-- contenedor (fondo en blanco del login) -->
             <div class="contenedor"> </div>
-            <form id="login" action="validador.html" method="GET"></form>
+            <form id="login" action="validador.html" method="POST"></form>
             <!-- MODAL CREAR CUENTA -->
             <div id="EditDialog"></div>
             <div id="dialogUsuarios"></div>
@@ -63,6 +57,8 @@
     <div id="example1"></div>
 </div>
 <script>
+    
+    //No CAMBIAR LOS FIELD
     //formulario index
     $(document).ready(function () {
 
@@ -70,16 +66,16 @@
                 orientation: "vertical",
                 items: [
                 {
-                        field: "Correo",
+                        field: "email",
                         label: "Correo:",
                         validation: { required: {message:"Ingresa tu correo electrónico"}, email:{message:"Ingresa un correo electrónico válido"}}
                     },
                     {
-                        field: "Contrasena",
+                        field: "contrasena",
                         label: "Contraseña:",
                         validation: { required: {message:"Ingresa tu contraseña"}, Contrasena:{message:"Ingresa tu contraseña"} },
                         editor: function (container, options) {
-                            container.append($("<input type='password' class='k-textbox k-valid' id='password' name='Contraseña' required='Ingresa tu contraseña' autocomplete='off' aria-labelledby='Password-form-label' data-bind='value:Password' aria-describedby='Password-form-hint' >"));
+                            container.append($("<input type='password' class='k-textbox k-valid' id='contrasena' name='contrasena' required='Ingresa tu contraseña' autocomplete='off' aria-labelledby='Password-form-label' data-bind='value:Password' aria-describedby='Password-form-hint' >"));
                         }
                     }
                 ],
@@ -91,7 +87,7 @@
     function onOpenformulario() {
         var dialog = $('#EditDialog');
         dialog.empty();
-        dialog.append("<form id='exampleform' action='semilleroRegistro.html' method='GET'></form>");
+        dialog.append("<form id='exampleform' action='semilleroRegistro.html' method='POST'></form>");
         var form = $('#exampleform');
         form.kendoForm({
             layout: "grid",
@@ -107,17 +103,17 @@
                     grid: {cols: 1, gutter: 10},
                     items: [
                         {
-                            field: "Nombre",
+                            field: "nombre",
                             label: "Nombre:",
                             validation: {required: {message:"Ingresa tu nombre"}, "Nombre":{message:"Ingresa solo letras"}, pattern:"^[A-Za-z]+$"}
                         },
                         {
-                            field: "AMaterno",
+                            field: "aMaterno",
                             label: "Apellido materno:",
                             validation: {required: {message:"Ingresa tu apellido materno"}, pattern:"^[A-Za-z]+$"}
                         },
                         {
-                            field: "Correo",
+                            field: "email",
                             label: "Correo:",
                             validation: {required: {message:"Ingresa un correo electrónico"}, email:{message:"Ingresa un correo electrónico válido"}}
                         },
@@ -126,7 +122,7 @@
                             label: "Confirmar contraseña:",
                             validation: {required: {message:"Confirma tu contraseña"}},
                             editor: function (container, options) {
-                                container.append($("<input type='password' class='k-textbox k-valid' id='Password' name='Contraseña' title='Password' required='required' autocomplete='off' aria-labelledby='Password-form-label' data-bind='value:Password' aria-describedby='Password-form-hint'>"));
+                                container.append($("<input type='password' class='k-textbox k-valid' id='Password' name='contrasena' title='Password' required='required' autocomplete='off' aria-labelledby='Password-form-label' data-bind='value:Password' aria-describedby='Password-form-hint'>"));
                             }
                         }
                     ]
@@ -138,13 +134,13 @@
                     grid: {cols: 2, gutter: 10},
                     items: [
                         {
-                            field: "APaterno",
+                            field: "aPaterno",
                             label: "Apellido paterno:",
                             colSpan: 2,
                             validation: {required: {message:"Ingresa tu apellido paterno"}, APaterno:{message:"Ingresa solo letras"}, pattern:"^[A-Za-z]+$"}
                         },
                         {
-                            field: "Genero",
+                            field: "genero",
                             editor: "DropDownList",
                             label: "Genero",
                             validation: {required: {message:"Elige una opción"}},
@@ -160,16 +156,16 @@
                             }
                         },
                         {
-                            field: "Contrasena",
+                            field: "contrasena",
                             label: "Contraseña:",
                             colSpan: 2,
                             validation: {required: {message:"Ingresa una contraseña"}},
                             editor: function (container, options) {
-                                container.append($("<input type='password' class='k-textbox k-valid' id='Password1' name='Contraseña' title='Password' required='required' autocomplete='off' aria-labelledby='Password-form-label' data-bind='value:Password' aria-describedby='Password-form-hint'>"));
+                                container.append($("<input type='password' class='k-textbox k-valid' id='Password1' name='contrasena' title='Password' required='required' autocomplete='off' aria-labelledby='Password-form-label' data-bind='value:Password' aria-describedby='Password-form-hint'>"));
                             }
                         },
                         {
-                            field: "RFC",
+                            field: "rfc",
                             label: "RFC:",
                             validation: {required: {message:"Ingresa tu RFC"}, "RFC":{message:"Ingresa de 10 a 13 carácteres"}, maxlength:13, pattern:"^[A-Za-z0-9]+$"},
                             colSpan: 2
