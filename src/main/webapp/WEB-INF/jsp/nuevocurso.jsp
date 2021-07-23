@@ -41,15 +41,15 @@
     <!-- Navigation-->
     <header>
         <a href="bienvenida.html"> <img src="${pageContext.request.contextPath}/resources/imagenes/def1.gif"  width="160px" height="90" > </a> 
-        <nav>
-            <ul class="nav__links">
-                <li><a href="perfiladmin.html">Mi perfil </a></li>
-                <li><a href="administradores.html">Admin.</a></li>
-                <li><a href="semilleros.html">Semilleros</a></li>
-                <li><a href="Cursos.html">Cursos</a></li>
-                <li><a href="nuevocurso.html">Agregar nuevo curso</a></li>
-            </ul>
-        </nav> 
+            <nav>
+                <ul class="nav__links">
+                    <li><a href="perfiladmin.html">Mi perfil </a></li>
+                    <li><a href="nuevoadmin.html">Admin.</a></li>
+                    <li><a href="nuevosemillero.html">Semilleros</a></li>
+                    <li><a href="listadodecursos.html">Cursos</a></li>
+                    <li><a href="nuevocurso.html">Agregar nuevo curso</a></li>
+                </ul>
+            </nav> 
         <a class="cta" href="index.html"><button>Cerrar sesión</button></a>
      </header>
     
@@ -80,7 +80,7 @@
 
                 <li>
                     <button class="k-button" type="submit">Guardar</button>&nbsp;
-                  <a href="agregarmodulos.html"> <button class="k-button k-primary">Continuar</button> </a> 
+                  <a href="añadirmodulos.html"> <button class="k-button k-primary">Continuar</button> </a> 
                 </li>
                 <br>
                 <br>
