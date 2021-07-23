@@ -61,6 +61,26 @@ public class Usuario implements Serializable {
     @OneToMany(mappedBy = "Usuario", cascade={CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
     private List<Curso> cursos;
      */
+    
+    //Comienza @ManyToMany
+    
+    @ManyToMany
+    @JoinTable(name = "Usuario_Curso",
+            joinColumns = {
+                @JoinColumn(name = "idUsuario")},
+            inverseJoinColumns = {
+                @JoinColumn(name = "idCurso")})
+    private Set<Curso> cursos;
+
+    public Set<Curso> getCursos() {
+        return cursos;
+    }
+
+    public void setCursos(Set<Curso> cursos) {
+        this.cursos = cursos;
+    }
+    
+    
     public Usuario() {
     }
 

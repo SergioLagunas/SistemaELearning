@@ -48,17 +48,17 @@ public class UsuarioControler {
         return mo;   
     }
     
-    @RequestMapping(value = "administradores.html", method = RequestMethod.GET)
-    public ModelAndView administradores(){
+    @RequestMapping(value = "nuevoadmin.html", method = RequestMethod.GET)
+    public ModelAndView nuevoadmin(){
         ModelAndView mo = new ModelAndView();
-        mo.setViewName("administradores");
+        mo.setViewName("nuevoadmin");
         return mo;   
     }
     
-    @RequestMapping(value = "semilleros.html", method = RequestMethod.GET)
-    public ModelAndView semilleros(){
+    @RequestMapping(value = "nuevosemillero.html", method = RequestMethod.GET)
+    public ModelAndView nuevosemillero(){
         ModelAndView mo = new ModelAndView();
-        mo.setViewName("semilleros");
+        mo.setViewName("nuevosemillero");
         return mo;   
     }
 }

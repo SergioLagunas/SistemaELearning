@@ -13,4 +13,5 @@ public interface UsuarioDao {
     public boolean delete(final Usuario elUsuario);
     public Usuario loginUsuario(Usuario elUsuario);
     public Usuario getEmail(String email);
+    
 }

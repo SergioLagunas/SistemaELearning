@@ -27,10 +27,10 @@ public class ModuloControler {
     @Autowired
     private ModuloService moduloService;
     
-  /*  @RequestMapping(value = "agregarmodulos.html", method = RequestMethod.GET)
-    public ModelAndView agregarmodulos() {
+  /*  @RequestMapping(value = "añadirmodulos.html", method = RequestMethod.GET)
+    public ModelAndView añadirmodulos() {
         ModelAndView mo = new ModelAndView();
-        mo.setViewName("agregarmodulos");
+        mo.setViewName("añadirmodulos");
         return mo;
     }
     */

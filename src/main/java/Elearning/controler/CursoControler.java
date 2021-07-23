@@ -40,10 +40,10 @@ public class CursoControler {
         return cursoService.createNewCurso(CursoF);
     }
     
-    @RequestMapping(value = "Cursos.html", method = RequestMethod.GET)
-    public ModelAndView Cursos() {
+    @RequestMapping(value = "listadodecursos.html", method = RequestMethod.GET)
+    public ModelAndView listadodecursos() {
         ModelAndView mo = new ModelAndView();
-        mo.setViewName("Cursos");
+        mo.setViewName("listadodecursos");
         return mo;
     }
 
