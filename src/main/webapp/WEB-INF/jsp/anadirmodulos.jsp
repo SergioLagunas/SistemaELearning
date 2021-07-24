@@ -185,7 +185,7 @@
         <br>
         <br>
 
-        <form:form onsubmit="event.preventDefault();onSubmit();" autocomplete="off" id="form" action="addModulo.html" method="POST" enctype="multipart/form-data">
+        <form onsubmit="event.preventDefault();onSubmit();" autocomplete="off" id="form" action="addModulo.html" method="POST" enctype="multipart/form-data">
             <center>
                 <div class="tablita">
                     <table class="tabla" id="tabla">
@@ -198,7 +198,7 @@
                             <label for="arch"></label> <input type="file" id="arch" required name="url" accept=".mp4,.avi,.wmv">
                             <br>
                             <br>
-                            <input class="submit" type="submit" value="Guardar">
+                            <input type="submit" value="Guardar">
                         </div>
                         <br/>
                         </tbody>
@@ -214,6 +214,7 @@
                     </table>
                 </div>
             </center>
+            </form>
             <br/>
             <script>
                 var Fila = null
@@ -272,7 +273,7 @@
 
             </script>
 
-        </form:form>
+        
         <br/>
         <br/>
     </div>

@@ -27,6 +27,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @Service("CursoService")
 public class CursoServiceImpl implements CursoService {
     
+    //Aca almacenaremos el id del curso para que se puede hacer la relacion con la otra tabla 
     static int elcurso=0;
 
     @Autowired
@@ -76,9 +77,11 @@ public class CursoServiceImpl implements CursoService {
             if (!enlace.equals("")) {
                 entidad.setCaratula(enlace);
                 entidad = cursoDao.create(entidad);
+                
+                //Almaceno en un variable global el id del curso que se creo en ese momento 
                 elcurso = entidad.getIdCurso();
                 System.out.println("La Imagen se Guardo correctamente y ya esta creada la url de DropBox");
-                return "redirect:/añadirmodulos.html";
+                return "redirect:/solopruebasModulos.html";
             } else {
                 System.out.println("Error al crear la Url de DropBox");
                 return "redirect:/error.html";

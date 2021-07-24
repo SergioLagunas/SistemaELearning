@@ -31,7 +31,6 @@ import org.springframework.web.servlet.ModelAndView;
  *
  * @author sergi
  */
-
 @Service("ModuloService")
 public class ModuloServiceImpl implements ModuloService {
 
@@ -71,10 +70,16 @@ public class ModuloServiceImpl implements ModuloService {
 
     @Override
     public ModelAndView createNewModulo(ModuloModel moduloM) {
-
         ModelAndView mo = new ModelAndView("html_utf8");
-        int curso= CursoServiceImpl.elcurso;
+
+        //Recibo el parametro del curso que se creo anteriormente 
+        int curso = CursoServiceImpl.elcurso;
+        Curso cursoentidad = new Curso();
         Modulo entidad = new Modulo();
+
+        //Aca busco por el id el curso que se creo con anteriormente
+        cursoentidad = cursoDao.getCurso(curso);
+
         try {
             entidad.setTitulo(moduloM.getTitulo());
             entidad.setDescripcion(moduloM.getDescripcion());
@@ -83,10 +88,15 @@ public class ModuloServiceImpl implements ModuloService {
             if (!enlace.equals("")) {
                 entidad.setUrl(enlace);
                 System.out.println("El video se Guardo correctamente y ya esta creada la url de DropBox");
+
+//Aca es donde estoy agregando los modulos a el array de Curso creando la relacion en las tablas y agregando 
+//cantidad n de videos al curso 
+                cursoentidad.addModulos(entidad);
+
                 entidad = moduloDao.create(entidad);
-                mo.setViewName("redirect:");
+                mo.setViewName("redirect:/solopruebasModulos.html");
             } else {
-                mo.setViewName("error");
+                mo.setViewName("error.html");
                 System.out.println("Error al crear la Url de DropBox");
                 return mo;
             }

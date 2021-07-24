@@ -45,8 +45,10 @@
                 <prop key="mediacursos.html">cursoControler</prop>
                 
                 <!--Mapeo de los Modulos-->
-                <prop key="añadirmodulos.html">moduloControler</prop>
+                <prop key="anadirmodulos.html">moduloControler</prop>
                 <prop key="addModulo.html">moduloControler</prop>
+                <!--Este solo es de prueba-->
+                <prop key="solopruebasModulos.html">moduloControler</prop>
                 
                 <!--Mapeo del administrador-->
                 <prop key="Cartas.html">usuarioControler</prop>

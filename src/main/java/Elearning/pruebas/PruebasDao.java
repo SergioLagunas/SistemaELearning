@@ -21,6 +21,7 @@ public class PruebasDao {
        //Session session = HibernateUtil.getSessionFactory().openSession();
 
        UsuarioDaoImpl user = new UsuarioDaoImpl();
+       CursoDaoImpl curso = new CursoDaoImpl();
       //  CursoDaoImpl cur = new CursoDaoImpl();
         //Usuario usuario1 = new Usuario("Prueba", "nose", "nose", "Masculino", "karina@gmail.com", "contrasena", "semillero", "sdasd");
 
@@ -116,6 +117,12 @@ public class PruebasDao {
         String prue=otra.DemoLogin(email, contrasena);
         System.out.println(prue);
    */
+        
+        int idCurso = 21;
+        Curso cur = new Curso();
+        cur.setIdCurso(idCurso);
+        curso.delete(cur);
+        
     }
    
    

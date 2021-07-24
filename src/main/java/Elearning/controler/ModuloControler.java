@@ -34,13 +34,19 @@ public class ModuloControler {
         return mo;
     }
     */
-    @RequestMapping(value = "agregarMo.html", method = RequestMethod.GET)
-    public ModelAndView agregarmo() {
+    @RequestMapping(value = "anadirmodulos.html", method = RequestMethod.GET)
+    public ModelAndView anadirmodulos() {
         ModelAndView mo = new ModelAndView();
-        mo.setViewName("agregarMo");
+        mo.setViewName("anadirmodulos");
         return mo;
     }
     
+    @RequestMapping(value = "solopruebasModulos.html", method = RequestMethod.GET)
+    public ModelAndView solopruebasModulos() {
+        ModelAndView mo = new ModelAndView();
+        mo.setViewName("solopruebasModulos");
+        return mo;
+    }
     
     @RequestMapping(value = "addModulo.html",method = RequestMethod.POST)
     public ModelAndView addModulo(@ModelAttribute ModuloModel moduloM){
