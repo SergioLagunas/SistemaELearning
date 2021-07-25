@@ -26,6 +26,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.servlet.ModelAndView;
 
 @Service("UsuarioService")
@@ -33,10 +34,8 @@ public class UsuarioServiceImpl implements UsuarioService {
 
     @Autowired
     private UsuarioDao usuarioDao;
-    @Autowired
-    private MiCursoDao miCursoDao;
-    @Autowired
-    private CursoDao cursoDao;
+    
+    static int elUsuario=0;
 
     @Override
     public String readUsuario() {
@@ -44,7 +43,7 @@ public class UsuarioServiceImpl implements UsuarioService {
         List<UsuarioDto> lista = new ArrayList<UsuarioDto>();
         List<Usuario> lista2 = usuarioDao.findAll();
         String data = "";
-
+/*
         for (int i = 0; i < lista2.size(); i++) {
             List<MiCurso> misCursos = miCursoDao.getMiCurso(lista2.get(i).getIdUsuario());
             UsuarioDto dto = new UsuarioDto();
@@ -57,7 +56,7 @@ public class UsuarioServiceImpl implements UsuarioService {
             dto.setNombre(lista2.get(i).getNombre());
            // lista2.add(dto);
                     
-        }
+        }*/
 
         try {
             ObjectMapper mapper = new ObjectMapper();
@@ -71,6 +70,7 @@ public class UsuarioServiceImpl implements UsuarioService {
     }
 
     @Override
+    //@Transactional
     public String createNewSemillero(HttpServletRequest request) {
       
         String nombre = request.getParameter("nombre");
@@ -177,7 +177,7 @@ public class UsuarioServiceImpl implements UsuarioService {
         user.setEmail(correo);
         user.setContrasena(contraseña);
         user = usuarioDao.loginUsuario(user);
-         
+        elUsuario=user.getIdUsuario();
         HttpSession session = request.getSession();
         if(user != null){
             rol = user.gettUsuario();

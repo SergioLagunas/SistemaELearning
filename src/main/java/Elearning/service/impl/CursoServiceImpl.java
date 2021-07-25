@@ -6,10 +6,11 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import Elearning.dao.CursoDao;
-import Elearning.dao.ModuloDao;
+import Elearning.dao.UsuarioDao;
 import Elearning.dto.CursoDto;
 import Elearning.modelo.Curso;
 import Elearning.modelo.Modulo;
+import Elearning.modelo.Usuario;
 import Elearning.modelo.formModel.CursoModel;
 import Elearning.util.JavaDropBox;
 import com.dropbox.core.DbxException;
@@ -32,8 +33,9 @@ public class CursoServiceImpl implements CursoService {
 
     @Autowired
     private CursoDao cursoDao;
+   
     @Autowired
-    private ModuloDao moduloDao;
+    private UsuarioDao usuarioDao;
 
     @Override
     public String readService() {
@@ -66,6 +68,15 @@ public class CursoServiceImpl implements CursoService {
 
     @Override
     public String createNewCurso(CursoModel CursoF) {
+        
+        //Obtengo el id del Usuario que se logeo en este caso sera solo de administradores ya que solo ellos 
+        //Pueden crear cursos
+        int usuario = UsuarioServiceImpl.elUsuario;
+        Usuario user = new Usuario();
+        
+        //Obtengo por el id el Administrador que se logeo 
+        user = usuarioDao.getUsuario(usuario);
+        
         try {
             Curso entidad = new Curso();
             entidad.setNombre(CursoF.getNombre());
@@ -76,7 +87,14 @@ public class CursoServiceImpl implements CursoService {
             String enlace = guardarDropBox(CursoF);
             if (!enlace.equals("")) {
                 entidad.setCaratula(enlace);
+    
+                //Creamos el Curso 
                 entidad = cursoDao.create(entidad);
+                
+                //Relacion MuchosAMuchos en este caso solo relaciona los Adminitradores con el Curso que crearon
+                 user.getCursos().add(entidad);
+                 entidad.getUsuarios().add(user);
+                 usuarioDao.update(user);
                 
                 //Almaceno en un variable global el id del curso que se creo en ese momento 
                 elcurso = entidad.getIdCurso();

@@ -77,7 +77,8 @@
     <bean name="moduloControler" class="Elearning.controler.ModuloControler"/>
     <bean name="usuarioControler" class="Elearning.controler.UsuarioControler"/>
 
-    <!--Validacion de Autorid y Repositories de Spring-->
+    <!--Validacion de Autorid y Repositories de Spring
+    <tx:annotation-driven />-->
     <context:annotation-config />
     <context:component-scan base-package="Elearning.controler"/>
     <context:component-scan base-package="Elearning.dao.impl"/>

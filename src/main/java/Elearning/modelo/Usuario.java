@@ -1,9 +1,7 @@
 package Elearning.modelo;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -15,7 +13,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 //Mapero ORM
@@ -52,34 +49,11 @@ public class Usuario implements Serializable {
     @Column(name = "rfc")
     private String rfc;
 
-    /*@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    //Relacion MUCHOS A MUCHOS con Curso
+    @ManyToMany(cascade = {CascadeType.ALL},fetch = FetchType.EAGER)
     @JoinTable(name = "MiCurso",joinColumns = {@JoinColumn(name = "idUsuario")},inverseJoinColumns = {@JoinColumn(name = "idCurso")})
-    private Set<Curso> cursos= new HashSet<>();*/
+    private Set<Curso> cursos= new HashSet<>();
 
-    /*
-    //Indicar donde estoy mapeando
-    @OneToMany(mappedBy = "Usuario", cascade={CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
-    private List<Curso> cursos;
-     */
-    
-    //Comienza @ManyToMany
-    
-    @ManyToMany
-    @JoinTable(name = "Usuario_Curso",
-            joinColumns = {
-                @JoinColumn(name = "idUsuario")},
-            inverseJoinColumns = {
-                @JoinColumn(name = "idCurso")})
-    private Set<Curso> cursos;
-
-    public Set<Curso> getCursos() {
-        return cursos;
-    }
-
-    public void setCursos(Set<Curso> cursos) {
-        this.cursos = cursos;
-    }
-    
     
     public Usuario() {
     }
@@ -166,6 +140,15 @@ public class Usuario implements Serializable {
     public void setRfc(String rfc) {
         this.rfc = rfc;
     }
+
+    public Set<Curso> getCursos() {
+        return cursos;
+    }
+
+    public void setCursos(Set<Curso> cursos) {
+        this.cursos = cursos;
+    }
+
     
     @Override
     public String toString() {

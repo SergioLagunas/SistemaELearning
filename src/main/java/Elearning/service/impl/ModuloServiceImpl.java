@@ -75,9 +75,10 @@ public class ModuloServiceImpl implements ModuloService {
         //Recibo el parametro del curso que se creo anteriormente 
         int curso = CursoServiceImpl.elcurso;
         Curso cursoentidad = new Curso();
+       
         Modulo entidad = new Modulo();
-
-        //Aca busco por el id el curso que se creo con anteriormente
+        
+        //Aca busco por el id el curso que se obtuvo anteriormente
         cursoentidad = cursoDao.getCurso(curso);
 
         try {

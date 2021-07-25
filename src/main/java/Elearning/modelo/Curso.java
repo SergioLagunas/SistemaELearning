@@ -44,20 +44,13 @@ public class Curso implements Serializable{
     @Column(name="categoria")
     private String categoria;
     
+    //Relacion UNO A MUCHOS con Modulo
     @OneToMany(mappedBy = "idCurso",fetch=FetchType.LAZY,cascade = {CascadeType.ALL,CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH})
     private List<Modulo> idModulo;
     
-    //Comienza @ManyToMany
-    @ManyToMany(mappedBy = "cursos")
-    private Set<Usuario> usuarios;
-
-    public Set<Usuario> getUsuarios() {
-        return usuarios;
-    }
-
-    public void setUsuarios(Set<Usuario> usuarios) {
-        this.usuarios = usuarios;
-    }
+    //Relacion MUCHOS A MUCHOS con Usuario
+    @ManyToMany(mappedBy = "cursos",cascade = {CascadeType.ALL},fetch = FetchType.EAGER)
+    private Set<Usuario> usuarios= new HashSet<>();
 
     public Curso() {
     }
@@ -127,8 +120,15 @@ public class Curso implements Serializable{
     public void setIdModulo(List<Modulo> idModulo) {
         this.idModulo = idModulo;
     }
-    
-    
+
+    public Set<Usuario> getUsuarios() {
+        return usuarios;
+    }
+
+    public void setUsuarios(Set<Usuario> usuarios) {
+        this.usuarios = usuarios;
+    }
+       
     public void addModulos(Modulo modulo){   
         if(idModulo!=null){
             idModulo=new ArrayList<>();
@@ -136,7 +136,7 @@ public class Curso implements Serializable{
             modulo.setIdCurso(this);
         }    
     }
-    
+
   
     @Override
     public String toString() {
