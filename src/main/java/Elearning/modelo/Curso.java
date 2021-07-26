@@ -49,7 +49,7 @@ public class Curso implements Serializable{
     private List<Modulo> idModulo;
     
     //Relacion MUCHOS A MUCHOS con Usuario
-    @ManyToMany(mappedBy = "cursos",cascade = {CascadeType.ALL},fetch = FetchType.EAGER)
+    @ManyToMany(mappedBy = "cursos",cascade = {CascadeType.PERSIST,CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH},fetch = FetchType.EAGER)
     private Set<Usuario> usuarios= new HashSet<>();
 
     public Curso() {

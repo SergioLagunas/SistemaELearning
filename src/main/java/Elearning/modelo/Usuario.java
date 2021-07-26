@@ -50,7 +50,7 @@ public class Usuario implements Serializable {
     private String rfc;
 
     //Relacion MUCHOS A MUCHOS con Curso
-    @ManyToMany(cascade = {CascadeType.ALL},fetch = FetchType.EAGER)
+    @ManyToMany(cascade = {CascadeType.PERSIST,CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH},fetch = FetchType.EAGER)
     @JoinTable(name = "MiCurso",joinColumns = {@JoinColumn(name = "idUsuario")},inverseJoinColumns = {@JoinColumn(name = "idCurso")})
     private Set<Curso> cursos= new HashSet<>();
 
