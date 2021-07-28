@@ -59,8 +59,7 @@
         </div>
         
     <h1>Añade un nuevo Curso</h1>
-    <form:form id="form" action="crearCurso.html" method="POST" enctype="multipart/form-data">
-     
+    <form:form id="form" action="crearCurso.html" method="POST" enctype="multipart/form-data">   
     <div id="example">
         <div class="demo-section k-content">
             <ul class="fieldlist">

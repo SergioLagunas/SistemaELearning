@@ -95,7 +95,7 @@ public class ModuloServiceImpl implements ModuloService {
                 cursoentidad.addModulos(entidad);
 
                 entidad = moduloDao.create(entidad);
-                mo.setViewName("redirect:/solopruebasModulos.html");
+                mo.setViewName("redirect:/anadirmodulos.html");
             } else {
                 mo.setViewName("error.html");
                 System.out.println("Error al crear la Url de DropBox");

@@ -38,32 +38,10 @@ public class CursoServiceImpl implements CursoService {
     private UsuarioDao usuarioDao;
 
     @Override
-    public String readService() {
-
-        List<CursoDto> lista = new ArrayList<CursoDto>();
-        List<Curso> lista2 = cursoDao.findAll();
-        String data = "";
-
-        for (int i = 0; i < lista2.size(); i++) {
-            CursoDto dto = new CursoDto();
-            dto.setIdCurso(lista2.get(i).getIdCurso());
-            dto.setNombre(lista2.get(i).getNombre());
-            dto.setDescripcion(lista2.get(i).getDescripcion());
-            // dto.setCaratula(lista2.get(i).getCaratula());
-            dto.setProgreso(lista2.get(i).getProgreso());
-            dto.setCategoria(lista2.get(i).getCategoria());
-            lista.add(dto);
-        }
-
-        try {
-            ObjectMapper mapper = new ObjectMapper();
-            data = mapper.writeValueAsString(lista);
-
-        } catch (JsonProcessingException ex) {
-            Logger.getLogger(CursoServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        return data;
+    public List<Curso> listadoCursos() {
+        
+        
+       return cursoDao.findAll();
     }
 
     @Override
@@ -99,7 +77,7 @@ public class CursoServiceImpl implements CursoService {
                 //Almaceno en un variable global el id del curso que se creo en ese momento 
                 elcurso = entidad.getIdCurso();
                 System.out.println("La Imagen se Guardo correctamente y ya esta creada la url de DropBox");
-                return "redirect:/solopruebasModulos.html";
+                return "redirect:/anadirmodulos.html";
             } else {
                 System.out.println("Error al crear la Url de DropBox");
                 return "redirect:/error.html";
@@ -110,6 +88,8 @@ public class CursoServiceImpl implements CursoService {
             Logger.getLogger(CursoServiceImpl.class.getName()).log(Level.SEVERE, null, e);
             return "redirect:/error.html";
         }
+        
+         
         
     }
 
@@ -171,5 +151,7 @@ public class CursoServiceImpl implements CursoService {
         return string.substring(string.lastIndexOf("."), string.length());
 
     }
+
+   
 
 }

@@ -185,7 +185,7 @@
         <br>
         <br>
 
-        <form onsubmit="event.preventDefault();onSubmit();" autocomplete="off" id="form" action="addModulo.html" method="POST" enctype="multipart/form-data">
+        <form  autocomplete="off" id="form" action="addModulo.html" method="POST" enctype="multipart/form-data">
             <center>
                 <div class="tablita">
                     <table class="tabla" id="tabla">

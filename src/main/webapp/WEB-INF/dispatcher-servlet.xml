@@ -43,15 +43,15 @@
                 <prop key="nuevocurso.html">cursoControler</prop>
                 <prop key="listadodecursos.html">cursoControler</prop>
                 <prop key="mediacursos.html">cursoControler</prop>
+                <prop key="Cartas.html">cursoControler</prop>
+                <!--Solo de prueba-->
+                
                 
                 <!--Mapeo de los Modulos-->
                 <prop key="anadirmodulos.html">moduloControler</prop>
                 <prop key="addModulo.html">moduloControler</prop>
-                <!--Este solo es de prueba-->
-                <prop key="solopruebasModulos.html">moduloControler</prop>
                 
                 <!--Mapeo del administrador-->
-                <prop key="Cartas.html">usuarioControler</prop>
                 <prop key="perfilsem.html">usuarioControler</prop>
                 <prop key="ProgressBar.html">usuarioControler</prop>
                 <prop key="perfiladmin.html">usuarioControler</prop>

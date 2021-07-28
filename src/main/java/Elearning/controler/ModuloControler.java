@@ -27,13 +27,6 @@ public class ModuloControler {
     @Autowired
     private ModuloService moduloService;
     
-  /*  @RequestMapping(value = "añadirmodulos.html", method = RequestMethod.GET)
-    public ModelAndView añadirmodulos() {
-        ModelAndView mo = new ModelAndView();
-        mo.setViewName("añadirmodulos");
-        return mo;
-    }
-    */
     @RequestMapping(value = "anadirmodulos.html", method = RequestMethod.GET)
     public ModelAndView anadirmodulos() {
         ModelAndView mo = new ModelAndView();
@@ -41,12 +34,6 @@ public class ModuloControler {
         return mo;
     }
     
-    @RequestMapping(value = "solopruebasModulos.html", method = RequestMethod.GET)
-    public ModelAndView solopruebasModulos() {
-        ModelAndView mo = new ModelAndView();
-        mo.setViewName("solopruebasModulos");
-        return mo;
-    }
     
     @RequestMapping(value = "addModulo.html",method = RequestMethod.POST)
     public ModelAndView addModulo(@ModelAttribute ModuloModel moduloM){

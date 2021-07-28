@@ -20,7 +20,6 @@ public class CursoDto {
         this.categoria = categoria;
     }
 
-
     public Integer getIdCurso() {
         return idCurso;
     }

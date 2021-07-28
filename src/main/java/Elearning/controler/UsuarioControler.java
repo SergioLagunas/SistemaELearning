@@ -16,13 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class UsuarioControler {
     
     //Aqui inician las ventanas que se enlazan con la venta de bienvenida sem
-    
-    @RequestMapping(value = "Cartas.html", method = RequestMethod.GET)
-    public ModelAndView Cartas(){
-        ModelAndView mo = new ModelAndView();
-        mo.setViewName("Cartas");
-        return mo;   
-    }
+   
     
     
     @RequestMapping(value = "perfilsem.html", method = RequestMethod.GET)
