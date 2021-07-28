@@ -163,7 +163,6 @@
         <header>
             <img src="${pageContext.request.contextPath}/resources/imagenes/def1.gif" width="160px" height="90" >
             <nav>
-            <nav>
                 <ul class="nav__links">
                     <li><a href="perfiladmin.html">Mi perfil </a></li>
                     <li><a href="nuevoadmin.html">Admin.</a></li>

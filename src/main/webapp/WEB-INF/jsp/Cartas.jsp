@@ -63,21 +63,11 @@
                 <div class="k-card">
                     <a href="mediacursos.html"><img class="k-card-image" class="dropbox-embed" src="${curso.caratula}"/></a>
                     <div class="k-card-body">
-                        <h4><c:out value="${curso.nombre}"></c:out></h4>
-                        <input id="${curso.idCurso}" name="rating" style="width: 100%;" />
+                        <center> <h3><c:out value="${curso.nombre}"></c:out></h3> </center> 
                     </div>
                 </div>
                 <!-- Cartas -->
                 <!-- Script de calificacion de las clases, Se tiene que renombrar el id de cada una o el script colapsa-->
-                <script>
-                    $(document).ready(function () {
-                        $("#${curso.idCurso}").kendoRating({
-                            min: 1,
-                            max: 5,
-                            precision: "half",
-                        });
-                    });
-                </script>
             </c:forEach>
         </div>
 
