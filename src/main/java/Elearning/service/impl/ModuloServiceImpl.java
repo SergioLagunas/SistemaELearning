@@ -22,9 +22,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.enterprise.inject.Model;
+import org.springframework.ui.Model;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
@@ -41,31 +42,10 @@ public class ModuloServiceImpl implements ModuloService {
     private CursoDao cursoDao;
 
     @Override
-    public String readModulo() {
-
-        List<ModuloDto> lista = new ArrayList<ModuloDto>();
-        List<Modulo> lista2 = moduloDao.findAll();
-        String data = "";
-
-        for (int i = 0; i < lista2.size(); i++) {
-            ModuloDto dto = new ModuloDto();
-            dto.setIdModulo(lista2.get(i).getIdModulo());
-            dto.setTitulo(lista2.get(i).getTitulo());
-            dto.setDescripcion(lista2.get(i).getDescripcion());
-            dto.setUrl(lista2.get(i).getUrl());
-            lista.add(dto);
-        }
-
-        try {
-            ObjectMapper mapper = new ObjectMapper();
-            data = mapper.writeValueAsString(lista);
-
-        } catch (JsonProcessingException ex) {
-            Logger.getLogger(ModuloServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        return data;
-
+    public String readModulo(int idCurso, Model model) {
+        System.out.println("idCurso: "+idCurso);
+        model.addAttribute("modulos",moduloDao.findbyCurso(idCurso));     
+        return "mediacursos";
     }
 
     @Override
@@ -75,9 +55,9 @@ public class ModuloServiceImpl implements ModuloService {
         //Recibo el parametro del curso que se creo anteriormente 
         int curso = CursoServiceImpl.elcurso;
         Curso cursoentidad = new Curso();
-       
+
         Modulo entidad = new Modulo();
-        
+
         //Aca busco por el id el curso que se obtuvo anteriormente
         cursoentidad = cursoDao.getCurso(curso);
 
@@ -162,4 +142,5 @@ public class ModuloServiceImpl implements ModuloService {
         return string.substring(string.lastIndexOf("."), string.length());
 
     }
+
 }

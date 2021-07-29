@@ -39,8 +39,6 @@ public class CursoServiceImpl implements CursoService {
 
     @Override
     public List<Curso> listadoCursos() {
-        
-        
        return cursoDao.findAll();
     }
 

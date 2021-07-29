@@ -42,14 +42,13 @@
                 <prop key="enviarCorreo.html">homeController</prop>
                 <prop key="nuevocurso.html">cursoControler</prop>
                 <prop key="listadodecursos.html">cursoControler</prop>
-                <prop key="mediacursos.html">cursoControler</prop>
-                <prop key="Cartas.html">cursoControler</prop>
-                <!--Solo de prueba-->
-                
+                <prop key="Cartas.html">cursoControler</prop>       
                 
                 <!--Mapeo de los Modulos-->
                 <prop key="anadirmodulos.html">moduloControler</prop>
                 <prop key="addModulo.html">moduloControler</prop>
+                <prop key="mediacursos.html">moduloControler</prop>
+                <prop key="mediacurso">moduloControler</prop>
                 
                 <!--Mapeo del administrador-->
                 <prop key="perfilsem.html">usuarioControler</prop>

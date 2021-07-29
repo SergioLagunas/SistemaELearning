@@ -63,12 +63,4 @@ public class CursoControler {
         return mo;
     }
 
-    @RequestMapping(value = "mediacursos.html", method = RequestMethod.GET)
-    public ModelAndView mediacursos() {
-        ModelAndView mo = new ModelAndView();
-        mo.setViewName("mediacursos");
-        return mo;
-    }
-    
-
 }

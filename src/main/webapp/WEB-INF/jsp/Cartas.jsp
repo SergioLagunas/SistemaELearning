@@ -61,7 +61,7 @@
         <div class="cards-container">
             <c:forEach items="${cursos}" var="curso"> 
                 <div class="k-card">
-                    <a href="mediacursos.html"><img class="k-card-image" class="dropbox-embed" src="${curso.caratula}"/></a>
+                    <a href="mediacursos.html?idCurso=${curso.idCurso}"><img class="k-card-image" class="dropbox-embed" src="${curso.caratula}"/></a>
                     <div class="k-card-body">
                         <center> <h3><c:out value="${curso.nombre}"></c:out></h3> </center> 
                     </div>
