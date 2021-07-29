@@ -73,209 +73,76 @@
     <!--Kendo VideoEnlace-->
     <br />
     <br />
+    <c:forEach items="${modulos}" var="modulo">
+    <iframe width="420" height="315"
+            src="${modulo.url}">
+    </iframe>
+    </c:forEach>
 
-<center>
-    <div id="example">
-        <div class="demo-section k-content wide" style="max-width: 1300px">
-            <div id="mediaplayer" style="height: 500px"></div>
-            <div class="k-list-container playlist">
-                <ul id="listView" class="k-list"></ul>
-            </div>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <!--Footer-->
+    <div class="footer-wrapper">
+        <div style="padding-top: 15px; padding-bottom: 10px">
+            <center>
+                <a href="https://twitter.com/?lang=es" target="_blank"
+                   ><img
+                        hspace="10"
+                        src="https://img.icons8.com/android/24/000000/twitter.png"
+                        title=""
+                        />
+                    <a href="https://es-la.facebook.com/" target="_blank"
+                       ><img
+                            hspace="10"
+                            src="https://img.icons8.com/android/24/000000/facebook.png"
+                            title=""
+                            /></a>
+                    <a
+                        href="https://www.google.com/intl/es-419/gmail/about/#"
+                        target="_blank"
+                        ><img
+                            hspace="10"
+                            src="https://img.icons8.com/ios-filled/24/000000/gmail-login.png"
+                            title=""
+                            /></a>
+                    <a href="https://www.youtube.com/" target="_blank"
+                       ><img
+                            hspace="10"
+                            src=" https://img.icons8.com/metro/26/000000/youtube.png"
+                            title=""
+                            /></a>
+                </a>
+            </center>
         </div>
-        <script type="text/javascript">
-            $(document).ready(function () {
-                $("#mediaplayer").kendoMediaPlayer({
-                    autoPlay: true,
-                });
-
-                var videos = new kendo.data.DataSource({
-                    data: [
-                        {
-                            title: "Build HIPAA-Compliant Healthcare Apps Fast",
-                            poster: "https://img.youtube.com/vi/_S63eCewxRg/1.jpg",
-                            source: "https://www.youtube.com/watch?v=dyvxivS5EcI",
-                        },
-                        {
-                            title: "ProgressNEXT 2018 Highlights",
-                            poster: "https://img.youtube.com/vi/DYsiJRmIQZw/1.jpg",
-                            source: "https://www.youtube.com/watch?v=Gp7tcOcSKAU",
-                        },
-                        {
-                            title: "Kendo UI Testimonial",
-                            poster: "https://img.youtube.com/vi/gNlya720gbk/1.jpg",
-                            source: "https://www.youtube.com/watch?v=itoKeywVNBI",
-                        },
-                        {
-                            title: "Introducing Test Studio DevEdition",
-                            poster: "https://img.youtube.com/vi/rLtTuFbuf1c/1.jpg",
-                            source: "https://www.youtube.com/watch?v=A2rmIx9rPG0",
-                        },
-                        {
-                            title: "Progress Application Server OpenEdge",
-                            poster: "https://i.ytimg.com/vi/CpHKm2NruYc/1.jpg",
-                            source:
-                                    "https://www.youtube.com/watch?v=3Ce11N9udR4&list=PLC679RvCan2BJ9HCdUyZhnhHKActnrape",
-                        },
-                    ],
-                });
-
-                var listView = $("#listView").kendoListView({
-                    dataSource: videos,
-                    selectable: true,
-                    scrollable: false,
-                    template: kendo.template($("#template").html()),
-                    change: onChange,
-                    dataBound: onDataBound,
-                });
-
-                function onChange() {
-                    var index = this.select().index();
-                    var dataItem = this.dataSource.view()[index];
-                    $("#mediaplayer").data("kendoMediaPlayer").media(dataItem);
-                }
-
-                function onDataBound(e) {
-                    this.select(this.content.children().first());
-                }
-            });
-        </script>
-        <script type="text/x-kendo-template" id="template">
-            <li class="k-item k-state-default" onmouseover="$(this).addClass('k-state-hover')"
-            onmouseout="$(this).removeClass('k-state-hover')">
-            <span>
-            <img src="#:poster#" />
-            <h5>#:title#</h5>
-            </span>
-            </li>
-        </script>
-        <style>
-            .k-mediaplayer {
-                float: left;
-                box-sizing: border-box;
-                width: 70%;
-            }
-
-            .playlist {
-                float: left;
-                height: 500px;
-                overflow: auto;
-                width: 30%;
-            }
-            @media (max-width: 500px) {
-                .playlist,
-                .k-mediaplayer {
-                    width: 100%;
-                }
-            }
-
-            .playlist ul,
-            .playlist li {
-                list-style-type: none;
-                margin: 0;
-                padding: 0;
-            }
-
-            .playlist .k-item {
-                border-bottom-style: solid;
-                border-bottom-width: 1px;
-                padding: 14px 15px;
-            }
-
-            .playlist .k-item:last-child {
-                border-bottom-width: 0;
-            }
-
-            .playlist span {
-                cursor: pointer;
-                display: block;
-                overflow: hidden;
-                text-decoration: none;
-            }
-
-            .playlist span img {
-                border: 0 none;
-                display: block;
-                height: 56px;
-                object-fit: cover;
-                width: 100px;
-                float: left;
-            }
-
-            .playlist h5 {
-                display: block;
-                font-weight: normal;
-                margin: 0;
-                overflow: hidden;
-                padding-left: 10px;
-                text-align: left;
-            }
-        </style>
+        Todos los derechos reservados | © 2021 B1 SOFT
     </div>
-</center>
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<!--Footer-->
-<div class="footer-wrapper">
-    <div style="padding-top: 15px; padding-bottom: 10px">
-        <center>
-            <a href="https://twitter.com/?lang=es" target="_blank"
-               ><img
-                    hspace="10"
-                    src="https://img.icons8.com/android/24/000000/twitter.png"
-                    title=""
-                    />
-                <a href="https://es-la.facebook.com/" target="_blank"
-                   ><img
-                        hspace="10"
-                        src="https://img.icons8.com/android/24/000000/facebook.png"
-                        title=""
-                        /></a>
-                <a
-                    href="https://www.google.com/intl/es-419/gmail/about/#"
-                    target="_blank"
-                    ><img
-                        hspace="10"
-                        src="https://img.icons8.com/ios-filled/24/000000/gmail-login.png"
-                        title=""
-                        /></a>
-                <a href="https://www.youtube.com/" target="_blank"
-                   ><img
-                        hspace="10"
-                        src=" https://img.icons8.com/metro/26/000000/youtube.png"
-                        title=""
-                        /></a>
-            </a>
-        </center>
-    </div>
-    Todos los derechos reservados | © 2021 B1 SOFT
-</div>
 </body>
 </html>

@@ -15,7 +15,23 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class UsuarioControler {
     
+    @Autowired
+    private UsuarioService usuarioService;
+    
     //Aqui inician las ventanas que se enlazan con la venta de bienvenida sem
+     @RequestMapping(value = "addAdministrador.html", method = RequestMethod.POST)
+      public ModelAndView addAdministrador(HttpServletRequest request, HttpServletResponse response){
+         ModelAndView mo = new ModelAndView();
+        switch (usuarioService.createNewSemillero(request)) {
+            case "existente":
+                mo.setViewName("error");
+                break;
+            default:
+                mo.setViewName("redirect:/nuevoadmin.html");
+                break;
+        }
+         return mo;
+     }
    
     
     
@@ -33,8 +49,7 @@ public class UsuarioControler {
         return mo;   
     }
     
-    //Aqui inician las ventanas que se enlazan con la venta de bienvenida admin
-    
+    //Aqui inician las ventanas que se enlazan con la venta de bienvenida admiN
      @RequestMapping(value = "perfiladmin.html", method = RequestMethod.GET)
     public ModelAndView perfiladmin(){
         ModelAndView mo = new ModelAndView();

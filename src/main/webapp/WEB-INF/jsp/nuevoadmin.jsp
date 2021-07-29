@@ -181,25 +181,25 @@
         <br>
         <br>
 
-        <form onsubmit="event.preventDefault();onSubmit();" autocomplete="off">
+        <form autocomplete="off" method="POST" action="addAdministrador.html">
             <center>
                 <div class="tablita">
                     <table class="tabla" id="tabla">
                         <tbody>
                         <div class="caja">
-                            <label for="nom"></label> <input type="text" id="nom" placeholder="Nombre" required>
+                            <label for="nom"></label> <input type="text" id="nom" placeholder="Nombre" required name="nombre">
                             <br>
-                            <label for="apeP"></label> <input type="text" id="apeP" placeholder="Apellido paterno" required>
+                            <label for="apeP"></label> <input type="text" id="apeP" placeholder="Apellido paterno" required name="aPaterno">
                             <br>
-                            <label for="apeM"></label> <input type="text" id="apeM" placeholder="Apellido materno" required>
+                            <label for="apeM"></label> <input type="text" id="apeM" placeholder="Apellido materno" required name="aMaterno">
                             <br>
-                            <label for="correo"></label> <input type="text" id="correo" placeholder="Correo" required>
+                            <label for="genero"></label> <input type="text" id="correo" placeholder="Genero" required name="genero">
                             <br>
-                            <label for="cont"></label> <input type="text" id="cont" placeholder="Contraseña" required>
+                            <label for="email"></label> <input type="text" id="cont" placeholder="Correo" required name="email">
                             <br>
-                            <label for="gen"></label> <input type="text" id="gen" placeholder="Genero" required>
+                            <label for="contrasena"></label> <input type="text" id="cont" placeholder="Contraseña" required name="contrasena">
                             <br>
-                            <label for="RFC"></label> <input type="text" id="RFC" placeholder="RFC" required>
+                            <label for="RFC"></label> <input type="text" id="RFC" placeholder="RFC" required name="rfc">
                             <br>
                             <br>
                             <input class="submit" type="submit" value="Guardar">

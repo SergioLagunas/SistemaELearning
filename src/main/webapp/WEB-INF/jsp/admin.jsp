@@ -50,7 +50,7 @@
             </nav> 
         <a class="cta" href="index.html"><button>Cerrar sesión</button></a>
      </header>
-        <center><h1><font color="#fff">Bienvenido Administrador de B1 Soft</font></h1></center>
+        <center><h1><font color="#fff">Bienvenido <%=request.getSession().getAttribute("usuario")%></font></h1></center>
         <div id="multimedia"> 
             <iframe width="560" height="315" src="https://www.youtube.com/embed/lRQjFCd4dJg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>

@@ -32,7 +32,7 @@ public class HomeController {
     
     @RequestMapping(value="semilleroRegistro.html",method = RequestMethod.POST)
     public ModelAndView semilleroRegistro(HttpServletRequest request, HttpServletResponse response){
-         ModelAndView mo = new ModelAndView();
+        ModelAndView mo = new ModelAndView();
         switch (usuarioService.createNewSemillero(request)) {
             case "existente":
                 mo.setViewName("error");

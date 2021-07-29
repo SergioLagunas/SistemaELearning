@@ -98,7 +98,7 @@ public class CursoServiceImpl implements CursoService {
         String nombre = request.getParameter("nombre");
         String descripcion = request.getParameter("descripcion");
         String caratula = request.getParameter("caratula");
-        int progreso = Integer.parseInt(request.getParameter("progreso"));
+        int progreso = 0;
         String categoria = request.getParameter("categoria");
 
         Curso editCurso = new Curso(nombre, descripcion, caratula, progreso, categoria);

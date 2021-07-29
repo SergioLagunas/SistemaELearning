@@ -72,7 +72,6 @@ public class UsuarioServiceImpl implements UsuarioService {
     @Override
     //@Transactional
     public String createNewSemillero(HttpServletRequest request) {
-      
         String nombre = request.getParameter("nombre");
         String aPaterno = request.getParameter("aPaterno");
         String aMaterno = request.getParameter("aMaterno");
@@ -120,7 +119,6 @@ public class UsuarioServiceImpl implements UsuarioService {
     
      @Override
     public String createNewAdminsitrador(HttpServletRequest request) {
-
         String nombre = request.getParameter("nombre");
         String aPaterno = request.getParameter("aPaterno");
         String aMaterno = request.getParameter("aMaterno");
@@ -163,7 +161,6 @@ public class UsuarioServiceImpl implements UsuarioService {
         }
 
         return data;
-        
     }
     
     //Service Implmet del login Identificando roles automaticamente 
@@ -194,7 +191,6 @@ public class UsuarioServiceImpl implements UsuarioService {
                 return "error";
             }
         }
-        
         return "error";
     }
 
@@ -212,14 +208,10 @@ public class UsuarioServiceImpl implements UsuarioService {
         String tUsuario = request.getParameter("tUsuario");
         String rfc = request.getParameter("rfc");
         //String[] cursos = request.getParameterValues("curso[]");
-        
-        
-      
-         
+
         Usuario editUsuario = new Usuario(nombre,aPaterno,aMaterno,genero,email,contrasena,tUsuario,rfc);
         editUsuario = usuarioDao.update(editUsuario);
-      
-        
+
         //Checar El contructor 
         UsuarioDto dto = new UsuarioDto(editUsuario.getNombre(),editUsuario.getaPaterno(),editUsuario.getaMaterno(),
                 editUsuario.getGenero(),editUsuario.getEmail(),editUsuario.getContrasena(),editUsuario.gettUsuario(),editUsuario.getRfc());
@@ -234,7 +226,6 @@ public class UsuarioServiceImpl implements UsuarioService {
         }
 
         return data;
-        
     }
     
     @Override

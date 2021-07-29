@@ -47,20 +47,12 @@ public class CursoControler {
          model.addAttribute("cursos",cursoService.listadoCursos());
          return "Cartas";
      }
-    
-     /*
-    @RequestMapping(value = "Cartas.html", method = RequestMethod.GET)
-    public ModelAndView Cartas(){
-        ModelAndView mo = new ModelAndView();
-        mo.setViewName("Cartas");
-        return mo;   
-    }*/
-    
+   
+   //Este es el del crud de cursos para Listar Actualizar y Eliminar  
     @RequestMapping(value = "listadodecursos.html", method = RequestMethod.GET)
-    public ModelAndView listadodecursos() {
-        ModelAndView mo = new ModelAndView();
-        mo.setViewName("listadodecursos");
-        return mo;
+    public String listadodecursos2(Model model) {
+        model.addAttribute("cursos",cursoService.listadoCursos());
+        return "listadodecursos";
     }
 
 }
