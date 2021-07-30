@@ -15,10 +15,12 @@
         <meta name="description" content="CRUD dinamico con HTMLS, CSS and JS">
         <link href="https://fonts.googleapis.com/css?family=Quicksand:600&display=swap" rel="stylesheet">
         <title>Nuevos admin</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        
         <style>
             /*Estilo header*/
             @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
@@ -75,7 +77,7 @@
                 padding: 0%;
                 font-variant: normal;
                 font-size: 18px;
-                color: rgb(255, 255, 255);
+                color: #000;
                 font-family: 'Varela Round', sans-serif;
             }
 
@@ -94,13 +96,16 @@
             }
             .form{
                 width: 25%;
-                border: 1px solid #ccc;
+                border: 1px dashed #ccc;
                 margin: 20px;
                 padding: 20px;
+              
             }
             label{
                 font-size: 16px;
-                text-align: center;
+                
+                color:black;
+                
             }
             option1{
                 margin-bottom: 20px;
@@ -111,12 +116,27 @@
                 margin-bottom: 20px;
                 width: 50%;
                 padding: 5px;
+                border:1px solid #d3d6e4;
+                border-radius: 5px;
+               
+               outline: none; 
+               
             }
+            ::placeholder{
+                font-family: "Font Awesome 5 Free"; 
+                font-weight: 900;
+            }
+            
             select{
+               
                 margin-bottom: 20px;
+                border-radius: 5px;
                 width: 50%;
-                padding: 5px;
+                padding: 10px;
                 display: flex;
+                font-family: "Font Awesome 5 Free"; 
+                font-weight: 900;
+                color:#2F4F4F;
             }
 
             input[type="file"]{
@@ -130,7 +150,8 @@
                 margin-bottom: 0;
                 background: #6603c2b6;
                 color: #fff;
-                border: none;
+               border-radius: 50px;
+               border: none;
             }
             table{
                 background-color: white;
@@ -138,6 +159,8 @@
                 text-align: center;
                 color: black;
                 border-collapse: collapse;
+               
+                
             }
             th, td{
 
@@ -145,10 +168,9 @@
 
             }
             thead{
-                background-color:  #246355;
+             background-color:  #246355;
                 border-bottom: solid 5px #0f362d;
                 color: white;
-
             }
 
             .Editarr{
@@ -199,24 +221,24 @@
                     <table class="tabla" id="tabla">
                         <tbody>
                         <div class="caja">
-                            <label for="nom"></label> <input type="text" id="nom" placeholder="Nombre" required name="nombre">
+                            <label for="nom"></label> <input type="text" id="nom" placeholder=" Nombre" required name="nombre">
                             <br>
-                            <label for="apeP"></label> <input type="text" id="apeP" placeholder="Apellido paterno" required name="aPaterno">
+                            <label for="apeP"></label> <input type="text" id="apeP" placeholder=" Apellido paterno" required name="aPaterno">
                             <br>
-                            <label for="apeM"></label> <input type="text" id="apeM" placeholder="Apellido materno" required name="aMaterno">
+                            <label for="apeM"></label> <input type="text" id="apeM" placeholder=" Apellido materno" required name="aMaterno">
                             <br>
                             <select  name="genero">
-                                <option disabled selected value="g">Genero</option>
+                                <option disabled selected value="g"> Genero:</option>
                                 <option disabled="">Selecciona una opción:</option>
                                 <option value="Femenino">Femenino</option>
                                 <option value="Masculino">Masculino</option>
                             </select>
 
-                            <label for="email"></label> <input type="text" id="cont" placeholder="Correo" required name="email">
+                            <label for="email"></label> <input type="text" id="cont" placeholder=" Correo" required name="email">
                             <br>
-                            <label for="contrasena"></label> <input type="password" id="cont" placeholder="Contraseña" required name="contrasena">
+                            <label for="contrasena"></label> <input type="password" id="cont" placeholder=" Contraseña" required name="contrasena">
                             <br>
-                            <label for="RFC"></label> <input type="text" id="RFC" placeholder="RFC" required name="rfc">
+                            <label for="RFC"></label> <input type="text" id="RFC" placeholder=" RFC" required name="rfc">
                             <br>
                             <br>
                             <input class="submit" type="submit" value="Guardar">
