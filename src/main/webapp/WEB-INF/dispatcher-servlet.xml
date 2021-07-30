@@ -48,7 +48,7 @@
                 <prop key="anadirmodulos.html">moduloControler</prop>
                 <prop key="addModulo.html">moduloControler</prop>
                 <prop key="mediacursos.html">moduloControler</prop>
-                <prop key="mediacurso">moduloControler</prop>
+
                 
                 <!--Mapeo del administrador-->
                 <prop key="perfilsem.html">usuarioControler</prop>

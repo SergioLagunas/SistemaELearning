@@ -27,6 +27,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.ui.Model;
 import org.springframework.web.servlet.ModelAndView;
 
 @Service("UsuarioService")
@@ -38,35 +39,17 @@ public class UsuarioServiceImpl implements UsuarioService {
     static int elUsuario=0;
 
     @Override
-    public String readUsuario() {
-
-        List<UsuarioDto> lista = new ArrayList<UsuarioDto>();
-        List<Usuario> lista2 = usuarioDao.findAll();
-        String data = "";
-/*
-        for (int i = 0; i < lista2.size(); i++) {
-            List<MiCurso> misCursos = miCursoDao.getMiCurso(lista2.get(i).getIdUsuario());
-            UsuarioDto dto = new UsuarioDto();
-            
-            for(int j=0;j<misCursos.size();j++){
-                Curso entidad =cursoDao.getCurso(Integer.valueOf(misCursos.get(j).getIdCurso()));
-                //dto.get
-            }
-            dto.setIdUsuario(lista2.get(i).getIdUsuario());
-            dto.setNombre(lista2.get(i).getNombre());
-           // lista2.add(dto);
-                    
-        }*/
-
-        try {
-            ObjectMapper mapper = new ObjectMapper();
-            data = mapper.writeValueAsString(lista);
-
-        } catch (JsonProcessingException ex) {
-            Logger.getLogger(UsuarioServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        return data;
+    public String readAdmin(Model model) {
+       String tUsuario="Administrador";
+       model.addAttribute("administradores",usuarioDao.findbyAdmin(tUsuario));
+       return "nuevoadmin";
+    }
+    
+    @Override
+    public String readSem(Model model) {
+       String tUsuario="Semillero";
+       model.addAttribute("semilleros",usuarioDao.findbySemillero(tUsuario));
+       return "nuevosemillero";
     }
 
     @Override

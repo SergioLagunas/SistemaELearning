@@ -44,7 +44,6 @@ public class CursoServiceImpl implements CursoService {
 
     @Override
     public String createNewCurso(CursoModel CursoF) {
-        
         //Obtengo el id del Usuario que se logeo en este caso sera solo de administradores ya que solo ellos 
         //Pueden crear cursos
         int usuario = UsuarioServiceImpl.elUsuario;
@@ -85,10 +84,7 @@ public class CursoServiceImpl implements CursoService {
             e.printStackTrace();
             Logger.getLogger(CursoServiceImpl.class.getName()).log(Level.SEVERE, null, e);
             return "redirect:/error.html";
-        }
-        
-         
-        
+        }        
     }
 
     @Override

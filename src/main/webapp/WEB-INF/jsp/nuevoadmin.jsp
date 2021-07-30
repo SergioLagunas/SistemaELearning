@@ -103,7 +103,7 @@
                 text-align: center;
             }
             option1{
-                 margin-bottom: 20px;
+                margin-bottom: 20px;
                 width: 50%;
                 padding: 5px;
             }
@@ -113,12 +113,12 @@
                 padding: 5px;
             }
             select{
-               margin-bottom: 20px;
+                margin-bottom: 20px;
                 width: 50%;
                 padding: 5px;
-               display: flex;
+                display: flex;
             }
-           
+
             input[type="file"]{
                 width: 50%;
                 margin-bottom: 0;
@@ -205,15 +205,13 @@
                             <br>
                             <label for="apeM"></label> <input type="text" id="apeM" placeholder="Apellido materno" required name="aMaterno">
                             <br>
-                       
-                            <select  name="gen">
+                            <select  name="genero">
                                 <option disabled selected value="g">Genero</option>
                                 <option disabled="">Selecciona una opción:</option>
-                                <option value="f">Femenino</option>
-                                <option value="m">Masculino</option>
-                                
+                                <option value="Femenino">Femenino</option>
+                                <option value="Masculino">Masculino</option>
                             </select>
-               
+
                             <label for="email"></label> <input type="text" id="cont" placeholder="Correo" required name="email">
                             <br>
                             <label for="contrasena"></label> <input type="password" id="cont" placeholder="Contraseña" required name="contrasena">
@@ -237,6 +235,16 @@
                                 <th>RFC</th>
                                 <th>Opciones</th>
                             </tr>
+                            <c:forEach items="${administradores}" var="admin">
+                                <tr>
+                                    <td><c:out value="${admin.nombre}"></c:out></td>
+                                    <td><c:out value="${admin.aPaterno}"></c:out></td>
+                                    <td><c:out value="${admin.aMaterno}"></c:out></td>
+                                    <td><c:out value="${admin.email}"></c:out></td>
+                                    <td><c:out value="${admin.genero}"></c:out></td>
+                                    <td><c:out value="${admin.rfc}"></c:out></td>
+                                 </tr>
+                            </c:forEach>
                         </thead>
                     </table>
                 </div>
@@ -252,17 +260,6 @@
                         Actualizar(DataForm)
                         Vaciar()
                     }
-                }
-                function Leer() {
-                    let DataForm = {}
-                    DataForm["nom"] = document.getElementById("nom").value
-                    DataForm["apeP"] = document.getElementById("apeP").value
-                    DataForm["apeM"] = document.getElementById("apeM").value
-                    DataForm["correo"] = document.getElementById("correo").value
-                    DataForm["cont"] = document.getElementById("cont").value
-                    DataForm["gen"] = document.getElementById("gen").value
-                    DataForm["RFC"] = document.getElementById("RFC").value
-                    return DataForm
                 }
                 function InsertarDatos(data) {
                     let table = document.getElementById("tabla").getElementsByTagName('tbody')[0]

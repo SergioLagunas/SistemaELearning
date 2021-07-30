@@ -107,13 +107,13 @@
                 width: 50%;
                 padding: 5px;
             }
-             select{
-               margin-bottom: 20px;
+            select{
+                margin-bottom: 20px;
                 width: 50%;
                 padding: 5px;
-               display: flex;
+                display: flex;
             }
-            
+
             input[type="file"]{
                 width: 50%;
                 margin-bottom: 0;
@@ -204,13 +204,11 @@
                             <br>
                             <label for="cont"></label> <input type="password" id="cont" placeholder="Contraseña" required>
                             <br>
-                          
-                            <select  name="gen">
+                            <select  name="genero">
                                 <option disabled selected value="g">Genero</option>
                                 <option disabled="">Selecciona una opción:</option>
-                                <option value="f">Femenino</option>
-                                <option value="m">Masculino</option>
-                                
+                                <option value="Femenino">Femenino</option>
+                                <option value="Masculino">Masculino</option>
                             </select>
                             <br>
                             <br>
@@ -233,6 +231,16 @@
                                 <th>RFC</th>
                                 <th>Opciones</th>
                             </tr>
+                            <c:forEach items="${semilleros}" var="semillero">
+                                <tr>
+                                    <td><c:out value="${semillero.nombre}"></c:out></td>
+                                    <td><c:out value="${semillero.aPaterno}"></c:out></td>
+                                    <td><c:out value="${semillero.aMaterno}"></c:out></td>
+                                    <td><c:out value="${semillero.email}"></c:out></td>
+                                    <td><c:out value="${semillero.genero}"></c:out></td>
+                                    <td><c:out value="${semillero.rfc}"></c:out></td>
+                                    </tr>
+                            </c:forEach>
                         </thead>
                     </table>
                 </div>
@@ -248,17 +256,6 @@
                         Actualizar(DataForm)
                         Vaciar()
                     }
-                }
-                function Leer() {
-                    let DataForm = {}
-                    DataForm["nom"] = document.getElementById("nom").value
-                    DataForm["apeP"] = document.getElementById("apeP").value
-                    DataForm["apeM"] = document.getElementById("apeM").value
-                    DataForm["correo"] = document.getElementById("correo").value
-                    DataForm["cont"] = document.getElementById("cont").value
-                    DataForm["gen"] = document.getElementById("gen").value
-                    DataForm["RFC"] = document.getElementById("RFC").value
-                    return DataForm
                 }
                 function InsertarDatos(data) {
                     let table = document.getElementById("tabla").getElementsByTagName('tbody')[0]

@@ -1,6 +1,7 @@
     package Elearning.dao.impl;
 
 import Elearning.dao.UsuarioDao;
+import Elearning.modelo.Modulo;
 import Elearning.modelo.Usuario;
 import Elearning.util.HibernateUtil;
 import java.util.List;
@@ -234,7 +235,72 @@ public class UsuarioDaoImpl implements UsuarioDao {
 
       
     }
-    
-    
+
+    @Override
+    public List<Usuario> findbyAdmin(String tUsuario) {
+       //Obtener la secion 
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        //Ocupamos la transaccion en caso de error la base de datos se restaura a como estaba
+        Transaction transaccion = session.getTransaction();
+
+        List<Usuario> lista = null;
+        try {
+            //Iniciamos Transaccion
+            transaccion.begin();
+            //crea la consulta Query
+            Query <Usuario> query = session.createSQLQuery("select * from Usuario mo where mo.tUsuario=:c")
+                    .addEntity(Usuario.class)
+                    .setParameter("c", tUsuario);
+                    
+            //Amacenamos los datos en la lista declarada anteriormente 
+            lista = query.list();
+            
+            //regresa el commit
+            transaccion.commit();
+        } catch (HibernateException e) {
+            //Si la transaccion esta bacia y ademas esta activa que regrese el estado en el que se encontraba la Base de Datos
+            if (transaccion != null && transaccion.isActive()) {
+                transaccion.rollback();
+            }
+        } finally {
+            //Finalmente cerramos la sesion 
+            session.close();
+        }
+        return lista;
+    }
+
+    @Override
+    public List<Usuario> findbySemillero(String tUsuario) {
+       //Obtener la secion 
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        //Ocupamos la transaccion en caso de error la base de datos se restaura a como estaba
+        Transaction transaccion = session.getTransaction();
+
+        List<Usuario> lista = null;
+        try {
+            //Iniciamos Transaccion
+            transaccion.begin();
+            //crea la consulta Query
+            Query <Usuario> query = session.createSQLQuery("select * from Usuario mo where mo.tUsuario=:c")
+                    .addEntity(Usuario.class)
+                    .setParameter("c", tUsuario);
+                    
+            //Amacenamos los datos en la lista declarada anteriormente 
+            lista = query.list();
+            
+            //regresa el commit
+            transaccion.commit();
+        } catch (HibernateException e) {
+            //Si la transaccion esta bacia y ademas esta activa que regrese el estado en el que se encontraba la Base de Datos
+            if (transaccion != null && transaccion.isActive()) {
+                transaccion.rollback();
+            }
+        } finally {
+            //Finalmente cerramos la sesion 
+            session.close();
+        }
+        return lista;
+    }
+
 
   }
