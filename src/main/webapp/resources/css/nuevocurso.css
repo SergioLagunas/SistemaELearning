@@ -5,16 +5,19 @@ body {
 }
 
 #container {
-    max-width: 90%;
+    width: 40%;
     max-height: fit-content;
     margin: auto;
-
 
 }
 
 #Titulo {
     text-align: center;
-
+    font-size: 30px;
+}
+#subtitulo {
+    text-align: center;
+    font-size: 25px;
 }
 
 #nombreC{

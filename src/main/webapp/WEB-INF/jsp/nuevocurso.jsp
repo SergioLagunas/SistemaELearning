@@ -55,10 +55,12 @@
     
     <div id="container">
         <div id="Titulo">
-            <h1>Nuevo Curso</h1>
+            <h3>Nuevo Curso</h3>
         </div>
-        
-    <h1>Añade un nuevo Curso</h1>
+        <div id="subtitulo">
+            <h3>Añade un nuevo Curso</h3>
+        </div>
+        <br>
     <form:form id="form" action="crearCurso.html" method="POST" enctype="multipart/form-data">   
     <div id="example">
         <div class="demo-section k-content">

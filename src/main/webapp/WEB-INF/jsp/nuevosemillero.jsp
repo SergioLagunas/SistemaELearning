@@ -194,15 +194,11 @@
                     <table class="tabla" id="tabla">
                         <tbody>
                         <div class="caja">
-                            <label for="nom"></label> <input type="text" id="nom" placeholder="Nombre" required>
+                            <label for="nom"></label> <input type="text" id="nom" placeholder="Nombre" required name="nombre">
                             <br>
-                            <label for="apeP"></label> <input type="text" id="apeP" placeholder="Apellido paterno" required>
+                            <label for="apeP"></label> <input type="text" id="apeP" placeholder="Apellido paterno" required name="aPaterno">
                             <br>
-                            <label for="apeM"></label> <input type="text" id="apeM" placeholder="Apellido materno" required>
-                            <br>
-                            <label for="correo"></label> <input type="text" id="correo" placeholder="Correo" required>
-                            <br>
-                            <label for="cont"></label> <input type="password" id="cont" placeholder="Contraseña" required>
+                            <label for="apeM"></label> <input type="text" id="apeM" placeholder="Apellido materno" required name="aMaterno">
                             <br>
                             <select  name="genero">
                                 <option disabled selected value="g">Genero</option>
@@ -210,12 +206,15 @@
                                 <option value="Femenino">Femenino</option>
                                 <option value="Masculino">Masculino</option>
                             </select>
+
+                            <label for="email"></label> <input type="text" id="cont" placeholder="Correo" required name="email">
+                            <br>
+                            <label for="contrasena"></label> <input type="password" id="cont" placeholder="Contraseña" required name="contrasena">
+                            <br>
+                            <label for="RFC"></label> <input type="text" id="RFC" placeholder="RFC" required name="rfc">
                             <br>
                             <br>
-                            <label for="RFC"></label> <input type="text" id="RFC" placeholder="RFC" required>
-                            <br>
-                            <br>
-                            <input class="submit" type="submit" value="Guardar">
+                            <input class="submit" type="submit" value="Actualizar">
                         </div>
                         <br/>
                         </tbody>
