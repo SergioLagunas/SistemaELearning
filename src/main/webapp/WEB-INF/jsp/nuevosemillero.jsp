@@ -223,10 +223,9 @@
                         <thead>
                             <tr > 
                                 <th>Nombre</th> 
-                                <th>Apellido paterno</th>
-                                <th>Apellido materno</th>
+                                <th>Apellido Paterno</th>
+                                <th>Apellido Materno</th>
                                 <th>Correo</th>
-                                <th>Contraseña</th>
                                 <th>Genero</th>
                                 <th>RFC</th>
                                 <th>Opciones</th>

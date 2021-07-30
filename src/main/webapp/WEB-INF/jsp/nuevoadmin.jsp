@@ -227,11 +227,9 @@
                         <thead>
                             <tr > 
                                 <th>Nombre</th> 
-                                <th>Apellido paterno</th>
-                                <th>Apellido materno</th>
+                                <th>Apellido Paterno</th>
+                                <th>Apellido Materno</th>
                                 <th>Correo</th>
-                                <th>Contraseña</th>
-                                <th>Genero</th>
                                 <th>RFC</th>
                                 <th>Opciones</th>
                             </tr>
@@ -241,9 +239,8 @@
                                     <td><c:out value="${admin.aPaterno}"></c:out></td>
                                     <td><c:out value="${admin.aMaterno}"></c:out></td>
                                     <td><c:out value="${admin.email}"></c:out></td>
-                                    <td><c:out value="${admin.genero}"></c:out></td>
                                     <td><c:out value="${admin.rfc}"></c:out></td>
-                                 </tr>
+                                    </tr>
                             </c:forEach>
                         </thead>
                     </table>
