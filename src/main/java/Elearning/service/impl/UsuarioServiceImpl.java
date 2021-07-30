@@ -51,6 +51,12 @@ public class UsuarioServiceImpl implements UsuarioService {
        model.addAttribute("semilleros",usuarioDao.findbySemillero(tUsuario));
        return "nuevosemillero";
     }
+    
+     @Override
+    public String readUser(Model model) {
+       model.addAttribute("usuario",usuarioDao.getUsuario(elUsuario));
+       return "perfilsem";
+    }
 
     @Override
     //@Transactional
@@ -180,21 +186,17 @@ public class UsuarioServiceImpl implements UsuarioService {
 
     @Override
     public String updateUsuario(HttpServletRequest request) {
-        
-        //Integer idUsuario = Integer.parseInt(request.getParameter("idUsuario"));
         String nombre = request.getParameter("nombre");
         String aPaterno = request.getParameter("aPaterno");
         String aMaterno = request.getParameter("aMaterno");
         String genero = request.getParameter("genero");
         String email = request.getParameter("email");
         String contrasena = request.getParameter("contrasena");
-        String tUsuario = request.getParameter("tUsuario");
+        String tUsuario = "Semillero";
         String rfc = request.getParameter("rfc");
-        //String[] cursos = request.getParameterValues("curso[]");
 
         Usuario editUsuario = new Usuario(nombre,aPaterno,aMaterno,genero,email,contrasena,tUsuario,rfc);
         editUsuario = usuarioDao.update(editUsuario);
-
         //Checar El contructor 
         UsuarioDto dto = new UsuarioDto(editUsuario.getNombre(),editUsuario.getaPaterno(),editUsuario.getaMaterno(),
                 editUsuario.getGenero(),editUsuario.getEmail(),editUsuario.getContrasena(),editUsuario.gettUsuario(),editUsuario.getRfc());
@@ -207,7 +209,34 @@ public class UsuarioServiceImpl implements UsuarioService {
         } catch (JsonProcessingException ex) {
             Logger.getLogger(UsuarioServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return data;
+    }
+    
+    @Override
+    public String updateUsuarioAdmin(HttpServletRequest request) {
+        String nombre = request.getParameter("nombre");
+        String aPaterno = request.getParameter("aPaterno");
+        String aMaterno = request.getParameter("aMaterno");
+        String genero = request.getParameter("genero");
+        String email = request.getParameter("email");
+        String contrasena = request.getParameter("contrasena");
+        String tUsuario = "Administrador";
+        String rfc = request.getParameter("rfc");
 
+        Usuario editUsuario = new Usuario(nombre,aPaterno,aMaterno,genero,email,contrasena,tUsuario,rfc);
+        editUsuario = usuarioDao.update(editUsuario);
+        //Checar El contructor 
+        UsuarioDto dto = new UsuarioDto(editUsuario.getNombre(),editUsuario.getaPaterno(),editUsuario.getaMaterno(),
+                editUsuario.getGenero(),editUsuario.getEmail(),editUsuario.getContrasena(),editUsuario.gettUsuario(),editUsuario.getRfc());
+        String data="";
+        
+        try {   
+             ObjectMapper mapper = new ObjectMapper();
+             data=mapper.writeValueAsString(dto);
+            
+        } catch (JsonProcessingException ex) {
+            Logger.getLogger(UsuarioServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
         return data;
     }
     
@@ -292,5 +321,6 @@ public class UsuarioServiceImpl implements UsuarioService {
          }
          return "{\"valid\"}";
     }
+
 
 }

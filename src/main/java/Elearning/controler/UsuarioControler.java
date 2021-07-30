@@ -19,7 +19,6 @@ public class UsuarioControler {
     @Autowired
     private UsuarioService usuarioService;
     
-    //Aqui inician las ventanas que se enlazan con la venta de bienvenida sem
     //Crear un Administrador 
      @RequestMapping(value = "addAdministrador.html", method = RequestMethod.POST)
       public ModelAndView addAdministrador(HttpServletRequest request, HttpServletResponse response){
@@ -41,17 +40,24 @@ public class UsuarioControler {
          return usuarioService.readAdmin(model);
     }
     
+    //Listado de Semilleros 
      @RequestMapping(value = "nuevosemillero.html", method = RequestMethod.GET)
     public String listarSemilleros(Model model){
          return usuarioService.readSem(model);
     }
     
+    //Mostrar los datos en la pantalla de actualizar datos 
     @RequestMapping(value = "perfilsem.html", method = RequestMethod.GET)
-    public ModelAndView perfilsem(){
-        ModelAndView mo = new ModelAndView();
-        mo.setViewName("perfilsem");
-        return mo;   
+    public String listarDatosUser(Model model){
+        return usuarioService.readUser(model);
     }
+    
+    //Mostrar los datos en la pantalla de actualizar datos Administrador 
+    @RequestMapping(value = "perfiladmin.html", method = RequestMethod.GET)
+    public String listarDatosAdmin(Model model){
+        return usuarioService.readUser(model);
+    }
+    
     
     @RequestMapping(value = "ProgressBar.html", method = RequestMethod.GET)
     public ModelAndView ProgressBar(){
@@ -60,13 +66,7 @@ public class UsuarioControler {
         return mo;   
     }
     
-    //Aqui inician las ventanas que se enlazan con la venta de bienvenida admiN
-     @RequestMapping(value = "perfiladmin.html", method = RequestMethod.GET)
-    public ModelAndView perfiladmin(){
-        ModelAndView mo = new ModelAndView();
-        mo.setViewName("perfiladmin");
-        return mo;   
-    }
+   
     
    
    
