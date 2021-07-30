@@ -107,6 +107,13 @@
                 width: 50%;
                 padding: 5px;
             }
+             select{
+               margin-bottom: 20px;
+                width: 50%;
+                padding: 5px;
+               display: flex;
+            }
+            
             input[type="file"]{
                 width: 50%;
                 margin-bottom: 0;
@@ -195,9 +202,17 @@
                             <br>
                             <label for="correo"></label> <input type="text" id="correo" placeholder="Correo" required>
                             <br>
-                            <label for="cont"></label> <input type="text" id="cont" placeholder="Contraseña" required>
+                            <label for="cont"></label> <input type="password" id="cont" placeholder="Contraseña" required>
                             <br>
-                            <label for="gen"></label> <input type="text" id="gen" placeholder="Genero" required>
+                          
+                            <select  name="gen">
+                                <option disabled selected value="g">Genero</option>
+                                <option disabled="">Selecciona una opción:</option>
+                                <option value="f">Femenino</option>
+                                <option value="m">Masculino</option>
+                                
+                            </select>
+                            <br>
                             <br>
                             <label for="RFC"></label> <input type="text" id="RFC" placeholder="RFC" required>
                             <br>

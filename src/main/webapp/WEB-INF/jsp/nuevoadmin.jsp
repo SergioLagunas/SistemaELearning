@@ -100,13 +100,25 @@
             }
             label{
                 font-size: 16px;
-
+                text-align: center;
+            }
+            option1{
+                 margin-bottom: 20px;
+                width: 50%;
+                padding: 5px;
             }
             input, textarea{
                 margin-bottom: 20px;
                 width: 50%;
                 padding: 5px;
             }
+            select{
+               margin-bottom: 20px;
+                width: 50%;
+                padding: 5px;
+               display: flex;
+            }
+           
             input[type="file"]{
                 width: 50%;
                 margin-bottom: 0;
@@ -193,11 +205,18 @@
                             <br>
                             <label for="apeM"></label> <input type="text" id="apeM" placeholder="Apellido materno" required name="aMaterno">
                             <br>
-                            <label for="genero"></label> <input type="text" id="correo" placeholder="Genero" required name="genero">
-                            <br>
+                       
+                            <select  name="gen">
+                                <option disabled selected value="g">Genero</option>
+                                <option disabled="">Selecciona una opción:</option>
+                                <option value="f">Femenino</option>
+                                <option value="m">Masculino</option>
+                                
+                            </select>
+               
                             <label for="email"></label> <input type="text" id="cont" placeholder="Correo" required name="email">
                             <br>
-                            <label for="contrasena"></label> <input type="text" id="cont" placeholder="Contraseña" required name="contrasena">
+                            <label for="contrasena"></label> <input type="password" id="cont" placeholder="Contraseña" required name="contrasena">
                             <br>
                             <label for="RFC"></label> <input type="text" id="RFC" placeholder="RFC" required name="rfc">
                             <br>
