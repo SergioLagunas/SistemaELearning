@@ -111,63 +111,10 @@ button:hover{
             </nav> 
         <a class="cta" href="index.html"><button>Cerrar sesión</button></a>
      </div>
+   <br>
     <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>   <br>
-    <br>
-    <br>   <br>
-    <br>
-    <br><br>
-    <br>
-    <br>
-    <br>
-    <br>   <br>
-    <br>
-    <br>   <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>   <br>
-    <br>
-    <br>   <br>
-    <br>
-    <br><br>
-    <br>
-    <br>
-    <br>
-    <br>   <br>
-    <br>
-    <br>   <br>
-    <br>
-    <br> <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>   <br>
-    <br>
-    <br>   <br>
-    <br>
-    <br><br>
-    <br>
-    <br>
-    <br>
-    <br>   <br>
-    
-<main class="card">
-    
-    <header>
-      <img src="${pageContext.request.contextPath}/resources/imagenes/1.jpg" alt="">
-    </header>
-
-    <section>
+    <br>   
+     <section>
       <h2>Mis datos</h2>
       <h3>Administrador</h3>
       <p>Aqui podras modificar tus datos.</p>
@@ -175,39 +122,34 @@ button:hover{
         <div id="example">
             <div class="row clearfix">
               <div class="col-lg-4">
-                
-                <div class="form-horizontal form-widgets ">
                                                
-                          <table width="457" height="656" border="0">
+                 <div class="form-horizontal form-widgets ">
+                  <table width="207" height="400" border="0">
                             <tr>
-                              <td width="158">Nombre:</td>
-                              <td width="289"><input name="Input" id="name"  /></td>
+                              <td width="289"><input name="Input" id="name"  placeholder="Nombre"/></td>
                             </tr>  
                             <tr>
-                                <td width="158">Apellido Paterno:</td>
-                                <td width="289"><input name="Input2" id="apellidop"  /></td>
+                         <td width="289"><input name="Input2" id="apellidop"  placeholder="A.Paterno"/></td>
                               </tr>   
                               <tr>
-                                <td width="158">Apellido Materno:</td>
-                                <td width="289"><input name="Input3" id="apellidom"  /></td>
-                              </tr>       
-                            <tr>
-                              <td>RFC:</td>
-                              <td><input name="Input5" id="RFC" size="20" placeholder="RFC" /></td>
+                              <td width="289"><input name="Input3" id="apellidom"  placeholder="A.Materno"/></td>
+                              </tr>     
+                             <tr>
+                            <td><input name="Input5" id="RFC" size="20" placeholder="RFC" /></td>
                             </tr>
                           </table>
                         </div>
                       
                                               </center>
-                          </div>
+            </div></div>
                         <p></p>
                         
                         <p align="center">
-                                        <td height="42">                                  
+                                        <td height="10">                                  
                       <center>
                                           <table>
                                           </table>
-                        <td height="29"><p></p></td>
+                        <td height="5"><p></p></td>
                       </center>
                     </tr>
                   </table>
@@ -289,10 +231,7 @@ button:hover{
       </ul>
     </section>
 
-    <footer>
-      <p>B1 SOFT LATINOAMERICA S.A de C.V</p>
-    </footer>
-  </main>
+    
 <br>
 <br>
 <br>
