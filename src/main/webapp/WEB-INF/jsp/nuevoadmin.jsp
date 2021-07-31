@@ -20,10 +20,14 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-        
+        <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
         <style>
             /*Estilo header*/
-            @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+            body {
+                font-family: 'Varela Round', sans-serif;
+
+            }
 
             li,a,button{
                 font-family: "roboto",sans-serif;
@@ -99,13 +103,13 @@
                 border: 1px dashed #ccc;
                 margin: 20px;
                 padding: 20px;
-              
+
             }
             label{
                 font-size: 16px;
-                
+
                 color:black;
-                
+
             }
             option1{
                 margin-bottom: 20px;
@@ -118,17 +122,17 @@
                 padding: 5px;
                 border:1px solid #d3d6e4;
                 border-radius: 5px;
-               
-               outline: none; 
-               
+
+                outline: none; 
+
             }
             ::placeholder{
                 font-family: "Font Awesome 5 Free"; 
                 font-weight: 900;
             }
-            
+
             select{
-               
+
                 margin-bottom: 20px;
                 border-radius: 5px;
                 width: 50%;
@@ -148,10 +152,10 @@
             input[type="submit"]{
                 width: 10%;
                 margin-bottom: 0;
-                background: #6603c2b6;
+                background: #0065CC;
                 color: #fff;
-               border-radius: 50px;
-               border: none;
+                border-radius: 50px;
+                border: none;
             }
             table{
                 background-color: white;
@@ -159,8 +163,8 @@
                 text-align: center;
                 color: black;
                 border-collapse: collapse;
-               
-                
+
+
             }
             th, td{
 
@@ -168,13 +172,21 @@
 
             }
             thead{
-             background-color:  #246355;
+                background-color:  #246355;
                 border-bottom: solid 5px #0f362d;
                 color: white;
             }
 
             .Editarr{
                 background-color: teal;
+            }
+            #nom, #apeP, #apeM, #correo, #cont, #gen, #RFC{
+                background-color: #272727;
+                color: white;
+            }
+            h1 {
+                color: black;
+                font-weight: bold;
             }
 
 
@@ -227,7 +239,7 @@
                             <br>
                             <label for="apeM"></label> <input type="text" id="apeM" placeholder=" Apellido materno" required name="aMaterno">
                             <br>
-                            <select  name="genero">
+                            <select  name="genero" id="gen">
                                 <option disabled selected value="g"> Genero:</option>
                                 <option disabled="">Selecciona una opción:</option>
                                 <option value="Femenino">Femenino</option>
