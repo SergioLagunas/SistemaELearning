@@ -12,7 +12,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public interface CursoService {
     
     public List<Curso> listadoCursos();
-    public String createNewCurso(CursoModel CursoF);
+    public String createNewCurso(CursoModel CursoF,HttpServletRequest request);
     public String updateCurso(final HttpServletRequest request);
     public String deleteCurso(final Map<String,String> requestParam);
     

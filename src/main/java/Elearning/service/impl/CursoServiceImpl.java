@@ -16,42 +16,45 @@ import Elearning.util.JavaDropBox;
 import com.dropbox.core.DbxException;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Service("CursoService")
 public class CursoServiceImpl implements CursoService {
-    
+
     //Aca almacenaremos el id del curso para que se puede hacer la relacion con la otra tabla 
-    static int elcurso=0;
+    static int elcurso = 0;
 
     @Autowired
     private CursoDao cursoDao;
-   
+
     @Autowired
     private UsuarioDao usuarioDao;
 
     @Override
     public List<Curso> listadoCursos() {
-       return cursoDao.findAll();
+        return cursoDao.findAll();
     }
 
     @Override
-    public String createNewCurso(CursoModel CursoF) {
+    public String createNewCurso(CursoModel CursoF,HttpServletRequest request) {
         //Obtengo el id del Usuario que se logeo en este caso sera solo de administradores ya que solo ellos 
         //Pueden crear cursos
         int usuario = UsuarioServiceImpl.elUsuario;
         Usuario user = new Usuario();
-        
+
         //Obtengo por el id el Administrador que se logeo 
         user = usuarioDao.getUsuario(usuario);
-        
+
         try {
             Curso entidad = new Curso();
             entidad.setNombre(CursoF.getNombre());
@@ -59,24 +62,25 @@ public class CursoServiceImpl implements CursoService {
             entidad.setProgreso(0);
             entidad.setCategoria(CursoF.getCategoria());
             
-            String enlace = guardarDropBox(CursoF);
-            if (!enlace.equals("")) {
-                entidad.setCaratula(enlace);
-    
+            String enlacel = guardarImagen(CursoF.getCaratula(),request);
+           // String enlace = guardarDropBox(CursoF);
+            if (!enlacel.equals("")) {
+                entidad.setCaratula(enlacel);
+
                 //Creamos el Curso 
                 entidad = cursoDao.create(entidad);
-                
+
                 //Relacion MuchosAMuchos en este caso solo relaciona los Adminitradores con el Curso que crearon
-                 user.getCursos().add(entidad);
-                 entidad.getUsuarios().add(user);
-                 usuarioDao.update(user);
-                
+                user.getCursos().add(entidad);
+                entidad.getUsuarios().add(user);
+                usuarioDao.update(user);
+
                 //Almaceno en un variable global el id del curso que se creo en ese momento 
                 elcurso = entidad.getIdCurso();
-                System.out.println("La Imagen se Guardo correctamente y ya esta creada la url de DropBox");
+                System.out.println("La Imagen se Guardo correctamente");
                 return "redirect:/anadirmodulos.html";
             } else {
-                System.out.println("Error al crear la Url de DropBox");
+                System.out.println("Error al crear la imagen");
                 return "redirect:/error.html";
 
             }
@@ -84,7 +88,7 @@ public class CursoServiceImpl implements CursoService {
             e.printStackTrace();
             Logger.getLogger(CursoServiceImpl.class.getName()).log(Level.SEVERE, null, e);
             return "redirect:/error.html";
-        }        
+        }
     }
 
     @Override
@@ -146,6 +150,24 @@ public class CursoServiceImpl implements CursoService {
 
     }
 
-   
+    private String guardarImagen(MultipartFile multiPart, HttpServletRequest request) {
+// Obtenemos el nombre original del archivo 
+        String nombreOriginal = multiPart.getOriginalFilename();
+        nombreOriginal=nombreOriginal.replace(" ","-");
+        String rutaFinal = request.getServletContext().getRealPath("/resources/images/");
+        String path = rutaFinal +"/"+ nombreOriginal;
+        try {
+// Formamos el nombre del archivo para guardarlo en el disco duro
+            File imageFile = new File(path);
+            System.out.println("Ruta: "+imageFile.getAbsoluteFile());
+// Aqui se guarda fisicamente el archivo en el disco duro
+            //multiPart.transferTo(Paths.get(path));
+           multiPart.transferTo(imageFile);
+            return nombreOriginal;
+        } catch (IOException e) {
+            System.out.println("Error " + e.getMessage());
+            return null;
+        }
+    }
 
 }
