@@ -38,7 +38,7 @@
     </div>
      <!-- Navigation-->
      <header>
-        <a href="bienvenida.html"> <img src="${pageContext.request.contextPath}/resources/imagenes/def1.gif"  width="160px" height="90" > </a> 
+        <a href="admin.html"> <img src="${pageContext.request.contextPath}/resources/imagenes/def1.gif"  width="160px" height="90" > </a> 
             <nav>
                 <ul class="nav__links">
                     <li><a href="perfiladmin.html">Mi perfil </a></li>
@@ -50,7 +50,7 @@
             </nav> 
         <a class="cta" href="index.html"><button>Cerrar sesión</button></a>
      </header>
-        <center><h1><font color="#fff">Bienvenido <%=request.getSession().getAttribute("usuario")%></font></h1></center>
+        <center><h1><font color="black">Bienvenido <%=request.getSession().getAttribute("usuario")%></font></h1></center>
         <div id="multimedia"> 
             <iframe width="560" height="315" src="https://www.youtube.com/embed/lRQjFCd4dJg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
