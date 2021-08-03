@@ -44,6 +44,9 @@ public class ModuloServiceImpl implements ModuloService {
     @Override
     public String readModulo(int idCurso, Model model) {
         System.out.println("idCurso: "+idCurso);
+        Curso curso = new Curso();
+        curso = cursoDao.getCurso(idCurso);
+        model.addAttribute("infcurso",curso);
         model.addAttribute("modulos",moduloDao.findbyCurso(idCurso));     
         return "mediacursos";
     }
@@ -130,17 +133,22 @@ public class ModuloServiceImpl implements ModuloService {
         String caratula = moduloM.getUrl() + "_Video" + getExtention(moduloM.getUrl().getOriginalFilename());
         jv.uploadToDropbox(moduloM.getUrl().getBytes(), "/" + caratula);
         String urlVideo = jv.createURL(caratula);
-
-        if (!urlVideo.equals("")) {
-            enlace = urlVideo;
+        //urlVideo.replace(" www.dropbox.com","dl.dropboxusercontent.com");
+        String sNuevaURL = reemplazar(urlVideo,"www.dropbox.com","dl.dropboxusercontent.com");
+        System.out.println("url modificada: "+sNuevaURL);
+        if (!sNuevaURL.equals("")) {
+            enlace = sNuevaURL;
         }
-
         return enlace;
     }
 
     private String getExtention(String string) {
         return string.substring(string.lastIndexOf("."), string.length());
 
+    }
+    
+    public static String reemplazar(String cadena, String busqueda, String reemplazo) {
+        return cadena.replaceAll(busqueda, reemplazo);
     }
 
 }

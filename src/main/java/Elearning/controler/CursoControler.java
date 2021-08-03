@@ -38,8 +38,8 @@ public class CursoControler {
    
     
     @RequestMapping(value="crearCurso.html",method = RequestMethod.POST)
-    public String crearCurso(@ModelAttribute CursoModel CursoF,HttpServletRequest request){
-        return cursoService.createNewCurso(CursoF,request);
+    public String crearCurso(@ModelAttribute CursoModel CursoF){
+        return cursoService.createNewCurso(CursoF);
     }
     
      @RequestMapping(value = "Cartas.html", method = RequestMethod.GET)

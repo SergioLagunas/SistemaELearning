@@ -76,7 +76,7 @@
                 </li>
                 
                 <li>
-                    <span class="btn btn-primary btn-file">Caratula del curso: <input type="file" accept=".jpg,.png" name="caratula" ></span>
+                    <span class="btn btn-primary btn-file">Caratula del curso: <input type="file" accept=".jpg,.png,.jpeg,.gif," name="caratula" ></span>
                 </li>
 
                 <li>

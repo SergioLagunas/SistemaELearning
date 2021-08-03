@@ -46,7 +46,7 @@ public class CursoServiceImpl implements CursoService {
     }
 
     @Override
-    public String createNewCurso(CursoModel CursoF,HttpServletRequest request) {
+    public String createNewCurso(CursoModel CursoF) {
         //Obtengo el id del Usuario que se logeo en este caso sera solo de administradores ya que solo ellos 
         //Pueden crear cursos
         int usuario = UsuarioServiceImpl.elUsuario;
@@ -62,10 +62,10 @@ public class CursoServiceImpl implements CursoService {
             entidad.setProgreso(0);
             entidad.setCategoria(CursoF.getCategoria());
             
-            String enlacel = guardarImagen(CursoF.getCaratula(),request);
-           // String enlace = guardarDropBox(CursoF);
-            if (!enlacel.equals("")) {
-                entidad.setCaratula(enlacel);
+            //String enlacel = guardarImagen(CursoF.getCaratula(),request);
+            String enlace = guardarDropBox(CursoF);
+            if (!enlace.equals("")) {
+                entidad.setCaratula(enlace);
 
                 //Creamos el Curso 
                 entidad = cursoDao.create(entidad);
@@ -139,8 +139,10 @@ public class CursoServiceImpl implements CursoService {
         String caratula = CursoF.getCaratula() + "_Imagen" + getExtention(CursoF.getCaratula().getOriginalFilename());
         jv.uploadToDropbox(CursoF.getCaratula().getBytes(), "/" + caratula);
         String urlImagen = jv.createURL(caratula);
-        if (!urlImagen.equals("")) {
-            enlace = urlImagen;
+        String sNuevaURL = reemplazar(urlImagen,"www.dropbox.com","dl.dropboxusercontent.com");
+        System.out.println("url modificada: "+sNuevaURL);
+        if (!sNuevaURL.equals("")) {
+            enlace = sNuevaURL;
         }
         return enlace;
     }
@@ -149,25 +151,9 @@ public class CursoServiceImpl implements CursoService {
         return string.substring(string.lastIndexOf("."), string.length());
 
     }
-
-    private String guardarImagen(MultipartFile multiPart, HttpServletRequest request) {
-// Obtenemos el nombre original del archivo 
-        String nombreOriginal = multiPart.getOriginalFilename();
-        nombreOriginal=nombreOriginal.replace(" ","-");
-        String rutaFinal = request.getServletContext().getRealPath("/resources/images/");
-        String path = rutaFinal +"/"+ nombreOriginal;
-        try {
-// Formamos el nombre del archivo para guardarlo en el disco duro
-            File imageFile = new File(path);
-            System.out.println("Ruta: "+imageFile.getAbsoluteFile());
-// Aqui se guarda fisicamente el archivo en el disco duro
-            //multiPart.transferTo(Paths.get(path));
-           multiPart.transferTo(imageFile);
-            return nombreOriginal;
-        } catch (IOException e) {
-            System.out.println("Error " + e.getMessage());
-            return null;
-        }
+    
+    public static String reemplazar(String cadena, String busqueda, String reemplazo) {
+        return cadena.replaceAll(busqueda, reemplazo);
     }
 
 }
