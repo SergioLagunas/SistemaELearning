@@ -24,118 +24,153 @@
         <script src="${pageContext.request.contextPath}/resources/js/kendo.all.min.js"></script>
         <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
     </head>
-    <body>
-        <div class="burbujas">
-            <div class="burbuja"></div>
-            <div class="burbuja"></div>
-            <div class="burbuja"></div>
-            <div class="burbuja"></div>
-            <div class="burbuja"></div>
-            <div class="burbuja"></div>
-            <div class="burbuja"></div>
-            <div class="burbuja"></div>
-            <div class="burbuja"></div>
-            <div class="burbuja"></div>
-        </div>
-        <!-- Navigation-->
-        <header>
-            <a href="admin.html"> <img src="${pageContext.request.contextPath}/resources/imagenes/def1.gif"  width="160px" height="90" > </a> 
-            <nav>
-                <ul class="nav__links">
-                    <li><a href="perfiladmin.html">Mi perfil </a></li>
-                    <li><a href="nuevoadmin.html">Admin.</a></li>
-                    <li><a href="nuevosemillero.html">Semilleros</a></li>
-                    <li><a href="listadodecursos.html">Cursos</a></li>
-                    <li><a href="nuevocurso.html">Agregar nuevo curso</a></li>
-                </ul>
-            </nav> 
-            <a class="cta" href="index.html"><button>Cerrar sesión</button></a>
-        </header>
-
-        <div id="container">
-            <div id="Titulo">
-                <h3>Mis datos</h3>
-            </div>
+   <body class="body1">
+    <div class="burbujas">
+        <div class="burbuja"></div>
+        <div class="burbuja"></div>
+        <div class="burbuja"></div>
+        <div class="burbuja"></div>
+        <div class="burbuja"></div>
+        <div class="burbuja"></div>
+        <div class="burbuja"></div>
+        <div class="burbuja"></div>
+        <div class="burbuja"></div>
+        <div class="burbuja"></div>
+    </div>
+    <!-- Navigation-->
+    <header>
+        <a href="bienvenida.html"> <img src="${pageContext.request.contextPath}/resources/imagenes/def1.gif" width="160px" height="90"> </a>
+        <nav>
+            <ul class="nav__links">
+                <li><a href="perfiladmin.html">Mi perfil </a></li>
+                <li><a href="nuevoadmin.html">Admin.</a></li>
+                <li><a href="nuevosemillero.html">Semilleros</a></li>
+                <li><a href="listadodecursos.html">Cursos</a></li>
+                <li><a href="nuevocurso.html">Agregar nuevo curso</a></li>
+            </ul>
+        </nav>
+        <a class="cta" href="index.html"><button>Cerrar sesión</button></a>
+    </header>
+<main class="card">
+    <div id="container">
+        <div id="Titulo">
             <br>
-            <div id="example">
-                <div class="demo-section k-content">
-                    <ul class="fieldlist">
-                        <li>
-                            <input id="simple-input" type="text" placeholder="Nombre" class="k-textbox" style="width: 100%;" />
-                        </li>
-                        <li>
-                            <input id="simple-input" type="text" placeholder="Apellido paterno" class="k-textbox" style="width: 100%;" />
-                        </li>
-                        <li>
-                            <input id="simple-input" type="text" placeholder="Apellido materno" class="k-textbox" style="width: 100%;" />
-                        </li>
-                        <li>
-                            <input id="simple-input" type="text" placeholder="RFC" class="k-textbox" style="width: 100%;" />
-                        </li>
+            <br>
+            <h3>Mis datos</h3>
+        </div>
+        <br>
+        <br><br>
+        
+        <div  id="example">
+            <div class="demo-section k-content">
+                <ul class="fieldlist">
 
+                    <center>
+                        <table class="default" border="0" width="1000px" height="150px">
+                            <tr>
+                                <td> <input id="simple-input" type="text" placeholder="Nombre" class="k-textbox"
+                                        style="width: 90%; border-radius: 10px;" /> </td>
+                                <td> <input id="simple-input" type="text" placeholder="Apellido paterno"
+                                        class="k-textbox" style="width: 90%; border-radius: 10px; " /> </td>
+                            </tr>
 
-                        <li>
-                        <center><button class="k-button">Guardar</button>&nbsp;</center> 
-                        </li>
-                        <br>
-                        <br>
-                        <br>        
-                    </ul>
-                    <style>
-                        .demo-section  {
-                            background-color: rgba(255, 255, 255, 0);
-                        }
-                        .fieldlist {
-                            margin: 0 0 -2em;
-                            padding: 0;
-                        }
+                            <tr>
+                                <td> <input id="simple-input" type="text" placeholder="Apellido materno"
+                                        class="k-textbox" style="width: 90%; border-radius: 10px;" /> </td>
+                                <td> <input id="simple-input" type="text" placeholder="RFC" class="k-textbox"
+                                        style="width: 90%; border-radius: 10px;" /> </td>
+                            </tr>
+                        </table>
+                    </center>
+                    <br><br><br>
 
-                        .fieldlist li {
-                            list-style: none;
-                            padding-bottom: 2em;
-                        }
+                    <li>
+                        <center><button class="k-button" style="width: 40%; border-radius: 10px;">Guardar</button>&nbsp;</center>
+                    </li>
+                    <br>
+                    <br>
+                    <br>
+                </ul>
+                <style>
+                    .demo-section {
+                        background-color: rgba(255, 255, 255, 0);
+                    }
 
-                        .fieldlist label {
-                            display: block;
-                            padding-bottom: 1em;
-                            font-weight: bold;
-                            text-transform: uppercase;
-                            font-size: 12px;
-                            color:black;
-                        }
+                    .fieldlist {
+                        margin: 0 0 -2em;
+                        padding: 0;
+                    }
 
-                    </style>
-                </div>
+                    .fieldlist li {
+                        list-style: none;
+                        padding-bottom: 2em;
+                    }
+
+                    .fieldlist label {
+                        display: block;
+                        padding-bottom: 1em;
+                        font-weight: bold;
+                        text-transform: uppercase;
+                        font-size: 12px;
+                        color: black;
+                    }
+                </style>
             </div>
         </div>
-        <!--Footer-->
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
+    </div>
+</main>
+    <!--Footer-->
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    
+    
+    
+    <div class='footer-wrapper'>
+        <div style='padding-top:15px;padding-bottom:10px; '>
+            <center>
 
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <div class='footer-wrapper'>
-            <div style='padding-top:15px;padding-bottom:10px; '>
-                <center>
+                <a href='https://twitter.com/?lang=es' target='_blank'><img HSPACE='10'
+                        src='https://img.icons8.com/android/24/000000/twitter.png' title='' />
+                    <a href='https://es-la.facebook.com/' target='_blank'><img HSPACE='10'
+                            src='https://img.icons8.com/android/24/000000/facebook.png' title='' /></a>
+                    <a href='https://www.google.com/intl/es-419/gmail/about/#' target='_blank'><img HSPACE='10'
+                            src='https://img.icons8.com/ios-filled/24/000000/gmail-login.png' title='' /></a>
+                    <a href='https://www.youtube.com/' target='_blank'><img HSPACE='10'
+                            src=' https://img.icons8.com/metro/26/000000/youtube.png' title='' /></a>
+                </a>
 
-                    <a href='https://twitter.com/?lang=es' target='_blank'><img HSPACE='10'
-                                                                                src='https://img.icons8.com/android/24/000000/twitter.png' title='' />
-                        <a href='https://es-la.facebook.com/' target='_blank'><img HSPACE='10'
-                                                                                   src='https://img.icons8.com/android/24/000000/facebook.png' title='' /></a>
-                        <a href='https://www.google.com/intl/es-419/gmail/about/#' target='_blank'><img HSPACE='10'
-                                                                                                        src='https://img.icons8.com/ios-filled/24/000000/gmail-login.png' title='' /></a>
-                        <a href='https://www.youtube.com/' target='_blank'><img HSPACE='10'
-                                                                                src=' https://img.icons8.com/metro/26/000000/youtube.png' title='' /></a>
-                    </a>
-
-                </center>
-            </div> Todos los derechos reservados | © 2021 B1 SOFT
-        </div>
-    </body>
+            </center>
+        </div> Todos los derechos reservados | © 2021 B1 SOFT
+    </div>
+</body>
 </html>
