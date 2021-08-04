@@ -21,7 +21,24 @@
                 <img src="${pageContext.request.contextPath}/resources/imagenes/def1.gif" width="70%" height="70%" style="display:block; margin-top: 0%; margin-left: 15%;" />
             </div>
             <div id="multimedia">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/2uQWphe0nd4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <div id="videokendo">
+                    <div class="demo-section k-content wide" style="max-width: 644px;">
+                        <div id="mediaplayer" style="height:360px"></div>
+                    </div>
+                    <script type="text/javascript">
+                        $(document).ready(function () {
+
+                            $("#mediaplayer").kendoMediaPlayer({
+                                autoPlay: false,
+                                navigatable: true,
+                                media: {
+                                    title: "Crea tu cuenta B1SOFT E-Learning",
+                                    source: "https://dl.dropboxusercontent.com/s/xkap48kn1x65imq/videoRegistro.mp4?dl=0"
+                                }
+                            });
+                        });
+                    </script>
+                </div>
             </div>
 
         </div>
@@ -47,7 +64,7 @@
                 <button id="BotonFormulario" class="k-secundary">Crear Cuenta</button>
             </p>
             <a class="link" >¿Olvidaste tu contraseña?</a>
-            
+
         </div>
     </div>
     <!-- MODAL OLVIDASTE LA CONTRASEÑA -->
@@ -57,32 +74,32 @@
     <div id="example1"></div>
 </div>
 <script>
-    
+
     //No CAMBIAR LOS FIELD
     //formulario index
     $(document).ready(function () {
 
-            $("#login").kendoForm({
-                orientation: "vertical",
-                items: [
+        $("#login").kendoForm({
+            orientation: "vertical",
+            items: [
                 {
-                        field: "email",
-                        label: "Correo:",
-                        validation: { required: {message:"Ingresa tu correo electrónico"}, email:{message:"Ingresa un correo electrónico válido"}}
-                    },
-                    {
-                        field: "contrasena",
-                        label: "Contraseña:",
-                        validation: { required: {message:"Ingresa tu contraseña"}, Contrasena:{message:"Ingresa tu contraseña"} },
-                        editor: function (container, options) {
-                            container.append($("<input type='password' class='k-textbox k-valid' id='contrasena' name='contrasena' required='Ingresa tu contraseña' autocomplete='off' aria-labelledby='Password-form-label' data-bind='value:Password' aria-describedby='Password-form-hint' >"));
-                        }
+                    field: "email",
+                    label: "Correo:",
+                    validation: {required: {message: "Ingresa tu correo electrónico"}, email: {message: "Ingresa un correo electrónico válido"}}
+                },
+                {
+                    field: "contrasena",
+                    label: "Contraseña:",
+                    validation: {required: {message: "Ingresa tu contraseña"}, contrasena: {message: "Ingresa tu contraseña"}},
+                    editor: function (container, options) {
+                        container.append($("<input type='password' class='k-textbox k-valid' id='contrasena' name='contrasena' required='Ingresa tu contraseña' autocomplete='off' aria-labelledby='Password-form-label' data-bind='value:Password' aria-describedby='Password-form-hint' >"));
                     }
-                ],
-                // "evita que aparezcan los botones de kendo"
-                buttonsTemplate: "<input type='submit' value='Iniciar sesión' id='BotonIS' class='primary'>"
-            });
+                }
+            ],
+            // "evita que aparezcan los botones de kendo"
+            buttonsTemplate: "<input type='submit' value='Iniciar sesión' id='BotonIS' class='primary'>"
         });
+    });
 // formulario crear cuenta
     function onOpenformulario() {
         var dialog = $('#EditDialog');
@@ -105,22 +122,22 @@
                         {
                             field: "nombre",
                             label: "Nombre:",
-                            validation: {required: {message:"Ingresa tu nombre"}, "Nombre":{message:"Ingresa solo letras"}, pattern:"^[A-Za-z]+$"}
+                            validation: {required: {message: "Ingresa tu nombre"}, "Nombre": {message: "Ingresa solo letras"}, pattern: "^[A-Za-z]+$"}
                         },
                         {
                             field: "aMaterno",
                             label: "Apellido materno:",
-                            validation: {required: {message:"Ingresa tu apellido materno"}, pattern:"^[A-Za-z]+$"}
+                            validation: {required: {message: "Ingresa tu apellido materno"}, pattern: "^[A-Za-z]+$"}
                         },
                         {
                             field: "email",
                             label: "Correo:",
-                            validation: {required: {message:"Ingresa un correo electrónico"}, email:{message:"Ingresa un correo electrónico válido"}}
+                            validation: {required: {message: "Ingresa un correo electrónico"}, email: {message: "Ingresa un correo electrónico válido"}}
                         },
                         {
                             field: "Confcontrasena",
                             label: "Confirmar contraseña:",
-                            validation: {required: {message:"Confirma tu contraseña"}},
+                            validation: {required: {message: "Confirma tu contraseña"}},
                             editor: function (container, options) {
                                 container.append($("<input type='password' class='k-textbox k-valid' id='Password' name='contrasena' title='Password' required='required' autocomplete='off' aria-labelledby='Password-form-label' data-bind='value:Password' aria-describedby='Password-form-hint'>"));
                             }
@@ -137,13 +154,13 @@
                             field: "aPaterno",
                             label: "Apellido paterno:",
                             colSpan: 2,
-                            validation: {required: {message:"Ingresa tu apellido paterno"}, APaterno:{message:"Ingresa solo letras"}, pattern:"^[A-Za-z]+$"}
+                            validation: {required: {message: "Ingresa tu apellido paterno"}, APaterno: {message: "Ingresa solo letras"}, pattern: "^[A-Za-z]+$"}
                         },
                         {
                             field: "genero",
                             editor: "DropDownList",
                             label: "Genero",
-                            validation: {required: {message:"Elige una opción"}},
+                            validation: {required: {message: "Elige una opción"}},
                             colSpan: 2,
                             editorOptions: {
                                 optionLabel: "Seleccionar",
@@ -159,7 +176,7 @@
                             field: "contrasena",
                             label: "Contraseña:",
                             colSpan: 2,
-                            validation: {required: {message:"Ingresa una contraseña"}},
+                            validation: {required: {message: "Ingresa una contraseña"}},
                             editor: function (container, options) {
                                 container.append($("<input type='password' class='k-textbox k-valid' id='Password1' name='contrasena' title='Password' required='required' autocomplete='off' aria-labelledby='Password-form-label' data-bind='value:Password' aria-describedby='Password-form-hint'>"));
                             }
@@ -167,7 +184,7 @@
                         {
                             field: "rfc",
                             label: "RFC:",
-                            validation: {required: {message:"Ingresa tu RFC"}, "RFC":{message:"Ingresa de 10 a 13 carácteres"}, maxlength:13, pattern:"^[A-Za-z0-9]+$"},
+                            validation: {required: {message: "Ingresa tu RFC"}, "RFC": {message: "Ingresa de 10 a 13 carácteres"}, maxlength: 13, pattern: "^[A-Za-z0-9]+$"},
                             colSpan: 2
                         }
                     ]
@@ -243,16 +260,16 @@
                         {
                             field: "email",
                             label: "Correo:",
-                            validation: {required: {message:"Ingresa tu correo electrónico"}, email:{mesagge:"Ingresa un correo electrónico válido"}}
+                            validation: {required: {message: "Ingresa tu correo electrónico"}, email: {mesagge: "Ingresa un correo electrónico válido"}}
                         }
                     ]
                 }
             ],
             buttonsTemplate: "<input class='k-secundary' type='submit' value='Continuar'>"
-            
+
         });
-        
-       
+
+
 
         dialog.kendoDialog({
             width: "450px",

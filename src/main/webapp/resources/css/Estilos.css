@@ -35,7 +35,7 @@ h1 {
     border-color: rgb(202, 199, 199);
     border-radius: 10px;
     box-shadow: 5px 0.4em 0.4em gray;
-    background-color: #FFF;
+    background-color: #272727;
     position: inherit;
 }
 
@@ -46,7 +46,7 @@ h1 {
 .k-card-body {
     margin: 10px 10px 10px 10px;
     font-size: 0.9rem;
-    color: black;
+    color: white;
     font-family: Helvetica;
     text-align: justify;
 }
@@ -116,4 +116,12 @@ h1 {
 
 .bar {
     margin-left: 20%;
+}
+
+#btncurso{
+    background-color: #0066CC;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
 }
