@@ -46,7 +46,7 @@ public class ModuloServiceImpl implements ModuloService {
         System.out.println("idCurso: "+idCurso);
         Curso curso = new Curso();
         curso = cursoDao.getCurso(idCurso);
-        model.addAttribute("infcurso",curso);
+        model.addAttribute("detacurso",curso);
         model.addAttribute("modulos",moduloDao.findbyCurso(idCurso));     
         return "mediacursos";
     }

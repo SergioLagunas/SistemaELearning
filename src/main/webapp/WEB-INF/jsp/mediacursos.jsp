@@ -51,18 +51,16 @@
         <!--Kendo TOOLBAR-->
         <div id="toolbar"></div>
 
-        <section id="pantallaDiv">
+
+        <section id="pantallaDiv" th:>
             <div class="derecho">
                 <h1>Bienvenido</h1>
-                <h2>Curso de.....</h2>
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Est ipsum
-                    sunt voluptatibus porro voluptate error iste ex ratione placeat eos et
-                    repudiandae, itaque repellat dolores, quaerat modi veniam officia
-                    deleniti.
-                </p>
+                <h2>Curso de <c:out value="${detacurso.nombre}"></c:out></h2>
+                <p><c:out value="${detacurso.descripcion}"></c:out></p>
+                
             </div>
         </section>
+
         <!--Kendo VideoEnlace-->
         <br />
         <br />
@@ -85,7 +83,7 @@
                 <c:forEach items="${modulos}" var="modulo">
                             {
                                 title: "${modulo.titulo}",
-                                poster: "https://img.youtube.com/vi/_S63eCewxRg/1.jpg",
+                                poster: "${detacurso.caratula}",
                                 source: "${modulo.url}",
                             },
                 </c:forEach>
