@@ -92,7 +92,7 @@
 
                         Back-End
                     </a>
-                    <a href="Cartas.html?categoria=Front-end" class="btn-neon">
+                    <a href="Cartas.html?categoria=Front-End" class="btn-neon">
                         Front-end
                     </a>
                     <a href="Cartas.html?categoria=Bases de Datos" class="btn-neon">

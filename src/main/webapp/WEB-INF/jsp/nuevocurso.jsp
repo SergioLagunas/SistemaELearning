@@ -72,27 +72,20 @@
                                 <input id="simple-input" type="text" placeholder="Descripción" class="k-textbox" style="width: 100%;" name="descripcion"  />
                             </li>
                             <li>
-                                <input id="simple-input" type="text" placeholder="Categoria" class="k-textbox" style="width: 100%;" name="categoria" />
-                            </li>
-
-                            <li>
                                 <select  name="categoria" id="simple-input">
                                     <option>Back-End</option>
-                                    <option>Front-end</option>
+                                    <option>Front-End</option>
                                     <option>Bases de Datos</option>
                                     <option>Redes</option>
                                     <option>Seguridad en redes</option>   
                                     <option>Otro</option>
                                 </select>
                             </li>
-
                             <li>
                                 <span class="btn btn-primary btn-file">Caratula del curso: <input type="file" accept=".jpg,.png,.jpeg,.gif," name="caratula" ></span>
                             </li>
-
                             <li>
                                 <button class="k-button" type="submit">Guardar</button>&nbsp;
-                                <a href="añadirmodulos.html"> <button class="k-button k-primary">Continuar</button> </a> 
                             </li>
                             <br>
                             <br>
