@@ -14,30 +14,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Bienvenida</title>
         <style>
-            .btn-neon{
-    position: relative;
-    display: inline-block;
-  
-    color: #fff;
-   
-    font-size: 12px;
-    text-decoration: none;
-    overflow: hidden;
-    transition: 0.2s;
-    background: #0F97A9;
-   
-}
-
-.btn-neon:hover{
-    background:#0F97A9 ;
-    box-shadow: 0 0 10px #0F97A9, 0 0 40px #0F97A9, 0 0 80px #0F97A9;
-    transition-delay: 0s;
-
-
-
-}
-
-
+         
         .container{
     min-height: calc(100vh );
     width: 100%;
@@ -76,12 +53,11 @@
     height: 210px;
 }
 
-/*vinculo*/
-.container .card a{
+/*titulo de card*/
+.container .card h4{
     font-weight: 500;
-    text-decoration: none;
-    color: purple;
-
+    font-size: 24px;
+    color: #fff;
 }
 
 
@@ -173,45 +149,45 @@
                 </div>
                <div class="container">
         <div class="card">
-            <img src="${pageContext.request.contextPath}/resources/imagenes/end.jpg">
+            <a href="Cartas.html?categoria=Back-End"> <img src="${pageContext.request.contextPath}/resources/imagenes/end.jpg"></a>
             <br>
             <br>
-            <a href="Cartas.html?categoria=Back-End"><button class="btn-neon">Back-End</button></a>
+            <h4>Back-End</h4>
         </div>
        
         <div class="card">
-            <img src="${pageContext.request.contextPath}/resources/imagenes/front.jpg">
+            <a href="Cartas.html?categoria=Front-End"><img src="${pageContext.request.contextPath}/resources/imagenes/front.jpg"></a>
             <br>
             <br>
-            <a href="Cartas.html?categoria=Front-End"><button class="btn-neon">Front-end</button></a>
+           <h4>Front-end</h4>
         </div>
 
         <div class="card">
-             <img src="${pageContext.request.contextPath}/resources/imagenes/bd.jpg">
+            <a href="Cartas.html?categoria=Bases de Datos"><img src="${pageContext.request.contextPath}/resources/imagenes/bd.jpg"></a>
              <br>
              <br>
-            <a href="Cartas.html?categoria=Bases de Datos"><button class="btn-neon">Bases de Datos</button></a>
+           <h4>Bases de Datos</h4>
         </div>
        
         <div class="card">
-             <img src="${pageContext.request.contextPath}/resources/imagenes/redes.jpg">
+            <a href="Cartas.html?categoria=Redes"> <img src="${pageContext.request.contextPath}/resources/imagenes/redes.jpg"></a>
              <br>
              <br>
-            <a href="Cartas.html?categoria=Redes"><button class="btn-neon">Redes</button></a>
+          <h4>Redes</h4>
         </div>
                    
                    <div class="card">
-                        <img src="${pageContext.request.contextPath}/resources/imagenes/segu.png">
+                       <a href="Cartas.html?categoria=Seguridad en redes"><img src="${pageContext.request.contextPath}/resources/imagenes/segu.png"></a>
                         <br>
                         <br>
-            <a href="Cartas.html?categoria=Seguridad en redes"><button class="btn-neon">Seguridad en redes</button></a>
+          <h4>Seguridad en redes</h4>
         </div>  
                    
                   <div class="card">
-                       <img src="${pageContext.request.contextPath}/resources/imagenes/mas1.jpg">
+                      <a href="Cartas.html?categoria=otros"><img src="${pageContext.request.contextPath}/resources/imagenes/mas1.jpg"></a>
                        <br>
                        <br>
-            <a href="Cartas.html?categoria=otros"><button class="btn-neon">Otros Cursos</button></a>
+           <h4>Otros Cursos</h4>
         </div>  
                      
                    
