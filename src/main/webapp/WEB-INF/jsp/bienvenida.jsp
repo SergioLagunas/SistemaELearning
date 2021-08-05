@@ -13,6 +13,90 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Bienvenida</title>
+        <style>
+            .btn-neon{
+    position: relative;
+    display: inline-block;
+  
+    color: #fff;
+   
+    font-size: 12px;
+    text-decoration: none;
+    overflow: hidden;
+    transition: 0.2s;
+    background: #0F97A9;
+   
+}
+
+.btn-neon:hover{
+    background:#0F97A9 ;
+    box-shadow: 0 0 10px #0F97A9, 0 0 40px #0F97A9, 0 0 80px #0F97A9;
+    transition-delay: 0s;
+
+
+
+}
+
+
+        .container{
+    min-height: calc(100vh );
+    width: 100%;
+    max-width: 1300px;
+    height: 430px;
+    display: flex;
+    flex-wrap: wrap; /*ajusta el contenido de las card*/
+    justify-content: center;
+    margin: auto;
+    color:#fff;
+}
+
+/*estilo de card*/
+.container .card{
+    width: 350px;
+    height: 310px;
+    border-radius: 8px;
+    box-shadow: 0 2px 2px rgba(0,0,0, 0.2);
+    overflow: hidden;
+    margin: 20px;
+    text-align: center;
+    transition: all 0.25s;
+   background-color: #2C2635;
+
+}
+
+/*estilo de card cuando le damos con el mouse*/
+.container .card:hover{
+    transform: translatey(-15px);
+    box-shadow: 0 12px 16px rgba(0, 0, 0, 0.884);
+}
+
+/*imagen de la card*/
+.container .card img{
+    width: 350px;
+    height: 210px;
+}
+
+/*vinculo*/
+.container .card a{
+    font-weight: 500;
+    text-decoration: none;
+    color: purple;
+
+}
+
+
+
+    </style> 
+            
+            
+            
+            
+            
+       
+        
+        
+       
+        
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/kendo.common.min.css" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/kendo.black.min.css" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/kendo.default.mobile.min.css" />
@@ -85,49 +169,58 @@
             </div>
             <div id="Botones">
                 <div id="Subtitulo">
-                    <h2><font color="#fff">Áreas de Interés</font></h2>
+                    <h2><font color="#000">Dale un vistazo a las Áreas de Interés</font></h2>
                 </div>
-                <p id="Fila1">
-                <center>  <a href="Cartas.html?categoria=Back-End" class="btn-neon">
+               <div class="container">
+        <div class="card">
+            <img src="${pageContext.request.contextPath}/resources/imagenes/end.jpg">
+            <br>
+            <br>
+            <a href="Cartas.html?categoria=Back-End"><button class="btn-neon">Back-End</button></a>
+        </div>
+       
+        <div class="card">
+            <img src="${pageContext.request.contextPath}/resources/imagenes/front.jpg">
+            <br>
+            <br>
+            <a href="Cartas.html?categoria=Front-End"><button class="btn-neon">Front-end</button></a>
+        </div>
 
-                        Back-End
-                    </a>
-                    <a href="Cartas.html?categoria=Front-End" class="btn-neon">
-                        Front-end
-                    </a>
-                    <a href="Cartas.html?categoria=Bases de Datos" class="btn-neon">
-                        Bases de Datos
-                    </a>
-                    </p></center>
-                <p id="Fila2">
-                <center>
-                    <a href="Cartas.html?categoria=Redes" class="btn-neon">
-                        Redes
-                    </a>
-                    <a href="Cartas.html?categoria=Seguridad en redes" class="btn-neon">
-                        Seguridad en redes
-                    </a>
-                    <a href="Cartas.html?categoria=otros" class="btn-neon">
-                        Otros de Nuestros Cursos
-                    </a>
-                    </p></center>
-
-                <script>
-                    $(document).ready(function () {
-                        $("#Button1").kendoButton();
-                        $("#Button2").kendoButton();
-                        $("#Button3").kendoButton();
-                        $("#Button4").kendoButton();
-                        $("#Button5").kendoButton();
-                        $("#Button6").kendoButton();
-                        $("#Button7").kendoButton();
-                        $("#Button8").kendoButton();
-                        $("#Button9").kendoButton();
-                        $("#Button10").kendoButton();
-                        $("#Button11").kendoButton();
-                        $("#Button12").kendoButton();
-                    });
-                </script>
+        <div class="card">
+             <img src="${pageContext.request.contextPath}/resources/imagenes/bd.jpg">
+             <br>
+             <br>
+            <a href="Cartas.html?categoria=Bases de Datos"><button class="btn-neon">Bases de Datos</button></a>
+        </div>
+       
+        <div class="card">
+             <img src="${pageContext.request.contextPath}/resources/imagenes/redes.jpg">
+             <br>
+             <br>
+            <a href="Cartas.html?categoria=Redes"><button class="btn-neon">Redes</button></a>
+        </div>
+                   
+                   <div class="card">
+                        <img src="${pageContext.request.contextPath}/resources/imagenes/segu.png">
+                        <br>
+                        <br>
+            <a href="Cartas.html?categoria=Seguridad en redes"><button class="btn-neon">Seguridad en redes</button></a>
+        </div>  
+                   
+                  <div class="card">
+                       <img src="${pageContext.request.contextPath}/resources/imagenes/mas1.jpg">
+                       <br>
+                       <br>
+            <a href="Cartas.html?categoria=otros"><button class="btn-neon">Otros Cursos</button></a>
+        </div>  
+                     
+                   
+                   
+                   
+                   
+                   
+       
+    </div>
             </div>
         </div>
         <!--Footer-->
@@ -135,6 +228,10 @@
         <br>
         <br>
         <br>
+        <br>
+        <br>
+        <br>
+        
         <div class='footer-wrapper'>
             <div style='padding-top:15px;padding-bottom:10px; '>
                 <center>

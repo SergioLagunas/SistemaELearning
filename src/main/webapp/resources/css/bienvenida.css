@@ -65,18 +65,19 @@ body {
 .btn-neon{
     position: relative;
     display: inline-block;
-    padding: 15px 30px;
+   
     color: #fff;
     letter-spacing: 4px;
-    font-size: 24px;
+    font-size: 14px;
     text-decoration: none;
     overflow: hidden;
     transition: 0.2s;
+     background: #0F97A9;
 }
 
 .btn-neon:hover{
     background: #069229;
-    box-shadow: 0 0 10px #069229, 0 0 40px #069229, 0 0 80px #069229;
+    box-shadow: 0 0 10px #0F97A9, 0 0 40px #0F97A9, 0 0 80px #0F97A9;
     transition-delay: 0s;
 
 

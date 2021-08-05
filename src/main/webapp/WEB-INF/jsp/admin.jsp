@@ -23,7 +23,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
     <title>admin</title>
     <style>
-        
        .btn-neon{
     position: relative;
     display: inline-block;
@@ -149,7 +148,7 @@
         </div>
 
         <div class="card">
-            <img src="${pageContext.request.contextPath}/resources/imagenes/estudiantes_1.jpg">
+            <img src="${pageContext.request.contextPath}/resources/imagenes/estudiantes.jpg">
             <br>
             <h4>Semilleros</h4>
             <br>
