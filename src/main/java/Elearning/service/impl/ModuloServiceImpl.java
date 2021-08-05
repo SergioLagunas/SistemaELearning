@@ -1,10 +1,14 @@
 package Elearning.service.impl;
 
 import Elearning.dao.CursoDao;
+import Elearning.dao.MiCursoDao;
 import Elearning.dao.ModuloDao;
+import Elearning.dao.UsuarioDao;
 import Elearning.modelo.Modulo;
 import Elearning.dto.ModuloDto;
 import Elearning.modelo.Curso;
+import Elearning.modelo.MiCurso;
+import Elearning.modelo.Usuario;
 import Elearning.modelo.formModel.CursoModel;
 import Elearning.modelo.formModel.ModuloModel;
 import Elearning.service.ModuloService;
@@ -41,13 +45,37 @@ public class ModuloServiceImpl implements ModuloService {
     @Autowired
     private CursoDao cursoDao;
 
+    @Autowired
+    private UsuarioDao usuarioDao;
+
+    @Autowired
+    private MiCursoDao micursoDao;
+
     @Override
     public String readModulo(int idCurso, Model model) {
-        System.out.println("idCurso: "+idCurso);
+        System.out.println("idCurso: " + idCurso);
+        int usuario = UsuarioServiceImpl.elUsuario;
         Curso curso = new Curso();
         curso = cursoDao.getCurso(idCurso);
-        model.addAttribute("detacurso",curso);
-        model.addAttribute("modulos",moduloDao.findbyCurso(idCurso));     
+        if (micursoDao.RelacionSem(usuario, idCurso)) {
+            //Si el usuario ya le dio clic para tomar este curso no es necesario que vuleva a relacionar de lo contrario dara error
+            System.out.println("No es necesario volver a relacionar");
+            model.addAttribute("detacurso", curso);
+            model.addAttribute("modulos", moduloDao.findbyCurso(idCurso));
+            return "mediacursos";
+        } else {
+            //Si el Usuario va tomar el curso entonces en necesario relacionar 
+            System.out.println("Hay que relacionar");
+            Usuario user = new Usuario();
+            //Obtengo por el id el Semillero que se logeo 
+            user = usuarioDao.getUsuario(usuario);
+            //Relacion de MuchosaMuchos en este caso relacionara a los semilleros con los cursos que tomaran 
+            user.getCursos().add(curso);
+            curso.getUsuarios().add(user);
+            usuarioDao.update(user);
+            model.addAttribute("detacurso", curso);
+            model.addAttribute("modulos", moduloDao.findbyCurso(idCurso));
+        }
         return "mediacursos";
     }
 
@@ -134,8 +162,8 @@ public class ModuloServiceImpl implements ModuloService {
         jv.uploadToDropbox(moduloM.getUrl().getBytes(), "/" + caratula);
         String urlVideo = jv.createURL(caratula);
         //urlVideo.replace(" www.dropbox.com","dl.dropboxusercontent.com");
-        String sNuevaURL = reemplazar(urlVideo,"www.dropbox.com","dl.dropboxusercontent.com");
-        System.out.println("url modificada: "+sNuevaURL);
+        String sNuevaURL = reemplazar(urlVideo, "www.dropbox.com", "dl.dropboxusercontent.com");
+        System.out.println("url modificada: " + sNuevaURL);
         if (!sNuevaURL.equals("")) {
             enlace = sNuevaURL;
         }
@@ -146,7 +174,7 @@ public class ModuloServiceImpl implements ModuloService {
         return string.substring(string.lastIndexOf("."), string.length());
 
     }
-    
+
     public static String reemplazar(String cadena, String busqueda, String reemplazo) {
         return cadena.replaceAll(busqueda, reemplazo);
     }

@@ -3,40 +3,45 @@ package Elearning.modelo;
 
 import java.io.Serializable;
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Entity
+@Table(name = "MiCurso")
 public class MiCurso implements Serializable{
   
     @Id
     @Column(name="idUsuario")
-    private Integer idUsuario;
+    private int idUsuario;
+    
     @Id
     @Column(name="idCurso")
-    private Integer idCurso;
+    private int idCurso;
 
     public MiCurso() {
     }
 
-    public MiCurso(Integer idUsuario, Integer idCurso) {
+    public MiCurso(int idUsuario, int idCurso) {
         this.idUsuario = idUsuario;
         this.idCurso = idCurso;
     }
 
-    public Integer getIdUsuario() {
+    public int getIdUsuario() {
         return idUsuario;
     }
 
-    public void setIdUsuario(Integer idUsuario) {
+    public void setIdUsuario(int idUsuario) {
         this.idUsuario = idUsuario;
     }
 
-    public Integer getIdCurso() {
+    public int getIdCurso() {
         return idCurso;
     }
 
-    public void setIdCurso(Integer idCurso) {
+    public void setIdCurso(int idCurso) {
         this.idCurso = idCurso;
     }
 

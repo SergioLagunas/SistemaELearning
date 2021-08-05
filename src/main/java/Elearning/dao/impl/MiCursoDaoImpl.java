@@ -153,5 +153,45 @@ public class MiCursoDaoImpl implements MiCursoDao{
 
         return flag;
     }
+
+    @Override
+    public boolean RelacionSem(int idUsuario,int idCurso) {
+         //Obtener la secion 
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        //Ocupamos la transaccion en caso de error la base de datos se restaura a como estaba
+        Transaction transaccion = session.getTransaction();
+
+        List lista = null;
+        MiCurso entidades = null;
+
+        try {
+            //Iniciamos Transaccion
+            transaccion.begin();
+
+            Query query = session.createSQLQuery("select * from MiCurso c where c.idUsuario=:u and c.idCurso=:p").addEntity(MiCurso.class)
+                    .setParameter("u", idUsuario)
+                    .setParameter("p", idCurso);
+  
+            lista = query.list();
+            transaccion.commit();
+            
+            if(lista == null || lista.isEmpty()){
+                return false;
+            }else {
+                return true;
+            }          
+        } catch (HibernateException e) {
+            //Si la transaccion esta bacia y ademas esta activa que regrese el estado en el que se encontraba la Base de Dato
+            if (transaccion != null && transaccion.isActive()) {
+                transaccion.rollback();
+            }
+        } finally {
+            //Finalmente cerramos la sesion 
+            session.close();
+        }
+
+        return true; 
+        
+    }
     
 }

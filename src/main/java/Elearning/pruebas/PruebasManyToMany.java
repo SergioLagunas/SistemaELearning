@@ -6,9 +6,11 @@
 package Elearning.pruebas;
 
 import Elearning.dao.impl.CursoDaoImpl;
+import Elearning.dao.impl.MiCursoDaoImpl;
 import Elearning.dao.impl.UsuarioDaoImpl;
 import Elearning.modelo.Usuario;
 import Elearning.modelo.Curso;
+import Elearning.modelo.MiCurso;
 import Elearning.util.HibernateUtil;
 import java.util.HashSet;
 import java.util.List;
@@ -34,6 +36,15 @@ public class PruebasManyToMany {
       }
     */
         
+        MiCursoDaoImpl mc = new MiCursoDaoImpl();
+        MiCurso micurso = new MiCurso();
+     
+        if(mc.RelacionSem(62, 3)){
+            System.out.println("ya hay una relacion ");
+        }else{
+            System.out.println("no hay relacion");
+        }
+
     }
  
 }

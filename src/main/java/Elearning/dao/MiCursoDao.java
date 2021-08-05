@@ -11,5 +11,6 @@ public interface MiCursoDao {
     public List<MiCurso> getMiCurso(final Integer idUsuario);
     public MiCurso update(final MiCurso entidad);
     public boolean delete(final MiCurso entidad);
+    public boolean RelacionSem(int idUsuario,int idCurso);
     
 }
