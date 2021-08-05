@@ -1,10 +1,8 @@
-.body1{
-    background: rgb(0,79,82);
-      background: linear-gradient(0deg, rgba(0,79,82,1) 55%, rgba(16,166,101,1) 100%);
-}
+
 body {
     font-family: 'Varela Round', sans-serif;
     justify-content: center;
+    background:  #EAECE8;
 }
 
 #container {

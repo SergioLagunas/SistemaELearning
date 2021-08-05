@@ -24,7 +24,7 @@
     <script src="../content/shared/js/products.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
     </head>
-<body class="body1">
+<body>
     <div class="burbujas">
         <div class="burbuja"></div>
         <div class="burbuja"></div>

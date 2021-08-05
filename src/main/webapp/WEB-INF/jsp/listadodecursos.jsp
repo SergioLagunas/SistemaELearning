@@ -175,7 +175,7 @@
 
         </style>
     </head>
-    <body class="body1">
+    <body>
         <div class="burbujas">
             <div class="burbuja"></div>
             <div class="burbuja"></div>

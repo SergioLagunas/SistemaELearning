@@ -23,7 +23,7 @@
         <script type="text/javascript" src="https://www.dropbox.com/static/api/1/dropins.js" id="dropboxjs" data-app-key="tz66wjuay4trlb5"></script>
         <title>Listado Cursos</title>
     </head>
-    <body class="body1">
+    <body>
         <div class="burbujas">
             <div class="burbuja"></div>
             <div class="burbuja"></div>

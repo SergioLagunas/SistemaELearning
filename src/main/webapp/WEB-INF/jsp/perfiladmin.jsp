@@ -24,7 +24,7 @@
         <script src="${pageContext.request.contextPath}/resources/js/kendo.all.min.js"></script>
         <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
     </head>
-   <body class="body1">
+   <body>
     <div class="burbujas">
         <div class="burbuja"></div>
         <div class="burbuja"></div>
@@ -39,7 +39,7 @@
     </div>
     <!-- Navigation-->
     <header>
-        <a href="bienvenida.html"> <img src="${pageContext.request.contextPath}/resources/imagenes/def1.gif" width="160px" height="90"> </a>
+        <a href="admin.html"> <img src="${pageContext.request.contextPath}/resources/imagenes/def1.gif" width="160px" height="90"> </a>
         <nav>
             <ul class="nav__links">
                 <li><a href="perfiladmin.html">Mi perfil </a></li>

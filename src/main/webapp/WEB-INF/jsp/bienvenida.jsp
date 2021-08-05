@@ -63,16 +63,6 @@
 
 
     </style> 
-            
-            
-            
-            
-            
-       
-        
-        
-       
-        
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/kendo.common.min.css" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/kendo.black.min.css" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/kendo.default.mobile.min.css" />
@@ -83,7 +73,7 @@
         <script src="${pageContext.request.contextPath}/resources/js/kendo.all.min.js"></script>
         <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
     </head>
-    <body class="body1">
+    <body>
         <div class="burbujas">
             <div class="burbuja"></div>
             <div class="burbuja"></div>
