@@ -2,6 +2,7 @@ package Elearning.service.impl;
 
 import Elearning.service.CursoService;
 import java.util.Map;
+import org.springframework.ui.Model;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -40,9 +41,19 @@ public class CursoServiceImpl implements CursoService {
     @Autowired
     private UsuarioDao usuarioDao;
 
+    //Listado de cursos por su categoria 
     @Override
-    public List<Curso> listadoCursos() {
-        return cursoDao.findAll();
+    public String listadoCursos(String categoria,Model model) {
+        model.addAttribute("categoria",categoria);
+        model.addAttribute("cursos",cursoDao.findbyCategory(categoria));
+        return "Cartas";
+    }
+    
+    //listado de Todos los cursos
+    @Override
+    public String listadoAllCursos(Model model){
+        model.addAttribute("cursos",cursoDao.findAll());
+        return "listadodecursos";
     }
 
     @Override

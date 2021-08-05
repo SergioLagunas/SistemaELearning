@@ -36,23 +36,22 @@ public class CursoControler {
         return mo;
     }
    
-    
+    //Creacion de los Cursos
     @RequestMapping(value="crearCurso.html",method = RequestMethod.POST)
     public String crearCurso(@ModelAttribute CursoModel CursoF){
         return cursoService.createNewCurso(CursoF);
     }
     
+    //Listado de los curso de acuerdo a su categoria
      @RequestMapping(value = "Cartas.html", method = RequestMethod.GET)
-     public String listadoCursos(Model model){
-         model.addAttribute("cursos",cursoService.listadoCursos());
-         return "Cartas";
+     public String listadoCursos(@RequestParam("categoria") String categoria,Model model){
+         return cursoService.listadoCursos(categoria,model);
      }
    
    //Este es el del crud de cursos para Listar Actualizar y Eliminar  
     @RequestMapping(value = "listadodecursos.html", method = RequestMethod.GET)
     public String listadodecursos2(Model model) {
-        model.addAttribute("cursos",cursoService.listadoCursos());
-        return "listadodecursos";
+        return cursoService.listadoAllCursos(model);
     }
 
 }

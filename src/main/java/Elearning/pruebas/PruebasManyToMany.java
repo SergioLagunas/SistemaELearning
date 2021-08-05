@@ -11,6 +11,7 @@ import Elearning.modelo.Usuario;
 import Elearning.modelo.Curso;
 import Elearning.util.HibernateUtil;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import javax.persistence.EntityManager;
 import org.hibernate.Session;
@@ -20,35 +21,19 @@ import org.hibernate.Session;
  * @author Jose
  */
 public class PruebasManyToMany {
-    /*
+    
     public static void main(String[] args){
-        
-        Curso cur1 = new Curso();
-        cur1.setIdCurso(2);
-        cur1.setNombre("Angular");
-        
-        Curso cur2 = new Curso();
-        cur2.setIdCurso(4);
-        cur2.setNombre("Java");
-        
-        Usuario usu1 = new Usuario();
-        usu1.setIdUsuario(47);
-        usu1.setNombre("Administrador");
-        
-        Usuario usu2 = new Usuario();
-        usu2.setIdUsuario(48);
-        usu2.setNombre("Sergio");
-        
-        Set<Usuario> usuarios1 = new HashSet<Usuario>();
-        usuarios1.add(usu1);
-        usuarios1.add(usu2);
-        Set<Subject> subjects2 = new HashSet<Subject>();
-        subjects2.add(subject3);
-
-        
-        
-        
+        /*
+    CursoDaoImpl curso = new CursoDaoImpl();
+    String categoria = "Back-End";
+    
+     List<Curso> cursos = curso.findbyCategory(categoria);
+      
+      for(Curso u : cursos){
+          System.out.println(u);
+      }
+    */
         
     }
- */
+ 
 }

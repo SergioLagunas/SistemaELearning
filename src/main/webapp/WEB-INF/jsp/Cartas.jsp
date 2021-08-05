@@ -55,17 +55,15 @@
             <a class="cta" href="index.html"><button>Cerrar sesión</button></a>
         </header>
         <!-- Titulo de la Página -->
-        <h1>Diseño</h1>
-
-
-        <div class="cards-container">
+        <h1><c:out value="${categoria}"></c:out></h1>
+            <div class="cards-container">
             <c:forEach items="${cursos}" var="curso"> 
                 <div class="k-card">
                     <img class="k-card-image"  src="${curso.caratula}"/>
                     <div class="k-card-body">
                         <center> <h3><c:out value="${curso.nombre}"></c:out></h3> </center> 
-                        <br>
-                        <center><a href="mediacursos.html?idCurso=${curso.idCurso}"><button id="btncurso">Ir al curso</button></a></center>
+                            <br>
+                            <center><a href="mediacursos.html?idCurso=${curso.idCurso}"><button id="btncurso">Ir al curso</button></a></center>
                     </div>
                 </div>
             </c:forEach>

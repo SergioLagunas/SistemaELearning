@@ -158,4 +158,37 @@ public class CursoDaoImpl implements CursoDao{
         return flag;
     }
 
+    @Override
+    public List<Curso> findbyCategory(String categoria) {
+        //Obtener la secion 
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        //Ocupamos la transaccion en caso de error la base de datos se restaura a como estaba
+        Transaction transaccion = session.getTransaction();
+
+        List<Curso> lista = null;
+        try {
+            //Iniciamos Transaccion
+            transaccion.begin();
+            //crea la consulta Query
+            Query <Curso> query = session.createSQLQuery("select * from Curso mo where mo.categoria=:c")
+                    .addEntity(Curso.class)
+                    .setParameter("c", categoria);
+                    
+            //Amacenamos los datos en la lista declarada anteriormente 
+            lista = query.list();
+            
+            //regresa el commit
+            transaccion.commit();
+        } catch (HibernateException e) {
+            //Si la transaccion esta bacia y ademas esta activa que regrese el estado en el que se encontraba la Base de Datos
+            if (transaccion != null && transaccion.isActive()) {
+                transaccion.rollback();
+            }
+        } finally {
+            //Finalmente cerramos la sesion 
+            session.close();
+        }
+        return lista;
+    }
+
 }

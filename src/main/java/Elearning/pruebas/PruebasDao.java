@@ -119,8 +119,8 @@ public class PruebasDao {
         System.out.println(prue);
    */
         
-       Usuario usuarioa = new Usuario("Administrador","Administrador","Administrador","Administrador","administradorb1@gmail.com","12345","Administrador","ADMIN");
-       user.create(usuarioa);
+      // Usuario usuarioa = new Usuario("Administrador","Administrador","Administrador","Administrador","administradorb1@gmail.com","12345","Administrador","ADMIN");
+      // user.create(usuarioa);
     }
    
    
