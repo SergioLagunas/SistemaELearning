@@ -10,7 +10,7 @@ body {
     max-height: fit-content;
     margin: auto;
 }
-
+  
 #scrollView .photo {
     display: inline-block;
     height: 100%;

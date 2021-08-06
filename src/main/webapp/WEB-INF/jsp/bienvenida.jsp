@@ -32,7 +32,7 @@
 
             }
 
-            .container{
+            .container1{
                 min-height: calc(100vh );
                 width: 100%;
                 max-width: 1300px;
@@ -45,7 +45,7 @@
             }
 
             /*estilo de card*/
-            .container .card{
+            .container1 .card1{
                 width: 350px;
                 height: 310px;
                 border-radius: 8px;
@@ -59,19 +59,19 @@
             }
 
             /*estilo de card cuando le damos con el mouse*/
-            .container .card:hover{
+            .container1 .card1:hover{
                 transform: translatey(-15px);
                 box-shadow: 0 12px 16px rgba(0, 0, 0, 0.884);
             }
 
             /*imagen de la card*/
-            .container .card img{
+            .container1 .card1 img{
                 width: 350px;
                 height: 210px;
             }
 
             /*titulo de card*/
-            .container .card h4{
+            .container1 .card1 h4{
                 font-weight: 500;
                 font-size: 24px;
                 color: #fff;
@@ -145,43 +145,43 @@
                 <div id="Subtitulo">
                     <h2><font color="#000">Dale un vistazo a las Áreas de Interés</font></h2>
                 </div>
-                <div class="container">
-                    <div class="card">
+                <div class="container1">
+                    <div class="card1">
                         <a href="Cartas.html?categoria=Back-End"> <img src="${pageContext.request.contextPath}/resources/imagenes/end.jpg"></a>
                         <br>
                         <br>
                         <h4>Back-End</h4>
                     </div>
 
-                    <div class="card">
+                    <div class="card1">
                         <a href="Cartas.html?categoria=Front-End"><img src="${pageContext.request.contextPath}/resources/imagenes/front.jpg"></a>
                         <br>
                         <br>
                         <h4>Front-end</h4>
                     </div>
 
-                    <div class="card">
+                    <div class="card1">
                         <a href="Cartas.html?categoria=Bases de Datos"><img src="${pageContext.request.contextPath}/resources/imagenes/bd.jpg"></a>
                         <br>
                         <br>
                         <h4>Bases de Datos</h4>
                     </div>
 
-                    <div class="card">
+                    <div class="card1">
                         <a href="Cartas.html?categoria=Redes"> <img src="${pageContext.request.contextPath}/resources/imagenes/redes.jpg"></a>
                         <br>
                         <br>
                         <h4>Redes</h4>
                     </div>
 
-                    <div class="card">
+                    <div class="card1">
                         <a href="Cartas.html?categoria=Seguridad en redes"><img src="${pageContext.request.contextPath}/resources/imagenes/segu.png"></a>
                         <br>
                         <br>
                         <h4>Seguridad en redes</h4>
                     </div>  
 
-                    <div class="card">
+                    <div class="card1">
                         <a href="Cartas.html?categoria=otros"><img src="${pageContext.request.contextPath}/resources/imagenes/mas1.jpg"></a>
                         <br>
                         <br>

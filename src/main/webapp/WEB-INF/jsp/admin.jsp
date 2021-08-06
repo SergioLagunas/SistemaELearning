@@ -38,10 +38,11 @@
                 cursor: pointer;
                 transition: all 0.3s ease 0s;
             }
-            .container{
+            
+             .seccion{
                 min-height: calc(100vh );
                 width: 100%;
-                max-width: 1300px;
+                max-width: 1200px;
                 height: 430px;
                 display: flex;
                 flex-wrap: wrap; /*ajusta el contenido de las card*/
@@ -51,7 +52,7 @@
             }
 
             /*estilo de card*/
-            .container .card{
+            .seccion .card1{
                 width: 330px;
                 height: 490px;
                 border-radius: 8px;
@@ -61,35 +62,38 @@
                 text-align: center;
                 transition: all 0.25s;
                 background-color: #2C2635;
-
+                 
+                   
             }
 
             /*estilo de card cuando le damos con el mouse*/
-            .container .card:hover{
+            .seccion .card1:hover{
                 transform: translatey(-15px);
                 box-shadow: 0 12px 16px rgba(0, 0, 0, 0.884);
             }
 
             /*imagen de la card*/
-            .container .card img{
+            .seccion .card1 img{
                 width: 330px;
                 height: 210px;
             }
 
             /*titulo de card*/
-            .container .card h4{
+            .seccion .card1 h4{
                 font-weight: 500;
                 font-size: 20px;
                 color: #fff;
             }
             /*parrafo de la card*/
-            .container .card p{
+            .seccion .card1 p{
                 padding: 0 1rem;
                 font-size: 12px;
                 font-weight: 200;
                 text-align: center;
                 color: #fff;
             }
+            
+           
         </style>
     </head>
     <body>
@@ -120,8 +124,9 @@
             <a class="cta" href="index.html"><button>Cerrar sesión</button></a>
         </header>
     <center><h1><font color="black">Bienvenido <%=request.getSession().getAttribute("usuario")%></font></h1></center>
-    <div class="container">
-        <div class="card">
+   <div class="seccion">
+       <table>
+        <div class="card1">
             <img src="${pageContext.request.contextPath}/resources/imagenes/Adminsemillero.png">
             <br>
             <h4>Administradores</h4>
@@ -132,7 +137,7 @@
             <a href="nuevoadmin.html"><button class="btncurso">Conoce más</button></a>
         </div>
 
-        <div class="card">
+        <div class="card1">
             <img src="${pageContext.request.contextPath}/resources/imagenes/semillero.png">
             <br>
             <h4>Semilleros</h4>
@@ -143,7 +148,7 @@
             <a href="nuevosemillero.html"><button class="btncurso">Conoce más</button></a>
         </div>
 
-        <div class="card">
+        <div class="card1">
             <img src="${pageContext.request.contextPath}/resources/imagenes/cursos.png">
             <br>
             <h4>Cursos</h4>
@@ -154,9 +159,13 @@
             <a href="nuevocurso.html"><button class="btncurso">Conoce más</button></a>
         </div>
 
-
+       </table>
 
     </div>         
+
+
+
+
 
     <!--<div id="multimedia"> 
         <iframe width="560" height="315" src="https://www.youtube.com/embed/lRQjFCd4dJg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
