@@ -23,33 +23,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
     <title>admin</title>
     <style>
-       .btn-neon{
-    position: relative;
-    display: inline-block;
-    padding: 15px 18px;
-    color: #fff;
-    letter-spacing: 4px;
-    font-size: 18px;
-    text-decoration: none;
-    overflow: hidden;
-    transition: 0.2s;
-    background: #0F97A9;
-}
-
-.btn-neon:hover{
-    background:#0F97A9 ;
-    box-shadow: 0 0 10px #069229, 0 0 40px #0F97A9, 0 0 80px #0F97A9;
-    transition-delay: 0s;
-
-
-
-}
-
-.btn-neon span{
-
-    position: absolute;
-    display: block;
-
+       .btncurso{
+    background-color: #0066CC;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
 }
         .container{
     min-height: calc(100vh );
@@ -103,8 +82,6 @@
    text-align: center;
    color: #fff;
 }
-
-
     </style>
     </head>
     <body>
@@ -144,7 +121,7 @@
             <p><center><strong>Bienvenido administrador de B1 SOFT.</strong></center></p>
         <p><center> En este apartado podrás dar de alta a futuros administradores o si lo deseas también puedes editar su información o eliminarla.</center></p>
             <br>
-            <a href="nuevoadmin.html"><button class="btn-neon">Conoce más</button></a>
+            <a href="nuevoadmin.html"><button class="btncurso">Conoce más</button></a>
         </div>
 
         <div class="card">
@@ -155,7 +132,7 @@
             <p><center><strong>Bienvenido administrador de B1 SOFT.</strong></center></p>
         <p><center> En esta parte podrás consultar la información de los integrantes que conforman los semilleros de talento y si lo requiere el administrador eliminar esos datos o actualizarlos.</center></p>
         <br>
-        <a href="nuevosemillero.html"><button class="btn-neon">Conoce más</button></a>
+        <a href="nuevosemillero.html"><button class="btncurso">Conoce más</button></a>
         </div>
 
         <div class="card">
@@ -166,7 +143,7 @@
            <p><center><strong>Bienvenido administrador de B1 SOFT.</strong></center></p>
         <p><center>Aqui podrás iniciar un nuevo curso, indicar su nombre, dar una breve descripción y agregar una imagen de portada, click en guardar y luego en continuar; ahi agregarás modulos a tu curso donde subirás videos imagenes o documentos.</center></p>
             <br> 
-            <a href="nuevocurso.html"><button class="btn-neon">Conoce más</button></a>
+            <a href="nuevocurso.html"><button class="btncurso">Conoce más</button></a>
         </div>
        
        

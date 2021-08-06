@@ -14,6 +14,48 @@
         <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <title>Index</title>
+        <style>
+            body {
+                background:  #EAECE8;
+            }
+            .form {
+                font: bold 1em sans-serif;
+                background: rgba(8, 8, 8, 0.404);
+                /*background: linear-gradient(35deg, rgba(82, 5, 89, 0.432) 0%, rgba(238, 238, 244, 0.308) 49%, rgba(47, 198, 228, 0.301) 100%);*/
+                width: 30%;
+                height: 100%;
+                margin-top: 12%;
+                margin-right: 8%;
+                border-radius: 2%;
+                padding: 15px;
+                float: right;  
+            }
+            .primary {
+                width: 100%;
+                margin-bottom: 5px;
+                font-size: 22px;
+                background: #0066CC;
+                border-radius: 15px;
+                cursor: pointer;
+            }
+            .primary:hover{
+                background: #828586b6;
+                border-radius: 15px;
+
+            }
+            .k-secundary {
+                width: 100%;
+                margin-bottom: 5px;
+                font-size: 22px;
+                background: #0066CC;
+                border-radius: 15px;
+                cursor: pointer;
+            }
+            .k-secundary:hover{
+                background: #828586b6; 
+                border-radius: 15px;
+            }
+        </style>
     </head>
     <body background="">
         <div id= "video">
