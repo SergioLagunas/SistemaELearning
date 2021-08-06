@@ -15,13 +15,19 @@ import java.util.*;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.activation.DataHandler;
+import javax.activation.DataSource;
+import javax.activation.FileDataSource;
+import javax.mail.BodyPart;
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -256,34 +262,53 @@ public class UsuarioServiceImpl implements UsuarioService {
 
                 Session session = Session.getDefaultInstance(props);
 
-                String correoRemitente = "b1soft.semilleros@gmail.com";
-                String passwordRemitente = "b1soft2021";
+                String correoRemitente = "chefoherbri@gmail.com";
+                String passwordRemitente = "031098libra";
                 String correoReceptor = correo;
                 String asunto = "Recuperacion de Contraseña";
-                String mensaje ="Hola <b>" + usu.getNombre() + " " + usu.getaPaterno() + " " + usu.getaMaterno() + "</b> tu contraseña registrada es la siguiente: <b> <u>" + usu.getContrasena() + "</u> </b>";
+              //String mensaje ="Hola <b>" + usu.getNombre() + " " + usu.getaPaterno() + " " + usu.getaMaterno() + "</b> tu contraseña registrada es la siguiente: <b> <u>" + usu.getContrasena() + "</u> </b>";
                 
-                /* Parte del mensaje en texto plano 
-                BodyPart texto = new MimeBodyPart();
-                texto.setText("Hola " + usu.getNombre() + " " + usu.getaPaterno() + " " + usu.getaMaterno() + " Su contraseña resgistrada en la plataforma es: " + usu.getContrasena());
-                
-                Parte del mensaje imagen 
-                BodyPart adjunto = new MimeBodyPart();
-                adjunto.setDataHandler(new DataHandler(new FileDataSource("C:/UsersJose/Desktop/NuevoEquipo/SistemaELearning/imagenes/B1sOFT.png")));
-                
-                Union de la imagen y el texto 
-                
-                MimeMultipart multiParte = new MimeMultipart();
+                BodyPart messageBodyPart = new MimeBodyPart();
+               
+                String htmlText = "<center><h1 style =\"color:blue;\">RECUPERACION DE CONTRASEÑA</h1>" + "<br>"
+                        + "<img src=\"https://img.icons8.com/windows/96/000000/forgot-password.png\"/>" + "<br>" + 
+                        "<h2 style =\"color:blue;\"> Hola <b>" + usu.getNombre() + " " + usu.getaPaterno() + " " + usu.getaMaterno() + "</h2></b> " +
+                        "<h3 style =\"color:blue;\"> Tu contraseña registrada es la siguiente: </h3>"+ "<br>" +
+                        "<img src=\"https://img.icons8.com/material-outlined/48/000000/password1.png\"/>" + "<br>" +
+                        "<h4 style =\"color:blue;\"><b> <u>" + usu.getContrasena() + "</u> </b></h4> </center>";
 
-                multiParte.addBodyPart(texto);
-                multiParte.addBodyPart(adjunto);
+                // Establecer el contenido de la parte del cuerpo
+                messageBodyPart.setContent(htmlText, "text/html");
+
+                // Cree una pieza múltiple relacionada para combinar las piezas
+                MimeMultipart multipart = new MimeMultipart();
+
+                // Agregar parte del cuerpo a varias partes
+                multipart.addBodyPart(messageBodyPart);
+                
+                
+                /*
+                // Crear parte para la imagen
+                messageBodyPart = new MimeBodyPart();
+
+                // Obtener la imagen y asociarla a la parte
+                DataSource fds = new FileDataSource("file");
+                messageBodyPart.setDataHandler(new DataHandler(fds));
+
+                // Agregue un encabezado para conectarse al HTML
+                messageBodyPart.setHeader("Content-ID", "<logo.png>");
+
+                // Agregar parte a varias partes
+                multipart.addBodyPart(messageBodyPart);
                 */
+                
                 
                 MimeMessage message = new MimeMessage(session);
                 message.setFrom(new InternetAddress(correoRemitente));
                 message.addRecipient(Message.RecipientType.TO, new InternetAddress(correoReceptor));
                 message.setSubject(asunto);
-                message.setText(mensaje, "ISO-8859-1", "html");
-                
+              //message.setText(mensaje, "ISO-8859-1", "html");
+                message.setContent(multipart);
                 
                 Transport t = session.getTransport("smtp");
                 t.connect(correoRemitente, passwordRemitente);
