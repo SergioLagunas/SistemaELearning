@@ -190,7 +190,7 @@
         </div>
         <!-- Navigation-->
         <header>
-            <a href="admin.html"> <img src="${pageContext.request.contextPath}/resources/imagenes/def1.gif" width="160px" height="90" > </a>
+            <a href="admin.html"> <img src="${pageContext.request.contextPath}/resources/imagenes/def1.gif" width="160" > </a>
             <nav>
                 <ul class="nav__links">
                     <li><a href="perfiladmin.html">Mi perfil </a></li>

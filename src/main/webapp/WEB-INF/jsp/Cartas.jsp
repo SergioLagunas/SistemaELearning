@@ -28,6 +28,16 @@
         <script src="${pageContext.request.contextPath}/resources/js/kendo.all.min.js"></script>
         <script src="../content/shared/js/products.js"></script> 
         <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+        <style>
+            li,a,button{
+                font-family: "roboto",sans-serif;
+                font-weight: 500;
+                font-size: 20px;
+                color: black;
+                text-decoration: none;
+
+            }
+        </style>
     </head>
     <body>
         <div class="burbujas">
@@ -44,7 +54,7 @@
         </div>
 
         <header>
-            <a href="bienvenida.html"> <img src="${pageContext.request.contextPath}/resources/imagenes/def1.gif"  width="160px" height="90" > </a> 
+            <a href="bienvenida.html"> <img src="${pageContext.request.contextPath}/resources/imagenes/def1.gif"   width="160" > </a> 
             <nav>
                 <ul class="nav__links">
                     <li><a href="perfilsem.html">Mi perfil </a></li>
@@ -67,7 +77,16 @@
                 </div>
             </c:forEach>
         </div>
-
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
         <br>
         <br>
         <br>

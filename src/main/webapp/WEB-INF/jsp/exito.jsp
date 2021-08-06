@@ -33,7 +33,7 @@
         </div>
         <!-- Navigation-->
         <header>
-           <img src="${pageContext.request.contextPath}/resources/imagenes/def1.gif"  width="160px" height="90" >
+           <img src="${pageContext.request.contextPath}/resources/imagenes/def1.gif"   width="160" >
 
         </header>
         <div class="contenedor">
@@ -46,6 +46,9 @@
             <button onclick="location.href='index.html'" id="BotonIS" class="primary">REGRESAR</button>
         </div>
         <!--Footer-->
+        <br>
+        <br>
+        <br>
         <br>
         <br>
         <br>
