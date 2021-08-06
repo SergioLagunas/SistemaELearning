@@ -23,7 +23,11 @@
         <style>
             /*Estilo header*/
             @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
-
+            body {
+                font-family: 'Varela Round', sans-serif;
+                justify-content: center;
+                background:  #EAECE8;
+            }
 
             li,a,button{
                 font-family: "roboto",sans-serif;
@@ -148,163 +152,166 @@
             .Editarr{
                 background-color: teal;
             }
+            #nom, #des, #arch{
+                background-color: #272727;
+                color: white;
+            }
+            
+            </style>
+        </head>
+        <body>
+            <div class="burbujas">
+                <div class="burbuja"></div>
+                <div class="burbuja"></div>
+                <div class="burbuja"></div>
+                <div class="burbuja"></div>
+                <div class="burbuja"></div>
+                <div class="burbuja"></div>
+                <div class="burbuja"></div>
+                <div class="burbuja"></div>
+                <div class="burbuja"></div>
+                <div class="burbuja"></div>
+            </div>
+            <!-- Navigation-->
+            <header>
+                <a href="admin.html"> <img src="${pageContext.request.contextPath}/resources/imagenes/def1.gif"  width="160"> </a>
+                <nav>
+                    <ul class="nav__links">
+                        <li><a href="perfiladmin.html">Mi perfil </a></li>
+                        <li><a href="nuevoadmin.html">Admin.</a></li>
+                        <li><a href="nuevosemillero.html">Semilleros</a></li>
+                        <li><a href="listadodecursos.html">Cursos</a></li>
+                        <li><a href="nuevocurso.html">Agregar nuevo curso</a></li>
+                    </ul>
+                </nav> 
+                <a class="cta" href="index.html"><button>Cerrar sesión</button></a>
+            </header>
+
+            <br>
+            <br>
+
+            <h1><center>Crear Modulos</center></h1>
+            <br>
+            <br>
+
+            <form  autocomplete="off" id="form" action="addModulo.html" method="POST" enctype="multipart/form-data">
+                <center>
+                    <div class="tablita">
+                        <table class="tabla" id="tabla">
+                            <tbody>
+                            <div class="caja">
+                                <label for="nom"></label> <input type="text" name="titulo" id="nom" placeholder="Nombre" required>
+                                <br>
+                                <label for="des"></label> <input type="text" name="descripcion" id="des" placeholder="Descripcion" required>
+                                <br>
+                                <label for="arch"></label> <input type="file" id="arch" required name="url" accept=".mp4,.avi,.wmv">
+                                <br>
+                                <br>
+                                <input class="submit" type="submit" value="Guardar">
+                            </div>
+                            <br/>
+                            </tbody>
+                            <br/>
+                            <thead>
+                                <tr > 
+                                    <th>Nombre</th> 
+                                    <th>Descripción</th>
+                                    <th>Archivos</th>
+                                    <th>Opciones</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </center>
+            </form>
+            <br/>
+            <script>
+                var Fila = null
+                function onSubmit() {
+                    let DataForm = Leer()
+                    if (Fila == null) {
+                        InsertarDatos(DataForm)
+                    } else {
+                        Actualizar(DataForm)
+                        Vaciar()
+                    }
+                }
+                function Leer() {
+                    let DataForm = {}
+                    DataForm["nom"] = document.getElementById("nom").value
+                    DataForm["des"] = document.getElementById("des").value
+                    DataForm["arch"] = document.getElementById("arch").value
+                    return DataForm
+                }
+                function InsertarDatos(data) {
+                    let table = document.getElementById("tabla").getElementsByTagName('tbody')[0]
+                    let Fila = table.insertRow(table.length)
+                    columna1 = Fila.insertCell(0).innerHTML = data.nom
+                    columna2 = Fila.insertCell(1).innerHTML = data.des
+                    columna3 = Fila.insertCell(2).innerHTML = data.arch
+                    columna3 = Fila.insertCell(3).innerHTML = `<input class="submit" type="button" onClick="Editarr(this)" value="Editar" >
+                                            <input class="submit" type="button" onClick="Borrarr(this)" value="Borrar" >`
+                    document.getElementById("nom").focus()
+                    Vaciar()
+                }
+                function Vaciar() {
+                    document.getElementById("nom").value = ""
+                    document.getElementById("des").value = ""
+                    document.getElementById("arch").value = ""
+                    Fila = null
+                }
+                function Editarr(td) {
+                    Fila = td.parentElement.parentElement
+                    document.getElementById("nom").value = Fila.cells[0].innerHTML
+                    document.getElementById("des").value = Fila.cells[1].innerHTML
+                    document.getElementById("arch").value = Fila.cells[2].innerHTML
+                }
+                function Actualizar(DataForm) {
+                    Fila.cells[0].innerHTML = DataForm.nom
+                    Fila.cells[1].innerHTML = DataForm.des
+                    Fila.cells[2].innerHTML = DataForm.arch
+                    document.getElementById("nom").focus()
+                }
+                function Borrarr(td) {
+                    if (confirm('¿Estás Seguro de borrar este módulo?')) {
+                        row = td.parentElement.parentElement
+                        document.getElementById("tabla").deleteRow(row.rowIndex)
+                        Vaciar()
+                    }
+                }
+
+            </script>
 
 
-        </style>
-    </head>
-    <body>
-        <div class="burbujas">
-            <div class="burbuja"></div>
-            <div class="burbuja"></div>
-            <div class="burbuja"></div>
-            <div class="burbuja"></div>
-            <div class="burbuja"></div>
-            <div class="burbuja"></div>
-            <div class="burbuja"></div>
-            <div class="burbuja"></div>
-            <div class="burbuja"></div>
-            <div class="burbuja"></div>
+            <br/>
+            <br/>
         </div>
-        <!-- Navigation-->
-        <header>
-            <a href="admin.html"> <img src="${pageContext.request.contextPath}/resources/imagenes/def1.gif"  width="160"> </a>
-            <nav>
-                <ul class="nav__links">
-                    <li><a href="perfiladmin.html">Mi perfil </a></li>
-                    <li><a href="nuevoadmin.html">Admin.</a></li>
-                    <li><a href="nuevosemillero.html">Semilleros</a></li>
-                    <li><a href="listadodecursos.html">Cursos</a></li>
-                    <li><a href="nuevocurso.html">Agregar nuevo curso</a></li>
-                </ul>
-            </nav> 
-            <a class="cta" href="index.html"><button>Cerrar sesión</button></a>
-        </header>
 
+        <!--Footer-->
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
         <br>
         <br>
 
-        <h1><center>Crear Modulos</center></h1>
-        <br>
-        <br>
+        <div class='footer-wrapper'>
+            <div style='padding-top:15px;padding-bottom:10px; '>
+                <center>
 
-        <form  autocomplete="off" id="form" action="addModulo.html" method="POST" enctype="multipart/form-data">
-            <center>
-                <div class="tablita">
-                    <table class="tabla" id="tabla">
-                        <tbody>
-                        <div class="caja">
-                            <label for="nom"></label> <input type="text" name="titulo" id="nom" placeholder="Nombre" required>
-                            <br>
-                            <label for="des"></label> <input type="text" name="descripcion" id="des" placeholder="Descripcion" required>
-                            <br>
-                            <label for="arch"></label> <input type="file" id="arch" required name="url" accept=".mp4,.avi,.wmv">
-                            <br>
-                            <br>
-                            <input type="submit" value="Guardar">
-                        </div>
-                        <br/>
-                        </tbody>
-                        <br/>
-                        <thead>
-                            <tr > 
-                                <th>Nombre</th> 
-                                <th>Descripción</th>
-                                <th>Archivos</th>
-                                <th>Opciones</th>
-                            </tr>
-                        </thead>
-                    </table>
-                </div>
-            </center>
-        </form>
-        <br/>
-        <script>
-            var Fila = null
-            function onSubmit() {
-                let DataForm = Leer()
-                if (Fila == null) {
-                    InsertarDatos(DataForm)
-                } else {
-                    Actualizar(DataForm)
-                    Vaciar()
-                }
-            }
-            function Leer() {
-                let DataForm = {}
-                DataForm["nom"] = document.getElementById("nom").value
-                DataForm["des"] = document.getElementById("des").value
-                DataForm["arch"] = document.getElementById("arch").value
-                return DataForm
-            }
-            function InsertarDatos(data) {
-                let table = document.getElementById("tabla").getElementsByTagName('tbody')[0]
-                let Fila = table.insertRow(table.length)
-                columna1 = Fila.insertCell(0).innerHTML = data.nom
-                columna2 = Fila.insertCell(1).innerHTML = data.des
-                columna3 = Fila.insertCell(2).innerHTML = data.arch
-                columna3 = Fila.insertCell(3).innerHTML = `<input class="submit" type="button" onClick="Editarr(this)" value="Editar" >
-                                        <input class="submit" type="button" onClick="Borrarr(this)" value="Borrar" >`
-                document.getElementById("nom").focus()
-                Vaciar()
-            }
-            function Vaciar() {
-                document.getElementById("nom").value = ""
-                document.getElementById("des").value = ""
-                document.getElementById("arch").value = ""
-                Fila = null
-            }
-            function Editarr(td) {
-                Fila = td.parentElement.parentElement
-                document.getElementById("nom").value = Fila.cells[0].innerHTML
-                document.getElementById("des").value = Fila.cells[1].innerHTML
-                document.getElementById("arch").value = Fila.cells[2].innerHTML
-            }
-            function Actualizar(DataForm) {
-                Fila.cells[0].innerHTML = DataForm.nom
-                Fila.cells[1].innerHTML = DataForm.des
-                Fila.cells[2].innerHTML = DataForm.arch
-                document.getElementById("nom").focus()
-            }
-            function Borrarr(td) {
-                if (confirm('¿Estás Seguro de borrar este módulo?')) {
-                    row = td.parentElement.parentElement
-                    document.getElementById("tabla").deleteRow(row.rowIndex)
-                    Vaciar()
-                }
-            }
+                    <a href='https://twitter.com/?lang=es' target='_blank'><img HSPACE='10'
+                                                                                src='https://img.icons8.com/android/24/000000/twitter.png' title='' />
+                        <a href='https://es-la.facebook.com/' target='_blank'><img HSPACE='10'
+                                                                                   src='https://img.icons8.com/android/24/000000/facebook.png' title='' /></a>
+                        <a href='https://www.google.com/intl/es-419/gmail/about/#' target='_blank'><img HSPACE='10'
+                                                                                                        src='https://img.icons8.com/ios-filled/24/000000/gmail-login.png' title='' /></a>
+                        <a href='https://www.youtube.com/' target='_blank'><img HSPACE='10'
+                                                                                src=' https://img.icons8.com/metro/26/000000/youtube.png' title='' /></a>
+                    </a>
 
-        </script>
-
-
-        <br/>
-        <br/>
-    </div>
-
-    <!--Footer-->
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-
-    <div class='footer-wrapper'>
-        <div style='padding-top:15px;padding-bottom:10px; '>
-            <center>
-
-                <a href='https://twitter.com/?lang=es' target='_blank'><img HSPACE='10'
-                                                                            src='https://img.icons8.com/android/24/000000/twitter.png' title='' />
-                    <a href='https://es-la.facebook.com/' target='_blank'><img HSPACE='10'
-                                                                               src='https://img.icons8.com/android/24/000000/facebook.png' title='' /></a>
-                    <a href='https://www.google.com/intl/es-419/gmail/about/#' target='_blank'><img HSPACE='10'
-                                                                                                    src='https://img.icons8.com/ios-filled/24/000000/gmail-login.png' title='' /></a>
-                    <a href='https://www.youtube.com/' target='_blank'><img HSPACE='10'
-                                                                            src=' https://img.icons8.com/metro/26/000000/youtube.png' title='' /></a>
-                </a>
-
-            </center>
-        </div> Todos los derechos reservados | © 2021 B1 SOFT
-    </div>
-</body>
+                </center>
+            </div> Todos los derechos reservados | © 2021 B1 SOFT
+        </div>
+    </body>
 </html>

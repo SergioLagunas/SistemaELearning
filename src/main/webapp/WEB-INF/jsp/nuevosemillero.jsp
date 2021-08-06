@@ -15,7 +15,7 @@
         <meta name="description" content="CRUD dinamico con HTMLS, CSS and JS">
         <link href="https://fonts.googleapis.com/css?family=Quicksand:600&display=swap" rel="stylesheet">
         <title>Nuevos semillero</title>
-         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -23,11 +23,12 @@
         <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
         <style>
             /*Estilo header*/
-
             body {
                 font-family: 'Varela Round', sans-serif;
-
+                justify-content: center;
+                background:  #EAECE8;
             }
+
 
             li,a,button{
                 font-family: "roboto",sans-serif;
@@ -74,7 +75,7 @@
             button:hover{
                 background-color: rgba(169, 0, 0, 0.8);
             }
-             .body1{
+            .body1{
                 background: rgb(0,79,82);
                 background: linear-gradient(0deg, rgba(0,79,82,1) 55%, rgba(16,166,101,1) 100%);
                 margin: 0%;
@@ -103,13 +104,13 @@
                 border: 1px dashed #ccc;
                 margin: 20px;
                 padding: 20px;
-              
+
             }
             label{
                 font-size: 16px;
-                
+
                 color:black;
-                
+
             }
             option1{
                 margin-bottom: 20px;
@@ -122,17 +123,17 @@
                 padding: 5px;
                 border:1px solid #d3d6e4;
                 border-radius: 5px;
-               
-               outline: none; 
-               
+
+                outline: none; 
+
             }
             ::placeholder{
                 font-family: "Font Awesome 5 Free"; 
                 font-weight: 900;
             }
-            
+
             select{
-               
+
                 margin-bottom: 20px;
                 border-radius: 5px;
                 width: 50%;
@@ -155,8 +156,8 @@
                 margin-bottom: 0;
                 background: #0065CC;
                 color: #fff;
-               border-radius: 50px;
-               border: none;
+                border-radius: 50px;
+                border: none;
             }
             table{
                 background-color: white;
@@ -164,8 +165,8 @@
                 text-align: center;
                 color: black;
                 border-collapse: collapse;
-               
-                
+
+
             }
             th, td{
 
@@ -173,7 +174,7 @@
 
             }
             thead{
-             background-color:  #246355;
+                background-color:  #246355;
                 border-bottom: solid 5px #0f362d;
                 color: white;
             }
@@ -181,7 +182,7 @@
             .Editarr{
                 background-color: teal;
             }
-            
+
             #nom, #apeP, #apeM, #correo, #cont, #gen, #RFC{
                 background-color: #272727;
                 color: white;

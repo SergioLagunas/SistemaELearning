@@ -147,42 +147,42 @@
                 </div>
                 <div class="container1">
                     <div class="card1">
-                        <a href="Cartas.html?categoria=Back-End"> <img src="${pageContext.request.contextPath}/resources/imagenes/end.jpg"></a>
+                        <a href="Cartas.html?categoria=Back-End"> <img src="${pageContext.request.contextPath}/resources/imagenes/Back.jpg"></a>
                         <br>
                         <br>
                         <h4>Back-End</h4>
                     </div>
 
                     <div class="card1">
-                        <a href="Cartas.html?categoria=Front-End"><img src="${pageContext.request.contextPath}/resources/imagenes/front.jpg"></a>
+                        <a href="Cartas.html?categoria=Front-End"><img src="${pageContext.request.contextPath}/resources/imagenes/front_1.jpg"></a>
                         <br>
                         <br>
                         <h4>Front-end</h4>
                     </div>
 
                     <div class="card1">
-                        <a href="Cartas.html?categoria=Bases de Datos"><img src="${pageContext.request.contextPath}/resources/imagenes/bd.jpg"></a>
+                        <a href="Cartas.html?categoria=Bases de Datos"><img src="${pageContext.request.contextPath}/resources/imagenes/DB.jpg"></a>
                         <br>
                         <br>
                         <h4>Bases de Datos</h4>
                     </div>
 
                     <div class="card1">
-                        <a href="Cartas.html?categoria=Redes"> <img src="${pageContext.request.contextPath}/resources/imagenes/redes.jpg"></a>
+                        <a href="Cartas.html?categoria=Redes"> <img src="${pageContext.request.contextPath}/resources/imagenes/redes_1.jpg"></a>
                         <br>
                         <br>
                         <h4>Redes</h4>
                     </div>
 
                     <div class="card1">
-                        <a href="Cartas.html?categoria=Seguridad en redes"><img src="${pageContext.request.contextPath}/resources/imagenes/segu.png"></a>
+                        <a href="Cartas.html?categoria=Seguridad en redes"><img src="${pageContext.request.contextPath}/resources/imagenes/seguridadred.jpg"></a>
                         <br>
                         <br>
                         <h4>Seguridad en redes</h4>
                     </div>  
 
                     <div class="card1">
-                        <a href="Cartas.html?categoria=otros"><img src="${pageContext.request.contextPath}/resources/imagenes/mas1.jpg"></a>
+                        <a href="Cartas.html?categoria=otros"><img src="${pageContext.request.contextPath}/resources/imagenes/otro.jpg"></a>
                         <br>
                         <br>
                         <h4>Otros Cursos</h4>
