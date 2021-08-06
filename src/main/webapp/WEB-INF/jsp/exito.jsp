@@ -1,9 +1,3 @@
-<%-- 
-    Document   : exito
-    Created on : 20-jul-2021, 17:49:16
-    Author     : Karina Romero
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
@@ -32,7 +26,7 @@
             }
         </style>
     </head>
-    <body>
+    <body class="body1">
         <div class="burbujas">
             <div class="burbuja"></div>
             <div class="burbuja"></div>
@@ -48,16 +42,16 @@
         <!-- Navigation-->
         <header>
             <img src="${pageContext.request.contextPath}/resources/imagenes/def1.gif"   width="160" style="margin-left: 5%; margin-top: 2%;" >
-
         </header>
         <div class="contenedor">
             <div class="img">
                 <img src="${pageContext.request.contextPath}/resources/imagenes/check.png" width="25%" height="25%" >
             </div>
-            <p><b>¡REGISTRO EXITOSO!</b></p>
+            <p><b>¡MUY BIEN!</b></p>            
+            <p><c:out value="${Message}"></c:out></p>
             <br>
             <br>
-            <button onclick="location.href = 'index.html'" id="BotonIS" class="primary">REGRESAR</button>
+            <button onclick="location.href='${Dirigir}'" id="BotonIS" class="primary">REGRESAR</button>
         </div>
         <!--Footer-->
         <br>

@@ -42,7 +42,11 @@
                 <prop key="enviarCorreo.html">homeController</prop>
                 <prop key="nuevocurso.html">cursoControler</prop>
                 <prop key="listadodecursos.html">cursoControler</prop>
+                <prop key="borrarCursos.html">cursoControler</prop>
+                <prop key="ActualizarCurso.html">cursoControler</prop>
                 <prop key="Cartas.html">cursoControler</prop>       
+                <prop key="exito.html">cursoControler</prop>
+                <prop key="error.html">cursoControler</prop>
                 
                 <!--Mapeo de los Modulos-->
                 <prop key="anadirmodulos.html">moduloControler</prop>
@@ -64,20 +68,20 @@
 
     
     
-    <!--Aca estamos indicando de donde va a obtener nuestras vistas con extencion .jsp-->
+    <!--Aqui estamos indicando de donde va a obtener nuestras vistas con extension .jsp-->
     <bean id="viewResolver" 
           class="org.springframework.web.servlet.view.InternalResourceViewResolver"
           p:prefix="/WEB-INF/jsp/" p:suffix=".jsp"/>
       
     
    
-    <!--Aca vamos a declarar todas las ubicaciones de nuestros controladores y su nombre -->
+    <!--Aqui vamos a declarar todas las ubicaciones de nuestros controladores y su nombre -->
     <bean name="homeController" class="Elearning.controler.HomeController"/>
     <bean name="cursoControler" class="Elearning.controler.CursoControler"/>
     <bean name="moduloControler" class="Elearning.controler.ModuloControler"/>
     <bean name="usuarioControler" class="Elearning.controler.UsuarioControler"/>
 
-    <!--Validacion de Autorid y Repositories de Spring
+    <!--Validacion de Autowired y Repositories de Spring
     <tx:annotation-driven />-->
     <context:annotation-config />
     <context:component-scan base-package="Elearning.controler"/>

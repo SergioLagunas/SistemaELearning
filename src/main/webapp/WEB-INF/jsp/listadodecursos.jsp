@@ -1,9 +1,3 @@
-<%-- 
-    Document   : listadodecursos
-    Created on : 23-jul-2021, 16:51:20
-    Author     : Karina Romero
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
@@ -30,12 +24,10 @@
                 font-size: 20px;
                 color: black;
                 text-decoration: none;
-
             }
 
             body {
                 font-family: 'Varela Round', sans-serif;
-
             }
 
             header{
@@ -43,7 +35,6 @@
                 justify-content: space-between;
                 align-items: center;
                 padding: 30px 10%;
-
             }
 
             .nav__links{
@@ -71,9 +62,11 @@
                 cursor: pointer;
                 transition: all 0.3s ease 0s;
             }
+            
             button:hover{
                 background-color: rgba(169, 0, 0, 0.8);
             }
+            
             .body1{
                 background: rgb(0,79,82);
                 background: linear-gradient(0deg, rgba(0,79,82,1) 55%, rgba(16,166,101,1) 100%);
@@ -98,24 +91,25 @@
                 text-transform: uppercase;/*Esta línea decódigo es para poner las letras en mayúsculas */
                 letter-spacing: 2px;/*Espacio entre letras*/
             }
+            
             .form{
                 width: 25%;
                 border: 1px dashed #ccc;
                 margin: 20px;
                 padding: 20px;
-
             }
+            
             label{
                 font-size: 16px;
-
                 color:black;
-
             }
+            
             option1{
                 margin-bottom: 20px;
                 width: 50%;
                 padding: 5px;
             }
+            
             input, textarea{
                 margin-bottom: 20px;
                 width: 50%;
@@ -126,12 +120,11 @@
                 outline: none; 
 
             }
+            
             ::placeholder{
                 font-family: "Font Awesome 5 Free"; 
                 font-weight: 900;
             }
-
-
 
             input[type="submit"]{
                 width: 10%;
@@ -141,37 +134,30 @@
                 border-radius: 50px;
                 border: none;
             }
+            
             table{
                 background-color: white;
                 width: 80%;
                 text-align: center;
                 color: black;
                 border-collapse: collapse;
-
-
             }
+            
             th, td{
 
                 padding: 10px;
 
             }
+            
             thead{
                 background-color:  #246355;
                 border-bottom: solid 5px #0f362d;
                 color: white;
             }
 
-            .Editarr{
+            /*.Editarr{
                 background-color: teal;
-            }
-            #nom, #des, #cat{
-                background-color: #272727;
-                color: white;
-            }
-            h1 {
-                color: black;
-                font-weight: bold;
-            }
+            }*/
 
         </style>
     </head>
@@ -202,34 +188,37 @@
             </nav> 
             <a class="cta" href="index.html"><button>Cerrar sesión</button></a>
         </header>
-
         <br>
         <br>
-
         <h1><center>Cursos</center></h1>
         <br>
         <br>
-
-        <form onsubmit="event.preventDefault();onSubmit();" autocomplete="off">
+        <form>
+        <!--<form action="ActualizarCurso.html" method="POST">-->
             <center>
                 <div class="tablita">
                     <table class="tabla" id="tabla">
                         <tbody>
                         <div class="caja">
-                            <label for="nom"></label> <input type="text" id="nom" placeholder=" Nombre" required>
+                            <label for="nom"></label> <input type="text" id="nom" placeholder=" Nombre" name="nombre" required>
                             <br>
-                            <label for="des"></label> <input type="text" id="des" placeholder=" Descripción" required>
+                            <label for="des"></label> <input type="text" id="des" placeholder=" Descripción" name="descripcion" required>
                             <br>
-                            <label for="cat"></label> <input type="text" id="cat" placeholder=" Categoria" required>
+                            <label for="cat"></label> <input type="text" id="cat" placeholder=" Categoria" name="categoria" required>
+                            <!--<div id="Caratula" style="display:none;">-->
+                            <!--<div id="Caratula">
+                                <label for="cara"></label> <input type="text" id="cara" placeholder="Caratula" name="caratula">
+                            </div>-->
                             <br>
                             <br>
+                            <!--<input class="submit" type="submit" onClick="Actualizar(Leer())" value="Guardar">-->
                             <input class="submit" type="submit" value="Guardar">
                         </div>
                         <br/>
                         </tbody>
                         <br/>
                         <thead>
-                            <tr > 
+                            <tr> 
                                 <th>Nombre</th> 
                                 <th>Descripción</th>
                                 <th>Categoria</th>
@@ -240,67 +229,79 @@
             </center>
             <br/>
             <script>
-                var Fila = null
-                function onSubmit() {
-                    let DataForm = Leer()
-                    if (Fila == null) {
-                        InsertarDatos(DataForm)
-                    } else {
-                        Actualizar(DataForm)
-                        Vaciar()
-                    }
-                }
+                var Fila = null;
+                let DataForm = {};
+                
+                $(function(){
+                    //let DataForm = {};
+                    <c:forEach var="cur" items="${cursos}">                  
+                        DataForm["id"] = "${cur.idCurso}";  
+                        DataForm["nom"] = "${cur.nombre}";  
+                        DataForm["des"] = "${cur.descripcion}";
+                        DataForm["cat"] = "${cur.categoria}";
+                        DataForm["url"] = "${cur.caratula}";
+                        InsertarDatos(DataForm); 
+                    </c:forEach>
+                });
+                
                 function Leer() {
-                    let DataForm = {}
-                    DataForm["nom"] = document.getElementById("nom").value
-                    DataForm["des"] = document.getElementById("des").value
-                    DataForm["cat"] = document.getElementById("cat").value
-                    return DataForm
+                    let DataForm = {};
+                    DataForm["nom"] = document.getElementById("nom").value;
+                    DataForm["des"] = document.getElementById("des").value;
+                    DataForm["cat"] = document.getElementById("cat").value;
+                    return DataForm;
                 }
+                
                 function InsertarDatos(data) {
-                    let table = document.getElementById("tabla").getElementsByTagName('tbody')[0]
-                    let Fila = table.insertRow(table.length)
-                    columna1 = Fila.insertCell(0).innerHTML = data.nom
-                    columna2 = Fila.insertCell(1).innerHTML = data.des
-                    columna3 = Fila.insertCell(2).innerHTML = data.cat
-                    columna4 = Fila.insertCell(3).innerHTML = `<input class="submit" type="button" onClick="Editarr(this)" value="Editar" >
-                                            <input class="submit" type="button" onClick="Borrarr(this)" value="Borrar" >`
-                    document.getElementById("nom").focus()
-                    Vaciar()
+                    let table = document.getElementById("tabla").getElementsByTagName('tbody')[0];
+                    let Fila = table.insertRow(table.length);
+                    columna1 = Fila.insertCell(0).innerHTML = data.nom;
+                    columna2 = Fila.insertCell(1).innerHTML = data.des;
+                    columna3 = Fila.insertCell(2).innerHTML = data.cat;
+                    columna4 = Fila.insertCell(3).innerHTML = `<a href="borrarCursos.html?CursoE=`+data.id+`"><input class="submit" type="button" onClick="Borrarr(this)" value="Borrar" ></a>
+                                                                <input class="submit" type="button" onClick="Editarr(this)" value="Editar" >`;
+                    Vaciar();
                 }
+                
                 function Vaciar() {
-                    document.getElementById("nom").value = ""
-                    document.getElementById("des").value = ""
-                    document.getElementById("cat").value = ""
-                    Fila = null
+                    document.getElementById("nom").value = "";
+                    document.getElementById("des").value = "";
+                    document.getElementById("cat").value = "";
+                    Fila = null;
                 }
+                
                 function Editarr(td) {
-                    Fila = td.parentElement.parentElement
-                    document.getElementById("nom").value = Fila.cells[0].innerHTML
-                    document.getElementById("des").value = Fila.cells[1].innerHTML
-                    document.getElementById("cat").value = Fila.cells[2].innerHTML
+                    Fila = td.parentElement.parentElement;
+                    document.getElementById("nom").value = Fila.cells[0].innerHTML;
+                    document.getElementById("des").value = Fila.cells[1].innerHTML;
+                    document.getElementById("cat").value = Fila.cells[2].innerHTML;
+                    document.getElementById("cara").value = DataForm.url;
+                    document.getElementById("nom").focus();
                 }
+                
                 function Actualizar(DataForm) {
-                    Fila.cells[0].innerHTML = DataForm.nom
-                    Fila.cells[1].innerHTML = DataForm.des
-                    Fila.cells[2].innerHTML = DataForm.cat
-                    document.getElementById("nom").focus()
+                    Fila.cells[0].innerHTML = DataForm.nom;
+                    Fila.cells[1].innerHTML = DataForm.des;
+                    Fila.cells[2].innerHTML = DataForm.cat;
+                    document.getElementById("nom").focus();
+                    Vaciar();
                 }
+                
                 function Borrarr(td) {
                     if (confirm('¿Estás Seguro de borrar este módulo?')) {
-                        row = td.parentElement.parentElement
-                        document.getElementById("tabla").deleteRow(row.rowIndex)
-                        Vaciar()
+                        row = td.parentElement.parentElement;
+                        document.getElementById("tabla").deleteRow(row.rowIndex);
+                        
+                        //alert(" Valor a Eliminar => " + row.cells[0].innerHTML);
+                        
+                        Vaciar();
                     }
-                }
-
+                }         
             </script>
-
-        </form>
+        </form>  
         <br/>
         <br/>
     </div>
-
     <!--Footer-->
     <br>
     <br>
@@ -313,7 +314,6 @@
     <div class='footer-wrapper'>
         <div style='padding-top:15px;padding-bottom:10px; '>
             <center>
-
                 <a href='https://twitter.com/?lang=es' target='_blank'><img HSPACE='10'
                                                                             src='https://img.icons8.com/android/24/000000/twitter.png' title='' />
                     <a href='https://es-la.facebook.com/' target='_blank'><img HSPACE='10'
@@ -321,9 +321,8 @@
                     <a href='https://www.google.com/intl/es-419/gmail/about/#' target='_blank'><img HSPACE='10'
                                                                                                     src='https://img.icons8.com/ios-filled/24/000000/gmail-login.png' title='' /></a>
                     <a href='https://www.youtube.com/' target='_blank'><img HSPACE='10'
-                                                                            src=' https://img.icons8.com/metro/26/000000/youtube.png' title='' /></a>
+                                                                           src=' https://img.icons8.com/metro/26/000000/youtube.png' title='' /></a>
                 </a>
-
             </center>
         </div> Todos los derechos reservados | © 2021 B1 SOFT
     </div>

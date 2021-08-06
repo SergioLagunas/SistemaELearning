@@ -1,9 +1,3 @@
-<%-- 
-    Document   : error
-    Created on : 20-jul-2021, 17:44:57
-    Author     : Karina Romero
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
@@ -48,7 +42,6 @@
         <!-- Navigation-->
         <header>
             <img src="${pageContext.request.contextPath}/resources/imagenes/def1.gif"   width="160" style="margin-left: 5%; margin-top: 2%;" >
-
         </header>
         <div class="contenedor">
             <div class="img">
@@ -56,10 +49,11 @@
             </div>
             <div class="texto">
                 <p><b>¡ERROR!</b></p>
+                <p><c:out value="${Message}"></c:out></p>
             </div>
             <br>
             <br>
-            <button id="BotonIS" class="primary" onclick="location.href = 'index.html'">REGRESAR</button>
+            <button id="BotonIS" class="primary" onclick="location.href='${Dirigir}'">REGRESAR</button>
         </div>
         <!--Footer-->
         <br>

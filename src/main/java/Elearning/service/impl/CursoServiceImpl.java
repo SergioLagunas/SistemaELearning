@@ -31,13 +31,13 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Service("CursoService")
 public class CursoServiceImpl implements CursoService {
-
-    //Aca almacenaremos el id del curso para que se puede hacer la relacion con la otra tabla 
+    
+    //Aqui almacenaremos el id del curso para que se puede hacer la relacion con la otra tabla 
     static int elcurso = 0;
 
     @Autowired
     private CursoDao cursoDao;
-
+   
     @Autowired
     private UsuarioDao usuarioDao;
 
@@ -48,7 +48,7 @@ public class CursoServiceImpl implements CursoService {
         model.addAttribute("cursos",cursoDao.findbyCategory(categoria));
         return "Cartas";
     }
-    
+
     //listado de Todos los cursos
     @Override
     public String listadoAllCursos(Model model){
@@ -58,14 +58,14 @@ public class CursoServiceImpl implements CursoService {
 
     @Override
     public String createNewCurso(CursoModel CursoF) {
-        //Obtengo el id del Usuario que se logeo en este caso sera solo de administradores ya que solo ellos 
+        //Obtenemos el id del Usuario que se logeo en este caso sera solo de administradores ya que solo ellos 
         //Pueden crear cursos
         int usuario = UsuarioServiceImpl.elUsuario;
         Usuario user = new Usuario();
-
-        //Obtengo por el id el Administrador que se logeo 
+        
+        //Obtenemos por el id el Administrador que se logeo 
         user = usuarioDao.getUsuario(usuario);
-
+        
         try {
             Curso entidad = new Curso();
             entidad.setNombre(CursoF.getNombre());
@@ -77,15 +77,15 @@ public class CursoServiceImpl implements CursoService {
             String enlace = guardarDropBox(CursoF);
             if (!enlace.equals("")) {
                 entidad.setCaratula(enlace);
-
+    
                 //Creamos el Curso 
                 entidad = cursoDao.create(entidad);
-
+                
                 //Relacion MuchosAMuchos en este caso solo relaciona los Adminitradores con el Curso que crearon
-                user.getCursos().add(entidad);
-                entidad.getUsuarios().add(user);
-                usuarioDao.update(user);
-
+                 user.getCursos().add(entidad);
+                 entidad.getUsuarios().add(user);
+                 usuarioDao.update(user);
+                
                 //Almaceno en un variable global el id del curso que se creo en ese momento 
                 elcurso = entidad.getIdCurso();
                 System.out.println("La Imagen se Guardo correctamente");
@@ -99,9 +99,51 @@ public class CursoServiceImpl implements CursoService {
             e.printStackTrace();
             Logger.getLogger(CursoServiceImpl.class.getName()).log(Level.SEVERE, null, e);
             return "redirect:/error.html";
-        }
+        }        
     }
 
+    /*@Override
+    public String updateCurso(HttpServletRequest request) {
+        String data = "";
+        
+        Curso entidad = new Curso();
+        entidad.setNombre(request.getParameter("nombre"));
+        entidad.setDescripcion(request.getParameter("descripcion"));
+        entidad.setProgreso(0);
+        entidad.setCategoria(request.getParameter("categoria"));
+        entidad.setCaratula(request.getParameter("caratula"));
+        
+        System.out.println("Request Nombre: " + request.getParameter("nombre"));
+        System.out.println("Request Descripcion: " + request.getParameter("descripcion"));
+        System.out.println("Request Categoria: " + request.getParameter("categoria"));
+        System.out.println("Request Caratula: " + request.getParameter("caratula"));
+        
+        System.out.println("Entidad Nombre: " + entidad.getNombre());
+        System.out.println("Entidad Descripcion: " + entidad.getDescripcion());
+        System.out.println("Entidad Progreso: " + entidad.getProgreso());
+        System.out.println("Entidad Categoria: " + entidad.getCategoria());
+        System.out.println("Entidad Caratula: " + entidad.getCaratula());
+            
+        cursoDao.update(entidad);
+        
+        //Curso editCurso = entidad;
+        //editCurso = cursoDao.update(editCurso);
+
+        /*CursoDto dto = new CursoDto(editCurso.getNombre(), editCurso.getDescripcion(), editCurso.getCaratula(), editCurso.getProgreso(),
+                editCurso.getCategoria());
+
+        try {
+            ObjectMapper mapper = new ObjectMapper();
+            data = mapper.writeValueAsString(dto);
+
+        } catch (JsonProcessingException ex) {
+            Logger.getLogger(CursoServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return data;
+
+    }*/
+    
     @Override
     public String updateCurso(HttpServletRequest request) {
 
@@ -132,15 +174,11 @@ public class CursoServiceImpl implements CursoService {
     }
 
     @Override
-    public String deleteCurso(Map<String, String> requestParam) {
-        Integer idCurso = Integer.parseInt(requestParam.get("IdCurso"));
+    public boolean deleteCurso(int idCur) {
         Curso elimCurso = new Curso();
-        elimCurso.setIdCurso(idCurso);
+        elimCurso.setIdCurso(idCur);
         boolean flag = cursoDao.delete(elimCurso);
-        if (flag) {
-            return "{\"valid\"}";
-        }
-        return "{\"valid\"}";
+        return flag;
 
     }
 
