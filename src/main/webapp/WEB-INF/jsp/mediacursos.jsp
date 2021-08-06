@@ -65,8 +65,8 @@
         <section id="pantallaDiv" th:>
             <div class="derecho">
                 <h1>Bienvenido</h1>
-                <h2>Curso de <c:out value="${detacurso.nombre}"></c:out></h2>
-                <p><c:out value="${detacurso.descripcion}"></c:out></p>
+                <center><h2>Curso de <c:out value="${detacurso.nombre}"></c:out></h2></center>
+                <center><p><c:out value="${detacurso.descripcion}"></c:out></p></center>
 
                 </div>
             </section>

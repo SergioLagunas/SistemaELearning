@@ -94,7 +94,7 @@
                             </li>
                             <li>
                                 <h3 style="color: black;"> Selecciona la caratula del curso: </h3> 
-                                <input id="simple-input" type="file" class="k-textbox" style="width: 100%;" />
+                                <input id="simple-input" type="file" name="caratula" class="k-textbox" style="width: 100%;" />
                             </li>
                             <li>
                             <center><button class="k-button" type="submit">Guardar curso</button>&nbsp;</center> 

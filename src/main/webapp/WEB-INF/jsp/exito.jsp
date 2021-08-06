@@ -17,6 +17,20 @@
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/exitoerror.css" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/styleListadoCurso.css" />
         <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+        <style>
+            .contenedor {
+                width: 30%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.301);
+                margin-left: 35%;
+                margin-top: 8%;
+                border-radius: 15px;
+            }
+            .img{
+                margin-left: 40%;
+                margin-top: 2%;
+            }
+        </style>
     </head>
     <body>
         <div class="burbujas">
@@ -33,7 +47,7 @@
         </div>
         <!-- Navigation-->
         <header>
-           <img src="${pageContext.request.contextPath}/resources/imagenes/def1.gif"   width="160" >
+            <img src="${pageContext.request.contextPath}/resources/imagenes/def1.gif"   width="160" style="margin-left: 5%; margin-top: 2%;" >
 
         </header>
         <div class="contenedor">
@@ -43,7 +57,7 @@
             <p><b>¡REGISTRO EXITOSO!</b></p>
             <br>
             <br>
-            <button onclick="location.href='index.html'" id="BotonIS" class="primary">REGRESAR</button>
+            <button onclick="location.href = 'index.html'" id="BotonIS" class="primary">REGRESAR</button>
         </div>
         <!--Footer-->
         <br>
