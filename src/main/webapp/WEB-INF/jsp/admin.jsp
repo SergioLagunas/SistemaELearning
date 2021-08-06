@@ -122,7 +122,7 @@
     <center><h1><font color="black">Bienvenido <%=request.getSession().getAttribute("usuario")%></font></h1></center>
     <div class="container">
         <div class="card">
-            <img src="${pageContext.request.contextPath}/resources/imagenes/admin.jpeg">
+            <img src="${pageContext.request.contextPath}/resources/imagenes/Adminsemillero.png">
             <br>
             <h4>Administradores</h4>
             <br>
@@ -133,7 +133,7 @@
         </div>
 
         <div class="card">
-            <img src="${pageContext.request.contextPath}/resources/imagenes/estudiantes.jpg">
+            <img src="${pageContext.request.contextPath}/resources/imagenes/semillero.png">
             <br>
             <h4>Semilleros</h4>
             <br>
@@ -144,7 +144,7 @@
         </div>
 
         <div class="card">
-            <img src="${pageContext.request.contextPath}/resources/imagenes/curso.jpg">
+            <img src="${pageContext.request.contextPath}/resources/imagenes/cursos.png">
             <br>
             <h4>Cursos</h4>
             <br>
