@@ -23,6 +23,11 @@
         <script src="${pageContext.request.contextPath}/resources/js/kendo.all.min.js"></script>
         <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
         <style>
+            body {
+                font-family: 'Varela Round', sans-serif;
+                justify-content: center;
+                background:  #EAECE8;
+            }
             li,a,button{
                 font-family: "roboto",sans-serif;
                 font-weight: 500;
