@@ -24,6 +24,16 @@
         <script src="${pageContext.request.contextPath}/resources/js/jquery.min.js"></script>
         <script src="${pageContext.request.contextPath}/resources/js/kendo.all.min.js"></script>
         <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+        <style>
+            li,a,button{
+                font-family: "roboto",sans-serif;
+                font-weight: 500;
+                font-size: 20px;
+                color: black;
+                text-decoration: none;
+
+            }
+        </style>
     </head>
     <body>
         <div class="burbujas">
@@ -82,10 +92,11 @@
                                 </select>
                             </li>
                             <li>
-                                <span class="btn btn-primary btn-file">Caratula del curso: <input type="file" accept=".jpg,.png,.jpeg,.gif," name="caratula" ></span>
+                                <h3 style="color: black;"> Selecciona la caratula del curso: </h3> 
+                                <input id="simple-input" type="file" class="k-textbox" style="width: 100%;" />
                             </li>
                             <li>
-                                <button class="k-button" type="submit">Guardar</button>&nbsp;
+                            <center><button class="k-button" type="submit">Guardar curso</button>&nbsp;</center> 
                             </li>
                             <br>
                             <br>

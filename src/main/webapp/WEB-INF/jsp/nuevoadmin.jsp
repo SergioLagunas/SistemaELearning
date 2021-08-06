@@ -33,7 +33,7 @@
                 font-family: "roboto",sans-serif;
                 font-weight: 500;
                 font-size: 20px;
-                color: #edf0f1;
+                color: black;
                 text-decoration: none;
 
             }

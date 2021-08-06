@@ -23,6 +23,16 @@
         <script src="${pageContext.request.contextPath}/resources/js/jquery.min.js"></script>
         <script src="${pageContext.request.contextPath}/resources/js/kendo.all.min.js"></script>
         <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+        <style>
+            li,a,button{
+                font-family: "roboto",sans-serif;
+                font-weight: 500;
+                font-size: 20px;
+                color: black;
+                text-decoration: none;
+
+            }
+        </style>
     </head>
     <body>
         <div class="burbujas">
@@ -40,14 +50,14 @@
         <!-- Navigation-->
         <header>
 
-                <a href="bienvenida.html"> <img src="${pageContext.request.contextPath}/resources/imagenes/def1.gif"  width="160px" height="90" > </a> 
-                <nav>
-                    <ul class="nav__links">
-                        <li><a href="perfilsem.html">Mi perfil </a></li>
-                        <li><a href="ProgressBar.html">Mis cursos</a></li>
-                    </ul>
-                </nav> 
-                <a class="cta" href="index.html"><button>Cerrar sesión</button></a>
+            <a href="bienvenida.html"> <img src="${pageContext.request.contextPath}/resources/imagenes/def1.gif"  width="160px" height="90" > </a> 
+            <nav>
+                <ul class="nav__links">
+                    <li><a href="perfilsem.html">Mi perfil </a></li>
+                    <li><a href="ProgressBar.html">Mis cursos</a></li>
+                </ul>
+            </nav> 
+            <a class="cta" href="index.html"><button>Cerrar sesión</button></a>
 
 
         </header>

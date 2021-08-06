@@ -22,6 +22,16 @@
         <script src="${pageContext.request.contextPath}/resources/js/kendo.all.min.js"></script>
         <script type="text/javascript" src="https://www.dropbox.com/static/api/1/dropins.js" id="dropboxjs" data-app-key="tz66wjuay4trlb5"></script>
         <title>Listado Cursos</title>
+        <style>
+            li,a,button{
+                font-family: "roboto",sans-serif;
+                font-weight: 500;
+                font-size: 20px;
+                color: black;
+                text-decoration: none;
+
+            }
+        </style>
     </head>
     <body>
         <div class="burbujas">
@@ -57,58 +67,58 @@
                 <h1>Bienvenido</h1>
                 <h2>Curso de <c:out value="${detacurso.nombre}"></c:out></h2>
                 <p><c:out value="${detacurso.descripcion}"></c:out></p>
-                
-            </div>
-        </section>
 
-        <!--Kendo VideoEnlace-->
-        <br />
-        <br />
-
-    <center><div id="example">
-            <div class="demo-section k-content wide" style="max-width: 1300px;">
-                <div id="mediaplayer" style="height: 500px"></div>
-                <div class="k-list-container playlist">
-                    <ul id="listView" class="k-list"></ul>
                 </div>
-            </div>
-            <script type="text/javascript">
-                $(document).ready(function () {
-                    $("#mediaplayer").kendoMediaPlayer({
-                        autoPlay: true,
-                    });
+            </section>
 
-                    var videos = new kendo.data.DataSource({
-                        data: [
+            <!--Kendo VideoEnlace-->
+            <br />
+            <br />
+
+        <center><div id="example">
+                <div class="demo-section k-content wide" style="max-width: 1300px;">
+                    <div id="mediaplayer" style="height: 500px"></div>
+                    <div class="k-list-container playlist">
+                        <ul id="listView" class="k-list"></ul>
+                    </div>
+                </div>
+                <script type="text/javascript">
+                    $(document).ready(function () {
+                        $("#mediaplayer").kendoMediaPlayer({
+                            autoPlay: true,
+                        });
+
+                        var videos = new kendo.data.DataSource({
+                            data: [
                 <c:forEach items="${modulos}" var="modulo">
-                            {
-                                title: "${modulo.titulo}",
-                                poster: "${detacurso.caratula}",
-                                source: "${modulo.url}",
-                            },
+                                {
+                                    title: "${modulo.titulo}",
+                                    poster: "${detacurso.caratula}",
+                                    source: "${modulo.url}",
+                                },
                 </c:forEach>
-                        ],
+                            ],
+                        });
+
+                        var listView = $("#listView").kendoListView({
+                            dataSource: videos,
+                            selectable: true,
+                            scrollable: false,
+                            template: kendo.template($("#template").html()),
+                            change: onChange,
+                            dataBound: onDataBound,
+                        });
+
+                        function onChange() {
+                            var index = this.select().index();
+                            var dataItem = this.dataSource.view()[index];
+                            $("#mediaplayer").data("kendoMediaPlayer").media(dataItem);
+                        }
+
+                        function onDataBound(e) {
+                            this.select(this.content.children().first());
+                        }
                     });
-
-                    var listView = $("#listView").kendoListView({
-                        dataSource: videos,
-                        selectable: true,
-                        scrollable: false,
-                        template: kendo.template($("#template").html()),
-                        change: onChange,
-                        dataBound: onDataBound,
-                    });
-
-                    function onChange() {
-                        var index = this.select().index();
-                        var dataItem = this.dataSource.view()[index];
-                        $("#mediaplayer").data("kendoMediaPlayer").media(dataItem);
-                    }
-
-                    function onDataBound(e) {
-                        this.select(this.content.children().first());
-                    }
-                });
             </script>
             <script type="text/x-kendo-template" id="template">
                 <li class="k-item k-state-default" onmouseover="$(this).addClass('k-state-hover')"
