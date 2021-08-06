@@ -24,6 +24,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class CursoControler {
+    
+    public String DatosE;
 
     @Autowired
     private CursoService cursoService;
@@ -52,5 +54,58 @@ public class CursoControler {
     public String listadodecursos2(Model model) {
         return cursoService.listadoAllCursos(model);
     }
+    
+    @RequestMapping(value = "borrarCursos.html", method = RequestMethod.GET)
+    public String listadodecursos(@RequestParam("CursoE") int CursoE, Model model) {
+        String aux = "";
+        String Dirigir = "listadodecursos.html";
+        if(cursoService.deleteCurso(CursoE)){
+            System.out.println("Se elimino el curso con ID: " + CursoE);
+            DatosE = "Se elimino el curso correctamente.";
+            aux = "exito";
+        } else{
+            System.out.println("No se ha borrado el curso...");
+            DatosE = "¡Algo salio mal! No se ha podido borrar el curso...";
+            aux = "error";
+        }
+        
+        model.addAttribute("Message", DatosE);
+        model.addAttribute("Dirigir", Dirigir);
+        return aux;
+    }
+    
+    /*@RequestMapping(value="ActualizarCurso.html",method = RequestMethod.POST)
+    public String ActualizarCurso(HttpServletRequest request){
+        String aux = "";
+        if(cursoService.updateCurso(request).equals("")){
+            System.out.println("Hubo error en UPDATE");
+            aux = "error";
+        } else{
+            System.out.println("Se ejecuto UPDATE");
+            aux = "listadodecursos";
+        }
+        return aux;
+    }*/
+    
+    @RequestMapping(value = "exito.html", method = RequestMethod.GET)
+    public ModelAndView exito() {
+        ModelAndView mo = new ModelAndView();
+        mo.setViewName("exito");
+        return mo;
+    }
+    
+    @RequestMapping(value = "error.html", method = RequestMethod.GET)
+    public ModelAndView error() {
+        ModelAndView mo = new ModelAndView();
+        mo.setViewName("error");
+        return mo;
+    }
+    
+    /*@RequestMapping(value = "exito.html", method = RequestMethod.GET)
+    public String exito(@RequestParam(name="DirigirP", required=false, defaultValue="listadodecursos") String DirigirP, Model model) {
+        DirigirP = "listadodecursos";
+        model.addAttribute("DirigirP",DirigirP);
+        return "exito";
+    }*/
 
 }

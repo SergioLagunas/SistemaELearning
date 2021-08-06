@@ -262,8 +262,8 @@ public class UsuarioServiceImpl implements UsuarioService {
 
                 Session session = Session.getDefaultInstance(props);
 
-                String correoRemitente = "chefoherbri@gmail.com";
-                String passwordRemitente = "031098libra";
+                String correoRemitente = "b1soft.semilleros@gmail.com";
+                String passwordRemitente = "b1soft2021";
                 String correoReceptor = correo;
                 String asunto = "Recuperacion de Contraseña";
               //String mensaje ="Hola <b>" + usu.getNombre() + " " + usu.getaPaterno() + " " + usu.getaMaterno() + "</b> tu contraseña registrada es la siguiente: <b> <u>" + usu.getContrasena() + "</u> </b>";
