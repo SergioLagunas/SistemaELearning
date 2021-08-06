@@ -82,29 +82,22 @@ public class ModuloServiceImpl implements ModuloService {
     @Override
     public ModelAndView createNewModulo(ModuloModel moduloM) {
         ModelAndView mo = new ModelAndView("html_utf8");
-
         //Recibo el parametro del curso que se creo anteriormente 
         int curso = CursoServiceImpl.elcurso;
         Curso cursoentidad = new Curso();
-
         Modulo entidad = new Modulo();
-
         //Aca busco por el id el curso que se obtuvo anteriormente
         cursoentidad = cursoDao.getCurso(curso);
-
         try {
             entidad.setTitulo(moduloM.getTitulo());
             entidad.setDescripcion(moduloM.getDescripcion());
             String enlace = guardarDropBox(moduloM);
-
             if (!enlace.equals("")) {
                 entidad.setUrl(enlace);
                 System.out.println("El video se Guardo correctamente y ya esta creada la url de DropBox");
-
 //Aca es donde estoy agregando los modulos a el array de Curso creando la relacion en las tablas y agregando 
 //cantidad n de videos al curso 
                 cursoentidad.addModulos(entidad);
-
                 entidad = moduloDao.create(entidad);
                 mo.setViewName("redirect:/anadirmodulos.html");
             } else {
@@ -128,7 +121,7 @@ public class ModuloServiceImpl implements ModuloService {
         String url = request.getParameter("url");
         //String[] curso = request.getParameterValues("curso[]");
 
-        Modulo modulo = new Modulo(titulo, descripcion, url);
+        Modulo modulo = new Modulo(titulo, descripcion,url);
         modulo = moduloDao.update(modulo);
 
         ModuloDto moduloDto = new ModuloDto(modulo.getTitulo(), modulo.getDescripcion(), modulo.getUrl());
@@ -161,7 +154,6 @@ public class ModuloServiceImpl implements ModuloService {
         String caratula = moduloM.getUrl() + "_Video" + getExtention(moduloM.getUrl().getOriginalFilename());
         jv.uploadToDropbox(moduloM.getUrl().getBytes(), "/" + caratula);
         String urlVideo = jv.createURL(caratula);
-        //urlVideo.replace(" www.dropbox.com","dl.dropboxusercontent.com");
         String sNuevaURL = reemplazar(urlVideo, "www.dropbox.com", "dl.dropboxusercontent.com");
         System.out.println("url modificada: " + sNuevaURL);
         if (!sNuevaURL.equals("")) {
