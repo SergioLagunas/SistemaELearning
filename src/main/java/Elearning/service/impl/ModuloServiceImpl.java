@@ -115,25 +115,21 @@ public class ModuloServiceImpl implements ModuloService {
 
     @Override
     public String updateModulo(HttpServletRequest request) {
-        // Integer idModulo = Integer.parseInt(request.getParameter("idModulo"));
+        Integer idModulo = Integer.parseInt(request.getParameter("idModulo"));
         String titulo = request.getParameter("titulo");
         String descripcion = request.getParameter("descripcion");
         String url = request.getParameter("url");
-        //String[] curso = request.getParameterValues("curso[]");
 
-        Modulo modulo = new Modulo(titulo, descripcion,url);
+        Modulo modulo = new Modulo();
+        modulo = moduloDao.getModulo(idModulo);
+        
+        modulo.setTitulo(titulo);
+        modulo.setDescripcion(descripcion);
+      
         modulo = moduloDao.update(modulo);
 
-        ModuloDto moduloDto = new ModuloDto(modulo.getTitulo(), modulo.getDescripcion(), modulo.getUrl());
-        String data = "";
-
-        try {
-            ObjectMapper mapper = new ObjectMapper();
-            data = mapper.writeValueAsString(moduloDto);
-        } catch (JsonProcessingException ex) {
-            Logger.getLogger(ModuloServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return data;
+        //Aca es donde de reddirecciona a la paguina que desees 
+        return "exito";
     }
 
     @Override

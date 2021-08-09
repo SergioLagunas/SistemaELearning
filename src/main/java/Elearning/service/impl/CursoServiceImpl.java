@@ -146,30 +146,24 @@ public class CursoServiceImpl implements CursoService {
     
     @Override
     public String updateCurso(HttpServletRequest request) {
-
-        //Integer idCurso=Integer.parseInt(request.getParameter("idCurso"));
+        Integer idCurso=Integer.parseInt(request.getParameter("idCurso"));
         String nombre = request.getParameter("nombre");
         String descripcion = request.getParameter("descripcion");
-        String caratula = request.getParameter("caratula");
-        int progreso = 0;
         String categoria = request.getParameter("categoria");
+        
+        Curso updateCurso = new Curso();
+        updateCurso = cursoDao.getCurso(idCurso);
+        
+        updateCurso.setNombre(nombre);
+        updateCurso.setDescripcion(descripcion);
+        updateCurso.setCategoria(categoria);
+        
+        updateCurso = cursoDao.update(updateCurso);
+        
+        System.out.println("Curso Actualizado");
 
-        Curso editCurso = new Curso(nombre, descripcion, caratula, progreso, categoria);
-        editCurso = cursoDao.update(editCurso);
-
-        CursoDto dto = new CursoDto(editCurso.getNombre(), editCurso.getDescripcion(), editCurso.getCaratula(), editCurso.getProgreso(),
-                editCurso.getCategoria());
-        String data = "";
-
-        try {
-            ObjectMapper mapper = new ObjectMapper();
-            data = mapper.writeValueAsString(dto);
-
-        } catch (JsonProcessingException ex) {
-            Logger.getLogger(CursoServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        return data;
+        //Aca es donde te direccionara a la paguina que desees 
+        return "exito";
 
     }
 
@@ -179,7 +173,6 @@ public class CursoServiceImpl implements CursoService {
         elimCurso.setIdCurso(idCur);
         boolean flag = cursoDao.delete(elimCurso);
         return flag;
-
     }
 
     private String guardarDropBox(CursoModel CursoF) throws IOException, FileNotFoundException, DbxException {

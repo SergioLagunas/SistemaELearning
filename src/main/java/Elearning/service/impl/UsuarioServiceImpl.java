@@ -192,6 +192,7 @@ public class UsuarioServiceImpl implements UsuarioService {
 
     @Override
     public String updateUsuario(HttpServletRequest request) {
+        Integer idUsuario = Integer.parseInt(request.getParameter("idUsuario"));
         String nombre = request.getParameter("nombre");
         String aPaterno = request.getParameter("aPaterno");
         String aMaterno = request.getParameter("aMaterno");
@@ -201,25 +202,24 @@ public class UsuarioServiceImpl implements UsuarioService {
         String tUsuario = "Semillero";
         String rfc = request.getParameter("rfc");
 
-        Usuario editUsuario = new Usuario(nombre,aPaterno,aMaterno,genero,email,contrasena,tUsuario,rfc);
-        editUsuario = usuarioDao.update(editUsuario);
-        //Checar El contructor 
-        UsuarioDto dto = new UsuarioDto(editUsuario.getNombre(),editUsuario.getaPaterno(),editUsuario.getaMaterno(),
-                editUsuario.getGenero(),editUsuario.getEmail(),editUsuario.getContrasena(),editUsuario.gettUsuario(),editUsuario.getRfc());
-        String data="";
+        Usuario editUsuario = new Usuario();
+        editUsuario = usuarioDao.getUsuario(idUsuario);
+        editUsuario.setNombre(nombre);
+        editUsuario.setaPaterno(aPaterno);
+        editUsuario.setaMaterno(aMaterno);
+        editUsuario.setGenero(genero);
+        editUsuario.setContrasena(contrasena);
+        editUsuario.setRfc(rfc);
         
-        try {   
-             ObjectMapper mapper = new ObjectMapper();
-             data=mapper.writeValueAsString(dto);
-            
-        } catch (JsonProcessingException ex) {
-            Logger.getLogger(UsuarioServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return data;
+        editUsuario = usuarioDao.update(editUsuario);
+   
+        
+        return "exito";
     }
     
     @Override
     public String updateUsuarioAdmin(HttpServletRequest request) {
+        Integer idUsuario = Integer.parseInt(request.getParameter("idUsuario"));
         String nombre = request.getParameter("nombre");
         String aPaterno = request.getParameter("aPaterno");
         String aMaterno = request.getParameter("aMaterno");
@@ -229,21 +229,19 @@ public class UsuarioServiceImpl implements UsuarioService {
         String tUsuario = "Administrador";
         String rfc = request.getParameter("rfc");
 
-        Usuario editUsuario = new Usuario(nombre,aPaterno,aMaterno,genero,email,contrasena,tUsuario,rfc);
-        editUsuario = usuarioDao.update(editUsuario);
-        //Checar El contructor 
-        UsuarioDto dto = new UsuarioDto(editUsuario.getNombre(),editUsuario.getaPaterno(),editUsuario.getaMaterno(),
-                editUsuario.getGenero(),editUsuario.getEmail(),editUsuario.getContrasena(),editUsuario.gettUsuario(),editUsuario.getRfc());
-        String data="";
+        Usuario editUsuario = new Usuario();
+        editUsuario = usuarioDao.getUsuario(idUsuario);
+        editUsuario.setNombre(nombre);
+        editUsuario.setaPaterno(aPaterno);
+        editUsuario.setaMaterno(aMaterno);
+        editUsuario.setGenero(genero);
+        editUsuario.setContrasena(contrasena);
+        editUsuario.setRfc(rfc);
         
-        try {   
-             ObjectMapper mapper = new ObjectMapper();
-             data=mapper.writeValueAsString(dto);
-            
-        } catch (JsonProcessingException ex) {
-            Logger.getLogger(UsuarioServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return data;
+        editUsuario = usuarioDao.update(editUsuario);
+   
+        
+        return "exito";
     }
     
     @Override
