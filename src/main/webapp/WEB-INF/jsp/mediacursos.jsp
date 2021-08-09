@@ -13,8 +13,7 @@
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/kendo.common.min.css" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/kendo.black.min.css" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/kendo.default.mobile.min.css" />
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/styleListadoCurso.css" />
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bienvenida.css" />
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/mediacursos.css" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/footerheader.css" />
         <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link ref="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet"/>
@@ -23,6 +22,11 @@
         <script type="text/javascript" src="https://www.dropbox.com/static/api/1/dropins.js" id="dropboxjs" data-app-key="tz66wjuay4trlb5"></script>
         <title>Listado Cursos</title>
         <style>
+            body {
+                font-family: 'Varela Round', sans-serif;
+                justify-content: center;
+                background:  #EAECE8;
+            }
             li,a,button{
                 font-family: "roboto",sans-serif;
                 font-weight: 500;
@@ -31,6 +35,7 @@
                 text-decoration: none;
 
             }
+
         </style>
     </head>
     <body>
@@ -64,7 +69,7 @@
 
         <section id="pantallaDiv" th:>
             <div class="derecho">
-                <h1>Bienvenido</h1>
+                <center><h1>Bienvenido</h1></center>
                 <center><h2>Curso de <c:out value="${detacurso.nombre}"></c:out></h2></center>
                 <center><p><c:out value="${detacurso.descripcion}"></c:out></p></center>
 
