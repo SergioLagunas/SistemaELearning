@@ -15,9 +15,7 @@
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/kendo.common.min.css" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/kendo.black.min.css" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/kendo.default.mobile.min.css" />
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/Estilos.css" />
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/styleListadoCurso.css" />
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bienvenida.css" />
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/ProgressBar.css" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/footerheader.css" />
         <script src="${pageContext.request.contextPath}/resources/js/jquery.min.js"></script>
         <script src="${pageContext.request.contextPath}/resources/js/kendo.all.min.js"></script>
@@ -31,6 +29,29 @@
                 color: black;
                 text-decoration: none;
 
+            }
+            h1 {
+                text-align:center;
+                text-transform:uppercase;
+                letter-spacing:-2px;
+                font-size:2.5em;
+                margin:20px 0;
+                color: black;
+            }
+            h2,h3,h4,h5, h6{
+                font-family: Arial, Helvetica, sans-serif;
+                margin: auto;
+            }
+            .footer-wrapper {
+                background:#2F4F4F;/*Color de fondo del pie de página*/
+                padding-top: 30px;/*Altura del pie de página*/
+                padding-bottom: 40px;/*Altura del pie de página*/
+                width: 100%;
+                text-align: center;
+                font: normal normal 11px Arial;/*Tipografía y Tamaño*/
+                color:white;/*Color del texto del pie de página*/
+                text-transform: uppercase;/*Esta línea decódigo es para poner las letras en mayúsculas */
+                letter-spacing: 2px;/*Espacio entre letras*/
             }
         </style>
     </head>
@@ -104,6 +125,12 @@
             </script>
         </div>
         <!--Footer-->
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
         <br>
         <br>
         <br>
