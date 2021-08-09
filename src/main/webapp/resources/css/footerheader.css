@@ -4,16 +4,6 @@
     box-sizing: border-box;
 }
 
-
-li,a,button{
-    font-family: "roboto",sans-serif;
-    font-weight: 500;
-    font-size: 20px;
-    color: #edf0f1;
-    text-decoration: none;
-
-}
-
 header{
     display: flex;
     justify-content: space-between;
@@ -180,16 +170,5 @@ input.src {
     margin-left: 400px;
 }
 
-.primary {
-    width: 20%;
-    margin-left: 5%;
-    margin-top: 2%;
-    margin-bottom: 5px;
-    font-size: 22px;
-    background: #3acace;
-    cursor: pointer;
-}
-.primary:hover{
-    background: cadetblue;
-}
+
 
