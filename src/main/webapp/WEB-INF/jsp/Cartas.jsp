@@ -20,24 +20,12 @@
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/kendo.common.min.css" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/kendo.black.min.css" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/kendo.default.mobile.min.css" />
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bienvenida.css" />
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/Estilos.css" />
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/cartas.css" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/footerheader.css" />
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/styleListadoCurso.css" />
         <script src="${pageContext.request.contextPath}/resources/js/jquery.min.js"></script>
         <script src="${pageContext.request.contextPath}/resources/js/kendo.all.min.js"></script>
         <script src="../content/shared/js/products.js"></script> 
         <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
-        <style>
-            li,a,button{
-                font-family: "roboto",sans-serif;
-                font-weight: 500;
-                font-size: 20px;
-                color: black;
-                text-decoration: none;
-
-            }
-        </style>
     </head>
     <body>
         <div class="burbujas">
