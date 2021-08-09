@@ -13,15 +13,12 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Nuevo Curso</title>
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/kendo.common.min.css" />
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/kendo.black.min.css" />
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/kendo.default.mobile.min.css" />
+       
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/nuevocurso.css" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/styleListadoCurso.css" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bienvenida.css" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/footerheader.css" />
-        <script src="${pageContext.request.contextPath}/resources/js/jquery.min.js"></script>
-        <script src="${pageContext.request.contextPath}/resources/js/kendo.all.min.js"></script>
+        
         <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
         <style>
             li,a,button{
@@ -32,6 +29,80 @@
                 text-decoration: none;
 
             }
+            
+              .form-register {
+  width: 550px;
+  background:  #2C2635;
+  padding: 50px;
+  margin: auto;
+  margin-top: 60px;
+  border-radius: 10px;
+  font-family: 'calibri';
+  color: rgb(42, 35, 49);
+  box-shadow: 7px 13px 37px #000;
+}
+
+
+/*estilo de card cuando le damos con el mouse*/
+.form-register:hover{
+  transform: translatey(-30px);
+ 
+  box-shadow: 0 12px 16px rgba(0, 0, 0, 0.884);
+}
+
+
+ 
+
+.controls {
+  width: 103%;
+  background: #24303c;
+  padding: 10px;
+  align-items: center;
+  border-radius: 5px;
+  margin-bottom: 16px;
+  border: none;
+  font-family: sans-serif;
+  font-size: 18px;
+  color: white;
+  outline: none;
+}
+.btn-neon1{
+  position: relative;
+  display: inline-block;
+  padding: 15px 18px;
+  color: #fff;
+  letter-spacing: 4px;
+  font-size: 18px;
+  text-decoration: none;
+  overflow: hidden;
+  transition: 0.2s;
+  background: #0F97A9;
+  align-items: center;
+  border-radius: 20px;
+  outline: none;
+  margin-top: 10px;
+}
+
+.btn-neon1:hover{
+  background:#0F97A9 ;
+  box-shadow: 0 0 10px #0F97A9, 0 0 40px #0F97A9, 0 0 80px #0F97A9;
+  transition-delay: 0s;
+
+
+
+}
+
+.btn-neon1 span{
+
+  position: absolute;
+  display: block;
+
+}
+            
+            
+            
+            
+            
         </style>
     </head>
     <body>
@@ -61,74 +132,28 @@
             </nav>
             <a class="cta" href="index.html"><button>Cerrar sesión</button></a>
         </header>
-        <main class="card">
-            <div id="container">
+                  <div id="container">
                 <div id="Titulo">
                     <br>
-                    <br>
+                   
                     <h3>Mis datos</h3>
                 </div>
                 <br>
-                <br><br>
+                  <section class="form-register">
+   <center><img  src="${pageContext.request.contextPath}/resources/imagenes/Adminsemillero.png" width="150px" height="150px"></center>
+    <input class="controls" type="text" name="nombres" id="nombres" placeholder=" Nombre">
+    <input class="controls" type="text" name="apellidopat" id="apellidopat" placeholder=" Apellido Paterno">
+    <input class="controls" type="text" name="apellidomat" id="apellidomat" placeholder="Apellido Materno">
+    <input class="controls" type="text" name="rfc" id="rfc" placeholder=" RFC">
+    <input class="controls" type="password" name="contraseña" id="contraseña" placeholder="aqui puedes modificar tu contraseña">
+   <!-- <p>Estoy de acuerdo con <a href="#">Terminos y Condiciones</a></p>-->
+   <br>
+    <center><input class="btn-neon1" type="submit" value="Guardar"></center>
+  
+  </section>
 
-                <div  id="example">
-                    <div class="demo-section k-content">
-                        <ul class="fieldlist">
-
-                            <center>
-                                <table class="default" border="0" width="1000px" height="150px">
-                                    <tr>
-                                        <td> <input id="simple-input" type="text" placeholder="Nombre" class="k-textbox"
-                                                    style="width: 90%; border-radius: 10px;" /> </td>
-                                        <td> <input id="simple-input" type="text" placeholder="Apellido paterno"
-                                                    class="k-textbox" style="width: 90%; border-radius: 10px; " /> </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td> <input id="simple-input" type="text" placeholder="Apellido materno"
-                                                    class="k-textbox" style="width: 90%; border-radius: 10px;" /> </td>
-                                        <td> <input id="simple-input" type="text" placeholder="RFC" class="k-textbox"
-                                                    style="width: 90%; border-radius: 10px;" /> </td>
-                                    </tr>
-                                </table>
-                            </center>
-                            <br><br><br>
-
-                            <li>
-                            <center><button class="k-button" style="width: 40%; border-radius: 10px;">Guardar</button>&nbsp;</center>
-                            </li>
-                            <br>
-                            <br>
-                            <br>
-                        </ul>
-                        <style>
-                            .demo-section {
-                                background-color: rgba(255, 255, 255, 0);
-                            }
-
-                            .fieldlist {
-                                margin: 0 0 -2em;
-                                padding: 0;
-                            }
-
-                            .fieldlist li {
-                                list-style: none;
-                                padding-bottom: 2em;
-                            }
-
-                            .fieldlist label {
-                                display: block;
-                                padding-bottom: 1em;
-                                font-weight: bold;
-                                text-transform: uppercase;
-                                font-size: 12px;
-                                color: black;
-                            }
-                        </style>
-                    </div>
-                </div>
             </div>
-        </main>
+        
         <!--Footer-->
         <br>
         <br>
