@@ -10,7 +10,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bienvenida.css" />
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/nuevoadmin.css" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="CRUD dinamico con HTMLS, CSS and JS">
         <link href="https://fonts.googleapis.com/css?family=Quicksand:600&display=swap" rel="stylesheet">
