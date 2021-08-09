@@ -18,7 +18,6 @@
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/kendo.default.mobile.min.css" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bienvenida.css" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/footerheader.css" />
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/styleListadoCurso.css" />
         <script src="${pageContext.request.contextPath}/resources/js/jquery.min.js"></script>
         <script src="${pageContext.request.contextPath}/resources/js/kendo.all.min.js"></script>
         <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
@@ -35,6 +34,13 @@
                 color: black;
                 text-decoration: none;
 
+            }
+            h1,h2{
+                font-size: 40px;
+                margin: auto;
+                margin-bottom: 40px;
+                margin-left: 60px;
+                margin-top: 50px;
             }
 
             .container1{
@@ -81,9 +87,17 @@
                 font-size: 24px;
                 color: #fff;
             }
-
-
-
+            .footer-wrapper {
+                background:#2F4F4F;/*Color de fondo del pie de página*/
+                padding-top: 30px;/*Altura del pie de página*/
+                padding-bottom: 40px;/*Altura del pie de página*/
+                width: 100%;
+                text-align: center;
+                font: normal normal 11px Arial;/*Tipografía y Tamaño*/
+                color:white;/*Color del texto del pie de página*/
+                text-transform: uppercase;/*Esta línea decódigo es para poner las letras en mayúsculas */
+                letter-spacing: 2px;/*Espacio entre letras*/
+            }
         </style> 
     </head>
     <body>

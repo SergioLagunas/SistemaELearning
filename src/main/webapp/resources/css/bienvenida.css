@@ -5,11 +5,7 @@ body {
     background:  #EAECE8;
 }
 
-#container {
-    max-width: 90%;
-    max-height: fit-content;
-    margin: auto;
-}
+
   
 #scrollView .photo {
     display: inline-block;
@@ -44,112 +40,6 @@ body {
 .photo6 {
     background-image: url("../imagenes/Ciberseguridad.jpg");
 }
-
-#Titulo,
-#Subtitulo {
-    text-align: center;
-}
-
-#Subtitulo {
-    margin-bottom: 25px;
-}
-
-#Fila1,
-#Fila2 {
-    text-align: center;
-}
-
-
-.btn-neon{
-    position: relative;
-    display: inline-block;
-   
-    color: #fff;
-    letter-spacing: 4px;
-    font-size: 14px;
-    text-decoration: none;
-    overflow: hidden;
-    transition: 0.2s;
-     background: #0F97A9;
-}
-
-.btn-neon:hover{
-    background: #069229;
-    box-shadow: 0 0 10px #0F97A9, 0 0 40px #0F97A9, 0 0 80px #0F97A9;
-    transition-delay: 0s;
-
-
-
-}
-
-.btn-neon span{
-
-    position: absolute;
-    display: block;
-
-}
-
-#span1{
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 2px;
-    background: linear-gradient(90deg,transparent,#a945c7);
-
-}
-
-.btn-neon:hover #span1{
-    left: 100%;
-    transition: 1s;
-
-}
-
-
-#span3{
-  bottom: 0;
-    right: -100%;
-    width: 100%;
-    height: 2px;
-    background: linear-gradient(270deg,transparent,#a945c7);
-
-}
-
-.btn-neon:hover #span3{
-    right: 100%;
-    transition: 1s;
-    transition-delay: 0.5s;
-    
-}
-
-#span2{
-    top: -100%;
-      right: 0;
-      width: 2px;
-      height: 100px;
-      background: linear-gradient(180deg,transparent,#a945c7);
-  
-  }
-  
-  .btn-neon:hover #span2{
-     top: 100%;
-    transition: 1s;
-    transition-delay: 0.25s;
-  }
-
-  #span4{
-   bottom: -100%;
-     left: 0;
-      width: 2px;
-      height: 100px;
-      background: linear-gradient(360deg,transparent,#a945c7);
-  
-  }
-  
-  .btn-neon:hover #span4{
-    bottom: 100%;
-    transition: 1s;
-    transition-delay: 0.75s;
-  }
 
   .nav{
       width: 100%;
@@ -195,6 +85,7 @@ body {
  nav ul ol .active{
      color: #c0d96f;
  }
+ 
 
 /* burbujas */
 
@@ -319,9 +210,5 @@ body {
     }
 }
 
-
-.footer{
-    background-color: #3A85F3 ;
-}
 
      
