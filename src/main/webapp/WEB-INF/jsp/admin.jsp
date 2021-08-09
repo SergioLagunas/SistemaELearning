@@ -15,9 +15,8 @@
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/kendo.common.min.css" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/kendo.black.min.css" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/kendo.default.mobile.min.css" />
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/admin.css" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/footerheader.css" />
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/styleListadoCurso.css" />
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bienvenida.css" />
         <script src="${pageContext.request.contextPath}/resources/js/jquery.min.js"></script>
         <script src="${pageContext.request.contextPath}/resources/js/kendo.all.min.js"></script>
         <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
@@ -29,71 +28,7 @@
                 font-size: 20px;
                 color: black;
                 text-decoration: none;
-
             }
-            .btncurso{
-                background-color: #0066CC;
-                border: none;
-                border-radius: 10px;
-                cursor: pointer;
-                transition: all 0.3s ease 0s;
-            }
-            
-             .seccion{
-                min-height: calc(100vh );
-                width: 100%;
-                max-width: 1200px;
-                height: 430px;
-                display: flex;
-                flex-wrap: wrap; /*ajusta el contenido de las card*/
-                justify-content: center;
-                margin: auto;
-                color:#fff;
-            }
-
-            /*estilo de card*/
-            .seccion .card1{
-                width: 330px;
-                height: 490px;
-                border-radius: 8px;
-                box-shadow: 0 2px 2px rgba(0,0,0, 0.2);
-                overflow: hidden;
-                margin: 20px;
-                text-align: center;
-                transition: all 0.25s;
-                background-color: #2C2635;
-                 
-                   
-            }
-
-            /*estilo de card cuando le damos con el mouse*/
-            .seccion .card1:hover{
-                transform: translatey(-15px);
-                box-shadow: 0 12px 16px rgba(0, 0, 0, 0.884);
-            }
-
-            /*imagen de la card*/
-            .seccion .card1 img{
-                width: 330px;
-                height: 210px;
-            }
-
-            /*titulo de card*/
-            .seccion .card1 h4{
-                font-weight: 500;
-                font-size: 20px;
-                color: #fff;
-            }
-            /*parrafo de la card*/
-            .seccion .card1 p{
-                padding: 0 1rem;
-                font-size: 12px;
-                font-weight: 200;
-                text-align: center;
-                color: #fff;
-            }
-            
-           
         </style>
     </head>
     <body>
@@ -124,42 +59,42 @@
             <a class="cta" href="index.html"><button>Cerrar sesión</button></a>
         </header>
     <center><h1><font color="black">Bienvenido <%=request.getSession().getAttribute("usuario")%></font></h1></center>
-   <div class="seccion">
-       <table>
-        <div class="card1">
-            <img src="${pageContext.request.contextPath}/resources/imagenes/Adminsemillero.png">
-            <br>
-            <h4>Administradores</h4>
-            <br>
-            <p><center><strong>Bienvenido administrador de B1 SOFT.</strong></center></p>
-            <p><center> En este apartado podrás dar de alta a futuros administradores o si lo deseas también puedes editar su información o eliminarla.</center></p>
-            <br>
-            <a href="nuevoadmin.html"><button class="btncurso">Conoce más</button></a>
-        </div>
+    <div class="seccion">
+        <table>
+            <div class="card1">
+                <img src="${pageContext.request.contextPath}/resources/imagenes/Adminsemillero.png">
+                <br>
+                <h4>Administradores</h4>
+                <br>
+                <p><center><strong>Bienvenido administrador de B1 SOFT.</strong></center></p>
+                <p><center> En este apartado podrás dar de alta a futuros administradores o si lo deseas también puedes editar su información o eliminarla.</center></p>
+                <br>
+                <a href="nuevoadmin.html"><button class="btncurso">Conoce más</button></a>
+            </div>
 
-        <div class="card1">
-            <img src="${pageContext.request.contextPath}/resources/imagenes/semillero.png">
-            <br>
-            <h4>Semilleros</h4>
-            <br>
-            <p><center><strong>Bienvenido administrador de B1 SOFT.</strong></center></p>
-            <p><center> En esta parte podrás consultar la información de los integrantes que conforman los semilleros de talento y si lo requiere el administrador eliminar esos datos o actualizarlos.</center></p>
-            <br>
-            <a href="nuevosemillero.html"><button class="btncurso">Conoce más</button></a>
-        </div>
+            <div class="card1">
+                <img src="${pageContext.request.contextPath}/resources/imagenes/semillero.png">
+                <br>
+                <h4>Semilleros</h4>
+                <br>
+                <p><center><strong>Bienvenido administrador de B1 SOFT.</strong></center></p>
+                <p><center> En esta parte podrás consultar la información de los integrantes que conforman los semilleros de talento y si lo requiere el administrador eliminar esos datos o actualizarlos.</center></p>
+                <br>
+                <a href="nuevosemillero.html"><button class="btncurso">Conoce más</button></a>
+            </div>
 
-        <div class="card1">
-            <img src="${pageContext.request.contextPath}/resources/imagenes/cursos.png">
-            <br>
-            <h4>Cursos</h4>
-            <br>
-            <p><center><strong>Bienvenido administrador de B1 SOFT.</strong></center></p>
-            <p><center>Aqui podrás iniciar un nuevo curso, indicar su nombre, dar una breve descripción y agregar una imagen de portada, click en guardar y luego en continuar; ahi agregarás modulos a tu curso donde subirás videos imagenes o documentos.</center></p>
-            <br> 
-            <a href="nuevocurso.html"><button class="btncurso">Conoce más</button></a>
-        </div>
+            <div class="card1">
+                <img src="${pageContext.request.contextPath}/resources/imagenes/cursos.png">
+                <br>
+                <h4>Cursos</h4>
+                <br>
+                <p><center><strong>Bienvenido administrador de B1 SOFT.</strong></center></p>
+                <p><center>Aqui podrás iniciar un nuevo curso, indicar su nombre, dar una breve descripción y agregar una imagen de portada, click en guardar y luego en continuar; ahi agregarás modulos a tu curso donde subirás videos imagenes o documentos.</center></p>
+                <br> 
+                <a href="nuevocurso.html"><button class="btncurso">Conoce más</button></a>
+            </div>
 
-       </table>
+        </table>
 
     </div>         
 
