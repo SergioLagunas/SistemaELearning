@@ -26,6 +26,16 @@
         <script src="${pageContext.request.contextPath}/resources/js/kendo.all.min.js"></script>
         <script src="../content/shared/js/products.js"></script> 
         <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+        <style>
+            li,a,button{
+                font-family: "roboto",sans-serif;
+                font-weight: 500;
+                font-size: 20px;
+                color: black;
+                text-decoration: none;
+
+            }
+        </style>
     </head>
     <body>
         <div class="burbujas">
