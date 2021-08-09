@@ -74,16 +74,6 @@
             button:hover{
                 background-color: rgba(169, 0, 0, 0.8);
             }
-            .body1{
-                background: rgb(0,79,82);
-                background: linear-gradient(0deg, rgba(0,79,82,1) 55%, rgba(16,166,101,1) 100%);
-                margin: 0%;
-                padding: 0%;
-                font-variant: normal;
-                font-size: 18px;
-                color: rgb(255, 255, 255);
-                font-family: 'Varela Round', sans-serif;
-            }
 
             /*Estilo footer*/
 

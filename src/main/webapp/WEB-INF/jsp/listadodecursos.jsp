@@ -4,7 +4,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bienvenida.css" />
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/listadodecursos.css" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="CRUD dinamico con HTMLS, CSS and JS">
         <link href="https://fonts.googleapis.com/css?family=Quicksand:600&display=swap" rel="stylesheet">
@@ -17,7 +17,11 @@
         <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
         <style>
             /*Estilo header*/
-
+            body {
+                font-family: 'Varela Round', sans-serif;
+                justify-content: center;
+                background:  #EAECE8;
+            }
             li,a,button{
                 font-family: "roboto",sans-serif;
                 font-weight: 500;
@@ -62,21 +66,12 @@
                 cursor: pointer;
                 transition: all 0.3s ease 0s;
             }
-            
+
             button:hover{
                 background-color: rgba(169, 0, 0, 0.8);
             }
-            
-            .body1{
-                background: rgb(0,79,82);
-                background: linear-gradient(0deg, rgba(0,79,82,1) 55%, rgba(16,166,101,1) 100%);
-                margin: 0%;
-                padding: 0%;
-                font-variant: normal;
-                font-size: 18px;
-                color: #000;
-                font-family: 'Varela Round', sans-serif;
-            }
+
+
 
             /*Estilo footer*/
 
@@ -91,25 +86,25 @@
                 text-transform: uppercase;/*Esta línea decódigo es para poner las letras en mayúsculas */
                 letter-spacing: 2px;/*Espacio entre letras*/
             }
-            
+
             .form{
                 width: 25%;
                 border: 1px dashed #ccc;
                 margin: 20px;
                 padding: 20px;
             }
-            
+
             label{
                 font-size: 16px;
                 color:black;
             }
-            
+
             option1{
                 margin-bottom: 20px;
                 width: 50%;
                 padding: 5px;
             }
-            
+
             input, textarea{
                 margin-bottom: 20px;
                 width: 50%;
@@ -120,7 +115,7 @@
                 outline: none; 
 
             }
-            
+
             ::placeholder{
                 font-family: "Font Awesome 5 Free"; 
                 font-weight: 900;
@@ -134,7 +129,7 @@
                 border-radius: 50px;
                 border: none;
             }
-            
+
             table{
                 background-color: white;
                 width: 80%;
@@ -142,22 +137,19 @@
                 color: black;
                 border-collapse: collapse;
             }
-            
+
             th, td{
 
                 padding: 10px;
 
             }
-            
+
             thead{
                 background-color:  #246355;
                 border-bottom: solid 5px #0f362d;
                 color: white;
             }
 
-            /*.Editarr{
-                background-color: teal;
-            }*/
 
         </style>
     </head>
@@ -194,7 +186,7 @@
         <br>
         <br>
         <form>
-        <!--<form action="ActualizarCurso.html" method="POST">-->
+            <!--<form action="ActualizarCurso.html" method="POST">-->
             <center>
                 <div class="tablita">
                     <table class="tabla" id="tabla">
@@ -231,19 +223,19 @@
             <script>
                 var Fila = null;
                 let DataForm = {};
-                
-                $(function(){
+
+                $(function () {
                     //let DataForm = {};
-                    <c:forEach var="cur" items="${cursos}">                  
-                        DataForm["id"] = "${cur.idCurso}";  
-                        DataForm["nom"] = "${cur.nombre}";  
-                        DataForm["des"] = "${cur.descripcion}";
-                        DataForm["cat"] = "${cur.categoria}";
-                        DataForm["url"] = "${cur.caratula}";
-                        InsertarDatos(DataForm); 
-                    </c:forEach>
+                <c:forEach var="cur" items="${cursos}">
+                    DataForm["id"] = "${cur.idCurso}";
+                    DataForm["nom"] = "${cur.nombre}";
+                    DataForm["des"] = "${cur.descripcion}";
+                    DataForm["cat"] = "${cur.categoria}";
+                    DataForm["url"] = "${cur.caratula}";
+                    InsertarDatos(DataForm);
+                </c:forEach>
                 });
-                
+
                 function Leer() {
                     let DataForm = {};
                     DataForm["nom"] = document.getElementById("nom").value;
@@ -251,25 +243,25 @@
                     DataForm["cat"] = document.getElementById("cat").value;
                     return DataForm;
                 }
-                
+
                 function InsertarDatos(data) {
                     let table = document.getElementById("tabla").getElementsByTagName('tbody')[0];
                     let Fila = table.insertRow(table.length);
                     columna1 = Fila.insertCell(0).innerHTML = data.nom;
                     columna2 = Fila.insertCell(1).innerHTML = data.des;
                     columna3 = Fila.insertCell(2).innerHTML = data.cat;
-                    columna4 = Fila.insertCell(3).innerHTML = `<a href="borrarCursos.html?CursoE=`+data.id+`"><input class="submit" type="button" onClick="Borrarr(this)" value="Borrar" ></a>
+                    columna4 = Fila.insertCell(3).innerHTML = `<a href="borrarCursos.html?CursoE=` + data.id + `"><input class="submit" type="button" onClick="Borrarr(this)" value="Borrar" ></a>
                                                                 <input class="submit" type="button" onClick="Editarr(this)" value="Editar" >`;
                     Vaciar();
                 }
-                
+
                 function Vaciar() {
                     document.getElementById("nom").value = "";
                     document.getElementById("des").value = "";
                     document.getElementById("cat").value = "";
                     Fila = null;
                 }
-                
+
                 function Editarr(td) {
                     Fila = td.parentElement.parentElement;
                     document.getElementById("nom").value = Fila.cells[0].innerHTML;
@@ -278,7 +270,7 @@
                     document.getElementById("cara").value = DataForm.url;
                     document.getElementById("nom").focus();
                 }
-                
+
                 function Actualizar(DataForm) {
                     Fila.cells[0].innerHTML = DataForm.nom;
                     Fila.cells[1].innerHTML = DataForm.des;
@@ -286,17 +278,17 @@
                     document.getElementById("nom").focus();
                     Vaciar();
                 }
-                
+
                 function Borrarr(td) {
                     if (confirm('¿Estás Seguro de borrar este módulo?')) {
                         row = td.parentElement.parentElement;
                         document.getElementById("tabla").deleteRow(row.rowIndex);
-                        
+
                         //alert(" Valor a Eliminar => " + row.cells[0].innerHTML);
-                        
+
                         Vaciar();
                     }
-                }         
+                }
             </script>
         </form>  
         <br/>
@@ -321,7 +313,7 @@
                     <a href='https://www.google.com/intl/es-419/gmail/about/#' target='_blank'><img HSPACE='10'
                                                                                                     src='https://img.icons8.com/ios-filled/24/000000/gmail-login.png' title='' /></a>
                     <a href='https://www.youtube.com/' target='_blank'><img HSPACE='10'
-                                                                           src=' https://img.icons8.com/metro/26/000000/youtube.png' title='' /></a>
+                                                                            src=' https://img.icons8.com/metro/26/000000/youtube.png' title='' /></a>
                 </a>
             </center>
         </div> Todos los derechos reservados | © 2021 B1 SOFT
