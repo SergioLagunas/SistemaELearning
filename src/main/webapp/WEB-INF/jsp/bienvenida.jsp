@@ -128,10 +128,10 @@
         <div id="container">
             <div id="Scroll">
                 <div id="Titulo">
-                    <h1>Hola <%=request.getSession().getAttribute("usuario")%> , Bienvenido</h1>
+                    <center><h1>Hola <%=request.getSession().getAttribute("usuario")%> , Bienvenido</h1></center>
 
                 </div>
-                <div style="margin:auto; max-width:100%">
+                <div style="margin:auto; max-width:90%">
                     <div id="scrollView" style="height: 268px; max-width: 100%;">
                         <div class="page1" data-role="page">
                             <div class="photo photo1">
@@ -162,7 +162,7 @@
             </div>
             <div id="Botones">
                 <div id="Subtitulo">
-                    <h2><font color="#000">Dale un vistazo a las Áreas de Interés</font></h2>
+                    <center><h2><font color="#000">Dale un vistazo a las Áreas de Interés</font></h2></center>
                 </div>
                 <div class="container1">
                     <div class="card1">
