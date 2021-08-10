@@ -16,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 public interface ModuloService {
     
     public String readModulo(int idCurso, Model model);
+    public String readModuloMoment(Model model);
     public ModelAndView createNewModulo(ModuloModel moduloM);
     public String updateModulo(final HttpServletRequest request);
     public String deleteModulo(final Map<String,String> requestParam);

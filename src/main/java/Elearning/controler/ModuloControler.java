@@ -29,13 +29,14 @@ public class ModuloControler {
     @Autowired
     private ModuloService moduloService;
     
+    /*
     @RequestMapping(value = "anadirmodulos.html", method = RequestMethod.GET)
     public ModelAndView anadirmodulos() {
         ModelAndView mo = new ModelAndView();
         mo.setViewName("anadirmodulos");
         return mo;
     }
-    
+    */
     
     @RequestMapping(value = "addModulo.html",method = RequestMethod.POST)
     public ModelAndView addModulo(@ModelAttribute ModuloModel moduloM){
@@ -45,6 +46,12 @@ public class ModuloControler {
     @RequestMapping(value = "mediacursos.html", method = RequestMethod.GET)
      public String listadoCursos(@RequestParam("idCurso") int idCurso, Model model){
          return moduloService.readModulo(idCurso,model);
-     }
+    }
+     
+     //Para el crud que esta al insertar los modulos
+    @RequestMapping(value = "anadirmodulos.html", method = RequestMethod.GET)
+    public String listadoModulo(Model model){
+        return moduloService.readModuloMoment(model);
+    }
   
 }

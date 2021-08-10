@@ -50,6 +50,7 @@ public class ModuloServiceImpl implements ModuloService {
 
     @Autowired
     private MiCursoDao micursoDao;
+    
 
     @Override
     public String readModulo(int idCurso, Model model) {
@@ -77,6 +78,15 @@ public class ModuloServiceImpl implements ModuloService {
             model.addAttribute("modulos", moduloDao.findbyCurso(idCurso));
         }
         return "mediacursos";
+    }
+    
+    @Override
+    public String readModuloMoment(Model model){
+        int curso = CursoServiceImpl.elcurso;
+        System.out.println("Listando Modulos de Curso: "+curso);
+        System.out.println("Añadiendo los modulos: ");
+        model.addAttribute("modulos",moduloDao.findbyCurso(curso));
+        return "anadirmodulos";
     }
 
     @Override
