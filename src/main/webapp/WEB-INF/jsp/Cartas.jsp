@@ -70,7 +70,7 @@
                     <div class="k-card-body">
                         <center> <h3><c:out value="${curso.nombre}"></c:out></h3> </center> 
                             <br>
-                            <center><a href="mediacursos.html?idCurso=${curso.idCurso}"><button id="btncurso">Ir al curso</button></a></center>
+                            <center><a href="mediacursos.html?idCurso=${curso.idCurso}"><button id="btncurso1">Ir al curso</button></a></center>
                     </div>
                 </div>
             </c:forEach>
