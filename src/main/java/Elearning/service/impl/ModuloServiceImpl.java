@@ -30,6 +30,7 @@ import org.springframework.ui.Model;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
@@ -50,7 +51,6 @@ public class ModuloServiceImpl implements ModuloService {
 
     @Autowired
     private MiCursoDao micursoDao;
-    
 
     @Override
     public String readModulo(int idCurso, Model model) {
@@ -79,13 +79,13 @@ public class ModuloServiceImpl implements ModuloService {
         }
         return "mediacursos";
     }
-    
+
     @Override
-    public String readModuloMoment(Model model){
+    public String readModuloMoment(Model model) {
         int curso = CursoServiceImpl.elcurso;
-        System.out.println("Listando Modulos de Curso: "+curso);
+        System.out.println("Listando int curso = CursoServiceImpl.elcurso;Modulos de Curso: " + curso);
         System.out.println("Añadiendo los modulos: ");
-        model.addAttribute("modulos",moduloDao.findbyCurso(curso));
+        model.addAttribute("modulos", moduloDao.findbyCurso(curso));
         return "anadirmodulos";
     }
 
@@ -124,22 +124,35 @@ public class ModuloServiceImpl implements ModuloService {
     }
 
     @Override
-    public String updateModulo(HttpServletRequest request) {
-        Integer idModulo = Integer.parseInt(request.getParameter("idModulo"));
-        String titulo = request.getParameter("titulo");
-        String descripcion = request.getParameter("descripcion");
-        String url = request.getParameter("url");
-
-        Modulo modulo = new Modulo();
-        modulo = moduloDao.getModulo(idModulo);
-        
-        modulo.setTitulo(titulo);
-        modulo.setDescripcion(descripcion);
-      
-        modulo = moduloDao.update(modulo);
-
-        //Aca es donde de reddirecciona a la paguina que desees 
-        return "exito";
+    public String updateModulo(int idModulo, String titulo, String descripcion, MultipartFile url) {
+        ModuloModel updateMultimedia = new ModuloModel();
+        Modulo updatemodulo = new Modulo();
+        updatemodulo = moduloDao.getModulo(idModulo);
+        try {
+            if(!url.isEmpty()){
+                updateMultimedia.setUrl(url);
+                String enlaceNuevo = guardarDropBox(updateMultimedia);
+                
+                updatemodulo.setTitulo(titulo);
+                updateMultimedia.setDescripcion(descripcion);
+                updatemodulo.setUrl(enlaceNuevo);
+                updatemodulo = moduloDao.update(updatemodulo);
+                System.out.println("Modulo Actualizado con nueva url");
+                return "redirect:/anadirmodulos.html";
+                
+            }else{
+                updatemodulo.setTitulo(titulo);
+                updateMultimedia.setDescripcion(descripcion);
+                updatemodulo.setUrl(updatemodulo.getUrl());
+                updatemodulo = moduloDao.update(updatemodulo);
+                System.out.println("Modulo actualizado sin url nueva");
+                return "redirect:/anadirmodulos.html";
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            Logger.getLogger(CursoServiceImpl.class.getName()).log(Level.SEVERE, null, e);
+            return "redirect:/error.html";
+        }
     }
 
     @Override

@@ -201,7 +201,7 @@
                     </div>  
 
                     <div class="card1">
-                        <a href="Cartas.html?categoria=otros"><img src="${pageContext.request.contextPath}/resources/imagenes/otro.jpg"></a>
+                        <a href="Cartas.html?categoria=otro"><img src="${pageContext.request.contextPath}/resources/imagenes/otro.jpg"></a>
                         <br>
                         <br>
                         <h4>Otros Cursos</h4>

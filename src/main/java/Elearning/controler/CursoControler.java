@@ -2,6 +2,7 @@ package Elearning.controler;
 
 import Elearning.modelo.formModel.CursoModel;
 import Elearning.service.CursoService;
+import org.springframework.web.multipart.MultipartFile;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -72,6 +73,16 @@ public class CursoControler {
         model.addAttribute("Message", DatosE);
         model.addAttribute("Dirigir", Dirigir);
         return aux;
+    }
+    
+    @RequestMapping(value="ActualizarCurso.html",method = RequestMethod.POST)
+    public String ActualizarCurso(
+            @RequestParam("nombre") String nombre,
+            @RequestParam("descripcion") String descripcion,
+            @RequestParam("categoria") String categoria,
+            @RequestParam("caratula") MultipartFile caratula,
+            @RequestParam("curid") int idCurso){
+        return cursoService.updateCurso(idCurso, nombre, descripcion, categoria, caratula);
     }
     
     /*@RequestMapping(value="ActualizarCurso.html",method = RequestMethod.POST)
