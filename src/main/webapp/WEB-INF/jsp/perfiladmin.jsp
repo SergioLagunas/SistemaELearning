@@ -12,13 +12,10 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Nuevo Curso</title>
-       
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/nuevocurso.css" />
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/styleListadoCurso.css" />
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bienvenida.css" />
+        <title>Perfil Admin</title>
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/perfiladmin.css" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/footerheader.css" />
-        
+
         <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
         <style>
             li,a,button{
@@ -29,80 +26,72 @@
                 text-decoration: none;
 
             }
-            
-              .form-register {
-  width: 550px;
-  background:  #2C2635;
-  padding: 50px;
-  margin: auto;
-  margin-top: 60px;
-  border-radius: 10px;
-  font-family: 'calibri';
-  color: rgb(42, 35, 49);
-  box-shadow: 7px 13px 37px #000;
-}
 
-
-/*estilo de card cuando le damos con el mouse*/
-.form-register:hover{
-  transform: translatey(-30px);
- 
-  box-shadow: 0 12px 16px rgba(0, 0, 0, 0.884);
-}
-
-
- 
-
-.controls {
-  width: 103%;
-  background: #24303c;
-  padding: 10px;
-  align-items: center;
-  border-radius: 5px;
-  margin-bottom: 16px;
-  border: none;
-  font-family: sans-serif;
-  font-size: 18px;
-  color: white;
-  outline: none;
-}
-.btn-neon1{
-  position: relative;
-  display: inline-block;
-  padding: 15px 18px;
-  color: #fff;
-  letter-spacing: 4px;
-  font-size: 18px;
-  text-decoration: none;
-  overflow: hidden;
-  transition: 0.2s;
-  background: #0F97A9;
-  align-items: center;
-  border-radius: 20px;
-  outline: none;
-  margin-top: 10px;
-}
-
-.btn-neon1:hover{
-  background:#0F97A9 ;
-  box-shadow: 0 0 10px #0F97A9, 0 0 40px #0F97A9, 0 0 80px #0F97A9;
-  transition-delay: 0s;
+            .form-register {
+                width: 550px;
+                background:  #2C2635;
+                padding: 50px;
+                margin: auto;
+                margin-top: 60px;
+                border-radius: 10px;
+                font-family: 'calibri';
+                color: rgb(42, 35, 49);
+                box-shadow: 7px 13px 37px #000;
+            }
 
 
 
-}
 
-.btn-neon1 span{
+            .controls {
+                width: 103%;
+                background: #24303c;
+                padding: 10px;
+                align-items: center;
+                border-radius: 5px;
+                margin-bottom: 16px;
+                border: none;
+                font-family: sans-serif;
+                font-size: 18px;
+                color: white;
+                outline: none;
+            }
+            .btn-neon1{
+                position: relative;
+                display: inline-block;
+                padding: 15px 18px;
+                color: #fff;
+                letter-spacing: 4px;
+                font-size: 18px;
+                text-decoration: none;
+                overflow: hidden;
+                transition: 0.2s;
+                background: #0F97A9;
+                align-items: center;
+                border-radius: 20px;
+                outline: none;
+                margin-top: 10px;
+            }
 
-  position: absolute;
-  display: block;
+            .btn-neon1:hover{
+                background:#0F97A9 ;
+                box-shadow: 0 0 10px #0F97A9, 0 0 40px #0F97A9, 0 0 80px #0F97A9;
+                transition-delay: 0s;
 
-}
-            
-            
-            
-            
-            
+
+
+            }
+
+            .btn-neon1 span{
+
+                position: absolute;
+                display: block;
+
+            }
+
+
+
+
+
         </style>
     </head>
     <body>
@@ -132,28 +121,28 @@
             </nav>
             <a class="cta" href="index.html"><button>Cerrar sesión</button></a>
         </header>
-                  <div id="container">
-                <div id="Titulo">
-                    <br>
-                   
-                    <h3>Mis datos</h3>
-                </div>
+        <div id="container">
+            <div id="Titulo">
                 <br>
-                  <section class="form-register">
-   <center><img  src="${pageContext.request.contextPath}/resources/imagenes/Adminsemillero.png" width="150px" height="150px"></center>
-    <input class="controls" type="text" name="nombres" id="nombres" placeholder=" Nombre">
-    <input class="controls" type="text" name="apellidopat" id="apellidopat" placeholder=" Apellido Paterno">
-    <input class="controls" type="text" name="apellidomat" id="apellidomat" placeholder="Apellido Materno">
-    <input class="controls" type="text" name="rfc" id="rfc" placeholder=" RFC">
-    <input class="controls" type="password" name="contraseña" id="contraseña" placeholder="aqui puedes modificar tu contraseña">
-   <!-- <p>Estoy de acuerdo con <a href="#">Terminos y Condiciones</a></p>-->
-   <br>
-    <center><input class="btn-neon1" type="submit" value="Guardar"></center>
-  
-  </section>
 
+                <h3>Mis datos</h3>
             </div>
-        
+            <br>
+            <section class="form-register">
+                <center><img  src="${pageContext.request.contextPath}/resources/imagenes/Adminsemillero.png" width="150px" height="150px"></center>
+                <input class="controls" type="text" name="nombres" id="nombres" placeholder=" Nombre">
+                <input class="controls" type="text" name="apellidopat" id="apellidopat" placeholder=" Apellido Paterno">
+                <input class="controls" type="text" name="apellidomat" id="apellidomat" placeholder="Apellido Materno">
+                <input class="controls" type="text" name="rfc" id="rfc" placeholder=" RFC">
+                <input class="controls" type="password" name="contraseña" id="contraseña" placeholder="aqui puedes modificar tu contraseña">
+                <!-- <p>Estoy de acuerdo con <a href="#">Terminos y Condiciones</a></p>-->
+                <br>
+                <center><input class="btn-neon1" type="submit" value="Guardar"></center>
+
+            </section>
+
+        </div>
+
         <!--Footer-->
         <br>
         <br>
