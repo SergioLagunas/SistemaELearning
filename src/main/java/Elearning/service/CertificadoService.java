@@ -10,6 +10,6 @@ public interface CertificadoService {
     public String readCertificado();
     public String createNewCertificado(final HttpServletRequest request);
     public String updateCertificado(final HttpServletRequest request);
-    public String deleteCertificado(final Map<String,String> requestParam);
+    public boolean deleteCertificado(int idCertificado);
     
 }

@@ -334,15 +334,11 @@ public class UsuarioServiceImpl implements UsuarioService {
     }
 
     @Override
-    public String deleteUsusario(Map<String, String> requestParam) {
-          Integer idUsuario=Integer.parseInt(requestParam.get("IdUsuario"));
-          Usuario elimUsuario = new Usuario();
-          elimUsuario.setIdUsuario(idUsuario);
-          boolean flag=usuarioDao.delete(elimUsuario);
-         if(flag){
-             return  "{\"valid\"}";
-         }
-         return "{\"valid\"}";
+    public boolean deleteUsusario(int idUsuario) {
+        Usuario elimUsuario = new Usuario();
+        elimUsuario.setIdUsuario(idUsuario);
+        boolean flag = usuarioDao.delete(elimUsuario);
+        return flag;
     }
 
 

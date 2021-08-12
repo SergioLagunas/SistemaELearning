@@ -111,15 +111,11 @@ public class EvaluacionServiceImpl implements EvaluacionService {
     }
 
     @Override
-    public String deleteEvaluacion(Map<String, String> requestParam) {
-        Integer idEvaluacion = Integer.parseInt(requestParam.get("IdEvaluacion"));
+    public boolean deleteEvaluacion(int idEvaluacion) {
+        
         Evaluacion elimEvaluacion = new Evaluacion();
         elimEvaluacion.setIdEvaluacion(idEvaluacion);
         boolean flag = evaluacionDao.delete(elimEvaluacion);
-        if (flag) {
-            return "{\"valid\"}";
-        }
-        return "{\"valid\"}";
+        return flag;
     }
-
 }

@@ -109,16 +109,12 @@ public class CertificadoServiceImpl implements CertificadoService {
     }
 
     @Override
-    public String deleteCertificado(Map<String, String> requestParam) {
-        Integer idCertificado = Integer.parseInt(requestParam.get("IdCertificado"));
+    public boolean deleteCertificado(int idCertificado) {
+        
         Certificado elimCertificado = new Certificado();
         elimCertificado.setIdCertificado(idCertificado);
         boolean flag = certificadoDao.delete(elimCertificado);
-        if (flag) {
-            return "{\"valid\"}";
-        }
-        return "{\"valid\"}";
-
+        return flag;
     }
 }
 

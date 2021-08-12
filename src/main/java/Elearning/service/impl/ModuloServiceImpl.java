@@ -156,15 +156,11 @@ public class ModuloServiceImpl implements ModuloService {
     }
 
     @Override
-    public String deleteModulo(Map<String, String> requestParam) {
-        Integer idModulo = Integer.parseInt(requestParam.get("IdModulo"));
+    public boolean deleteModulo(int idModulo) {
         Modulo elimModulo = new Modulo();
         elimModulo.setIdModulo(idModulo);
         boolean flag = moduloDao.delete(elimModulo);
-        if (flag) {
-            return "{\"valid\"}";
-        }
-        return "{\"valid\"}";
+        return flag;
     }
 
     private String guardarDropBox(ModuloModel moduloM) throws IOException, FileNotFoundException, DbxException {

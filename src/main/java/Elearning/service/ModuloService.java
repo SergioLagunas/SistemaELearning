@@ -20,6 +20,6 @@ public interface ModuloService {
     public String readModuloMoment(Model model);
     public ModelAndView createNewModulo(ModuloModel moduloM);
     public String updateModulo(int idModulo,String titulo,String descripcion, MultipartFile url);
-    public String deleteModulo(final Map<String,String> requestParam);
+    public boolean deleteModulo(int idModulo);
     
 }

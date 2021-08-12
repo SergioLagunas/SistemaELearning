@@ -61,6 +61,8 @@
                 <prop key="nuevosemillero.html">usuarioControler</prop>
                 <prop key="nuevoadmin.html">usuarioControler</prop>
                 <prop key="addAdministrador.html">usuarioControler</prop>
+                <prop key="eliminarAdmin.html">usuarioControler</prop>
+                <prop key="eliminarSemillero.html">usuarioControler</prop>
                 
             </props>
         </property>

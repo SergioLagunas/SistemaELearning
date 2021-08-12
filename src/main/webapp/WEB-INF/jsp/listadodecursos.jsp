@@ -16,6 +16,7 @@
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+        
         <style>
             /*Estilo header*/
 
@@ -240,6 +241,7 @@
                                 <th>Nombre</th> 
                                 <th>Descripción</th>
                                 <th>Categoria</th>
+                                <th>Opciones</th>
                             </tr>
                         </thead>
                     </table>
@@ -276,8 +278,21 @@
                     columna1 = Fila.insertCell(0).innerHTML = data.nom;
                     columna2 = Fila.insertCell(1).innerHTML = data.des;
                     columna3 = Fila.insertCell(2).innerHTML = data.cat;
-                    columna4 = Fila.insertCell(3).innerHTML = `<input class="submit" type="button" onClick="Borrarr(this,`+data.id+`)" value="Borrar" >
-                                                                <input class="submit" type="button" onClick="Editarr(this,`+data.id+`)" value="Editar" >`;
+                    columna4 = Fila.insertCell(3).innerHTML = `
+                                                                <button type="button" class="btn btn-danger" onClick="Borrarr(this,`+data.id+`)">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-trash " viewBox="0 0 16 16">
+                                                                        <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                                                                        <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                                                                    </svg>
+                                                                Eliminar</button>
+                    
+                                                                <button type="button" class="btn btn-success" onClick="Editarr(this,`+data.id+`)" >
+                                                                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-upload" viewBox="0 0 16 16">
+                                                                        <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
+                                                                        <path d="M7.646 1.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 2.707V11.5a.5.5 0 0 1-1 0V2.707L5.354 4.854a.5.5 0 1 1-.708-.708l3-3z"/>
+                                                                      </svg>
+                                                                Editar</button>
+                                                                `;
                     Vaciar();
                 }
                 

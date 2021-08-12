@@ -15,6 +15,6 @@ public interface UsuarioService {
 //    public String LogOut(HttpServletRequest request);
     public String updateUsuario(final HttpServletRequest request);
     public String updateUsuarioAdmin(final HttpServletRequest request);
-    public String deleteUsusario(final Map<String,String> requestParam);
+    public boolean deleteUsusario(int idUsuario);
     public boolean recuperarContraseña(HttpServletRequest request);
 }

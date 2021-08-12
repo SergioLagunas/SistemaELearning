@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
@@ -66,9 +67,26 @@ public class UsuarioControler {
         return mo;   
     }
     
+    @RequestMapping(value = "eliminarAdmin.html", method = RequestMethod.GET)
+    public ModelAndView eliminarAdmin(@RequestParam("idUsuario") int idUsuario, Model model) {
+        ModelAndView mo = new ModelAndView();
+        if(usuarioService.deleteUsusario(idUsuario)){
+            mo.setViewName("redirect:/nuevoadmin.html");
+        }else{
+            mo.setViewName("redirect:/error.html");
+        }  
+        return mo;
+    }
    
-    
-   
-   
-    
+    @RequestMapping(value = "eliminarSemillero.html", method = RequestMethod.GET)
+    public ModelAndView eliminarSemillero(@RequestParam("idUsuario") int idUsuario, Model model) {
+        ModelAndView mo = new ModelAndView();
+        if(usuarioService.deleteUsusario(idUsuario)){
+            mo.setViewName("redirect:/nuevosemillero.html");
+        }else{
+            mo.setViewName("redirect:/error.html");
+        }  
+        return mo;
+    }
+  
 }

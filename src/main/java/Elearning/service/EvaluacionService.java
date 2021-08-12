@@ -17,6 +17,6 @@ public interface EvaluacionService {
     public String readEvaluacion();
     public String createNewEvaluacion(final HttpServletRequest request);
     public String updateEvaluacion(final HttpServletRequest request);
-    public String deleteEvaluacion(final Map<String,String> requestParam);
+    public boolean deleteEvaluacion(int idEvaluacion);
     
 }
