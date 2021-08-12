@@ -49,8 +49,8 @@ public class Curso implements Serializable{
     private List<Modulo> idModulo;
     
     //Relacion Uno a Muchos con Archivo
-    @OneToMany(mappedBy = "idCurso",fetch=FetchType.EAGER,cascade = {CascadeType.ALL,CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH})
-    private List<Archivo> idArchivo;
+    @OneToMany(mappedBy = "idCurso",fetch=FetchType.LAZY,cascade = {CascadeType.ALL,CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH})
+    private Set<Archivo> idArchivo;
     
     //Relacion MUCHOS A MUCHOS con Usuario
     @ManyToMany(mappedBy = "cursos",cascade = {CascadeType.PERSIST,CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH},fetch = FetchType.EAGER)
@@ -132,15 +132,6 @@ public class Curso implements Serializable{
     public void setUsuarios(Set<Usuario> usuarios) {
         this.usuarios = usuarios;
     }
-
-    public List<Archivo> getIdArchivo() {
-        return idArchivo;
-    }
-
-    public void setIdArchivo(List<Archivo> idArchivo) {
-        this.idArchivo = idArchivo;
-    }
-    
     
        
     public void addModulos(Modulo modulo){   
@@ -153,7 +144,7 @@ public class Curso implements Serializable{
     
     public void addArchivos(Archivo archivo){   
         if(idArchivo!=null){
-            idArchivo=new ArrayList<>();
+            idArchivo= new HashSet<>();
             idArchivo.add(archivo);
             archivo.setIdCurso(this);
         }    

@@ -9,37 +9,24 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
+import org.springframework.transaction.annotation.Transactional;
 
 
 public class ArchivoDaoImpl implements ArchivoDao{
 
     @Override
+    @Transactional
     public List<Archivo> findAll() {
           //Obtener la secion 
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         //Ocupamos la transaccion en caso de error la base de datos se restaura a como estaba
-        Transaction transaccion = session.getTransaction();
         //Declaramos la lista donde almacenara el conjunto de datos de la tabla 
         List<Archivo> lista = null;
-
-        try {
-            //Iniciamos Transaccion
-            transaccion.begin();
             //crea la consulta Query
             Query<Archivo> miQuery = session.createQuery("from Archivo id order by id.idArchivo");
             //Amacenamos los datos en la lista declarada anteriormente 
             lista = miQuery.list();
-            //regresa el commit
-            transaccion.commit();
-        } catch (HibernateException e) {
-            //Si la transaccion esta bacia y ademas esta activa que regrese el estado en el que se encontraba la Base de Datos
-            if (transaccion != null && transaccion.isActive()) {
-                transaccion.rollback();
-            }
-        } finally {
-            //Finalmente cerramos la sesion 
-            session.close();
-        }
+ 
         return lista;
     }
 
