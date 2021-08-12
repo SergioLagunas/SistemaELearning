@@ -1,36 +1,32 @@
 
 package Elearning.dao.impl;
 
-
-import Elearning.dao.EvaluacionDao;
-import Elearning.modelo.Evaluacion;
+import Elearning.dao.ArchivoDao;
+import Elearning.modelo.Archivo;
 import Elearning.util.HibernateUtil;
 import java.util.List;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
-import org.springframework.stereotype.Repository;
 
 
-
-@Repository("EvaluacionDao")
-public class EvaluacionDaoImpl implements EvaluacionDao{
+public class ArchivoDaoImpl implements ArchivoDao{
 
     @Override
-    public List<Evaluacion> findAll() {
-        //Obtener la secion 
+    public List<Archivo> findAll() {
+          //Obtener la secion 
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         //Ocupamos la transaccion en caso de error la base de datos se restaura a como estaba
         Transaction transaccion = session.getTransaction();
         //Declaramos la lista donde almacenara el conjunto de datos de la tabla 
-        List<Evaluacion> lista = null;
+        List<Archivo> lista = null;
 
         try {
             //Iniciamos Transaccion
             transaccion.begin();
             //crea la consulta Query
-            Query<Evaluacion> miQuery = session.createQuery("from Evaluacion id order by id.idEvaluacion");
+            Query<Archivo> miQuery = session.createQuery("from Archivo id order by id.idArchivo");
             //Amacenamos los datos en la lista declarada anteriormente 
             lista = miQuery.list();
             //regresa el commit
@@ -48,8 +44,8 @@ public class EvaluacionDaoImpl implements EvaluacionDao{
     }
 
     @Override
-    public Evaluacion create(Evaluacion laEvaluacion) {
-        //Obtener la secion 
+    public Archivo create(Archivo elArchivo) {
+         //Obtener la secion 
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         //Ocupamos la transaccion en caso de error la base de datos se restaura a como estaba
         Transaction transaccion = session.getTransaction();
@@ -57,10 +53,10 @@ public class EvaluacionDaoImpl implements EvaluacionDao{
         try {
             //Iniciamos Transaccion
             transaccion.begin();
-            //Actualizamos los datos 
-            Integer id= (Integer) session.save(laEvaluacion);
+            //Guardamos la transaccion
+            Integer id = (Integer) session.save(elArchivo);
             transaccion.commit();
-            laEvaluacion.setIdEvaluacion(id);
+            elArchivo.setIdArchivo(id);
 
         } catch (HibernateException e) {
             //Si la transaccion esta bacia y ademas esta activa que regrese el estado en el que se encontraba la Base de Dato
@@ -71,22 +67,21 @@ public class EvaluacionDaoImpl implements EvaluacionDao{
             //Finalmente cerramos la sesion 
             session.close();
         }
-
-        return laEvaluacion;
+        return elArchivo;
     }
 
     @Override
-    public Evaluacion getEvaluacion(Integer idEvaluacion) {
+    public Archivo getArchivo(Integer idArchivo) {
         //Obtener la secion 
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         //Ocupamos la transaccion en caso de error la base de datos se restaura a como estaba
         Transaction transaccion = session.getTransaction();
-        Evaluacion entidad = null;
+        Archivo entidad = null;
         try {
             //Iniciamos Transaccion
             transaccion.begin();
             //Obtener por medio del id llamamos a la Tabla usuario y que haga de parametro el idUsuario
-            entidad = session.get(Evaluacion.class, idEvaluacion);
+            entidad = session.get(Archivo.class, idArchivo);
             transaccion.commit();
 
         } catch (HibernateException e) {
@@ -103,7 +98,7 @@ public class EvaluacionDaoImpl implements EvaluacionDao{
     }
 
     @Override
-    public Evaluacion update(Evaluacion laEvaluacion) {
+    public Archivo update(Archivo elArchivo) {
         //Obtener la secion 
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         //Ocupamos la transaccion en caso de error la base de datos se restaura a como estaba
@@ -113,7 +108,7 @@ public class EvaluacionDaoImpl implements EvaluacionDao{
             //Iniciamos Transaccion
             transaccion.begin();
             //Actualizamos los datos 
-            session.update(laEvaluacion);
+            session.update(elArchivo);
             transaccion.commit();
 
         } catch (HibernateException e) {
@@ -126,22 +121,22 @@ public class EvaluacionDaoImpl implements EvaluacionDao{
             session.close();
         }
 
-        return laEvaluacion;
+        return elArchivo;
     }
 
     @Override
-    public boolean delete(Evaluacion laEvaluacion) {
+    public boolean delete(Archivo elArchivo) {
          //Obtener la secion 
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         //Ocupamos la transaccion en caso de error la base de datos se restaura a como estaba
         Transaction transaccion = session.getTransaction();
-        boolean flag=true;
-   
+        boolean flag = true;
+
         try {
             //Iniciamos Transaccion
             transaccion.begin();
             //Actualizamos los datos 
-            session.delete(laEvaluacion);
+            session.delete(elArchivo);
             transaccion.commit();
 
         } catch (HibernateException e) {
@@ -149,14 +144,19 @@ public class EvaluacionDaoImpl implements EvaluacionDao{
             if (transaccion != null && transaccion.isActive()) {
                 transaccion.rollback();
             }
-            flag=false;
-            
+            flag = false;
+
         } finally {
             //Finalmente cerramos la sesion 
             session.close();
         }
 
         return flag;
+    }
+
+    @Override
+    public List<Archivo> findbyCurso(int idCurso) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

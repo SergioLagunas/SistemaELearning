@@ -47,6 +47,7 @@ public class ModuloControler {
         return moduloService.readModuloMoment(model);
     }
     
+    //Para el crud que esta al insertar los modulos boton actualizar 
     @RequestMapping(value="ActualizarModulo.html",method = RequestMethod.POST)
     public String actualizarModulo(
             @RequestParam("titulo") String titulo,
