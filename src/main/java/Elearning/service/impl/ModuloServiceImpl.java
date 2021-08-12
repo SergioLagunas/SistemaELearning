@@ -134,7 +134,7 @@ public class ModuloServiceImpl implements ModuloService {
                 String enlaceNuevo = guardarDropBox(updateMultimedia);
                 
                 updatemodulo.setTitulo(titulo);
-                updateMultimedia.setDescripcion(descripcion);
+                updatemodulo.setDescripcion(descripcion);
                 updatemodulo.setUrl(enlaceNuevo);
                 updatemodulo = moduloDao.update(updatemodulo);
                 System.out.println("Modulo Actualizado con nueva url");

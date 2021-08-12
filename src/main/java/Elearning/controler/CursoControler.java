@@ -85,19 +85,6 @@ public class CursoControler {
         return cursoService.updateCurso(idCurso, nombre, descripcion, categoria, caratula);
     }
     
-    /*@RequestMapping(value="ActualizarCurso.html",method = RequestMethod.POST)
-    public String ActualizarCurso(HttpServletRequest request){
-        String aux = "";
-        if(cursoService.updateCurso(request).equals("")){
-            System.out.println("Hubo error en UPDATE");
-            aux = "error";
-        } else{
-            System.out.println("Se ejecuto UPDATE");
-            aux = "listadodecursos";
-        }
-        return aux;
-    }*/
-    
     @RequestMapping(value = "exito.html", method = RequestMethod.GET)
     public ModelAndView exito() {
         ModelAndView mo = new ModelAndView();

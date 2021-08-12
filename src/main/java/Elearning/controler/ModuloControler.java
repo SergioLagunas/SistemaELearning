@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
@@ -28,15 +29,7 @@ public class ModuloControler {
     
     @Autowired
     private ModuloService moduloService;
-    
-    /*
-    @RequestMapping(value = "anadirmodulos.html", method = RequestMethod.GET)
-    public ModelAndView anadirmodulos() {
-        ModelAndView mo = new ModelAndView();
-        mo.setViewName("anadirmodulos");
-        return mo;
-    }
-    */
+   
     
     @RequestMapping(value = "addModulo.html",method = RequestMethod.POST)
     public ModelAndView addModulo(@ModelAttribute ModuloModel moduloM){
@@ -52,6 +45,15 @@ public class ModuloControler {
     @RequestMapping(value = "anadirmodulos.html", method = RequestMethod.GET)
     public String listadoModulo(Model model){
         return moduloService.readModuloMoment(model);
+    }
+    
+    @RequestMapping(value="ActualizarModulo.html",method = RequestMethod.POST)
+    public String actualizarModulo(
+            @RequestParam("titulo") String titulo,
+            @RequestParam("descripcion") String descripcion,
+            @RequestParam("url") MultipartFile url,
+            @RequestParam("curid") int idModulo){
+        return moduloService.updateModulo(idModulo, titulo, descripcion, url);
     }
   
 }
