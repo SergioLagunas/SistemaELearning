@@ -12,12 +12,7 @@ body {
     justify-content: center;
     background:  #EAECE8;
 }
-#btncurso1{
-    background-color: #0066CC;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-}
+
 h1 {
     text-align:center;
     text-transform:uppercase;

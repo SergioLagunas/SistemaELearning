@@ -29,14 +29,14 @@ header{
     color: #0088a9;
 }
 
-.cta{
+button{
     padding: 9px 25px;
     background-color: rgba(0,136,169,1);
     border: none;
     border-radius: 50px;
     cursor: pointer;
 }
-.cta:hover{
+button-CS:hover{
     background-color: rgba(169, 0, 0, 0.8);
 }
 

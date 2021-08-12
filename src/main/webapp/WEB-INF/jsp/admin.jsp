@@ -29,6 +29,17 @@
                 color: black;
                 text-decoration: none;
             }
+            button{
+                padding: 9px 25px;
+                background-color: rgba(0,136,169,1);
+                border: none;
+                border-radius: 50px;
+                cursor: pointer;
+                transition: all 0.3s ease 0s;
+            }
+            button:hover{
+                background-color: rgba(169, 0, 0, 0.8);
+            }
         </style>
     </head>
     <body>
@@ -45,12 +56,11 @@
             <div class="burbuja"></div>
         </div>
         <!-- Navigation-->
-        <header>
-            <a href="#"> <img src="${pageContext.request.contextPath}/resources/imagenes/def1.gif"   width="160" > </a> 
+                <header>
+            <a href="#"> <img src="${pageContext.request.contextPath}/resources/imagenes/def1.gif" width="160" > </a>
             <nav>
                 <ul class="nav__links">
                     <li><a href="perfiladmin.html">Mi perfil </a></li>
-
 
                     <li><a href="listadodecursos.html">Cursos</a></li>
 
@@ -58,6 +68,7 @@
             </nav> 
             <a class="cta" href="index.html"><button>Cerrar sesión</button></a>
         </header>
+        
     <center><h1><font color="black">Bienvenido <%=request.getSession().getAttribute("usuario")%></font></h1></center>
     <div class="seccion">
         <table>
@@ -69,7 +80,7 @@
                 <p><center><strong>Bienvenido administrador de B1 SOFT.</strong></center></p>
                 <p><center> En este apartado podrás dar de alta a futuros administradores o si lo deseas también puedes editar su información o eliminarla.</center></p>
                 <br>
-                <a href="nuevoadmin.html"><button class="btncurso">Conoce más</button></a>
+                <a href="nuevoadmin.html"><button class="botoncurso">Conoce más</button></a>
             </div>
 
             <div class="card1">
@@ -80,7 +91,7 @@
                 <p><center><strong>Bienvenido administrador de B1 SOFT.</strong></center></p>
                 <p><center> En esta parte podrás consultar la información de los integrantes que conforman los semilleros de talento y si lo requiere el administrador eliminar esos datos o actualizarlos.</center></p>
                 <br>
-                <a href="nuevosemillero.html"><button class="btncurso">Conoce más</button></a>
+                <a href="nuevosemillero.html"><button class="botoncurso">Conoce más</button></a>
             </div>
 
             <div class="card1">
@@ -91,7 +102,7 @@
                 <p><center><strong>Bienvenido administrador de B1 SOFT.</strong></center></p>
                 <p><center>Aqui podrás iniciar un nuevo curso, indicar su nombre, dar una breve descripción y agregar una imagen de portada, click en guardar y luego en continuar; ahi agregarás modulos a tu curso donde subirás videos imagenes o documentos.</center></p>
                 <br> 
-                <a href="nuevocurso.html"><button class="btncurso">Conoce más</button></a>
+                <a href="nuevocurso.html"><button class="botoncurso">Conoce más</button></a>
             </div>
 
         </table>
