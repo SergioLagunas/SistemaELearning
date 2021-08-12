@@ -53,12 +53,6 @@ h2,h3,h4,h5, h6{
     background-color: #2C2635;
     position: inherit;
 }
-/*estilo de card cuando le damos con el mouse*/
-.k-card-body:hover{
-    transform: translatey(-30px);
-
-    box-shadow: 0 12px 16px rgba(0, 0, 0, 0.884);
-}
 
 .k-card-footer {
     text-align: 0px auto;
