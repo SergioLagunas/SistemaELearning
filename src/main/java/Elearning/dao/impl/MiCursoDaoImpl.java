@@ -173,6 +173,7 @@ public class MiCursoDaoImpl implements MiCursoDao{
                     .setParameter("p", idCurso);
   
             lista = query.list();
+            lista.size();
             transaccion.commit();
             
             if(lista == null || lista.isEmpty()){

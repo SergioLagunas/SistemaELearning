@@ -33,7 +33,7 @@ public class Modulo implements Serializable {
     private String url;
 
    
-    @ManyToOne(fetch = FetchType.EAGER,cascade = {CascadeType.ALL,CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH})
+    @ManyToOne(fetch = FetchType.LAZY,cascade = {CascadeType.ALL,CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH})
     @JoinColumn(name="idCurso")
     private Curso idCurso;
 

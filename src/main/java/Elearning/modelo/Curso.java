@@ -45,7 +45,7 @@ public class Curso implements Serializable{
     private String categoria;
     
     //Relacion UNO A MUCHOS con Modulo
-    @OneToMany(mappedBy = "idCurso",fetch=FetchType.EAGER,cascade = {CascadeType.ALL,CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH})
+    @OneToMany(mappedBy = "idCurso",fetch=FetchType.LAZY,cascade = {CascadeType.ALL,CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH})
     private List<Modulo> idModulo;
     
     //Relacion Uno a Muchos con Archivo

@@ -31,6 +31,7 @@ public class CursoDaoImpl implements CursoDao{
             Query<Curso> miQuery = session.createQuery("from Curso id order by id.idCurso");
             //Amacenamos los datos en la lista declarada anteriormente 
             lista = miQuery.list();
+            lista.size();
             //regresa el commit
             transaccion.commit();
         } catch (HibernateException e) {
@@ -176,7 +177,7 @@ public class CursoDaoImpl implements CursoDao{
                     
             //Amacenamos los datos en la lista declarada anteriormente 
             lista = query.list();
-            
+            lista.size();
             //regresa el commit
             transaccion.commit();
         } catch (HibernateException e) {

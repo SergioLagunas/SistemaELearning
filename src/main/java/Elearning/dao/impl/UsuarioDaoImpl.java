@@ -31,6 +31,7 @@ public class UsuarioDaoImpl implements UsuarioDao {
             //Amacenamos los datos en la lista declarada anteriormente 
             lista = miQuery.list();
             //regresa el commit
+            lista.size();
             transaccion.commit();
         } catch (HibernateException e) {
             //Si la transaccion esta bacia y ademas esta activa que regrese el estado en el que se encontraba la Base de Datos
@@ -177,6 +178,7 @@ public class UsuarioDaoImpl implements UsuarioDao {
                     .setParameter("p", elUsuario.getContrasena());
   
             lista = query.list();
+            lista.size();
             transaccion.commit();
             
             if(lista.size()>0){
@@ -215,6 +217,7 @@ public class UsuarioDaoImpl implements UsuarioDao {
                     .setParameter("u", email);
   
             lista = query.list();
+            lista.size();
             transaccion.commit();
             
             if(lista.size()>0){
@@ -254,6 +257,7 @@ public class UsuarioDaoImpl implements UsuarioDao {
                     
             //Amacenamos los datos en la lista declarada anteriormente 
             lista = query.list();
+            lista.size();
             
             //regresa el commit
             transaccion.commit();
@@ -287,7 +291,7 @@ public class UsuarioDaoImpl implements UsuarioDao {
                     
             //Amacenamos los datos en la lista declarada anteriormente 
             lista = query.list();
-            
+            lista.size();
             //regresa el commit
             transaccion.commit();
         } catch (HibernateException e) {

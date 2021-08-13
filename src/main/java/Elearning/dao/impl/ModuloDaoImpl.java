@@ -31,6 +31,7 @@ public class ModuloDaoImpl implements ModuloDao {
             //Amacenamos los datos en la lista declarada anteriormente 
             lista = miQuery.list();
             //regresa el commit
+            lista.size();
             transaccion.commit();
         } catch (HibernateException e) {
             //Si la transaccion esta bacia y ademas esta activa que regrese el estado en el que se encontraba la Base de Datos
@@ -176,7 +177,7 @@ public class ModuloDaoImpl implements ModuloDao {
                     
             //Amacenamos los datos en la lista declarada anteriormente 
             lista = query.list();
-            
+            lista.size();
             //regresa el commit
             transaccion.commit();
         } catch (HibernateException e) {
