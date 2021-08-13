@@ -5,10 +5,13 @@
  */
 package Elearning.controler;
 
+import org.springframework.stereotype.Controller;
+
 /**
  *
  * @author sergi
  */
+@Controller
 public class ArchivoControler {
     
 }
