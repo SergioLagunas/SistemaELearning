@@ -9,9 +9,10 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-
+@Repository("ArchivoDao")
 public class ArchivoDaoImpl implements ArchivoDao{
 
     @Override
