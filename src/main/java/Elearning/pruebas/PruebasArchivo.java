@@ -22,6 +22,7 @@ public class PruebasArchivo {
          Curso curso = new Curso();
          CursoDaoImpl cur = new CursoDaoImpl();
          
+         
          curso = cur.getCurso(idCurso);
          
          

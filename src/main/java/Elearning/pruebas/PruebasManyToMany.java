@@ -23,7 +23,7 @@ import org.hibernate.Session;
  * @author Jose
  */
 public class PruebasManyToMany {
-    
+    /*
     public static void main(String[] args){
         /*
     CursoDaoImpl curso = new CursoDaoImpl();
@@ -35,7 +35,7 @@ public class PruebasManyToMany {
           System.out.println(u);
       }
     */
-        
+    /*    
         MiCursoDaoImpl mc = new MiCursoDaoImpl();
         MiCurso micurso = new MiCurso();
      
@@ -45,6 +45,6 @@ public class PruebasManyToMany {
             System.out.println("no hay relacion");
         }
 
-    }
+    }*/
  
 }

@@ -30,10 +30,10 @@ import javax.mail.internet.MimeMultipart;
  */
 public class PruebaRecuperacionContra {
 
-    public static void main(String[] args) {
+   // public static void main(String[] args) {
         //Aca te puedes crear un usuario para que este en la base de datos y si exista un correo electronico que introduscas en el string 
         //Usuario usuario1 = new Usuario("Emilio", "Lagunas", "Garcia", "Masculino", "sergio@gmail.com", "contrasena", "semillero", "sdasd");
-
+/*
         UsuarioDaoImpl user = new UsuarioDaoImpl();
         //Este inserta el usuario con los datos que pongas arriba    
         //user.create(usuario1);
@@ -73,7 +73,7 @@ public class PruebaRecuperacionContra {
                 multiParte.addBodyPart(texto);
                 multiParte.addBodyPart(adjunto);
                 */
-                
+          /*      
                 MimeMessage message = new MimeMessage(session);
                 message.setFrom(new InternetAddress(correoRemitente));
                 message.addRecipient(Message.RecipientType.TO, new InternetAddress(correoReceptor));
@@ -100,6 +100,6 @@ public class PruebaRecuperacionContra {
             System.out.println("Este correo no ha sido registrado");
         }
 
-    }
+    }*/
 
 }

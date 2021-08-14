@@ -15,7 +15,7 @@ import org.hibernate.Session;
  * @author sergi
  */
 public class PruebasDao {
-
+/*
     public static void main(String[] args) {
 
        //Session session = HibernateUtil.getSessionFactory().openSession();
@@ -121,7 +121,7 @@ public class PruebasDao {
         
       // Usuario usuarioa = new Usuario("Administrador","Administrador","Administrador","Administrador","administradorb1@gmail.com","12345","Administrador","ADMIN");
       // user.create(usuarioa);
-    }
+    //}
    
    
 }

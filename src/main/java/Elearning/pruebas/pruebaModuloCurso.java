@@ -15,7 +15,7 @@ import java.util.List;
  */
 public class pruebaModuloCurso {
 
-    public static void main(String[] args) {
+  /*  public static void main(String[] args) {
 
         ModuloDaoImpl modulo = new ModuloDaoImpl();
         int idCurso = 30;
@@ -26,6 +26,6 @@ public class pruebaModuloCurso {
           System.out.println(u);
       }
         
-    }
+    }*/
 
 }
