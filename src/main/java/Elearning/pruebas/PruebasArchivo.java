@@ -8,7 +8,7 @@ import Elearning.modelo.Curso;
 
 
 public class PruebasArchivo {
-     public static void main(String[] args) {
+     /*public static void main(String[] args) {
          
          int idCurso = 21;
          System.out.println("id: "+idCurso);
@@ -16,18 +16,18 @@ public class PruebasArchivo {
          Archivo arc = new Archivo("Exel","dflskdfmlxvsdfm");
          Archivo arc2 = new Archivo("txt","dflskdfmlsdxvfm");
          Archivo arc3 = new Archivo("point","dflskdfmlsdxvfm");
-         arc = archivo.create(arc);
          arc2 = archivo.create(arc2);
-         arc3 = archivo.create(arc3);
+         //arc2 = archivo.create(arc2);
+        // arc3 = archivo.create(arc3);
          Curso curso = new Curso();
          CursoDaoImpl cur = new CursoDaoImpl();
          
          
          curso = cur.getCurso(idCurso);
          
-         
+         curso.addArchivos(arc2);
          
          cur.update(curso);
          
-     }
+     }*/
 }
