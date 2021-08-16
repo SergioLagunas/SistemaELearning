@@ -144,7 +144,37 @@ public class ArchivoDaoImpl implements ArchivoDao{
 
     @Override
     public List<Archivo> findbyCurso(int idCurso) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+        //Obtener la secion 
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        //Ocupamos la transaccion en caso de error la base de datos se restaura a como estaba
+        Transaction transaccion = session.getTransaction();
+
+        List<Archivo> lista = null;
+        try {
+            //Iniciamos Transaccion
+            transaccion.begin();
+            //crea la consulta Query
+            Query <Archivo> query = session.createSQLQuery("select * from Archivo mo where mo.idCurso=:c")
+                    .addEntity(Archivo.class)
+                    .setParameter("c", idCurso);
+                    
+            //Amacenamos los datos en la lista declarada anteriormente 
+            lista = query.list();
+            lista.size();
+            //regresa el commit
+            transaccion.commit();
+        } catch (HibernateException e) {
+            //Si la transaccion esta bacia y ademas esta activa que regrese el estado en el que se encontraba la Base de Datos
+            if (transaccion != null && transaccion.isActive()) {
+                transaccion.rollback();
+            }
+        } finally {
+            //Finalmente cerramos la sesion 
+            session.close();
+        }
+        return lista;
+        
     }
     
 }

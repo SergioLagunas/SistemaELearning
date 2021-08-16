@@ -8,6 +8,9 @@ public class ArchivoModel {
     private String nombre;
     private MultipartFile archivo;
 
+    public ArchivoModel() {
+    }
+
     public ArchivoModel(String nombre, MultipartFile archivo) {
         this.nombre = nombre;
         this.archivo = archivo;
