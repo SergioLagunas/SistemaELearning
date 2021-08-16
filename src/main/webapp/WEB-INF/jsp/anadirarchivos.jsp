@@ -1,21 +1,21 @@
 <%-- 
-    Document   : añadirmodulos
-    Created on : 23-jul-2021, 16:38:59
+    Document   : anadirarchivos
+    Created on : 12-ago-2021, 18:32:14
     Author     : Karina Romero
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/anadirmodulos.css" />
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/anadirarchivos.css" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="CRUD dinamico con HTMLS, CSS and JS">
         <link href="https://fonts.googleapis.com/css?family=Quicksand:600&display=swap" rel="stylesheet">
-        <title>modulos</title>
+        <title>Actualizar modulos</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -118,19 +118,6 @@
                 color: #fff;
                 border-radius: 50px;
                 border: none;
-                cursor: pointer;
-            }
-            .btnCS{
-                padding: 9px 25px;
-                background: #0065CC;
-                color: white;
-                border: none;
-                border-radius: 50px;
-                cursor: pointer;
-                transition: all 0.3s ease 0s;
-            }
-            .btnCS:hover{
-                background-color: #2868C9;
             }
             table{
                 background-color: white;
@@ -192,11 +179,11 @@
         <br>
         <br>
 
-        <h1><center>Crear Modulos</center></h1>
+        <h1><center>Añadir Archivos</center></h1>
         <br>
         <br>
 
-        <form  autocomplete="off" id="form" action="addModulo.html" method="POST" enctype="multipart/form-data">
+        <form>
             <center>
                 <div class="tablita">
                     <table class="tabla" id="tabla">
@@ -204,13 +191,10 @@
                         <div class="caja">
                             <label for="nom"></label> <input type="text" name="titulo" id="nom" placeholder="Nombre" required>
                             <br>
-                            <label for="des"></label> <input type="text" name="descripcion" id="des" placeholder="Descripcion" required>
-                            <br>
                             <label for="arch"></label> <input type="file" id="arch" required name="url" accept=".mp4,.avi,.wmv">
                             <br>
                             <br>
                             <input class="submit" type="submit" value="Guardar">
-                            <a class="btnCS" href="anadirarchivos.html">Subir archivos</a>
                         </div>
                         <br/>
                         </tbody>
@@ -218,7 +202,6 @@
                         <thead>
                             <tr > 
                                 <th>Nombre</th> 
-                                <th>Descripción</th>
                                 <th>Archivos</th>
                                 <th>Opciones</th>
                             </tr>
@@ -242,7 +225,6 @@
             function Leer() {
                 let DataForm = {}
                 DataForm["nom"] = document.getElementById("nom").value
-                DataForm["des"] = document.getElementById("des").value
                 DataForm["arch"] = document.getElementById("arch").value
                 return DataForm
             }
@@ -250,29 +232,25 @@
                 let table = document.getElementById("tabla").getElementsByTagName('tbody')[0]
                 let Fila = table.insertRow(table.length)
                 columna1 = Fila.insertCell(0).innerHTML = data.nom
-                columna2 = Fila.insertCell(1).innerHTML = data.des
-                columna3 = Fila.insertCell(2).innerHTML = data.arch
-                columna3 = Fila.insertCell(3).innerHTML = `<input class="submit" type="button" onClick="Editarr(this)" value="Editar" >
+                columna2 = Fila.insertCell(1).innerHTML = data.arch
+                columna2 = Fila.insertCell(2).innerHTML = `<input class="submit" type="button" onClick="Editarr(this)" value="Editar" >
                                         <input class="submit" type="button" onClick="Borrarr(this)" value="Borrar" >`
                 document.getElementById("nom").focus()
                 Vaciar()
             }
             function Vaciar() {
                 document.getElementById("nom").value = ""
-                document.getElementById("des").value = ""
                 document.getElementById("arch").value = ""
                 Fila = null
             }
             function Editarr(td) {
                 Fila = td.parentElement.parentElement
                 document.getElementById("nom").value = Fila.cells[0].innerHTML
-                document.getElementById("des").value = Fila.cells[1].innerHTML
-                document.getElementById("arch").value = Fila.cells[2].innerHTML
+                document.getElementById("arch").value = Fila.cells[1].innerHTML
             }
             function Actualizar(DataForm) {
                 Fila.cells[0].innerHTML = DataForm.nom
-                Fila.cells[1].innerHTML = DataForm.des
-                Fila.cells[2].innerHTML = DataForm.arch
+                Fila.cells[1].innerHTML = DataForm.arch
                 document.getElementById("nom").focus()
             }
             function Borrarr(td) {

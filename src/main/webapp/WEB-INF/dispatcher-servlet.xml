@@ -64,6 +64,9 @@
                 <prop key="eliminarAdmin.html">usuarioControler</prop>
                 <prop key="eliminarSemillero.html">usuarioControler</prop>
                 
+                <!--Mapeo de Archivos-->
+                <prop key="anadirarchivos.html">archivoControler</prop>
+                
             </props>
         </property>
     </bean>
@@ -82,6 +85,7 @@
     <bean name="cursoControler" class="Elearning.controler.CursoControler"/>
     <bean name="moduloControler" class="Elearning.controler.ModuloControler"/>
     <bean name="usuarioControler" class="Elearning.controler.UsuarioControler"/>
+    <bean name="archivoControler" class="Elearning.controler.ArchivoControler"/>
 
     <!--Validacion de Autowired y Repositories de Spring
     <tx:annotation-driven />-->

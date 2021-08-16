@@ -1,21 +1,21 @@
 <%-- 
-    Document   : añadirmodulos
-    Created on : 23-jul-2021, 16:38:59
+    Document   : actualizarmodulos
+    Created on : 12-ago-2021, 17:59:26
     Author     : Karina Romero
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/anadirmodulos.css" />
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/actualizarmodulos.css" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="CRUD dinamico con HTMLS, CSS and JS">
         <link href="https://fonts.googleapis.com/css?family=Quicksand:600&display=swap" rel="stylesheet">
-        <title>modulos</title>
+        <title>Actualizar modulos</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -118,19 +118,6 @@
                 color: #fff;
                 border-radius: 50px;
                 border: none;
-                cursor: pointer;
-            }
-            .btnCS{
-                padding: 9px 25px;
-                background: #0065CC;
-                color: white;
-                border: none;
-                border-radius: 50px;
-                cursor: pointer;
-                transition: all 0.3s ease 0s;
-            }
-            .btnCS:hover{
-                background-color: #2868C9;
             }
             table{
                 background-color: white;
@@ -196,7 +183,7 @@
         <br>
         <br>
 
-        <form  autocomplete="off" id="form" action="addModulo.html" method="POST" enctype="multipart/form-data">
+        <form>
             <center>
                 <div class="tablita">
                     <table class="tabla" id="tabla">
@@ -210,7 +197,6 @@
                             <br>
                             <br>
                             <input class="submit" type="submit" value="Guardar">
-                            <a class="btnCS" href="anadirarchivos.html">Subir archivos</a>
                         </div>
                         <br/>
                         </tbody>

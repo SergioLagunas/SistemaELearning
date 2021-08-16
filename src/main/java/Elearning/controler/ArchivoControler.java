@@ -6,6 +6,8 @@
 package Elearning.controler;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  *
@@ -13,5 +15,8 @@ import org.springframework.stereotype.Controller;
  */
 @Controller
 public class ArchivoControler {
-    
+    @RequestMapping(value = "anadirarchivos.html", method = RequestMethod.GET)
+    public String vistaArchivos () {
+        return "anadirarchivos";
+    }
 }
