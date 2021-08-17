@@ -17,24 +17,17 @@
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/kendo.black.min.css" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/kendo.default.mobile.min.css" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bienvenida.css" />
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/footerheader.css" />
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/header.css" />
         <script src="${pageContext.request.contextPath}/resources/js/jquery.min.js"></script>
         <script src="${pageContext.request.contextPath}/resources/js/kendo.all.min.js"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
         <style>
-            body {
-                font-family: 'Varela Round', sans-serif;
-                justify-content: center;
+            /*Estilo body*/
+            .body1 {
                 background:  #EAECE8;
             }
-            li,a,button{
-                font-family: "roboto",sans-serif;
-                font-weight: 500;
-                font-size: 20px;
-                color: black;
-                text-decoration: none;
 
-            }
             h1,h2{
                 font-size: 40px;
                 margin: auto;
@@ -87,8 +80,10 @@
                 font-size: 24px;
                 color: #fff;
             }
+            /*Estilo footer*/
+
             .footer-wrapper {
-                background:#2F4F4F;/*Color de fondo del pie de página*/
+                background:#203853;/*Color de fondo del pie de página*/
                 padding-top: 30px;/*Altura del pie de página*/
                 padding-bottom: 40px;/*Altura del pie de página*/
                 width: 100%;
@@ -100,30 +95,26 @@
             }
         </style> 
     </head>
-    <body>
-        <div class="burbujas">
-            <div class="burbuja"></div>
-            <div class="burbuja"></div>
-            <div class="burbuja"></div>
-            <div class="burbuja"></div>
-            <div class="burbuja"></div>
-            <div class="burbuja"></div>
-            <div class="burbuja"></div>
-            <div class="burbuja"></div>
-            <div class="burbuja"></div>
-            <div class="burbuja"></div>
-        </div>
-        <!-- Navigation-->
+    <body class="body1"> 
         <header>
-            <a href="bienvenida.html"> <img src="${pageContext.request.contextPath}/resources/imagenes/def1.gif"  width="160"> </a> 
-            <nav>
-                <ul class="nav__links">
-                    <li><a href="perfilsem.html">Mi perfil </a></li>
-                    <li><a href="ProgressBar.html">Mis cursos</a></li>
-                </ul>
-            </nav> 
-            <a class="cta" href="index.html"><button>Cerrar sesión</button></a>
+            <div class="encabezado">
+                <div class="logo">
+                    <div>
+                        <img src="${pageContext.request.contextPath}/resources/imagenes/logoazul.gif">
+                    </div>
+                </div>
+
+                <nav>
+                    <!--<ul class="nav__links">-->
+                    <li><span><a href="perfilsem.html">Mi perfil </a></span></li>
+                    <li><span><a href="ProgressBar.html">Mis cursos </a></span></li>
+                    <li><span><a href="index.html" class="cta">Cerrar sesión</a></span></li>
+                    <!--</ul>-->
+                </nav>
+                <!--<a class="cta" href="index.html"><button>Cerrar sesión</button></a>-->
+            </div>
         </header>
+        <br><br>
 
         <div id="container">
             <div id="Scroll">
