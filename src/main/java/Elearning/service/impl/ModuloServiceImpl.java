@@ -1,5 +1,6 @@
 package Elearning.service.impl;
 
+import Elearning.dao.ArchivoDao;
 import Elearning.dao.CursoDao;
 import Elearning.dao.MiCursoDao;
 import Elearning.dao.ModuloDao;
@@ -48,6 +49,9 @@ public class ModuloServiceImpl implements ModuloService {
 
     @Autowired
     private UsuarioDao usuarioDao;
+    
+    @Autowired
+    private ArchivoDao archivoDao;
 
     @Autowired
     private MiCursoDao micursoDao;
@@ -63,6 +67,7 @@ public class ModuloServiceImpl implements ModuloService {
             System.out.println("No es necesario volver a relacionar");
             model.addAttribute("detacurso", curso);
             model.addAttribute("modulos", moduloDao.findbyCurso(idCurso));
+            model.addAttribute("archivos", archivoDao.findbyCurso(idCurso));
             return "mediacursos";
         } else {
             //Si el Usuario va tomar el curso entonces en necesario relacionar 
@@ -76,6 +81,7 @@ public class ModuloServiceImpl implements ModuloService {
             usuarioDao.update(user);
             model.addAttribute("detacurso", curso);
             model.addAttribute("modulos", moduloDao.findbyCurso(idCurso));
+            model.addAttribute("archivos", archivoDao.findbyCurso(idCurso));
         }
         return "mediacursos";
     }
