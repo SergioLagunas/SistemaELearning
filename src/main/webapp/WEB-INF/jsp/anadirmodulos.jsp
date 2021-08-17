@@ -210,7 +210,7 @@
                             <br>
                             <br>
                             <input class="submit" type="submit" value="Guardar">
-                            <a class="btnCS" href="anadirarchivos.html">Subir archivos</a>
+                            <a class="btnCS" href="anadirarchivos.html">Sube Archivos a tu Curso</a>
                         </div>
                         <br/>
                         </tbody>

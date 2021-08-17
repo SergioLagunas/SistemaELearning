@@ -15,8 +15,10 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+@Service("ArchivoService")
 public class ArchivoServiceImpl implements ArchivoService {
 
     @Autowired
@@ -40,7 +42,7 @@ public class ArchivoServiceImpl implements ArchivoService {
                 cursoentidad.addArchivos(entidad);
                 entidad = archivoDao.create(entidad);
                 System.out.println("URL creada con exito");
-                return "redirect:/agregarArchivo.html";
+                return "redirect:/anadirarchivos.html";
             } else {
                 System.out.println("Error al crear la Url de DropBox");
                 return "redirect:/error.html";

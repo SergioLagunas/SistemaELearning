@@ -6,6 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <!DOCTYPE html>
 <html>
@@ -183,15 +184,15 @@
         <br>
         <br>
 
-        <form>
+        <form autocomplete="off" id="form" action="addArchivos.html" method="POST" enctype="multipart/form-data">
             <center>
                 <div class="tablita">
                     <table class="tabla" id="tabla">
                         <tbody>
                         <div class="caja">
-                            <label for="nom"></label> <input type="text" name="titulo" id="nom" placeholder="Nombre" required>
+                            <label for="nom"></label> <input type="text" name="nombre" id="nom" placeholder="Nombre" required>
                             <br>
-                            <label for="arch"></label> <input type="file" id="arch" required name="url" accept=".mp4,.avi,.wmv">
+                            <label for="arch"></label> <input type="file" id="arch" required name="archivo" accept=".txt,.pdf">
                             <br>
                             <br>
                             <input class="submit" type="submit" value="Guardar">

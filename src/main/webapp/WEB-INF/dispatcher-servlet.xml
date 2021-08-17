@@ -66,19 +66,18 @@
                 
                 <!--Mapeo de Archivos-->
                 <prop key="anadirarchivos.html">archivoControler</prop>
+                <prop key="addArchivos.html">archivoControler</prop>
                 
             </props>
         </property>
     </bean>
 
     
-    
     <!--Aqui estamos indicando de donde va a obtener nuestras vistas con extension .jsp-->
     <bean id="viewResolver" 
           class="org.springframework.web.servlet.view.InternalResourceViewResolver"
           p:prefix="/WEB-INF/jsp/" p:suffix=".jsp"/>
-      
-    
+
    
     <!--Aqui vamos a declarar todas las ubicaciones de nuestros controladores y su nombre -->
     <bean name="homeController" class="Elearning.controler.HomeController"/>
