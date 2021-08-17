@@ -8,56 +8,14 @@
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/kendo.common.min.css" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/kendo.black.min.css" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/kendo.default.mobile.min.css" />
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/estilos1.css" />
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/index.css" />
         <script src="${pageContext.request.contextPath}/resources/js/jquery.min.js"></script> 
         <script src="${pageContext.request.contextPath}/resources/js/kendo.all.min.js"></script>
         <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <title>Index</title>
-        <style>
-            body {
-                background:  #EAECE8;
-            }
-            .form {
-                font: bold 1em sans-serif;
-                background: rgba(8, 8, 8, 0.404);
-                /*background: linear-gradient(35deg, rgba(82, 5, 89, 0.432) 0%, rgba(238, 238, 244, 0.308) 49%, rgba(47, 198, 228, 0.301) 100%);*/
-                width: 30%;
-                height: 100%;
-                margin-top: 12%;
-                margin-right: 8%;
-                border-radius: 2%;
-                padding: 15px;
-                float: right;  
-            }
-            .primary {
-                width: 100%;
-                margin-bottom: 5px;
-                font-size: 22px;
-                background: #0066CC;
-                border-radius: 15px;
-                cursor: pointer;
-            }
-            .primary:hover{
-                background: #828586b6;
-                border-radius: 15px;
-
-            }
-            .k-secundary {
-                width: 100%;
-                margin-bottom: 5px;
-                font-size: 22px;
-                background: #0066CC;
-                border-radius: 15px;
-                cursor: pointer;
-            }
-            .k-secundary:hover{
-                background: #828586b6; 
-                border-radius: 15px;
-            }
-        </style>
     </head>
-    <body background="">
+    <!-- <body background="">
         <div id= "video">
             <div id= "logo"> 
                 <img src="${pageContext.request.contextPath}/resources/imagenes/def1.gif" width="70%" height="70%" style="display:block; margin-top: 0%; margin-left: 15%;" />
@@ -83,10 +41,12 @@
                 </div>
             </div>
 
-        </div>
+        </div> -->
 
         <!-- formulario para iniciar sesion -->
+        <center>
         <div class="form">
+            <img src="${pageContext.request.contextPath}/resources/imagenes/logo_blanco(1).gif" class=avatar alt="Avatar Image">
             <!-- contenedor (fondo en blanco del login) -->
             <div class="contenedor"> </div>
             <form id="login" action="validador.html" method="POST"></form>
@@ -102,6 +62,7 @@
                 <a href=""><button id="BotonIS" class="primary">Iniciar sesión</button></a>
 
             </p>-->
+            
             <p>
                 <button id="BotonFormulario" class="k-secundary">Crear Cuenta</button>
             </p>
@@ -109,6 +70,7 @@
 
         </div>
     </div>
+    </center>
     <!-- MODAL OLVIDASTE LA CONTRASEÑA -->
     <div></div>
     <div id="EditDialog1"></div>
@@ -139,7 +101,8 @@
                 }
             ],
             // "evita que aparezcan los botones de kendo"
-            buttonsTemplate: "<input type='submit' value='Iniciar sesión' id='BotonIS' class='primary'>"
+
+            buttonsTemplate: "<input type='submit' value='Iniciar Sesión' id='BotonIS' class='primary'>"
         });
     });
 // formulario crear cuenta
