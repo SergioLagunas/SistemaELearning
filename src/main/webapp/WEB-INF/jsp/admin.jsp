@@ -16,59 +16,69 @@
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/kendo.black.min.css" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/kendo.default.mobile.min.css" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/admin.css" />
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/footerheader.css" />
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/header.css" />
         <script src="${pageContext.request.contextPath}/resources/js/jquery.min.js"></script>
         <script src="${pageContext.request.contextPath}/resources/js/kendo.all.min.js"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
         <title>admin</title>
         <style>
-            li,a,button{
+            .botoncurso{
                 font-family: "roboto",sans-serif;
                 font-weight: 500;
                 font-size: 20px;
                 color: black;
                 text-decoration: none;
             }
-            button{
+            .botoncurso{
                 padding: 9px 25px;
-                background-color: rgba(0,136,169,1);
+                background-color: #B15D28;
                 border: none;
                 border-radius: 50px;
                 cursor: pointer;
                 transition: all 0.3s ease 0s;
             }
-            button:hover{
-                background-color: rgba(169, 0, 0, 0.8);
+            .botoncurso:hover{
+                background-color: white;
+            }
+            .footer-wrapper {
+                background:#203853;/*Color de fondo del pie de página*/
+                padding-top: 30px;/*Altura del pie de página*/
+                padding-bottom: 40px;/*Altura del pie de página*/
+                width: 100%;
+                text-align: center;
+                font: normal normal 11px Arial;/*Tipografía y Tamaño*/
+                color:white;/*Color del texto del pie de página*/
+                text-transform: uppercase;/*Esta línea decódigo es para poner las letras en mayúsculas */
+                letter-spacing: 2px;/*Espacio entre letras*/
             }
         </style>
     </head>
-    <body>
-        <div class="burbujas">
-            <div class="burbuja"></div>
-            <div class="burbuja"></div>
-            <div class="burbuja"></div>
-            <div class="burbuja"></div>
-            <div class="burbuja"></div>
-            <div class="burbuja"></div>
-            <div class="burbuja"></div>
-            <div class="burbuja"></div>
-            <div class="burbuja"></div>
-            <div class="burbuja"></div>
-        </div>
+    <body class="body1">
         <!-- Navigation-->
-                <header>
-            <a href="#"> <img src="${pageContext.request.contextPath}/resources/imagenes/def1.gif" width="160" > </a>
-            <nav>
-                <ul class="nav__links">
-                    <li><a href="perfiladmin.html">Mi perfil </a></li>
+        <header>
+            <div class="encabezado">
+                <div class="logo">
+                    <div>
+                        <img src="${pageContext.request.contextPath}/resources/imagenes/logoazul.gif">
+                    </div>
+                </div>
 
-                    <li><a href="listadodecursos.html">Cursos</a></li>
-
-                </ul>
-            </nav> 
-            <a class="cta" href="index.html"><button>Cerrar sesión</button></a>
+                <nav>
+                    <!--<ul class="nav__links">-->
+                    <li><span><a href="perfiladmin.html">Mi perfil </a></span></li>
+                    <li><span><a href="nuevoadmin.html">Administradores </a></span></li>
+                    <li><span><a href="nuevosemillero.html">Semilleros </a></span></li>
+                    <li><span><a href="listadodecursos.html">Cursos </a></span></li>
+                    <li><span><a href="nuevocurso.html">Agregar nuevo curso </a></span></li>
+                    <li><span><a href="index.html" class="cta">Cerrar sesión</a></span></li>
+                    <!--</ul>-->
+                </nav>
+                <!--<a class="cta" href="index.html"><button>Cerrar sesión</button></a>-->
+            </div>
         </header>
-        
+        <br><br>
+
     <center><h1><font color="black">Bienvenido <%=request.getSession().getAttribute("usuario")%></font></h1></center>
     <div class="seccion">
         <table>

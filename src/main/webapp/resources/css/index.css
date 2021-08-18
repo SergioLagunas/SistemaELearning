@@ -39,7 +39,7 @@ body {
     height: 50%;
 }
 .primary {
-    margin-top: 3%;
+    margin: 0 auto;
     border: none;
     outline: none;
     width: 100%;

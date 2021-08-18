@@ -75,7 +75,7 @@ header nav .cta{
 }
 
 header nav .cta:hover{
-    background-color: black;
-    color: white;
+    background-color: white;
+    color: black;
     filter: brightness(1.05);
 }
