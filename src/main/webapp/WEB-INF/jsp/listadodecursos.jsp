@@ -16,6 +16,8 @@
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        
         
         <style>
             /*Estilo header*/
@@ -200,7 +202,7 @@
         <h1><center>Cursos</center></h1>
         <br>
         <br>
-        <form action="ActualizarCurso.html" method="POST" enctype="multipart/form-data">
+        <form id="from1" action="ActualizarCurso.html" method="POST" enctype="multipart/form-data">
             <center>
                 <div class="tablita">
                     <table class="tabla" id="tabla">
@@ -230,7 +232,8 @@
                             </div>
                             <br>
                             <br>
-                            <input class="submit" type="submit" onClick="Actualizar(Leer())" value="Guardar">
+                            <input class="submit" type="submit" onclick="alertActualizar()" value="Guardar">
+                            
                             <!--<input class="submit" type="submit" value="Guardar"/>-->
                         </div>
                         <br/>
@@ -249,6 +252,43 @@
             </center>
             <br/>
             <script>
+                
+                
+                function alertActualizar(){  
+                    document.querySelector('#from1').addEventListener('submit', function(e) {
+                    
+                        var form = this;
+                        e.preventDefault(); // <--- prevent form from submitting
+
+                        swal({
+                            title: "¿Desea Actualizar el Curso?",
+                            text: "",
+                            icon: "warning",
+                            buttons:{
+                                cancel: "Cancelar",
+                                dangerMode: "Actualizar",
+                            },
+                        })
+                        .then(function(isConfirm) {
+                            if(isConfirm) {
+                                swal("El Curso se actualizo correctamente", {
+                                    icon: "success",
+                                })
+                                .then(function() {
+                                    //document.getElementById("from1").submit(); // <--- submit form programmatically
+                                    Actualizar(Leer());
+                                    form.submit();
+                                    console.log("BIEN");
+                                });
+                            } else {
+                                swal("No se actualizo ningun Curso", {
+                                    icon: "error" 
+                                })
+                            }
+                        })                
+                    });
+                }
+                
                 var Fila = null;
                 let DataForm = {};
                 
@@ -304,6 +344,7 @@
                 }
                 
                 function Editarr(td, id) {
+                    
                     document.getElementById('formActualizar').style.display = 'block';
                     
                     Fila = td.parentElement.parentElement;
@@ -315,6 +356,8 @@
                     document.getElementById("nom").focus();
                 }
                 
+               
+                
                 function Actualizar(DataForm) {
                     Fila.cells[0].innerHTML = DataForm.nom;
                     Fila.cells[1].innerHTML = DataForm.des;
@@ -325,9 +368,36 @@
                     //Vaciar();
                 }
                 
+                    
+                
                 function Borrarr(td, id) {
                     //document.getElementById('enlace').setAttribute('href', "index.html");
-                    
+                    swal({
+                    title: "¿Desea eliminar el Curso?",
+                    text: "Al realizar esta operacion no se podra revertir",
+                    icon: "warning",
+                    buttons: {
+                       cancel: "Cancelar",
+                       dangerMode: "Eliminar",
+                    },
+                  })
+                  .then((willDelete) => {
+                    if (willDelete) {
+                        row = td.parentElement.parentElement;
+                        document.getElementById("tabla").deleteRow(row.rowIndex);
+                        document.location.href = "borrarCursos.html?CursoE=" + id;
+
+                      swal("El Curso se elimino correctamente", {
+                        icon: "success",
+                      });
+                    } else {
+                      swal("No se elimino ningun Curso", {
+                         icon: "error" 
+                      });
+                    }
+                  });
+                  
+                  /*
                     if (confirm('¿Estás Seguro de borrar este módulo?')) {
                         row = td.parentElement.parentElement;
                         document.getElementById("tabla").deleteRow(row.rowIndex);
@@ -337,6 +407,8 @@
                         
                         Vaciar();
                     }
+         
+                   */
                 }         
             </script>
         </form>  

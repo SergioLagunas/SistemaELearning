@@ -57,22 +57,28 @@ public class CursoControler {
     }
     
     @RequestMapping(value = "borrarCursos.html", method = RequestMethod.GET)
-    public String listadodecursos(@RequestParam("CursoE") int CursoE, Model model) {
-        String aux = "";
-        String Dirigir = "listadodecursos.html";
+    public  ModelAndView listadodecursos(@RequestParam("CursoE") int CursoE, Model model) {
+        //String aux = "";
+        //String Dirigir = "listadodecursos.html";
+        ModelAndView mo = new ModelAndView();
+        
         if(cursoService.deleteCurso(CursoE)){
             System.out.println("Se elimino el curso con ID: " + CursoE);
-            DatosE = "Se elimino el curso correctamente.";
-            aux = "exito";
+            //DatosE = "Se elimino el curso correctamente.";
+            //aux = "exito";
+            mo.setViewName("redirect:/listadodecursos.html");
         } else{
             System.out.println("No se ha borrado el curso...");
-            DatosE = "¡Algo salio mal! No se ha podido borrar el curso...";
-            aux = "error";
+            //DatosE = "¡Algo salio mal! No se ha podido borrar el curso...";
+            //aux = "error";
+            mo.setViewName("redirect:/error.html");
         }
-        
+        /*
         model.addAttribute("Message", DatosE);
         model.addAttribute("Dirigir", Dirigir);
         return aux;
+        */
+        return mo;
     }
     
     @RequestMapping(value="ActualizarCurso.html",method = RequestMethod.POST)
