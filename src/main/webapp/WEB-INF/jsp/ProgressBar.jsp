@@ -89,9 +89,9 @@
                     <div class="barraProgreso k-content">
                         <div id="profileCompleteness${cursos.idCurso}"></div>
                     </div>
-                    <h5 style="margin-left: 20px;"><span id="completed">${cursos.progreso}</span> Completado</h5>
+                    <h5 style="margin-left: 20px;"><span id="completed">${cursos.progreso} %</span> Completado</h5>
                     <div style="display: flex;"></div>
-                    <center><a href="mediacursos.html?idCurso=${cursos.idCurso}"><button id="btncurso1">Continuar Curso</button></a></center>
+                    <center><a href="mediacursos.html?idCurso=${cursos.idCurso}"><button>Continuar Curso</button></a></center>
                     <br/>
                 </div>   
             </c:forEach>
