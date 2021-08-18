@@ -33,7 +33,7 @@ public class Archivo implements Serializable{
     @Column(name="archivo")
     private String archivo;
     
-    @ManyToOne(fetch = FetchType.LAZY,cascade = {CascadeType.ALL})
+    @ManyToOne(fetch = FetchType.LAZY,cascade = {CascadeType.ALL,CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH})
     @JoinColumn(name="idCurso")
     private Curso idCurso;
 

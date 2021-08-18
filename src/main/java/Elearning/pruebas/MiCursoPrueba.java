@@ -1,52 +1,46 @@
-
 package Elearning.pruebas;
+
+import Elearning.dao.impl.MiCursoDaoImpl;
+import Elearning.dao.impl.UsuarioDaoImpl;
 import Elearning.modelo.Curso;
+import Elearning.modelo.MiCurso;
 import Elearning.modelo.Usuario;
 import Elearning.util.HibernateUtil;
+import java.util.ArrayList;
+import java.util.List;
 import org.hibernate.Session;
 
-/*
 public class MiCursoPrueba {
-    
-     public static void main(String[] args) {
-         
-           Session session = HibernateUtil.getSessionFactory().openSession();
-        
-          
-         try {      
-            //Creacion de Usuarios
-            Usuario usuario1 = new Usuario("Ricardo", "Lagunas", "Garcia", "Masculino", "sergio@gmail.com", "contrasena", "semillero", "sdasd");
-           
-            //Creacion de Cursos
-           // Curso curso1 = new Curso("Pesadilla Hibernate","Vas a sufir XDdddd");
-            //Curso curso2 = new Curso("Pesadilla Java","Vas a sufir XDddddd");
-            
-            //Asignamos los cursos al Usuario
-        
-            //usuario1.getCursos().add(curso1);
-            //usuario1.getCursos().add(curso1);
-            
-            
-            //curso1.getUsuarios().add(usuario1);
-            //curso2.getUsuarios().add(usuario1);
-            //Guardar los cursos en tabla Curso
-           
-            session.beginTransaction();
-            session.save(usuario1);
-            session.save(usuario1);
-            
-            session.getTransaction().commit();//puede ser con rollback tambien 
-            System.out.println("Registros Insertado Correctamente");
-            session.close();
 
-        }catch(Exception e){
-            
-            e.printStackTrace();
-            
-        }finally {
-            session.close();
+    public static void main(String[] args) {
+
+        int idUsuario = 63;
+        MiCurso micurso = new MiCurso();
+        MiCursoDaoImpl mCurso = new MiCursoDaoImpl();
+        UsuarioDaoImpl us = new UsuarioDaoImpl();
+        Usuario user = new Usuario();
+        
+       user = us.getUsuario(idUsuario);
+       
+       // System.out.println("Cursos: "+user.getCursos());
+        
+        List<Curso> curso = new ArrayList<>(user.getCursos());
+        
+        System.out.println("Los Cursos del usuario son: ");
+        for (Curso u : curso) {
+            System.out.println(u);
         }
-     }
-    
-}
+        
+       /* 
+        user = mCurso.findbyCurso(idUsuario);
+        
+        System.out.println("Cursos del Usuario: "+user);
 */
+        /*List<MiCurso> mc = mCurso.findbyCurso(idUsuario);
+
+        for (MiCurso u : mc) {
+            System.out.println(u);
+        }*/
+    }
+
+}

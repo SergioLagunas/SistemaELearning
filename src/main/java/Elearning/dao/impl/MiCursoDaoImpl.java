@@ -1,8 +1,9 @@
-
 package Elearning.dao.impl;
 
 import Elearning.dao.MiCursoDao;
+import Elearning.modelo.Curso;
 import Elearning.modelo.MiCurso;
+import Elearning.modelo.Usuario;
 import Elearning.util.HibernateUtil;
 import java.util.List;
 import org.hibernate.HibernateException;
@@ -12,11 +13,11 @@ import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
 
 @Repository("MiCursoDao")
-public class MiCursoDaoImpl implements MiCursoDao{
+public class MiCursoDaoImpl implements MiCursoDao {
 
     @Override
     public List<MiCurso> findAll() {
-      //Obtener la secion 
+        //Obtener la secion 
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         //Ocupamos la transaccion en caso de error la base de datos se restaura a como estaba
         Transaction transaccion = session.getTransaction();
@@ -46,13 +47,13 @@ public class MiCursoDaoImpl implements MiCursoDao{
 
     @Override
     public MiCurso create(MiCurso entidad) {
-       //Obtener la secion 
+        //Obtener la secion 
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         //Ocupamos la transaccion en caso de error la base de datos se restaura a como estaba
         Transaction transaccion = session.getTransaction();
 
         try {
-             //Iniciamos Transaccion
+            //Iniciamos Transaccion
             transaccion.begin();
             //Guardamos la transaccion
             session.save(entidad);
@@ -77,12 +78,12 @@ public class MiCursoDaoImpl implements MiCursoDao{
         //Ocupamos la transaccion en caso de error la base de datos se restaura a como estaba
         Transaction transaccion = session.getTransaction();
         //ya que es una tabla intermedia mandaremos a llamar todas las relaciones en una lista
-        List<MiCurso> lista=null; 
+        List<MiCurso> lista = null;
         try {
-           //Iniciamos Transaccion
+            //Iniciamos Transaccion
             transaccion.begin();
-            Query query = session.createSQLQuery("Select * from MiCurso mc where mc.MiCurso =: id").addEntity(MiCurso.class).setParameter("id",idUsuario);
-            lista=query.list();
+            Query query = session.createSQLQuery("Select * from MiCurso mc where mc.MiCurso =: id").addEntity(MiCurso.class).setParameter("id", idUsuario);
+            lista = query.list();
             transaccion.commit();
         } catch (HibernateException e) {
             //Si la transaccion esta bacia y ademas esta activa que regrese el estado en el que se encontraba la Base de Dato
@@ -126,12 +127,12 @@ public class MiCursoDaoImpl implements MiCursoDao{
 
     @Override
     public boolean delete(MiCurso entidad) {
-       //Obtener la secion 
+        //Obtener la secion 
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         //Ocupamos la transaccion en caso de error la base de datos se restaura a como estaba
         Transaction transaccion = session.getTransaction();
-        boolean flag=true;
-   
+        boolean flag = true;
+
         try {
             //Iniciamos Transaccion
             transaccion.begin();
@@ -144,8 +145,8 @@ public class MiCursoDaoImpl implements MiCursoDao{
             if (transaccion != null && transaccion.isActive()) {
                 transaccion.rollback();
             }
-            flag=false;
-            
+            flag = false;
+
         } finally {
             //Finalmente cerramos la sesion 
             session.close();
@@ -155,8 +156,8 @@ public class MiCursoDaoImpl implements MiCursoDao{
     }
 
     @Override
-    public boolean RelacionSem(int idUsuario,int idCurso) {
-         //Obtener la secion 
+    public boolean RelacionSem(int idUsuario, int idCurso) {
+        //Obtener la secion 
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         //Ocupamos la transaccion en caso de error la base de datos se restaura a como estaba
         Transaction transaccion = session.getTransaction();
@@ -171,16 +172,16 @@ public class MiCursoDaoImpl implements MiCursoDao{
             Query query = session.createSQLQuery("select * from MiCurso c where c.idUsuario=:u and c.idCurso=:p").addEntity(MiCurso.class)
                     .setParameter("u", idUsuario)
                     .setParameter("p", idCurso);
-  
+
             lista = query.list();
             lista.size();
             transaccion.commit();
-            
-            if(lista == null || lista.isEmpty()){
+
+            if (lista == null || lista.isEmpty()) {
                 return false;
-            }else {
+            } else {
                 return true;
-            }          
+            }
         } catch (HibernateException e) {
             //Si la transaccion esta bacia y ademas esta activa que regrese el estado en el que se encontraba la Base de Dato
             if (transaccion != null && transaccion.isActive()) {
@@ -191,8 +192,38 @@ public class MiCursoDaoImpl implements MiCursoDao{
             session.close();
         }
 
-        return true; 
-        
+        return true;
     }
-    
+
+    @Override
+    public Usuario findbyCurso(int idUsuario) {
+        //Obtener la secion 
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        //Ocupamos la transaccion en caso de error la base de datos se restaura a como estaba
+        Transaction transaccion = session.getTransaction();
+        Usuario entidad = null;
+
+        try {
+            //Iniciamos Transaccion
+            transaccion.begin();
+            //crea la consulta Query
+            Query<Usuario> query = session.createSQLQuery("select us from Usuario us join fetch us.cursos where us.idUsuario=:u")
+                    .addEntity(Usuario.class)
+                    .setParameter("u", idUsuario);
+            
+            entidad = query.getSingleResult();
+
+            transaccion.commit();
+        } catch (HibernateException e) {
+            //Si la transaccion esta bacia y ademas esta activa que regrese el estado en el que se encontraba la Base de Datos
+            if (transaccion != null && transaccion.isActive()) {
+                transaccion.rollback();
+            }
+        } finally {
+            //Finalmente cerramos la sesion 
+            session.close();
+        }
+        return entidad;
+    }
+
 }

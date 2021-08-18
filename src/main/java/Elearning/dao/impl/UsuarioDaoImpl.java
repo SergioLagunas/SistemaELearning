@@ -84,6 +84,7 @@ public class UsuarioDaoImpl implements UsuarioDao {
             transaccion.begin();
             //Obtener por medio del id llamamos a la Tabla usuario y que haga de parametro el idUsuario
             entidad = session.get(Usuario.class, idUsuario);
+           // entidad.getSe
             transaccion.commit();
 
         } catch (HibernateException e) {

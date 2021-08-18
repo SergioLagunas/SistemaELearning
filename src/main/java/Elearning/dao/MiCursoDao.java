@@ -1,7 +1,9 @@
 
 package Elearning.dao;
 
+import Elearning.modelo.Curso;
 import Elearning.modelo.MiCurso;
+import Elearning.modelo.Usuario;
 import java.util.List;
 
 public interface MiCursoDao {
@@ -12,5 +14,6 @@ public interface MiCursoDao {
     public MiCurso update(final MiCurso entidad);
     public boolean delete(final MiCurso entidad);
     public boolean RelacionSem(int idUsuario,int idCurso);
+    public Usuario findbyCurso(int idCurso);
     
 }

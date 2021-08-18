@@ -81,24 +81,15 @@
         </header>
 
         <h1>Mis Cursos</h1>
-        <div class="bar">
-            <h3 style="margin-left: 35px;">Nombre del curso</h3>
-            <div class="barraProgreso k-content">
-                <div id="profileCompleteness"></div>
-            </div>
-            <h5 style="margin-left: 20px;"><span id="completed">100%</span> Completado</h5>
-            <div style="display: flex;">
-
-
-            </div>
-            <br/>
-            <h3 style="margin-left: 35px;">Nombre del curso</h3>
-            <div class="barraProgreso k-content" >
-                <div id="profileCompleteness1" style="width: 100%;"></div>
-            </div>
-            <h5 style="margin-left: 20px;"><span id="completed">40%</span> Completado</h5>
-            <div style="display: flex;">
-
+        <div>
+            <div class="bar">
+                <h3 style="margin-left: 35px;">Nombre del curso</h3>
+                <div class="barraProgreso k-content">
+                    <div id="profileCompleteness"></div>
+                </div>
+                <h5 style="margin-left: 20px;"><span id="completed">100%</span> Completado</h5>
+                <div style="display: flex;"></div>
+                <br/>
             </div>
             <script>
                 $(document).ready(function () {
@@ -109,18 +100,9 @@
                         max: 100,
                         value: 100
                     }).data("kendoProgressBar");
-                    var pb = $("#profileCompleteness1").kendoProgressBar({
-                        type: "chunk",
-                        chunkCount: 100,
-                        min: 0,
-                        max: 100,
-                        value: 40
-                    }).data("kendoProgressBar");
+                    pb.value(completeness);
+                    $("#completed").text((completeness * 20) + "%");
 
-                    pb.value(completeness);
-                    $("#completed").text((completeness * 20) + "%");
-                    pb.value(completeness);
-                    $("#completed").text((completeness * 20) + "%");
                 });
             </script>
         </div>

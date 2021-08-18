@@ -60,6 +60,7 @@ public class ModuloServiceImpl implements ModuloService {
     public String readModulo(int idCurso, Model model) {
         System.out.println("idCurso: " + idCurso);
         int usuario = UsuarioServiceImpl.elUsuario;
+        System.out.println("id de Usuario: "+usuario);
         Curso curso = new Curso();
         curso = cursoDao.getCurso(idCurso);
         if (micursoDao.RelacionSem(usuario, idCurso)) {
@@ -67,7 +68,7 @@ public class ModuloServiceImpl implements ModuloService {
             System.out.println("No es necesario volver a relacionar");
             model.addAttribute("detacurso", curso);
             model.addAttribute("modulos", moduloDao.findbyCurso(idCurso));
-            model.addAttribute("archivos", archivoDao.findbyCurso(idCurso));
+            //model.addAttribute("archivos", archivoDao.findbyCurso(idCurso));
             return "mediacursos";
         } else {
             //Si el Usuario va tomar el curso entonces en necesario relacionar 
@@ -81,7 +82,7 @@ public class ModuloServiceImpl implements ModuloService {
             usuarioDao.update(user);
             model.addAttribute("detacurso", curso);
             model.addAttribute("modulos", moduloDao.findbyCurso(idCurso));
-            model.addAttribute("archivos", archivoDao.findbyCurso(idCurso));
+            //model.addAttribute("archivos", archivoDao.findbyCurso(idCurso));
         }
         return "mediacursos";
     }

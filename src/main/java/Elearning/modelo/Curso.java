@@ -49,11 +49,11 @@ public class Curso implements Serializable{
     private List<Modulo> idModulo;
     
      //Relacion Uno a Muchos con Archivo
-    @OneToMany(mappedBy = "idCurso",fetch=FetchType.LAZY,cascade = {CascadeType.ALL})
+    @OneToMany(mappedBy = "idCurso",fetch=FetchType.LAZY,cascade = {CascadeType.ALL,CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH})
     private List<Archivo> idArchivo;
 
     
-    //Relacion MUCHOS A MUCHOS con Usuario
+   //Relacion MUCHOS A MUCHOS con Usuario
     @ManyToMany(mappedBy = "cursos",cascade = {CascadeType.PERSIST,CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH},fetch = FetchType.EAGER)
     private Set<Usuario> usuarios= new HashSet<>();
 

@@ -7,7 +7,6 @@ import Elearning.modelo.Curso;
 import Elearning.modelo.formModel.ArchivoModel;
 import Elearning.modelo.formModel.ModuloModel;
 import Elearning.service.ArchivoService;
-import static Elearning.service.impl.ModuloServiceImpl.reemplazar;
 import Elearning.util.JavaDropBox;
 import com.dropbox.core.DbxException;
 import java.io.FileNotFoundException;
@@ -96,7 +95,7 @@ public class ArchivoServiceImpl implements ArchivoService {
     private String guardarDropBox(ArchivoModel Archivo) throws IOException, FileNotFoundException, DbxException {
         JavaDropBox jv = new JavaDropBox();
         String enlace = "";
-        String caratula = Archivo.getArchivo() + "_Video" + getExtention(Archivo.getArchivo().getOriginalFilename());
+        String caratula = Archivo.getArchivo() + "_Archivo" + getExtention(Archivo.getArchivo().getOriginalFilename());
         jv.uploadToDropbox(Archivo.getArchivo().getBytes(), "/" + caratula);
         String urlVideo = jv.createURL(caratula);
         String sNuevaURL = reemplazar(urlVideo, "www.dropbox.com", "dl.dropboxusercontent.com");
