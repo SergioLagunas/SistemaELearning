@@ -41,27 +41,37 @@ public class UsuarioServiceImpl implements UsuarioService {
 
     @Autowired
     private UsuarioDao usuarioDao;
-    
-    static int elUsuario=0;
+
+    static int elUsuario = 0;
 
     @Override
     public String readAdmin(Model model) {
-       String tUsuario="Administrador";
-       model.addAttribute("administradores",usuarioDao.findbyAdmin(tUsuario));
-       return "nuevoadmin";
+        String tUsuario = "Administrador";
+        model.addAttribute("administradores", usuarioDao.findbyAdmin(tUsuario));
+        return "nuevoadmin";
     }
-    
+
     @Override
     public String readSem(Model model) {
-       String tUsuario="Semillero";
-       model.addAttribute("semilleros",usuarioDao.findbySemillero(tUsuario));
-       return "nuevosemillero";
+        String tUsuario = "Semillero";
+        model.addAttribute("semilleros", usuarioDao.findbySemillero(tUsuario));
+        return "nuevosemillero";
     }
-    
-     @Override
+
+    @Override
     public String readUser(Model model) {
-       model.addAttribute("usuario",usuarioDao.getUsuario(elUsuario));
-       return "perfilsem";
+        model.addAttribute("usuario", usuarioDao.getUsuario(elUsuario));
+        return "perfilsem";
+    }
+
+    @Override
+    public String barProgress(Model modelo) {
+        int idUsuario = elUsuario;
+        Usuario user = new Usuario();
+        user = usuarioDao.getUsuario(idUsuario);
+        List<Curso> cursos = new ArrayList<>(user.getCursos());
+        modelo.addAttribute("miscursos", cursos);
+        return "ProgressBar";
     }
 
     @Override
@@ -75,16 +85,16 @@ public class UsuarioServiceImpl implements UsuarioService {
         String contrasena = request.getParameter("contrasena");
         String tUsuario = "Semillero";
         String rfc = request.getParameter("rfc");
-        
+
         Usuario usuarioC = new Usuario();
         usuarioC.setEmail(email);
         usuarioC = usuarioDao.getEmail(email);
-        if(usuarioC != null){
+        if (usuarioC != null) {
             return "existente";
         }
 
         Usuario usuario = new Usuario();
-       // usuario.setIdUsuario(idUsuario);
+        // usuario.setIdUsuario(idUsuario);
         usuario.setNombre(nombre);
         usuario.setaPaterno(aPaterno);
         usuario.setaMaterno(aMaterno);
@@ -94,7 +104,7 @@ public class UsuarioServiceImpl implements UsuarioService {
         usuario.settUsuario(tUsuario);
         usuario.setRfc(rfc);
         usuario = usuarioDao.create(usuario);
-       
+
         //Checar el contructor con la lista de cursos
         UsuarioDto dto = new UsuarioDto(usuario.getNombre(), usuario.getaPaterno(), usuario.getaMaterno(),
                 usuario.getGenero(), usuario.getEmail(), usuario.getContrasena(), usuario.gettUsuario(),
@@ -111,8 +121,8 @@ public class UsuarioServiceImpl implements UsuarioService {
         return data;
 
     }
-    
-     @Override
+
+    @Override
     public String createNewAdminsitrador(HttpServletRequest request) {
         String nombre = request.getParameter("nombre");
         String aPaterno = request.getParameter("aPaterno");
@@ -122,12 +132,12 @@ public class UsuarioServiceImpl implements UsuarioService {
         String contrasena = request.getParameter("contrasena");
         String tUsuario = "Administrador";
         String rfc = request.getParameter("rfc");
-       // String[] cursos = request.getParameterValues("curso[]");
-       
+        // String[] cursos = request.getParameterValues("curso[]");
+
         Usuario usuarioC = new Usuario();
         usuarioC.setEmail(email);
         usuarioC = usuarioDao.getEmail(email);
-        if(usuarioC != null){
+        if (usuarioC != null) {
             return "existente";
         }
 
@@ -142,7 +152,7 @@ public class UsuarioServiceImpl implements UsuarioService {
         usuario.settUsuario(tUsuario);
         usuario.setRfc(rfc);
         usuario = usuarioDao.create(usuario);
-        
+
         UsuarioDto dto = new UsuarioDto(usuario.getNombre(), usuario.getaPaterno(), usuario.getaMaterno(),
                 usuario.getGenero(), usuario.getEmail(), usuario.getContrasena(), usuario.gettUsuario(),
                 usuario.getRfc());
@@ -157,38 +167,37 @@ public class UsuarioServiceImpl implements UsuarioService {
 
         return data;
     }
-    
+
     //Service Implmet del login Identificando roles automaticamente 
     @Override
     public String loginUser(HttpServletRequest request) {
         String correo = request.getParameter("email");
         String contraseña = request.getParameter("contrasena");
-        
+
         Usuario user = new Usuario();
-        String rol ="";
+        String rol = "";
         user.setEmail(correo);
         user.setContrasena(contraseña);
         user = usuarioDao.loginUsuario(user);
-        elUsuario=user.getIdUsuario();
+        elUsuario = user.getIdUsuario();
         HttpSession session = request.getSession();
-        if(user != null){
+        if (user != null) {
             rol = user.gettUsuario();
-            if(rol.equals("Administrador")){
+            if (rol.equals("Administrador")) {
                 session.setAttribute("usuario", user.getNombre());
                 session.setAttribute("tUsuario", rol);
                 return rol;
- 
-            }else if(rol.equals("Semillero")){
+
+            } else if (rol.equals("Semillero")) {
                 session.setAttribute("usuario", user.getNombre());
-                session.setAttribute("tUsuario", rol); 
+                session.setAttribute("tUsuario", rol);
                 return rol;
-            }else {
+            } else {
                 return "error";
             }
         }
         return "error";
     }
-
 
     @Override
     public String updateUsuario(HttpServletRequest request) {
@@ -210,13 +219,12 @@ public class UsuarioServiceImpl implements UsuarioService {
         editUsuario.setGenero(genero);
         editUsuario.setContrasena(contrasena);
         editUsuario.setRfc(rfc);
-        
+
         editUsuario = usuarioDao.update(editUsuario);
-   
-        
+
         return "exito";
     }
-    
+
     @Override
     public String updateUsuarioAdmin(HttpServletRequest request) {
         Integer idUsuario = Integer.parseInt(request.getParameter("idUsuario"));
@@ -237,16 +245,15 @@ public class UsuarioServiceImpl implements UsuarioService {
         editUsuario.setGenero(genero);
         editUsuario.setContrasena(contrasena);
         editUsuario.setRfc(rfc);
-        
+
         editUsuario = usuarioDao.update(editUsuario);
-   
-        
+
         return "exito";
     }
-    
+
     @Override
     public boolean recuperarContraseña(HttpServletRequest request) {
-        ModelAndView mo = new ModelAndView ();
+        ModelAndView mo = new ModelAndView();
         String correo = request.getParameter("email");
         Usuario usu = new Usuario();
         usu = usuarioDao.getEmail(correo);
@@ -264,16 +271,16 @@ public class UsuarioServiceImpl implements UsuarioService {
                 String passwordRemitente = "b1soft2021";
                 String correoReceptor = correo;
                 String asunto = "Recuperacion de Contraseña";
-              //String mensaje ="Hola <b>" + usu.getNombre() + " " + usu.getaPaterno() + " " + usu.getaMaterno() + "</b> tu contraseña registrada es la siguiente: <b> <u>" + usu.getContrasena() + "</u> </b>";
-                
+                //String mensaje ="Hola <b>" + usu.getNombre() + " " + usu.getaPaterno() + " " + usu.getaMaterno() + "</b> tu contraseña registrada es la siguiente: <b> <u>" + usu.getContrasena() + "</u> </b>";
+
                 BodyPart messageBodyPart = new MimeBodyPart();
-               
+
                 String htmlText = "<center><h1 style =\"color:blue;\">RECUPERACION DE CONTRASEÑA</h1>" + "<br>"
-                        + "<img src=\"https://img.icons8.com/windows/96/000000/forgot-password.png\"/>" + "<br>" + 
-                        "<h2 style =\"color:blue;\"> Hola <b>" + usu.getNombre() + " " + usu.getaPaterno() + " " + usu.getaMaterno() + "</h2></b> " +
-                        "<h3 style =\"color:blue;\"> Tu contraseña registrada es la siguiente: </h3>"+ "<br>" +
-                        "<img src=\"https://img.icons8.com/material-outlined/48/000000/password1.png\"/>" + "<br>" +
-                        "<h4 style =\"color:blue;\"><b> <u>" + usu.getContrasena() + "</u> </b></h4> </center>";
+                        + "<img src=\"https://img.icons8.com/windows/96/000000/forgot-password.png\"/>" + "<br>"
+                        + "<h2 style =\"color:blue;\"> Hola <b>" + usu.getNombre() + " " + usu.getaPaterno() + " " + usu.getaMaterno() + "</h2></b> "
+                        + "<h3 style =\"color:blue;\"> Tu contraseña registrada es la siguiente: </h3>" + "<br>"
+                        + "<img src=\"https://img.icons8.com/material-outlined/48/000000/password1.png\"/>" + "<br>"
+                        + "<h4 style =\"color:blue;\"><b> <u>" + usu.getContrasena() + "</u> </b></h4> </center>";
 
                 // Establecer el contenido de la parte del cuerpo
                 messageBodyPart.setContent(htmlText, "text/html");
@@ -283,8 +290,7 @@ public class UsuarioServiceImpl implements UsuarioService {
 
                 // Agregar parte del cuerpo a varias partes
                 multipart.addBodyPart(messageBodyPart);
-                
-                
+
                 /*
                 // Crear parte para la imagen
                 messageBodyPart = new MimeBodyPart();
@@ -298,16 +304,14 @@ public class UsuarioServiceImpl implements UsuarioService {
 
                 // Agregar parte a varias partes
                 multipart.addBodyPart(messageBodyPart);
-                */
-                
-                
+                 */
                 MimeMessage message = new MimeMessage(session);
                 message.setFrom(new InternetAddress(correoRemitente));
                 message.addRecipient(Message.RecipientType.TO, new InternetAddress(correoReceptor));
                 message.setSubject(asunto);
-              //message.setText(mensaje, "ISO-8859-1", "html");
+                //message.setText(mensaje, "ISO-8859-1", "html");
                 message.setContent(multipart);
-                
+
                 Transport t = session.getTransport("smtp");
                 t.connect(correoRemitente, passwordRemitente);
                 t.sendMessage(message, message.getRecipients(Message.RecipientType.TO));
@@ -318,19 +322,18 @@ public class UsuarioServiceImpl implements UsuarioService {
                 System.out.println("Se envio la contraseña a tu correo");
 
                 return true;
-                
+
             } catch (AddressException ex) {
                 Logger.getLogger(UsuarioServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
             } catch (MessagingException ex) {
                 Logger.getLogger(UsuarioServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
             }
-        
 
         } else {
             System.out.println("Este correo no ha sido registrado");
             return false;
         }
-       return true;
+        return true;
     }
 
     @Override
@@ -340,6 +343,5 @@ public class UsuarioServiceImpl implements UsuarioService {
         boolean flag = usuarioDao.delete(elimUsuario);
         return flag;
     }
-
 
 }

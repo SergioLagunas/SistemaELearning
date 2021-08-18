@@ -20,17 +20,20 @@ public class MiCursoPrueba {
         UsuarioDaoImpl us = new UsuarioDaoImpl();
         Usuario user = new Usuario();
         
-       user = us.getUsuario(idUsuario);
+        user = mCurso.findbyCurso(idUsuario);
+        
+        System.out.println("Cursos: "+user);
+       //user = us.getUsuario(idUsuario);
        
        // System.out.println("Cursos: "+user.getCursos());
-        
+       /* 
         List<Curso> curso = new ArrayList<>(user.getCursos());
         
         System.out.println("Los Cursos del usuario son: ");
         for (Curso u : curso) {
             System.out.println(u);
         }
-        
+        */
        /* 
         user = mCurso.findbyCurso(idUsuario);
         

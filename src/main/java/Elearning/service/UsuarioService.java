@@ -17,4 +17,5 @@ public interface UsuarioService {
     public String updateUsuarioAdmin(final HttpServletRequest request);
     public boolean deleteUsusario(int idUsuario);
     public boolean recuperarContraseña(HttpServletRequest request);
+    public String barProgress(Model modelo);
 }

@@ -6,6 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -81,31 +82,38 @@
         </header>
 
         <h1>Mis Cursos</h1>
-        <div>
-            <div class="bar">
-                <h3 style="margin-left: 35px;">Nombre del curso</h3>
-                <div class="barraProgreso k-content">
-                    <div id="profileCompleteness"></div>
-                </div>
-                <h5 style="margin-left: 20px;"><span id="completed">100%</span> Completado</h5>
-                <div style="display: flex;"></div>
-                <br/>
-            </div>
+        <c:forEach var="cursos" items="${miscursos}">   
+            <div>
+                <div class="bar">
+                    <h3 style="margin-left: 35px;">${cursos.nombre}</h3>
+                    <div class="barraProgreso k-content">
+                        <div id="profileCompleteness${cursos.idCurso}"></div>
+                    </div>
+                    <h5 style="margin-left: 20px;"><span id="completed">${cursos.progreso}</span> Completado</h5>
+                    <div style="display: flex;"></div>
+                    <center><a href="mediacursos.html?idCurso=${cursos.idCurso}"><button id="btncurso1">Continuar Curso</button></a></center>
+                    <br/>
+                </div>   
+            </c:forEach>
             <script>
                 $(document).ready(function () {
-                    var pb = $("#profileCompleteness").kendoProgressBar({
+                <c:forEach var="cursos" items="${miscursos}">
+                    var pb = $("#profileCompleteness${cursos.idCurso}").kendoProgressBar({
                         type: "chunk",
                         chunkCount: 100,
                         min: 0,
                         max: 100,
-                        value: 100
+                        value: ${cursos.progreso}
                     }).data("kendoProgressBar");
+                </c:forEach>
+                <c:forEach var="cursos" items="${miscursos}">
                     pb.value(completeness);
                     $("#completed").text((completeness * 20) + "%");
-
+                </c:forEach>
                 });
             </script>
         </div>
+
         <!--Footer-->
         <br>
         <br>

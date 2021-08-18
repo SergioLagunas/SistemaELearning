@@ -61,8 +61,8 @@ public class UsuarioControler {
     
     
     @RequestMapping(value = "ProgressBar.html", method = RequestMethod.GET)
-    public String ProgressBar(){
-        return "ProgressBar";
+    public String ProgressBar(Model modelo){
+        return usuarioService.barProgress(modelo);
     }
     
     @RequestMapping(value = "eliminarAdmin.html", method = RequestMethod.GET)
