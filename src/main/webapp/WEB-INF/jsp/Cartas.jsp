@@ -28,6 +28,24 @@
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
         <style>
+            .botoncurso{
+                font-family: "roboto",sans-serif;
+                font-weight: 500;
+                font-size: 20px;
+                color: black;
+                text-decoration: none;
+            }
+            .botoncurso{
+                padding: 9px 25px;
+                background-color: #B15D28;
+                border: none;
+                border-radius: 50px;
+                cursor: pointer;
+                transition: all 0.3s ease 0s;
+            }
+            .botoncurso:hover{
+                background-color: white;
+            }
             .footer-wrapper {
                 background:#203853;/*Color de fondo del pie de página*/
                 padding-top: 30px;/*Altura del pie de página*/
@@ -71,7 +89,7 @@
                     <div class="k-card-body">
                         <center> <h3><c:out value="${curso.nombre}"></c:out></h3> </center> 
                             <br>
-                            <center><a href="mediacursos.html?idCurso=${curso.idCurso}"><button id="btncurso1">Ir al curso</button></a></center>
+                            <center><a href="mediacursos.html?idCurso=${curso.idCurso}"><button class="botoncurso">Ir al curso</button></a></center>
                     </div>
                 </div>
             </c:forEach>

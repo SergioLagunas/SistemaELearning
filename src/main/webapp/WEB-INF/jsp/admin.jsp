@@ -66,11 +66,8 @@
 
                 <nav>
                     <!--<ul class="nav__links">-->
-                    <li><span><a href="perfiladmin.html">Mi perfil </a></span></li>
-                    <li><span><a href="nuevoadmin.html">Administradores </a></span></li>
-                    <li><span><a href="nuevosemillero.html">Semilleros </a></span></li>
+                    <li><span><a href="perfiladmin.html">Mi perfil </a></span></li> 
                     <li><span><a href="listadodecursos.html">Cursos </a></span></li>
-                    <li><span><a href="nuevocurso.html">Agregar nuevo curso </a></span></li>
                     <li><span><a href="index.html" class="cta">Cerrar sesión</a></span></li>
                     <!--</ul>-->
                 </nav>
@@ -107,7 +104,7 @@
             <div class="card1">
                 <img src="${pageContext.request.contextPath}/resources/imagenes/cursos.png">
                 <br>
-                <h4>Cursos</h4>
+                <h4>Agregar Curso</h4>
                 <br>
                 <p><center><strong>Bienvenido administrador de B1 SOFT.</strong></center></p>
                 <p><center>Aqui podrás iniciar un nuevo curso, indicar su nombre, dar una breve descripción y agregar una imagen de portada, click en guardar y luego en continuar; ahi agregarás modulos a tu curso donde subirás videos imagenes o documentos.</center></p>

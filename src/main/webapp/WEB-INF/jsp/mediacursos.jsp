@@ -14,54 +14,61 @@
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/kendo.black.min.css" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/kendo.default.mobile.min.css" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/mediacursos.css" />
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/footerheader.css" />
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/header.css" />
         <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link ref="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet"/>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
         <script src="${pageContext.request.contextPath}/resources/js/jquery.min.js"></script>
         <script src="${pageContext.request.contextPath}/resources/js/kendo.all.min.js"></script>
         <script type="text/javascript" src="https://www.dropbox.com/static/api/1/dropins.js" id="dropboxjs" data-app-key="tz66wjuay4trlb5"></script>
         <title>Listado Cursos</title>
         <style>
-            body {
+            .body1 {
                 font-family: 'Varela Round', sans-serif;
                 justify-content: center;
                 background:  #EAECE8;
             }
-            li,a,button{
+            .botoncurso{
                 font-family: "roboto",sans-serif;
                 font-weight: 500;
                 font-size: 20px;
                 color: black;
                 text-decoration: none;
-
             }
-
+            .botoncurso{
+                padding: 9px 25px;
+                background-color: #B15D28;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                transition: all 0.3s ease 0s;
+            }
+            .botoncurso:hover{
+                background-color: #203853;
+                color: white;
+            }
         </style>
     </head>
-    <body>
-        <div class="burbujas">
-            <div class="burbuja"></div>
-            <div class="burbuja"></div>
-            <div class="burbuja"></div>
-            <div class="burbuja"></div>
-            <div class="burbuja"></div>
-            <div class="burbuja"></div>
-            <div class="burbuja"></div>
-            <div class="burbuja"></div>
-            <div class="burbuja"></div>
-            <div class="burbuja"></div>
-        </div>
-        <!-- Navigation-->
+    <body class="body1">
         <header>
-            <a href="bienvenida.html"> <img src="${pageContext.request.contextPath}/resources/imagenes/def1.gif"  width="160"> </a> 
-            <nav>
-                <ul class="nav__links">
-                    <li><a href="perfilsem.html">Mi perfil </a></li>
-                    <li><a href="ProgressBar.html">Mis cursos</a></li>
-                </ul>
-            </nav>
-            <a class="cta" href="index.html"><button>Cerrar sesión</button></a>
+            <div class="encabezado">
+                <div class="logo">
+                    <div>
+                        <img src="${pageContext.request.contextPath}/resources/imagenes/logoazul.gif">
+                    </div>
+                </div>
+
+                <nav>
+                    <!--<ul class="nav__links">-->
+                    <li><span><a href="perfilsem.html">Mi perfil </a></span></li>
+                    <li><span><a href="ProgressBar.html">Mis cursos </a></span></li>
+                    <li><span><a href="index.html" class="cta">Cerrar sesión</a></span></li>
+                    <!--</ul>-->
+                </nav>
+                <!--<a class="cta" href="index.html"><button>Cerrar sesión</button></a>-->
+            </div>
         </header>
+        <br><br>
 
         <!--Kendo TOOLBAR-->
         <div id="toolbar"></div>
@@ -72,7 +79,9 @@
                 <center><h1>Bienvenido</h1></center>
                 <center><h2>Curso de <c:out value="${detacurso.nombre}"></c:out></h2></center>
                 <center><p><c:out value="${detacurso.descripcion}"></c:out></p></center>
-
+                <br>
+                <br>
+                <center><button class="botoncurso">Ver recursos</button></center>
                 </div>
             </section>
 

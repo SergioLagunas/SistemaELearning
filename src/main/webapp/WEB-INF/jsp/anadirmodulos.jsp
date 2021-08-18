@@ -11,7 +11,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/anadirmodulos.css" />
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/header.css" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="CRUD dinamico con HTMLS, CSS and JS">
         <link href="https://fonts.googleapis.com/css?family=Quicksand:600&display=swap" rel="stylesheet">
@@ -20,65 +20,20 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
         <style>
             /*Estilo header*/
-            body {
+            .body1 {
                 font-family: 'Varela Round', sans-serif;
                 justify-content: center;
                 background:  #EAECE8;
             }
 
-            li,a,button{
-                font-family: "roboto",sans-serif;
-                font-weight: 500;
-                font-size: 20px;
-                color: black;
-                text-decoration: none;
-
-            }
-
-
-            header{
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                padding: 30px 10%;
-
-            }
-
-            .nav__links{
-                list-style: none;
-            }
-
-            .nav__links li{
-                display: inline-block;
-                padding: 0px 20px;
-            }
-
-            .nav__links li a{
-                transition: all 0.3s ease 0s;
-            }
-
-            .nav__links li a:hover{
-                color: #0088a9;
-            }
-
-            button{
-                padding: 9px 25px;
-                background-color: rgba(0,136,169,1);
-                border: none;
-                border-radius: 50px;
-                cursor: pointer;
-                transition: all 0.3s ease 0s;
-            }
-            button:hover{
-                background-color: rgba(169, 0, 0, 0.8);
-            }
-
             /*Estilo footer*/
 
             .footer-wrapper {
-                background:#2F4F4F;/*Color de fondo del pie de página*/
+                background:#203853;/*Color de fondo del pie de página*/
                 padding-top: 30px;/*Altura del pie de página*/
                 padding-bottom: 40px;/*Altura del pie de página*/
                 width: 100%;
@@ -88,6 +43,7 @@
                 text-transform: uppercase;/*Esta línea decódigo es para poner las letras en mayúsculas */
                 letter-spacing: 2px;/*Espacio entre letras*/
             }
+
             .form{
                 width: 25%;
                 border: 1px solid #ccc;
@@ -112,26 +68,25 @@
             }
 
             input[type="submit"]{
+                padding: 9px 25px;
                 width: 10%;
                 margin-bottom: 0;
-                background: #0065CC;
-                color: #fff;
-                border-radius: 50px;
+                background: #B15D28;
+                color: black;
+                border-radius: 5px;
                 border: none;
                 cursor: pointer;
             }
             .btnCS{
                 padding: 9px 25px;
-                background: #0065CC;
-                color: white;
+                background-color: #B15D28;
+                color: black;
+                border-radius: 5px;
                 border: none;
-                border-radius: 50px;
                 cursor: pointer;
                 transition: all 0.3s ease 0s;
             }
-            .btnCS:hover{
-                background-color: #2868C9;
-            }
+
             table{
                 background-color: white;
                 width: 80%;
@@ -145,10 +100,9 @@
 
             }
             thead{
-                background-color:  #246355;
-                border-bottom: solid 5px #0f362d;
+                background-color:  #203853;
+                border-bottom: solid 5px #B15D28;
                 color: white;
-
             }
 
             .Editarr{
@@ -161,36 +115,30 @@
 
         </style>
     </head>
-    <body>
-        <div class="burbujas">
-            <div class="burbuja"></div>
-            <div class="burbuja"></div>
-            <div class="burbuja"></div>
-            <div class="burbuja"></div>
-            <div class="burbuja"></div>
-            <div class="burbuja"></div>
-            <div class="burbuja"></div>
-            <div class="burbuja"></div>
-            <div class="burbuja"></div>
-            <div class="burbuja"></div>
-        </div>
+    <body class="body1">
         <!-- Navigation-->
         <header>
-            <a href="admin.html"> <img src="${pageContext.request.contextPath}/resources/imagenes/def1.gif"  width="160"> </a>
-            <nav>
-                <ul class="nav__links">
-                    <li><a href="perfiladmin.html">Mi perfil </a></li>
-                    <li><a href="nuevoadmin.html">Admin.</a></li>
-                    <li><a href="nuevosemillero.html">Semilleros</a></li>
-                    <li><a href="listadodecursos.html">Cursos</a></li>
-                    <li><a href="nuevocurso.html">Agregar nuevo curso</a></li>
-                </ul>
-            </nav> 
-            <a class="cta" href="index.html"><button>Cerrar sesión</button></a>
-        </header>
+            <div class="encabezado">
+                <div class="logo">
+                    <div>
+                        <img src="${pageContext.request.contextPath}/resources/imagenes/logoazul.gif">
+                    </div>
+                </div>
 
-        <br>
-        <br>
+                <nav>
+                    <!--<ul class="nav__links">-->
+                    <li><span><a href="perfiladmin.html">Mi perfil </a></span></li>
+                    <li><span><a href="nuevoadmin.html">Administradores </a></span></li>
+                    <li><span><a href="nuevosemillero.html">Semilleros </a></span></li>
+                    <li><span><a href="listadodecursos.html">Cursos </a></span></li>
+                    <li><span><a href="nuevocurso.html">Agregar nuevo curso </a></span></li>
+                    <li><span><a href="index.html" class="cta">Cerrar sesión</a></span></li>
+                    <!--</ul>-->
+                </nav>
+                <!--<a class="cta" href="index.html"><button>Cerrar sesión</button></a>-->
+            </div>
+        </header>
+        <br><br>
 
         <h1><center>Crear Modulos</center></h1>
         <br>
