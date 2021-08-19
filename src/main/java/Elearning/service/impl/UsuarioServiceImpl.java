@@ -60,9 +60,18 @@ public class UsuarioServiceImpl implements UsuarioService {
 
     @Override
     public String readUser(Model model) {
-        model.addAttribute("usuario", usuarioDao.getUsuario(elUsuario));
+        int idUsuario = elUsuario;
+        model.addAttribute("usuario", usuarioDao.getUsuario(idUsuario));
+        return "perfiladmin";
+    }
+    
+    @Override
+    public String readUserSem(Model model) {
+        int idUsuario = elUsuario;
+        model.addAttribute("usuario", usuarioDao.getUsuario(idUsuario));
         return "perfilsem";
     }
+    
 
     @Override
     public String barProgress(Model modelo) {

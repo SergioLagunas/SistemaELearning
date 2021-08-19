@@ -118,6 +118,7 @@
         <div id="container">
             <div id="Titulo">
                 <br>
+                <<h1>Perfil de administrador</h1>>
 
                 <h3>Mis datos</h3>
             </div>

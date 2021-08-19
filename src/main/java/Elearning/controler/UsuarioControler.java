@@ -50,7 +50,7 @@ public class UsuarioControler {
     //Mostrar los datos en la pantalla de actualizar datos 
     @RequestMapping(value = "perfilsem.html", method = RequestMethod.GET)
     public String listarDatosUser(Model model){
-        return usuarioService.readUser(model);
+        return usuarioService.readUserSem(model);
     }
     
     //Mostrar los datos en la pantalla de actualizar datos Administrador 
