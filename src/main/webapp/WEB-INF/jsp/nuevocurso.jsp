@@ -18,50 +18,78 @@
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/kendo.black.min.css" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/kendo.default.mobile.min.css" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/nuevocurso.css" />
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/styleListadoCurso.css" />
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bienvenida.css" />
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/footerheader.css" />
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/header.css" />
         <script src="${pageContext.request.contextPath}/resources/js/jquery.min.js"></script>
         <script src="${pageContext.request.contextPath}/resources/js/kendo.all.min.js"></script>
         <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
         <style>
-            li,a,button{
-                font-family: "roboto",sans-serif;
-                font-weight: 500;
-                font-size: 20px;
+            .body1 {
+                font-family: 'Varela Round', sans-serif;
+                justify-content: center;
+                background:  #EAECE8;
+            }
+            #Titulo {
                 color: black;
-                text-decoration: none;
-
+                text-align: center;
+                font-size: 30px;
+            }
+            #subtitulo {
+                color: black;
+                text-align: center;
+                font-size: 25px;
+            }
+            .k-button{
+                width: 30%;
+                margin-bottom: 0;
+                background: #B15D28;
+                color: black;
+                border-radius: 5px;
+                border: none;
+                cursor: pointer;
+            }
+            .k-button:hover{
+                background: #203853;
+                color: white;
+            }
+            /*Estilo footer*/
+            .footer-wrapper {
+                background:#203853;/*Color de fondo del pie de página*/
+                padding-top: 30px;/*Altura del pie de página*/
+                padding-bottom: 40px;/*Altura del pie de página*/
+                width: 100%;
+                text-align: center;
+                font: normal normal 11px Arial;/*Tipografía y Tamaño*/
+                color:white;/*Color del texto del pie de página*/
+                text-transform: uppercase;/*Esta línea decódigo es para poner las letras en mayúsculas */
+                letter-spacing: 2px;/*Espacio entre letras*/
             }
         </style>
     </head>
-    <body>
-        <div class="burbujas">
-            <div class="burbuja"></div>
-            <div class="burbuja"></div>
-            <div class="burbuja"></div>
-            <div class="burbuja"></div>
-            <div class="burbuja"></div>
-            <div class="burbuja"></div>
-            <div class="burbuja"></div>
-            <div class="burbuja"></div>
-            <div class="burbuja"></div>
-            <div class="burbuja"></div>
-        </div>
+    <body class="body1">
         <!-- Navigation-->
         <header>
-            <a href="admin.html"> <img src="${pageContext.request.contextPath}/resources/imagenes/def1.gif"  width="160" > </a> 
-            <nav>
-                <ul class="nav__links">
-                    <li><a href="perfiladmin.html">Mi perfil </a></li>
-                    <li><a href="nuevoadmin.html">Admin.</a></li>
-                    <li><a href="nuevosemillero.html">Semilleros</a></li>
-                    <li><a href="listadodecursos.html">Cursos</a></li>
-                    <li><a href="nuevocurso.html">Agregar nuevo curso</a></li>
-                </ul>
-            </nav> 
-            <a class="cta" href="index.html"><button>Cerrar sesión</button></a>
+            <div class="encabezado">
+                <div class="logo">
+                    <div>
+                        <img src="${pageContext.request.contextPath}/resources/imagenes/logoazul.gif">
+                    </div>
+                </div>
+
+                <nav>
+                    <!--<ul class="nav__links">-->
+                    <li><span><a href="perfiladmin.html">Mi perfil </a></span></li>
+                    <li><span><a href="nuevoadmin.html">Administradores </a></span></li>
+                    <li><span><a href="nuevosemillero.html">Semilleros </a></span></li>
+                    <li><span><a href="listadodecursos.html">Cursos </a></span></li>
+                    <li><span><a href="nuevocurso.html">Agregar nuevo curso </a></span></li>
+                    <li><span><a href="index.html" class="cta">Cerrar sesión</a></span></li>
+                    <!--</ul>-->
+                </nav>
+                <!--<a class="cta" href="index.html"><button>Cerrar sesión</button></a>-->
+            </div>
         </header>
+        <br><br>
 
         <div id="container">
             <div id="Titulo">
@@ -95,7 +123,7 @@
                             <li>
                                 <h3 style="color: black;"> Selecciona la caratula del curso: </h3> 
                                 <input id="simple-input" type="file" name="caratula" class="k-textbox" style="width: 100%;" />
-                                
+
                             </li>
                             <li>
                             <center><button class="k-button" type="submit">Guardar curso</button>&nbsp;</center> 

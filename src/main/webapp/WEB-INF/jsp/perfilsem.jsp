@@ -13,19 +13,28 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Perfil semillero</title>
-
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/perfiladmin.css" />
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/footerheader.css" />
-
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/header.css" />
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
         <style>
-            li,a,button{
-                font-family: "roboto",sans-serif;
-                font-weight: 500;
-                font-size: 20px;
-                color: black;
-                text-decoration: none;
+             body {
+                font-family: 'Varela Round', sans-serif;
+                justify-content: center;
+                background:  #EAECE8;
+            }
+            
+            /*Estilo footer*/
 
+            .footer-wrapper {
+                background:#203853;/*Color de fondo del pie de página*/
+                padding-top: 30px;/*Altura del pie de página*/
+                padding-bottom: 40px;/*Altura del pie de página*/
+                width: 100%;
+                text-align: center;
+                font: normal normal 11px Arial;/*Tipografía y Tamaño*/
+                color:white;/*Color del texto del pie de página*/
+                text-transform: uppercase;/*Esta línea decódigo es para poner las letras en mayúsculas */
+                letter-spacing: 2px;/*Espacio entre letras*/
             }
             .form-register {
                 width: 550px;
@@ -53,31 +62,26 @@
                 color: white;
                 outline: none;
             }
-            .btn-neon1{
-                position: relative;
-                display: inline-block;
-                padding: 15px 18px;
-                color: #fff;
-                letter-spacing: 4px;
-                font-size: 18px;
+            .btn-guardar{
+                font-family: "roboto",sans-serif;
+                font-weight: 500;
+                font-size: 20px;
+                color: black;
                 text-decoration: none;
-                overflow: hidden;
-                transition: 0.2s;
-                background: #0F97A9;
-                align-items: center;
-                border-radius: 20px;
-                outline: none;
-                margin-top: 10px;
+            }
+            .btn-guardar{
+                padding: 9px 25px;
+                background-color: #B15D28;
+                border: none;
+                border-radius: 50px;
+                cursor: pointer;
+                transition: all 0.3s ease 0s;
+            }
+            .btn-guardar:hover{
+                background-color: white;
             }
 
-            .btn-neon1:hover{
-                background:#0F97A9 ;
-                box-shadow: 0 0 10px #0F97A9, 0 0 40px #0F97A9, 0 0 80px #0F97A9;
-                transition-delay: 0s;
-
-            }
-
-            .btn-neon1 span{
+            .btn-guardar span{
 
                 position: absolute;
                 display: block;
@@ -88,33 +92,26 @@
 
         </style>
     </head>
-    <body>
-        <div class="burbujas">
-            <div class="burbuja"></div>
-            <div class="burbuja"></div>
-            <div class="burbuja"></div>
-            <div class="burbuja"></div>
-            <div class="burbuja"></div>
-            <div class="burbuja"></div>
-            <div class="burbuja"></div>
-            <div class="burbuja"></div>
-            <div class="burbuja"></div>
-            <div class="burbuja"></div>
-        </div>
-        <!-- Navigation-->
+    <body class="body1">
         <header>
+            <div class="encabezado">
+                <div class="logo">
+                    <div>
+                        <img src="${pageContext.request.contextPath}/resources/imagenes/logoazul.gif">
+                    </div>
+                </div>
 
-            <a href="bienvenida.html"> <img src="${pageContext.request.contextPath}/resources/imagenes/def1.gif"  width="160" > </a> 
-            <nav>
-                <ul class="nav__links">
-                    <li><a href="perfilsem.html">Mi perfil </a></li>
-                    <li><a href="ProgressBar.html">Mis cursos</a></li>
-                </ul>
-            </nav> 
-            <a class="cta" href="index.html"><button>Cerrar sesión</button></a>
-
-
+                <nav>
+                    <!--<ul class="nav__links">-->
+                    <li><span><a href="perfilsem.html">Mi perfil </a></span></li>
+                    <li><span><a href="ProgressBar.html">Mis cursos </a></span></li>
+                    <li><span><a href="index.html" class="cta">Cerrar sesión</a></span></li>
+                    <!--</ul>-->
+                </nav>
+                <!--<a class="cta" href="index.html"><button>Cerrar sesión</button></a>-->
+            </div>
         </header>
+        <br><br>
 
         <div id="container">
             <div id="Titulo">
@@ -130,7 +127,7 @@
                 <input class="controls" type="password" name="contraseña" id="contraseña" placeholder="aqui puedes modificar tu contraseña">
                 <!-- <p>Estoy de acuerdo con <a href="#">Terminos y Condiciones</a></p>-->
                 <br>
-                <center><input class="btn-neon1" type="submit" value="Guardar"></center>
+                <center><input class="btn-guardar" type="submit" value="Guardar"></center>
 
             </section>
 
