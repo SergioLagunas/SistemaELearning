@@ -253,6 +253,8 @@ public class UsuarioServiceImpl implements UsuarioService {
         editUsuario.setaPaterno(aPaterno);
         editUsuario.setaMaterno(aMaterno);
         editUsuario.setGenero(genero);
+        editUsuario.setEmail(email);
+        editUsuario.settUsuario(tUsuario);
         editUsuario.setContrasena(contrasena);
         editUsuario.setRfc(rfc);
 

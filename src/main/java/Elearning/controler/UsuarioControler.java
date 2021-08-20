@@ -40,6 +40,11 @@ public class UsuarioControler {
         return usuarioService.updateUsuario(request);
     }
     
+    @RequestMapping(value = "actualizarAdmin.html", method = RequestMethod.POST)
+    public String actualizarAdmin(HttpServletRequest request){
+        return usuarioService.updateUsuarioAdmin(request);
+    }
+    
     
       //Listado de los Adminisradores 
     @RequestMapping(value = "nuevoadmin.html", method = RequestMethod.GET)

@@ -64,6 +64,7 @@
                 <prop key="eliminarAdmin.html">usuarioControler</prop>
                 <prop key="eliminarSemillero.html">usuarioControler</prop>
                 <prop key="actualizarSemillero.html">usuarioControler</prop>
+                <prop key="actualizarAdmin.html">usuarioControler</prop>
                 
                 <!--Mapeo de Archivos-->
                 <prop key="anadirarchivos.html">archivoControler</prop>
