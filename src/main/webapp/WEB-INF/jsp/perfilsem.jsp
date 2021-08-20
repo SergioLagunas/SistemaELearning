@@ -37,9 +37,9 @@
                 text-transform: uppercase;/*Esta línea decódigo es para poner las letras en mayúsculas */
                 letter-spacing: 2px;/*Espacio entre letras*/
             }
-            .form-register {
-                width: 550px;
-                background:  #2C2635;
+        .form-register {
+                width: 350px;
+                background:  #203853;
                 padding: 50px;
                 margin: auto;
                 margin-top: 60px;
@@ -49,10 +49,9 @@
                 box-shadow: 7px 13px 37px #000;
             }
 
-
             .controls {
-                width: 103%;
-                background: #24303c;
+                width: 90%;
+                background: #272727;
                 padding: 10px;
                 align-items: center;
                 border-radius: 5px;
@@ -123,13 +122,13 @@
                 <form action="actualizarSemillero.html" method="POST">
                     <center><img  src="${pageContext.request.contextPath}/resources/imagenes/user.png" width="150px" height="150px"></center>
                     <input class="controls" type="hidden" name="idUsuario" id="idUsuario"value="${usuario.idUsuario}">
-                    <input class="controls" type="text" name="nombre" id="nombres" value="<c:out value="${usuario.nombre}"></c:out>">
-                    <input class="controls" type="text" name="aPaterno" id="apellidopat" value="<c:out value="${usuario.aPaterno}"></c:out>">
-                    <input class="controls" type="text" name="aMaterno" id="apellidomat" value="<c:out value="${usuario.aMaterno}"></c:out>">
+                    <input class="controls" type="text" name="nombre" id="nombres" placeholder="Nombre" value="<c:out value="${usuario.nombre}"></c:out>">
+                    <input class="controls" type="text" name="aPaterno" id="apellidopat" placeholder="Apellido paterno" value="<c:out value="${usuario.aPaterno}"></c:out>">
+                    <input class="controls" type="text" name="aMaterno" id="apellidomat" placeholder="Apellido materno" value="<c:out value="${usuario.aMaterno}"></c:out>">
                     <input class="controls" type="hidden" name="genero" id="genero" value="<c:out value="${usuario.genero}"></c:out>">
                     <input class="controls" type="hidden" name="email" id="email" value="<c:out value="${usuario.email}"></c:out>">
-                    <input class="controls" type="password" name="contrasena" id="password" value="<c:out value="${usuario.contrasena}"></c:out>">
-                    <input class="controls" type="text" name="rfc" id="rfc" value="<c:out value="${usuario.rfc}"></c:out>">
+                    <input class="controls" type="password" name="contrasena" id="password" placeholder="Nueva contraseña" value="<c:out value="${usuario.contrasena}"></c:out>">
+                    <input class="controls" type="text" name="rfc" id="rfc" placeholder="RFC" value="<c:out value="${usuario.rfc}"></c:out>">
                     <br>
                     <center><input class="btn-guardar" type="submit" value="Guardar"></center>
                 </form>

@@ -38,8 +38,8 @@
             }
 
             .form-register {
-                width: 550px;
-                background:  #2C2635;
+                width: 350px;
+                background:  #203853;
                 padding: 50px;
                 margin: auto;
                 margin-top: 60px;
@@ -50,8 +50,8 @@
             }
 
             .controls {
-                width: 103%;
-                background: #24303c;
+                width: 90%;
+                background: #272727;
                 padding: 10px;
                 align-items: center;
                 border-radius: 5px;
@@ -88,7 +88,6 @@
 
             }
 
-
         </style>
     </head>
     <body class="body1">
@@ -117,23 +116,23 @@
         <br><br>
         <div id="container">
             <div id="Titulo">
-                <br>
-                <<h1>Perfil de administrador</h1>>
-
-                <h3>Mis datos</h3>
+                <center><h1>Mis datos</h1></center>
             </div>
-            <br>
-            <section class="form-register">
-                <center><img  src="${pageContext.request.contextPath}/resources/imagenes/Adminsemillero.png" width="150px" height="150px"></center>
-                <input class="controls" type="text" name="nombres" id="nombres" placeholder=" Nombre">
-                <input class="controls" type="text" name="apellidopat" id="apellidopat" placeholder=" Apellido Paterno">
-                <input class="controls" type="text" name="apellidomat" id="apellidomat" placeholder="Apellido Materno">
-                <input class="controls" type="text" name="rfc" id="rfc" placeholder=" RFC">
-                <input class="controls" type="password" name="contraseña" id="contraseña" placeholder="aqui puedes modificar tu contraseña">
-                <!-- <p>Estoy de acuerdo con <a href="#">Terminos y Condiciones</a></p>-->
-                <br>
-                <center><input class="btn-guardar" type="submit" value="Guardar"></center>
 
+            <section class="form-register">
+                <form action="actualizarAdmin.html" method="POST">
+                    <center><img  src="${pageContext.request.contextPath}/resources/imagenes/user.png" width="150px" height="150px"></center>
+                    <input class="controls" type="hidden" name="idUsuario" id="idUsuario"value="${usuario.idUsuario}">
+                    <input class="controls" type="text" name="nombre" id="nombres" placeholder="Nombre" value="<c:out value="${usuario.nombre}"></c:out>">
+                    <input class="controls" type="text" name="aPaterno" id="apellidopat" placeholder="Apellido paterno" value="<c:out value="${usuario.aPaterno}"></c:out>">
+                    <input class="controls" type="text" name="aMaterno" id="apellidomat" placeholder="Apellido materno" value="<c:out value="${usuario.aMaterno}"></c:out>">
+                    <input class="controls" type="hidden" name="genero" id="genero" value="<c:out value="${usuario.genero}"></c:out>">
+                    <input class="controls" type="hidden" name="email" id="email" value="<c:out value="${usuario.email}"></c:out>">
+                    <input class="controls" type="password" name="contrasena" id="password" placeholder="Nueva contraseña" value="<c:out value="${usuario.contrasena}"></c:out>">
+                    <input class="controls" type="text" name="rfc" id="rfc" placeholder="RFC" value="<c:out value="${usuario.rfc}"></c:out>">
+                    <br>
+                    <center><input class="btn-guardar" type="submit" value="Guardar"></center>
+                </form>
             </section>
 
         </div>
