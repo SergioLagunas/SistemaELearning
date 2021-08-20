@@ -18,6 +18,7 @@ public interface ModuloService {
     
     public String readModulo(int idCurso, Model model);
     public String readModuloMoment(Model model);
+    public String readModuloActualizar(int idCurso, Model model);
     public ModelAndView createNewModulo(ModuloModel moduloM);
     public String updateModulo(int idModulo,String titulo,String descripcion, MultipartFile url);
     public boolean deleteModulo(int idModulo);

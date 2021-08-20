@@ -47,6 +47,12 @@ public class ModuloControler {
         return moduloService.readModuloMoment(model);
     }
     
+    //este es la paguina para agregar mas modulos si se desea una ves acabando de crear el curso
+    @RequestMapping(value = "actualizarmodulos.html" , method = RequestMethod.GET)
+    public String actualizarModulos(@RequestParam("idCurso") int Curso, Model model){
+        return moduloService.readModuloActualizar(Curso, model);
+    }
+    
     //Para el crud que esta al insertar los modulos boton actualizar 
     @RequestMapping(value="ActualizarModulo.html",method = RequestMethod.POST)
     public String actualizarModulo(

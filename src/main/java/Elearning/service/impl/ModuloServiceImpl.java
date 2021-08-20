@@ -49,7 +49,7 @@ public class ModuloServiceImpl implements ModuloService {
 
     @Autowired
     private UsuarioDao usuarioDao;
-    
+
     @Autowired
     private ArchivoDao archivoDao;
 
@@ -60,7 +60,7 @@ public class ModuloServiceImpl implements ModuloService {
     public String readModulo(int idCurso, Model model) {
         System.out.println("idCurso: " + idCurso);
         int usuario = UsuarioServiceImpl.elUsuario;
-        System.out.println("id de Usuario: "+usuario);
+        System.out.println("id de Usuario: " + usuario);
         Curso curso = new Curso();
         curso = cursoDao.getCurso(idCurso);
         if (micursoDao.RelacionSem(usuario, idCurso)) {
@@ -90,10 +90,20 @@ public class ModuloServiceImpl implements ModuloService {
     @Override
     public String readModuloMoment(Model model) {
         int curso = CursoServiceImpl.elcurso;
-        System.out.println("Listando int curso = CursoServiceImpl.elcurso;Modulos de Curso: " + curso);
+        System.out.println("Listando Modulos de Curso: " + curso);
         System.out.println("Añadiendo los modulos: ");
         model.addAttribute("modulos", moduloDao.findbyCurso(curso));
         return "anadirmodulos";
+    }
+
+    //este se usara para hacer el listado de los modulos una ves que el curso ya haya sido creado y se desee agregar mas 
+    // solo lista los videos del curso 
+    @Override
+    public String readModuloActualizar(int idCurso, Model model) {
+        Curso curso = new Curso();
+        curso = cursoDao.getCurso(idCurso);
+        model.addAttribute("modulos", moduloDao.findbyCurso(idCurso));
+        return "actualizarmodulos";
     }
 
     @Override
@@ -136,18 +146,18 @@ public class ModuloServiceImpl implements ModuloService {
         Modulo updatemodulo = new Modulo();
         updatemodulo = moduloDao.getModulo(idModulo);
         try {
-            if(!url.isEmpty()){
+            if (!url.isEmpty()) {
                 updateMultimedia.setUrl(url);
                 String enlaceNuevo = guardarDropBox(updateMultimedia);
-                
+
                 updatemodulo.setTitulo(titulo);
                 updatemodulo.setDescripcion(descripcion);
                 updatemodulo.setUrl(enlaceNuevo);
                 updatemodulo = moduloDao.update(updatemodulo);
                 System.out.println("Modulo Actualizado con nueva url");
                 return "redirect:/anadirmodulos.html";
-                
-            }else{
+
+            } else {
                 updatemodulo.setTitulo(titulo);
                 updateMultimedia.setDescripcion(descripcion);
                 updatemodulo.setUrl(updatemodulo.getUrl());

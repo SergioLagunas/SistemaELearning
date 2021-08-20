@@ -50,8 +50,10 @@
                 
                 <!--Mapeo de los Modulos-->
                 <prop key="anadirmodulos.html">moduloControler</prop>
+                <prop key="actualizarmodulos.html">moduloControler</prop><!--Esta es la vista del crud de Curso si de desean agregar mas-->
                 <prop key="addModulo.html">moduloControler</prop>
                 <prop key="mediacursos.html">moduloControler</prop>
+                <prop key="ActualizarModulo.html">moduloControler</prop><!--Este es para el crud al momento de ingregar modulos-->
 
                 
                 <!--Mapeo del administrador-->

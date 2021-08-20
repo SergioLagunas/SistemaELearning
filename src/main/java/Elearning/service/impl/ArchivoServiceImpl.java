@@ -15,6 +15,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 import org.springframework.web.multipart.MultipartFile;
 
 @Service("ArchivoService")
@@ -25,6 +26,16 @@ public class ArchivoServiceImpl implements ArchivoService {
 
     @Autowired
     private ArchivoDao archivoDao;
+    
+    @Override
+    public String readArchivoMoment(Model model) {
+         int curso = CursoServiceImpl.elcurso;
+        System.out.println("Listando Modulos de Curso: " + curso);
+        System.out.println("Añadiendo los modulos: ");
+        model.addAttribute("archivos", archivoDao.findbyCurso(curso));
+        return "anadirarchivos";
+    }
+    
 
     @Override
     public String createArchivo(ArchivoModel Archivo) {
