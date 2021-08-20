@@ -121,7 +121,7 @@
 
             <section class="form-register">
                 <form action="actualizarAdmin.html" method="POST">
-                    <center><img  src="${pageContext.request.contextPath}/resources/imagenes/user.png" width="150px" height="150px"></center>
+                    <center><img  src="${pageContext.request.contextPath}/resources/imagenes/admon.png" width="150px" height="150px"></center>
                     <input class="controls" type="hidden" name="idUsuario" id="idUsuario"value="${usuario.idUsuario}">
                     <input class="controls" type="text" name="nombre" id="nombres" placeholder="Nombre" value="<c:out value="${usuario.nombre}"></c:out>">
                     <input class="controls" type="text" name="aPaterno" id="apellidopat" placeholder="Apellido paterno" value="<c:out value="${usuario.aPaterno}"></c:out>">
