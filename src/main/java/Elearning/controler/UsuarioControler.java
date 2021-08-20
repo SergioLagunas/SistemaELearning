@@ -34,6 +34,12 @@ public class UsuarioControler {
         }
          return mo;
      }
+      
+    @RequestMapping(value = "actualizarSemillero.html", method = RequestMethod.POST)
+    public String actualizar(HttpServletRequest request){
+        return usuarioService.updateUsuario(request);
+    }
+    
     
       //Listado de los Adminisradores 
     @RequestMapping(value = "nuevoadmin.html", method = RequestMethod.GET)

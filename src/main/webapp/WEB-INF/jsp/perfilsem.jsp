@@ -6,6 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -17,12 +18,12 @@
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
         <style>
-             body {
+            body {
                 font-family: 'Varela Round', sans-serif;
                 justify-content: center;
                 background:  #EAECE8;
             }
-            
+
             /*Estilo footer*/
 
             .footer-wrapper {
@@ -119,16 +120,19 @@
             </div>
 
             <section class="form-register">
-                <center><img  src="${pageContext.request.contextPath}/resources/imagenes/user.png" width="150px" height="150px"></center>
-                <input class="controls" type="text" name="nombres" id="nombres" placeholder=" Nombre">
-                <input class="controls" type="text" name="apellidopat" id="apellidopat" placeholder=" Apellido Paterno">
-                <input class="controls" type="text" name="apellidomat" id="apellidomat" placeholder="Apellido Materno">
-                <input class="controls" type="text" name="rfc" id="rfc" placeholder=" RFC">
-                <input class="controls" type="password" name="contraseña" id="contraseña" placeholder="aqui puedes modificar tu contraseña">
-                <!-- <p>Estoy de acuerdo con <a href="#">Terminos y Condiciones</a></p>-->
-                <br>
-                <center><input class="btn-guardar" type="submit" value="Guardar"></center>
-
+                <form action="actualizarSemillero.html" method="POST">
+                    <center><img  src="${pageContext.request.contextPath}/resources/imagenes/user.png" width="150px" height="150px"></center>
+                    <input class="controls" type="hidden" name="idUsuario" id="idUsuario"value="${usuario.idUsuario}">
+                    <input class="controls" type="text" name="nombre" id="nombres" value="<c:out value="${usuario.nombre}"></c:out>">
+                    <input class="controls" type="text" name="aPaterno" id="apellidopat" value="<c:out value="${usuario.aPaterno}"></c:out>">
+                    <input class="controls" type="text" name="aMaterno" id="apellidomat" value="<c:out value="${usuario.aMaterno}"></c:out>">
+                    <input class="controls" type="hidden" name="genero" id="genero" value="<c:out value="${usuario.genero}"></c:out>">
+                    <input class="controls" type="hidden" name="email" id="email" value="<c:out value="${usuario.email}"></c:out>">
+                    <input class="controls" type="password" name="contrasena" id="password" value="<c:out value="${usuario.contrasena}"></c:out>">
+                    <input class="controls" type="text" name="rfc" id="rfc" value="<c:out value="${usuario.rfc}"></c:out>">
+                    <br>
+                    <center><input class="btn-guardar" type="submit" value="Guardar"></center>
+                </form>
             </section>
 
         </div>

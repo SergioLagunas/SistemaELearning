@@ -226,12 +226,13 @@ public class UsuarioServiceImpl implements UsuarioService {
         editUsuario.setaPaterno(aPaterno);
         editUsuario.setaMaterno(aMaterno);
         editUsuario.setGenero(genero);
+        editUsuario.setEmail(email);
         editUsuario.setContrasena(contrasena);
+        editUsuario.settUsuario(tUsuario);
         editUsuario.setRfc(rfc);
 
-        editUsuario = usuarioDao.update(editUsuario);
-
-        return "exito";
+        usuarioDao.update(editUsuario);
+        return "bienvenida";
     }
 
     @Override
@@ -256,8 +257,9 @@ public class UsuarioServiceImpl implements UsuarioService {
         editUsuario.setRfc(rfc);
 
         editUsuario = usuarioDao.update(editUsuario);
+        
 
-        return "exito";
+        return "admin";
     }
 
     @Override
