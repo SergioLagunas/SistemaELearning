@@ -16,6 +16,7 @@
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/header.css" />
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <style>
             body {
                 font-family: 'Varela Round', sans-serif;
@@ -120,7 +121,7 @@
             </div>
 
             <section class="form-register">
-                <form action="actualizarAdmin.html" method="POST">
+                <form id="from3" action="actualizarAdmin.html" method="POST">
                     <center><img  src="${pageContext.request.contextPath}/resources/imagenes/admon.png" width="150px" height="150px"></center>
                     <input class="controls" type="hidden" name="idUsuario" id="idUsuario"value="${usuario.idUsuario}">
                     <input class="controls" type="text" name="nombre" id="nombres" placeholder="Nombre" value="<c:out value="${usuario.nombre}"></c:out>">
@@ -131,7 +132,43 @@
                     <input class="controls" type="password" name="contrasena" id="password" placeholder="Nueva contraseña" value="<c:out value="${usuario.contrasena}"></c:out>">
                     <input class="controls" type="text" name="rfc" id="rfc" placeholder="RFC" value="<c:out value="${usuario.rfc}"></c:out>">
                     <br>
-                    <center><input class="btn-guardar" type="submit" value="Guardar"></center>
+                    <center><input class="btn-guardar" type="submit" onclick="alertActualizar()" value="Guardar"></center>
+                    
+                    <script>
+                    function alertActualizar(){  
+                            document.querySelector('#from3').addEventListener('submit', function(e) {
+
+                                var form = this;
+                                e.preventDefault(); // <--- prevent form from submitting
+
+                                swal({
+                                    title: "¿Desea Actualizar sus Datos?",
+                                    text: "",
+                                    icon: "warning",
+                                    buttons:{
+                                        cancel: "Cancelar",
+                                        dangerMode: "Actualizar",
+                                    },
+                                })
+                                .then(function(isConfirm) {
+                                    if(isConfirm) {
+                                        swal("Los datos se actualizaron correctamente", {
+                                            icon: "success",
+                                        })
+                                        .then(function() {
+                                            //document.getElementById("from1").submit(); // <--- submit form programmatically
+                                            form.submit();
+                                            console.log("BIEN");
+                                        });
+                                    } else {
+                                        swal("No se actualizo ningun dato", {
+                                            icon: "error" 
+                                        })
+                                    }
+                                })                
+                            });
+                        }
+                    </script>
                 </form>
             </section>
 
