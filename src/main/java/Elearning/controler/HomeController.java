@@ -77,12 +77,15 @@ public class HomeController {
     } 
     
      //Controlador para cerrar session
-    @RequestMapping(name = "cerrarSession.html")
-     public ModelAndView cerrarSession(HttpServletRequest request){
+    @RequestMapping(name = "cerrarSession.html", method = RequestMethod.GET)
+     public ModelAndView cerrarSession(HttpServletRequest request, HttpServletResponse response){
         ModelAndView mo = new ModelAndView();
-        HttpSession session = request.getSession();
+        HttpSession session = request.getSession(false);
+        session.removeAttribute("usuario");
+        session.removeAttribute("tUsuario");
         session.invalidate();
-        mo.setViewName("index");
+        System.out.println("SESION CERRADA");
+        mo.setViewName("redirect:/index.html");
         return mo;
     }
     //Controlador para denegar acceso a usuarios de paginas de adminsitrador 

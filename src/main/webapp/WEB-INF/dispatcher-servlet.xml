@@ -34,7 +34,7 @@
                 <prop key="cerrarSession.html">homeController</prop>       
                 <prop key="regresa.html">homeController</prop>
                 <prop key="enviarCorreo.html">homeController</prop>
-                
+                <prop key="cerrarSession.html">homeController</prop>
                 
                 <!--Mapeo de los Cursos--> 
                 <prop key="addCurso.html">cursoControler</prop>
@@ -56,7 +56,7 @@
                 <prop key="ActualizarModulo.html">moduloControler</prop><!--Este es para el crud al momento de ingregar modulos-->
 
                 
-                <!--Mapeo del administrador-->
+                <!--Mapeo del Usuario-->
                 <prop key="perfilsem.html">usuarioControler</prop>
                 <prop key="ProgressBar.html">usuarioControler</prop>
                 <prop key="perfiladmin.html">usuarioControler</prop>
@@ -67,6 +67,7 @@
                 <prop key="eliminarSemillero.html">usuarioControler</prop>
                 <prop key="actualizarSemillero.html">usuarioControler</prop>
                 <prop key="actualizarAdmin.html">usuarioControler</prop>
+                
                 
                 <!--Mapeo de Archivos-->
                 <prop key="anadirarchivos.html">archivoControler</prop>
