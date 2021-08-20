@@ -24,7 +24,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         
-        <style>
+       <style>
             /*Estilo header*/
             .body1 {
                 font-family: 'Varela Round', sans-serif;
@@ -66,26 +66,27 @@
             }
             input, textarea{
                 margin-bottom: 20px;
-                width: 50%;
-                padding: 5px;
+                width: 24%;
+                padding:5px;
                 border:1px solid #d3d6e4;
                 border-radius: 5px;
-
+              
                 outline: none; 
 
             }
+             
+          
             ::placeholder{
                 font-family: "Font Awesome 5 Free"; 
                 font-weight: 900;
             }
 
             select{
-
                 margin-bottom: 20px;
                 border-radius: 5px;
-                width: 50%;
-                padding: 10px;
-                display: flex;
+                width: 24%;
+                padding: 7px;
+                display: auto;
                 font-family: "Font Awesome 5 Free"; 
                 font-weight: 900;
                 color:#2F4F4F;
@@ -177,25 +178,28 @@
                         <tbody>
                         <div class="caja">
                             <label for="nom"></label> <input type="text" id="nom" placeholder=" Nombre" required name="nombre">
-                            <br>
+                           
                             <label for="apeP"></label> <input type="text" id="apeP" placeholder=" Apellido paterno" required name="aPaterno">
                             <br>
                             <label for="apeM"></label> <input type="text" id="apeM" placeholder=" Apellido materno" required name="aMaterno">
-                            <br>
-                            <select  name="genero" id="gen">
-                                <option disabled selected value="g"> Genero:</option>
+                           
+                            
+                           <select  name="genero" id="gen">
+                                <option disabled selected value="g"> Género:</option>
                                 <option disabled="">Selecciona una opción:</option>
                                 <option value="Femenino">Femenino</option>
                                 <option value="Masculino">Masculino</option>
                             </select>
-
+                            <br>
+                              <label for="RFC"></label> <input type="text" id="RFC" placeholder=" RFC" required name="rfc">
+                              
                             <label for="email"></label> <input type="text" id="cont" placeholder=" Correo" required name="email">
                             <br>
-                            <label for="contrasena"></label> <input type="password" id="cont" placeholder=" Contraseña" required name="contrasena">
+                           <label for="contrasena"></label> <input type="password" id="cont" placeholder=" Contraseña" required name="contrasena">
+                           
+                          
                             <br>
-                            <label for="RFC"></label> <input type="text" id="RFC" placeholder=" RFC" required name="rfc">
-                            <br>
-                            <br>
+                            
                             <input class="submit" type="submit" value="Guardar">
                         </div>
                         <br/>

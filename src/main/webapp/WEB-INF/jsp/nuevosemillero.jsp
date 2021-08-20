@@ -23,9 +23,11 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-        <style>
-            /*Estilo body*/
+       <style>
+            /*Estilo header*/
             .body1 {
+                font-family: 'Varela Round', sans-serif;
+                justify-content: center;
                 background:  #EAECE8;
             }
 
@@ -42,7 +44,6 @@
                 text-transform: uppercase;/*Esta línea decódigo es para poner las letras en mayúsculas */
                 letter-spacing: 2px;/*Espacio entre letras*/
             }
-
 
             .form{
                 width: 25%;
@@ -64,31 +65,31 @@
             }
             input, textarea{
                 margin-bottom: 20px;
-                width: 50%;
-                padding: 5px;
+                width: 24%;
+                padding:5px;
                 border:1px solid #d3d6e4;
                 border-radius: 5px;
-
+              
                 outline: none; 
 
             }
+             
+          
             ::placeholder{
                 font-family: "Font Awesome 5 Free"; 
                 font-weight: 900;
             }
 
             select{
-
                 margin-bottom: 20px;
                 border-radius: 5px;
-                width: 50%;
-                padding: 10px;
-                display: flex;
+                width: 24%;
+                padding: 7px;
+                display: auto;
                 font-family: "Font Awesome 5 Free"; 
                 font-weight: 900;
                 color:#2F4F4F;
             }
-
 
             input[type="file"]{
                 width: 50%;
@@ -101,6 +102,7 @@
                 margin-bottom: 0;
                 background: #B15D28;
                 color: black;
+                border-radius: 5px;
                 border: none;
                 cursor: pointer;
             }
@@ -127,7 +129,6 @@
             .Editarr{
                 background-color: teal;
             }
-
             #nom, #apeP, #apeM, #correo, #cont, #gen, #RFC{
                 background-color: #272727;
                 color: white;
@@ -136,6 +137,7 @@
                 color: black;
                 font-weight: bold;
             }
+
 
         </style>
     </head>
@@ -164,36 +166,39 @@
         </header>
         <br><br>
 
-        <h1><center>Semilleros</center></h1>
+        <h1><center>Administradores</center></h1>
         <br>
         <br>
 
-        <form onsubmit="event.preventDefault();onSubmit();" autocomplete="off">
+        <form autocomplete="off" method="POST" action="addAdministrador.html">
             <center>
                 <div class="tablita">
                     <table class="tabla" id="tabla">
                         <tbody>
                         <div class="caja">
                             <label for="nom"></label> <input type="text" id="nom" placeholder=" Nombre" required name="nombre">
-                            <br>
+                           
                             <label for="apeP"></label> <input type="text" id="apeP" placeholder=" Apellido paterno" required name="aPaterno">
                             <br>
                             <label for="apeM"></label> <input type="text" id="apeM" placeholder=" Apellido materno" required name="aMaterno">
-                            <br>
-                            <select  name="genero" id="gen">
-                                <option disabled selected value="g"> Genero</option>
+                           
+                            
+                           <select  name="genero" id="gen">
+                                <option disabled selected value="g"> Género:</option>
                                 <option disabled="">Selecciona una opción:</option>
                                 <option value="Femenino">Femenino</option>
                                 <option value="Masculino">Masculino</option>
                             </select>
-
+                            <br>
+                              <label for="RFC"></label> <input type="text" id="RFC" placeholder=" RFC" required name="rfc">
+                              
                             <label for="email"></label> <input type="text" id="cont" placeholder=" Correo" required name="email">
                             <br>
-                            <label for="contrasena"></label> <input type="password" id="cont" placeholder=" Contraseña" required name="contrasena">
+                           <label for="contrasena"></label> <input type="password" id="cont" placeholder=" Contraseña" required name="contrasena">
+                           
+                          
                             <br>
-                            <label for="RFC"></label> <input type="text" id="RFC" placeholder=" RFC" required name="rfc">
-                            <br>
-                            <br>
+                            
                             <input class="submit" type="submit" value="Actualizar">
                         </div>
                         <br/>

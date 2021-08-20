@@ -75,8 +75,11 @@
             </div>
         </header>
         <br><br>
-
+        <br>
+        <br>
     <center><h1><font color="black">Bienvenido <%=request.getSession().getAttribute("usuario")%></font></h1></center>
+    <br>
+    
     <div class="seccion">
         <table>
             <div class="card1">
