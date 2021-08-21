@@ -62,7 +62,7 @@
                     <!--<ul class="nav__links">-->
                     <li><span><a href="perfilsem.html">Mi perfil </a></span></li>
                     <li><span><a href="ProgressBar.html">Mis cursos </a></span></li>
-                    <li><span><a href="index.html" class="cta">Cerrar sesión</a></span></li>
+                    <li><span><a onclick="cerrarSession()" class="cta">Cerrar sesión</a></span></li>
                     <!--</ul>-->
                 </nav>
                 <!--<a class="cta" href="index.html"><button>Cerrar sesión</button></a>-->
@@ -273,4 +273,11 @@
         Todos los derechos reservados | © 2021 B1 SOFT
     </div>
 </body>
+ <script>
+        function cerrarSession() {
+            
+            $(location).attr('href',"cerrarSession.html")
+    
+         }
+    </script>
 </html>

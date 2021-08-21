@@ -159,7 +159,7 @@
                     <li><span><a href="nuevosemillero.html">Semilleros </a></span></li>
                     <li><span><a href="listadodecursos.html">Cursos </a></span></li>
                     <li><span><a href="nuevocurso.html">Agregar nuevo curso </a></span></li>
-                    <li><span><a href="index.html" class="cta">Cerrar sesión</a></span></li>
+                    <li><span><a onclick="cerrarSession()" class="cta">Cerrar sesión</a></span></li>
                     <!--</ul>-->
                 </nav>
                 <!--<a class="cta" href="index.html"><button>Cerrar sesión</button></a>-->
@@ -364,4 +364,11 @@
         </div> Todos los derechos reservados | © 2021 B1 SOFT
     </div>
 </body>
+<script>
+        function cerrarSession() {
+            
+            $(location).attr('href',"cerrarSession.html")
+    
+         }
+    </script>
 </html>
