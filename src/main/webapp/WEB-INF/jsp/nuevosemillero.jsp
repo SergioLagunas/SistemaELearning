@@ -10,7 +10,6 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/nuevosemillero.css" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/header.css" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="CRUD dinamico con HTMLS, CSS and JS">
