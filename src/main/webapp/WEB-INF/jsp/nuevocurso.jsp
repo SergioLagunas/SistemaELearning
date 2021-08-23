@@ -39,8 +39,10 @@
                 text-align: center;
                 font-size: 25px;
             }
+            
+          
             .k-button{
-                width: 30%;
+                width: 40%;
                 margin-bottom: 0;
                 background: #B15D28;
                 color: black;
@@ -49,8 +51,9 @@
                 cursor: pointer;
             }
             .k-button:hover{
-                background: #203853;
-                color: white;
+                background-color: white;
+    color: black;
+    filter: brightness(1.05);
             }
             #simple-input{
                 padding: 5px;
@@ -106,7 +109,9 @@
                 <div id="example">
                     <div class="demo-section k-content">
                         <ul class="fieldlist">
-                            <li>
+                             <center><img  src="${pageContext.request.contextPath}/resources/imagenes/curso.png" width="220px" height="160px" ></center>
+                             <br>
+                             <li>
                                 <input id="simple-input" type="text" placeholder="Nombre" class="k-textbox" style="width: 100%;" name="nombre" />
                             </li>
                             <li>
@@ -140,14 +145,26 @@
                             .demo-section  {
                                 background-color: rgba(255, 255, 255, 0);
                             }
+                           
                             .fieldlist {
-                                margin: 0 0 -2em;
-                                padding: 0;
+                              
+                               width: 90%;
+                            height: 560px;
+                background:  #203853;
+                padding: 50px;
+                margin: auto;
+                margin-top: 30px;
+                border-radius: 10px;
+              
+                color: rgb(42, 35, 49);
+                box-shadow: 7px 13px 37px #000;
+                                
                             }
 
                             .fieldlist li {
                                 list-style: none;
-                                padding-bottom: 2em;
+                                padding-bottom: 3em;
+                               
                             }
 
                             .fieldlist label {
@@ -155,10 +172,10 @@
                                 padding-bottom: 1em;
                                 font-weight: bold;
                                 text-transform: uppercase;
-                                font-size: 12px;
+                                font-size: 20px;
                                 color:black;
                             }
-
+                          
                         </style>
                     </div>
                 </div>
