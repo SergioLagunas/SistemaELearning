@@ -56,7 +56,7 @@ public class HomeController {
                 mo.setViewName("admin");
                 break;
             default:
-                mo.setViewName("error");
+                mo.setViewName("redirect:/index.html");
                 break;
         }
          return mo;

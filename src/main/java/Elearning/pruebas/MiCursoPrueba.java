@@ -20,9 +20,18 @@ public class MiCursoPrueba {
         UsuarioDaoImpl us = new UsuarioDaoImpl();
         Usuario user = new Usuario();
         
-        user = mCurso.findbyCurso(idUsuario);
+         List<MiCurso> mcur = mCurso.getMiCurso(idUsuario);
+        System.out.println("Imprecion de MiCurso");
         
-        System.out.println("Cursos: "+user);
+        System.out.println(" "+mcur.size());
+        
+        
+        for(int i=0;i<=mcur.size();i++){
+        
+        }
+       // user = mCurso.findbyCurso(idUsuario);
+        
+       // System.out.println("Cursos: "+user);
        //user = us.getUsuario(idUsuario);
        
        // System.out.println("Cursos: "+user.getCursos());

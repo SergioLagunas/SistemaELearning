@@ -15,5 +15,5 @@ public interface MiCursoDao {
     public boolean delete(final MiCurso entidad);
     public boolean RelacionSem(int idUsuario,int idCurso);
     public Usuario findbyCurso(int idCurso);
-    
+    public MiCurso AsginProgreso(int idUsuario,int idCurso);
 }

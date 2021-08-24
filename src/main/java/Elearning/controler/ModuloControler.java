@@ -49,7 +49,7 @@ public class ModuloControler {
     
     //este es la paguina para agregar mas modulos si se desea una ves acabando de crear el curso
     @RequestMapping(value = "actualizarmodulos.html" , method = RequestMethod.GET)
-    public String actualizarModulos(@RequestParam("idCurso") int Curso, Model model){
+    public String actualizarModulos(@RequestParam("CursoE") int Curso, Model model){
         return moduloService.readModuloActualizar(Curso, model);
     }
     

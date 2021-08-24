@@ -82,7 +82,8 @@ public class MiCursoDaoImpl implements MiCursoDao {
         try {
             //Iniciamos Transaccion
             transaccion.begin();
-            Query query = session.createSQLQuery("Select * from MiCurso mc where mc.MiCurso =: id").addEntity(MiCurso.class).setParameter("id", idUsuario);
+            Query query = session.createSQLQuery("Select * from MiCurso mc where mc.idUsuario=:id").addEntity(MiCurso.class)
+                    .setParameter("id", idUsuario);
             lista = query.list();
             transaccion.commit();
         } catch (HibernateException e) {
@@ -224,6 +225,11 @@ public class MiCursoDaoImpl implements MiCursoDao {
             session.close();
         }
         return entidad;
+    }
+
+    @Override
+    public MiCurso AsginProgreso(int i, int i1) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

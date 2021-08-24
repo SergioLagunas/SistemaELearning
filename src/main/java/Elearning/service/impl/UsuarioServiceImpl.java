@@ -41,6 +41,9 @@ public class UsuarioServiceImpl implements UsuarioService {
 
     @Autowired
     private UsuarioDao usuarioDao;
+    
+    @Autowired
+    private MiCursoDao micursoDao;
 
     static int elUsuario = 0;
 
@@ -77,9 +80,18 @@ public class UsuarioServiceImpl implements UsuarioService {
     public String barProgress(Model modelo) {
         int idUsuario = elUsuario;
         Usuario user = new Usuario();
+        MiCurso micurso = new MiCurso();
         user = usuarioDao.getUsuario(idUsuario);
         List<Curso> cursos = new ArrayList<>(user.getCursos());
         modelo.addAttribute("miscursos", cursos);
+        //Pruebas 
+        List<MiCurso> mcur = micursoDao.getMiCurso(idUsuario);
+        System.out.println("Imprecion de MiCurso");
+        
+        for(int i=0;i<=mcur.size();i++){
+            
+        }
+        
         return "ProgressBar";
     }
 
@@ -196,7 +208,6 @@ public class UsuarioServiceImpl implements UsuarioService {
                 session.setAttribute("usuario", user.getNombre());
                 session.setAttribute("tUsuario", rol);
                 return rol;
-
             } else if (rol.equals("Semillero")) {
                 session.setAttribute("usuario", user.getNombre());
                 session.setAttribute("tUsuario", rol);
@@ -204,8 +215,9 @@ public class UsuarioServiceImpl implements UsuarioService {
             } else {
                 return "error";
             }
+        }else{
+            return "error";
         }
-        return "error";
     }
 
     @Override

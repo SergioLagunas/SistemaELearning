@@ -79,9 +79,9 @@
                 <center><h1>Bienvenido</h1></center>
                 <center><h2>Curso de <c:out value="${detacurso.nombre}"></c:out></h2></center>
                 <center><p><c:out value="${detacurso.descripcion}"></c:out></p></center>
-                <br>
-                <br>
-                <center><button class="botoncurso">Ver recursos</button></center>
+                    <br>
+                    <br>
+                    <center><button class="botoncurso">Ver recursos</button></center>
                 </div>
             </section>
 
@@ -273,11 +273,11 @@
         Todos los derechos reservados | © 2021 B1 SOFT
     </div>
 </body>
- <script>
-        function cerrarSession() {
-            
-            $(location).attr('href',"cerrarSession.html")
-    
-         }
-    </script>
+<script>
+    function cerrarSession() {
+
+        $(location).attr('href', "cerrarSession.html")
+
+    }
+</script>
 </html>

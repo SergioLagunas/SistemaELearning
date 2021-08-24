@@ -361,7 +361,7 @@
                 }      
                 
                 function agregarModulo(id){
-                    document.location.href = "borrarCursos.html?CursoE=" + id;
+                    document.location.href = "actualizarmodulos.html?CursoE=" + id;
                 }
                 
             </script>
