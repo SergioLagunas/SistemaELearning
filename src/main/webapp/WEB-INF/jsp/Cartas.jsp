@@ -65,7 +65,7 @@
             <div class="encabezado">
                 <div class="logo">
                     <div>
-                        <img src="${pageContext.request.contextPath}/resources/imagenes/logoazul.gif">
+                        <a href="bienvenida.html"> <img src="${pageContext.request.contextPath}/resources/imagenes/logoazul.gif"> </a>
                     </div>
                 </div>
 
@@ -94,6 +94,10 @@
                 </div>
             </c:forEach>
         </div>
+        <br>
+        <br>
+        <br>
+        <br>
         <br>
         <br>
         <br>

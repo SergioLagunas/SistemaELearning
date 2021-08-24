@@ -146,7 +146,7 @@
             <div class="encabezado">
                 <div class="logo">
                     <div>
-                        <img src="${pageContext.request.contextPath}/resources/imagenes/logoazul.gif">
+                        <a href="admin.html">  <img src="${pageContext.request.contextPath}/resources/imagenes/logoazul.gif"> </a>
                     </div>
                 </div>
 

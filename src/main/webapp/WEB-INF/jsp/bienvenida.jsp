@@ -100,7 +100,7 @@
             <div class="encabezado">
                 <div class="logo">
                     <div>
-                        <img src="${pageContext.request.contextPath}/resources/imagenes/logoazul.gif">
+                        <a href="bienvenida.html"> <img src="${pageContext.request.contextPath}/resources/imagenes/logoazul.gif"> </a>
                     </div>
                 </div>
 
@@ -119,7 +119,7 @@
         <div id="container">
             <div id="Scroll">
                 <div id="Titulo">
-                    <center><h1>Hola <%=request.getSession().getAttribute("usuario")%> , Bienvenido</h1></center>
+                    <center><h1>Hola <%=request.getSession().getAttribute("usuario")%>, Bienvenido</h1></center>
 
                 </div>
                 <div style="margin:auto; max-width:90%">
