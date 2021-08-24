@@ -3,87 +3,27 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Error</title>
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bienvenida.css" />
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/exitoerror.css" />
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/styleListadoCurso.css" />
-        <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
-        <style>
-            .contenedor {
-                width: 30%;
-                height: 100%;
-                background-color: rgba(0, 0, 0, 0.301);
-                margin-left: 35%;
-                margin-top: 8%;
-                border-radius: 15px;
-            }
-            .img{
-                margin-left: 40%;
-                margin-top: 2%;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="burbujas">
-            <div class="burbuja"></div>
-            <div class="burbuja"></div>
-            <div class="burbuja"></div>
-            <div class="burbuja"></div>
-            <div class="burbuja"></div>
-            <div class="burbuja"></div>
-            <div class="burbuja"></div>
-            <div class="burbuja"></div>
-            <div class="burbuja"></div>
-            <div class="burbuja"></div>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro exitoso</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/estiloErroExito.css">
+</head>
+<body background="">
+    <header class="bg_animate">
+        <div id= "logo"> 
+            <center><img src="${pageContext.request.contextPath}/resources/imagenes/logoindex.gif" width="8%"/></center>
         </div>
-        <!-- Navigation-->
-        <header>
-            <img src="${pageContext.request.contextPath}/resources/imagenes/def1.gif"   width="160" style="margin-left: 5%; margin-top: 2%;" >
-        </header>
-        <div class="contenedor">
-            <div class="img">
-                <img src="${pageContext.request.contextPath}/resources/imagenes/error.png" width="25%" height="25%" >
-            </div>
-            <div class="texto">
-                <p><b>¡ERROR!</b></p>
-                <p><c:out value="${Message}"></c:out></p>
-            </div>
-            <br>
-            <br>
-            <button id="BotonIS" class="primary" onclick="location.href='${Dirigir}'">REGRESAR</button>
-        </div>
-        <!--Footer-->
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <div class='footer-wrapper'>
-            <div style='padding-top:15px;padding-bottom:10px; '>
-                <center>
+    
+    </header>
 
-                    <a href='https://twitter.com/?lang=es' target='_blank'><img HSPACE='10'
-                                                                                src='https://img.icons8.com/android/24/000000/twitter.png' title='' />
-                        <a href='https://es-la.facebook.com/' target='_blank'><img HSPACE='10'
-                                                                                   src='https://img.icons8.com/android/24/000000/facebook.png' title='' /></a>
-                        <a href='https://www.google.com/intl/es-419/gmail/about/#' target='_blank'><img HSPACE='10'
-                                                                                                        src='https://img.icons8.com/ios-filled/24/000000/gmail-login.png' title='' /></a>
-                        <a href='https://www.youtube.com/' target='_blank'><img HSPACE='10'
-                                                                                src=' https://img.icons8.com/metro/26/000000/youtube.png' title='' /></a>
-                    </a>
-
-                </center>
-            </div> Todos los derechos reservados | © 2021 B1 SOFT
+    <section class="banner contenedor">
+        <secrion class="banner_title">
+            <h2>¡ERROR! <br> Vuelve a intentarlo.</h2>
+            <a href="index.html" class="llamanos">Regresar</a>
+        </secrion>
+        <div class="banner_imge">
+            <img src="${pageContext.request.contextPath}/resources/imagenes/error_1.png" alt="">
         </div>
-    </body>
+    </section>
+</body>
 </html>
