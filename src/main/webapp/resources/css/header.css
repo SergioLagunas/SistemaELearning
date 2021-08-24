@@ -73,6 +73,9 @@ header nav .cta{
     padding: 10px 20px;
     border-radius: 4px;
 }
+.cta{
+     cursor: pointer;
+}
 
 header nav .cta:hover{
     background-color: white;

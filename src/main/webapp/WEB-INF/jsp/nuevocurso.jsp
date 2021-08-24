@@ -34,13 +34,7 @@
                 text-align: center;
                 font-size: 30px;
             }
-            #subtitulo {
-                color: black;
-                text-align: center;
-                font-size: 25px;
-            }
-            
-          
+
             .k-button{
                 width: 40%;
                 margin-bottom: 0;
@@ -52,8 +46,8 @@
             }
             .k-button:hover{
                 background-color: white;
-    color: black;
-    filter: brightness(1.05);
+                color: black;
+                filter: brightness(1.05);
             }
             #simple-input{
                 padding: 5px;
@@ -99,19 +93,16 @@
 
         <div id="container">
             <div id="Titulo">
-                <h3>Nuevo Curso</h3>
-            </div>
-            <div id="subtitulo">
-                <h3>Añade un nuevo Curso</h3>
+                <h3>Agregar nuevo curso</h3>
             </div>
             <br>
             <form:form id="form" action="crearCurso.html" method="POST" enctype="multipart/form-data">   
                 <div id="example">
                     <div class="demo-section k-content">
                         <ul class="fieldlist">
-                             <center><img  src="${pageContext.request.contextPath}/resources/imagenes/curso.png" width="220px" height="160px" ></center>
-                             <br>
-                             <li>
+                            <center><img  src="${pageContext.request.contextPath}/resources/imagenes/curso.png" width="220px" height="160px" ></center>
+                            <br>
+                            <li>
                                 <input id="simple-input" type="text" placeholder="Nombre" class="k-textbox" style="width: 100%;" name="nombre" />
                             </li>
                             <li>
@@ -129,7 +120,7 @@
                                 </select>
                             </li>
                             <li>
-                                <h3 style="color: black;"> Selecciona la caratula del curso: </h3> 
+                                <h3 style="color: white;"> Selecciona la caratula del curso: </h3> 
                                 <input id="simple-input" type="file" name="caratula" class="k-textbox" style="width: 100%;" />
 
                             </li>
@@ -145,26 +136,26 @@
                             .demo-section  {
                                 background-color: rgba(255, 255, 255, 0);
                             }
-                           
+
                             .fieldlist {
-                              
-                               width: 90%;
-                            height: 560px;
-                background:  #203853;
-                padding: 50px;
-                margin: auto;
-                margin-top: 30px;
-                border-radius: 10px;
-              
-                color: rgb(42, 35, 49);
-                box-shadow: 7px 13px 37px #000;
-                                
+
+                                width: 90%;
+                                height: 560px;
+                                background:  #203853;
+                                padding: 50px;
+                                margin: auto;
+                                margin-top: 30px;
+                                border-radius: 10px;
+
+                                color: rgb(42, 35, 49);
+                                box-shadow: 7px 13px 37px #000;
+
                             }
 
                             .fieldlist li {
                                 list-style: none;
                                 padding-bottom: 3em;
-                               
+
                             }
 
                             .fieldlist label {
@@ -175,7 +166,7 @@
                                 font-size: 20px;
                                 color:black;
                             }
-                          
+
                         </style>
                     </div>
                 </div>
@@ -211,11 +202,11 @@
             </div> Todos los derechos reservados | © 2021 B1 SOFT
         </div>
     </body>
-     <script>
+    <script>
         function cerrarSession() {
-            
-            $(location).attr('href',"cerrarSession.html")
-    
-         }
+
+            $(location).attr('href', "cerrarSession.html")
+
+        }
     </script>
 </html>

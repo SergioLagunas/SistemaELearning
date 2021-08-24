@@ -46,7 +46,7 @@
         <!-- formulario para iniciar sesion -->
         <center>
         <div class="form">
-            <img src="${pageContext.request.contextPath}/resources/imagenes/logo_blanco(1).gif" class=avatar alt="Avatar Image">
+            <img src="${pageContext.request.contextPath}/resources/imagenes/logoindex.gif" class=avatar alt="Avatar Image">
             <!-- contenedor (fondo en blanco del login) -->
             <div class="contenedor"> </div>
             <form id="login" action="validador.html" method="POST"></form>
@@ -102,7 +102,7 @@
             ],
             // "evita que aparezcan los botones de kendo"
 
-            buttonsTemplate: "<input type='submit' value='Iniciar Sesión' id='BotonIS' class='primary'style='margin:auto;'/>"
+            buttonsTemplate: "<input type='submit' value='Iniciar Sesión' id='BotonIS' class='primary' style='margin:auto;'/>"
         });
     });
 // formulario crear cuenta
@@ -195,12 +195,13 @@
                     ]
                 }
             ],
-            buttonsTemplate: "<input class='k-secundary' type='submit' value='Registrar'>"
+            buttonsTemplate: "<input class='k-secundary' type='submit' value='Registrar' style='margin:auto;'/>"
         });
 
 
         dialog.kendoDialog({
-            width: "500px",
+            width: "400px",
+            height: "600px",
             title: "CREAR CUENTA",
             modal: true,
             animation: {
@@ -270,7 +271,7 @@
                     ]
                 }
             ],
-            buttonsTemplate: "<input class='k-secundary' type='submit' value='Continuar'>"
+            buttonsTemplate: "<input class='k-secundary' type='submit' value='Continuar' style='margin:auto;'/>"
 
         });
 

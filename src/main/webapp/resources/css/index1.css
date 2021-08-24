@@ -27,8 +27,8 @@ body {
     padding: 2%;
 }
 .form .avatar {
-    width: 180px;
-    height: 180px;
+    width: 190px;
+    height: 190px;
     border-radius: 100%;
     border: solid 5px #B15D28;
     margin-top: -37%;
@@ -57,7 +57,7 @@ body {
 .k-secundary {
     border: none;
     outline: none;
-    width: 70%;
+    width: 74%;
     margin-bottom: 5px;
     font-size: 22px;
     background: #B15D28;

@@ -242,7 +242,7 @@
                 function confirm(id) {
 
                     swal({
-                        title: "¿Desea eliminar el Administrador?",
+                        title: "¿Desea eliminar el Semillero?",
                         text: "Al realizar esta operacion no se podra revertir",
                         icon: "warning",
                         buttons: {
@@ -254,11 +254,11 @@
                                 if (willDelete) {
                                     document.location.href = "eliminarSemillero.html?idUsuario=" + id;
 
-                                    swal("El Administrador se elimino correctamente", {
+                                    swal("El Semillero se elimino correctamente", {
                                         icon: "success",
                                     });
                                 } else {
-                                    swal("No se elimino ningun Administrador", {
+                                    swal("No se elimino ningun Semillero", {
                                         icon: "error"
                                     });
                                 }
