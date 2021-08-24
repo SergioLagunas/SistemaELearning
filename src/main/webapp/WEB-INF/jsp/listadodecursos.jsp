@@ -91,11 +91,12 @@
             }
 
             table{
-                background-color: white;
+                background-color: #203853;
                 width: 80%;
                 text-align: center;
-                color: black;
+                 color: white;
                 border-collapse: collapse;
+                  border-radius: 15px;
             }
 
             th, td{

@@ -111,7 +111,7 @@
                 text-align: center;
                 color: black;
                 border-collapse: collapse;
-
+             
 
             }
             th, td{
