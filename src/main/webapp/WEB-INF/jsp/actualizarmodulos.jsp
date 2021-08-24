@@ -11,74 +11,30 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/actualizarmodulos.css" />
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/header.css" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="CRUD dinamico con HTMLS, CSS and JS">
         <link href="https://fonts.googleapis.com/css?family=Quicksand:600&display=swap" rel="stylesheet">
         <title>Actualizar modulos</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
         <style>
             /*Estilo header*/
-            body {
+            .body1 {
                 font-family: 'Varela Round', sans-serif;
                 justify-content: center;
                 background:  #EAECE8;
             }
 
-            li,a,button{
-                font-family: "roboto",sans-serif;
-                font-weight: 500;
-                font-size: 20px;
-                color: black;
-                text-decoration: none;
-
-            }
-
-
-            header{
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                padding: 30px 10%;
-
-            }
-
-            .nav__links{
-                list-style: none;
-            }
-
-            .nav__links li{
-                display: inline-block;
-                padding: 0px 20px;
-            }
-
-            .nav__links li a{
-                transition: all 0.3s ease 0s;
-            }
-
-            .nav__links li a:hover{
-                color: #0088a9;
-            }
-
-            button{
-                padding: 9px 25px;
-                background-color: rgba(0,136,169,1);
-                border: none;
-                border-radius: 50px;
-                cursor: pointer;
-                transition: all 0.3s ease 0s;
-            }
-            button:hover{
-                background-color: rgba(169, 0, 0, 0.8);
-            }
-
             /*Estilo footer*/
 
             .footer-wrapper {
-                background:#2F4F4F;/*Color de fondo del pie de página*/
+                background:#203853;/*Color de fondo del pie de página*/
                 padding-top: 30px;/*Altura del pie de página*/
                 padding-bottom: 40px;/*Altura del pie de página*/
                 width: 100%;
@@ -90,21 +46,50 @@
             }
             .form{
                 width: 25%;
-                border: 1px solid #ccc;
+                border: 1px dashed #ccc;
                 margin: 20px;
                 padding: 20px;
+
             }
             label{
                 font-size: 16px;
 
+                color:black;
+
+            }
+            option1{
+                margin-bottom: 20px;
+                width: 50%;
+                padding: 5px;
             }
             input, textarea{
                 margin-bottom: 20px;
                 width: 50%;
-                padding: 5px;
+                padding:5px;
+                border:1px solid #d3d6e4;
+                border-radius: 5px;
 
+                outline: none; 
 
             }
+
+
+            ::placeholder{
+                font-family: "Font Awesome 5 Free"; 
+                font-weight: 900;
+            }
+
+            select{
+                margin-bottom: 20px;
+                border-radius: 5px;
+                width: 24%;
+                padding: 7px;
+                display: auto;
+                font-family: "Font Awesome 5 Free"; 
+                font-weight: 900;
+                color:#2F4F4F;
+            }
+
             input[type="file"]{
                 width: 50%;
                 margin-bottom: 0;
@@ -114,10 +99,11 @@
             input[type="submit"]{
                 width: 10%;
                 margin-bottom: 0;
-                background: #0065CC;
-                color: #fff;
-                border-radius: 50px;
+                background: #B15D28;
+                color: black;
+                border-radius: 5px;
                 border: none;
+                cursor: pointer;
             }
             table{
                 background-color: white;
@@ -125,6 +111,8 @@
                 text-align: center;
                 color: black;
                 border-collapse: collapse;
+
+
             }
             th, td{
 
@@ -132,10 +120,9 @@
 
             }
             thead{
-                background-color:  #246355;
-                border-bottom: solid 5px #0f362d;
+                background-color:  #203853;
+                border-bottom: solid 5px #B15D28;
                 color: white;
-
             }
 
             .Editarr{
@@ -148,39 +135,32 @@
 
         </style>
     </head>
-    <body>
-        <div class="burbujas">
-            <div class="burbuja"></div>
-            <div class="burbuja"></div>
-            <div class="burbuja"></div>
-            <div class="burbuja"></div>
-            <div class="burbuja"></div>
-            <div class="burbuja"></div>
-            <div class="burbuja"></div>
-            <div class="burbuja"></div>
-            <div class="burbuja"></div>
-            <div class="burbuja"></div>
-        </div>
+    <body class="body1">
         <!-- Navigation-->
         <header>
-            <a href="admin.html"> <img src="${pageContext.request.contextPath}/resources/imagenes/def1.gif"  width="160"> </a>
-            <nav>
-                <ul class="nav__links">
-                    <li><a href="perfiladmin.html">Mi perfil </a></li>
-                    <li><a href="nuevoadmin.html">Admin.</a></li>
-                    <li><a href="nuevosemillero.html">Semilleros</a></li>
-                    <li><a href="listadodecursos.html">Cursos</a></li>
-                    <li><a href="nuevocurso.html">Agregar nuevo curso</a></li>
+            <div class="encabezado">
+                <div class="logo">
+                    <div>
+                        <a href="admin.html"> <img src="${pageContext.request.contextPath}/resources/imagenes/logoazul.gif"> </a>
+                    </div>
+                </div>
+
+                <nav>
+                    <!--<ul class="nav__links">-->
+                    <li><span><a href="perfiladmin.html">Mi perfil </a></span></li>
+                    <li><span><a href="nuevoadmin.html">Administradores </a></span></li>
+                    <li><span><a href="nuevosemillero.html">Semilleros </a></span></li>
+                    <li><span><a href="listadodecursos.html">Cursos </a></span></li>
+                    <li><span><a href="nuevocurso.html">Agregar nuevo curso </a></span></li>
                     <li><span><a onclick="cerrarSession()" class="cta">Cerrar sesión</a></span></li>
-                </ul>
-            </nav> 
-
+                    <!--</ul>-->
+                </nav>
+                <!--<a class="cta" href="index.html"><button>Cerrar sesión</button></a>-->
+            </div>
         </header>
+        <br><br>
 
-        <br>
-        <br>
-
-        <h1><center>Crear Modulos</center></h1>
+        <h1><center>Actualizar curso</center></h1>
         <br>
         <br>
 
@@ -190,9 +170,9 @@
                     <table class="tabla" id="tabla">
                         <tbody>
                         <div class="caja">
-                            <label for="nom"></label> <input type="text" name="titulo" id="nom" placeholder="Nombre" required>
+                            <label for="nom"></label> <input type="text" name="titulo" id="nom" placeholder=" Nombre" required>
                             <br>
-                            <label for="des"></label> <input type="text" name="descripcion" id="des" placeholder="Descripcion" required>
+                            <label for="des"></label> <input type="text" name="descripcion" id="des" placeholder=" Descripción" required>
                             <br>
                             <label for="arch"></label> <input type="file" id="arch" required name="url" accept=".mp4,.avi,.wmv">
                             <br>

@@ -16,6 +16,7 @@
         <meta name="description" content="CRUD dinamico con HTMLS, CSS and JS">
         <link href="https://fonts.googleapis.com/css?family=Quicksand:600&display=swap" rel="stylesheet">
         <title>modulos</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -61,6 +62,23 @@
 
 
             }
+
+            ::placeholder{
+                font-family: "Font Awesome 5 Free"; 
+                font-weight: 900;
+            }
+
+            select{
+                margin-bottom: 20px;
+                border-radius: 5px;
+                width: 24%;
+                padding: 7px;
+                display: auto;
+                font-family: "Font Awesome 5 Free"; 
+                font-weight: 900;
+                color:#2F4F4F;
+            }
+
             input[type="file"]{
                 width: 50%;
                 margin-bottom: 0;
@@ -150,9 +168,9 @@
                     <table class="tabla" id="tabla">
                         <tbody>
                         <div class="caja">
-                            <label for="nom"></label> <input type="text" name="titulo" id="nom" placeholder="Nombre" required>
+                            <label for="nom"></label> <input type="text" name="titulo" id="nom" placeholder=" Nombre" required>
                             <br>
-                            <label for="des"></label> <input type="text" name="descripcion" id="des" placeholder="Descripcion" required>
+                            <label for="des"></label> <input type="text" name="descripcion" id="des" placeholder=" Descripción" required>
                             <br>
                             <label for="arch"></label> <input type="file" id="arch" required name="url" accept=".mp4,.avi,.wmv">
                             <br>
@@ -265,11 +283,11 @@
         </div> Todos los derechos reservados | © 2021 B1 SOFT
     </div>
 </body>
- <script>
-        function cerrarSession() {
-            
-            $(location).attr('href',"cerrarSession.html")
-    
-         }
-    </script>
+<script>
+    function cerrarSession() {
+
+        $(location).attr('href', "cerrarSession.html")
+
+    }
+</script>
 </html>
