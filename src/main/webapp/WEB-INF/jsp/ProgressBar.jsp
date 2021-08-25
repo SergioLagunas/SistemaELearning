@@ -24,7 +24,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
         <style>
-            
+
             h1 {
                 text-align:center;
                 text-transform:uppercase;
@@ -74,18 +74,20 @@
         <br><br>
 
         <h1>Mis Cursos</h1>
-        <c:forEach var="cursos" items="${miscursos}">   
-            <div>
+        <c:forEach var="cursos" items="${miscursos}">  
+            <div>      
                 <div class="bar">
                     <h3 style="margin-left: 35px;">${cursos.nombre}</h3>
                     <div class="barraProgreso k-content">
                         <div id="profileCompleteness${cursos.idCurso}"></div>
                     </div>
-                    <h5 style="margin-left: 20px;"><span id="completed">${cursos.progreso} %</span> Completado</h5>
-                    <div style="display: flex;"></div>
                     <center><a href="mediacursos.html?idCurso=${cursos.idCurso}"><button>Continuar Curso</button></a></center>
                     <br/>
                 </div>   
+            </c:forEach>
+            <c:forEach var="progress" items="${progreso}">   
+                <h5 style="margin-left: 20px;"><span id="completed">${progress.progreso} %</span> Completado</h5>
+                <div style="display: flex;"></div>
             </c:forEach>
             <script>
                 $(document).ready(function () {
@@ -138,9 +140,9 @@
     </body>
     <script>
         function cerrarSession() {
-            
-            $(location).attr('href',"cerrarSession.html")
-    
-         }
+
+            $(location).attr('href', "cerrarSession.html")
+
+        }
     </script>
 </html>

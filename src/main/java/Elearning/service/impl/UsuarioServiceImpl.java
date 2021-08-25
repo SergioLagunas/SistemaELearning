@@ -44,6 +44,9 @@ public class UsuarioServiceImpl implements UsuarioService {
     
     @Autowired
     private MiCursoDao micursoDao;
+    
+    @Autowired
+    private CursoDao cursoDao;
 
     static int elUsuario = 0;
 
@@ -83,14 +86,27 @@ public class UsuarioServiceImpl implements UsuarioService {
         MiCurso micurso = new MiCurso();
         user = usuarioDao.getUsuario(idUsuario);
         List<Curso> cursos = new ArrayList<>(user.getCursos());
-        modelo.addAttribute("miscursos", cursos);
+        List<Curso> losCursos = new ArrayList<>();
         //Pruebas 
         List<MiCurso> mcur = micursoDao.getMiCurso(idUsuario);
         System.out.println("Imprecion de MiCurso");
-        
-        for(int i=0;i<=mcur.size();i++){
-            
+        //En esta parte lo que hago es comparar los id de los cursos del usuario con los idCurso de la tabla intermedia
+        //ya que cuando relacionas las tablas el progreso es null y aqui es donde le asigno el valor de 0 y se quite el valor null
+        for(int i=0;i<mcur.size();i++){
+            if(mcur.get(i).getIdCurso()==cursos.get(i).getIdCurso() && mcur.get(i).getProgreso()==null){
+                mcur.get(i).setProgreso(0);
+                micursoDao.update(mcur.get(i));
+                
+            }else if(mcur.get(i).getProgreso()!=null){
+                //en esta parte traspaso los cursos a otra lista ya que en ocaciones hibernate cambia el orden de la lista de los cursos
+                //lo realizo asi con el objetivo que que coinsida el progreso con el curso relacionado por el usuario
+                //ya que si lo hacia directo los cursos cambiaban de orden 
+                losCursos.add(cursoDao.getCurso(mcur.get(i).getIdCurso()));
+            }
         }
+        
+        modelo.addAttribute("miscursos", losCursos);
+        modelo.addAttribute("progreso", mcur);
         
         return "ProgressBar";
     }
