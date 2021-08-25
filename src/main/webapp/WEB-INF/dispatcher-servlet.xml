@@ -54,7 +54,7 @@
                 <prop key="addModulo.html">moduloControler</prop>
                 <prop key="mediacursos.html">moduloControler</prop>
                 <prop key="ActualizarModulo.html">moduloControler</prop><!--Este es para el crud al momento de ingregar modulos-->
-
+                <prop key="borrarModulo.html">moduloControler</prop>
                 
                 <!--Mapeo del Usuario-->
                 <prop key="perfilsem.html">usuarioControler</prop>

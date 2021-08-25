@@ -59,8 +59,23 @@ public class ModuloControler {
             @RequestParam("titulo") String titulo,
             @RequestParam("descripcion") String descripcion,
             @RequestParam("url") MultipartFile url,
-            @RequestParam("curid") int idModulo){
+            @RequestParam("moduid") int idModulo){
         return moduloService.updateModulo(idModulo, titulo, descripcion, url);
+    }
+    
+     @RequestMapping(value = "borrarModulo.html", method = RequestMethod.GET)
+    public  ModelAndView listadodecursos(@RequestParam("ModuloE") int ModuloE, Model model) {
+        ModelAndView mo = new ModelAndView();
+        
+        if(moduloService.deleteModulo(ModuloE)){
+            System.out.println("Se elimino el modulo con ID: " + ModuloE);
+            mo.setViewName("redirect:/anadirmodulos.html");
+        } else{
+            System.out.println("No se ha borrado el modulo...");
+            mo.setViewName("redirect:/error.html");
+        }
+        
+        return mo;
     }
   
 }

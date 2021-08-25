@@ -104,7 +104,8 @@ public class UsuarioServiceImpl implements UsuarioService {
                 losCursos.add(cursoDao.getCurso(mcur.get(i).getIdCurso()));
             }
         }
-        
+        //emvio los la lista de cursos a la vista ProgressBar 
+        //y la lista de MiCurso para obtener el progreso
         modelo.addAttribute("miscursos", losCursos);
         modelo.addAttribute("progreso", mcur);
         
