@@ -90,26 +90,15 @@ public class CursoControler {
             @RequestParam("curid") int idCurso){
         return cursoService.updateCurso(idCurso, nombre, descripcion, categoria, caratula);
     }
+   
+    //Vistas de Error Curso
+    @RequestMapping(value = "errorCurso.html")
+    public String errorCurso(){
+        return "errorCurso";
+    }
     
-    @RequestMapping(value = "exito.html", method = RequestMethod.GET)
-    public ModelAndView exito() {
-        ModelAndView mo = new ModelAndView();
-        mo.setViewName("exito");
-        return mo;
+    @RequestMapping(value = "errorCursoU.html")
+    public String errorCursoU(){
+        return "errorCursoU";
     }
-    /*
-    @RequestMapping(value = "error.html", method = RequestMethod.GET)
-    public ModelAndView error() {
-        ModelAndView mo = new ModelAndView();
-        mo.setViewName("error");
-        return mo;
-    }
-    */
-    /*@RequestMapping(value = "exito.html", method = RequestMethod.GET)
-    public String exito(@RequestParam(name="DirigirP", required=false, defaultValue="listadodecursos") String DirigirP, Model model) {
-        DirigirP = "listadodecursos";
-        model.addAttribute("DirigirP",DirigirP);
-        return "exito";
-    }*/
-
 }
