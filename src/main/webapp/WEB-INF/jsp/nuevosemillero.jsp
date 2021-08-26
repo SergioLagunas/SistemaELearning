@@ -22,7 +22,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-       <style>
+        <style>
             /*Estilo header*/
             .body1 {
                 font-family: 'Varela Round', sans-serif;
@@ -68,12 +68,12 @@
                 padding:5px;
                 border:1px solid #d3d6e4;
                 border-radius: 5px;
-              
+
                 outline: none; 
 
             }
-             
-          
+
+
             ::placeholder{
                 font-family: "Font Awesome 5 Free"; 
                 font-weight: 900;
@@ -106,12 +106,12 @@
                 cursor: pointer;
             }
             table{
-                background-color: white;
+                background-color: #203853;
                 width: 80%;
                 text-align: center;
-                color: black;
+                color: white;
                 border-collapse: collapse;
-             
+
 
             }
             th, td{
@@ -119,6 +119,10 @@
                 padding: 10px;
 
             }
+            tr {
+                border: #B15D28 2px solid;
+            }
+
             thead{
                 background-color:  #203853;
                 border-bottom: solid 5px #B15D28;
@@ -176,28 +180,28 @@
                         <tbody>
                         <div class="caja">
                             <label for="nom"></label> <input type="text" id="nom" placeholder=" Nombre" required name="nombre">
-                           
+
                             <label for="apeP"></label> <input type="text" id="apeP" placeholder=" Apellido paterno" required name="aPaterno">
                             <br>
                             <label for="apeM"></label> <input type="text" id="apeM" placeholder=" Apellido materno" required name="aMaterno">
-                           
-                            
-                           <select  name="genero" id="gen">
+
+
+                            <select  name="genero" id="gen">
                                 <option disabled selected value="g"> Género:</option>
                                 <option disabled="">Selecciona una opción:</option>
                                 <option value="Femenino">Femenino</option>
                                 <option value="Masculino">Masculino</option>
                             </select>
                             <br>
-                              <label for="RFC"></label> <input type="text" id="RFC" placeholder=" RFC" required name="rfc">
-                              
+                            <label for="RFC"></label> <input type="text" id="RFC" placeholder=" RFC" required name="rfc">
+
                             <label for="email"></label> <input type="text" id="cont" placeholder=" Correo" required name="email">
                             <br>
-                           <label for="contrasena"></label> <input type="password" id="cont" placeholder=" Contraseña" required name="contrasena">
-                           
-                          
+                            <label for="contrasena"></label> <input type="password" id="cont" placeholder=" Contraseña" required name="contrasena">
+
+
                             <br>
-                            
+
                             <input class="submit" type="submit" value="Actualizar">
                         </div>
                         <br/>
@@ -213,27 +217,27 @@
                                 <th>RFC</th>
                                 <th>Opciones</th>
                             </tr>
-                            <c:forEach items="${semilleros}" var="semillero">
-                                <tr>
-                                    <td><c:out value="${semillero.nombre}"></c:out></td>
-                                    <td><c:out value="${semillero.aPaterno}"></c:out></td>
-                                    <td><c:out value="${semillero.aMaterno}"></c:out></td>
-                                    <td><c:out value="${semillero.email}"></c:out></td>
-                                    <td><c:out value="${semillero.genero}"></c:out></td>
-                                    <td><c:out value="${semillero.rfc}"></c:out></td>
-                                        <td>
-                                            <a onclick="return confirm(${semillero.idUsuario});">
-                                            <button type="button" class="btn btn-danger">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-trash " viewBox="0 0 16 16">
-                                                    <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
-                                                    <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
-                                                </svg>
-                                            </button>
-                                        </a>
-                                    </td>
-                                </tr>
-                            </c:forEach>
                         </thead>
+                        <c:forEach items="${semilleros}" var="semillero">
+                            <tr>
+                                <td><c:out value="${semillero.nombre}"></c:out></td>
+                                <td><c:out value="${semillero.aPaterno}"></c:out></td>
+                                <td><c:out value="${semillero.aMaterno}"></c:out></td>
+                                <td><c:out value="${semillero.email}"></c:out></td>
+                                <td><c:out value="${semillero.genero}"></c:out></td>
+                                <td><c:out value="${semillero.rfc}"></c:out></td>
+                                    <td>
+                                        <a onclick="return confirm(${semillero.idUsuario});">
+                                        <button type="button" class="btn btn-danger">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-trash " viewBox="0 0 16 16">
+                                            <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                                            <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                                            </svg>
+                                        </button>
+                                    </a>
+                                </td>
+                            </tr>
+                        </c:forEach>
                     </table>
                 </div>
             </center>
@@ -363,10 +367,10 @@
     </div>
 </body>
 <script>
-        function cerrarSession() {
-            
-            $(location).attr('href',"cerrarSession.html")
-    
-         }
-    </script>
+    function cerrarSession() {
+
+        $(location).attr('href', "cerrarSession.html")
+
+    }
+</script>
 </html>

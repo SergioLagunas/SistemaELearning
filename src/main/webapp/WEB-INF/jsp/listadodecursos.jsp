@@ -96,7 +96,7 @@
                 text-align: center;
                 color: white;
                 border-collapse: collapse;
-                border-radius: 15px;
+
             }
 
             th, td{
