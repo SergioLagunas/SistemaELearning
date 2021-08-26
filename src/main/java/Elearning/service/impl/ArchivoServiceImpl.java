@@ -30,8 +30,7 @@ public class ArchivoServiceImpl implements ArchivoService {
     @Override
     public String readArchivoMoment(Model model) {
          int curso = CursoServiceImpl.elcurso;
-        System.out.println("Listando Modulos de Curso: " + curso);
-        System.out.println("Añadiendo los modulos: ");
+        System.out.println("Listando Archivos de Curso: " + curso);
         model.addAttribute("archivos", archivoDao.findbyCurso(curso));
         return "anadirarchivos";
     }
@@ -79,13 +78,13 @@ public class ArchivoServiceImpl implements ArchivoService {
                 updateArchivo.setArchivo(enlaceNuevo);
                 updateArchivo = archivoDao.update(updateArchivo);
                 System.out.println("Archivo Actualizado con URL nueva");
-                return "redirect:/.html";
+                return "redirect:/anadirarchivos.html";
             } else {
                 updateArchivo.setNombre(nombre);
                 updateArchivo.setArchivo(updateArchivo.getArchivo());
                 updateArchivo = archivoDao.update(updateArchivo);
                 System.out.println("Archivo Actualizado sin url nueva");
-                return "redirect:/.html";
+                return "redirect:/anadirarchivos.html";
             }
 
         } catch (Exception e) {

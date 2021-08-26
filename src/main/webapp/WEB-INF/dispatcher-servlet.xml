@@ -20,7 +20,7 @@
     <bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping"> 
         <property name="mappings"> 
             <props>
-                
+          
                 <!--Mapeo del Login-->
                 <prop key="index.html">homeController</prop>
                 <prop key="validador.html">homeController</prop>
@@ -68,11 +68,11 @@
                 <prop key="actualizarSemillero.html">usuarioControler</prop>
                 <prop key="actualizarAdmin.html">usuarioControler</prop>
                 
-                
                 <!--Mapeo de Archivos-->
                 <prop key="anadirarchivos.html">archivoControler</prop>
                 <prop key="addArchivos.html">archivoControler</prop>
-                
+                <prop key="updateArchivo.html">archivoControler</prop>
+                <prop key="deleteArchivo.html">archivoControler</prop>
             </props>
         </property>
     </bean>
