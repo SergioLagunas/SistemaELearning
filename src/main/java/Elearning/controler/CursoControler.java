@@ -90,7 +90,8 @@ public class CursoControler {
             @RequestParam("curid") int idCurso){
         return cursoService.updateCurso(idCurso, nombre, descripcion, categoria, caratula);
     }
-   
+    
+    
     //Vistas de Error Curso
     @RequestMapping(value = "errorCurso.html")
     public String errorCurso(){
@@ -101,4 +102,9 @@ public class CursoControler {
     public String errorCursoU(){
         return "errorCursoU";
     }
+    
+    
+    
+    
+
 }

@@ -17,7 +17,8 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
-        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 
         <style>
             /*Estilo header*/
@@ -195,48 +196,40 @@
             </center>
             <br/>
             <script>
-                function alertActualizar(){  
-                    document.querySelector('#from1').addEventListener('submit', function(e) {
-                    
+
+
+                function alertActualizar() {
+                    document.querySelector('#from1').addEventListener('submit', function (e) {
+
                         var form = this;
                         e.preventDefault(); // <--- prevent form from submitting
 
-                        Swal.fire({
-                        title: '¿Quieres Actualizar los datos?',
-                        icon: 'warning',
-                        iconColor: '#B15D28' ,
-                        showCancelButton: true,
-                        confirmButtonText: 'Actualizar',
-                        confirmButtonColor: '#203853' ,
-                        cancelButtonColor: '#B15D28' ,
-                        cancelButtonText: 'Cancelar',
-                        reverseButtons: true
+                        swal({
+                            title: "¿Desea Actualizar el Curso?",
+                            text: "",
+                            icon: "warning",
+                            buttons: {
+                                cancel: "Cancelar",
+                                dangerMode: "Actualizar",
+                            },
                         })
-                        .then((result) => {
-                            if(result.isConfirmed){
-                                Swal.fire({
-                                    title: '¡Actualizado!',
-                                    text: 'Se Actualizaron los datos',
-                                    icon: 'success',
-                                    iconColor: '#203853' ,
-                                    confirmButtonColor: '#B15D28' 
+                                .then(function (isConfirm) {
+                                    if (isConfirm) {
+                                        swal("El Curso se actualizo correctamente", {
+                                            icon: "success",
+                                        })
+                                                .then(function () {
+                                                    //document.getElementById("from1").submit(); // <--- submit form programmatically
+                                                    Actualizar(Leer());
+                                                    form.submit();
+                                                    console.log("BIEN");
+                                                });
+                                    } else {
+                                        swal("No se actualizo ningun Curso", {
+                                            icon: "error"
+                                        })
+                                    }
                                 })
-                                .then(function() {
-                                    //document.getElementById("from1").submit(); // <--- submit form programmatically
-                                    Actualizar(Leer());
-                                    form.submit();
-                                    console.log("BIEN");
-                                });
-                            } else if(result.dismiss === Swal.DismissReason.cancel) {
-                                Swal.fire({
-                                    title: '¡Cancelado!',
-                                    text: 'No se actualizo ningun dato',
-                                    icon: 'error',
-                                    iconColor: '#B15D28',
-                                    confirmButtonColor: '#203853'
-                                })
-                            }
-                        })                
                     });
                 }
 
@@ -330,43 +323,43 @@
 
                 function Borrarr(td, id) {
                     //document.getElementById('enlace').setAttribute('href', "index.html");
-                    
-                    Swal.fire({
-                        title: '¿Estas seguro de eliminar el Curso?',
-                        text: "Si se elimina no se podra revertir",
-                        icon: 'warning',
-                        iconColor: '#B15D28' ,
-                        showCancelButton: true,
-                        confirmButtonText: 'Eliminar',
-                        confirmButtonColor: '#203853' ,
-                        cancelButtonColor: '#B15D28' ,
-                        cancelButtonText: 'Cancelar',
-                        reverseButtons: true
-                      }).then((result) => {
-                        if (result.isConfirmed) {
-                            row = td.parentElement.parentElement;
-                            document.getElementById("tabla").deleteRow(row.rowIndex);
-                            document.location.href = "borrarCursos.html?CursoE=" + id;
-                            Swal.fire({
-                            title: '¡Eliminado!',
-                            text: 'Se elimino el Curso',
-                            icon: 'success',
-                            iconColor: '#203853' ,
-                            confirmButtonColor: '#B15D28' 
-                        })
-                        } else if (
-                          /* Read more about handling dismissals below*/
-                          result.dismiss === Swal.DismissReason.cancel
-                        ) {
-                          Swal.fire({
-                           title: '¡Cancelado!',
-                           text: 'No se elimino ningun Curso',
-                           icon: 'error',
-                           iconColor: '#B15D28',
-                           confirmButtonColor: '#203853'
-                        })
-                        }
-                      });
+                    swal({
+                        title: "¿Desea eliminar el Curso?",
+                        text: "Al realizar esta operacion no se podra revertir",
+                        icon: "warning",
+                        buttons: {
+                            cancel: "Cancelar",
+                            dangerMode: "Eliminar",
+                        },
+                    })
+                            .then((willDelete) => {
+                                if (willDelete) {
+                                    row = td.parentElement.parentElement;
+                                    document.getElementById("tabla").deleteRow(row.rowIndex);
+                                    document.location.href = "borrarCursos.html?CursoE=" + id;
+
+                                    swal("El Curso se elimino correctamente", {
+                                        icon: "success",
+                                    });
+                                } else {
+                                    swal("No se elimino ningun Curso", {
+                                        icon: "error"
+                                    });
+                                }
+                            });
+
+                    /*
+                     if (confirm('¿Estás Seguro de borrar este módulo?')) {
+                     row = td.parentElement.parentElement;
+                     document.getElementById("tabla").deleteRow(row.rowIndex);
+                     
+                     document.location.href = "borrarCursos.html?CursoE=" + id;
+                     //alert(" Valor a Eliminar => " + row.cells[0].innerHTML);
+                     
+                     Vaciar();
+                     }
+                     
+                     */
                 }
 
                 function agregarModulo(id) {

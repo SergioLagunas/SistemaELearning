@@ -92,13 +92,13 @@ public class CursoServiceImpl implements CursoService {
                 return "redirect:/anadirmodulos.html";
             } else {
                 System.out.println("Error al crear la imagen");
-                return "redirect:/error.html";
+                return "redirect:/errorCurso.html";
 
             }
         } catch (Exception e) {
             e.printStackTrace();
             Logger.getLogger(CursoServiceImpl.class.getName()).log(Level.SEVERE, null, e);
-            return "redirect:/error.html";
+            return "redirect:/errorCurso.html";
         }
     }
 
@@ -133,7 +133,7 @@ public class CursoServiceImpl implements CursoService {
     } catch (Exception e) {
             e.printStackTrace();
             Logger.getLogger(CursoServiceImpl.class.getName()).log(Level.SEVERE, null, e);
-            return "redirect:/error.html";
+            return "redirect:/errorCursoU.html";
         }
     }
 

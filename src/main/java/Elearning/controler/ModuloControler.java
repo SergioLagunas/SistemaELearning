@@ -87,5 +87,11 @@ public class ModuloControler {
 
         return mo;
     }
+    
+    //Vistas de error Modulo
+    @RequestMapping(value = "primerosmodulos.html")
+    public String errorMo(){
+        return "primerosmodulos";
+    }
 
 }

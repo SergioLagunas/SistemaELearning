@@ -128,14 +128,14 @@ public class ModuloServiceImpl implements ModuloService {
                 entidad = moduloDao.create(entidad);
                 mo.setViewName("redirect:/anadirmodulos.html");
             } else {
-                mo.setViewName("error.html");
                 System.out.println("Error al crear la Url de DropBox");
+                mo.setViewName("primerosmodulos.html");
                 return mo;
             }
         } catch (Exception e) {
             e.printStackTrace();
             Logger.getLogger(ModuloServiceImpl.class.getName()).log(Level.SEVERE, null, e);
-            mo.setViewName("error");
+            mo.setViewName("primerosmodulos.html");
         }
         return mo;
     }

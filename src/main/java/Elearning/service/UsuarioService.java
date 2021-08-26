@@ -5,7 +5,6 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.ui.Model;
 
-
 public interface UsuarioService {
     public String readAdmin(Model model);
     public String readSem(Model model);
