@@ -106,10 +106,10 @@
                 cursor: pointer;
             }
             table{
-                background-color: white;
+                background-color: #203853;
                 width: 80%;
                 text-align: center;
-                color: black;
+                color: white;
                 border-collapse: collapse;
 
 
@@ -118,6 +118,9 @@
 
                 padding: 10px;
 
+            }
+            tr {
+                border: #B15D28 2px solid;
             }
             thead{
                 background-color:  #203853;
