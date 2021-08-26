@@ -140,6 +140,36 @@ public class ModuloServiceImpl implements ModuloService {
         return mo;
     }
 
+    //Este es para añadir mas modulos si se desea 
+    @Override
+    public String anadirModulos(int idCurso, String titulo, String descripcion, MultipartFile url) {
+        Curso cursoentidad = new Curso();
+        Modulo entidad = new Modulo();
+        ModuloModel updateMultimedia = new ModuloModel();
+        cursoentidad = cursoDao.getCurso(idCurso);
+        try {
+          if(!url.isEmpty()){
+              updateMultimedia.setUrl(url);
+              String enlace = guardarDropBox(updateMultimedia);
+              entidad.setTitulo(titulo);
+              entidad.setDescripcion(descripcion);
+              entidad.setUrl(enlace);
+              
+              cursoentidad.addModulos(entidad);
+              entidad = moduloDao.create(entidad);
+              System.out.println("El video se Guardo correctamente y ya esta creada la url de DropBox");
+              return "redirect:/actualizarmodulos.html";
+          }else{ 
+              System.out.println("Error al crear la Url de DropBox");
+              return "error";
+          }
+        } catch (Exception e) {
+            e.printStackTrace();
+            Logger.getLogger(ModuloServiceImpl.class.getName()).log(Level.SEVERE, null, e);
+            return "error";
+        }
+    }
+
     @Override
     public String updateModulo(int idModulo, String titulo, String descripcion, MultipartFile url) {
         ModuloModel updateMultimedia = new ModuloModel();
@@ -202,5 +232,4 @@ public class ModuloServiceImpl implements ModuloService {
     public static String reemplazar(String cadena, String busqueda, String reemplazo) {
         return cadena.replaceAll(busqueda, reemplazo);
     }
-
 }
