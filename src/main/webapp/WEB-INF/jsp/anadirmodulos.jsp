@@ -90,16 +90,19 @@
             }
 
             table{
-                background-color: white;
+                background-color: #203853;
                 width: 80%;
                 text-align: center;
-                color: black;
+                color: white;
                 border-collapse: collapse;
             }
             th, td{
 
                 padding: 10px;
 
+            }
+            tr {
+                border: #B15D28 2px solid;
             }
             thead{
                 background-color:  #203853;
@@ -115,6 +118,10 @@
                 color: white;
             }
 
+            #nomAc, #desAc, #archAc {
+                background-color: #272727;
+                color: white;
+            }
         </style>
     </head>
     <body class="body1">
@@ -154,6 +161,7 @@
                     <br>
                     <label for="arch"></label> <input type="file" id="arch" name="url" accept=".mp4,.avi,.wmv" required>
                     <br>
+                    <br>
                     <input class="submit" type="submit" onclick="alertAgregar()" value="Agregar">
                     <a class="btnCS" href="anadirarchivos.html">Sube Archivos a tu Curso</a>
                 </form>
@@ -169,6 +177,7 @@
                     <!--<div id="Divid">-->
                         <label for="moduid"></label> <input type="text" id="moduid" placeholder="Id" name="moduid">
                     </div>
+                    <br>
                     <br>
                     <input class="submit" type="submit" onclick="alertActualizar()" value="Actualizar">
                 </form>

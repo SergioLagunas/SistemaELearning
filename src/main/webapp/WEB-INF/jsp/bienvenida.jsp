@@ -150,6 +150,31 @@
                         });
                     });
                 </script>
+                <style>
+                    .photo1 {
+                        background-image: url("${pageContext.request.contextPath}/resources/imagenes/1-c.png");
+                    }
+                    .photo2 {
+                        background-image: url("${pageContext.request.contextPath}/resources/imagenes/2-c.png");
+                    }
+
+                    .photo3 {
+                        background-image: url("${pageContext.request.contextPath}/resources/imagenes/3-c.png");
+                    }
+
+                    .photo4 {
+                        background-image: url("${pageContext.request.contextPath}/resources/imagenes/4-c.png");
+                    }
+
+                    .photo5 {
+                        background-image: url("${pageContext.request.contextPath}/resources/imagenes/5-c.png");
+                    }
+
+                    .photo6 {
+                        background-image: url("${pageContext.request.contextPath}/resources/imagenes/6-c.png");
+                    }
+
+                </style>
             </div>
             <div id="Botones">
                 <div id="Subtitulo">
@@ -236,9 +261,9 @@
     </body>
     <script>
         function cerrarSession() {
-            
-            $(location).attr('href',"cerrarSession.html")
-    
-         }
+
+            $(location).attr('href', "cerrarSession.html")
+
+        }
     </script>
 </html>

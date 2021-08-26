@@ -16,28 +16,4 @@ body {
     background-size: cover;
     background-position: center center;
 }
-
-.photo1 {
-    background-image: url("../imagenes/Marketing.jpg");
-}
-
-.photo2 {
-    background-image: url("../imagenes/BD.png");
-}
-
-.photo3 {
-    background-image: url("../imagenes/Web.png");
-}
-
-.photo4 {
-    background-image: url("../imagenes/Programacion.jpg");
-}
-
-.photo5 {
-    background-image: url("../imagenes/Redes.png");
-}
-
-.photo6 {
-    background-image: url("../imagenes/Ciberseguridad.jpg");
-}
-    
+ 

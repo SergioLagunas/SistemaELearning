@@ -79,7 +79,7 @@
         <br>
     <center><h1><font color="black">Bienvenido <%=request.getSession().getAttribute("usuario")%></font></h1></center>
     <br>
-    
+
     <div class="seccion">
         <table>
             <div class="card1">
@@ -88,7 +88,9 @@
                 <h4>Administradores</h4>
                 <br>
                 <p><center><strong>Bienvenido administrador de B1 SOFT.</strong></center></p>
-                <p><center> En este apartado podrás dar de alta a futuros administradores o si lo deseas también puedes editar su información o eliminarla.</center></p>
+                <br>
+                <br>
+                <p><center> Agrega nuevos administradores a la plataforma. </center></p>
                 <br>
                 <a href="nuevoadmin.html"><button class="botoncurso">Conoce más</button></a>
             </div>
@@ -99,7 +101,9 @@
                 <h4>Semilleros</h4>
                 <br>
                 <p><center><strong>Bienvenido administrador de B1 SOFT.</strong></center></p>
-                <p><center> En esta parte podrás consultar la información de los integrantes que conforman los semilleros de talento y si lo requiere el administrador eliminar esos datos o actualizarlos.</center></p>
+                <br>
+                <br>
+                <p><center> Consulta la lista de semilleros que hacen uso de la plataforma. </center></p>
                 <br>
                 <a href="nuevosemillero.html"><button class="botoncurso">Conoce más</button></a>
             </div>
@@ -110,7 +114,10 @@
                 <h4>Agregar Curso</h4>
                 <br>
                 <p><center><strong>Bienvenido administrador de B1 SOFT.</strong></center></p>
-                <p><center>Aqui podrás iniciar un nuevo curso, indicar su nombre, dar una breve descripción y agregar una imagen de portada, click en guardar y luego en continuar; ahi agregarás modulos a tu curso donde subirás videos imagenes o documentos.</center></p>
+                <br>
+                <br>
+                <p><center> Crea nuevos cursos. </center></p>
+                <p><center> Agrega videos o archivos. </center></p>
                 <br> 
                 <a href="nuevocurso.html"><button class="botoncurso">Conoce más</button></a>
             </div>
@@ -155,11 +162,11 @@
         </div> Todos los derechos reservados | © 2021 B1 SOFT
     </div>
 </body>
- <script>
-        function cerrarSession() {
-            
-            $(location).attr('href',"cerrarSession.html")
-    
-         }
-    </script>
+<script>
+    function cerrarSession() {
+
+        $(location).attr('href', "cerrarSession.html")
+
+    }
+</script>
 </html>

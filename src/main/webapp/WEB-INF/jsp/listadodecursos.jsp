@@ -18,8 +18,8 @@
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-        
-        
+
+
         <style>
             /*Estilo header*/
             .body1 {
@@ -94,15 +94,18 @@
                 background-color: #203853;
                 width: 80%;
                 text-align: center;
-                 color: white;
+                color: white;
                 border-collapse: collapse;
-                  border-radius: 15px;
+                border-radius: 15px;
             }
 
             th, td{
 
                 padding: 10px;
 
+            }
+            tr {
+                border: #B15D28 2px solid;
             }
 
             thead{
@@ -142,8 +145,6 @@
         </header>
         <br><br>
         <h1><center>Cursos</center></h1>
-        <br>
-        <br>
         <form id="from1" action="ActualizarCurso.html" method="POST" enctype="multipart/form-data">
             <center>
                 <div class="tablita">
@@ -158,25 +159,25 @@
                             <br>-->
                             <label for="cat"></label>
                             <select name="categoria" id="cat" class="k-textbox">
-                                    <option disabled select>Selecciona una categoria</option>
-                                    <option value="Back-End">Back-End</option>
-                                    <option value="Front-End">Front-End</option>
-                                    <option value="Bases de Datos">Bases de Datos</option>
-                                    <option value="Redes">Redes</option>
-                                    <option value="Seguridad en redes">Seguridad en redes</option>   
-                                    <option value="Otro">Otro</option>
+                                <option disabled select>Selecciona una categoria</option>
+                                <option value="Back-End">Back-End</option>
+                                <option value="Front-End">Front-End</option>
+                                <option value="Bases de Datos">Bases de Datos</option>
+                                <option value="Redes">Redes</option>
+                                <option value="Seguridad en redes">Seguridad en redes</option>   
+                                <option value="Otro">Otro</option>
                             </select>
                             <br>
                             <br>
                             <label for="cara"></label> <input id="cara" type="file" name="caratula"/>
                             <div id="Caratula" style="display:none;">
-                           <!-- <div id="Caratula">-->
+                                <!-- <div id="Caratula">-->
                                 <label for="curid"></label> <input type="text" id="curid" placeholder="Id" name="curid">
                             </div>
                             <br>
                             <br>
                             <input class="submit" type="submit" onclick="alertActualizar()" value="Guardar">
-                            
+
                             <!--<input class="submit" type="submit" value="Guardar"/>-->
                         </div>
                         <br/>
@@ -195,11 +196,11 @@
             </center>
             <br/>
             <script>
-                
-                
-                function alertActualizar(){  
-                    document.querySelector('#from1').addEventListener('submit', function(e) {
-                    
+
+
+                function alertActualizar() {
+                    document.querySelector('#from1').addEventListener('submit', function (e) {
+
                         var form = this;
                         e.preventDefault(); // <--- prevent form from submitting
 
@@ -207,46 +208,46 @@
                             title: "¿Desea Actualizar el Curso?",
                             text: "",
                             icon: "warning",
-                            buttons:{
+                            buttons: {
                                 cancel: "Cancelar",
                                 dangerMode: "Actualizar",
                             },
                         })
-                        .then(function(isConfirm) {
-                            if(isConfirm) {
-                                swal("El Curso se actualizo correctamente", {
-                                    icon: "success",
+                                .then(function (isConfirm) {
+                                    if (isConfirm) {
+                                        swal("El Curso se actualizo correctamente", {
+                                            icon: "success",
+                                        })
+                                                .then(function () {
+                                                    //document.getElementById("from1").submit(); // <--- submit form programmatically
+                                                    Actualizar(Leer());
+                                                    form.submit();
+                                                    console.log("BIEN");
+                                                });
+                                    } else {
+                                        swal("No se actualizo ningun Curso", {
+                                            icon: "error"
+                                        })
+                                    }
                                 })
-                                .then(function() {
-                                    //document.getElementById("from1").submit(); // <--- submit form programmatically
-                                    Actualizar(Leer());
-                                    form.submit();
-                                    console.log("BIEN");
-                                });
-                            } else {
-                                swal("No se actualizo ningun Curso", {
-                                    icon: "error" 
-                                })
-                            }
-                        })                
                     });
                 }
-                
+
                 var Fila = null;
                 let DataForm = {};
-                
-                $(function(){
+
+                $(function () {
                     document.getElementById('formActualizar').style.display = 'none';
-                    
-                    <c:forEach var="cur" items="${cursos}">     
-                        DataForm["id"] = "${cur.idCurso}";  
-                        DataForm["nom"] = "${cur.nombre}";  
-                        DataForm["des"] = "${cur.descripcion}";
-                        DataForm["cat"] = "${cur.categoria}";
-                        InsertarDatos(DataForm); 
-                    </c:forEach>
+
+                <c:forEach var="cur" items="${cursos}">
+                    DataForm["id"] = "${cur.idCurso}";
+                    DataForm["nom"] = "${cur.nombre}";
+                    DataForm["des"] = "${cur.descripcion}";
+                    DataForm["cat"] = "${cur.categoria}";
+                    InsertarDatos(DataForm);
+                </c:forEach>
                 });
-                
+
                 function Leer() {
                     let DataForm = {};
                     DataForm["nom"] = document.getElementById("nom").value;
@@ -254,7 +255,7 @@
                     DataForm["cat"] = document.getElementById("cat").value;
                     return DataForm;
                 }
-                
+
                 function InsertarDatos(data) {
                     let table = document.getElementById("tabla").getElementsByTagName('tbody')[0];
                     let Fila = table.insertRow(table.length);
@@ -262,21 +263,21 @@
                     columna2 = Fila.insertCell(1).innerHTML = data.des;
                     columna3 = Fila.insertCell(2).innerHTML = data.cat;
                     columna4 = Fila.insertCell(3).innerHTML = `
-                                                                <button type="button" class="btn btn-danger" onClick="Borrarr(this,`+data.id+`)">
+                                                                <button type="button" class="btn btn-danger" onClick="Borrarr(this,` + data.id + `)">
                                                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-trash " viewBox="0 0 16 16">
                                                                         <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
                                                                         <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
                                                                     </svg>
                                                                 </button>
                     
-                                                                <button type="button" class="btn btn-success" onClick="Editarr(this,`+data.id+`)" >
+                                                                <button type="button" class="btn btn-success" onClick="Editarr(this,` + data.id + `)" >
                                                                       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-upload" viewBox="0 0 16 16">
                                                                         <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
                                                                         <path d="M7.646 1.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 2.707V11.5a.5.5 0 0 1-1 0V2.707L5.354 4.854a.5.5 0 1 1-.708-.708l3-3z"/>
                                                                       </svg>
                                                                 </button>
         
-                                                                <button type="button" class="btn btn-warning" onClick="agregarModulo(`+data.id+`)">
+                                                                <button type="button" class="btn btn-warning" onClick="agregarModulo(` + data.id + `)">
                                                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
                                                                         <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
                                                                         <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
@@ -285,86 +286,86 @@
                                                                 `;
                     Vaciar();
                 }
-                
+
                 function Vaciar() {
                     document.getElementById("nom").value = "";
                     document.getElementById("des").value = "";
                     document.getElementById("cat").value = "";
                     Fila = null;
                 }
-                
+
                 function Editarr(td, id) {
-                    
+
                     document.getElementById('formActualizar').style.display = 'block';
-                    
+
                     Fila = td.parentElement.parentElement;
-                    
+
                     document.getElementById("nom").value = Fila.cells[0].innerHTML;
                     document.getElementById("des").value = Fila.cells[1].innerHTML;
                     document.getElementById("cat").value = Fila.cells[2].innerHTML;
                     document.getElementById("curid").value = id;
                     document.getElementById("nom").focus();
                 }
-                
-               
-                
+
+
+
                 function Actualizar(DataForm) {
                     Fila.cells[0].innerHTML = DataForm.nom;
                     Fila.cells[1].innerHTML = DataForm.des;
                     Fila.cells[2].innerHTML = DataForm.cat;
-                    
+
                     document.getElementById('formActualizar').style.display = 'none';
                     //document.getElementById("nom").focus();
                     //Vaciar();
                 }
-                
-                    
-                
+
+
+
                 function Borrarr(td, id) {
                     //document.getElementById('enlace').setAttribute('href', "index.html");
                     swal({
-                    title: "¿Desea eliminar el Curso?",
-                    text: "Al realizar esta operacion no se podra revertir",
-                    icon: "warning",
-                    buttons: {
-                       cancel: "Cancelar",
-                       dangerMode: "Eliminar",
-                    },
-                  })
-                  .then((willDelete) => {
-                    if (willDelete) {
-                        row = td.parentElement.parentElement;
-                        document.getElementById("tabla").deleteRow(row.rowIndex);
-                        document.location.href = "borrarCursos.html?CursoE=" + id;
+                        title: "¿Desea eliminar el Curso?",
+                        text: "Al realizar esta operacion no se podra revertir",
+                        icon: "warning",
+                        buttons: {
+                            cancel: "Cancelar",
+                            dangerMode: "Eliminar",
+                        },
+                    })
+                            .then((willDelete) => {
+                                if (willDelete) {
+                                    row = td.parentElement.parentElement;
+                                    document.getElementById("tabla").deleteRow(row.rowIndex);
+                                    document.location.href = "borrarCursos.html?CursoE=" + id;
 
-                      swal("El Curso se elimino correctamente", {
-                        icon: "success",
-                      });
-                    } else {
-                      swal("No se elimino ningun Curso", {
-                         icon: "error" 
-                      });
-                    }
-                  });
-                  
-                  /*
-                    if (confirm('¿Estás Seguro de borrar este módulo?')) {
-                        row = td.parentElement.parentElement;
-                        document.getElementById("tabla").deleteRow(row.rowIndex);
-                        
-                        document.location.href = "borrarCursos.html?CursoE=" + id;
-                        //alert(" Valor a Eliminar => " + row.cells[0].innerHTML);
-                        
-                        Vaciar();
-                    }
-         
-                   */
-                }      
-                
-                function agregarModulo(id){
+                                    swal("El Curso se elimino correctamente", {
+                                        icon: "success",
+                                    });
+                                } else {
+                                    swal("No se elimino ningun Curso", {
+                                        icon: "error"
+                                    });
+                                }
+                            });
+
+                    /*
+                     if (confirm('¿Estás Seguro de borrar este módulo?')) {
+                     row = td.parentElement.parentElement;
+                     document.getElementById("tabla").deleteRow(row.rowIndex);
+                     
+                     document.location.href = "borrarCursos.html?CursoE=" + id;
+                     //alert(" Valor a Eliminar => " + row.cells[0].innerHTML);
+                     
+                     Vaciar();
+                     }
+                     
+                     */
+                }
+
+                function agregarModulo(id) {
                     document.location.href = "actualizarmodulos.html?CursoE=" + id;
                 }
-                
+
             </script>
         </form>  
         <br/>
@@ -389,17 +390,17 @@
                     <a href='https://www.google.com/intl/es-419/gmail/about/#' target='_blank'><img HSPACE='10'
                                                                                                     src='https://img.icons8.com/ios-filled/24/000000/gmail-login.png' title='' /></a>
                     <a href='https://www.youtube.com/' target='_blank'><img HSPACE='10'
-                                                                           src=' https://img.icons8.com/metro/26/000000/youtube.png' title='' /></a>
+                                                                            src=' https://img.icons8.com/metro/26/000000/youtube.png' title='' /></a>
                 </a>
             </center>
         </div> Todos los derechos reservados | © 2021 B1 SOFT
     </div>
 </body>
- <script>
-        function cerrarSession() {
-            
-            $(location).attr('href',"cerrarSession.html")
-    
-         }
-    </script>
+<script>
+    function cerrarSession() {
+
+        $(location).attr('href', "cerrarSession.html")
+
+    }
+</script>
 </html>
