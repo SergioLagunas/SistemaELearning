@@ -68,24 +68,14 @@
                 <!--<a class="cta" href="index.html"><button>Cerrar sesión</button></a>-->
             </div>
         </header>
-        <br><br>
 
-        <!--Kendo TOOLBAR-->
-        <div id="toolbar"></div>
-
-
-        <section id="pantallaDiv" th:>
-            <div class="derecho">
                 <center><h1>Bienvenido</h1></center>
                 <center><h2>Curso de <c:out value="${detacurso.nombre}"></c:out></h2></center>
                 <center><p><c:out value="${detacurso.descripcion}"></c:out></p></center>
                     <br>
                     <br>
                     <center><button class="botoncurso">Ver recursos</button></center>
-                </div>
-            </section>
 
-            <!--Kendo VideoEnlace-->
             <br />
             <br />
 
@@ -99,7 +89,7 @@
                 <script type="text/javascript">
                     $(document).ready(function () {
                         $("#mediaplayer").kendoMediaPlayer({
-                            autoPlay: true,
+                            autoPlay: false,
                         });
 
                         var videos = new kendo.data.DataSource({
@@ -134,6 +124,7 @@
                         }
                     });
             </script>
+
             <script type="text/x-kendo-template" id="template">
                 <li class="k-item k-state-default" onmouseover="$(this).addClass('k-state-hover')"
                 onmouseout="$(this).removeClass('k-state-hover')">
@@ -143,6 +134,7 @@
                 </span>
                 </li>
             </script>
+
             <style>
                 .k-mediaplayer {
                     float: left;
