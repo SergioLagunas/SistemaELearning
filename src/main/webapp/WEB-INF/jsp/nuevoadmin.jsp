@@ -22,7 +22,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
-        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
         <style>
             /*Estilo header*/
@@ -242,32 +242,43 @@
             <br/>
             <script>
 
-                function confirm(id) {
+                function confirm(id){
 
-                    swal({
-                        title: "¿Desea eliminar el Administrador?",
-                        text: "Al realizar esta operacion no se podra revertir",
-                        icon: "warning",
-                        buttons: {
-                            cancel: "Cancelar",
-                            dangerMode: "Eliminar",
-                        },
-                    })
-                            .then((willDelete) => {
-                                if (willDelete) {
-                                    document.location.href = "eliminarAdmin.html?idUsuario=" + id;
-                                    swal("El Administrador se elimino correctamente", {
-                                        icon: "success",
-                                    });
-                                } else {
-                                    swal("No se elimino ningun Administrador", {
-                                        icon: "error"
-                                    });
-                                }
-                            });
+                      Swal.fire({
+                        title: '¿Estas seguro de eliminar el Administrador?',
+                        text: "Si se elimina no se podra revertir",
+                        icon: 'warning',
+                        iconColor: '#B15D28' ,
+                        showCancelButton: true,
+                        confirmButtonText: 'Eliminar',
+                        confirmButtonColor: '#203853' ,
+                        cancelButtonColor: '#B15D28' ,
+                        cancelButtonText: 'Cancelar',
+                        reverseButtons: true
+                      }).then((result) => {
+                        if (result.isConfirmed) {
+                            document.location.href = "eliminarAdmin.html?idUsuario=" + id;
+                            Swal.fire({
+                            title: '¡Eliminado!',
+                            text: 'Se elimino el Administrador',
+                            icon: 'success',
+                            iconColor: '#203853' ,
+                            confirmButtonColor: '#B15D28' 
+                        })
+                        } else if (
+                          /* Read more about handling dismissals below*/
+                          result.dismiss === Swal.DismissReason.cancel
+                        ) {
+                          Swal.fire({
+                           title: '¡Cancelado!',
+                           text: 'No se elimino ningun Administrador',
+                           icon: 'error',
+                           iconColor: '#B15D28',
+                           confirmButtonColor: '#203853'
+                        })
+                        }
+                      })
                 }
-
-
 
                 var Fila = null
                 function onSubmit() {

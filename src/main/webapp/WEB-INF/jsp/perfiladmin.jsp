@@ -16,7 +16,7 @@
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/header.css" />
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
-        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <style>
             body {
                 font-family: 'Varela Round', sans-serif;
@@ -135,34 +135,44 @@
                     <center><input class="btn-guardar" type="submit" onclick="alertActualizar()" value="Guardar"></center>
                     
                     <script>
-                    function alertActualizar(){  
+                        function alertActualizar(){  
                             document.querySelector('#from3').addEventListener('submit', function(e) {
 
                                 var form = this;
                                 e.preventDefault(); // <--- prevent form from submitting
 
-                                swal({
-                                    title: "¿Desea Actualizar sus Datos?",
-                                    text: "",
-                                    icon: "warning",
-                                    buttons:{
-                                        cancel: "Cancelar",
-                                        dangerMode: "Actualizar",
-                                    },
+                                Swal.fire({
+                                title: '¿Quieres Actualizar los datos?',
+                                icon: 'warning',
+                                iconColor: '#B15D28' ,
+                                showCancelButton: true,
+                                confirmButtonText: 'Actualizar',
+                                confirmButtonColor: '#203853' ,
+                                cancelButtonColor: '#B15D28' ,
+                                cancelButtonText: 'Cancelar',
+                                reverseButtons: true
                                 })
-                                .then(function(isConfirm) {
-                                    if(isConfirm) {
-                                        swal("Los datos se actualizaron correctamente", {
-                                            icon: "success",
+                                .then((result) => {
+                                    if(result.isConfirmed){
+                                        Swal.fire({
+                                            title: '¡Actualizado!',
+                                            text: 'Se Actualizaron los datos',
+                                            icon: 'success',
+                                            iconColor: '#203853' ,
+                                            confirmButtonColor: '#B15D28' 
                                         })
                                         .then(function() {
                                             //document.getElementById("from1").submit(); // <--- submit form programmatically
                                             form.submit();
                                             console.log("BIEN");
                                         });
-                                    } else {
-                                        swal("No se actualizo ningun dato", {
-                                            icon: "error" 
+                                    } else if(result.dismiss === Swal.DismissReason.cancel) {
+                                        Swal.fire({
+                                            title: '¡Cancelado!',
+                                            text: 'No se actualizo ningun dato',
+                                            icon: 'error',
+                                            iconColor: '#B15D28',
+                                            confirmButtonColor: '#203853'
                                         })
                                     }
                                 })                

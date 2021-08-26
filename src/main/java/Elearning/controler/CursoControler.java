@@ -97,14 +97,14 @@ public class CursoControler {
         mo.setViewName("exito");
         return mo;
     }
-    
+    /*
     @RequestMapping(value = "error.html", method = RequestMethod.GET)
     public ModelAndView error() {
         ModelAndView mo = new ModelAndView();
         mo.setViewName("error");
         return mo;
     }
-    
+    */
     /*@RequestMapping(value = "exito.html", method = RequestMethod.GET)
     public String exito(@RequestParam(name="DirigirP", required=false, defaultValue="listadodecursos") String DirigirP, Model model) {
         DirigirP = "listadodecursos";
