@@ -22,7 +22,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
-        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
         <style>
             /*Estilo header*/
@@ -217,25 +217,25 @@
                                 <th>Opciones</th>
                             </tr>
                         </thead>
-                            <c:forEach items="${administradores}" var="admin">
-                                <tr>
-                                    <td><c:out value="${admin.nombre}"></c:out></td>
-                                    <td><c:out value="${admin.aPaterno}"></c:out></td>
-                                    <td><c:out value="${admin.aMaterno}"></c:out></td>
-                                    <td><c:out value="${admin.email}"></c:out></td>
-                                    <td><c:out value="${admin.rfc}"></c:out></td>
-                                        <td>
-                                            <a  onclick="return confirm(${admin.idUsuario});"  >
-                                            <button type="button"  class="btn btn-danger"  >
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-trash " viewBox="0 0 16 16">
-                                                <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
-                                                <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
-                                                </svg>
-                                            </button>
-                                        </a>
-                                    </td>
-                                </tr>
-                            </c:forEach>
+                        <c:forEach items="${administradores}" var="admin">
+                            <tr>
+                                <td><c:out value="${admin.nombre}"></c:out></td>
+                                <td><c:out value="${admin.aPaterno}"></c:out></td>
+                                <td><c:out value="${admin.aMaterno}"></c:out></td>
+                                <td><c:out value="${admin.email}"></c:out></td>
+                                <td><c:out value="${admin.rfc}"></c:out></td>
+                                    <td>
+                                        <a  onclick="return confirm(${admin.idUsuario});"  >
+                                        <button type="button"  class="btn btn-danger"  >
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-trash " viewBox="0 0 16 16">
+                                            <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                                            <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                                            </svg>
+                                        </button>
+                                    </a>
+                                </td>
+                            </tr>
+                        </c:forEach>
                     </table>
                 </div>
             </center>
@@ -244,27 +244,40 @@
 
                 function confirm(id) {
 
-                    swal({
-                        title: "¿Desea eliminar el Administrador?",
-                        text: "Al realizar esta operacion no se podra revertir",
-                        icon: "warning",
-                        buttons: {
-                            cancel: "Cancelar",
-                            dangerMode: "Eliminar",
-                        },
+                    Swal.fire({
+                        title: '¿Estas seguro de eliminar el Administrador?',
+                        text: "Si se elimina no se podra revertir",
+                        icon: 'warning',
+                        iconColor: '#B15D28',
+                        showCancelButton: true,
+                        confirmButtonText: 'Eliminar',
+                        confirmButtonColor: '#203853',
+                        cancelButtonColor: '#B15D28',
+                        cancelButtonText: 'Cancelar',
+                        reverseButtons: true
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            document.location.href = "eliminarAdmin.html?idUsuario=" + id;
+                            Swal.fire({
+                                title: '¡Eliminado!',
+                                text: 'Se elimino el Administrador',
+                                icon: 'success',
+                                iconColor: '#203853',
+                                confirmButtonColor: '#B15D28'
+                            })
+                        } else if (
+                                /* Read more about handling dismissals below*/
+                                result.dismiss === Swal.DismissReason.cancel
+                                ) {
+                            Swal.fire({
+                                title: '¡Cancelado!',
+                                text: 'No se elimino ningun Administrador',
+                                icon: 'error',
+                                iconColor: '#B15D28',
+                                confirmButtonColor: '#203853'
+                            })
+                        }
                     })
-                            .then((willDelete) => {
-                                if (willDelete) {
-                                    document.location.href = "eliminarAdmin.html?idUsuario=" + id;
-                                    swal("El Administrador se elimino correctamente", {
-                                        icon: "success",
-                                    });
-                                } else {
-                                    swal("No se elimino ningun Administrador", {
-                                        icon: "error"
-                                    });
-                                }
-                            });
                 }
 
 

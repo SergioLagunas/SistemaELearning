@@ -21,7 +21,8 @@
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
-        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
         <style>
             /*Estilo header*/
             .body1 {
@@ -245,28 +246,40 @@
             <script>
                 function confirm(id) {
 
-                    swal({
-                        title: "¿Desea eliminar el Semillero?",
-                        text: "Al realizar esta operacion no se podra revertir",
-                        icon: "warning",
-                        buttons: {
-                            cancel: "Cancelar",
-                            dangerMode: "Eliminar",
-                        },
+                    Swal.fire({
+                        title: '¿Estas seguro de eliminar el Semillero?',
+                        text: "Si se elimina no se podra revertir",
+                        icon: 'warning',
+                        iconColor: '#B15D28',
+                        showCancelButton: true,
+                        confirmButtonText: 'Eliminar',
+                        confirmButtonColor: '#203853',
+                        cancelButtonColor: '#B15D28',
+                        cancelButtonText: 'Cancelar',
+                        reverseButtons: true
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            document.location.href = "eliminarSemillero.html?idUsuario=" + id;
+                            Swal.fire({
+                                title: '¡Eliminado!',
+                                text: 'Se elimino el Semillero',
+                                icon: 'success',
+                                iconColor: '#203853',
+                                confirmButtonColor: '#B15D28'
+                            })
+                        } else if (
+                                /* Read more about handling dismissals below*/
+                                result.dismiss === Swal.DismissReason.cancel
+                                ) {
+                            Swal.fire({
+                                title: '¡Cancelado!',
+                                text: 'No se elimino ningun Semillero',
+                                icon: 'error',
+                                iconColor: '#B15D28',
+                                confirmButtonColor: '#203853'
+                            })
+                        }
                     })
-                            .then((willDelete) => {
-                                if (willDelete) {
-                                    document.location.href = "eliminarSemillero.html?idUsuario=" + id;
-
-                                    swal("El Semillero se elimino correctamente", {
-                                        icon: "success",
-                                    });
-                                } else {
-                                    swal("No se elimino ningun Semillero", {
-                                        icon: "error"
-                                    });
-                                }
-                            });
                 }
 
                 var Fila = null
