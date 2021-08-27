@@ -100,6 +100,16 @@
                 border: none;
                 cursor: pointer;
             }
+            .btnCS{
+                padding: 7px 25px;
+                background-color: #B15D28;
+                color: black;
+                border-radius: 5px;
+                border: none;
+                cursor: pointer;
+                transition: all 0.3s ease 0s;
+            }
+
             table{
                 background-color: #203853;
                 width: 80%;
