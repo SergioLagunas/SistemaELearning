@@ -152,26 +152,26 @@
                 </script>
                 <style>
                     .photo1 {
-                        background-image: url("${pageContext.request.contextPath}/resources/imagenes/1-c.png");
+                        background-image: url("${pageContext.request.contextPath}/resources/imagenes/s-1.png");
                     }
                     .photo2 {
-                        background-image: url("${pageContext.request.contextPath}/resources/imagenes/2-c.png");
+                        background-image: url("${pageContext.request.contextPath}/resources/imagenes/s-2.png");
                     }
 
                     .photo3 {
-                        background-image: url("${pageContext.request.contextPath}/resources/imagenes/3-c.png");
+                        background-image: url("${pageContext.request.contextPath}/resources/imagenes/s-3.png");
                     }
 
                     .photo4 {
-                        background-image: url("${pageContext.request.contextPath}/resources/imagenes/4-c.png");
+                        background-image: url("${pageContext.request.contextPath}/resources/imagenes/s-4.png");
                     }
 
                     .photo5 {
-                        background-image: url("${pageContext.request.contextPath}/resources/imagenes/5-c.png");
+                        background-image: url("${pageContext.request.contextPath}/resources/imagenes/s-5.png");
                     }
 
                     .photo6 {
-                        background-image: url("${pageContext.request.contextPath}/resources/imagenes/6-c.png");
+                        background-image: url("${pageContext.request.contextPath}/resources/imagenes/s-6.png");
                     }
 
                 </style>
