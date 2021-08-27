@@ -56,7 +56,7 @@ public class HomeController {
                 mo.setViewName("admin");
                 break;
             default:
-                mo.setViewName("redirect:/index.html");
+                mo.setViewName("error");
                 break;
         }
          return mo;
@@ -88,14 +88,6 @@ public class HomeController {
         mo.setViewName("redirect:/index.html");
         return mo;
     }
-    //Controlador para denegar acceso a usuarios de paginas de adminsitrador 
-    @RequestMapping(name="noAutorizado.html")
-    public ModelAndView noAutorizado(HttpServletRequest request, HttpServletResponse response, FilterChain chain ){
-         ModelAndView mo = new ModelAndView();
-         HttpSession session = request.getSession();
-         return mo;
-    }
-    
     
     @RequestMapping("error.html")
     public ModelAndView error(){

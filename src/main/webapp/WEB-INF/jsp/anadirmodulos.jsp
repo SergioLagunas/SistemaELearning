@@ -1,9 +1,3 @@
-<%-- 
-    Document   : añadirmodulos
-    Created on : 23-jul-2021, 16:38:59
-    Author     : Karina Romero
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
@@ -167,7 +161,7 @@
                 </form>
             </div>
             <div id="DivActualizar" class="caja">
-                <form id="formActualizar" action="ActualizarModulo.html" method="POST" enctype="multipart/form-data">
+                <form id="formActualizar" action="ActualizarModulo.html?VistaA=1" method="POST" enctype="multipart/form-data">
                     <label for="nom"></label> <input type="text" name="titulo" id="nomAc" placeholder="Nombre" required>
                     <br> 
                     <label for="des"></label> <input type="text" name="descripcion" id="desAc" placeholder="Descripcion" required>
@@ -180,6 +174,7 @@
                     <br>
                     <br>
                     <input class="submit" type="submit" onclick="alertActualizar()" value="Actualizar">
+                    
                 </form>
             </div>
             <br>
@@ -378,7 +373,7 @@
                         }).then(function() {
                             row = td.parentElement.parentElement;
                             document.getElementById("tabla").deleteRow(row.rowIndex);
-                            document.location.href = "borrarModulo.html?ModuloE=" + id;
+                            document.location.href = "borrarModulo.html?ModuloE=" + id + "&VistaB=1";
                         });
                     } else {
                         swal.fire({

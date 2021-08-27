@@ -21,7 +21,7 @@ public interface ModuloService {
     public String readModuloActualizar(int idCurso, Model model);
     public ModelAndView createNewModulo(ModuloModel moduloM);
     public String anadirModulos(int idCurso, String titulo,String descripcion, MultipartFile url);
-    public String updateModulo(int idModulo,String titulo,String descripcion, MultipartFile url);
+    public String updateModulo(int Vista,int idModulo,String titulo,String descripcion, MultipartFile url);
     public boolean deleteModulo(int idModulo);
     
 }

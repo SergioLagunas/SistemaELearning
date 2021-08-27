@@ -41,6 +41,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Service("ModuloService")
 public class ModuloServiceImpl implements ModuloService {
 
+  
     @Autowired
     private ModuloDao moduloDao;
 
@@ -100,9 +101,10 @@ public class ModuloServiceImpl implements ModuloService {
     // solo lista los videos del curso 
     @Override
     public String readModuloActualizar(int idCurso, Model model) {
+        System.out.println("ID Curso: " + idCurso);
         Curso curso = new Curso();
         curso = cursoDao.getCurso(idCurso);
-        model.addAttribute("modulos", moduloDao.findbyCurso(idCurso));
+        model.addAttribute("modulosAc", moduloDao.findbyCurso(idCurso));
         return "actualizarmodulos";
     }
 
@@ -128,8 +130,8 @@ public class ModuloServiceImpl implements ModuloService {
                 entidad = moduloDao.create(entidad);
                 mo.setViewName("redirect:/anadirmodulos.html");
             } else {
-                System.out.println("Error al crear la Url de DropBox");
                 mo.setViewName("primerosmodulos.html");
+                System.out.println("Error al crear la Url de DropBox");
                 return mo;
             }
         } catch (Exception e) {
@@ -151,6 +153,7 @@ public class ModuloServiceImpl implements ModuloService {
           if(!url.isEmpty()){
               updateMultimedia.setUrl(url);
               String enlace = guardarDropBox(updateMultimedia);
+            
               entidad.setTitulo(titulo);
               entidad.setDescripcion(descripcion);
               entidad.setUrl(enlace);
@@ -158,7 +161,7 @@ public class ModuloServiceImpl implements ModuloService {
               cursoentidad.addModulos(entidad);
               entidad = moduloDao.create(entidad);
               System.out.println("El video se Guardo correctamente y ya esta creada la url de DropBox");
-              return "redirect:/actualizarmodulos.html";
+              return "redirect:/actualizarmodulos.html?CursoE="+cursoentidad.getIdCurso();
           }else{ 
               System.out.println("Error al crear la Url de DropBox");
               return "error";
@@ -171,10 +174,12 @@ public class ModuloServiceImpl implements ModuloService {
     }
 
     @Override
-    public String updateModulo(int idModulo, String titulo, String descripcion, MultipartFile url) {
+    public String updateModulo(int Vista, int idModulo, String titulo, String descripcion, MultipartFile url) {
         ModuloModel updateMultimedia = new ModuloModel();
         Modulo updatemodulo = new Modulo();
         updatemodulo = moduloDao.getModulo(idModulo);
+        Curso curso = new Curso();
+        curso = updatemodulo.getIdCurso();
         try {
             if (!url.isEmpty()) {
                 updateMultimedia.setUrl(url);
@@ -185,7 +190,11 @@ public class ModuloServiceImpl implements ModuloService {
                 updatemodulo.setUrl(enlaceNuevo);
                 updatemodulo = moduloDao.update(updatemodulo);
                 System.out.println("Modulo Actualizado con nueva url");
-                return "redirect:/anadirmodulos.html";
+                if(Vista == 1){
+                    return "redirect:/anadirmodulos.html";
+                } else {
+                    return "redirect:/actualizarmodulos.html?CursoE="+curso.getIdCurso();
+                }       
 
             } else {
                 updatemodulo.setTitulo(titulo);
@@ -193,7 +202,11 @@ public class ModuloServiceImpl implements ModuloService {
                 updatemodulo.setUrl(updatemodulo.getUrl());
                 updatemodulo = moduloDao.update(updatemodulo);
                 System.out.println("Modulo actualizado sin url nueva");
-                return "redirect:/anadirmodulos.html";
+                if(Vista == 1){
+                    return "redirect:/anadirmodulos.html";
+                } else {
+                    return "redirect:/actualizarmodulos.html?CursoE="+curso.getIdCurso();
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();

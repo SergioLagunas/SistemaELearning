@@ -5,7 +5,10 @@
  */
 package Elearning.controler;
 
+import Elearning.dao.ModuloDao;
+import Elearning.dao.impl.ModuloDaoImpl;
 import Elearning.modelo.Curso;
+import Elearning.modelo.Modulo;
 import Elearning.modelo.formModel.ModuloModel;
 import Elearning.service.ModuloService;
 import java.lang.reflect.Method;
@@ -30,6 +33,11 @@ public class ModuloControler {
 
     @Autowired
     private ModuloService moduloService;
+    
+    @Autowired
+    private ModuloDao moduloDao;
+
+     int IDCurso = 0;
 
     @RequestMapping(value = "addModulo.html", method = RequestMethod.POST)
     public ModelAndView addModulo(@ModelAttribute ModuloModel moduloM) {
@@ -47,20 +55,23 @@ public class ModuloControler {
         return moduloService.readModuloMoment(model);
     }
 
-    //este es la paguina para agregar mas modulos si se desea una ves acabando de crear el curso
+    //este es la pagina para agregar mas modulos si se desea una vez acabando de crear el curso
     @RequestMapping(value = "actualizarmodulos.html", method = RequestMethod.GET)
-    public String actualizarModulos(@RequestParam("CursoE") int Curso, Model model) {
-        return moduloService.readModuloActualizar(Curso, model);
+    public String actualizarModulos(@RequestParam("CursoE")int idCurso, Model model) {
+        IDCurso = idCurso;
+        return moduloService.readModuloActualizar(idCurso, model);
     }
 
     //Para el crud que esta al insertar los modulos boton actualizar 
     @RequestMapping(value = "ActualizarModulo.html", method = RequestMethod.POST)
     public String actualizarModulo(
+            @RequestParam("VistaA") int VistaA,
             @RequestParam("titulo") String titulo,
             @RequestParam("descripcion") String descripcion,
             @RequestParam("url") MultipartFile url,
             @RequestParam("moduid") int idModulo) {
-        return moduloService.updateModulo(idModulo, titulo, descripcion, url);
+        System.out.println("VistaA: " + VistaA);
+        return moduloService.updateModulo(VistaA, idModulo, titulo, descripcion, url);
     }
 
     //Este es del Crud para insertar mas modulos una ves que el curso ya fue creado
@@ -68,30 +79,40 @@ public class ModuloControler {
     public String anadirModulos(
             @RequestParam("titulo") String titulo,
             @RequestParam("descripcion") String descripcion,
-            @RequestParam("url") MultipartFile url,
-            @RequestParam("curid") int idCurso) {
-        return moduloService.anadirModulos(idCurso, titulo, descripcion, url);
+            @RequestParam("url") MultipartFile url) {
+        return moduloService.anadirModulos(IDCurso, titulo, descripcion, url);
     }
 
     @RequestMapping(value = "borrarModulo.html", method = RequestMethod.GET)
-    public ModelAndView listadodecursos(@RequestParam("ModuloE") int ModuloE, Model model) {
+    public ModelAndView listadodecursos(@RequestParam("ModuloE") int ModuloE, @RequestParam("VistaB") int VistaB ,Model model) {
         ModelAndView mo = new ModelAndView();
-
+        Curso curso = new Curso();
+        Modulo mod = new Modulo();
+        
+        mod = moduloDao.getModulo(ModuloE);
+        curso = mod.getIdCurso();
+     
         if (moduloService.deleteModulo(ModuloE)) {
             System.out.println("Se elimino el modulo con ID: " + ModuloE);
-            mo.setViewName("redirect:/anadirmodulos.html");
+            if(VistaB == 1){
+                    mo.setViewName("redirect:/anadirmodulos.html");
+                } else {
+                    mo.setViewName("redirect:/actualizarmodulos.html?CursoE="+curso.getIdCurso());
+                }
         } else {
             System.out.println("No se ha borrado el modulo...");
-            mo.setViewName("redirect:/error.html");
+            //checar si si redirecciona bien a esta paguina 
+            mo.setViewName("redirect:/actualizarmodulos.html?CursoE="+curso.getIdCurso());
         }
 
         return mo;
     }
     
-    //Vistas de error Modulo
+     //Vistas de error Modulo
     @RequestMapping(value = "primerosmodulos.html")
     public String errorMo(){
         return "primerosmodulos";
     }
+
 
 }

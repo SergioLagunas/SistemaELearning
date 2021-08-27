@@ -230,10 +230,10 @@ public class UsuarioServiceImpl implements UsuarioService {
                 session.setAttribute("tUsuario", rol);
                 return rol;
             } else {
-                return "error";
+                return "errorL";
             }
         }else{
-            return "error";
+            return "errorL";
         }
     }
 

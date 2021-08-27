@@ -139,7 +139,7 @@
             <form id="form" action="addArchivos.html" method="POST" enctype="multipart/form-data">
                 <label for="nom"></label> <input type="text" name="nombre" id="nom" placeholder="Nombre" required>
                 <br>
-                <label for="arch"></label> <input type="file" id="arch" name="archivo" required>
+                <label for="arch"></label> <input type="file" id="arch" name="archivo" required accept=".pdf,.txt,.docx,.xlsx,.pptx">
                 <br>
                 <br>
                 <input class="submit" type="submit" onclick="alertAgregar()" value="Agregar">
@@ -153,7 +153,7 @@
                 <label for="arc"></label> <input type="file" id="archAc" name="archivo">
                 <div id="Divid" style="display:none;">
                     <!--<div id="Divid">-->
-                    <label for="moduid"></label> <input type="text" id="moduid" placeholder="Id" name="archid">
+                    <label for="moduid"></label> <input type="text" id="moduid" placeholder="Id" name="archid" accept=".pdf,.txt,.docx,.xlsx,.pptx">
                 </div>
                 <br>
                 <br>
