@@ -69,7 +69,7 @@
             }
 
             input[type="submit"]{
-                padding: 9px 25px;
+                padding: 7px 25px;
                 width: 10%;
                 margin-bottom: 0;
                 background: #B15D28;
@@ -80,6 +80,16 @@
             }
             .btnCS{
                 padding: 9px 25px;
+                background-color: #B15D28;
+                color: black;
+                border-radius: 5px;
+                border: none;
+                cursor: pointer;
+                transition: all 0.3s ease 0s;
+            }
+            
+            .btnCR{
+                padding: 7px 25px;
                 background-color: #B15D28;
                 color: black;
                 border-radius: 5px;
@@ -179,7 +189,7 @@
                     <br>
                     <br>
                     <input class="submit" type="submit" onclick="alertActualizar()" value="Actualizar">
-                    
+                    <a class="btnCR" href="anadirmodulos.html">Cancelar</a>
                 </form>
             </div>
             <br>
