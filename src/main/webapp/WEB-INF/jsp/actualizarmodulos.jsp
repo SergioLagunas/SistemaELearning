@@ -151,6 +151,10 @@
                 background-color: #272727;
                 color: white;
             }
+             #nomAc, #desAc, #archAc{
+                background-color: #272727;
+                color: white;
+            }
 
         </style>
     </head>

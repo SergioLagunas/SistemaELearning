@@ -77,6 +77,15 @@
                 border: none;
                 cursor: pointer;
             }
+            .btnCR{
+                padding: 7px 25px;
+                background-color: #B15D28;
+                color: black;
+                border-radius: 5px;
+                border: none;
+                cursor: pointer;
+                transition: all 0.3s ease 0s;
+            }
             table{
                 background-color: #203853;
                 width: 80%;
@@ -143,7 +152,7 @@
                 <br>
                 <br>
                 <input class="submit" type="submit" onclick="alertAgregar()" value="Agregar">
-                <a class="btnCS" href="anadirmodulos.html">Regresar</a>
+                <a class="btnCR" href="actualizarmodulos.html">Cancelar</a>
             </form>
         </div>
         <div id="DivActualizar" class="caja">
