@@ -171,45 +171,16 @@
         <br><br>
 
         <h1><center>Semilleros</center></h1>
-        <br>
-        <br>
-
         <form autocomplete="off" method="POST" action="addAdministrador.html">
             <center>
                 <div class="tablita">
                     <table class="tabla" id="tabla">
                         <tbody>
-                        <div class="caja">
-                            <label for="nom"></label> <input type="text" id="nom" placeholder=" Nombre" required name="nombre">
-
-                            <label for="apeP"></label> <input type="text" id="apeP" placeholder=" Apellido paterno" required name="aPaterno">
-                            <br>
-                            <label for="apeM"></label> <input type="text" id="apeM" placeholder=" Apellido materno" required name="aMaterno">
-
-
-                            <select  name="genero" id="gen">
-                                <option disabled selected value="g"> Género:</option>
-                                <option disabled="">Selecciona una opción:</option>
-                                <option value="Femenino">Femenino</option>
-                                <option value="Masculino">Masculino</option>
-                            </select>
-                            <br>
-                            <label for="RFC"></label> <input type="text" id="RFC" placeholder=" RFC" required name="rfc">
-
-                            <label for="email"></label> <input type="text" id="cont" placeholder=" Correo" required name="email">
-                            <br>
-                            <label for="contrasena"></label> <input type="password" id="cont" placeholder=" Contraseña" required name="contrasena">
-
-
-                            <br>
-
-                            <input class="submit" type="submit" value="Actualizar">
-                        </div>
-                        <br/>
+                            
                         </tbody>
                         <br/>
                         <thead>
-                            <tr > 
+                            <tr> 
                                 <th>Nombre</th> 
                                 <th>Apellido Paterno</th>
                                 <th>Apellido Materno</th>
