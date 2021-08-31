@@ -76,6 +76,8 @@
                 <prop key="addArchivos.html">archivoControler</prop>
                 <prop key="updateArchivo.html">archivoControler</prop>
                 <prop key="deleteArchivo.html">archivoControler</prop>
+                <prop key="anadirArchivos.html">archivoControler</prop>
+                <prop key="anadirNuevosarchivos.html">archivoControler</prop>
             </props>
         </property>
     </bean>

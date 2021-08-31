@@ -26,16 +26,23 @@ public class ArchivoServiceImpl implements ArchivoService {
 
     @Autowired
     private ArchivoDao archivoDao;
-    
+
     @Override
     public String readArchivoMoment(Model model) {
-         int curso = CursoServiceImpl.elcurso;
+        int curso = CursoServiceImpl.elcurso;
         System.out.println("Listando Archivos de Curso: " + curso);
         model.addAttribute("archivos", archivoDao.findbyCurso(curso));
         return "anadirarchivos";
     }
-    
 
+    @Override
+    public String readArchivoActualizar(int idCurso, Model model) {
+        System.out.println("idCurso: " + idCurso);
+        model.addAttribute("archivosAc", archivoDao.findbyCurso(idCurso));
+        return "redirect:/anadirNuevosarchivos.html";
+    }
+
+    //Agregar Archivos al crar un curso por primera ves 
     @Override
     public String createArchivo(ArchivoModel Archivo) {
         int curso = CursoServiceImpl.elcurso;
@@ -64,11 +71,43 @@ public class ArchivoServiceImpl implements ArchivoService {
 
     }
 
+    //Agregar mas Archivos despues de crear el Curso
     @Override
-    public String updateArchivo(int idArchivo, String nombre, MultipartFile archivo) {
+    public String anadirArchivos(int idCurso, String nombre, MultipartFile archivo) {
+        Curso cursoentidad = new Curso();
+        Archivo masArchivos = new Archivo();
+        ArchivoModel am = new ArchivoModel();
+        cursoentidad = cursoDao.getCurso(idCurso);
+        try {
+            if (!archivo.isEmpty()) {
+                am.setArchivo(archivo);
+                String enlace = guardarDropBox(am);
+                masArchivos.setNombre(nombre);
+                masArchivos.setArchivo(enlace);
+
+                cursoentidad.addArchivos(masArchivos);
+                masArchivos = archivoDao.create(masArchivos);
+                System.out.println("El Archivo se Guardo correctamente y ya esta creada la url de DropBox");
+                return "redirect:/anadirNuevosarchivos.html?CursoE=" + cursoentidad.getIdCurso();
+            } else {
+                System.out.println("Error al crear la Url de DropBox");
+                return "error";
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            Logger.getLogger(ArchivoServiceImpl.class.getName()).log(Level.SEVERE, null, e);
+            return "error";
+        }
+    }
+
+    @Override
+    public String updateArchivo(int Vista, int idArchivo, String nombre, MultipartFile archivo) {
         ArchivoModel updateMultimedia = new ArchivoModel();
         Archivo updateArchivo = new Archivo();
         updateArchivo = archivoDao.getArchivo(idArchivo);
+        Curso curso = new Curso();
+        curso = updateArchivo.getIdCurso();
         try {
             if (!archivo.isEmpty()) {
                 updateMultimedia.setArchivo(archivo);
@@ -78,13 +117,21 @@ public class ArchivoServiceImpl implements ArchivoService {
                 updateArchivo.setArchivo(enlaceNuevo);
                 updateArchivo = archivoDao.update(updateArchivo);
                 System.out.println("Archivo Actualizado con URL nueva");
-                return "redirect:/anadirarchivos.html";
+                if (Vista == 1) {
+                    return "redirect:/anadirarchivos.html";
+                } else {
+                    return "redirect:/anadirNuevosarchivos.html?CursoE=" + curso.getIdCurso();
+                }
             } else {
                 updateArchivo.setNombre(nombre);
                 updateArchivo.setArchivo(updateArchivo.getArchivo());
                 updateArchivo = archivoDao.update(updateArchivo);
                 System.out.println("Archivo Actualizado sin url nueva");
-                return "redirect:/anadirarchivos.html";
+                if (Vista == 1) {
+                    return "redirect:/anadirarchivos.html";
+                } else {
+                    return "redirect:/anadirNuevosarchivos.html?CursoE=" + curso.getIdCurso();
+                }
             }
 
         } catch (Exception e) {
