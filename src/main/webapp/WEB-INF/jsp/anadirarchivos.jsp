@@ -156,7 +156,7 @@
             </form>
         </div>
         <div id="DivActualizar" class="caja">
-            <form id="formActualizar" action="updateArchivo.html" method="POST" enctype="multipart/form-data">
+            <form id="formActualizar" action="updateArchivo.html?VistaA=1" method="POST" enctype="multipart/form-data">
                 <label for="nom"></label> <input type="text" name="nombre" id="nomAc" placeholder="Nombre" required>
                 <br>
                 <label for="arc"></label> <input type="file" id="archAc" name="archivo">
@@ -357,7 +357,7 @@
                             }).then(function () {
                                 row = td.parentElement.parentElement;
                                 document.getElementById("tabla").deleteRow(row.rowIndex);
-                                document.location.href = "deleteArchivo.html?ArchivoE=" + id;
+                                document.location.href = "deleteArchivo.html?ArchivoE=" + id+ "&VistaB=1";
                             });
                         } else {
                             swal.fire({

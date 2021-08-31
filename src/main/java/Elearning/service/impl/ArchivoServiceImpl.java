@@ -38,8 +38,8 @@ public class ArchivoServiceImpl implements ArchivoService {
     @Override
     public String readArchivoActualizar(int idCurso, Model model) {
         System.out.println("idCurso: " + idCurso);
-        model.addAttribute("archivosAc", archivoDao.findbyCurso(idCurso));
-        return "redirect:/anadirNuevosarchivos.html";
+        model.addAttribute("archivos", archivoDao.findbyCurso(idCurso));
+        return "anadirNuevosarchivos.html";
     }
 
     //Agregar Archivos al crar un curso por primera ves 
