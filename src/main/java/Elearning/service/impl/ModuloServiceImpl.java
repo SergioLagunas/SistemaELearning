@@ -105,6 +105,7 @@ public class ModuloServiceImpl implements ModuloService {
         Curso curso = new Curso();
         curso = cursoDao.getCurso(idCurso);
         model.addAttribute("modulosAc", moduloDao.findbyCurso(idCurso));
+         model.addAttribute("idCurso", curso.getIdCurso());
         return "actualizarmodulos";
     }
 

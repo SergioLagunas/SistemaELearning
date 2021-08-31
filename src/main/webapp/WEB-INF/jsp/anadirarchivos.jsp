@@ -208,7 +208,7 @@
                 width: '80%',
                 background: '#00000000',
                 showConfirmButton: false,
-                html: ' <a controls href="' + url + '" width="100%" height="98%">Visualiza tu Archivo</a>'
+                html: ' <a controls href="' + url + '" width="100%" height="98%" target="_blank">Visualiza tu Archivo</a>'
             });
         }
 

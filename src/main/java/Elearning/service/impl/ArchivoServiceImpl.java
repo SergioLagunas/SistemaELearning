@@ -39,7 +39,8 @@ public class ArchivoServiceImpl implements ArchivoService {
     public String readArchivoActualizar(int idCurso, Model model) {
         System.out.println("idCurso: " + idCurso);
         model.addAttribute("archivos", archivoDao.findbyCurso(idCurso));
-        return "anadirNuevosarchivos.html";
+        model.addAttribute("idCurso", idCurso);
+        return "anadirNuevosarchivos";
     }
 
     //Agregar Archivos al crar un curso por primera ves 

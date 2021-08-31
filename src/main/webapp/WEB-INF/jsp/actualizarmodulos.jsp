@@ -201,7 +201,7 @@
                     <br>
                     <br>
                     <input class="submit" type="submit" onclick="alertAgregar()" value="Agregar">
-                    <a class="btnCS" href="anadirarchivos.html">Sube Archivos a tu Curso</a>
+                    <a class="btnCS" href="anadirNuevosarchivos.html?CursoE=${idCurso}">Sube Archivos a tu Curso</a>
                 </form>
             </div>
             <div id="DivActualizar" class="caja">

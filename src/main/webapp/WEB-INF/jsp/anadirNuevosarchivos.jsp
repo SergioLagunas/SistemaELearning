@@ -145,14 +145,14 @@
         <br>
     <center>
         <div id="DivAgregar" class="caja">
-            <form id="form" action="addArchivos.html" method="POST" enctype="multipart/form-data">
+            <form id="form" action="anadirArchivos.html" method="POST" enctype="multipart/form-data">
                 <label for="nom"></label> <input type="text" name="nombre" id="nom" placeholder="Nombre" required>
                 <br>
                 <label for="arch"></label> <input type="file" id="arch" name="archivo" required accept=".pdf,.txt,.docx,.xlsx,.pptx">
                 <br>
                 <br>
                 <input class="submit" type="submit" onclick="alertAgregar()" value="Agregar">
-                <a class="btnCR" href="actualizarmodulos.html">Cancelar</a>
+                <a class="btnCR" href="actualizarmodulos.html?CursoE=${idCurso}">Regresar</a>
             </form>
         </div>
         <div id="DivActualizar" class="caja">
@@ -208,7 +208,7 @@
                 width: '80%',
                 background: '#00000000',
                 showConfirmButton: false,
-                html: ' <a controls href="' + url + '" width="100%" height="98%">Visualiza tu Archivo</a>'
+                html: ' <a controls href="' + url + '" width="100%" height="98%" target="_blank">Visualiza tu Archivo</a>'
             });
         }
 
