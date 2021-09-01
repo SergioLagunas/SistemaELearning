@@ -87,10 +87,10 @@
                 <br>
                 <h4>Administradores</h4>
                 <br>
-                <p><center><strong>Bienvenido administrador de B1 SOFT.</strong></center></p>
+               <p><center><strong>Bienvenido administrador de B1 SOFT.</strong></center></p>
                 <br>
+                <p><center>Aqui puedes Agregar nuevos administradores a esta plataforma. </center></p>
                 <br>
-                <p><center> Agrega nuevos administradores a la plataforma. </center></p>
                 <br>
                 <a href="nuevoadmin.html"><button class="botoncurso">Conoce más</button></a>
             </div>
@@ -102,9 +102,10 @@
                 <br>
                 <p><center><strong>Bienvenido administrador de B1 SOFT.</strong></center></p>
                 <br>
+                <p><center> Consulta o elimina la lista  </center></p>
+                <p><center>de semilleros que hacen uso de esta plataforma. </center></p>
                 <br>
-                <p><center> Consulta la lista de semilleros que hacen uso de la plataforma. </center></p>
-                <br>
+               
                 <a href="nuevosemillero.html"><button class="botoncurso">Conoce más</button></a>
             </div>
 
@@ -115,10 +116,11 @@
                 <br>
                 <p><center><strong>Bienvenido administrador de B1 SOFT.</strong></center></p>
                 <br>
+   
+                <p><center>Crea y da de alta nuevos cursos </center></p>
+                <p><center> donde podrás subir videos y archivos. </center></p>
                 <br>
-                <p><center> Crea nuevos cursos. </center></p>
-                <p><center> Agrega videos o archivos. </center></p>
-                <br> 
+                <br>
                 <a href="nuevocurso.html"><button class="botoncurso">Conoce más</button></a>
             </div>
 

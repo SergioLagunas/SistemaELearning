@@ -28,12 +28,56 @@
                 justify-content: center;
                 background:  #EAECE8;
             }
+            
+            
+            h1{
+                text-align: center;
+                display: inline-block;
+                position: relative;
+          
+            }
+            
+            h1::after,h1::before{
+                content: '';
+                position: absolute;
+                width: 120px;
+                height: 3px;
+                background-color: #B15D28;
+                top: 0.6em;
+                
+            }
+            
+            h1::before{
+                left: -140px;
+                
+            }
+            
+             h1::after{
+                right: -140px;
+                
+            }
+            
+            
+            
+            table{
+           text-align:justify-all;
+                padding: 30px;
+                margin: auto;
+                 font-family: 'Varela Round', sans-serif;
+                font-size: 30px;
+            }
+            th{
+            padding: 10px;
+           text-align: left;
+            }
+            
             .botoncurso{
-                font-family: "roboto",sans-serif;
+                font-family: 'Varela Round',sans-serif;
                 font-weight: 500;
-                font-size: 20px;
+                font-size: 28px;
                 color: black;
                 text-decoration: none;
+           
             }
             .botoncurso{
                 padding: 9px 25px;
@@ -69,16 +113,11 @@
             </div>
         </header>
 
-                <center><h1>Bienvenido</h1></center>
-                <center><h2>Curso de <c:out value="${detacurso.nombre}"></c:out></h2></center>
-                <center><p><c:out value="${detacurso.descripcion}"></c:out></p></center>
-                    <br>
-                    <br>
-                    <center><button class="botoncurso">Ver recursos</button></center>
-
-            <br />
-            <br />
-
+               
+    <center> <h1><b><i>Curso de <c:out value="${detacurso.nombre}"></c:out></i></b></h1></center>
+              
+             
+         
         <center><div id="example">
                 <div class="demo-section k-content wide" style="max-width: 1300px;">
                     <div id="mediaplayer" style="height: 500px"></div>
@@ -134,7 +173,23 @@
                 </span>
                 </li>
             </script>
-
+            <br/>
+            <br/>
+            <br/>
+            
+           
+           
+<table>
+    <tr>
+          <th width="1400" scope="col">   Descripción del curso</th>
+    </tr>
+  <tr>
+    
+      <th width="1332" scope="col"><c:out value="${detacurso.descripcion}"></c:out></th>
+  <th width="186" scope="col"><button class="botoncurso">Ver recursos</button> </th>
+  </tr>
+  
+</table>
             <style>
                 .k-mediaplayer {
                     float: left;
@@ -147,11 +202,13 @@
                     height: 500px;
                     overflow: auto;
                     width: 30%;
+                      
                 }
                 @media (max-width: 500px) {
                     .playlist,
                     .k-mediaplayer {
                         width: 100%;
+                         
                     }
                 }
 
@@ -160,16 +217,19 @@
                     list-style-type: none;
                     margin: 0;
                     padding: 0;
+                     
                 }
 
                 .playlist .k-item {
                     border-bottom-style: solid;
                     border-bottom-width: 1px;
                     padding: 14px 15px;
+                    
                 }
 
                 .playlist .k-item:last-child {
                     border-bottom-width: 0;
+                 
                 }
 
                 .playlist span {
@@ -219,16 +279,7 @@
     <br />
     <br />
     <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
+  
     <!--Footer-->
     <div class="footer-wrapper">
         <div style="padding-top: 15px; padding-bottom: 10px">
