@@ -17,11 +17,14 @@
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/kendo.black.min.css" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/kendo.default.mobile.min.css" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bienvenida.css" />
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/header.css" />
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/newheader.css" />
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/footer.css" />
         <script src="${pageContext.request.contextPath}/resources/js/jquery.min.js"></script>
         <script src="${pageContext.request.contextPath}/resources/js/kendo.all.min.js"></script>
+        <script src="${pageContext.request.contextPath}/resources/js/header.js" defer></script>
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <style>
             /*Estilo body*/
             .body1 {
@@ -80,40 +83,33 @@
                 font-size: 24px;
                 color: #fff;
             }
-            /*Estilo footer*/
 
-            .footer-wrapper {
-                background:#203853;/*Color de fondo del pie de página*/
-                padding-top: 30px;/*Altura del pie de página*/
-                padding-bottom: 40px;/*Altura del pie de página*/
-                width: 100%;
-                text-align: center;
-                font: normal normal 11px Arial;/*Tipografía y Tamaño*/
-                color:white;/*Color del texto del pie de página*/
-                text-transform: uppercase;/*Esta línea decódigo es para poner las letras en mayúsculas */
-                letter-spacing: 2px;/*Espacio entre letras*/
-            }
         </style> 
     </head>
     <body class="body1"> 
-        <header>
-            <div class="encabezado">
-                <div class="logo">
-                    <div>
-                        <a href="bienvenida.html"> <img src="${pageContext.request.contextPath}/resources/imagenes/logoazul.gif"> </a>
-                    </div>
-                </div>
-
-                <nav>
-                    <!--<ul class="nav__links">-->
-                    <li><span><a href="perfilsem.html">Mi perfil </a></span></li>
-                    <li><span><a href="ProgressBar.html">Mis cursos </a></span></li>
-                    <li><span><a onclick="cerrarSession()" class="cta">Cerrar sesión</a></span></li>
-                    <!--</ul>-->
-                </nav>
-                <!--<a class="cta" href="index.html"><button>Cerrar sesión</button></a>-->
-            </div>
-        </header>
+         <header>
+      <nav class="navbar">
+        <!--<div class="brand-title">Brand Name</div>-->
+        <div class="logo">
+          <div>
+              <img src="${pageContext.request.contextPath}/resources/imagenes/B1SOFT-LOGO.gif">
+          </div>
+      </div>
+        <a href="#" class="toggle-button">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </a>
+        <div class="navbar-links">
+          <ul>
+            <li><a href="perfilsem.html">Mi perfil</a></li>
+            <li><a href="ProgressBar.html">Mis Cursos</a></li>
+            <!--<li><a href="#">Cerrar sesión</a></li>-->
+            <li><span><a onclick="cerrarSession()" class="cta">Cerrar sesión</a></span></li>
+          </ul>
+        </div>
+      </nav>
+    </header>
         <br><br>
 
         <div id="container">
@@ -241,23 +237,22 @@
         <br>
         <br>
 
-        <div class='footer-wrapper'>
-            <div style='padding-top:15px;padding-bottom:10px; '>
-                <center>
-
-                    <a href='https://twitter.com/?lang=es' target='_blank'><img HSPACE='10'
-                                                                                src='https://img.icons8.com/android/24/000000/twitter.png' title='' />
-                        <a href='https://es-la.facebook.com/' target='_blank'><img HSPACE='10'
-                                                                                   src='https://img.icons8.com/android/24/000000/facebook.png' title='' /></a>
-                        <a href='https://www.google.com/intl/es-419/gmail/about/#' target='_blank'><img HSPACE='10'
-                                                                                                        src='https://img.icons8.com/ios-filled/24/000000/gmail-login.png' title='' /></a>
-                        <a href='https://www.youtube.com/' target='_blank'><img HSPACE='10'
-                                                                                src=' https://img.icons8.com/metro/26/000000/youtube.png' title='' /></a>
-                    </a>
-
-                </center>
-            </div> Todos los derechos reservados | © 2021 B1 SOFT
+<footer>
+        <div class="footer-content">
+            <h3>B1 SOFT</h3>
+            
+            <ul class="socials">
+                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                <li><a href="#"><i class="fa fa-youtube"></i></a></li>
+                <li><a href="#"><i class="fa fa-linkedin-square"></i></a></li>
+            </ul>
         </div>
+        <div class="footer-bottom">
+            <p>designed by <span>B1 SOFT</span></p>
+        </div>
+    </footer>
     </body>
     <script>
         function cerrarSession() {
