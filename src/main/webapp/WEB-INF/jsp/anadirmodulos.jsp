@@ -189,11 +189,11 @@
                     <br>
                     <br>
                     <input class="submit" type="submit" onclick="alertActualizar()" value="Actualizar">
-                    <a class="btnCR" href="anadirmodulos.html">Cancelar</a>
+                    <input class="btnCR" type="button" onclick="cancelActualizar()" value="Cancelar">
                 </form>
             </div>
             <br>
-            <div class="tablita">
+            <div id="Divtablita" class="tablita">
                 <table class="tabla" id="tabla">
                     <thead>
                         <tr> 
@@ -222,9 +222,14 @@
                     DataForm["url"] = "${modu.url}";
                     InsertarDatos(DataForm); 
                 </c:forEach>
-                    
-                    console.log("ID: ", DataForm.id);
-                    console.log("Nombre: ", DataForm.nom);
+            
+                if(DataForm.id != "undefined" && DataForm.id != null)
+                    document.getElementById('Divtablita').style.display = 'block';
+                else
+                    document.getElementById('Divtablita').style.display = 'none';
+    
+                console.log("ID: ", DataForm.id);
+                console.log("Nombre: ", DataForm.nom);
             });
             
             function alertVideo(url){
@@ -236,6 +241,11 @@
                     showConfirmButton: false,
                     html: '<video controls src="'+url+'" width="100%" height="98%"></video>'
                 });
+            }
+            
+            function cancelActualizar(){
+                document.getElementById('DivActualizar').style.display = 'none';
+                document.getElementById('DivAgregar').style.display = 'block';
             }
             
             function alertActualizar(){  

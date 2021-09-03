@@ -1,9 +1,3 @@
-<%-- 
-    Document   : anadirNuevosarchivos
-    Created on : 31/08/2021, 05:06:15 PM
-    Author     : sergi
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
@@ -167,10 +161,11 @@
                 <br>
                 <br>
                 <input class="submit" type="submit" onclick="alertActualizar()" value="Actualizar">
+                <input class="btnCR" type="button" onclick="cancelActualizar()" value="Cancelar">
             </form>
         </div>
         <br>
-        <div class="tablita">
+        <div id="Divtablita" class="tablita">
             <table class="tabla" id="tabla">
                 <thead>
                     <tr> 
@@ -192,12 +187,17 @@
         $(function () {
             document.getElementById('DivActualizar').style.display = 'none';
 
-        <c:forEach var="arch" items="${archivos}">
-            DataForm["id"] = "${arch.idArchivo}";
-            DataForm["nom"] = "${arch.nombre}";
-            DataForm["url"] = "${arch.archivo}";
-            InsertarDatos(DataForm);
-        </c:forEach>
+            <c:forEach var="arch" items="${archivos}">
+                DataForm["id"] = "${arch.idArchivo}";
+                DataForm["nom"] = "${arch.nombre}";
+                DataForm["url"] = "${arch.archivo}";
+                InsertarDatos(DataForm);
+            </c:forEach>
+            
+            if(DataForm.id != "undefined" && DataForm.id != null)
+                document.getElementById('Divtablita').style.display = 'block';
+            else
+                document.getElementById('Divtablita').style.display = 'none';
 
             console.log("ID: ", DataForm.id);
             console.log("Nombre: ", DataForm.nom);
@@ -210,6 +210,11 @@
                 showConfirmButton: false,
                 html: ' <a controls href="' + url + '" width="100%" height="98%" target="_blank">Visualiza tu Archivo</a>'
             });
+        }
+
+        function cancelActualizar(){
+            document.getElementById('DivActualizar').style.display = 'none';
+            document.getElementById('DivAgregar').style.display = 'block';
         }
 
         function alertActualizar() {

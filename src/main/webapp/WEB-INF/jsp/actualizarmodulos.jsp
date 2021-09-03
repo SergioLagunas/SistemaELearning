@@ -218,11 +218,11 @@
                     <br>
                     <br>
                     <input class="submit" type="submit" onclick="alertActualizar()" value="Actualizar">
-                    <a class="btnCR" href="actualizarmodulos.html">Cancelar</a>
+                    <input class="btnCR" type="button" onclick="cancelActualizar()" value="Cancelar">
                 </form>
             </div>
             <br>
-            <div class="tablita">
+            <div id="Divtablita" class="tablita">
                 <table class="tabla" id="tabla">
                     <thead>
                         <tr> 
@@ -248,16 +248,17 @@
                     DataForm["id"] = "${modu.idModulo}";  
                     DataForm["nom"] = "${modu.titulo}";  
                     DataForm["des"] = "${modu.descripcion}";
-                    DataForm["url"] = "${modu.url}";
-                    
-                    
-                    //document.getElementById("curid").value = DataForm.idC;
+                    DataForm["url"] = "${modu.url}";                  
                     InsertarDatos(DataForm); 
                 </c:forEach>
                     
-                    console.log("ID: ", DataForm.id);
-                    console.log("Nombre: ", DataForm.nom);
-                    //console.log("ID Curso: ", DataForm.idC);
+                if(DataForm.id != "undefined" && DataForm.id != null)
+                    document.getElementById('Divtablita').style.display = 'block';
+                else
+                    document.getElementById('Divtablita').style.display = 'none';
+                    
+                console.log("ID: ", DataForm.id);
+                console.log("Nombre: ", DataForm.nom);
             });
             
             function alertVideo(url){
@@ -268,7 +269,16 @@
                     background: '#00000000',
                     showConfirmButton: false,
                     html: '<video controls src="'+url+'" width="100%" height="98%"></video>'
+                    /*customClass: {
+                        container: 'sweet_containerImportant',
+                        tittle: 'sweet_containerImportant'
+                    }*/
                 });
+            }
+            
+            function cancelActualizar(){
+                document.getElementById('DivActualizar').style.display = 'none';
+                document.getElementById('DivAgregar').style.display = 'block';
             }
             
             function alertActualizar(){  
@@ -374,8 +384,6 @@
                                                                       </svg>
                                                                 </button>
                                                                 `;
-                //document.getElementById("nom").focus();
-                //Vaciar();
             }
             
             function Vaciar() {

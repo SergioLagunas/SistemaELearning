@@ -19,7 +19,6 @@
         <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-
         <style>
             /*Estilo header*/
             .body1 {
@@ -128,6 +127,26 @@
                 background-color: #272727;
                 color: white;
             }
+            
+            #progress_bar {
+    margin: 10px 0;
+    padding: 3px;
+    border: 1px solid #000;
+    font-size: 14px;
+    clear: both;
+    opacity: 0;
+    -moz-transition: opacity 1s linear;
+    -o-transition: opacity 1s linear;
+    -webkit-transition: opacity 1s linear;
+  }
+  #progress_bar.loading {
+    opacity: 1.0;
+  }
+  #progress_bar .percent {
+    background-color: #99ccff;
+    height: auto;
+    width: 0;
+  }
         </style>
     </head>
     <body class="body1">
@@ -155,58 +174,89 @@
         </header>
         <br><br>
         <h1><center>Cursos</center></h1>
-        <form id="from1" action="ActualizarCurso.html" method="POST" enctype="multipart/form-data">
-            <center>
-                <div class="tablita">
-                    <table class="tabla" id="tabla">
-                        <tbody>
-                        <div class="caja" id="formActualizar">
-                            <label for="nom"></label> <input type="text" id="nom" placeholder=" Nombre" name="nombre" required>
-                            <br>
-                            <label for="des"></label> <input type="text" id="des" placeholder=" Descripción" name="descripcion" required>
-                            <br>
-                            <!--<label for="cat"></label> <input type="text" id="cat" placeholder=" Categoria" name="categoria" required>
-                            <br>-->
-                            <label for="cat"></label>
-                            <select name="categoria" id="cat" class="k-textbox">
-                                <option disabled select>Selecciona una categoria</option>
-                                <option value="Back-End">Back-End</option>
-                                <option value="Front-End">Front-End</option>
-                                <option value="Bases de Datos">Bases de Datos</option>
-                                <option value="Redes">Redes</option>
-                                <option value="Seguridad en redes">Seguridad en redes</option>   
-                                <option value="Otro">Otro</option>
-                            </select>
-                            <br>
-                            <br>
-                            <label for="cara"></label> <input id="cara" type="file" name="caratula"/>
-                            <div id="Caratula" style="display:none;">
-                                <!-- <div id="Caratula">-->
-                                <label for="curid"></label> <input type="text" id="curid" placeholder="Id" name="curid">
-                            </div>
-                            <br>
-                            <br>
-                            <input class="submit" type="submit" onclick="alertActualizar()" value="Guardar">
-                            <a class="btnCR" href="listadodecursos.html">Cancelar</a>
+        <center>
+            <div class="caja" id="formActualizar">
+                <form id="from1" action="ActualizarCurso.html" method="POST" enctype="multipart/form-data">
+                    <label for="nom"></label> <input type="text" id="nom" placeholder=" Nombre" name="nombre" required>
+                    <br>
+                    <label for="des"></label> <input type="text" id="des" placeholder=" Descripción" name="descripcion" required>
+                    <br>
+                    <label for="cat"></label>
+                    <select name="categoria" id="cat" class="k-textbox">
+                        <option disabled select>Selecciona una categoria</option>
+                        <option value="Back-End">Back-End</option>
+                        <option value="Front-End">Front-End</option>
+                        <option value="Bases de Datos">Bases de Datos</option>
+                        <option value="Redes">Redes</option>
+                        <option value="Seguridad en redes">Seguridad en redes</option>   
+                        <option value="Otro">Otro</option>
+                    </select>
+                    <br>
+                    <br>
+                    <label for="cara"></label> <input id="cara" type="file" name="caratula"/>
+                    <div id="Caratula" style="display:none;">
+                    <!-- <div id="Caratula">-->
+                        <label for="curid"></label> <input type="text" id="curid" placeholder="Id" name="curid">
+                    </div>
+                    <br>
+                    <br>
+                    <input class="submit" type="submit" onclick="alertActualizar()" value="Guardar">
+                    <input class="btnCR" type="button" onclick="cancelActualizar()" value="Cancelar">
+                </form> 
+                <!--<button class="btnCR" onclick="cancelAlertAc()" value="Cancelar"/>-->
+            </div>
+            <br>
+            <div id="Divtablita" class="tablita">
+                <table class="tabla" id="tabla">
+                    <thead>
+                        <tr> 
+                            <th>Nombre</th> 
+                            <th>Descripción</th>
+                            <th>Categoria</th>
+                            <th>Opciones</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div> 
+            <div id="DivSCursos">
+                <h2>No hay cursos disponibles</h2>
+            </div>
+        </center>
+        <br/>
+            <script>          
+                var Fila = null;
+                let DataForm = {};
 
-                            <!--<input class="submit" type="submit" value="Guardar"/>-->
-                        </div>
-                        <br/>
-                        </tbody>
-                        <br/>
-                        <thead>
-                            <tr> 
-                                <th>Nombre</th> 
-                                <th>Descripción</th>
-                                <th>Categoria</th>
-                                <th>Opciones</th>
-                            </tr>
-                        </thead>
-                    </table>
-                </div>
-            </center>
-            <br/>
-            <script>
+                $(function() {
+                    document.getElementById('formActualizar').style.display = 'none';
+
+                    <c:forEach var="cur" items="${cursos}">
+                        DataForm["id"] = "${cur.idCurso}";
+                        DataForm["nom"] = "${cur.nombre}";
+                        DataForm["des"] = "${cur.descripcion}";
+                        DataForm["cat"] = "${cur.categoria}";
+                        InsertarDatos(DataForm);
+                    </c:forEach>
+                        
+                    if(DataForm.id != "undefined" && DataForm.id != null){
+                        document.getElementById('Divtablita').style.display = 'block';
+                        document.getElementById('DivSCursos').style.display = 'none';
+                    }
+                    else{
+                        document.getElementById('Divtablita').style.display = 'none';
+                        document.getElementById('DivSCursos').style.display = 'block';  
+                    }
+                });
+
+                function agregarModulo(id) {
+                    document.location.href = "actualizarmodulos.html?CursoE=" + id;
+                }
+                
+                function cancelActualizar(){
+                    document.getElementById('formActualizar').style.display = 'none';
+                }
+                
                 function alertActualizar() {
                     document.querySelector('#from1').addEventListener('submit', function (e) {
 
@@ -224,50 +274,32 @@
                             cancelButtonText: 'Cancelar',
                             reverseButtons: true
                         })
-                                .then((result) => {
-                                    if (result.isConfirmed) {
-                                        Swal.fire({
-                                            title: '¡Actualizado!',
-                                            text: 'Se Actualizaron los datos',
-                                            icon: 'success',
-                                            iconColor: '#203853',
-                                            confirmButtonColor: '#B15D28'
-                                        })
-                                                .then(function () {
-                                                    //document.getElementById("from1").submit(); // <--- submit form programmatically
-                                                    Actualizar(Leer());
-                                                    form.submit();
-                                                    console.log("BIEN");
-                                                });
-                                    } else if (result.dismiss === Swal.DismissReason.cancel) {
-                                        Swal.fire({
-                                            title: '¡Cancelado!',
-                                            text: 'No se actualizo ningun dato',
-                                            icon: 'error',
-                                            iconColor: '#B15D28',
-                                            confirmButtonColor: '#203853'
-                                        })
-                                    }
+                        .then((result) => {
+                            if (result.isConfirmed) {
+                                Swal.fire({
+                                    title: '¡Actualizado!',
+                                    text: 'Se Actualizaron los datos',
+                                    icon: 'success',
+                                    iconColor: '#203853',
+                                    confirmButtonColor: '#B15D28'
                                 })
+                                .then(function () {
+                                    Actualizar(Leer());
+                                    form.submit();
+                                    console.log("BIEN");
+                                });
+                            } else if (result.dismiss === Swal.DismissReason.cancel) {
+                                Swal.fire({
+                                    title: '¡Cancelado!',
+                                    text: 'No se actualizo ningun dato',
+                                    icon: 'error',
+                                    iconColor: '#B15D28',
+                                    confirmButtonColor: '#203853'
+                                });
+                            }
+                        });
                     });
                 }
-
-
-
-                var Fila = null;
-                let DataForm = {};
-
-                $(function () {
-                    document.getElementById('formActualizar').style.display = 'none';
-
-                <c:forEach var="cur" items="${cursos}">
-                    DataForm["id"] = "${cur.idCurso}";
-                    DataForm["nom"] = "${cur.nombre}";
-                    DataForm["des"] = "${cur.descripcion}";
-                    DataForm["cat"] = "${cur.categoria}";
-                    InsertarDatos(DataForm);
-                </c:forEach>
-                });
 
                 function Leer() {
                     let DataForm = {};
@@ -305,7 +337,6 @@
                                                                     </svg>
                                                                 </button>
                                                                 `;
-                    Vaciar();
                 }
 
                 function Vaciar() {
@@ -316,7 +347,6 @@
                 }
 
                 function Editarr(td, id) {
-
                     document.getElementById('formActualizar').style.display = 'block';
 
                     Fila = td.parentElement.parentElement;
@@ -328,17 +358,14 @@
                     document.getElementById("nom").focus();
                 }
 
-
-
                 function Actualizar(DataForm) {
                     Fila.cells[0].innerHTML = DataForm.nom;
                     Fila.cells[1].innerHTML = DataForm.des;
                     Fila.cells[2].innerHTML = DataForm.cat;
 
                     document.getElementById('formActualizar').style.display = 'none';
-                    //document.getElementById("nom").focus();
-                    //Vaciar();
                 }
+                
                 function Borrarr(td, id) {
                     //document.getElementById('enlace').setAttribute('href', "index.html");
 
@@ -364,9 +391,8 @@
                                 icon: 'success',
                                 iconColor: '#203853',
                                 confirmButtonColor: '#B15D28'
-                            })
+                            });
                         } else if (
-                                /* Read more about handling dismissals below*/
                                 result.dismiss === Swal.DismissReason.cancel
                                 ) {
                             Swal.fire({
@@ -375,16 +401,11 @@
                                 icon: 'error',
                                 iconColor: '#B15D28',
                                 confirmButtonColor: '#203853'
-                            })
+                            });
                         }
                     });
                 }
-                function agregarModulo(id) {
-                    document.location.href = "actualizarmodulos.html?CursoE=" + id;
-                }
-
             </script>
-        </form>  
         <br/>
         <br/>
     </div>

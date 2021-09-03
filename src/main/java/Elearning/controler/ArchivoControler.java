@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Elearning.controler;
 
 import Elearning.dao.ArchivoDao;
@@ -20,10 +15,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-/**
- *
- * @author sergi
- */
 @Controller
 public class ArchivoControler {
 
@@ -35,25 +26,26 @@ public class ArchivoControler {
 
     static int IDArchivo = 0;
 
+    //Al entrar a la vista --> "anadirarchivos.jsp"
     @RequestMapping(value = "anadirarchivos.html", method = RequestMethod.GET)
     public String vistaArchivos(Model model) {
         return archivoService.readArchivoMoment(model);
     }
 
+    //Agregar nuevos archivos  --> "anadirarchivos.jsp" 
     @RequestMapping(value = "addArchivos.html", method = RequestMethod.POST)
     public String agregarArchivo(@ModelAttribute ArchivoModel Archivo) {
         return archivoService.createArchivo(Archivo);
     }
 
-    
-    //Vista para agregar mas Archivos 
+    //Al entrar a la vista, con Id del curso que se actualizará --> "anadirNuevosarchivos.jsp"
     @RequestMapping(value = "anadirNuevosarchivos.html", method = RequestMethod.GET)
     public String actualizarArchivos(@RequestParam("CursoE")int idCurso, Model model){
         IDArchivo = idCurso;
         return archivoService.readArchivoActualizar(idCurso, model);
     }
     
-    //Crud para añadir mas Archivos una ves que ya este creado el curso
+    //Agregar mas archivos, una vez que ya este creado el curso --> "anadirNuevosarchivos.jsp"
     @RequestMapping(value = "anadirArchivos.html", method = RequestMethod.POST)
     public String anadirArchivos(
             @RequestParam("nombre") String nombre,
@@ -62,7 +54,7 @@ public class ArchivoControler {
         return archivoService.anadirArchivos(IDArchivo, nombre, archivo);
     }
 
-    //Este se debe agregar para que funcione en ambas paguinas tanto de agregar archivos por primera ves como agregar despues de agregar mas archivos 
+    //Actualizar archivos --> "anadirNuevosarchivos.jsp", "anadirarchivos.jsp"
     @RequestMapping(value = "updateArchivo.html", method = RequestMethod.POST)
     public String actualizarArchivo(
             @RequestParam("VistaA") int VistaA,
@@ -72,7 +64,7 @@ public class ArchivoControler {
         return archivoService.updateArchivo(VistaA, idArchivo, nombre, archivo);
     }
 
-    //Este igual que el anterior 
+    //Eliminar archivos --> "anadirNuevosarchivos.jsp", "anadirarchivos.jsp"
     @RequestMapping(value = "deleteArchivo.html", method = RequestMethod.GET)
     public String eliminarArchivo(
             @RequestParam("ArchivoE") int Archivo,
@@ -80,7 +72,7 @@ public class ArchivoControler {
         Archivo archivo = new Archivo();
         Curso curso = new Curso();
         archivo = archivoDao.getArchivo(Archivo);
-        curso = archivo.getIdCurso();
+        curso = archivo.getIdCurso(); 
 
         if (archivoService.deleteArchivo(Archivo)) {
             System.out.println("Se elimino el archivo con id: " + Archivo);
