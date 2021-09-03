@@ -25,15 +25,3 @@ p {
     margin-left: 60px;
 }
 
-.footer-wrapper {
-    background:#203853;/*Color de fondo del pie de página*/
-    padding-top: 30px;/*Altura del pie de página*/
-    padding-bottom: 40px;/*Altura del pie de página*/
-    width: 100%;
-    text-align: center;
-    font: normal normal 11px Arial;/*Tipografía y Tamaño*/
-    color:white;/*Color del texto del pie de página*/
-    text-transform: uppercase;/*Esta línea decódigo es para poner las letras en mayúsculas */
-    letter-spacing: 2px;/*Espacio entre letras*/
-}
-

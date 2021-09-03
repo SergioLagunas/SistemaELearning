@@ -92,7 +92,7 @@
         <!--<div class="brand-title">Brand Name</div>-->
         <div class="logo">
           <div>
-              <img src="${pageContext.request.contextPath}/resources/imagenes/B1SOFT-LOGO.gif">
+              <a href="bienvenida.html"><img src="${pageContext.request.contextPath}/resources/imagenes/B1SOFT-LOGO.gif"></a>
           </div>
       </div>
         <a href="#" class="toggle-button">

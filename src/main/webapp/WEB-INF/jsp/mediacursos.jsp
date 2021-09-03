@@ -14,12 +14,15 @@
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/kendo.black.min.css" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/kendo.default.mobile.min.css" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/mediacursos.css" />
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/header.css" />
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/newheader.css" />
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/footer.css" />
         <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link ref="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet"/>
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <script src="${pageContext.request.contextPath}/resources/js/jquery.min.js"></script>
         <script src="${pageContext.request.contextPath}/resources/js/kendo.all.min.js"></script>
+        <script src="${pageContext.request.contextPath}/resources/js/header.js" defer></script>
         <script type="text/javascript" src="https://www.dropbox.com/static/api/1/dropins.js" id="dropboxjs" data-app-key="tz66wjuay4trlb5"></script>
         <title>Listado Cursos</title>
         <style>
@@ -28,15 +31,15 @@
                 justify-content: center;
                 background:  #EAECE8;
             }
-            
-            
+
+
             h1{
                 text-align: center;
                 display: inline-block;
                 position: relative;
-          
+
             }
-            
+
             h1::after,h1::before{
                 content: '';
                 position: absolute;
@@ -44,40 +47,40 @@
                 height: 3px;
                 background-color: #B15D28;
                 top: 0.6em;
-                
+
             }
-            
+
             h1::before{
                 left: -140px;
-                
+
             }
-            
-             h1::after{
+
+            h1::after{
                 right: -140px;
-                
+
             }
-            
-            
-            
+
+
+
             table{
-           text-align:justify-all;
+                text-align:justify-all;
                 padding: 30px;
                 margin: auto;
-                 font-family: 'Varela Round', sans-serif;
+                font-family: 'Varela Round', sans-serif;
                 font-size: 30px;
             }
             th{
-            padding: 10px;
-           text-align: left;
+                padding: 10px;
+                text-align: left;
             }
-            
+
             .botoncurso{
                 font-family: 'Varela Round',sans-serif;
                 font-weight: 500;
                 font-size: 28px;
                 color: black;
                 text-decoration: none;
-           
+
             }
             .botoncurso{
                 padding: 9px 25px;
@@ -95,29 +98,34 @@
     </head>
     <body class="body1">
         <header>
-            <div class="encabezado">
+            <nav class="navbar">
+                <!--<div class="brand-title">Brand Name</div>-->
                 <div class="logo">
                     <div>
-                        <a href="bienvenida.html"><img src="${pageContext.request.contextPath}/resources/imagenes/logoazul.gif"></a>
+                        <a href="bienvenida.html"><img src="${pageContext.request.contextPath}/resources/imagenes/B1SOFT-LOGO.gif"></a>
                     </div>
                 </div>
-
-                <nav>
-                    <!--<ul class="nav__links">-->
-                    <li><span><a href="perfilsem.html">Mi perfil </a></span></li>
-                    <li><span><a href="ProgressBar.html">Mis cursos </a></span></li>
-                    <li><span><a onclick="cerrarSession()" class="cta">Cerrar sesión</a></span></li>
-                    <!--</ul>-->
-                </nav>
-                <!--<a class="cta" href="index.html"><button>Cerrar sesión</button></a>-->
-            </div>
+                <a href="#" class="toggle-button">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </a>
+                <div class="navbar-links">
+                    <ul>
+                        <li><a href="perfilsem.html">Mi perfil</a></li>
+                        <li><a href="ProgressBar.html">Mis Cursos</a></li>
+                        <!--<li><a href="#">Cerrar sesión</a></li>-->
+                        <li><span><a onclick="cerrarSession()" class="cta">Cerrar sesión</a></span></li>
+                    </ul>
+                </div>
+            </nav>
         </header>
 
-               
+
     <center> <h1><b><i>Curso de <c:out value="${detacurso.nombre}"></c:out></i></b></h1></center>
-              
-             
-         
+
+
+
         <center><div id="example">
                 <div class="demo-section k-content wide" style="max-width: 1300px;">
                     <div id="mediaplayer" style="height: 500px"></div>
@@ -176,20 +184,20 @@
             <br/>
             <br/>
             <br/>
-            
-           
-           
-<table>
-    <tr>
-          <th width="1400" scope="col">   Descripción del curso</th>
-    </tr>
-  <tr>
-    
-      <th width="1332" scope="col"><c:out value="${detacurso.descripcion}"></c:out></th>
-  <th width="186" scope="col"><button class="botoncurso">Ver recursos</button> </th>
-  </tr>
-  
-</table>
+
+
+
+            <table>
+                <tr>
+                    <th width="1400" scope="col">   Descripción del curso</th>
+                </tr>
+                <tr>
+
+                    <th width="1332" scope="col"><c:out value="${detacurso.descripcion}"></c:out></th>
+                    <th width="186" scope="col"><button class="botoncurso">Ver recursos</button> </th>
+                </tr>
+
+            </table>
             <style>
                 .k-mediaplayer {
                     float: left;
@@ -202,13 +210,13 @@
                     height: 500px;
                     overflow: auto;
                     width: 30%;
-                      
+
                 }
                 @media (max-width: 500px) {
                     .playlist,
                     .k-mediaplayer {
                         width: 100%;
-                         
+
                     }
                 }
 
@@ -217,19 +225,19 @@
                     list-style-type: none;
                     margin: 0;
                     padding: 0;
-                     
+
                 }
 
                 .playlist .k-item {
                     border-bottom-style: solid;
                     border-bottom-width: 1px;
                     padding: 14px 15px;
-                    
+
                 }
 
                 .playlist .k-item:last-child {
                     border-bottom-width: 0;
-                 
+
                 }
 
                 .playlist span {
@@ -279,42 +287,23 @@
     <br />
     <br />
     <br />
-  
-    <!--Footer-->
-    <div class="footer-wrapper">
-        <div style="padding-top: 15px; padding-bottom: 10px">
-            <center>
-                <a href="https://twitter.com/?lang=es" target="_blank"
-                   ><img
-                        hspace="10"
-                        src="https://img.icons8.com/android/24/000000/twitter.png"
-                        title=""
-                        />
-                    <a href="https://es-la.facebook.com/" target="_blank"
-                       ><img
-                            hspace="10"
-                            src="https://img.icons8.com/android/24/000000/facebook.png"
-                            title=""
-                            /></a>
-                    <a
-                        href="https://www.google.com/intl/es-419/gmail/about/#"
-                        target="_blank"
-                        ><img
-                            hspace="10"
-                            src="https://img.icons8.com/ios-filled/24/000000/gmail-login.png"
-                            title=""
-                            /></a>
-                    <a href="https://www.youtube.com/" target="_blank"
-                       ><img
-                            hspace="10"
-                            src=" https://img.icons8.com/metro/26/000000/youtube.png"
-                            title=""
-                            /></a>
-                </a>
-            </center>
+
+    <footer>
+        <div class="footer-content">
+            <h3>B1 SOFT</h3>
+
+            <ul class="socials">
+                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                <li><a href="#"><i class="fa fa-youtube"></i></a></li>
+                <li><a href="#"><i class="fa fa-linkedin-square"></i></a></li>
+            </ul>
         </div>
-        Todos los derechos reservados | © 2021 B1 SOFT
-    </div>
+        <div class="footer-bottom">
+            <p>designed by <span>B1 SOFT</span></p>
+        </div>
+    </footer>
 </body>
 <script>
     function cerrarSession() {
