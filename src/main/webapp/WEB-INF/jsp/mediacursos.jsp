@@ -189,12 +189,34 @@
 
             <table>
                 <tr>
-                    <th width="1400" scope="col">   Descripción del curso</th>
+                    <th width="1400" scope="col">Descripción del curso</th>
                 </tr>
-                <tr>
-
+                
+                    <!--Esta es una lista que desplegara los archivos en una lista y cuando le des en el boton de "Obten Documento" 
+                    te dirijira al enlce ya sea txt o inclusive los pdf te los descargara automaticamente
+                    Nota: esta lista solo sera visible si el curso contiene archivos
+                    
+                    Suerte Amigosss <3-->
+                    
+            <!--Favor de Darle estilo a la lista y al boton-->
+                    <tr>
                     <th width="1332" scope="col"><c:out value="${detacurso.descripcion}"></c:out></th>
-                    <th width="186" scope="col"><button class="botoncurso">Ver recursos</button> </th>
+                        <c:choose>
+                            <c:when test="${archivos != null}">
+                            <th width="186" scope="col">
+                                <form name="formulario2" target="_blank">
+                                    <select name="sitios">
+                                        <option>» Caja de Archivos «</option>
+                                        <c:forEach items="${archivos}" var="archivo">
+                                        <option value="${archivo.archivo}">${archivo.nombre}</option>
+                                        </c:forEach>
+                                    </select>
+                                    <input type="button" value="Obten Documento" onclick="window.open(formulario2.sitios.value, this.target, 'resizable=1 ,left=80pt,top=80pt,width=1100px,height=800px'); return false;" target="popup">
+                                </form>
+
+                            </th>
+                        </c:when>
+                    </c:choose>
                 </tr>
 
             </table>
