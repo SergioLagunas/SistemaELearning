@@ -39,42 +39,40 @@
                 margin-top: 50px;
             }
 
-            .container1{
-                min-height: calc(100vh );
-                width: 100%;
-                max-width: 1300px;
-                height: 430px;
-                display: flex;
-                flex-wrap: wrap; /*ajusta el contenido de las card*/
-                justify-content: center;
-                margin: auto;
+          .container1{
+                 display: flex;
+           justify-content: center;
+               flex-wrap: wrap;
                 color:#fff;
             }
 
             /*estilo de card*/
             .container1 .card1{
-                width: 350px;
-                height: 310px;
-                border-radius: 8px;
-                box-shadow: 0 2px 2px rgba(0,0,0, 0.2);
-                overflow: hidden;
-                margin: 20px;
-                text-align: center;
-                transition: all 0.25s;
+                background: white;
+              width: 350px;
+           text-align: center;
+                margin: 10px;
+              border-radius: 15px;
                 background-color: #2C2635;
 
             }
 
             /*estilo de card cuando le damos con el mouse*/
             .container1 .card1:hover{
-                transform: translatey(-15px);
-                box-shadow: 0 12px 16px rgba(0, 0, 0, 0.884);
+               background-color: #B15D28;
+    color: white;
+    cursor: pointer;
+    transform: scale(1.03);
+    transition: all 1s ease;
             }
 
             /*imagen de la card*/
             .container1 .card1 img{
-                width: 350px;
-                height: 210px;
+                 width: 350px;
+                height: 170px;
+    margin-bottom: 15px;
+    background-size: cover;
+    border-radius: 15px 15px 0 0;
             }
 
             /*titulo de card*/
@@ -82,8 +80,8 @@
                 font-weight: 500;
                 font-size: 24px;
                 color: #fff;
-            }
-
+                 padding: 10px;
+}
         </style> 
     </head>
     <body class="body1"> 
