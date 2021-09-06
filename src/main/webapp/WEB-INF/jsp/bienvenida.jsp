@@ -110,7 +110,6 @@
         </div>
       </nav>
     </header>
-        <br><br>
 
         <div id="container">
             <div id="Scroll">
@@ -176,6 +175,7 @@
                 <div id="Subtitulo">
                     <center><h2><font color="#000">Dale un vistazo a las Áreas de Interés</font></h2></center>
                 </div>
+
                 <div class="container1">
                     <div class="card1">
                         <a href="Cartas.html?categoria=Back-End"> <img src="${pageContext.request.contextPath}/resources/imagenes/Back.jpg"></a>
