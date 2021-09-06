@@ -5,18 +5,21 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/header.css" />
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/newheader.css" />
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/footer.css" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="CRUD dinamico con HTMLS, CSS and JS">
         <link href="https://fonts.googleapis.com/css?family=Quicksand:600&display=swap" rel="stylesheet">
-        <title>Curso</title>
+        <title>Cursos</title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="${pageContext.request.contextPath}/resources/js/header.js" defer></script>
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
         <style>
@@ -25,20 +28,6 @@
                 font-family: 'Varela Round', sans-serif;
                 justify-content: center;
                 background:  #EAECE8;
-            }
-
-            /*Estilo footer*/
-
-            .footer-wrapper {
-                background:#203853;/*Color de fondo del pie de página*/
-                padding-top: 30px;/*Altura del pie de página*/
-                padding-bottom: 40px;/*Altura del pie de página*/
-                width: 100%;
-                text-align: center;
-                font: normal normal 11px Arial;/*Tipografía y Tamaño*/
-                color:white;/*Color del texto del pie de página*/
-                text-transform: uppercase;/*Esta línea decódigo es para poner las letras en mayúsculas */
-                letter-spacing: 2px;/*Espacio entre letras*/
             }
 
             .form{
@@ -98,7 +87,7 @@
                 cursor: pointer;
                 transition: all 0.3s ease 0s;
             }
-            
+
             table{
                 background-color: #203853;
                 width: 80%;
@@ -127,153 +116,156 @@
                 background-color: #272727;
                 color: white;
             }
-            
+
             #progress_bar {
-    margin: 10px 0;
-    padding: 3px;
-    border: 1px solid #000;
-    font-size: 14px;
-    clear: both;
-    opacity: 0;
-    -moz-transition: opacity 1s linear;
-    -o-transition: opacity 1s linear;
-    -webkit-transition: opacity 1s linear;
-  }
-  #progress_bar.loading {
-    opacity: 1.0;
-  }
-  #progress_bar .percent {
-    background-color: #99ccff;
-    height: auto;
-    width: 0;
-  }
+                margin: 10px 0;
+                padding: 3px;
+                border: 1px solid #000;
+                font-size: 14px;
+                clear: both;
+                opacity: 0;
+                -moz-transition: opacity 1s linear;
+                -o-transition: opacity 1s linear;
+                -webkit-transition: opacity 1s linear;
+            }
+            #progress_bar.loading {
+                opacity: 1.0;
+            }
+            #progress_bar .percent {
+                background-color: #99ccff;
+                height: auto;
+                width: 0;
+            }
         </style>
     </head>
     <body class="body1">
-        <!-- Navigation-->
         <header>
-            <div class="encabezado">
+            <nav class="navbar">
+                <!--<div class="brand-title">Brand Name</div>-->
                 <div class="logo">
                     <div>
-                        <a href="admin.html">   <img src="${pageContext.request.contextPath}/resources/imagenes/logoazul.gif"> </a>
+                        <a href="admin.html"><img src="${pageContext.request.contextPath}/resources/imagenes/B1SOFT-LOGO.gif"></a>
                     </div>
                 </div>
-
-                <nav>
-                    <!--<ul class="nav__links">-->
-                    <li><span><a href="perfiladmin.html">Mi perfil </a></span></li>
-                    <li><span><a href="nuevoadmin.html">Administradores </a></span></li>
-                    <li><span><a href="nuevosemillero.html">Semilleros </a></span></li>
-                    <li><span><a href="listadodecursos.html">Cursos </a></span></li>
-                    <li><span><a href="nuevocurso.html">Agregar nuevo curso </a></span></li>
-                    <li><span><a onclick="cerrarSession()" class="cta">Cerrar sesión</a></span></li>
-                    <!--</ul>-->
-                </nav>
-                <!--<a class="cta" href="index.html"><button>Cerrar sesión</button></a>-->
-            </div>
+                <a href="#" class="toggle-button">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </a>
+                <div class="navbar-links">
+                    <ul>
+                        <li><a href="perfiladmin.html">Mi perfil</a></li>
+                        <li><a href="nuevoadmin.html">Administradores</a></li>
+                        <li><a href="nuevosemillero.html">Semilleros</a></li>
+                        <li><a href="listadodecursos.html">Cursos</a></li>
+                        <li><a href="nuevocurso.html">Agregar nuevo curso</a></li>
+                        <!--<li><a href="#">Cerrar sesión</a></li>-->
+                        <li><span><a onclick="cerrarSession()" class="cta">Cerrar sesión</a></span></li>
+                    </ul>
+                </div>
+            </nav>
         </header>
-        <br><br>
+        <br>
         <h1><center>Cursos</center></h1>
-        <center>
-            <div class="caja" id="formActualizar">
-                <form id="from1" action="ActualizarCurso.html" method="POST" enctype="multipart/form-data">
-                    <label for="nom"></label> <input type="text" id="nom" placeholder=" Nombre" name="nombre" required>
-                    <br>
-                    <label for="des"></label> <input type="text" id="des" placeholder=" Descripción" name="descripcion" required>
-                    <br>
-                    <label for="cat"></label>
-                    <select name="categoria" id="cat" class="k-textbox">
-                        <option disabled select>Selecciona una categoria</option>
-                        <option value="Back-End">Back-End</option>
-                        <option value="Front-End">Front-End</option>
-                        <option value="Bases de Datos">Bases de Datos</option>
-                        <option value="Redes">Redes</option>
-                        <option value="Seguridad en redes">Seguridad en redes</option>   
-                        <option value="Otro">Otro</option>
-                    </select>
-                    <br>
-                    <br>
-                    <label for="cara"></label> <input id="cara" type="file" name="caratula"/>
-                    <div id="Caratula" style="display:none;">
+    <center>
+        <div class="caja" id="formActualizar">
+            <form id="from1" action="ActualizarCurso.html" method="POST" enctype="multipart/form-data">
+                <label for="nom"></label> <input type="text" id="nom" placeholder=" Nombre" name="nombre" required>
+                <br>
+                <label for="des"></label> <input type="text" id="des" placeholder=" Descripción" name="descripcion" required>
+                <br>
+                <label for="cat"></label>
+                <select name="categoria" id="cat" class="k-textbox">
+                    <option disabled select>Selecciona una categoria</option>
+                    <option value="Back-End">Back-End</option>
+                    <option value="Front-End">Front-End</option>
+                    <option value="Bases de Datos">Bases de Datos</option>
+                    <option value="Redes">Redes</option>
+                    <option value="Seguridad en redes">Seguridad en redes</option>   
+                    <option value="Otro">Otro</option>
+                </select>
+                <br>
+                <br>
+                <label for="cara"></label> <input id="cara" type="file" name="caratula"/>
+                <div id="Caratula" style="display:none;">
                     <!-- <div id="Caratula">-->
-                        <label for="curid"></label> <input type="text" id="curid" placeholder="Id" name="curid">
-                    </div>
-                    <br>
-                    <br>
-                    <input class="submit" type="submit" onclick="alertActualizar()" value="Guardar">
-                    <input class="btnCR" type="button" onclick="cancelActualizar()" value="Cancelar">
-                </form> 
-                <!--<button class="btnCR" onclick="cancelAlertAc()" value="Cancelar"/>-->
-            </div>
-            <br>
-            <div id="Divtablita" class="tablita">
-                <table class="tabla" id="tabla">
-                    <thead>
-                        <tr> 
-                            <th>Nombre</th> 
-                            <th>Descripción</th>
-                            <th>Categoria</th>
-                            <th>Opciones</th>
-                        </tr>
-                    </thead>
-                    <tbody></tbody>
-                </table>
-            </div> 
-            <div id="DivSCursos">
-                <h2>No hay cursos disponibles</h2>
-            </div>
-        </center>
-        <br/>
-            <script>          
-                var Fila = null;
-                let DataForm = {};
+                    <label for="curid"></label> <input type="text" id="curid" placeholder="Id" name="curid">
+                </div>
+                <br>
+                <br>
+                <input class="submit" type="submit" onclick="alertActualizar()" value="Guardar">
+                <input class="btnCR" type="button" onclick="cancelActualizar()" value="Cancelar">
+            </form> 
+            <!--<button class="btnCR" onclick="cancelAlertAc()" value="Cancelar"/>-->
+        </div>
+        <br>
+        <div id="Divtablita" class="tablita">
+            <table class="tabla" id="tabla">
+                <thead>
+                    <tr> 
+                        <th>Nombre</th> 
+                        <th>Descripción</th>
+                        <th>Categoria</th>
+                        <th>Opciones</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div> 
+        <div id="DivSCursos">
+            <h2>No hay cursos disponibles</h2>
+        </div>
+    </center>
+    <br/>
+    <script>
+        var Fila = null;
+        let DataForm = {};
 
-                $(function() {
-                    document.getElementById('formActualizar').style.display = 'none';
+        $(function () {
+            document.getElementById('formActualizar').style.display = 'none';
 
-                    <c:forEach var="cur" items="${cursos}">
-                        DataForm["id"] = "${cur.idCurso}";
-                        DataForm["nom"] = "${cur.nombre}";
-                        DataForm["des"] = "${cur.descripcion}";
-                        DataForm["cat"] = "${cur.categoria}";
-                        InsertarDatos(DataForm);
-                    </c:forEach>
-                        
-                    if(DataForm.id != "undefined" && DataForm.id != null){
-                        document.getElementById('Divtablita').style.display = 'block';
-                        document.getElementById('DivSCursos').style.display = 'none';
-                    }
-                    else{
-                        document.getElementById('Divtablita').style.display = 'none';
-                        document.getElementById('DivSCursos').style.display = 'block';  
-                    }
-                });
+        <c:forEach var="cur" items="${cursos}">
+            DataForm["id"] = "${cur.idCurso}";
+            DataForm["nom"] = "${cur.nombre}";
+            DataForm["des"] = "${cur.descripcion}";
+            DataForm["cat"] = "${cur.categoria}";
+            InsertarDatos(DataForm);
+        </c:forEach>
 
-                function agregarModulo(id) {
-                    document.location.href = "actualizarmodulos.html?CursoE=" + id;
-                }
-                
-                function cancelActualizar(){
-                    document.getElementById('formActualizar').style.display = 'none';
-                }
-                
-                function alertActualizar() {
-                    document.querySelector('#from1').addEventListener('submit', function (e) {
+            if (DataForm.id != "undefined" && DataForm.id != null) {
+                document.getElementById('Divtablita').style.display = 'block';
+                document.getElementById('DivSCursos').style.display = 'none';
+            } else {
+                document.getElementById('Divtablita').style.display = 'none';
+                document.getElementById('DivSCursos').style.display = 'block';
+            }
+        });
 
-                        var form = this;
-                        e.preventDefault(); // <--- prevent form from submitting
+        function agregarModulo(id) {
+            document.location.href = "actualizarmodulos.html?CursoE=" + id;
+        }
 
-                        Swal.fire({
-                            title: '¿Quieres Actualizar los datos?',
-                            icon: 'warning',
-                            iconColor: '#B15D28',
-                            showCancelButton: true,
-                            confirmButtonText: 'Actualizar',
-                            confirmButtonColor: '#203853',
-                            cancelButtonColor: '#B15D28',
-                            cancelButtonText: 'Cancelar',
-                            reverseButtons: true
-                        })
+        function cancelActualizar() {
+            document.getElementById('formActualizar').style.display = 'none';
+        }
+
+        function alertActualizar() {
+            document.querySelector('#from1').addEventListener('submit', function (e) {
+
+                var form = this;
+                e.preventDefault(); // <--- prevent form from submitting
+
+                Swal.fire({
+                    title: '¿Quieres Actualizar los datos?',
+                    icon: 'warning',
+                    iconColor: '#B15D28',
+                    showCancelButton: true,
+                    confirmButtonText: 'Actualizar',
+                    confirmButtonColor: '#203853',
+                    cancelButtonColor: '#B15D28',
+                    cancelButtonText: 'Cancelar',
+                    reverseButtons: true
+                })
                         .then((result) => {
                             if (result.isConfirmed) {
                                 Swal.fire({
@@ -283,11 +275,11 @@
                                     iconColor: '#203853',
                                     confirmButtonColor: '#B15D28'
                                 })
-                                .then(function () {
-                                    Actualizar(Leer());
-                                    form.submit();
-                                    console.log("BIEN");
-                                });
+                                        .then(function () {
+                                            Actualizar(Leer());
+                                            form.submit();
+                                            console.log("BIEN");
+                                        });
                             } else if (result.dismiss === Swal.DismissReason.cancel) {
                                 Swal.fire({
                                     title: '¡Cancelado!',
@@ -298,141 +290,142 @@
                                 });
                             }
                         });
-                    });
-                }
+            });
+        }
 
-                function Leer() {
-                    let DataForm = {};
-                    DataForm["nom"] = document.getElementById("nom").value;
-                    DataForm["des"] = document.getElementById("des").value;
-                    DataForm["cat"] = document.getElementById("cat").value;
-                    return DataForm;
-                }
+        function Leer() {
+            let DataForm = {};
+            DataForm["nom"] = document.getElementById("nom").value;
+            DataForm["des"] = document.getElementById("des").value;
+            DataForm["cat"] = document.getElementById("cat").value;
+            return DataForm;
+        }
 
-                function InsertarDatos(data) {
-                    let table = document.getElementById("tabla").getElementsByTagName('tbody')[0];
-                    let Fila = table.insertRow(table.length);
-                    columna1 = Fila.insertCell(0).innerHTML = data.nom;
-                    columna2 = Fila.insertCell(1).innerHTML = data.des;
-                    columna3 = Fila.insertCell(2).innerHTML = data.cat;
-                    columna4 = Fila.insertCell(3).innerHTML = `
-                                                                <button type="button" class="btn btn-danger" onClick="Borrarr(this,` + data.id + `)">
-                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-trash " viewBox="0 0 16 16">
-                                                                        <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
-                                                                        <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
-                                                                    </svg>
-                                                                </button>
+        function InsertarDatos(data) {
+            let table = document.getElementById("tabla").getElementsByTagName('tbody')[0];
+            let Fila = table.insertRow(table.length);
+            columna1 = Fila.insertCell(0).innerHTML = data.nom;
+            columna2 = Fila.insertCell(1).innerHTML = data.des;
+            columna3 = Fila.insertCell(2).innerHTML = data.cat;
+            columna4 = Fila.insertCell(3).innerHTML = `
+                                                        <button type="button" class="btn btn-danger" onClick="Borrarr(this,` + data.id + `)">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-trash " viewBox="0 0 16 16">
+                                                                <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                                                                <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                                                            </svg>
+                                                        </button>
                     
-                                                                <button type="button" class="btn btn-success" onClick="Editarr(this,` + data.id + `)" >
-                                                                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-upload" viewBox="0 0 16 16">
-                                                                        <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
-                                                                        <path d="M7.646 1.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 2.707V11.5a.5.5 0 0 1-1 0V2.707L5.354 4.854a.5.5 0 1 1-.708-.708l3-3z"/>
-                                                                      </svg>
-                                                                </button>
+                                                        <button type="button" class="btn btn-success" onClick="Editarr(this,` + data.id + `)" >
+                                                              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-upload" viewBox="0 0 16 16">
+                                                                <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
+                                                                <path d="M7.646 1.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 2.707V11.5a.5.5 0 0 1-1 0V2.707L5.354 4.854a.5.5 0 1 1-.708-.708l3-3z"/>
+                                                              </svg>
+                                                        </button>
         
-                                                                <button type="button" class="btn btn-warning" onClick="agregarModulo(` + data.id + `)">
-                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
-                                                                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-                                                                        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
-                                                                    </svg>
-                                                                </button>
-                                                                `;
-                }
+                                                        <button type="button" class="btn btn-warning" onClick="agregarModulo(` + data.id + `)">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
+                                                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                                                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                                                            </svg>
+                                                        </button>
+                                                        `;
+        }
 
-                function Vaciar() {
-                    document.getElementById("nom").value = "";
-                    document.getElementById("des").value = "";
-                    document.getElementById("cat").value = "";
-                    Fila = null;
-                }
+        function Vaciar() {
+            document.getElementById("nom").value = "";
+            document.getElementById("des").value = "";
+            document.getElementById("cat").value = "";
+            Fila = null;
+        }
 
-                function Editarr(td, id) {
-                    document.getElementById('formActualizar').style.display = 'block';
+        function Editarr(td, id) {
+            document.getElementById('formActualizar').style.display = 'block';
 
-                    Fila = td.parentElement.parentElement;
+            Fila = td.parentElement.parentElement;
 
-                    document.getElementById("nom").value = Fila.cells[0].innerHTML;
-                    document.getElementById("des").value = Fila.cells[1].innerHTML;
-                    document.getElementById("cat").value = Fila.cells[2].innerHTML;
-                    document.getElementById("curid").value = id;
-                    document.getElementById("nom").focus();
-                }
+            document.getElementById("nom").value = Fila.cells[0].innerHTML;
+            document.getElementById("des").value = Fila.cells[1].innerHTML;
+            document.getElementById("cat").value = Fila.cells[2].innerHTML;
+            document.getElementById("curid").value = id;
+            document.getElementById("nom").focus();
+        }
 
-                function Actualizar(DataForm) {
-                    Fila.cells[0].innerHTML = DataForm.nom;
-                    Fila.cells[1].innerHTML = DataForm.des;
-                    Fila.cells[2].innerHTML = DataForm.cat;
+        function Actualizar(DataForm) {
+            Fila.cells[0].innerHTML = DataForm.nom;
+            Fila.cells[1].innerHTML = DataForm.des;
+            Fila.cells[2].innerHTML = DataForm.cat;
 
-                    document.getElementById('formActualizar').style.display = 'none';
-                }
-                
-                function Borrarr(td, id) {
-                    //document.getElementById('enlace').setAttribute('href', "index.html");
+            document.getElementById('formActualizar').style.display = 'none';
+        }
 
+        function Borrarr(td, id) {
+            //document.getElementById('enlace').setAttribute('href', "index.html");
+
+            Swal.fire({
+                title: '¿Estas seguro de eliminar el Curso?',
+                text: "Si se elimina no se podra revertir",
+                icon: 'warning',
+                iconColor: '#B15D28',
+                showCancelButton: true,
+                confirmButtonText: 'Eliminar',
+                confirmButtonColor: '#203853',
+                cancelButtonColor: '#B15D28',
+                cancelButtonText: 'Cancelar',
+                reverseButtons: true
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    row = td.parentElement.parentElement;
+                    document.getElementById("tabla").deleteRow(row.rowIndex);
+                    document.location.href = "borrarCursos.html?CursoE=" + id;
                     Swal.fire({
-                        title: '¿Estas seguro de eliminar el Curso?',
-                        text: "Si se elimina no se podra revertir",
-                        icon: 'warning',
+                        title: '¡Eliminado!',
+                        text: 'Se elimino el Curso',
+                        icon: 'success',
+                        iconColor: '#203853',
+                        confirmButtonColor: '#B15D28'
+                    });
+                } else if (
+                        result.dismiss === Swal.DismissReason.cancel
+                        ) {
+                    Swal.fire({
+                        title: '¡Cancelado!',
+                        text: 'No se elimino ningun Curso',
+                        icon: 'error',
                         iconColor: '#B15D28',
-                        showCancelButton: true,
-                        confirmButtonText: 'Eliminar',
-                        confirmButtonColor: '#203853',
-                        cancelButtonColor: '#B15D28',
-                        cancelButtonText: 'Cancelar',
-                        reverseButtons: true
-                    }).then((result) => {
-                        if (result.isConfirmed) {
-                            row = td.parentElement.parentElement;
-                            document.getElementById("tabla").deleteRow(row.rowIndex);
-                            document.location.href = "borrarCursos.html?CursoE=" + id;
-                            Swal.fire({
-                                title: '¡Eliminado!',
-                                text: 'Se elimino el Curso',
-                                icon: 'success',
-                                iconColor: '#203853',
-                                confirmButtonColor: '#B15D28'
-                            });
-                        } else if (
-                                result.dismiss === Swal.DismissReason.cancel
-                                ) {
-                            Swal.fire({
-                                title: '¡Cancelado!',
-                                text: 'No se elimino ningun Curso',
-                                icon: 'error',
-                                iconColor: '#B15D28',
-                                confirmButtonColor: '#203853'
-                            });
-                        }
+                        confirmButtonColor: '#203853'
                     });
                 }
-            </script>
-        <br/>
-        <br/>
-    </div>
-    <!--Footer-->
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
+            });
+        }
+    </script>
+    <br/>
+    <br/>
+</div>
+<!--Footer-->
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
-    <div class='footer-wrapper'>
-        <div style='padding-top:15px;padding-bottom:10px; '>
-            <center>
-                <a href='https://twitter.com/?lang=es' target='_blank'><img HSPACE='10'
-                                                                            src='https://img.icons8.com/android/24/000000/twitter.png' title='' />
-                    <a href='https://es-la.facebook.com/' target='_blank'><img HSPACE='10'
-                                                                               src='https://img.icons8.com/android/24/000000/facebook.png' title='' /></a>
-                    <a href='https://www.google.com/intl/es-419/gmail/about/#' target='_blank'><img HSPACE='10'
-                                                                                                    src='https://img.icons8.com/ios-filled/24/000000/gmail-login.png' title='' /></a>
-                    <a href='https://www.youtube.com/' target='_blank'><img HSPACE='10'
-                                                                            src=' https://img.icons8.com/metro/26/000000/youtube.png' title='' /></a>
-                </a>
-            </center>
-        </div> Todos los derechos reservados | © 2021 B1 SOFT
+<footer>
+    <div class="footer-content">
+        <h3>B1 SOFT</h3>
+
+        <ul class="socials">
+            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+            <li><a href="#"><i class="fa fa-youtube"></i></a></li>
+            <li><a href="#"><i class="fa fa-linkedin-square"></i></a></li>
+        </ul>
     </div>
+    <div class="footer-bottom">
+        <p>designed by <span>B1 SOFT</span></p>
+    </div>
+</footer>
 </body>
 <script>
     function cerrarSession() {
