@@ -75,24 +75,32 @@
             }
 
             .botoncurso{
-                font-family: 'Varela Round',sans-serif;
+                font-family: "roboto",sans-serif;
                 font-weight: 500;
-                font-size: 28px;
+                font-size: 20px;
                 color: black;
                 text-decoration: none;
-
             }
             .botoncurso{
-                padding: 9px 25px;
+                padding: 5px 17px;
                 background-color: #B15D28;
                 border: none;
-                border-radius: 5px;
+                border-radius: 10px;
                 cursor: pointer;
                 transition: all 0.3s ease 0s;
             }
             .botoncurso:hover{
                 background-color: #203853;
                 color: white;
+            }
+            .Archivos{
+                font-family: "roboto",sans-serif;
+                font-weight: 500;
+                font-size: 20px;
+                color: white;
+                text-decoration: none;
+                padding: 7px 20px;
+                background-color: #203853;
             }
         </style>
     </head>
@@ -191,27 +199,28 @@
                 <tr>
                     <th width="1400" scope="col">Descripción del curso</th>
                 </tr>
+
+                <!--Esta es una lista que desplegara los archivos en una lista y cuando le des en el boton de "Obten Documento" 
+                te dirijira al enlce ya sea txt o inclusive los pdf te los descargara automaticamente
+                Nota: esta lista solo sera visible si el curso contiene archivos
                 
-                    <!--Esta es una lista que desplegara los archivos en una lista y cuando le des en el boton de "Obten Documento" 
-                    te dirijira al enlce ya sea txt o inclusive los pdf te los descargara automaticamente
-                    Nota: esta lista solo sera visible si el curso contiene archivos
-                    
-                    Suerte Amigosss <3-->
-                    
-            <!--Favor de Darle estilo a la lista y al boton-->
-                    <tr>
+                Suerte Amigosss <3-->
+
+                <!--Favor de Darle estilo a la lista y al boton-->
+                <tr>
                     <th width="1332" scope="col"><c:out value="${detacurso.descripcion}"></c:out></th>
                         <c:choose>
                             <c:when test="${archivos != null}">
                             <th width="186" scope="col">
                                 <form name="formulario2" target="_blank">
-                                    <select name="sitios">
-                                        <option>» Caja de Archivos «</option>
+                                    <select name="sitios" class="Archivos">
+                                        <option> Caja de Archivos </option>
                                         <c:forEach items="${archivos}" var="archivo">
-                                        <option value="${archivo.archivo}">${archivo.nombre}</option>
+                                            <option value="${archivo.archivo}">${archivo.nombre}</option>
                                         </c:forEach>
                                     </select>
-                                    <input type="button" value="Obten Documento" onclick="window.open(formulario2.sitios.value, this.target, 'resizable=1 ,left=80pt,top=80pt,width=1100px,height=800px'); return false;" target="popup">
+                                    <br>
+                                    <input type="button" class="botoncurso" value="Obten Documento" onclick="window.open(formulario2.sitios.value, this.target, 'resizable=1 ,left=80pt,top=80pt,width=1100px,height=800px'); return false;" target="popup">
                                 </form>
 
                             </th>
