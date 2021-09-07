@@ -30,44 +30,108 @@
                 background:  #EAECE8;
             }
 
+            /*Estilo footer*/
 
-            .form{
-                width: 25%;
-                border: 1px solid #ccc;
-                margin: 20px;
-                padding: 20px;
+            .footer-wrapper {
+                background:#203853;/*Color de fondo del pie de página*/
+                padding-top: 30px;/*Altura del pie de página*/
+                padding-bottom: 40px;/*Altura del pie de página*/
+                width: 100%;
+                text-align: center;
+                font: normal normal 11px Arial;/*Tipografía y Tamaño*/
+                color:white;/*Color del texto del pie de página*/
+                text-transform: uppercase;/*Esta línea decódigo es para poner las letras en mayúsculas */
+                letter-spacing: 2px;/*Espacio entre letras*/
+            }
+h1{
+    
+    text-align: center;
+    display: inline-block;
+    position: relative;
+    font-size: 35px;
+}
+
+h1::after,h1::before{
+   
+    content: '';
+    position: absolute;
+    width: 120px;
+    height: 3px;
+    background-color: #B15D28;
+    top: 0.6em;
+    
+}
+
+h1::before{
+    left: -140px;
+    
+}
+
+ h1::after{
+    right: -140px;
+    
+}
+            form{
+              position: absolute;
+            min-width: 280px;
+             max-width: 50%;
+              width: 40%;
+      top: 70%;
+    left: 50%;
+    /*column-count: 2;
+    column-gap: 60px;
+    column-rule: solid 2px #B15D28;*/
+    transform: translate(-50%,-50%);
+    padding: 20px;
+    font-family: 'Valera Round', sans-serif;
+   
+    background-color: #203853;
+    backdrop-filter: blur(1rem);
+    border-radius: 10px;
+    color: #fff;
             }
             label{
                 font-size: 16px;
 
             }
             input, textarea{
-                margin-bottom: 20px;
-                width: 50%;
-                padding: 5px;
-
+          background-color: #181716;
+    color: white;
+    display: block;
+    width: 100%;
+    height: 30px;
+    padding: 5px 6px;
+    margin-bottom: 15px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    font-family: "Font Awesome 5 Free"; 
+    font-weight: 1000;
+    font-size: 18px;
 
             }
-            ::placeholder{
-                font-family: "Font Awesome 5 Free"; 
-                font-weight: 900;
-            }
+           
             input[type="file"]{
-                width: 50%;
-                margin-bottom: 0;
-                background: #1668c4;
+                width: 100%;
+    height: 40px;
+    margin-bottom: 0;
+    background: #181716;
             }
 
             input[type="submit"]{
-                padding: 7px 25px;
-                width: 10%;
+               padding: 7px 25px;
+                width: 30%;
+                height: 20%;
                 margin-bottom: 0;
                 background: #B15D28;
                 color: black;
+                 font-family: 'Varela Round', sans-serif;
                 border-radius: 5px;
                 border: none;
                 cursor: pointer;
             }
+            
+           
             .btnCS{
                 padding: 9px 25px;
                 background-color: #B15D28;
@@ -76,6 +140,7 @@
                 border: none;
                 cursor: pointer;
                 transition: all 0.3s ease 0s;
+                text-decoration: none;
             }
             
             .btnCR{
@@ -85,6 +150,7 @@
                 border-radius: 5px;
                 border: none;
                 cursor: pointer;
+                text-decoration: none;
                 transition: all 0.3s ease 0s;
             }
 
@@ -122,6 +188,7 @@
                 color: white;
             }
         </style>
+       
     </head>
      <header>
             <nav class="navbar">
@@ -151,20 +218,21 @@
         </header>
         <br>
 
-        <h1><center>Crear Modulos</center></h1>
+        <center><h1>Crear Modulos</h1></center>
         <br>
         <br>
         <center>
             <div id="DivAgregar" class="caja">
                 <form id="form" action="addModulo.html" method="POST" enctype="multipart/form-data">
                     <label for="nom"></label> <input type="text" name="titulo" id="nom" placeholder=" Nombre"  required>
-                    <br>
+                    
                     <label for="des"></label> <input type="text" name="descripcion" id="des" placeholder=" Descripción" required>
-                    <br>
+                    
                     <label for="arch"></label> <input type="file" id="arch" name="url" accept=".mp4,.avi,.wmv" required>
-                    <br>
+                  
                     <br>
                     <input class="submit" type="submit" onclick="alertAgregar()" value="Agregar">
+                    <br>
                     <a class="btnCS" href="anadirarchivos.html">Sube Archivos a tu Curso</a>
                 </form>
             </div>
@@ -418,10 +486,19 @@
     <br>
     <br>
     <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    
 
      <footer>
         <div class="footer-content">
-            <h3>B1 SOFT</h3>
+            <h3>B1 SOFT LATINOAMERICA</h3>
 
             <ul class="socials">
                 <li><a href="#"><i class="fa fa-facebook"></i></a></li>
@@ -432,7 +509,7 @@
             </ul>
         </div>
         <div class="footer-bottom">
-            <p>designed by <span>B1 SOFT</span></p>
+            <p>2021 <span>B1 SOFT latam</span></p>
         </div>
     </footer>
 </body>
