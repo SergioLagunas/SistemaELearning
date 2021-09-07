@@ -122,10 +122,10 @@
                         <li><a href="listadodecursos.html">Cursos</a></li>
                         <li><a href="nuevocurso.html">Agregar nuevo curso</a></li>
                         <!--<li><a href="#">Cerrar sesión</a></li>-->
-                        <li><span><a onclick="cerrarSession()" class="cta">Cerrar sesión</a></span></li>
+                    <li><span><a onclick="cerrarSession()" class="cta">Cerrar sesión</a></span></li>
                     </ul>
                 </div>
-            </nav>
+                </nav>
         </header>
         <br>
 
@@ -148,10 +148,10 @@
             <form id="formActualizar" action="updateArchivo.html?VistaA=2" method="POST" enctype="multipart/form-data">
                 <label for="nom"></label> <input type="text" name="nombre" id="nomAc" placeholder="Nombre" required>
                 <br>
-                <label for="arc"></label> <input type="file" id="archAc" name="archivo">
+                <label for="arc"></label> <input type="file" id="archAc" name="archivo" accept=".pdf,.txt,.docx,.xlsx,.pptx">
                 <div id="Divid" style="display:none;">
                     <!--<div id="Divid">-->
-                    <label for="moduid"></label> <input type="text" id="moduid" placeholder="Id" name="archid" accept=".pdf,.txt,.docx,.xlsx,.pptx">
+                    <label for="moduid"></label> <input type="text" id="moduid" placeholder="Id" name="archid">
                 </div>
                 <br>
                 <br>
@@ -182,14 +182,14 @@
         $(function () {
             document.getElementById('DivActualizar').style.display = 'none';
 
-        <c:forEach var="arch" items="${archivos}">
-            DataForm["id"] = "${arch.idArchivo}";
-            DataForm["nom"] = "${arch.nombre}";
-            DataForm["url"] = "${arch.archivo}";
-            InsertarDatos(DataForm);
-        </c:forEach>
-
-            if (DataForm.id != "undefined" && DataForm.id != null)
+            <c:forEach var="arch" items="${archivos}">
+                DataForm["id"] = "${arch.idArchivo}";
+                DataForm["nom"] = "${arch.nombre}";
+                DataForm["url"] = "${arch.archivo}";
+                InsertarDatos(DataForm);
+            </c:forEach>
+            
+            if(DataForm.id != "undefined" && DataForm.id != null)
                 document.getElementById('Divtablita').style.display = 'block';
             else
                 document.getElementById('Divtablita').style.display = 'none';
@@ -198,13 +198,15 @@
             console.log("Nombre: ", DataForm.nom);
         });
 
-        function alertVideo(url) {
+        function alertArchivo(url) {
             swal.fire({
                 width: '80%',
+                heightAuto: false,
+                scrollbarPadding: false,
                 background: '#00000000',
                 showConfirmButton: false,
-                html: ' <a controls href="' + url + '" width="100%" height="98%" target="_blank">Visualiza tu Archivo</a>'
-            });
+                html: '<iframe src="https://docs.google.com/viewerng/viewer?url='+url+'&embedded=true" frameborder="0" height="600px" width="100%"></iframe>'
+            }); 
         }
 
         function cancelActualizar() {
@@ -297,7 +299,7 @@
             let table = document.getElementById("tabla").getElementsByTagName('tbody')[0];
             let Fila = table.insertRow(table.length);
             columna1 = Fila.insertCell(0).innerHTML = data.nom;
-            columna2 = Fila.insertCell(1).innerHTML = `<button onClick="alertVideo('` + data.url + `')"><a href="` + data.url + `" width="240" height="140"></a></button>`;
+            columna2 = Fila.insertCell(1).innerHTML = `<button onClick="alertArchivo('` + data.url + `')">ARCHIVO</button>`;
             columna3 = Fila.insertCell(2).innerHTML = `
                                                             <button type="button" class="btn btn-danger" onClick="Borrarr(this,` + data.id + `)">
                                                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-trash " viewBox="0 0 16 16">
@@ -392,7 +394,7 @@
                 <li><a href="#"><i class="fa fa-youtube"></i></a></li>
                 <li><a href="#"><i class="fa fa-linkedin-square"></i></a></li>
             </ul>
-        </div>
+    </div>
         <div class="footer-bottom">
             <p>designed by <span>B1 SOFT</span></p>
         </div>
