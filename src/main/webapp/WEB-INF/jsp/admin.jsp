@@ -12,10 +12,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/kendo.common.min.css" />
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/kendo.black.min.css" />
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/kendo.default.mobile.min.css" />
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/admin.css" />
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/card.css" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/newheader.css" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/footer.css" />
         <script src="${pageContext.request.contextPath}/resources/js/jquery.min.js"></script>
@@ -73,55 +70,65 @@
                     <br>
     <center><h1><font color="black">Bienvenido <%=request.getSession().getAttribute("usuario")%></font></h1></center>
     <br>
-
-    <div class="seccion">
-        <table>
-            <div class="card1">
-                <img src="${pageContext.request.contextPath}/resources/imagenes/Adminsemillero.png">
-                <br>
-                <h4>Administradores</h4>
-                <br>
-                <p><center><strong>Bienvenido administrador de B1 SOFT.</strong></center></p>
-                <br>
-                <p><center>Aqui puedes Agregar nuevos administradores a esta plataforma. </center></p>
-                <br>
-                <br>
-                <a href="nuevoadmin.html"><button class="botoncurso">Conoce más</button></a>
+    <br>
+    <br>
+    
+     <section class="container">
+         <div class="card2">
+             <div class="card2-image img1">
+              <img src="${pageContext.request.contextPath}/resources/imagenes/Adminsemillero.png">
+             </div>
+         <!--<h2>titulo</h2>
+         <p>texto</p>
+         <a href="">Saber mas</a>-->
+          <h4>ADMINISTRADORES</h4>
+          <p><center><strong>Bienvenido administrador de B1 SOFT.</strong></center></p>
+        
+          <p><center>Aqui puedes Agregar nuevos administradores a esta plataforma. </center></p>
+           <br>
+          <a href="nuevoadmin.html"><button class="botoncurso">Conoce más</button></a>
+          <br>
+          <br>
+        </div>
+        <div class="card2">
+            <div class="card2-image img2">
+                   <img src="${pageContext.request.contextPath}/resources/imagenes/semillero.png">
             </div>
-
-            <div class="card1">
-                <img src="${pageContext.request.contextPath}/resources/imagenes/semillero.png">
-                <br>
-                <h4>Semilleros</h4>
-                <br>
+            <!--<h2>titulo</h2>
+            <p>texto</p>
+            <a href="">Saber mas</a>-->
+            <h4>SEMILLEROS</h4>
+            <p><center><strong>Bienvenido administrador de B1 SOFT.</strong></center></p>
+            <p><center> Consulta o elimina la lista de semilleros que tienen acceso. </center></p>
+            <br>
+            <a href="nuevosemillero.html"><button class="botoncurso">Conoce más</button></a>
+            <br>
+            <br>
+           </div>
+           <div class="card2">
+               <div class="card2-image img3">
+                     <img src="${pageContext.request.contextPath}/resources/imagenes/cursos.png">
+               </div>
+            <!--<h2>titulo</h2>
+            <p>texto</p>
+            <a href="">Saber mas</a>-->
+            <h4>AGREGAR CURSO</h4>
                 <p><center><strong>Bienvenido administrador de B1 SOFT.</strong></center></p>
-                <br>
-                <p><center> Consulta o elimina la lista  </center></p>
-                <p><center>de semilleros que hacen uso de esta plataforma. </center></p>
-                <br>
-
-                <a href="nuevosemillero.html"><button class="botoncurso">Conoce más</button></a>
-            </div>
-
-            <div class="card1">
-                <img src="${pageContext.request.contextPath}/resources/imagenes/cursos.png">
-                <br>
-                <h4>Agregar Curso</h4>
-                <br>
-                <p><center><strong>Bienvenido administrador de B1 SOFT.</strong></center></p>
-                <br>
-
-                <p><center>Crea y da de alta nuevos cursos </center></p>
-                <p><center> donde podrás subir videos y archivos. </center></p>
-                <br>
+                <p><center>Crea y da de alta nuevos cursos donde podrás subir videos y archivos. </center></p>
                 <br>
                 <a href="nuevocurso.html"><button class="botoncurso">Conoce más</button></a>
-            </div>
+          <br>
+          <br>
 
-        </table>
 
-    </div>         
+           </div>
 
+           
+           
+
+
+    </section>
+    
     <br>
     <br>
     <br>
@@ -134,7 +141,7 @@
     <br>
     <footer>
             <div class="footer-content">
-                <h3>B1 SOFT</h3>
+                <h3>B1 SOFT LATINOAMERICA</h3>
 
                 <ul class="socials">
                     <li><a href="#"><i class="fa fa-facebook"></i></a></li>
@@ -145,7 +152,7 @@
                 </ul>
             </div>
             <div class="footer-bottom">
-                <p>designed by <span>B1 SOFT</span></p>
+                <p>2021. <span>B1 SOFT</span></p>
             </div>
         </footer>
 </body>
