@@ -97,6 +97,19 @@
                 background-color: #272727;
                 color: white;
             }
+            .NArchivo{
+                padding: 5px 10px;
+                background-color: white;
+                color: black;
+                border-radius: 5px;
+                border: #B15D28 2px solid;
+                cursor: pointer;
+                transition: all 0.3s ease 0s;
+            }
+            .NArchivo:hover{
+                background-color: #B15D28;
+                border: white 2px solid;
+            }
 
         </style>
     </head>
@@ -129,7 +142,7 @@
         </header>
         <br>
 
-        <h1><center>Añadir Archivos</center></h1>
+        <h1><center>Añadir nuevos archivos</center></h1>
         <br>
         <br>
     <center>
@@ -299,7 +312,7 @@
             let table = document.getElementById("tabla").getElementsByTagName('tbody')[0];
             let Fila = table.insertRow(table.length);
             columna1 = Fila.insertCell(0).innerHTML = data.nom;
-            columna2 = Fila.insertCell(1).innerHTML = `<button onClick="alertArchivo('` + data.url + `')">ARCHIVO</button>`;
+            columna2 = Fila.insertCell(1).innerHTML = `<button class="NArchivo" onClick="alertArchivo('` + data.url + `')">📁</button>`;
             columna3 = Fila.insertCell(2).innerHTML = `
                                                             <button type="button" class="btn btn-danger" onClick="Borrarr(this,` + data.id + `)">
                                                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-trash " viewBox="0 0 16 16">
