@@ -14,6 +14,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Nuevo Curso</title>
+         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/kendo.common.min.css" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/kendo.black.min.css" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/kendo.default.mobile.min.css" />
@@ -180,22 +181,22 @@
         <br>
         <br>
         <br>
-        <footer>
-            <div class="footer-content">
-                <h3>B1 SOFT</h3>
+       <footer>
+    <div class="footer-content">
+        <h3>B1 SOFT LATINOAMERICA</h3>
 
-                <ul class="socials">
-                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                    <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                    <li><a href="#"><i class="fa fa-youtube"></i></a></li>
-                    <li><a href="#"><i class="fa fa-linkedin-square"></i></a></li>
-                </ul>
-            </div>
-            <div class="footer-bottom">
-                <p>designed by <span>B1 SOFT</span></p>
-            </div>
-        </footer>
+        <ul class="socials">
+            <li><a href="#"><i class="fab fa-facebook"></i></a>
+                     <li><a href="#"><i class="fab fa-twitter"></i></a>
+                     <li><a href="#"><i class="fab fa-google"></i></a>
+                     <li><a href="#"><i class="fab fa-youtube"></i></a>
+                     <li><a href="#"><i class="fab fa-linkedin"></i></a>
+        </ul>
+    </div>
+    <div class="footer-bottom">
+        <p>2021. <span>B1 SOFT</span></p>
+    </div>
+</footer>
     </body>
     <script>
         function cerrarSession() {

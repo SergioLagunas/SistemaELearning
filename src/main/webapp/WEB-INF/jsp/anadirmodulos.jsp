@@ -496,21 +496,21 @@ h1::before{
     <br>
     
 
-     <footer>
-        <div class="footer-content">
-            <h3>B1 SOFT LATINOAMERICA</h3>
+    <footer>
+    <div class="footer-content">
+        <h3>B1 SOFT LATINOAMERICA</h3>
 
-            <ul class="socials">
-                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                <li><a href="#"><i class="fa fa-youtube"></i></a></li>
-                <li><a href="#"><i class="fa fa-linkedin-square"></i></a></li>
-            </ul>
-        </div>
-        <div class="footer-bottom">
-            <p>2021 <span>B1 SOFT latam</span></p>
-        </div>
-    </footer>
+        <ul class="socials">
+            <li><a href="#"><i class="fab fa-facebook"></i></a>
+                     <li><a href="#"><i class="fab fa-twitter"></i></a>
+                     <li><a href="#"><i class="fab fa-google"></i></a>
+                     <li><a href="#"><i class="fab fa-youtube"></i></a>
+                     <li><a href="#"><i class="fab fa-linkedin"></i></a>
+        </ul>
+    </div>
+    <div class="footer-bottom">
+        <p>2021. <span>B1 SOFT</span></p>
+    </div>
+</footer>
 </body>
 </html>

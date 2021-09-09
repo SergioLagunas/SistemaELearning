@@ -22,6 +22,7 @@
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="${pageContext.request.contextPath}/resources/js/header.js" defer></script>
+      
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -34,75 +35,113 @@
                 justify-content: center;
                 background:  #EAECE8;
             }
+            
+            form{
+    width: 820px;
+    margin: auto;
+    background: #203853;
+    padding: 20px 20px;
+    box-sizing: border-box;
+    margin-top: 10px;
+    border-radius: 15px;
+    border: none;
+    column-count: 2;
+    column-gap: 60px;
+    column-rule: solid 2px #B15D28;
 
-            .form{
-                width: 25%;
-                border: 1px dashed #ccc;
-                margin: 20px;
-                padding: 20px;
+}
 
-            }
-            label{
-                font-size: 16px;
+h1{
+    
+    text-align: center;
+    display: inline-block;
+    position: relative;
+    font-size: 35px;
+}
 
-                color:black;
+h1::after,h1::before{
+   
+    content: '';
+    position: absolute;
+    width: 120px;
+    height: 3px;
+    background-color: #B15D28;
+    top: 0.6em;
+    
+}
 
-            }
-            option1{
-                margin-bottom: 20px;
-                width: 50%;
-                padding: 5px;
-            }
-            input, textarea{
-                margin-bottom: 20px;
-                width: 24%;
-                padding:5px;
-                border:1px solid #d3d6e4;
-                border-radius: 5px;
+h1::before{
+    left: -140px;
+    
+}
 
-                outline: none; 
+ h1::after{
+    right: -140px;
+    
+}
 
-            }
+input{
+    width: 93%;
+    margin-bottom: 10px;
+    padding: 5px;
+    text-decoration: none;
+   border-radius: 5px;
+    box-sizing: border-box;
+    font-family: "Font Awesome 5 Free"; 
+    font-weight: 900;
+    font-size: 18px;
+    border: none;
+    background: #181716;
+    color: white;
+    outline: none;
+}
+
+select{
+    margin-bottom: 20px;
+    border-radius: 5px;
+    width: 93%;
+    padding: 5px;
+    outline: none;
+    font-family: "Font Awesome 5 Free"; 
+    font-weight: 900;
+    font-size: 18px;
+    background: #181716;
+    color:white;
+    border: none;
+}
+input[type="submit"]{
+    width: 50%;
+    margin-bottom: 0;
+    background: #B15D28;
+    color: rgb(36, 33, 33);
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+input[type="submit"]:hover{
+    cursor: pointer;
+    background-color: #f8f9fc;
+}
 
 
-            ::placeholder{
-                font-family: "Font Awesome 5 Free"; 
-                font-weight: 900;
-            }
+/*propiedad responsive*/
+@media(max-width:820px){
+    form{
+        width: 90%;
 
-            select{
-                margin-bottom: 20px;
-                border-radius: 5px;
-                width: 24%;
-                padding: 7px;
-                display: auto;
-                font-family: "Font Awesome 5 Free"; 
-                font-weight: 900;
-                color:#2F4F4F;
-            }
-
-            input[type="file"]{
-                width: 50%;
-                margin-bottom: 0;
-                background: #1668c4;
-            }
-
-            input[type="submit"]{
-                width: 10%;
-                margin-bottom: 0;
-                background: #B15D28;
-                color: black;
-                border-radius: 5px;
-                border: none;
-                cursor: pointer;
-            }
+    }
+}
+            
+           
             table{
                 background-color: #203853;
                 width: 80%;
+                padding: 50px;
+               justify-content: center;
                 text-align: center;
                 color: white;
                 border-collapse: collapse;
-
+              
 
             }
             th, td{
@@ -163,44 +202,33 @@
         </header>
         <br>
 
-        <h1><center>Administradores</center></h1>
-        <br>
-        <br>
-
+    <center><h1>Administradores</h1></center>
+        
         <form autocomplete="off" method="POST" action="addAdministrador.html">
             <center>
-                <div class="tablita">
-                    <table class="tabla" id="tabla">
-                        <tbody>
-                        <div class="caja">
-                            <label for="nom"></label> <input type="text" id="nom" placeholder=" Nombre" required name="nombre">
-
-                            <label for="apeP"></label> <input type="text" id="apeP" placeholder=" Apellido paterno" required name="aPaterno">
-                            <br>
-                            <label for="apeM"></label> <input type="text" id="apeM" placeholder=" Apellido materno" required name="aMaterno">
-
-
+                            <label for="nom"></label> <input type="text" id="nom" placeholder="  Nombre" required name="nombre">
+                            <label for="apeP"></label> <input type="text" id="apeP" placeholder="   Apellido paterno" required name="aPaterno">
+                            <label for="apeM"></label> <input type="text" id="apeM" placeholder="  Apellido materno" required name="aMaterno">
                             <select  name="genero" id="gen">
                                 <option disabled selected value="g"> Género:</option>
-                                <option disabled="">Selecciona una opción:</option>
                                 <option value="Femenino">Femenino</option>
                                 <option value="Masculino">Masculino</option>
                             </select>
+                            <label for="RFC"></label> <input type="text" id="RFC" placeholder="   RFC" required name="rfc">
+                            <label for="email"></label> <input type="text" id="cont" placeholder="  Correo" required name="email">
+                            <label for="contrasena"></label> <input type="password" id="cont" placeholder="  Contraseña" required name="contrasena">
                             <br>
-                            <label for="RFC"></label> <input type="text" id="RFC" placeholder=" RFC" required name="rfc">
-
-                            <label for="email"></label> <input type="text" id="cont" placeholder=" Correo" required name="email">
                             <br>
-                            <label for="contrasena"></label> <input type="password" id="cont" placeholder=" Contraseña" required name="contrasena">
-
-
-                            <br>
-
-                            <input class="submit" type="submit" value="Guardar">
-                        </div>
-                        <br/>
-                        </tbody>
-                        <br/>
+                            <center><input class="submit" type="submit" value="Guardar"></center> 
+            </center>
+        </form>
+                       
+                       
+                        <br>
+                       
+                          <div class="tablita">
+                              <center> <table class="tabla" id="tabla">
+                         
                         <thead>
                             <tr > 
                                 <th>Nombre</th> 
@@ -231,8 +259,9 @@
                             </tr>
                         </c:forEach>
                     </table>
+                              </center>
                 </div>
-            </center>
+          
             <br/>
             <script>
 
@@ -340,11 +369,12 @@
                 }
 
             </script>
-
+           
         </form>
         <br/>
         <br/>
     </div>
+
 
     <!--Footer-->
     <br>
@@ -354,21 +384,26 @@
     <br>
     <br>
     <br>
+    <br>
+   
+    
+   
+    
 
 <footer>
     <div class="footer-content">
-        <h3>B1 SOFT</h3>
+        <h3>B1 SOFT LATINOAMERICA</h3>
 
         <ul class="socials">
-            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-            <li><a href="#"><i class="fa fa-youtube"></i></a></li>
-            <li><a href="#"><i class="fa fa-linkedin-square"></i></a></li>
+            <li><a href="#"><i class="fab fa-facebook"></i></a>
+                     <li><a href="#"><i class="fab fa-twitter"></i></a>
+                     <li><a href="#"><i class="fab fa-google"></i></a>
+                     <li><a href="#"><i class="fab fa-youtube"></i></a>
+                     <li><a href="#"><i class="fab fa-linkedin"></i></a>
         </ul>
     </div>
     <div class="footer-bottom">
-        <p>designed by <span>B1 SOFT</span></p>
+        <p>2021. <span>B1 SOFT</span></p>
     </div>
 </footer>
 </body>

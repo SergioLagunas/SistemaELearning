@@ -78,9 +78,6 @@
              <div class="card2-image img1">
               <img src="${pageContext.request.contextPath}/resources/imagenes/Adminsemillero.png">
              </div>
-         <!--<h2>titulo</h2>
-         <p>texto</p>
-         <a href="">Saber mas</a>-->
           <h4>ADMINISTRADORES</h4>
           <p><center><strong>Bienvenido administrador de B1 SOFT.</strong></center></p>
         
@@ -94,9 +91,6 @@
             <div class="card2-image img2">
                    <img src="${pageContext.request.contextPath}/resources/imagenes/semillero.png">
             </div>
-            <!--<h2>titulo</h2>
-            <p>texto</p>
-            <a href="">Saber mas</a>-->
             <h4>SEMILLEROS</h4>
             <p><center><strong>Bienvenido administrador de B1 SOFT.</strong></center></p>
             <p><center> Consulta o elimina la lista de semilleros que tienen acceso. </center></p>
@@ -109,9 +103,6 @@
                <div class="card2-image img3">
                      <img src="${pageContext.request.contextPath}/resources/imagenes/cursos.png">
                </div>
-            <!--<h2>titulo</h2>
-            <p>texto</p>
-            <a href="">Saber mas</a>-->
             <h4>AGREGAR CURSO</h4>
                 <p><center><strong>Bienvenido administrador de B1 SOFT.</strong></center></p>
                 <p><center>Crea y da de alta nuevos cursos donde podrás subir videos y archivos. </center></p>
@@ -119,14 +110,7 @@
                 <a href="nuevocurso.html"><button class="botoncurso">Conoce más</button></a>
           <br>
           <br>
-
-
            </div>
-
-           
-           
-
-
     </section>
     
     <br>

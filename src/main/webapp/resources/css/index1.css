@@ -87,3 +87,9 @@ body {
     font: bold 1em sans-serif;
 }
 
+@media(max-width:190px){
+    form{
+        width: 100%;
+
+    }
+}
