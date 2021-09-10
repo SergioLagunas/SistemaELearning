@@ -27,6 +27,34 @@
                 justify-content: center;
                 background:  #EAECE8;
             }
+            h1{
+    
+    text-align: center;
+    display: inline-block;
+    position: relative;
+    font-size: 35px;
+}
+
+h1::after,h1::before{
+   
+    content: '';
+    position: absolute;
+    width: 120px;
+    height: 3px;
+    background-color: #B15D28;
+    top: 0.6em;
+    
+}
+
+h1::before{
+    left: -140px;
+    
+}
+
+ h1::after{
+    right: -140px;
+    
+}
 
             .form-register {
                 width: 450px;
@@ -38,6 +66,7 @@
                 font-family: 'calibri';
                 color: rgb(42, 35, 49);
                 box-shadow: 7px 13px 37px #000;
+                
             }
 
             .controls {

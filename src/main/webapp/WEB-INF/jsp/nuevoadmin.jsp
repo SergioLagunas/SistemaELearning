@@ -117,6 +117,8 @@ input[type="submit"]{
     border-radius: 5px;
     border: none;
     cursor: pointer;
+     font-family: "Font Awesome 5 Free"; 
+    font-weight: 1000;
 }
 input[type="submit"]:hover{
     cursor: pointer;

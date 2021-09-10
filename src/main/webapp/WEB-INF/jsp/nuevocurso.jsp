@@ -38,8 +38,37 @@
                 text-align: center;
                 font-size: 30px;
             }
+            h1{
+    
+    text-align: center;
+    display: inline-block;
+    position: relative;
+    font-size: 35px;
+}
 
-            .k-button{
+h1::after,h1::before{
+   
+    content: '';
+    position: absolute;
+    width: 120px;
+    height: 3px;
+    background-color: #B15D28;
+    top: 0.6em;
+    
+}
+
+h1::before{
+    left: -140px;
+    
+}
+
+ h1::after{
+    right: -140px;
+    
+}
+            
+        
+ .k-button{
                 width: 40%;
                 margin-bottom: 0;
                 background: #B15D28;
@@ -56,6 +85,9 @@
             #simple-input{
                 padding: 5px;
             }
+
+
+           
         </style>
     </head>
     <body class="body1">
@@ -90,13 +122,14 @@
 
         <div id="container">
             <div id="Titulo">
-                <h3>Agregar nuevo curso</h3>
+                <center><h1>Agregar nuevo curso</h1></center>
             </div>
             <br>
             <form:form id="form" action="crearCurso.html" method="POST" enctype="multipart/form-data">   
                 <div id="example">
                     <div class="demo-section k-content">
                         <ul class="fieldlist">
+                            <center>
                             <center><img  src="${pageContext.request.contextPath}/resources/imagenes/curso.png" width="220px" height="160px" ></center>
                             <br>
                             <li>
@@ -127,25 +160,27 @@
                             <br>
                             <br>
                             <br>
-
+                            </center>
                         </ul>
                         <style>
                             .demo-section  {
                                 background-color: rgba(255, 255, 255, 0);
+                                
                             }
+                            
+                            
 
                             .fieldlist {
 
-                                width: 90%;
-                                height: 560px;
-                                background:  #203853;
-                                padding: 50px;
-                                margin: auto;
-                                margin-top: 30px;
-                                border-radius: 10px;
-
-                                color: rgb(42, 35, 49);
-                                box-shadow: 7px 13px 37px #000;
+                               width: 500px;
+                background:  #203853;
+                padding: 30px;
+                margin: auto;
+                margin-top: 60px;
+                border-radius: 10px;
+                font-family: 'calibri';
+                color: rgb(42, 35, 49);
+                box-shadow: 7px 13px 37px #000;
 
                             }
 

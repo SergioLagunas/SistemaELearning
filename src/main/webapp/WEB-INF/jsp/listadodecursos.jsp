@@ -29,12 +29,46 @@
                 justify-content: center;
                 background:  #EAECE8;
             }
+            h1{
+    
+    text-align: center;
+    display: inline-block;
+    position: relative;
+    font-size: 35px;
+}
 
-            .form{
-                width: 25%;
-                border: 1px dashed #ccc;
-                margin: 20px;
-                padding: 20px;
+h1::after,h1::before{
+   
+    content: '';
+    position: absolute;
+    width: 120px;
+    height: 3px;
+    background-color: #B15D28;
+    top: 0.6em;
+    
+}
+
+h1::before{
+    left: -140px;
+    
+}
+
+ h1::after{
+    right: -140px;
+    
+}
+
+            form{
+                 width: 700px;
+    margin: auto;
+    background: #203853;
+    padding: 25px 20px;
+    box-sizing: border-box;
+    margin-top: 20px;
+    border-radius: 15px;
+    border: none;
+   
+
             }
 
             label{
@@ -49,44 +83,90 @@
             }
 
             input, textarea{
-                margin-bottom: 20px;
-                width: 40%;
-                padding: 5px;
-                border:1px solid #d3d6e4;
-                border-radius: 5px;
-
-                outline: none; 
+               width: 90%;
+    margin-bottom: 20px;
+    padding: 7px;
+    text-decoration: none;
+   border-radius: 5px;
+    box-sizing: border-box;
+    
+    font-size: 18px;
+    border: none;
+    background: #181716;
+    color: white;
+    outline: none;
 
             }
+            
             #cat{
-                width: 40%;
-                padding: 5px;
+              margin-bottom: 20px;
+    border-radius: 5px;
+    width: 90%;
+    padding: 7px;
+  
+    display: auto;
+    outline: none;
+    
+    font-size: 18px;
+    background: #181716;
+    color:white;
+    border: none;
             }
 
             ::placeholder{
-                font-family: "Font Awesome 5 Free"; 
-                font-weight: 900;
+               
             }
+            input[type="file"]{
+    width: 90%;
+    height: 45px;
+    margin-bottom: 0;
+  
+    background: #181716;
+    color: white;
+}
 
             input[type="submit"]{
-                width: 10%;
-                margin-bottom: 0;
-                background: #B15D28;
-                color: black;
-                border-radius: 5px;
-                border: none;
-                cursor: pointer;
+                 padding: 7px 25px;
+    width: 40%;
+    height: 20%;
+          font-size: 18px;     
+    margin-bottom: 0;
+    background: #B15D28;
+    color: rgb(36, 33, 33);
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
             }
+            input[type="submit"]:hover{
+    cursor: pointer;
+    background-color: #f8f9fc;
+}
 
             .btnCR{
                 padding: 7px 25px;
-                background-color: #B15D28;
-                color: black;
-                border-radius: 5px;
-                border: none;
-                cursor: pointer;
-                transition: all 0.3s ease 0s;
+    width: 40%;
+    height: 20%;
+    background-color: #B15D28;
+    font-size: 18px;
+    color: rgb(36, 33, 33);
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s ease 0s;
             }
+            .btnCR:hover{
+                 cursor: pointer;
+    background-color: #f8f9fc;
+            }
+            
+            /*propiedad responsive*/
+@media(max-width:700px){
+    form{
+        width: 90%;
+
+    }
+}
 
             table{
                 background-color: #203853;
@@ -168,14 +248,14 @@
             </nav>
         </header>
         <br>
-        <h1><center>Cursos</center></h1>     
+    <center> <h1>Cursos</h1> </center>    
         <div class="caja" id="formActualizar">
             <form id="from1" action="ActualizarCurso.html" method="POST" enctype="multipart/form-data">
                 <center>
                     <label for="nom"></label> <input type="text" id="nom" placeholder=" Nombre" name="nombre" required>
                     <br>
                     <label for="des"></label> <input type="text" id="des" placeholder=" Descripción" name="descripcion" required>
-                    <br>
+                   
                     <label for="cat"></label>
                     <select name="categoria" id="cat" class="k-textbox">
                         <option disabled select>Selecciona una categoria</option>
@@ -187,7 +267,8 @@
                         <option value="Otro">Otro</option>
                     </select>
                     <br>
-                    <br>
+                    
+                   
                     <label for="cara"></label> <input id="cara" type="file" name="caratula"/>
                 </center>
                 <div id="CargaProgress">
@@ -202,7 +283,9 @@
                         <label for="curid"></label> <input type="text" id="curid" placeholder="Id" name="curid">
                     </div>
                     <br>
+                   
                     <input class="submit" type="submit" onclick="alertActualizar()" value="Guardar">
+                    
                     <input class="btnCR" type="button" onclick="cancelActualizar()" value="Cancelar">
                 </center>
             </form>
