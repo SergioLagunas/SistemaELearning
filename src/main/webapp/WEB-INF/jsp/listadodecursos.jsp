@@ -117,22 +117,24 @@
                 color: white;
             }
 
-            #progress_bar {
-                margin: 10px 0;
+            #progress_bar{
+                margin-left: 30%;
+                margin-bottom: 10px;
                 padding: 3px;
                 border: 1px solid #000;
-                font-size: 14px;
+                font-size: 12px;
                 clear: both;
                 opacity: 0;
                 -moz-transition: opacity 1s linear;
                 -o-transition: opacity 1s linear;
                 -webkit-transition: opacity 1s linear;
             }
-            #progress_bar.loading {
+            #progress_bar.loading{
                 opacity: 1.0;
             }
             #progress_bar .percent {
-                background-color: #99ccff;
+                /*background-color: #99ccff;*/
+                border: 1px solid #000;
                 height: auto;
                 width: 0;
             }
@@ -166,63 +168,77 @@
             </nav>
         </header>
         <br>
-        <h1><center>Cursos</center></h1>
-    <center>
+        <h1><center>Cursos</center></h1>     
         <div class="caja" id="formActualizar">
             <form id="from1" action="ActualizarCurso.html" method="POST" enctype="multipart/form-data">
-                <label for="nom"></label> <input type="text" id="nom" placeholder=" Nombre" name="nombre" required>
-                <br>
-                <label for="des"></label> <input type="text" id="des" placeholder=" Descripción" name="descripcion" required>
-                <br>
-                <label for="cat"></label>
-                <select name="categoria" id="cat" class="k-textbox">
-                    <option disabled select>Selecciona una categoria</option>
-                    <option value="Back-End">Back-End</option>
-                    <option value="Front-End">Front-End</option>
-                    <option value="Bases de Datos">Bases de Datos</option>
-                    <option value="Redes">Redes</option>
-                    <option value="Seguridad en redes">Seguridad en redes</option>   
-                    <option value="Otro">Otro</option>
-                </select>
-                <br>
-                <br>
-                <label for="cara"></label> <input id="cara" type="file" name="caratula"/>
-                <div id="Caratula" style="display:none;">
-                    <!-- <div id="Caratula">-->
-                    <label for="curid"></label> <input type="text" id="curid" placeholder="Id" name="curid">
+                <center>
+                    <label for="nom"></label> <input type="text" id="nom" placeholder=" Nombre" name="nombre" required>
+                    <br>
+                    <label for="des"></label> <input type="text" id="des" placeholder=" Descripción" name="descripcion" required>
+                    <br>
+                    <label for="cat"></label>
+                    <select name="categoria" id="cat" class="k-textbox">
+                        <option disabled select>Selecciona una categoria</option>
+                        <option value="Back-End">Back-End</option>
+                        <option value="Front-End">Front-End</option>
+                        <option value="Bases de Datos">Bases de Datos</option>
+                        <option value="Redes">Redes</option>
+                        <option value="Seguridad en redes">Seguridad en redes</option>   
+                        <option value="Otro">Otro</option>
+                    </select>
+                    <br>
+                    <br>
+                    <label for="cara"></label> <input id="cara" type="file" name="caratula"/>
+                </center>
+                <div id="CargaProgress">
+                    <div id="progress_bar" style="background-color:red;width:540px;">
+                        <div class="percent" style="background-color:green;height:15px;">0%</div>
+                    </div>
+                    <center><input type="button" onclick="abortRead();" value="Cancelar Lectura"></center>
                 </div>
-                <br>
-                <br>
-                <input class="submit" type="submit" onclick="alertActualizar()" value="Guardar">
-                <input class="btnCR" type="button" onclick="cancelActualizar()" value="Cancelar">
-            </form> 
-            <!--<button class="btnCR" onclick="cancelAlertAc()" value="Cancelar"/>-->
+                <center>
+                    <div id="Caratula" style="display:none;">
+                        <!-- <div id="Caratula">-->
+                        <label for="curid"></label> <input type="text" id="curid" placeholder="Id" name="curid">
+                    </div>
+                    <br>
+                    <input class="submit" type="submit" onclick="alertActualizar()" value="Guardar">
+                    <input class="btnCR" type="button" onclick="cancelActualizar()" value="Cancelar">
+                </center>
+            </form>
         </div>
         <br>
-        <div id="Divtablita" class="tablita">
-            <table class="tabla" id="tabla">
-                <thead>
-                    <tr> 
-                        <th>Nombre</th> 
-                        <th>Descripción</th>
-                        <th>Categoria</th>
-                        <th>Opciones</th>
-                    </tr>
-                </thead>
-                <tbody></tbody>
-            </table>
-        </div> 
-        <div id="DivSCursos">
-            <h2>No hay cursos disponibles</h2>
-        </div>
-    </center>
-    <br/>
+        <center>
+            <div id="Divtablita" class="tablita">
+                <table class="tabla" id="tabla">
+                    <thead>
+                        <tr> 
+                            <th>Nombre</th> 
+                            <th>Descripción</th>
+                            <th>Categoria</th>
+                            <th>Opciones</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div> 
+            <div id="DivSCursos">
+                <h2>No hay cursos disponibles</h2>
+            </div>
+            <br/>
+        </center>
     <script>
         var Fila = null;
         let DataForm = {};
+        //Variables a utilizar en ProgressBar
+        var reader;
+        var progress = document.querySelector('.percent');
+        //Escucha la entrada de archivos del Input File
+        document.getElementById('cara').addEventListener('change', handleFileSelect, false);
 
         $(function () {
             document.getElementById('formActualizar').style.display = 'none';
+            document.getElementById('CargaProgress').style.display = 'none';
 
         <c:forEach var="cur" items="${cursos}">
             DataForm["id"] = "${cur.idCurso}";
@@ -240,6 +256,69 @@
                 document.getElementById('DivSCursos').style.display = 'block';
             }
         });
+
+        function handleFileSelect(evt) {
+            document.getElementById('CargaProgress').style.display = 'block';
+            progress.style.width = '0%';
+            progress.textContent = '0%';
+
+            reader = new FileReader();
+            reader.onerror = errorHandler;
+            reader.onprogress = updateProgress;
+            reader.onabort = function(e) {
+                //alert('Carga de archivo cancelada');
+                Swal.fire({
+                    title: '¡Cancelado!',
+                    text: 'Carga de archivo cancelada',
+                    icon: 'warning',
+                    iconColor: '#B15D28',
+                    confirmButtonColor: '#203853'
+                });
+                document.getElementById("cara").value = null;
+                document.getElementById('CargaProgress').style.display = 'none';
+            };
+            reader.onloadstart = function(e) {
+                document.getElementById('progress_bar').className = 'loading';
+            };
+            reader.onload = function(e) {
+                progress.style.width = '100%';
+                progress.textContent = '100%';
+
+                setTimeout("document.getElementById('progress_bar').className='';document.getElementById('CargaProgress').style.display = 'none';", 2000);
+            };
+
+            reader.readAsBinaryString(evt.target.files[0]);
+        }
+        
+        function updateProgress(evt) {
+            // evt es un ProgressEvent
+            if (evt.lengthComputable) {
+                var percentLoaded = Math.round((evt.loaded / evt.total) * 100);
+                if (percentLoaded < 100) {
+                    progress.style.width = percentLoaded + '%';
+                    progress.textContent = percentLoaded + '%';
+                }
+            }
+        }
+        
+        function abortRead() {
+          reader.abort();
+        }
+        
+        function errorHandler(evt) {
+            switch(evt.target.error.code) {
+                case evt.target.error.NOT_FOUND_ERR:
+                    alert('Archivo no encontrado!');
+                break;
+                case evt.target.error.NOT_READABLE_ERR:
+                    alert('No se puede leer el archivo');
+                break;
+                case evt.target.error.ABORT_ERR:
+                break; 
+                default:
+                    alert('Ha ocurrido un error al leer el archivo');
+            };
+        }
 
         function agregarModulo(id) {
             document.location.href = "actualizarmodulos.html?CursoE=" + id;
