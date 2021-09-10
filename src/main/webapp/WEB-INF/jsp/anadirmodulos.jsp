@@ -30,128 +30,116 @@
                 background:  #EAECE8;
             }
 
-            /*Estilo footer*/
-
-            .footer-wrapper {
-                background:#203853;/*Color de fondo del pie de página*/
-                padding-top: 30px;/*Altura del pie de página*/
-                padding-bottom: 40px;/*Altura del pie de página*/
-                width: 100%;
-                text-align: center;
-                font: normal normal 11px Arial;/*Tipografía y Tamaño*/
-                color:white;/*Color del texto del pie de página*/
-                text-transform: uppercase;/*Esta línea decódigo es para poner las letras en mayúsculas */
-                letter-spacing: 2px;/*Espacio entre letras*/
-            }
-h1{
-    
-    text-align: center;
-    display: inline-block;
-    position: relative;
-    font-size: 35px;
-}
-
-h1::after,h1::before{
-   
-    content: '';
-    position: absolute;
-    width: 120px;
-    height: 3px;
-    background-color: #B15D28;
-    top: 0.6em;
-    
-}
-
-h1::before{
-    left: -140px;
-    
-}
-
- h1::after{
-    right: -140px;
-    
-}
             form{
-              position: absolute;
-            min-width: 280px;
-             max-width: 50%;
-              width: 40%;
-      top: 70%;
-    left: 50%;
-    /*column-count: 2;
-    column-gap: 60px;
-    column-rule: solid 2px #B15D28;*/
-    transform: translate(-50%,-50%);
-    padding: 20px;
-    font-family: 'Valera Round', sans-serif;
-   
-    background-color: #203853;
-    backdrop-filter: blur(1rem);
-    border-radius: 10px;
-    color: #fff;
-            }
-            label{
-                font-size: 16px;
+                width: 450px;
+                margin: auto;
+                background: #203853;
+                padding: 10px 20px;
+                box-sizing: border-box;
+                margin-top: 20px;
+                border-radius: 15px;
+                border: none;
+
 
             }
-            input, textarea{
-          background-color: #181716;
-    color: white;
-    display: block;
-    width: 100%;
-    height: 30px;
-    padding: 5px 6px;
-    margin-bottom: 15px;
-    border: none;
-    outline: none;
-    border-radius: 5px;
-    font-family: "Font Awesome 5 Free"; 
-    font-weight: 1000;
-    font-size: 18px;
+
+            h1{
+
+                text-align: center;
+                display: inline-block;
+                position: relative;
+                font-size: 35px;
+            }
+
+            h1::after,h1::before{
+
+                content: '';
+                position: absolute;
+                width: 120px;
+                height: 3px;
+                background-color: #B15D28;
+                top: 0.6em;
 
             }
-           
+
+            h1::before{
+                left: -140px;
+
+            }
+
+            h1::after{
+                right: -140px;
+
+            }
+
+            input{
+                width: 100%;
+                margin-bottom: 5px;
+                padding: 7px;
+                text-decoration: none;
+                border: none;
+                box-sizing: border-box;
+                font-family: "Font Awesome 5 Free"; 
+                font-weight: 1000;
+                font-size: 18px;
+                border: none;
+                background: #181716;
+                color: white;
+            }
+
             input[type="file"]{
                 width: 100%;
-    height: 40px;
-    margin-bottom: 0;
-    background: #181716;
+                height: 40px;
+                margin-bottom: 0;
+                background: #181716;
+                color: white;
             }
 
             input[type="submit"]{
-               padding: 7px 25px;
-                width: 30%;
+                padding: 7px 25px;
+                width: 50%;
                 height: 20%;
                 margin-bottom: 0;
                 background: #B15D28;
-                color: black;
-                 font-family: 'Varela Round', sans-serif;
+                color:rgb(36, 33, 33);
+                font-family: 'Varela Round', sans-serif;
+                font-size: 14px;
                 border-radius: 5px;
                 border: none;
                 cursor: pointer;
             }
-            
-           
             .btnCS{
-                padding: 9px 25px;
+                padding: 7px 25px;
+                width: 40%;
+                height: 20%;
                 background-color: #B15D28;
-                color: black;
+                font-size: 14px;
+                color: rgb(36, 33, 33);
                 border-radius: 5px;
                 border: none;
                 cursor: pointer;
-                transition: all 0.3s ease 0s;
                 text-decoration: none;
+                transition: all 0.3s ease 0s;
             }
-            
             .btnCR{
                 padding: 7px 25px;
+                width: 40%;
+                height: 20%;
                 background-color: #B15D28;
-                color: black;
+                font-size: 14px;
+                color: rgb(36, 33, 33);
                 border-radius: 5px;
                 border: none;
                 cursor: pointer;
                 text-decoration: none;
                 transition: all 0.3s ease 0s;
+            }
+            /*propiedad responsive*/
+            @media(max-width:820px){
+                form{
+                    width: 80%;
+
+                }
             }
 
             table{
@@ -188,324 +176,324 @@ h1::before{
                 color: white;
             }
         </style>
-       
+
     </head>
-     <header>
-            <nav class="navbar">
-                <!--<div class="brand-title">Brand Name</div>-->
-                <div class="logo">
-                    <div>
-                        <a href="admin.html"><img src="${pageContext.request.contextPath}/resources/imagenes/B1SOFT-LOGO.gif"></a>
-                    </div>
+    <header>
+        <nav class="navbar">
+            <!--<div class="brand-title">Brand Name</div>-->
+            <div class="logo">
+                <div>
+                    <a href="admin.html"><img src="${pageContext.request.contextPath}/resources/imagenes/B1SOFT-LOGO.gif"></a>
                 </div>
-                <a href="#" class="toggle-button">
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                </a>
-                <div class="navbar-links">
-                    <ul>
-                        <li><a href="perfiladmin.html">Mi perfil</a></li>
-                        <li><a href="nuevoadmin.html">Administradores</a></li>
-                        <li><a href="nuevosemillero.html">Semilleros</a></li>
-                        <li><a href="listadodecursos.html">Cursos</a></li>
-                        <li><a href="nuevocurso.html">Agregar nuevo curso</a></li>
-                        <!--<li><a href="#">Cerrar sesión</a></li>-->
-                        <li><span><a onclick="cerrarSession()" class="cta">Cerrar sesión</a></span></li>
-                    </ul>
-                </div>
-            </nav>
-        </header>
-        <br>
-
-        <center><h1>Crear Modulos</h1></center>
-        <br>
-        <br>
-        <center>
-            <div id="DivAgregar" class="caja">
-                <form id="form" action="addModulo.html" method="POST" enctype="multipart/form-data">
-                    <label for="nom"></label> <input type="text" name="titulo" id="nom" placeholder=" Nombre"  required>
-                    
-                    <label for="des"></label> <input type="text" name="descripcion" id="des" placeholder=" Descripción" required>
-                    
-                    <label for="arch"></label> <input type="file" id="arch" name="url" accept=".mp4,.avi,.wmv" required>
-                  
-                    <br>
-                    <input class="submit" type="submit" onclick="alertAgregar()" value="Agregar">
-                    <br>
-                    <a class="btnCS" href="anadirarchivos.html">Sube Archivos a tu Curso</a>
-                </form>
             </div>
-            <div id="DivActualizar" class="caja">
-                <form id="formActualizar" action="ActualizarModulo.html?VistaA=1" method="POST" enctype="multipart/form-data">
-                    <label for="nom"></label> <input type="text" name="titulo" id="nomAc" placeholder=" Nombre"  required>
-                    <br> 
-                    <label for="des"></label> <input type="text" name="descripcion" id="desAc" placeholder=" Descripción"  required>
-                    <br>
-                    <label for="arc"></label> <input type="file" id="archAc" name="url" accept=".mp4,.avi,.wmv">
-                    <div id="Divid" style="display:none;">
+            <a href="#" class="toggle-button">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </a>
+            <div class="navbar-links">
+                <ul>
+                    <li><a href="perfiladmin.html">Mi perfil</a></li>
+                    <li><a href="nuevoadmin.html">Administradores</a></li>
+                    <li><a href="nuevosemillero.html">Semilleros</a></li>
+                    <li><a href="listadodecursos.html">Cursos</a></li>
+                    <li><a href="nuevocurso.html">Agregar nuevo curso</a></li>
+                    <!--<li><a href="#">Cerrar sesión</a></li>-->
+                    <li><span><a onclick="cerrarSession()" class="cta">Cerrar sesión</a></span></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <br>
+
+    <center><h1>Crear Modulos</h1></center>
+
+    <center>
+        <div id="DivAgregar" class="caja">
+            <form id="form" action="addModulo.html" method="POST" enctype="multipart/form-data">
+                <label for="nom"></label> <input type="text" name="titulo" id="nom" placeholder=" Nombre"  required>
+
+                <label for="des"></label> <input type="text" name="descripcion" id="des" placeholder=" Descripción" required>
+
+                <label for="arch"></label> <input type="file" id="arch" name="url" accept=".mp4,.avi,.wmv" required>
+                <br>
+                <br>
+                <input class="submit" type="submit" onclick="alertAgregar()" value="Agregar">
+                <br>
+                <br>
+                <a class="btnCS" href="anadirarchivos.html">Sube Archivos a tu Curso</a>
+            </form>
+        </div>
+        <div id="DivActualizar" class="caja">
+            <form id="formActualizar" action="ActualizarModulo.html?VistaA=1" method="POST" enctype="multipart/form-data">
+                <label for="nom"></label> <input type="text" name="titulo" id="nomAc" placeholder=" Nombre"  required>
+                <br> 
+                <label for="des"></label> <input type="text" name="descripcion" id="desAc" placeholder=" Descripción"  required>
+                <br>
+                <label for="arc"></label> <input type="file" id="archAc" name="url" accept=".mp4,.avi,.wmv">
+                <div id="Divid" style="display:none;">
                     <!--<div id="Divid">-->
-                        <label for="moduid"></label> <input type="text" id="moduid" placeholder="Id" name="moduid">
-                    </div>
-                    <br>
-                    <br>
-                    <input class="submit" type="submit" onclick="alertActualizar()" value="Actualizar">
-                    <input class="btnCR" type="button" onclick="cancelActualizar()" value="Cancelar">
-                </form>
-            </div>
-            <br>
-            <div id="Divtablita" class="tablita">
-                <table class="tabla" id="tabla">
-                    <thead>
-                        <tr> 
-                            <th>Nombre</th> 
-                            <th>Descripción</th>
-                            <th>Archivos</th>
-                            <th>Opciones</th>
-                        </tr>
-                    </thead>
-                    <tbody></tbody>
-                </table>
-            </div>
-        </center>
-        <br/>
-        <script>
-            var Fila = null;          
-            let DataForm = {};
-                
-            $(function(){
-                document.getElementById('DivActualizar').style.display = 'none';
-                
-                <c:forEach var="modu" items="${modulos}">     
-                    DataForm["id"] = "${modu.idModulo}";  
-                    DataForm["nom"] = "${modu.titulo}";  
-                    DataForm["des"] = "${modu.descripcion}";
-                    DataForm["url"] = "${modu.url}";
-                    InsertarDatos(DataForm); 
-                </c:forEach>
-            
-                if(DataForm.id != "undefined" && DataForm.id != null)
-                    document.getElementById('Divtablita').style.display = 'block';
-                else
-                    document.getElementById('Divtablita').style.display = 'none';
-    
-                console.log("ID: ", DataForm.id);
-                console.log("Nombre: ", DataForm.nom);
+                    <label for="moduid"></label> <input type="text" id="moduid" placeholder="Id" name="moduid">
+                </div>
+                <br>
+                <br>
+                <input class="submit" type="submit" onclick="alertActualizar()" value="Actualizar">
+                <input class="btnCR" type="button" onclick="cancelActualizar()" value="Cancelar">
+            </form>
+        </div>
+        <br>
+        <div id="Divtablita" class="tablita">
+            <table class="tabla" id="tabla">
+                <thead>
+                    <tr> 
+                        <th>Nombre</th> 
+                        <th>Descripción</th>
+                        <th>Archivos</th>
+                        <th>Opciones</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </center>
+    <br/>
+    <script>
+        var Fila = null;
+        let DataForm = {};
+
+        $(function () {
+            document.getElementById('DivActualizar').style.display = 'none';
+
+        <c:forEach var="modu" items="${modulos}">
+            DataForm["id"] = "${modu.idModulo}";
+            DataForm["nom"] = "${modu.titulo}";
+            DataForm["des"] = "${modu.descripcion}";
+            DataForm["url"] = "${modu.url}";
+            InsertarDatos(DataForm);
+        </c:forEach>
+
+            if (DataForm.id != "undefined" && DataForm.id != null)
+                document.getElementById('Divtablita').style.display = 'block';
+            else
+                document.getElementById('Divtablita').style.display = 'none';
+
+            console.log("ID: ", DataForm.id);
+            console.log("Nombre: ", DataForm.nom);
+        });
+
+        function alertVideo(url) {
+            //https://dl.dropboxusercontent.com/s/8c69iw8s5bppw07/org.springframework.web.multipart.commons.CommonsMultipartFile%4019663056_Video.mp4?dl=0
+            //console.log("URL: ",url);
+            swal.fire({
+                width: '80%',
+                background: '#00000000',
+                showConfirmButton: false,
+                html: '<video controls src="' + url + '" width="100%" height="98%"></video>'
             });
-            
-            function alertVideo(url){
-                //https://dl.dropboxusercontent.com/s/8c69iw8s5bppw07/org.springframework.web.multipart.commons.CommonsMultipartFile%4019663056_Video.mp4?dl=0
-                //console.log("URL: ",url);
+        }
+
+        function cancelActualizar() {
+            document.getElementById('DivActualizar').style.display = 'none';
+            document.getElementById('DivAgregar').style.display = 'block';
+        }
+
+        function alertActualizar() {
+            document.querySelector('#formActualizar').addEventListener('submit', function (e) {
+
+                var form = this;
+                e.preventDefault();
+
                 swal.fire({
-                    width: '80%',
-                    background: '#00000000',
-                    showConfirmButton: false,
-                    html: '<video controls src="'+url+'" width="100%" height="98%"></video>'
-                });
-            }
-            
-            function cancelActualizar(){
-                document.getElementById('DivActualizar').style.display = 'none';
-                document.getElementById('DivAgregar').style.display = 'block';
-            }
-            
-            function alertActualizar(){  
-                document.querySelector('#formActualizar').addEventListener('submit', function(e) {
-                    
-                    var form = this;
-                    e.preventDefault();
-
-                    swal.fire({
-                        title: "¿Desea Actualizar el Modulo?",
-                        text: "",
-                        icon: 'warning',
-                        showCancelButton: true,
-                        confirmButtonText: "Sí, Actualizar",
-                        cancelButtonText: "Cancelar"
-                    })
-                    .then(function(isConfirm) {
-                        if(isConfirm.value) {
-                            swal.fire({
-                                title: "El Modulo se actualizo correctamente",
-                                text: "",
-                                icon: 'success'
-                            })
-                            .then(function() {
-                                form.submit();
-                            });
-                        } else {
-                            swal.fire({
-                                title: "No se actualizo ningun Modulo",
-                                text: "",
-                                icon: 'error'
-                            })
-                            .then(function() {
-                                document.getElementById('DivActualizar').style.display = 'none';
-                                document.getElementById('DivAgregar').style.display = 'block';
-                            });
-                        }
-                    });
-                });
-            }
-            
-            function alertAgregar(){  
-                document.querySelector('#form').addEventListener('submit', function(e) {
-                    
-                    var form = this;
-                    e.preventDefault();
-
-                    swal.fire({
-                        title: "¿Desea Agregar el Modulo?",
-                        text: "",
-                        icon: 'warning',
-                        showCancelButton: true,
-                        confirmButtonText: "Sí, Agregar",
-                        cancelButtonText: "Cancelar"
-                    })
-                    .then(function(isConfirm) {
-                        if(isConfirm.value) {
-                            swal.fire({
-                                title: "El Modulo se agrego correctamente",
-                                text: "",
-                                icon: "success"
-                            })
-                            .then(function() {
-                                form.submit();
-                            });
-                        } else {
-                            swal.fire({
-                                title: "No se agrego ningun Modulo",
-                                text: "",
-                                icon: "error" 
-                            });
-                        }
-                    });
-                });
-            }
-
-            function Leer() {
-                let DataForm = {};
-                DataForm["nom"] = document.getElementById("nom").value;
-                DataForm["des"] = document.getElementById("des").value;
-                DataForm["arch"] = document.getElementById("arch").value;
-                return DataForm;
-            }
-            
-            function InsertarDatos(data) {
-                let table = document.getElementById("tabla").getElementsByTagName('tbody')[0];
-                let Fila = table.insertRow(table.length);
-                columna1 = Fila.insertCell(0).innerHTML = data.nom;
-                columna2 = Fila.insertCell(1).innerHTML = data.des;
-                columna3 = Fila.insertCell(2).innerHTML = `<button onClick="alertVideo('`+data.url+`')"><video src="`+data.url+`" width="240" height="140"></video></button>`;
-                columna3 = Fila.insertCell(3).innerHTML = `
-                                                                <button type="button" class="btn btn-danger" onClick="Borrarr(this,`+data.id+`)">
-                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-trash " viewBox="0 0 16 16">
-                                                                        <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
-                                                                        <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
-                                                                    </svg>
-                                                                </button>
-                    
-                                                                <button type="button" class="btn btn-success" onClick="Editarr(this,`+data.id+`)" >
-                                                                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-upload" viewBox="0 0 16 16">
-                                                                        <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
-                                                                        <path d="M7.646 1.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 2.707V11.5a.5.5 0 0 1-1 0V2.707L5.354 4.854a.5.5 0 1 1-.708-.708l3-3z"/>
-                                                                      </svg>
-                                                                </button>
-                                                                `;
-                //document.getElementById("nom").focus();
-                //Vaciar();
-            }
-            
-            function Vaciar() {
-                document.getElementById("nom").value = "";
-                document.getElementById("des").value = "";
-                document.getElementById("arch").value = "";
-                Fila = null;
-            }
-            
-            function Editarr(td, id) {
-                document.getElementById('DivActualizar').style.display = 'block';
-                document.getElementById('DivAgregar').style.display = 'none';
-                
-                Fila = td.parentElement.parentElement;
-                document.getElementById("nomAc").value = Fila.cells[0].innerHTML;
-                document.getElementById("desAc").value = Fila.cells[1].innerHTML;
-                document.getElementById("moduid").value = id;
-                document.getElementById("nomAc").focus();
-            }
-            
-            function Actualizar(DataForm) {
-                Fila.cells[0].innerHTML = DataForm.nom;
-                Fila.cells[1].innerHTML = DataForm.des;
-                Fila.cells[2].innerHTML = DataForm.arch;
-                document.getElementById("nom").focus();
-            }
-            
-            function Borrarr(td, id) {
-                swal.fire({
-                    title: "¿Desea eliminar el Modulo?",
-                    text: "Al realizar esta operacion no se podra revertir",
+                    title: "¿Desea Actualizar el Modulo?",
+                    text: "",
                     icon: 'warning',
                     showCancelButton: true,
-                    confirmButtonText: "Sí, eliminar",
+                    confirmButtonText: "Sí, Actualizar",
                     cancelButtonText: "Cancelar"
                 })
-                .then((willDelete) => {
-                    if (willDelete.value) {
-                        swal.fire({
-                            title: "El Modulo se elimino correctamente",
-                            text: "",
-                            icon: "success"
-                        }).then(function() {
-                            row = td.parentElement.parentElement;
-                            document.getElementById("tabla").deleteRow(row.rowIndex);
-                            document.location.href = "borrarModulo.html?ModuloE=" + id + "&VistaB=1";
+                        .then(function (isConfirm) {
+                            if (isConfirm.value) {
+                                swal.fire({
+                                    title: "El Modulo se actualizo correctamente",
+                                    text: "",
+                                    icon: 'success'
+                                })
+                                        .then(function () {
+                                            form.submit();
+                                        });
+                            } else {
+                                swal.fire({
+                                    title: "No se actualizo ningun Modulo",
+                                    text: "",
+                                    icon: 'error'
+                                })
+                                        .then(function () {
+                                            document.getElementById('DivActualizar').style.display = 'none';
+                                            document.getElementById('DivAgregar').style.display = 'block';
+                                        });
+                            }
                         });
-                    } else {
-                        swal.fire({
-                            title: "No se elimino ningun Modulo",
-                            text: "",
-                            icon: "error" 
+            });
+        }
+
+        function alertAgregar() {
+            document.querySelector('#form').addEventListener('submit', function (e) {
+
+                var form = this;
+                e.preventDefault();
+
+                swal.fire({
+                    title: "¿Desea Agregar el Modulo?",
+                    text: "",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: "Sí, Agregar",
+                    cancelButtonText: "Cancelar"
+                })
+                        .then(function (isConfirm) {
+                            if (isConfirm.value) {
+                                swal.fire({
+                                    title: "El Modulo se agrego correctamente",
+                                    text: "",
+                                    icon: "success"
+                                })
+                                        .then(function () {
+                                            form.submit();
+                                        });
+                            } else {
+                                swal.fire({
+                                    title: "No se agrego ningun Modulo",
+                                    text: "",
+                                    icon: "error"
+                                });
+                            }
                         });
-                    }
-                });
-            }
+            });
+        }
 
-        </script>
+        function Leer() {
+            let DataForm = {};
+            DataForm["nom"] = document.getElementById("nom").value;
+            DataForm["des"] = document.getElementById("des").value;
+            DataForm["arch"] = document.getElementById("arch").value;
+            return DataForm;
+        }
+
+        function InsertarDatos(data) {
+            let table = document.getElementById("tabla").getElementsByTagName('tbody')[0];
+            let Fila = table.insertRow(table.length);
+            columna1 = Fila.insertCell(0).innerHTML = data.nom;
+            columna2 = Fila.insertCell(1).innerHTML = data.des;
+            columna3 = Fila.insertCell(2).innerHTML = `<button onClick="alertVideo('` + data.url + `')"><video src="` + data.url + `" width="240" height="140"></video></button>`;
+            columna3 = Fila.insertCell(3).innerHTML = `
+                                                            <button type="button" class="btn btn-danger" onClick="Borrarr(this,` + data.id + `)">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-trash " viewBox="0 0 16 16">
+                                                                    <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                                                                    <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                                                                </svg>
+                                                            </button>
+                    
+                                                            <button type="button" class="btn btn-success" onClick="Editarr(this,` + data.id + `)" >
+                                                                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-upload" viewBox="0 0 16 16">
+                                                                    <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
+                                                                    <path d="M7.646 1.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 2.707V11.5a.5.5 0 0 1-1 0V2.707L5.354 4.854a.5.5 0 1 1-.708-.708l3-3z"/>
+                                                                  </svg>
+                                                            </button>
+                                                            `;
+            //document.getElementById("nom").focus();
+            //Vaciar();
+        }
+
+        function Vaciar() {
+            document.getElementById("nom").value = "";
+            document.getElementById("des").value = "";
+            document.getElementById("arch").value = "";
+            Fila = null;
+        }
+
+        function Editarr(td, id) {
+            document.getElementById('DivActualizar').style.display = 'block';
+            document.getElementById('DivAgregar').style.display = 'none';
+
+            Fila = td.parentElement.parentElement;
+            document.getElementById("nomAc").value = Fila.cells[0].innerHTML;
+            document.getElementById("desAc").value = Fila.cells[1].innerHTML;
+            document.getElementById("moduid").value = id;
+            document.getElementById("nomAc").focus();
+        }
+
+        function Actualizar(DataForm) {
+            Fila.cells[0].innerHTML = DataForm.nom;
+            Fila.cells[1].innerHTML = DataForm.des;
+            Fila.cells[2].innerHTML = DataForm.arch;
+            document.getElementById("nom").focus();
+        }
+
+        function Borrarr(td, id) {
+            swal.fire({
+                title: "¿Desea eliminar el Modulo?",
+                text: "Al realizar esta operacion no se podra revertir",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: "Sí, eliminar",
+                cancelButtonText: "Cancelar"
+            })
+                    .then((willDelete) => {
+                        if (willDelete.value) {
+                            swal.fire({
+                                title: "El Modulo se elimino correctamente",
+                                text: "",
+                                icon: "success"
+                            }).then(function () {
+                                row = td.parentElement.parentElement;
+                                document.getElementById("tabla").deleteRow(row.rowIndex);
+                                document.location.href = "borrarModulo.html?ModuloE=" + id + "&VistaB=1";
+                            });
+                        } else {
+                            swal.fire({
+                                title: "No se elimino ningun Modulo",
+                                text: "",
+                                icon: "error"
+                            });
+                        }
+                    });
+        }
+
+    </script>
 
 
-        <br/>
-        <br/>
-    </div>
+    <br/>
+    <br/>
+</div>
 
-    <!--Footer-->
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    
+<!--Footer-->
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
-    <footer>
+
+<footer>
     <div class="footer-content">
         <h3>B1 SOFT LATINOAMERICA</h3>
 
         <ul class="socials">
             <li><a href="#"><i class="fab fa-facebook"></i></a>
-                     <li><a href="#"><i class="fab fa-twitter"></i></a>
-                     <li><a href="#"><i class="fab fa-google"></i></a>
-                     <li><a href="#"><i class="fab fa-youtube"></i></a>
-                     <li><a href="#"><i class="fab fa-linkedin"></i></a>
+            <li><a href="#"><i class="fab fa-twitter"></i></a>
+            <li><a href="#"><i class="fab fa-google"></i></a>
+            <li><a href="#"><i class="fab fa-youtube"></i></a>
+            <li><a href="#"><i class="fab fa-linkedin"></i></a>
         </ul>
     </div>
     <div class="footer-bottom">

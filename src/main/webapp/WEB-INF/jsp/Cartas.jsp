@@ -31,23 +31,12 @@
         <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <style>
-            .botoncurso{
-                font-family: "roboto",sans-serif;
-                font-weight: 500;
-                font-size: 20px;
-                color: black;
-                text-decoration: none;
-            }
-            .botoncurso{
-                padding: 9px 25px;
+            .k-card:hover{
                 background-color: #B15D28;
-                border: none;
-                border-radius: 50px;
+                color: white;
                 cursor: pointer;
-                transition: all 0.3s ease 0s;
-            }
-            .botoncurso:hover{
-                background-color: white;
+                transform: scale(1.03);
+                transition: all 1s ease;
             }
         </style>
     </head>
@@ -81,13 +70,11 @@
             <div class="cards-container">
             <c:forEach items="${cursos}" var="curso"> 
                 <div class="k-card">
-                    <img class="k-card-image"  src="${curso.caratula}"/>
+                    <a href="mediacursos.html?idCurso=${curso.idCurso}"><img class="k-card-image"  src="${curso.caratula}"/></a>
                     <div class="k-card-body">
                         <center> <h3><c:out value="${curso.nombre}"></c:out></h3> </center> 
-                            <br>
-                            <center><a href="mediacursos.html?idCurso=${curso.idCurso}"><button class="botoncurso">Ir al curso</button></a></center>
+                        </div>
                     </div>
-                </div>
             </c:forEach>
         </div>
         <br>

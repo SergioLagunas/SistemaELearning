@@ -11,7 +11,7 @@
     <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro exitoso</title>
+    <title>ERROR CREAR CURSO</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/estiloErroExito.css">
 </head>
 <body background="">
@@ -24,7 +24,8 @@
 
     <section class="banner contenedor">
         <secrion class="banner_title">
-            <h2>¡ERROR! <br> Valla al parecer ocurrio un error :(.</h2>
+            <h2>¡ERROR! <br> Vaya al parecer 
+                <br>ocurrio un error.</h2>
             <a href="nuevocurso.html" class="llamanos">Regresar</a>
         </secrion>
         <div class="banner_imge">
