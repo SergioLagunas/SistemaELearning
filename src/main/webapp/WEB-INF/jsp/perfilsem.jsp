@@ -171,6 +171,13 @@
                                             }
                                         })
                             });
+
+                        }
+
+                        function cerrarSession() {
+
+                            $(location).attr('href', "cerrarSession.html")
+
                         }
                     </script>
                 </form>
@@ -206,11 +213,5 @@
             </div>
         </footer>
     </body>
-    <script>
-        function cerrarSession() {
-
-            $(location).attr('href', "cerrarSession.html")
-
-        }
-    </script>
+  
 </html>

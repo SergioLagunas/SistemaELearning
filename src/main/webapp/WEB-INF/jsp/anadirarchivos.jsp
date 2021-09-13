@@ -207,7 +207,7 @@ h1::before{
                 <br>
                 <br>
                 <input class="submit" type="submit" onclick="alertAgregar()" value="Agregar">
-                <a class="btnCR" href="actualizarmodulos.html">Cancelar</a>
+                <a class="btnCR" href="anadirmodulos.html">Cancelar</a>
             </form>
         </div>
         <div id="DivActualizar" class="caja">
