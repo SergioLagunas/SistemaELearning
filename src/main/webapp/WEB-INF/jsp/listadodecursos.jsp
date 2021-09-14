@@ -30,45 +30,44 @@
                 background:  #EAECE8;
             }
             h1{
-    
-    text-align: center;
-    display: inline-block;
-    position: relative;
-    font-size: 35px;
-}
 
+                text-align: center;
+                display: inline-block;
+                position: relative;
+                font-size: 35px;
+            }
 
-h1::after,h1::before{
-   
-    content: '';
-    position: absolute;
-    width: 120px;
-    height: 3px;
-    background-color: #B15D28;
-    top: 0.6em;
-    
-}
+            h1::after,h1::before{
 
-h1::before{
-    left: -140px;
-    
-}
+                content: '';
+                position: absolute;
+                width: 120px;
+                height: 3px;
+                background-color: #B15D28;
+                top: 0.6em;
 
- h1::after{
-    right: -140px;
-    
-}
+            }
+
+            h1::before{
+                left: -140px;
+
+            }
+
+            h1::after{
+                right: -140px;
+
+            }
 
             form{
-                 width: 700px;
-    margin: auto;
-    background: #203853;
-    padding: 25px 20px;
-    box-sizing: border-box;
-    margin-top: 20px;
-    border-radius: 15px;
-    border: none;
-   
+                width: 700px;
+                margin: auto;
+                background: #203853;
+                padding: 25px 20px;
+                box-sizing: border-box;
+                margin-top: 20px;
+                border-radius: 15px;
+                border: none;
+
 
             }
 
@@ -84,94 +83,86 @@ h1::before{
             }
 
             input, textarea{
-               width: 90%;
-    margin-bottom: 20px;
-    padding: 7px;
-    text-decoration: none;
-   border-radius: 5px;
-    box-sizing: border-box;
-    
-    font-size: 18px;
-    border: none;
-    background: #181716;
-    color: white;
-    outline: none;
+                width: 90%;
+                margin-bottom: 20px;
+                padding: 7px;
+                text-decoration: none;
+                border-radius: 5px;
+                box-sizing: border-box;
+
+                font-size: 18px;
+                border: none;
+                background: #181716;
+                color: white;
+                outline: none;
 
             }
-            
+
             #cat{
-              margin-bottom: 20px;
-    border-radius: 5px;
-    width: 90%;
-    padding: 7px;
-  
-    display: auto;
-    outline: none;
-    
-    font-size: 18px;
-    background: #181716;
-    color:white;
-    border: none;
+                margin-bottom: 20px;
+                border-radius: 5px;
+                width: 90%;
+                padding: 7px;
+
+                display: auto;
+                outline: none;
+
+                font-size: 18px;
+                background: #181716;
+                color:white;
+                border: none;
             }
 
             ::placeholder{
-               
+
             }
             input[type="file"]{
-    width: 90%;
-    height: 45px;
-    margin-bottom: 0;
-  
-    background: #181716;
-    color: white;
-}
+                width: 90%;
+                height: 45px;
+                margin-bottom: 0;
+
+                background: #181716;
+                color: white;
+            }
 
             input[type="submit"]{
-                 padding: 7px 25px;
-    width: 40%;
-    height: 20%;
-          font-size: 18px;     
-    margin-bottom: 0;
-    background: #B15D28;
-    color: rgb(36, 33, 33);
-    border-radius: 5px;
-    border: none;
-    cursor: pointer;
+                padding: 7px 25px;
+                width: 40%;
+                height: 20%;
+                font-size: 18px;     
+                margin-bottom: 0;
+                background: #B15D28;
+                color: rgb(36, 33, 33);
+                border-radius: 5px;
+                border: none;
+                cursor: pointer;
             }
             input[type="submit"]:hover{
-    cursor: pointer;
-    background-color: #f8f9fc;
-}
+                cursor: pointer;
+                background-color: #f8f9fc;
+            }
 
             .btnCR{
                 padding: 7px 25px;
-    width: 40%;
-    height: 20%;
-    background-color: #B15D28;
-    font-size: 18px;
-    color: rgb(36, 33, 33);
-    border-radius: 5px;
-    border: none;
-    cursor: pointer;
-    text-decoration: none;
-    transition: all 0.3s ease 0s;
+                width: 40%;
+                height: 20%;
+                background-color: #B15D28;
+                font-size: 18px;
+                color: rgb(36, 33, 33);
+                border-radius: 5px;
+                border: none;
+                cursor: pointer;
+                text-decoration: none;
+                transition: all 0.3s ease 0s;
             }
             .btnCR:hover{
-                 cursor: pointer;
-    background-color: #f8f9fc;
+                cursor: pointer;
+                background-color: #f8f9fc;
             }
-            
-            /*propiedad responsive*/
-@media(max-width:700px){
-    form{
-        width: 90%;
-
-    }
-}
 
             table{
                 background-color: #203853;
-                width: 80%;
+                width: 90%;
                 text-align: center;
                 color: white;
                 border-collapse: collapse;
@@ -186,6 +177,9 @@ h1::before{
             tr {
                 border: #B15D28 2px solid;
             }
+            .opciones{
+                width: 200px;
+            }
 
             thead{
                 background-color:  #203853;
@@ -199,7 +193,7 @@ h1::before{
             }
 
             #progress_bar{
-                margin-left: 30%;
+                margin-left: 8%;
                 margin-bottom: 10px;
                 padding: 3px;
                 border: 1px solid #000;
@@ -218,6 +212,26 @@ h1::before{
                 border: 1px solid #000;
                 height: auto;
                 width: 0;
+            }
+            .btncancelar{
+                width: 20%;
+                margin-bottom: 0;
+                background: white;
+                color: black;
+                border-radius: 5px;
+                border: none;
+                cursor: pointer;
+                margin-left: 8%;
+                font-size: 14px;
+            }
+            /*propiedad responsive*/
+            @media(max-width:700px){
+                form{
+                    width: 90%;
+                }
+                .opciones{
+                    width: 100px;
+                }
             }
         </style>
     </head>
@@ -250,67 +264,68 @@ h1::before{
         </header>
         <br>
     <center> <h1>Cursos</h1> </center>    
-        <div class="caja" id="formActualizar">
-            <form id="from1" action="ActualizarCurso.html" method="POST" enctype="multipart/form-data">
-                <center>
-                    <label for="nom"></label> <input type="text" id="nom" placeholder=" Nombre" name="nombre" required>
-                    <br>
-                    <label for="des"></label> <input type="text" id="des" placeholder=" Descripción" name="descripcion" required>
-                   
-                    <label for="cat"></label>
-                    <select name="categoria" id="cat" class="k-textbox">
-                        <option disabled select>Selecciona una categoria</option>
-                        <option value="Back-End">Back-End</option>
-                        <option value="Front-End">Front-End</option>
-                        <option value="Bases de Datos">Bases de Datos</option>
-                        <option value="Redes">Redes</option>
-                        <option value="Seguridad en redes">Seguridad en redes</option>   
-                        <option value="Otro">Otro</option>
-                    </select>
-                    <br>
-                    
-                   
-                    <label for="cara"></label> <input id="cara" type="file" name="caratula"/>
-                </center>
-                <div id="CargaProgress">
-                    <div id="progress_bar" style="background-color:red;width:540px;">
-                        <div class="percent" style="background-color:green;height:15px;">0%</div>
-                    </div>
-                    <center><input type="button" onclick="abortRead();" value="Cancelar Lectura"></center>
+    <div class="caja" id="formActualizar">
+        <form id="from1" action="ActualizarCurso.html" method="POST" enctype="multipart/form-data">
+            <center>
+                <label for="nom"></label> <input type="text" id="nom" placeholder=" Nombre" name="nombre" required>
+                <br>
+                <label for="des"></label> <input type="text" id="des" placeholder=" Descripción" name="descripcion" required>
+
+                <label for="cat"></label>
+                <select name="categoria" id="cat" class="k-textbox">
+                    <option disabled select>Selecciona una categoria</option>
+                    <option value="Back-End">Back-End</option>
+                    <option value="Front-End">Front-End</option>
+                    <option value="Bases de Datos">Bases de Datos</option>
+                    <option value="Redes">Redes</option>
+                    <option value="Seguridad en redes">Seguridad en redes</option>   
+                    <option value="Otro">Otro</option>
+                </select>
+                <br>
+
+
+                <label for="cara"></label> <input id="cara" type="file" name="caratula"/>
+            </center>
+            <br>
+            <div id="CargaProgress">
+                <div id="progress_bar" style="background-color:white;width:540px;border-radius: 3px;">
+                    <div class="percent" style="background-color:#B15D28;height:15px;">0%</div>
                 </div>
-                <center>
-                    <div id="Caratula" style="display:none;">
-                        <!-- <div id="Caratula">-->
-                        <label for="curid"></label> <input type="text" id="curid" placeholder="Id" name="curid">
-                    </div>
-                    <br>
-                   
-                    <input class="submit" type="submit" onclick="alertActualizar()" value="Guardar">
-                    
-                    <input class="btnCR" type="button" onclick="cancelActualizar()" value="Cancelar">
-                </center>
-            </form>
-        </div>
-        <br>
-        <center>
-            <div id="Divtablita" class="tablita">
-                <table class="tabla" id="tabla">
-                    <thead>
-                        <tr> 
-                            <th>Nombre</th> 
-                            <th>Descripción</th>
-                            <th>Categoria</th>
-                            <th>Opciones</th>
-                        </tr>
-                    </thead>
-                    <tbody></tbody>
-                </table>
-            </div> 
-            <div id="DivSCursos">
-                <h2>No hay cursos disponibles</h2>
+                <input type="button" class="btncancelar" onclick="abortRead();" value="Cancelar Lectura">
             </div>
-            <br/>
-        </center>
+            <center>
+                <div id="Caratula" style="display:none;">
+                    <!-- <div id="Caratula">-->
+                    <label for="curid"></label> <input type="text" id="curid" placeholder="Id" name="curid">
+                </div>
+                <br>
+
+                <input class="submit" type="submit" onclick="alertActualizar()" value="Guardar">
+
+                <input class="btnCR" type="button" onclick="cancelActualizar()" value="Cancelar">
+            </center>
+        </form>
+    </div>
+    <br>
+    <center>
+        <div id="Divtablita" class="tablita">
+            <table class="tabla" id="tabla">
+                <thead>
+                    <tr> 
+                        <th>Nombre</th> 
+                        <th>Descripción</th>
+                        <th>Categoria</th>
+                        <th class="opciones">Opciones</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div> 
+        <div id="DivSCursos">
+            <h2>No hay cursos disponibles</h2>
+        </div>
+        <br/>
+    </center>
     <script>
         var Fila = null;
         let DataForm = {};
@@ -349,7 +364,7 @@ h1::before{
             reader = new FileReader();
             reader.onerror = errorHandler;
             reader.onprogress = updateProgress;
-            reader.onabort = function(e) {
+            reader.onabort = function (e) {
                 //alert('Carga de archivo cancelada');
                 Swal.fire({
                     title: '¡Cancelado!',
@@ -361,10 +376,10 @@ h1::before{
                 document.getElementById("cara").value = null;
                 document.getElementById('CargaProgress').style.display = 'none';
             };
-            reader.onloadstart = function(e) {
+            reader.onloadstart = function (e) {
                 document.getElementById('progress_bar').className = 'loading';
             };
-            reader.onload = function(e) {
+            reader.onload = function (e) {
                 progress.style.width = '100%';
                 progress.textContent = '100%';
 
@@ -373,7 +388,7 @@ h1::before{
 
             reader.readAsBinaryString(evt.target.files[0]);
         }
-        
+
         function updateProgress(evt) {
             // evt es un ProgressEvent
             if (evt.lengthComputable) {
@@ -384,24 +399,25 @@ h1::before{
                 }
             }
         }
-        
+
         function abortRead() {
-          reader.abort();
+            reader.abort();
         }
-        
+
         function errorHandler(evt) {
-            switch(evt.target.error.code) {
+            switch (evt.target.error.code) {
                 case evt.target.error.NOT_FOUND_ERR:
                     alert('Archivo no encontrado!');
-                break;
+                    break;
                 case evt.target.error.NOT_READABLE_ERR:
                     alert('No se puede leer el archivo');
-                break;
+                    break;
                 case evt.target.error.ABORT_ERR:
-                break; 
+                    break;
                 default:
                     alert('Ha ocurrido un error al leer el archivo');
-            };
+            }
+            ;
         }
 
         function agregarModulo(id) {
@@ -579,10 +595,10 @@ h1::before{
 
         <ul class="socials">
             <li><a href="#"><i class="fab fa-facebook"></i></a>
-                     <li><a href="#"><i class="fab fa-twitter"></i></a>
-                     <li><a href="#"><i class="fab fa-google"></i></a>
-                     <li><a href="#"><i class="fab fa-youtube"></i></a>
-                     <li><a href="#"><i class="fab fa-linkedin"></i></a>
+            <li><a href="#"><i class="fab fa-twitter"></i></a>
+            <li><a href="#"><i class="fab fa-google"></i></a>
+            <li><a href="#"><i class="fab fa-youtube"></i></a>
+            <li><a href="#"><i class="fab fa-linkedin"></i></a>
         </ul>
     </div>
     <div class="footer-bottom">

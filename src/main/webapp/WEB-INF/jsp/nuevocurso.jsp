@@ -14,7 +14,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Nuevo Curso</title>
-         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/kendo.common.min.css" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/kendo.black.min.css" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/kendo.default.mobile.min.css" />
@@ -40,36 +40,36 @@
                 font-size: 30px;
             }
             h1{
-    
-    text-align: center;
-    display: inline-block;
-    position: relative;
-    font-size: 35px;
-}
 
-h1::after,h1::before{
-   
-    content: '';
-    position: absolute;
-    width: 120px;
-    height: 3px;
-    background-color: #B15D28;
-    top: 0.6em;
-    
-}
+                text-align: center;
+                display: inline-block;
+                position: relative;
+                font-size: 35px;
+            }
 
-h1::before{
-    left: -140px;
-    
-}
+            h1::after,h1::before{
 
- h1::after{
-    right: -140px;
-    
-}
-            
-        
- .k-button{
+                content: '';
+                position: absolute;
+                width: 120px;
+                height: 3px;
+                background-color: #B15D28;
+                top: 0.6em;
+
+            }
+
+            h1::before{
+                left: -140px;
+
+            }
+
+            h1::after{
+                right: -140px;
+
+            }
+
+
+            .k-button{
                 width: 40%;
                 margin-bottom: 0;
                 background: #B15D28;
@@ -88,7 +88,7 @@ h1::before{
             }
 
 
-           
+
         </style>
     </head>
     <body class="body1">
@@ -131,14 +131,14 @@ h1::before{
                     <div class="demo-section k-content">
                         <ul class="fieldlist">
                             <center>
-                            <center><img  src="${pageContext.request.contextPath}/resources/imagenes/curso.png" width="220px" height="160px" ></center>
-                           
-                         
+                                <center><img  src="${pageContext.request.contextPath}/resources/imagenes/curso.png" width="220px" height="160px" ></center>
+
+
                                 <input id="simple-input" type="text" placeholder="Nombre" class="k-textbox" style="width: 100%;" name="nombre" />
                                 <br>
                                 <br>
-                               
-          
+
+
                                 <input id="simple-input" type="text" placeholder="Descripción" class="k-textbox" style="width: 100%;" name="descripcion"  />
                                 <br>
                                 <br>
@@ -158,31 +158,31 @@ h1::before{
 
                                 <br>
                                 <br>
-                            <center><button class="k-button" type="submit">Guardar curso</button>&nbsp;</center> 
-                            
-                            <br>
-                            <br>
-                            <br>
+                                <center><button class="k-button" type="submit">Guardar curso</button>&nbsp;</center> 
+
+                                <br>
+                                <br>
+                                <br>
                             </center>
                         </ul>
                         <style>
                             .demo-section  {
                                 background-color: rgba(255, 255, 255, 0);
-                                
+
                             }
-                            
-                            
+
+
 
                             .fieldlist {
 
-                         width: 600px;
-    margin: auto;
-    background: #203853;
-    padding: 10px 20px;
-    box-sizing: border-box;
-    margin-top: 20px;
-    border-radius: 15px;
-    border: none;
+                                width: 500px;
+                                margin: auto;
+                                background: #203853;
+                                padding: 10px 20px;
+                                box-sizing: border-box;
+                                margin-top: 20px;
+                                border-radius: 15px;
+                                border: none;
 
                             }
 
@@ -200,15 +200,15 @@ h1::before{
                                 font-size: 20px;
                                 color:black;
                             }
-                            
-                            /*propiedad responsive*/
-@media(max-width:600px){
-    .fieldlist{
-        width: 90%;
 
-    }
-}
-                            
+                            /*propiedad responsive*/
+                            @media(max-width:600px){
+                                .fieldlist{
+                                    width: 80%;
+
+                                }
+                            }
+
 
                         </style>
                     </div>
@@ -227,22 +227,22 @@ h1::before{
         <br>
         <br>
         <br>
-       <footer>
-    <div class="footer-content">
-        <h3>B1 SOFT LATINOAMERICA</h3>
+        <footer>
+            <div class="footer-content">
+                <h3>B1 SOFT LATINOAMERICA</h3>
 
-        <ul class="socials">
-            <li><a href="#"><i class="fab fa-facebook"></i></a>
-                     <li><a href="#"><i class="fab fa-twitter"></i></a>
-                     <li><a href="#"><i class="fab fa-google"></i></a>
-                     <li><a href="#"><i class="fab fa-youtube"></i></a>
-                     <li><a href="#"><i class="fab fa-linkedin"></i></a>
-        </ul>
-    </div>
-    <div class="footer-bottom">
-        <p>2021. <span>B1 SOFT</span></p>
-    </div>
-</footer>
+                <ul class="socials">
+                    <li><a href="#"><i class="fab fa-facebook"></i></a>
+                    <li><a href="#"><i class="fab fa-twitter"></i></a>
+                    <li><a href="#"><i class="fab fa-google"></i></a>
+                    <li><a href="#"><i class="fab fa-youtube"></i></a>
+                    <li><a href="#"><i class="fab fa-linkedin"></i></a>
+                </ul>
+            </div>
+            <div class="footer-bottom">
+                <p>2021. <span>B1 SOFT</span></p>
+            </div>
+        </footer>
     </body>
     <script>
         function cerrarSession() {
