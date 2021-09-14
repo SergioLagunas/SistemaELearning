@@ -57,6 +57,8 @@ h1{
     display: inline-block;
     position: relative;
     font-size: 35px;
+    color: black;
+                font-weight: bold;
 }
 
 h1::after,h1::before{
@@ -137,7 +139,7 @@ input[type="submit"]:hover{
            
             table{
                 background-color: #203853;
-                width: 80%;
+                width: 90%;
                 padding: 50px;
                justify-content: center;
                 text-align: center;
@@ -146,6 +148,11 @@ input[type="submit"]:hover{
               
 
             }
+            
+            
+            
+            
+            
             th, td{
 
                 padding: 10px;
@@ -166,11 +173,7 @@ input[type="submit"]:hover{
                 background-color: #272727;
                 color: white;
             }
-            h1 {
-                color: black;
-                font-weight: bold;
-            }
-
+           
 
         </style>
     </head>

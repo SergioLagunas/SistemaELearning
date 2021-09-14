@@ -37,6 +37,7 @@
     font-size: 35px;
 }
 
+
 h1::after,h1::before{
    
     content: '';

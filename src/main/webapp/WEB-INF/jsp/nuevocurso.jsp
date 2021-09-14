@@ -32,6 +32,7 @@
                 font-family: 'Varela Round', sans-serif;
                 justify-content: center;
                 background:  #EAECE8;
+                overflow-x: hidden;
             }
             #Titulo {
                 color: black;
@@ -131,14 +132,16 @@ h1::before{
                         <ul class="fieldlist">
                             <center>
                             <center><img  src="${pageContext.request.contextPath}/resources/imagenes/curso.png" width="220px" height="160px" ></center>
-                            <br>
-                            <li>
+                           
+                         
                                 <input id="simple-input" type="text" placeholder="Nombre" class="k-textbox" style="width: 100%;" name="nombre" />
-                            </li>
-                            <li>
+                                <br>
+                                <br>
+                               
+          
                                 <input id="simple-input" type="text" placeholder="Descripción" class="k-textbox" style="width: 100%;" name="descripcion"  />
-                            </li>
-                            <li>
+                                <br>
+                                <br>
                                 <select  name="categoria" id="simple-input" class="k-textbox" style="width: 100%;">
                                     <option disabled selected value="c">Selecciona una categoria</option>
                                     <option>Back-End</option>
@@ -148,15 +151,15 @@ h1::before{
                                     <option>Seguridad en redes</option>   
                                     <option>Otro</option>
                                 </select>
-                            </li>
-                            <li>
+                                <br>
+                                <br>
                                 <h3 style="color: white;"> Selecciona la caratula del curso: </h3> 
                                 <input id="simple-input" type="file" name="caratula" class="k-textbox" style="width: 100%;" />
 
-                            </li>
-                            <li>
+                                <br>
+                                <br>
                             <center><button class="k-button" type="submit">Guardar curso</button>&nbsp;</center> 
-                            </li>
+                            
                             <br>
                             <br>
                             <br>
@@ -172,15 +175,14 @@ h1::before{
 
                             .fieldlist {
 
-                               width: 500px;
-                background:  #203853;
-                padding: 30px;
-                margin: auto;
-                margin-top: 60px;
-                border-radius: 10px;
-                font-family: 'calibri';
-                color: rgb(42, 35, 49);
-                box-shadow: 7px 13px 37px #000;
+                         width: 600px;
+    margin: auto;
+    background: #203853;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    margin-top: 20px;
+    border-radius: 15px;
+    border: none;
 
                             }
 
@@ -198,6 +200,15 @@ h1::before{
                                 font-size: 20px;
                                 color:black;
                             }
+                            
+                            /*propiedad responsive*/
+@media(max-width:600px){
+    .fieldlist{
+        width: 90%;
+
+    }
+}
+                            
 
                         </style>
                     </div>
