@@ -65,20 +65,19 @@
 
                 content: '';
                 position: absolute;
-                width: 100px;
+                width: 120px;
                 height: 3px;
                 background-color: #B15D28;
                 top: 0.6em;
 
             }
-
             h1::before{
-                left: -120px;
+                left: -140px;
 
             }
 
             h1::after{
-                right: -120px;
+                right: -140px;
 
             }
 
@@ -127,7 +126,7 @@
                 background-color: #f8f9fc;
             }
 
-             table{
+            table{
                 background-color: #203853;
                 width: 90%;
                 text-align: center;
@@ -171,6 +170,26 @@
                 table {
                     display: block;
                     overflow-x: auto;
+                }
+                h1::after,h1::before{
+
+                    content: '';
+                    position: absolute;
+                    width: 100px;
+                    height: 3px;
+                    background-color: #B15D28;
+                    top: 0.6em;
+
+                }
+
+                h1::before{
+                    left: -120px;
+
+                }
+
+                h1::after{
+                    right: -120px;
+
                 }
             }
 
@@ -229,9 +248,9 @@
 
 
     <br>
-        <center>
-    <div class="tablita">
- <table class="tabla" id="tabla">
+    <center>
+        <div class="tablita">
+            <table class="tabla" id="tabla">
 
                 <thead>
                     <tr > 
@@ -263,8 +282,8 @@
                     </tr>
                 </c:forEach>
             </table>
-    </div>
-                    </center>
+        </div>
+    </center>
 
     <br/>
     <script>

@@ -225,12 +225,23 @@
                 font-size: 14px;
             }
             /*propiedad responsive*/
-            @media(max-width:700px){
+            @media(max-width:820px){
                 form{
                     width: 90%;
                 }
                 .opciones{
                     width: 100px;
+                }
+                .btncancelar{
+                    width: 20%;
+                    margin-bottom: 0;
+                    background: white;
+                    color: black;
+                    border-radius: 5px;
+                    border: none;
+                    cursor: pointer;
+                    margin-left: 8%;
+                    font-size: 9px;
                 }
             }
         </style>

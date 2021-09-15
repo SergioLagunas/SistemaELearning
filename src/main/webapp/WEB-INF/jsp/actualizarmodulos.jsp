@@ -132,14 +132,6 @@
                 text-decoration: none;
                 transition: all 0.3s ease 0s;
             }
-            /*propiedad responsive*/
-            @media(max-width:820px){
-                form{
-                    width: 80%;
-
-                }
-            }
-
 
             table{
                 background-color: #203853;
@@ -163,6 +155,9 @@
                 border-bottom: solid 5px #B15D28;
                 color: white;
             }
+            .opciones{
+                width: 150px;
+            }
 
             .Editarr{
                 background-color: teal;
@@ -175,7 +170,40 @@
                 background-color: #272727;
                 color: white;
             }
+            /*propiedad responsive*/
+            @media(max-width:820px){
+                form{
+                    width: 80%;
 
+                }
+                table {
+                    display: block;
+                    overflow-x: auto;
+                }
+                .opciones{
+                    width: 100px;
+                }
+                            h1::after,h1::before{
+
+                content: '';
+                position: absolute;
+                width: 100px;
+                height: 3px;
+                background-color: #B15D28;
+                top: 0.6em;
+
+            }
+            h1::before{
+                left: -120px;
+
+            }
+
+            h1::after{
+                right: -120px;
+
+            }
+
+            }
         </style>
     </head>
     <body class="body1">
@@ -254,7 +282,7 @@
                         <th>Nombre</th> 
                         <th>Descripción</th>
                         <th>Archivos</th>
-                        <th>Opciones</th>
+                        <th class="opciones">Opciones</th>
                     </tr>
                 </thead>
                 <tbody></tbody>
