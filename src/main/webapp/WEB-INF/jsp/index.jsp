@@ -14,6 +14,32 @@
         <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <title>Index</title>
+        <style>
+            /*propiedad responsive*/
+            @media(max-width:820px){
+                .form{
+                    width: 50%;
+                    margin-top: 20%;
+                }
+                .form .avatar {
+                    width: 114px;
+                    height: 114px;
+                    margin-top: -27%;
+                }
+                .logo{
+                    width: 30%;
+                    height: 30%;
+                }
+                .primary{
+                    width: 70%;
+                    font-size: 15px;
+                }
+                .k-secundary {
+                    width: 74%;
+                    font-size: 15px;
+                }
+            }
+        </style>
     </head>
     <!-- <body background="">
         <div id= "video">
