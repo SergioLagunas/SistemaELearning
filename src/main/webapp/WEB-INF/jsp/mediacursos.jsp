@@ -34,13 +34,17 @@
 
 
             h1{
+
                 text-align: center;
                 display: inline-block;
                 position: relative;
-
+                font-size: 35px;
+                color: black;
+                font-weight: bold;
             }
 
             h1::after,h1::before{
+
                 content: '';
                 position: absolute;
                 width: 120px;
@@ -49,7 +53,6 @@
                 top: 0.6em;
 
             }
-
             h1::before{
                 left: -140px;
 
@@ -102,6 +105,38 @@
                 padding: 7px 20px;
                 background-color: #203853;
             }
+            /*propiedad responsive*/
+            @media(max-width:820px){
+                h1{
+                    text-align: center;
+                    display: inline-block;
+                    position: relative;
+                    font-size: 25px;
+                    color: black;
+                    font-weight: bold;
+                }
+
+                h1::after,h1::before{
+
+                    content: '';
+                    position: absolute;
+                    width: 100px;
+                    height: 3px;
+                    background-color: #B15D28;
+                    top: 0.6em;
+
+                }
+
+                h1::before{
+                    left: -120px;
+
+                }
+
+                h1::after{
+                    right: -120px;
+
+                }
+            }
         </style>
     </head>
     <body class="body1">
@@ -130,7 +165,7 @@
         </header>
 
 
-    <center> <h1><b><i>Curso de <c:out value="${detacurso.nombre}"></c:out></i></b></h1></center>
+    <center> <h1><c:out value="${detacurso.nombre}"></c:out></h1></center>
 
 
 
