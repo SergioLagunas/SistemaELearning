@@ -91,6 +91,39 @@
                 color: #fff;
                  padding: 10px;
 }
+
+            /*responsive*/ 
+            @media(max-width:820px){
+                h1,h2{
+                    font-size: 20px;
+                    margin: auto;
+                    margin-bottom: 20px;
+                    justify-content: center;
+                    margin-top: 25px;
+                }
+                .container1 .card1{
+                    background: white;
+                    width: 300px;
+                    text-align: center;
+                    margin: 10px;
+                    border-radius: 15px;
+                    background-color: #2C2635;
+
+                }
+                .container1 .card1 img{
+                    width: 300px;
+                    height: 150px;
+                    margin-bottom: 15px;
+                    background-size: cover;
+                    border-radius: 15px 15px 0 0;
+                }
+                .container1 .card1 h4{
+                    font-weight: 400;
+                    font-size: 20px;
+                    color: #fff;
+                    padding: 10px;
+                }
+            }
         </style> 
     </head>
     <body class="body1"> 
