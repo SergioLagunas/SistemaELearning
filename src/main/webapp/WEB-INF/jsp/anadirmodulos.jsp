@@ -134,13 +134,6 @@
                 text-decoration: none;
                 transition: all 0.3s ease 0s;
             }
-            /*propiedad responsive*/
-            @media(max-width:820px){
-                form{
-                    width: 80%;
-
-                }
-            }
 
             table{
                 background-color: #203853;
@@ -174,6 +167,17 @@
             #nomAc, #desAc, #archAc {
                 background-color: #272727;
                 color: white;
+            }
+            /*propiedad responsive*/
+            @media(max-width:820px){
+                form{
+                    width: 80%;
+
+                }
+                h1::after,h1::before{
+                    display: none;
+
+                }
             }
         </style>
 

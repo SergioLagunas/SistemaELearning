@@ -232,6 +232,30 @@
                 .opciones{
                     width: 100px;
                 }
+                table {
+                    display: block;
+                    overflow-x: auto;
+                }
+                h1::after,h1::before{
+
+                    content: '';
+                    position: absolute;
+                    width: 20px;
+                    height: 3px;
+                    background-color: #B15D28;
+                    top: 0.6em;
+
+                }
+
+                h1::before{
+                    left: -30px;
+
+                }
+
+                h1::after{
+                    right: -30px;
+
+                }
                 .btncancelar{
                     width: 20%;
                     margin-bottom: 0;
@@ -243,6 +267,7 @@
                     margin-left: 8%;
                     font-size: 9px;
                 }
+
             }
         </style>
     </head>

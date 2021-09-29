@@ -183,25 +183,10 @@
                 .opciones{
                     width: 100px;
                 }
-                            h1::after,h1::before{
+                h1::after,h1::before{
+                    display: none;
 
-                content: '';
-                position: absolute;
-                width: 100px;
-                height: 3px;
-                background-color: #B15D28;
-                top: 0.6em;
-
-            }
-            h1::before{
-                left: -120px;
-
-            }
-
-            h1::after{
-                right: -120px;
-
-            }
+                }
 
             }
         </style>
