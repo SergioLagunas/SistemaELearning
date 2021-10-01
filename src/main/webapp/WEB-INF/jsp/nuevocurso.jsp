@@ -86,8 +86,20 @@
             #simple-input{
                 padding: 5px;
             }
+            @media(max-width:820px){
+                h1{
+                    text-align: center;
+                    display: inline-block;
+                    position: relative;
+                    font-size: 30px;
+                }
+                h1::after,h1::before{
+                    display: none;
+
+                }
 
 
+            }
 
         </style>
     </head>

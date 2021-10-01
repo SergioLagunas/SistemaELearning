@@ -196,10 +196,10 @@
                         <li><a href="listadodecursos.html">Cursos</a></li>
                         <li><a href="nuevocurso.html">Agregar nuevo curso</a></li>
                         <!--<li><a href="#">Cerrar sesión</a></li>-->
-                    <li><span><a onclick="cerrarSession()" class="cta">Cerrar sesión</a></span></li>
+                        <li><span><a onclick="cerrarSession()" class="cta">Cerrar sesión</a></span></li>
                     </ul>
                 </div>
-                </nav>
+            </nav>
         </header>
         <br>
 
@@ -255,14 +255,14 @@
         $(function () {
             document.getElementById('DivActualizar').style.display = 'none';
 
-            <c:forEach var="arch" items="${archivos}">
-                DataForm["id"] = "${arch.idArchivo}";
-                DataForm["nom"] = "${arch.nombre}";
-                DataForm["url"] = "${arch.archivo}";
-                InsertarDatos(DataForm);
-            </c:forEach>
-            
-            if(DataForm.id != "undefined" && DataForm.id != null)
+        <c:forEach var="arch" items="${archivos}">
+            DataForm["id"] = "${arch.idArchivo}";
+            DataForm["nom"] = "${arch.nombre}";
+            DataForm["url"] = "${arch.archivo}";
+            InsertarDatos(DataForm);
+        </c:forEach>
+
+            if (DataForm.id != "undefined" && DataForm.id != null)
                 document.getElementById('Divtablita').style.display = 'block';
             else
                 document.getElementById('Divtablita').style.display = 'none';
@@ -278,8 +278,8 @@
                 scrollbarPadding: false,
                 background: '#00000000',
                 showConfirmButton: false,
-                html: '<iframe src="https://docs.google.com/viewerng/viewer?url='+url+'&embedded=true" frameborder="0" height="600px" width="100%"></iframe>'
-            }); 
+                html: '<iframe src="https://docs.google.com/viewerng/viewer?url=' + url + '&embedded=true" frameborder="0" height="600px" width="100%"></iframe>'
+            });
         }
 
         function cancelActualizar() {
@@ -299,6 +299,8 @@
                     icon: 'warning',
                     showCancelButton: true,
                     confirmButtonText: "Sí, Actualizar",
+                    confirmButtonColor: '#203853',
+                    cancelButtonColor: '#B15D28',
                     cancelButtonText: "Cancelar"
                 })
                         .then(function (isConfirm) {
@@ -306,7 +308,9 @@
                                 swal.fire({
                                     title: "El Archivo se actualizo correctamente",
                                     text: "",
-                                    icon: 'success'
+                                    icon: 'success',
+                                    iconColor: '#203853',
+                                    confirmButtonColor: '#B15D28'
                                 })
                                         .then(function () {
                                             form.submit();
@@ -315,7 +319,9 @@
                                 swal.fire({
                                     title: "No se actualizo el Archivo",
                                     text: "",
-                                    icon: 'error'
+                                    icon: 'error',
+                                    iconColor: '#B15D28',
+                                    confirmButtonColor: '#203853'
                                 })
                                         .then(function () {
                                             document.getElementById('DivActualizar').style.display = 'none';
@@ -338,6 +344,8 @@
                     icon: 'warning',
                     showCancelButton: true,
                     confirmButtonText: "Sí, Agregar",
+                    confirmButtonColor: '#203853',
+                    cancelButtonColor: '#B15D28',
                     cancelButtonText: "Cancelar"
                 })
                         .then(function (isConfirm) {
@@ -345,7 +353,9 @@
                                 swal.fire({
                                     title: "El Archivo se agrego correctamente",
                                     text: "",
-                                    icon: "success"
+                                    icon: "success",
+                                    iconColor: '#203853',
+                                    confirmButtonColor: '#B15D28'
                                 })
                                         .then(function () {
                                             form.submit();
@@ -354,7 +364,9 @@
                                 swal.fire({
                                     title: "No se agrego ningun Archivo",
                                     text: "",
-                                    icon: "error"
+                                    icon: "error",
+                                    iconColor: '#B15D28',
+                                    confirmButtonColor: '#203853'
                                 });
                             }
                         });
@@ -421,6 +433,8 @@
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonText: "Sí, eliminar",
+                confirmButtonColor: '#203853',
+                cancelButtonColor: '#B15D28',
                 cancelButtonText: "Cancelar"
             })
                     .then((willDelete) => {
@@ -428,7 +442,9 @@
                             swal.fire({
                                 title: "El Archivo se elimino correctamente",
                                 text: "",
-                                icon: "success"
+                                icon: "success",
+                                iconColor: '#203853',
+                                confirmButtonColor: '#B15D28'
                             }).then(function () {
                                 row = td.parentElement.parentElement;
                                 document.getElementById("tabla").deleteRow(row.rowIndex);
@@ -438,7 +454,9 @@
                             swal.fire({
                                 title: "No se elimino ningun Archivo",
                                 text: "",
-                                icon: "error"
+                                icon: "error",
+                                iconColor: '#B15D28',
+                                confirmButtonColor: '#203853'
                             });
                         }
                     });
@@ -467,7 +485,7 @@
                 <li><a href="#"><i class="fa fa-youtube"></i></a></li>
                 <li><a href="#"><i class="fa fa-linkedin-square"></i></a></li>
             </ul>
-    </div>
+        </div>
         <div class="footer-bottom">
             <p>designed by <span>B1 SOFT</span></p>
         </div>

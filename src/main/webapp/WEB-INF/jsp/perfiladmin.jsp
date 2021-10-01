@@ -13,7 +13,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Perfil Admin</title>
-         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/newheader.css" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/footer.css" />
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
@@ -28,45 +28,44 @@
                 background:  #EAECE8;
             }
             h1{
-    
-    text-align: center;
-    display: inline-block;
-    position: relative;
-    font-size: 35px;
-}
 
-h1::after,h1::before{
-   
-    content: '';
-    position: absolute;
-    width: 120px;
-    height: 3px;
-    background-color: #B15D28;
-    top: 0.6em;
-    
-}
+                text-align: center;
+                display: inline-block;
+                position: relative;
+                font-size: 35px;
+            }
 
-h1::before{
-    left: -140px;
-    
-}
+            h1::after,h1::before{
 
- h1::after{
-    right: -140px;
-    
-}
+                content: '';
+                position: absolute;
+                width: 120px;
+                height: 3px;
+                background-color: #B15D28;
+                top: 0.6em;
+
+            }
+
+            h1::before{
+                left: -140px;
+
+            }
+
+            h1::after{
+                right: -140px;
+
+            }
 
             .form-register {
-                width: 450px;
+                width: 400px;
                 background:  #203853;
                 padding: 50px;
                 margin: auto;
-                margin-top: 60px;
                 border-radius: 10px;
                 font-family: 'calibri';
                 color: rgb(42, 35, 49);
                 box-shadow: 7px 13px 37px #000;
-                
+
             }
 
             .controls {
@@ -107,6 +106,33 @@ h1::before{
                 display: block;
 
             }
+            /*propiedad responsive*/
+            @media(max-width:600px){
+                h1::after,h1::before{
+
+                    content: '';
+                    position: absolute;
+                    width: 20px;
+                    height: 3px;
+                    background-color: #B15D28;
+                    top: 0.6em;
+
+                }
+
+                h1::before{
+                    left: -30px;
+
+                }
+
+                h1::after{
+                    right: -30px;
+
+                }
+                .form-register{
+                    width: 80%;
+                    box-shadow: 5px 10px 25px #000;
+                }
+            }
 
         </style>
     </head>
@@ -143,7 +169,7 @@ h1::before{
             <div id="Titulo">
                 <center><h1>Mis datos</h1></center>
             </div>
-
+            <br>
             <section class="form-register">
                 <form id="from3" action="actualizarAdmin.html" method="POST">
                     <center><img  src="${pageContext.request.contextPath}/resources/imagenes/admon.png" width="150px" height="150px"></center>
@@ -228,22 +254,22 @@ h1::before{
 
 
 
-      <footer>
-    <div class="footer-content">
-        <h3>B1 SOFT LATINOAMERICA</h3>
+        <footer>
+            <div class="footer-content">
+                <h3>B1 SOFT LATINOAMERICA</h3>
 
-        <ul class="socials">
-            <li><a href="#"><i class="fab fa-facebook"></i></a>
-                     <li><a href="#"><i class="fab fa-twitter"></i></a>
-                     <li><a href="#"><i class="fab fa-google"></i></a>
-                     <li><a href="#"><i class="fab fa-youtube"></i></a>
-                     <li><a href="#"><i class="fab fa-linkedin"></i></a>
-        </ul>
-    </div>
-    <div class="footer-bottom">
-        <p>2021. <span>B1 SOFT</span></p>
-    </div>
-</footer>
+                <ul class="socials">
+                    <li><a href="#"><i class="fab fa-facebook"></i></a>
+                    <li><a href="#"><i class="fab fa-twitter"></i></a>
+                    <li><a href="#"><i class="fab fa-google"></i></a>
+                    <li><a href="#"><i class="fab fa-youtube"></i></a>
+                    <li><a href="#"><i class="fab fa-linkedin"></i></a>
+                </ul>
+            </div>
+            <div class="footer-bottom">
+                <p>2021. <span>B1 SOFT</span></p>
+            </div>
+        </footer>
     </body>
     <script>
         function cerrarSession() {

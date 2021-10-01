@@ -331,6 +331,8 @@
                     icon: 'warning',
                     showCancelButton: true,
                     confirmButtonText: "Sí, Actualizar",
+                    confirmButtonColor: '#203853',
+                    cancelButtonColor: '#B15D28',
                     cancelButtonText: "Cancelar"
                 })
                         .then(function (isConfirm) {
@@ -338,7 +340,9 @@
                                 swal.fire({
                                     title: "El Modulo se actualizo correctamente",
                                     text: "",
-                                    icon: 'success'
+                                    icon: 'success',
+                                    iconColor: '#203853',
+                                    confirmButtonColor: '#B15D28'
                                 })
                                         .then(function () {
                                             form.submit();
@@ -347,7 +351,9 @@
                                 swal.fire({
                                     title: "No se actualizo ningun Modulo",
                                     text: "",
-                                    icon: 'error'
+                                    icon: 'error',
+                                    iconColor: '#B15D28',
+                                    confirmButtonColor: '#203853'
                                 })
                                         .then(function () {
                                             document.getElementById('DivActualizar').style.display = 'none';
@@ -365,11 +371,13 @@
                 e.preventDefault();
 
                 swal.fire({
-                    title: "¿Desea Agregar el Modulo?",
+                    title: "¿Desea Agregar un nuevo Modulo?",
                     text: "",
                     icon: 'warning',
                     showCancelButton: true,
                     confirmButtonText: "Sí, Agregar",
+                    confirmButtonColor: '#203853',
+                    cancelButtonColor: '#B15D28',
                     cancelButtonText: "Cancelar"
                 })
                         .then(function (isConfirm) {
@@ -377,7 +385,9 @@
                                 swal.fire({
                                     title: "El Modulo se agrego correctamente",
                                     text: "",
-                                    icon: "success"
+                                    icon: "success",
+                                    iconColor: '#203853',
+                                    confirmButtonColor: '#B15D28'
                                 })
                                         .then(function () {
                                             form.submit();
@@ -386,7 +396,9 @@
                                 swal.fire({
                                     title: "No se agrego ningun Modulo",
                                     text: "",
-                                    icon: "error"
+                                    icon: "error",
+                                    iconColor: '#B15D28',
+                                    confirmButtonColor: '#203853'
                                 });
                             }
                         });
@@ -456,6 +468,8 @@
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonText: "Sí, eliminar",
+                confirmButtonColor: '#203853',
+                cancelButtonColor: '#B15D28',
                 cancelButtonText: "Cancelar"
             })
                     .then((willDelete) => {
@@ -463,7 +477,9 @@
                             swal.fire({
                                 title: "El Modulo se elimino correctamente",
                                 text: "",
-                                icon: "success"
+                                icon: "success",
+                                iconColor: '#203853',
+                                confirmButtonColor: '#B15D28'
                             }).then(function () {
                                 row = td.parentElement.parentElement;
                                 document.getElementById("tabla").deleteRow(row.rowIndex);
@@ -473,7 +489,9 @@
                             swal.fire({
                                 title: "No se elimino ningun Modulo",
                                 text: "",
-                                icon: "error"
+                                icon: "error",
+                                iconColor: '#B15D28',
+                                confirmButtonColor: '#203853'
                             });
                         }
                     });

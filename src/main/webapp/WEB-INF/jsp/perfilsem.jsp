@@ -28,13 +28,40 @@
                 justify-content: center;
                 background:  #EAECE8;
             }
+                        h1{
+
+                text-align: center;
+                display: inline-block;
+                position: relative;
+                font-size: 35px;
+            }
+
+            h1::after,h1::before{
+
+                content: '';
+                position: absolute;
+                width: 120px;
+                height: 3px;
+                background-color: #B15D28;
+                top: 0.6em;
+
+            }
+
+            h1::before{
+                left: -140px;
+
+            }
+
+            h1::after{
+                right: -140px;
+
+            }
 
             .form-register {
                 width: 450px;
                 background:  #203853;
                 padding: 50px;
                 margin: auto;
-                margin-top: 60px;
                 border-radius: 10px;
                 font-family: 'calibri';
                 color: rgb(42, 35, 49);
@@ -79,7 +106,33 @@
                 display: block;
 
             }
+            /*propiedad responsive*/
+            @media(max-width:600px){
+                h1::after,h1::before{
 
+                    content: '';
+                    position: absolute;
+                    width: 20px;
+                    height: 3px;
+                    background-color: #B15D28;
+                    top: 0.6em;
+
+                }
+
+                h1::before{
+                    left: -30px;
+
+                }
+
+                h1::after{
+                    right: -30px;
+
+                }
+                .form-register{
+                    width: 80%;
+                    box-shadow: 5px 10px 25px #000;
+                }
+            }
 
 
         </style>
@@ -114,7 +167,7 @@
             <div id="Titulo">
                 <center><h1>Mis datos</h1></center>
             </div>
-
+            <br>
             <section class="form-register">
                 <form id="from2" action="actualizarSemillero.html" method="POST">
                     <center><img  src="${pageContext.request.contextPath}/resources/imagenes/user.png" width="150px" height="150px"></center>
