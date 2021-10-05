@@ -32,6 +32,20 @@
         <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <style>
+            .body1 {
+                font-family: 'Varela Round', sans-serif;
+                justify-content: center;
+                background:  #EAECE8;
+            }
+            h1 {
+                text-align:center;
+                font-size:2.5em;
+                font-family: 'Varela Round', sans-serif;
+                margin:20px 0;
+                color: black;
+                font-weight: bold;
+            }
+            
             .k-card:hover{
                 background-color: #B15D28;
                 color: white;
@@ -86,21 +100,21 @@
         <br>
 
         <footer>
-    <div class="footer-content">
-        <h3>B1 SOFT LATINOAMERICA</h3>
+            <div class="footer-content">
+                <h3>B1 SOFT LATINOAMERICA</h3>
 
-        <ul class="socials">
-            <li><a href="#"><i class="fab fa-facebook"></i></a>
-                     <li><a href="#"><i class="fab fa-twitter"></i></a>
-                     <li><a href="#"><i class="fab fa-google"></i></a>
-                     <li><a href="#"><i class="fab fa-youtube"></i></a>
-                     <li><a href="#"><i class="fab fa-linkedin"></i></a>
-        </ul>
-    </div>
-    <div class="footer-bottom">
-        <p>2021. <span>B1 SOFT</span></p>
-    </div>
-</footer>
+                <ul class="socials">
+                    <li><a href="#"><i class="fab fa-facebook"></i></a>
+                    <li><a href="#"><i class="fab fa-twitter"></i></a>
+                    <li><a href="#"><i class="fab fa-google"></i></a>
+                    <li><a href="#"><i class="fab fa-youtube"></i></a>
+                    <li><a href="#"><i class="fab fa-linkedin"></i></a>
+                </ul>
+            </div>
+            <div class="footer-bottom">
+                <p>2021. <span>B1 SOFT</span></p>
+            </div>
+        </footer>
     </body>
     <script>
         function cerrarSession() {

@@ -42,11 +42,12 @@
 
             }
             h1{
-
                 text-align: center;
                 display: inline-block;
                 position: relative;
                 font-size: 35px;
+                color: black;
+                font-weight: bold;
             }
 
             h1::after,h1::before{

@@ -12,7 +12,7 @@
         <meta name="description" content="CRUD dinamico con HTMLS, CSS and JS">
         <link href="https://fonts.googleapis.com/css?family=Quicksand:600&display=swap" rel="stylesheet">
         <title>Archivos</title>
-          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -28,112 +28,108 @@
                 justify-content: center;
                 background:  #EAECE8;
             }
-            
+
             h1{
-    
-    text-align: center;
-    display: inline-block;
-    position: relative;
-    font-size: 35px;
-}
+                text-align: center;
+                display: inline-block;
+                position: relative;
+                font-size: 35px;
+                color: black;
+                font-weight: bold;
+            }
+            h1::after,h1::before{
 
-h1::after,h1::before{
-   
-    content: '';
-    position: absolute;
-    width: 120px;
-    height: 3px;
-    background-color: #B15D28;
-    top: 0.6em;
-    
-}
+                content: '';
+                position: absolute;
+                width: 120px;
+                height: 3px;
+                background-color: #B15D28;
+                top: 0.6em;
 
-h1::before{
-    left: -140px;
-    
-}
+            }
 
- h1::after{
-    right: -140px;
-    
-}
+            h1::before{
+                left: -140px;
 
+            }
 
+            h1::after{
+                right: -140px;
+
+            }
             form{
-                width: 650px;
-    margin: auto;
-    background: #203853;
-    padding: 30px 20px;
-    box-sizing: border-box;
-    margin-top: 20px;
-    border-radius: 15px;
-    border: none;
-  
+                width: 450px;
+                margin: auto;
+                background: #203853;
+                padding: 10px 20px;
+                box-sizing: border-box;
+                margin-top: 20px;
+                border-radius: 15px;
+                border: none;
+
+
             }
             label{
                 font-size: 16px;
 
             }
-            input, textarea{
-                width: 80%;
-    margin-bottom: 20px;
-    padding: 7px;
-    text-decoration: none;
-    border: none;
-    box-sizing: border-box;
-    font-family: "Font Awesome 5 Free"; 
-    font-weight: 1000;
-    font-size: 18px;
-    border: none;
-    background: #181716;
-    color: white;
-
-
+            input{
+                width: 100%;
+                margin-bottom: 5px;
+                padding: 7px;
+                text-decoration: none;
+                border: none;
+                box-sizing: border-box;
+                font-family: "Font Awesome 5 Free"; 
+                font-weight: 1000;
+                font-size: 18px;
+                border: none;
+                background: #181716;
+                color: white;
             }
             input[type="file"]{
-                 width: 80%;
-    height: 40px;
-    margin-bottom: 0;
-    background: #181716;
-    color: white;
+                width: 100%;
+                height: 40px;
+                margin-bottom: 0;
+                background: #181716;
+                color: white;
             }
 
             input[type="submit"]{
-          
-     width: 30%;
-    
-     margin-bottom: 0;
-     background: #B15D28;
-     color:rgb(36, 33, 33);
-      font-family: 'Varela Round', sans-serif;
-      font-size: 18px;
-     border-radius: 5px;
-     border: none;
-     cursor: pointer;
+                padding: 7px 25px;
+                width: 35%;
+                height: 20%;
+                margin-bottom: 0;
+                background: #B15D28;
+                color:rgb(36, 33, 33);
+                font-family: 'Varela Round', sans-serif;
+                font-size: 14px;
+                border-radius: 5px;
+                border: none;
+                cursor: pointer;
             }
             .btnCR{
-               padding: 10px 50px;
-    width: 20%;
-   
-    background-color: #B15D28;
-     font-family: 'Varela Round', sans-serif;
-      font-size: 18px;
-    color: rgb(36, 33, 33);
-    border-radius: 5px;
-    border: none;
-    cursor: pointer;
-    text-decoration: none;
-    transition: all 0.3s ease 0s;
+                padding: 7px 25px;
+                width: 35%;
+                height: 20%;
+                background-color: #B15D28;
+                font-size: 14px;
+                color: rgb(36, 33, 33);
+                border-radius: 5px;
+                border: none;
+                cursor: pointer;
+                text-decoration: none;
+                transition: all 0.3s ease 0s;
             }
-            
-            /*propiedad responsive*/
-@media(max-width:650px){
-    form{
-        width: 80%;
 
-    }
-}
-            
+            /*propiedad responsive*/
+            @media(max-width:650px){
+                form{
+                    width: 80%;
+
+                }
+            }
+
             table{
                 background-color: #203853;
                 width: 80%;
@@ -164,6 +160,17 @@ h1::before{
             }
             .NArchivo{
                 cursor: pointer;
+            }
+            /*propiedad responsive*/
+            @media(max-width:820px){
+                form{
+                    width: 80%;
+
+                }
+                h1::after,h1::before{
+                    display: none;
+
+                }
             }
         </style>
     </head>
@@ -197,7 +204,6 @@ h1::before{
         <br>
 
     <center> <h1>Añadir Archivos</h1></center>
-        <br>
     <center>
         <div id="DivAgregar" class="caja">
             <form id="form" action="addArchivos.html" method="POST" enctype="multipart/form-data">
@@ -449,23 +455,23 @@ h1::before{
     <br>
     <br>
 
-   
-      <footer>
-    <div class="footer-content">
-        <h3>B1 SOFT LATINOAMERICA</h3>
 
-        <ul class="socials">
-            <li><a href="#"><i class="fab fa-facebook"></i></a>
-                     <li><a href="#"><i class="fab fa-twitter"></i></a>
-                     <li><a href="#"><i class="fab fa-google"></i></a>
-                     <li><a href="#"><i class="fab fa-youtube"></i></a>
-                     <li><a href="#"><i class="fab fa-linkedin"></i></a>
-        </ul>
-    </div>
-    <div class="footer-bottom">
-        <p>2021. <span>B1 SOFT</span></p>
-    </div>
-</footer>
+    <footer>
+        <div class="footer-content">
+            <h3>B1 SOFT LATINOAMERICA</h3>
+
+            <ul class="socials">
+                <li><a href="#"><i class="fab fa-facebook"></i></a>
+                <li><a href="#"><i class="fab fa-twitter"></i></a>
+                <li><a href="#"><i class="fab fa-google"></i></a>
+                <li><a href="#"><i class="fab fa-youtube"></i></a>
+                <li><a href="#"><i class="fab fa-linkedin"></i></a>
+            </ul>
+        </div>
+        <div class="footer-bottom">
+            <p>2021. <span>B1 SOFT</span></p>
+        </div>
+    </footer>
 </body>
 <script>
     function cerrarSession() {

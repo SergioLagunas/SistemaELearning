@@ -42,13 +42,13 @@
 
             }
             h1{
-
                 text-align: center;
                 display: inline-block;
                 position: relative;
                 font-size: 35px;
+                color: black;
+                font-weight: bold;
             }
-
             h1::after,h1::before{
 
                 content: '';
@@ -133,13 +133,6 @@
                 transition: all 0.3s ease 0s;
             }
 
-            /*propiedad responsive*/
-            @media(max-width:820px){
-                form{
-                    width: 80%;
-
-                }
-            }
             table{
                 background-color: #203853;
                 width: 80%;
@@ -170,6 +163,20 @@
             }
             .NArchivo{
                 cursor: pointer;
+            }
+            /*propiedad responsive*/
+            @media(max-width:820px){
+                form{
+                    width: 80%;
+
+                }
+                h1{
+                    font-size: 30px;
+                }
+                h1::after,h1::before{
+                    display: none;
+
+                }
             }
 
         </style>
