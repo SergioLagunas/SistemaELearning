@@ -9,14 +9,13 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/kendo.common.min.css" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/kendo.black.min.css" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/kendo.default.mobile.min.css" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/mediacursos.css" />
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/testyarchivos.css" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/newheader.css" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/footer.css" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link ref="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet"/>
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -108,7 +107,7 @@
             /*propiedad responsive*/
             @media(max-width:820px){
                 h1{
-                    text-align: center;
+                    justify-content: center;
                     display: inline-block;
                     position: relative;
                     font-size: 25px;
@@ -120,7 +119,7 @@
 
                     content: '';
                     position: absolute;
-                    width: 100px;
+                    width: 10px;
                     height: 3px;
                     background-color: #B15D28;
                     top: 0.6em;
@@ -128,15 +127,17 @@
                 }
 
                 h1::before{
-                    left: -120px;
+                    left: -20px;
 
                 }
 
                 h1::after{
-                    right: -120px;
+                    right: -20px;
 
                 }
+
             }
+
         </style>
     </head>
     <body class="body1">
@@ -264,6 +265,38 @@
                 </tr>
 
             </table>
+            <h1>Archivos</h1>
+            <div class="cards-container">
+                <!-- Cartas -->
+                <div class="k-card">
+                    <a href="mediacursos.html"><img class="k-card-image" src="${pageContext.request.contextPath}/resources/imagenes/ARCHIVOS.png" /></a>
+                    <div class="k-card-body">
+                        <center><h4>Nombre del curso</h4></center>
+                    </div>
+                </div>
+                <div class="k-card">
+                    <a href="mediacursos.html"><img class="k-card-image" src="${pageContext.request.contextPath}/resources/imagenes/ARCHIVOS.png" /></a>
+                    <div class="k-card-body">
+                        <center><h4>Nombre del curso</h4></center>
+                    </div>
+                </div>
+            </div>
+            <h1>Examenes</h1>
+            <div class="cards-container">
+                <!-- Cartas -->
+                <div class="k-card">
+                    <a href="mediacursos.html"><img class="k-card-image" src="${pageContext.request.contextPath}/resources/imagenes/EXAMEN.png" /></a>
+                    <div class="k-card-body">
+                        <center><h4>Nombre del curso</h4></center>
+                    </div>
+                </div>
+                <div class="k-card">
+                    <a href="mediacursos.html"><img class="k-card-image" src="${pageContext.request.contextPath}/resources/imagenes/EXAMEN.png" /></a>
+                    <div class="k-card-body">
+                        <center><h4>Nombre del curso</h4></center>
+                    </div>
+                </div>
+            </div>
             <style>
                 .k-mediaplayer {
                     float: left;
@@ -354,22 +387,22 @@
     <br />
     <br />
 
-    <footer>
-        <div class="footer-content">
-            <h3>B1 SOFT</h3>
+    <center><footer>
+            <div class="footer-content">
+                <h3>B1 SOFT LATINOAMERICA</h3>
 
-            <ul class="socials">
-                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                <li><a href="#"><i class="fa fa-youtube"></i></a></li>
-                <li><a href="#"><i class="fa fa-linkedin-square"></i></a></li>
-            </ul>
-        </div>
-        <div class="footer-bottom">
-            <p>designed by <span>B1 SOFT</span></p>
-        </div>
-    </footer>
+                <ul class="socials">
+                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                    <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                    <li><a href="#"><i class="fa fa-youtube"></i></a></li>
+                    <li><a href="#"><i class="fa fa-linkedin-square"></i></a></li>
+                </ul>
+            </div>
+            <div class="footer-bottom">
+                <p>2021. <span>B1 SOFT</span></p>
+            </div>
+        </footer> </center>
 </body>
 <script>
     function cerrarSession() {
