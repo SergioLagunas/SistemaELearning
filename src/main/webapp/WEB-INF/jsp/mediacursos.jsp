@@ -242,60 +242,36 @@
                 
                 Suerte Amigosss <3-->
 
-                <!--Favor de Darle estilo a la lista y al boton-->
-                <tr>
-                    <th width="1332" scope="col"><c:out value="${detacurso.descripcion}"></c:out></th>
-                        <c:choose>
-                            <c:when test="${archivos != null}">
-                            <th width="186" scope="col">
-                                <form name="formulario2" target="_blank">
-                                    <select name="sitios" class="Archivos">
-                                        <option> Caja de Archivos </option>
-                                        <c:forEach items="${archivos}" var="archivo">
-                                            <option value="${archivo.archivo}">${archivo.nombre}</option>
-                                        </c:forEach>
-                                    </select>
-                                    <br>
-                                    <input type="button" class="botoncurso" value="Obten Documento" onclick="window.open(formulario2.sitios.value, this.target, 'resizable=1 ,left=80pt,top=80pt,width=1100px,height=800px'); return false;" target="popup">
-                                </form>
-
-                            </th>
-                        </c:when>
-                    </c:choose>
-                </tr>
-
             </table>
+            <!--Ya esta la parte de listar los archivos el archivo lo abre en otra pestaña-->
             <h1>Archivos</h1>
             <div class="cards-container">
                 <!-- Cartas -->
-                <div class="k-card">
-                    <a href="mediacursos.html"><img class="k-card-image" src="${pageContext.request.contextPath}/resources/imagenes/ARCHIVOS.png" /></a>
-                    <div class="k-card-body">
-                        <center><h4>Nombre del curso</h4></center>
-                    </div>
-                </div>
-                <div class="k-card">
-                    <a href="mediacursos.html"><img class="k-card-image" src="${pageContext.request.contextPath}/resources/imagenes/ARCHIVOS.png" /></a>
-                    <div class="k-card-body">
-                        <center><h4>Nombre del curso</h4></center>
-                    </div>
-                </div>
+                <c:if test = "${archivos != null}">
+                    <c:forEach items="${archivos}" var="archivo">
+                        <div class="k-card">
+                            <a href="${archivo.archivo}" target="_blank"><img class="k-card-image" src="${pageContext.request.contextPath}/resources/imagenes/ARCHIVOS.png" /></a>
+                            <div class="k-card-body">
+                                <center><h4>${archivo.nombre}</h4></center>
+                            </div>
+                        </div>
+                    </c:forEach>
+                </c:if>
             </div>
+<!--En este caso lista los mismos archivos devido a que todavia no hay un diferenciador de los archivos normales a los que son examen-->
             <h1>Examenes</h1>
             <div class="cards-container">
                 <!-- Cartas -->
-                <div class="k-card">
-                    <a href="mediacursos.html"><img class="k-card-image" src="${pageContext.request.contextPath}/resources/imagenes/EXAMEN.png" /></a>
-                    <div class="k-card-body">
-                        <center><h4>Nombre del curso</h4></center>
-                    </div>
-                </div>
-                <div class="k-card">
-                    <a href="mediacursos.html"><img class="k-card-image" src="${pageContext.request.contextPath}/resources/imagenes/EXAMEN.png" /></a>
-                    <div class="k-card-body">
-                        <center><h4>Nombre del curso</h4></center>
-                    </div>
-                </div>
+                <c:if test = "${archivos != null}">
+                    <c:forEach items="${archivos}" var="archivo">
+                        <div class="k-card">
+                            <a href="${archivo.archivo}" target="_blank"><img class="k-card-image" src="${pageContext.request.contextPath}/resources/imagenes/EXAMEN.png" /></a>
+                            <div class="k-card-body">
+                                <center><h4>${archivo.nombre}</h4></center>
+                            </div>
+                        </div>
+                    </c:forEach>
+                </c:if>
             </div>
             <style>
                 .k-mediaplayer {
