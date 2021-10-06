@@ -235,6 +235,9 @@
                 <tr>
                     <th width="1400" scope="col">Descripción del curso</th>
                 </tr>
+                <tr>
+                     <th width="1332" scope="col"><c:out value="${detacurso.descripcion}"></c:out></th>
+                </tr>
 
                 <!--Esta es una lista que desplegara los archivos en una lista y cuando le des en el boton de "Obten Documento" 
                 te dirijira al enlce ya sea txt o inclusive los pdf te los descargara automaticamente

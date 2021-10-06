@@ -79,7 +79,7 @@
                 </div>
             </nav>
         </header>
-        <br><br>
+        <br>
         <!-- Titulo de la Página -->
         <h1><c:out value="${categoria}"></c:out></h1>
             <div class="cards-container">
