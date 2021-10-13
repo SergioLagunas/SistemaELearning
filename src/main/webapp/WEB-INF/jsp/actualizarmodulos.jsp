@@ -157,7 +157,7 @@
                 color: white;
             }
             .opciones{
-                width: 150px;
+                width: 200px;
             }
 
             .Editarr{
@@ -170,6 +170,38 @@
             #nomAc, #desAc, #archAc{
                 background-color: #272727;
                 color: white;
+            }
+            #progress_bar{
+                margin-left: 8%;
+                margin-bottom: 10px;
+                padding: 3px;
+                border: 1px solid #000;
+                font-size: 12px;
+                clear: both;
+                opacity: 0;
+                -moz-transition: opacity 1s linear;
+                -o-transition: opacity 1s linear;
+                -webkit-transition: opacity 1s linear;
+            }
+            #progress_bar.loading{
+                opacity: 1.0;
+            }
+            #progress_bar .percent {
+                /*background-color: #99ccff;*/
+                border: 1px solid #000;
+                height: auto;
+                width: 0;
+            }
+            .btncancelar{
+                width: 20%;
+                margin-bottom: 0;
+                background: white;
+                color: black;
+                border-radius: 5px;
+                border: none;
+                cursor: pointer;
+                margin-left: 8%;
+                font-size: 14px;
             }
             /*propiedad responsive*/
             @media(max-width:820px){
@@ -187,6 +219,20 @@
                 h1::after,h1::before{
                     display: none;
 
+                }
+                .btncancelar{
+                    width: 20%;
+                    margin-bottom: 0;
+                    background: white;
+                    color: black;
+                    border-radius: 5px;
+                    border: none;
+                    cursor: pointer;
+                    margin-left: 8%;
+                    font-size: 10px;
+                }
+                #progress_bar{
+                    width:60%
                 }
 
             }
@@ -221,9 +267,9 @@
         </header>
         <br>
     <center><h1>Actualizar curso</h1></center>
-    <center>
-        <div id="DivAgregar" class="caja">
-            <form id="form" action="anadirModulos.html" method="POST" enctype="multipart/form-data">
+    <div id="DivAgregar" class="caja">
+        <form id="form" action="anadirModulos.html" method="POST" enctype="multipart/form-data">
+            <center>
                 <label for="nom"></label> <input type="text" name="titulo" id="nom" placeholder="Nombre" required>
                 <br>
                 <label for="des"></label> <input type="text" name="descripcion" id="des" placeholder="Descripcion" required>
@@ -233,34 +279,48 @@
                 <!--<div id="DividAg">
                     <label for="curid"></label> <input type="text" id="curid" placeholder="Id" name="curid">
                 </div>-->
-                <br>
+            </center>
+            <br>
+            <div id="CargaProgress">
+                <div id="progress_bar" style="background-color:white;width:80%;border-radius: 3px;">
+                    <div class="percent" style="background-color:#B15D28;height:15px;">0%</div>
+                </div>
+                <input type="button" class="btncancelar" onclick="abortRead();" value="Cancelar">
+            </div>
+            <center>
                 <br>
                 <input class="submit" type="submit" onclick="alertAgregar()" value="Agregar">
                 <br>
                 <br>
                 <a class="btnCS" href="anadirNuevosarchivos.html?CursoE=${idCurso}">Sube Archivos a tu Curso</a>
-            </form>
-        </div>
-        <div id="DivActualizar" class="caja">
-            <form id="formActualizar" action="ActualizarModulo.html?VistaA=2" method="POST" enctype="multipart/form-data">
+            </center>
+        </form>
+    </div>
+    <div id="DivActualizar" class="caja">
+        <form id="formActualizar" action="ActualizarModulo.html?VistaA=2" method="POST" enctype="multipart/form-data">
+            <center>
                 <label for="nom"></label> <input type="text" name="titulo" id="nomAc" placeholder="Nombre" required>
                 <br> 
                 <label for="des"></label> <input type="text" name="descripcion" id="desAc" placeholder="Descripcion" required>
                 <br>
                 <label for="arc"></label> <input type="file" id="archAc" name="url" accept=".mp4,.avi,.wmv">
+            </center>
+            <br>
+            <center>
                 <div id="Divid" style="display:none;">
                     <!--<div id="Divid">-->
                     <label for="moduid"></label> <input type="text" id="moduid" placeholder="Id" name="moduid">
                 </div>
                 <br>
-                <br>
                 <input class="submit" type="submit" onclick="alertActualizar()" value="Actualizar">
                 <br>
                 <br>
                 <input class="btnCR" type="button" onclick="cancelActualizar()" value="Cancelar">
-            </form>
-        </div>
-        <br>
+            </center>
+        </form>
+    </div>
+    <br>
+    <center> 
         <div id="Divtablita" class="tablita">
             <table class="tabla" id="tabla">
                 <thead>
@@ -279,10 +339,15 @@
     <script>
         var Fila = null;
         let DataForm = {};
+        //Variables a utilizar en ProgressBar
+        var reader;
+        var progress = document.querySelector('.percent');
+        //Escucha la entrada de archivos del Input File
+        document.getElementById('arch').addEventListener('change', handleFileSelect, false);
 
         $(function () {
             document.getElementById('DivActualizar').style.display = 'none';
-
+            document.getElementById('CargaProgress').style.display = 'none';
         <c:forEach var="modu" items="${modulosAc}">
             DataForm["id"] = "${modu.idModulo}";
             DataForm["nom"] = "${modu.titulo}";
@@ -313,6 +378,69 @@
                          tittle: 'sweet_containerImportant'
                          }*/
             });
+        }
+        function handleFileSelect(evt) {
+            document.getElementById('CargaProgress').style.display = 'block';
+            progress.style.width = '0%';
+            progress.textContent = '0%';
+
+            reader = new FileReader();
+            reader.onerror = errorHandler;
+            reader.onprogress = updateProgress;
+            reader.onabort = function (e) {
+                //alert('Carga de archivo cancelada');
+                Swal.fire({
+                    title: '¡Cancelado!',
+                    text: 'Carga de archivo cancelada',
+                    icon: 'warning',
+                    iconColor: '#B15D28',
+                    confirmButtonColor: '#203853'
+                });
+                document.getElementById("arch").value = null;
+                document.getElementById('CargaProgress').style.display = 'none';
+            };
+            reader.onloadstart = function (e) {
+                document.getElementById('progress_bar').className = 'loading';
+            };
+            reader.onload = function (e) {
+                progress.style.width = '100%';
+                progress.textContent = '100%';
+
+                setTimeout("document.getElementById('progress_bar').className='';document.getElementById('CargaProgress').style.display = 'none';", 2000);
+            };
+
+            reader.readAsBinaryString(evt.target.files[0]);
+        }
+
+        function updateProgress(evt) {
+            // evt es un ProgressEvent
+            if (evt.lengthComputable) {
+                var percentLoaded = Math.round((evt.loaded / evt.total) * 100);
+                if (percentLoaded < 100) {
+                    progress.style.width = percentLoaded + '%';
+                    progress.textContent = percentLoaded + '%';
+                }
+            }
+        }
+
+        function abortRead() {
+            reader.abort();
+        }
+
+        function errorHandler(evt) {
+            switch (evt.target.error.code) {
+                case evt.target.error.NOT_FOUND_ERR:
+                    alert('Archivo no encontrado!');
+                    break;
+                case evt.target.error.NOT_READABLE_ERR:
+                    alert('No se puede leer el archivo');
+                    break;
+                case evt.target.error.ABORT_ERR:
+                    break;
+                default:
+                    alert('Ha ocurrido un error al leer el archivo');
+            }
+            ;
         }
 
         function cancelActualizar() {
@@ -434,6 +562,13 @@
                                                                     <path d="M7.646 1.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 2.707V11.5a.5.5 0 0 1-1 0V2.707L5.354 4.854a.5.5 0 1 1-.708-.708l3-3z"/>
                                                                   </svg>
                                                             </button>
+        
+                                                        <button type="button" class="btn btn-warning" onClick="Formulario(this,` + data.id + `)">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
+                                                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                                                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                                                            </svg>
+                                                        </button>        
                                                             `;
         }
 
@@ -498,6 +633,24 @@
                     });
         }
 
+        function Formulario() {
+            Swal.fire({
+                title: "Agregar el titulo del formulario",
+                input: "text",
+                inputPlaceholder: 'Título',
+                showCancelButton: true,
+                confirmButtonColor: '#203853',
+                cancelButtonColor: '#B15D28',
+                confirmButtonText: "Guardar",
+                cancelButtonText: "Cancelar",
+            })
+                    .then(resultado => {
+                        if (resultado.value) {
+                            let nombre = resultado.value;
+                            console.log("Hola, " + nombre);
+                        }
+                    });
+        }
     </script>
 
 

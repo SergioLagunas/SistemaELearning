@@ -265,7 +265,10 @@
                     border: none;
                     cursor: pointer;
                     margin-left: 8%;
-                    font-size: 9px;
+                    font-size: 10px;
+                }
+                #progress_bar{
+                    width:60%
                 }
 
             }
@@ -318,16 +321,14 @@
                     <option value="Otro">Otro</option>
                 </select>
                 <br>
-
-
                 <label for="cara"></label> <input id="cara" type="file" name="caratula"/>
             </center>
             <br>
             <div id="CargaProgress">
-                <div id="progress_bar" style="background-color:white;width:540px;border-radius: 3px;">
+                <div id="progress_bar" style="background-color:white;width:80%;border-radius: 3px;">
                     <div class="percent" style="background-color:#B15D28;height:15px;">0%</div>
                 </div>
-                <input type="button" class="btncancelar" onclick="abortRead();" value="Cancelar Lectura">
+                <input type="button" class="btncancelar" onclick="abortRead();" value="Cancelar">
             </div>
             <center>
                 <div id="Caratula" style="display:none;">

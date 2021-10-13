@@ -102,8 +102,6 @@
         <br>
     <center><h1><font color="black">Bienvenido <%=request.getSession().getAttribute("usuario")%></font></h1></center>
     <br>
-    <br>
-    <br>
 
     <section class="container">
         <div class="card2">
