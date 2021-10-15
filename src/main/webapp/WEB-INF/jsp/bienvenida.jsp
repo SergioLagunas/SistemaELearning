@@ -43,11 +43,6 @@
             
             }
             
-            
-            
-            
-            
-
           .container1{
                  display: flex;
            justify-content: center;
@@ -194,7 +189,7 @@
                     }
 
                     .photo3 {
-                        background-image: url("${pageContext.request.contextPath}/resources/imagenes/B-3.png");
+                        background-image: url("${pageContext.request.contextPath}/resources/imagenes/B-3n.png");
                     }
 
                     .photo4 {
@@ -213,7 +208,7 @@
             </div>
             <div id="Botones">
                 <div id="Subtitulo">
-                    <center><h2>Dale un vistazo a las Áreas de Interés</h2></center>
+                    <center><h2>Áreas de Interés</h2></center>
                 </div>
 
                 <div class="container1">
@@ -258,12 +253,6 @@
                         <br>
                         <h4>Otros Cursos</h4>
                     </div>  
-
-
-
-
-
-
 
                 </div>
             </div>

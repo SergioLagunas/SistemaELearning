@@ -178,7 +178,16 @@
                     </div>
                 </div>
                 <script type="text/javascript">
+                    let DataForm = {};
                     $(document).ready(function () {
+                <c:forEach var="arch" items="${archivos}">
+                        DataForm["id"] = "${arch.idArchivo}";
+                </c:forEach>
+                        if (DataForm.id != "undefined" && DataForm.id != null) {
+                            document.getElementById('mostrararchivos').style.display = 'block';
+                        } else {
+                            document.getElementById('mostrararchivos').style.display = 'none';
+                        }
                         $("#mediaplayer").kendoMediaPlayer({
                             autoPlay: false,
                         });
@@ -236,32 +245,34 @@
                     <th width="1400" scope="col">Descripción del curso</th>
                 </tr>
                 <tr>
-                     <th width="1332" scope="col"><c:out value="${detacurso.descripcion}"></c:out></th>
-                </tr>
+                    <th width="1332" scope="col"><c:out value="${detacurso.descripcion}"></c:out></th>
+                    </tr>
 
-                <!--Esta es una lista que desplegara los archivos en una lista y cuando le des en el boton de "Obten Documento" 
-                te dirijira al enlce ya sea txt o inclusive los pdf te los descargara automaticamente
-                Nota: esta lista solo sera visible si el curso contiene archivos
-                
-                Suerte Amigosss <3-->
+                    <!--Esta es una lista que desplegara los archivos en una lista y cuando le des en el boton de "Obten Documento" 
+                    te dirijira al enlce ya sea txt o inclusive los pdf te los descargara automaticamente
+                    Nota: esta lista solo sera visible si el curso contiene archivos
+                    
+                    Suerte Amigosss <3-->
 
-            </table>
-            <!--Ya esta la parte de listar los archivos el archivo lo abre en otra pestaña-->
-            <h1>Archivos</h1>
-            <div class="cards-container">
-                <!-- Cartas -->
-                <c:if test = "${archivos != null}">
-                    <c:forEach items="${archivos}" var="archivo">
-                        <div class="k-card">
-                            <a href="${archivo.archivo}" target="_blank"><img class="k-card-image" src="${pageContext.request.contextPath}/resources/imagenes/ARCHIVOS.png" /></a>
-                            <div class="k-card-body">
-                                <center><h4>${archivo.nombre}</h4></center>
+                </table>
+                <!--Ya esta la parte de listar los archivos el archivo lo abre en otra pestaña-->
+                <div id="mostrararchivos">
+                    <h1>Archivos</h1>
+                    <div class="cards-container">
+                        <!-- Cartas -->
+                    <c:if test = "${archivos != null}">
+                        <c:forEach items="${archivos}" var="archivo">
+                            <div class="k-card">
+                                <a href="${archivo.archivo}" target="_blank"><img class="k-card-image" src="${pageContext.request.contextPath}/resources/imagenes/ARCHIVOS.png" /></a>
+                                <div class="k-card-body">
+                                    <center><h4>${archivo.nombre}</h4></center>
+                                </div>
                             </div>
-                        </div>
-                    </c:forEach>
-                </c:if>
+                        </c:forEach>
+                    </c:if>
+                </div>
             </div>
-<!--En este caso lista los mismos archivos devido a que todavia no hay un diferenciador de los archivos normales a los que son examen-->
+            <!--En este caso lista los mismos archivos devido a que todavia no hay un diferenciador de los archivos normales a los que son examen-->
             <h1>Examenes</h1>
             <div class="cards-container">
                 <!-- Cartas -->

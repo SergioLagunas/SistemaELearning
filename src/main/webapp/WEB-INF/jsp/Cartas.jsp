@@ -45,13 +45,22 @@
                 color: black;
                 font-weight: bold;
             }
-            
+
             .k-card:hover{
                 background-color: #B15D28;
                 color: white;
                 cursor: pointer;
                 transform: scale(1.03);
                 transition: all 1s ease;
+            }
+            #DivSCursos img{
+                width: 50%;
+            }
+            /*propiedad responsive*/
+            @media(max-width:820px){
+                #DivSCursos img{
+                    width: 80%;
+                }
             }
         </style>
     </head>
@@ -92,35 +101,54 @@
                     </div>
             </c:forEach>
         </div>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-
-        <footer>
-            <div class="footer-content">
-                <h3>B1 SOFT LATINOAMERICA</h3>
-
-                <ul class="socials">
-                    <li><a href="#"><i class="fab fa-facebook"></i></a>
-                    <li><a href="#"><i class="fab fa-twitter"></i></a>
-                    <li><a href="#"><i class="fab fa-google"></i></a>
-                    <li><a href="#"><i class="fab fa-youtube"></i></a>
-                    <li><a href="#"><i class="fab fa-linkedin"></i></a>
-                </ul>
-            </div>
-            <div class="footer-bottom">
-                <p>2021. <span>B1 SOFT</span></p>
-            </div>
-        </footer>
-    </body>
+    <center>
+        <div id="DivSCursos">
+            <img src="${pageContext.request.contextPath}/resources/imagenes/divScursos.png">
+        </div>
+    </center>
     <script>
-        function cerrarSession() {
+        let DataForm = {};
+        $(function () {
+        <c:forEach var="curso" items="${cursos}">
+            DataForm["id"] = "${curso.idCurso}";
+        </c:forEach>
 
-            $(location).attr('href', "cerrarSession.html")
-
-        }
+            if (DataForm.id != "undefined" && DataForm.id != null) {
+                document.getElementById('DivSCursos').style.display = 'none';
+            } else {
+                document.getElementById('DivSCursos').style.display = 'block';
+            }
+        });
     </script>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <footer>
+        <div class="footer-content">
+            <h3>B1 SOFT LATINOAMERICA</h3>
+
+            <ul class="socials">
+                <li><a href="#"><i class="fab fa-facebook"></i></a>
+                <li><a href="#"><i class="fab fa-twitter"></i></a>
+                <li><a href="#"><i class="fab fa-google"></i></a>
+                <li><a href="#"><i class="fab fa-youtube"></i></a>
+                <li><a href="#"><i class="fab fa-linkedin"></i></a>
+            </ul>
+        </div>
+        <div class="footer-bottom">
+            <p>2021. <span>B1 SOFT</span></p>
+        </div>
+    </footer>
+</body>
+<script>
+    function cerrarSession() {
+
+        $(location).attr('href', "cerrarSession.html")
+
+    }
+</script>
 </html>
