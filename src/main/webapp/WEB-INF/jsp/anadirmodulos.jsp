@@ -138,7 +138,7 @@
 
             table{
                 background-color: #203853;
-                width: 80%;
+                width: 90%;
                 text-align: center;
                 color: white;
                 border-collapse: collapse;
@@ -169,84 +169,151 @@
                 background-color: #272727;
                 color: white;
             }
+            #progress_bar{
+                margin-left: 8%;
+                margin-bottom: 10px;
+                padding: 3px;
+                border: 1px solid #000;
+                font-size: 12px;
+                clear: both;
+                opacity: 0;
+                -moz-transition: opacity 1s linear;
+                -o-transition: opacity 1s linear;
+                -webkit-transition: opacity 1s linear;
+            }
+            #progress_bar.loading{
+                opacity: 1.0;
+            }
+            #progress_bar .percent {
+                /*background-color: #99ccff;*/
+                border: 1px solid #000;
+                height: auto;
+                width: 0;
+            }
+            .btncancelar{
+                width: 20%;
+                margin-bottom: 0;
+                background: white;
+                color: black;
+                border-radius: 5px;
+                border: none;
+                cursor: pointer;
+                margin-left: 8%;
+                font-size: 14px;
+            }
+            #DivSCursos img{
+                width: 50%;
+            }
             /*propiedad responsive*/
             @media(max-width:820px){
                 form{
                     width: 80%;
 
                 }
+                table {
+                    display: block;
+                    overflow-x: auto;
+                }
                 h1::after,h1::before{
                     display: none;
 
+                }
+                .btncancelar{
+                    width: 20%;
+                    margin-bottom: 0;
+                    background: white;
+                    color: black;
+                    border-radius: 5px;
+                    border: none;
+                    cursor: pointer;
+                    margin-left: 8%;
+                    font-size: 10px;
+                }
+                #progress_bar{
+                    width:60%
+                }
+                #DivSCursos img{
+                    width: 80%;
                 }
             }
         </style>
 
     </head>
-    <header>
-        <nav class="navbar">
-            <!--<div class="brand-title">Brand Name</div>-->
-            <div class="logo">
-                <div>
-                    <a href="admin.html"><img src="${pageContext.request.contextPath}/resources/imagenes/B1SOFT-LOGO.gif"></a>
+    <body class="body1">
+        <header>
+            <nav class="navbar">
+                <!--<div class="brand-title">Brand Name</div>-->
+                <div class="logo">
+                    <div>
+                        <a href="admin.html"><img src="${pageContext.request.contextPath}/resources/imagenes/B1SOFT-LOGO.gif"></a>
+                    </div>
                 </div>
-            </div>
-            <a href="#" class="toggle-button">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </a>
-            <div class="navbar-links">
-                <ul>
-                    <li><a href="perfiladmin.html">Mi perfil</a></li>
-                    <li><a href="nuevoadmin.html">Administradores</a></li>
-                    <li><a href="nuevosemillero.html">Semilleros</a></li>
-                    <li><a href="listadodecursos.html">Cursos</a></li>
-                    <li><a href="nuevocurso.html">Agregar nuevo curso</a></li>
-                    <!--<li><a href="#">Cerrar sesión</a></li>-->
-                    <li><span><a onclick="cerrarSession()" class="cta">Cerrar sesión</a></span></li>
-                </ul>
-            </div>
-        </nav>
-    </header>
-    <br>
+                <a href="#" class="toggle-button">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </a>
+                <div class="navbar-links">
+                    <ul>
+                        <li><a href="perfiladmin.html">Mi perfil</a></li>
+                        <li><a href="nuevoadmin.html">Administradores</a></li>
+                        <li><a href="nuevosemillero.html">Semilleros</a></li>
+                        <li><a href="listadodecursos.html">Cursos</a></li>
+                        <li><a href="nuevocurso.html">Agregar nuevo curso</a></li>
+                        <!--<li><a href="#">Cerrar sesión</a></li>-->
+                        <li><span><a onclick="cerrarSession()" class="cta">Cerrar sesión</a></span></li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <br>
 
     <center><h1>Crear Modulos</h1></center>
 
-    <center>
-        <div id="DivAgregar" class="caja">
-            <form id="form" action="addModulo.html" method="POST" enctype="multipart/form-data">
+    <div id="DivAgregar" class="caja">
+        <form id="form" action="addModulo.html" method="POST" enctype="multipart/form-data">
+            <center>
                 <label for="nom"></label> <input type="text" name="titulo" id="nom" placeholder=" Nombre"  required>
 
                 <label for="des"></label> <input type="text" name="descripcion" id="des" placeholder=" Descripción" required>
 
                 <label for="arch"></label> <input type="file" id="arch" name="url" accept=".mp4,.avi,.wmv" required>
-                <br>
-                <br>
+            </center>
+            <br>
+            <div id="CargaProgress">
+                <div id="progress_bar" style="background-color:white;width:80%;border-radius: 3px;">
+                    <div class="percent" style="background-color:#B15D28;height:15px;">0%</div>
+                </div>
+                <input type="button" class="btncancelar" onclick="abortRead();" value="Cancelar">
+            </div>
+            <br>
+            <center>
                 <input class="submit" type="submit" onclick="alertAgregar()" value="Agregar">
                 <br>
                 <br>
                 <a class="btnCS" href="anadirarchivos.html">Sube Archivos a tu Curso</a>
-            </form>
-        </div>
-        <div id="DivActualizar" class="caja">
-            <form id="formActualizar" action="ActualizarModulo.html?VistaA=1" method="POST" enctype="multipart/form-data">
-                <label for="nom"></label> <input type="text" name="titulo" id="nomAc" placeholder=" Nombre"  required>
-                <br> 
-                <label for="des"></label> <input type="text" name="descripcion" id="desAc" placeholder=" Descripción"  required>
-                <br>
-                <label for="arc"></label> <input type="file" id="archAc" name="url" accept=".mp4,.avi,.wmv">
-                <div id="Divid" style="display:none;">
-                    <!--<div id="Divid">-->
-                    <label for="moduid"></label> <input type="text" id="moduid" placeholder="Id" name="moduid">
-                </div>
-                <br>
-                <br>
-                <input class="submit" type="submit" onclick="alertActualizar()" value="Actualizar">
-                <input class="btnCR" type="button" onclick="cancelActualizar()" value="Cancelar">
-            </form>
-        </div>
-        <br>
+            </center>
+        </form>
+    </div>
+    <div id="DivActualizar" class="caja">
+        <form id="formActualizar" action="ActualizarModulo.html?VistaA=1" method="POST" enctype="multipart/form-data">
+            <label for="nom"></label> <input type="text" name="titulo" id="nomAc" placeholder=" Nombre"  required>
+            <br> 
+            <label for="des"></label> <input type="text" name="descripcion" id="desAc" placeholder=" Descripción"  required>
+            <br>
+            <label for="arc"></label> <input type="file" id="archAc" name="url" accept=".mp4,.avi,.wmv">
+            <div id="Divid" style="display:none;">
+                <!--<div id="Divid">-->
+                <label for="moduid"></label> <input type="text" id="moduid" placeholder="Id" name="moduid">
+            </div>
+            <br>
+            <br>
+            <input class="submit" type="submit" onclick="alertActualizar()" value="Actualizar">
+            <input class="btnCR" type="button" onclick="cancelActualizar()" value="Cancelar">
+        </form>
+    </div>
+    <br>
+    <center> 
         <div id="Divtablita" class="tablita">
             <table class="tabla" id="tabla">
                 <thead>
@@ -260,14 +327,23 @@
                 <tbody></tbody>
             </table>
         </div>
+        <br>
+        <div id="DivSCursos">
+            <img src="${pageContext.request.contextPath}/resources/imagenes/divSmodulos.png">
+        </div>
     </center>
     <br/>
     <script>
         var Fila = null;
         let DataForm = {};
+        var reader;
+        var progress = document.querySelector('.percent');
+        //Escucha la entrada de archivos del Input File
+        document.getElementById('arch').addEventListener('change', handleFileSelect, false);
 
         $(function () {
             document.getElementById('DivActualizar').style.display = 'none';
+            document.getElementById('CargaProgress').style.display = 'none';
 
         <c:forEach var="modu" items="${modulos}">
             DataForm["id"] = "${modu.idModulo}";
@@ -277,11 +353,13 @@
             InsertarDatos(DataForm);
         </c:forEach>
 
-            if (DataForm.id != "undefined" && DataForm.id != null)
+            if (DataForm.id != "undefined" && DataForm.id != null) {
                 document.getElementById('Divtablita').style.display = 'block';
-            else
+                document.getElementById('DivSCursos').style.display = 'none';
+            } else {
                 document.getElementById('Divtablita').style.display = 'none';
-
+                document.getElementById('DivSCursos').style.display = 'block';
+            }
             console.log("ID: ", DataForm.id);
             console.log("Nombre: ", DataForm.nom);
         });
@@ -295,6 +373,69 @@
                 showConfirmButton: false,
                 html: '<video controls src="' + url + '" width="100%" height="98%"></video>'
             });
+        }
+        function handleFileSelect(evt) {
+            document.getElementById('CargaProgress').style.display = 'block';
+            progress.style.width = '0%';
+            progress.textContent = '0%';
+
+            reader = new FileReader();
+            reader.onerror = errorHandler;
+            reader.onprogress = updateProgress;
+            reader.onabort = function (e) {
+                //alert('Carga de archivo cancelada');
+                Swal.fire({
+                    title: '¡Cancelado!',
+                    text: 'Carga de archivo cancelada',
+                    icon: 'warning',
+                    iconColor: '#B15D28',
+                    confirmButtonColor: '#203853'
+                });
+                document.getElementById("arch").value = null;
+                document.getElementById('CargaProgress').style.display = 'none';
+            };
+            reader.onloadstart = function (e) {
+                document.getElementById('progress_bar').className = 'loading';
+            };
+            reader.onload = function (e) {
+                progress.style.width = '100%';
+                progress.textContent = '100%';
+
+                setTimeout("document.getElementById('progress_bar').className='';document.getElementById('CargaProgress').style.display = 'none';", 2000);
+            };
+
+            reader.readAsBinaryString(evt.target.files[0]);
+        }
+
+        function updateProgress(evt) {
+            // evt es un ProgressEvent
+            if (evt.lengthComputable) {
+                var percentLoaded = Math.round((evt.loaded / evt.total) * 100);
+                if (percentLoaded < 100) {
+                    progress.style.width = percentLoaded + '%';
+                    progress.textContent = percentLoaded + '%';
+                }
+            }
+        }
+
+        function abortRead() {
+            reader.abort();
+        }
+
+        function errorHandler(evt) {
+            switch (evt.target.error.code) {
+                case evt.target.error.NOT_FOUND_ERR:
+                    alert('Archivo no encontrado!');
+                    break;
+                case evt.target.error.NOT_READABLE_ERR:
+                    alert('No se puede leer el archivo');
+                    break;
+                case evt.target.error.ABORT_ERR:
+                    break;
+                default:
+                    alert('Ha ocurrido un error al leer el archivo');
+            }
+            ;
         }
 
         function cancelActualizar() {
@@ -314,6 +455,8 @@
                     icon: 'warning',
                     showCancelButton: true,
                     confirmButtonText: "Sí, Actualizar",
+                    confirmButtonColor: '#203853',
+                    cancelButtonColor: '#B15D28',
                     cancelButtonText: "Cancelar"
                 })
                         .then(function (isConfirm) {
@@ -321,7 +464,9 @@
                                 swal.fire({
                                     title: "El Modulo se actualizo correctamente",
                                     text: "",
-                                    icon: 'success'
+                                    icon: 'success',
+                                    iconColor: '#203853',
+                                    confirmButtonColor: '#B15D28'
                                 })
                                         .then(function () {
                                             form.submit();
@@ -330,7 +475,9 @@
                                 swal.fire({
                                     title: "No se actualizo ningun Modulo",
                                     text: "",
-                                    icon: 'error'
+                                    icon: 'error',
+                                    iconColor: '#B15D28',
+                                    confirmButtonColor: '#203853'
                                 })
                                         .then(function () {
                                             document.getElementById('DivActualizar').style.display = 'none';
@@ -353,6 +500,8 @@
                     icon: 'warning',
                     showCancelButton: true,
                     confirmButtonText: "Sí, Agregar",
+                    confirmButtonColor: '#203853',
+                    cancelButtonColor: '#B15D28',
                     cancelButtonText: "Cancelar"
                 })
                         .then(function (isConfirm) {
@@ -360,7 +509,9 @@
                                 swal.fire({
                                     title: "El Modulo se agrego correctamente",
                                     text: "",
-                                    icon: "success"
+                                    icon: "success",
+                                    iconColor: '#203853',
+                                    confirmButtonColor: '#B15D28'
                                 })
                                         .then(function () {
                                             form.submit();
@@ -369,7 +520,9 @@
                                 swal.fire({
                                     title: "No se agrego ningun Modulo",
                                     text: "",
-                                    icon: "error"
+                                    icon: "error",
+                                    iconColor: '#B15D28',
+                                    confirmButtonColor: '#203853'
                                 });
                             }
                         });
@@ -441,6 +594,8 @@
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonText: "Sí, eliminar",
+                confirmButtonColor: '#203853',
+                cancelButtonColor: '#B15D28',
                 cancelButtonText: "Cancelar"
             })
                     .then((willDelete) => {
@@ -448,7 +603,9 @@
                             swal.fire({
                                 title: "El Modulo se elimino correctamente",
                                 text: "",
-                                icon: "success"
+                                icon: "success",
+                                iconColor: '#203853',
+                                confirmButtonColor: '#B15D28'
                             }).then(function () {
                                 row = td.parentElement.parentElement;
                                 document.getElementById("tabla").deleteRow(row.rowIndex);
@@ -458,7 +615,9 @@
                             swal.fire({
                                 title: "No se elimino ningun Modulo",
                                 text: "",
-                                icon: "error"
+                                icon: "error",
+                                iconColor: '#B15D28',
+                                confirmButtonColor: '#203853'
                             });
                         }
                     });
@@ -472,13 +631,6 @@
 </div>
 
 <!--Footer-->
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
 <br>
 <br>
 <br>

@@ -55,11 +55,7 @@ h1::before{
    border-radius: 15px;
 }
 
-/*imagen de la card*/
-.container .card2 img{
-    width: 330px;
-    height: 210px;
-}
+
 
 .img1{
     background-image: url(/resources/imagenes/Adminsemillero.png);

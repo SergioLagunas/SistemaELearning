@@ -24,12 +24,22 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <title>admin</title>
         <style>
+            .body1 {
+                font-family: 'Varela Round', sans-serif;
+                justify-content: center;
+                background:  #EAECE8;
+            }
             .botoncurso{
                 font-family: "roboto",sans-serif;
                 font-weight: 500;
                 font-size: 20px;
                 color: black;
                 text-decoration: none;
+            }
+            /*imagen de la card*/
+            .container .card2 img{
+                width: 310px;
+                height: 210px;
             }
             .botoncurso{
                 padding: 9px 25px;
@@ -68,7 +78,7 @@
 
                 /*imagen de la card*/
                 .container .card2 img{
-                    width: 280px;
+                    width: 260px;
                     height: 160px;
                 }
 
@@ -100,7 +110,7 @@
             </nav>
         </header>
         <br>
-    <center><h1><font color="black">Bienvenido <%=request.getSession().getAttribute("usuario")%></font></h1></center>
+    <center><h1><font color="black">Bienvenid@ <%=request.getSession().getAttribute("usuario")%></font></h1></center>
     <br>
 
     <section class="container">

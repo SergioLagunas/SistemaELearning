@@ -154,7 +154,7 @@
         <div id="container">
             <div id="Scroll">
                 <div id="Titulo">
-                    <center><h1>Hola <%=request.getSession().getAttribute("usuario")%>, Bienvenido</h1></center>
+                    <center><h1>Hola <%=request.getSession().getAttribute("usuario")%>, Bienvenid@</h1></center>
 
                 </div>
                 <div style="margin:auto; max-width:90%">
@@ -187,26 +187,26 @@
                 </script>
                 <style>
                     .photo1 {
-                        background-image: url("${pageContext.request.contextPath}/resources/imagenes/s-1.png");
+                        background-image: url("${pageContext.request.contextPath}/resources/imagenes/B-1.png");
                     }
                     .photo2 {
-                        background-image: url("${pageContext.request.contextPath}/resources/imagenes/s-2.png");
+                        background-image: url("${pageContext.request.contextPath}/resources/imagenes/B-2.png");
                     }
 
                     .photo3 {
-                        background-image: url("${pageContext.request.contextPath}/resources/imagenes/s-3.png");
+                        background-image: url("${pageContext.request.contextPath}/resources/imagenes/B-3.png");
                     }
 
                     .photo4 {
-                        background-image: url("${pageContext.request.contextPath}/resources/imagenes/s-4.png");
+                        background-image: url("${pageContext.request.contextPath}/resources/imagenes/B-4.png");
                     }
 
                     .photo5 {
-                        background-image: url("${pageContext.request.contextPath}/resources/imagenes/s-5.png");
+                        background-image: url("${pageContext.request.contextPath}/resources/imagenes/B-5.png");
                     }
 
                     .photo6 {
-                        background-image: url("${pageContext.request.contextPath}/resources/imagenes/s-6.png");
+                        background-image: url("${pageContext.request.contextPath}/resources/imagenes/B-6.png");
                     }
 
                 </style>

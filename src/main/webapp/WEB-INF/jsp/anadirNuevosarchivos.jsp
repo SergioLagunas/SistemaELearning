@@ -135,7 +135,7 @@
 
             table{
                 background-color: #203853;
-                width: 80%;
+                width: 90%;
                 text-align: center;
                 color: white;
                 border-collapse: collapse;
@@ -164,6 +164,38 @@
             .NArchivo{
                 cursor: pointer;
             }
+            #progress_bar{
+                margin-left: 8%;
+                margin-bottom: 10px;
+                padding: 3px;
+                border: 1px solid #000;
+                font-size: 12px;
+                clear: both;
+                opacity: 0;
+                -moz-transition: opacity 1s linear;
+                -o-transition: opacity 1s linear;
+                -webkit-transition: opacity 1s linear;
+            }
+            #progress_bar.loading{
+                opacity: 1.0;
+            }
+            #progress_bar .percent {
+                /*background-color: #99ccff;*/
+                border: 1px solid #000;
+                height: auto;
+                width: 0;
+            }
+            .btncancelar{
+                width: 20%;
+                margin-bottom: 0;
+                background: white;
+                color: black;
+                border-radius: 5px;
+                border: none;
+                cursor: pointer;
+                margin-left: 8%;
+                font-size: 14px;
+            }
             /*propiedad responsive*/
             @media(max-width:820px){
                 form{
@@ -176,6 +208,20 @@
                 h1::after,h1::before{
                     display: none;
 
+                }
+                .btncancelar{
+                    width: 20%;
+                    margin-bottom: 0;
+                    background: white;
+                    color: black;
+                    border-radius: 5px;
+                    border: none;
+                    cursor: pointer;
+                    margin-left: 8%;
+                    font-size: 10px;
+                }
+                #progress_bar{
+                    width:60%
                 }
             }
 
@@ -212,34 +258,44 @@
 
     <center><h1>Añadir nuevos archivos</h1></center>
 
-    <center>
-        <div id="DivAgregar" class="caja">
-            <form id="form" action="anadirArchivos.html" method="POST" enctype="multipart/form-data">
+    <div id="DivAgregar" class="caja">
+        <form id="form" action="anadirArchivos.html" method="POST" enctype="multipart/form-data">
+            <center>
                 <label for="nom"></label> <input type="text" name="nombre" id="nom" placeholder="Nombre" required>
                 <br>
                 <label for="arch"></label> <input type="file" id="arch" name="archivo" required accept=".pdf,.txt,.docx,.xlsx,.pptx">
-                <br>
-                <br>
+            </center>
+            <br>
+            <div id="CargaProgress">
+                <div id="progress_bar" style="background-color:white;width:80%;border-radius: 3px;">
+                    <div class="percent" style="background-color:#B15D28;height:15px;">0%</div>
+                </div>
+                <input type="button" class="btncancelar" onclick="abortRead();" value="Cancelar">
+            </div>
+            <br>
+            <center>
                 <input class="submit" type="submit" onclick="alertAgregar()" value="Agregar">
                 <a class="btnCS" href="actualizarmodulos.html?CursoE=${idCurso}">Regresar</a>
-            </form>
-        </div>
-        <div id="DivActualizar" class="caja">
-            <form id="formActualizar" action="updateArchivo.html?VistaA=2" method="POST" enctype="multipart/form-data">
-                <label for="nom"></label> <input type="text" name="nombre" id="nomAc" placeholder="Nombre" required>
-                <br>
-                <label for="arc"></label> <input type="file" id="archAc" name="archivo" accept=".pdf,.txt,.docx,.xlsx,.pptx">
-                <div id="Divid" style="display:none;">
-                    <!--<div id="Divid">-->
-                    <label for="moduid"></label> <input type="text" id="moduid" placeholder="Id" name="archid">
-                </div>
-                <br>
-                <br>
-                <input class="submit" type="submit" onclick="alertActualizar()" value="Actualizar">
-                <input class="btnCR" type="button" onclick="cancelActualizar()" value="Cancelar">
-            </form>
-        </div>
-        <br>
+            </center>
+        </form>
+    </div>
+    <div id="DivActualizar" class="caja">
+        <form id="formActualizar" action="updateArchivo.html?VistaA=2" method="POST" enctype="multipart/form-data">
+            <label for="nom"></label> <input type="text" name="nombre" id="nomAc" placeholder="Nombre" required>
+            <br>
+            <label for="arc"></label> <input type="file" id="archAc" name="archivo" accept=".pdf,.txt,.docx,.xlsx,.pptx">
+            <div id="Divid" style="display:none;">
+                <!--<div id="Divid">-->
+                <label for="moduid"></label> <input type="text" id="moduid" placeholder="Id" name="archid">
+            </div>
+            <br>
+            <br>
+            <input class="submit" type="submit" onclick="alertActualizar()" value="Actualizar">
+            <input class="btnCR" type="button" onclick="cancelActualizar()" value="Cancelar">
+        </form>
+    </div>
+    <br>
+    <center>
         <div id="Divtablita" class="tablita">
             <table class="tabla" id="tabla">
                 <thead>
@@ -258,10 +314,14 @@
     <script>
         var Fila = null;
         let DataForm = {};
+        var reader;
+        var progress = document.querySelector('.percent');
+        //Escucha la entrada de archivos del Input File
+        document.getElementById('arch').addEventListener('change', handleFileSelect, false);
 
         $(function () {
             document.getElementById('DivActualizar').style.display = 'none';
-
+            document.getElementById('CargaProgress').style.display = 'none';
         <c:forEach var="arch" items="${archivos}">
             DataForm["id"] = "${arch.idArchivo}";
             DataForm["nom"] = "${arch.nombre}";
@@ -288,7 +348,69 @@
                 html: '<iframe src="https://docs.google.com/viewerng/viewer?url=' + url + '&embedded=true" frameborder="0" height="600px" width="100%"></iframe>'
             });
         }
+        function handleFileSelect(evt) {
+            document.getElementById('CargaProgress').style.display = 'block';
+            progress.style.width = '0%';
+            progress.textContent = '0%';
 
+            reader = new FileReader();
+            reader.onerror = errorHandler;
+            reader.onprogress = updateProgress;
+            reader.onabort = function (e) {
+                //alert('Carga de archivo cancelada');
+                Swal.fire({
+                    title: '¡Cancelado!',
+                    text: 'Carga de archivo cancelada',
+                    icon: 'warning',
+                    iconColor: '#B15D28',
+                    confirmButtonColor: '#203853'
+                });
+                document.getElementById("arch").value = null;
+                document.getElementById('CargaProgress').style.display = 'none';
+            };
+            reader.onloadstart = function (e) {
+                document.getElementById('progress_bar').className = 'loading';
+            };
+            reader.onload = function (e) {
+                progress.style.width = '100%';
+                progress.textContent = '100%';
+
+                setTimeout("document.getElementById('progress_bar').className='';document.getElementById('CargaProgress').style.display = 'none';", 2000);
+            };
+
+            reader.readAsBinaryString(evt.target.files[0]);
+        }
+
+        function updateProgress(evt) {
+            // evt es un ProgressEvent
+            if (evt.lengthComputable) {
+                var percentLoaded = Math.round((evt.loaded / evt.total) * 100);
+                if (percentLoaded < 100) {
+                    progress.style.width = percentLoaded + '%';
+                    progress.textContent = percentLoaded + '%';
+                }
+            }
+        }
+
+        function abortRead() {
+            reader.abort();
+        }
+
+        function errorHandler(evt) {
+            switch (evt.target.error.code) {
+                case evt.target.error.NOT_FOUND_ERR:
+                    alert('Archivo no encontrado!');
+                    break;
+                case evt.target.error.NOT_READABLE_ERR:
+                    alert('No se puede leer el archivo');
+                    break;
+                case evt.target.error.ABORT_ERR:
+                    break;
+                default:
+                    alert('Ha ocurrido un error al leer el archivo');
+            }
+            ;
+        }
         function cancelActualizar() {
             document.getElementById('DivActualizar').style.display = 'none';
             document.getElementById('DivAgregar').style.display = 'block';

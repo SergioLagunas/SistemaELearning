@@ -136,7 +136,7 @@
 
             table{
                 background-color: #203853;
-                width: 80%;
+                width: 90%;
                 text-align: center;
                 color: white;
                 border-collapse: collapse;
