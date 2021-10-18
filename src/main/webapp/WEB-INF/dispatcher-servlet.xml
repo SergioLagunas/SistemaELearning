@@ -78,6 +78,23 @@
                 <prop key="deleteArchivo.html">archivoControler</prop>
                 <prop key="anadirArchivos.html">archivoControler</prop>
                 <prop key="anadirNuevosarchivos.html">archivoControler</prop>
+                
+                <!--Mapeo de Cuestionario-->
+                <prop key="cuestionario.html">cuestionarioController</prop>
+                <prop key="CrearCuestionario.html">cuestionarioController</prop>
+                <prop key="ActualizarCuestionario.html">cuestionarioController</prop>
+                <prop key="EliminarCuestionario.html">cuestionarioController</prop>
+                
+                <!--Mapeo de Preguntas-->
+                <prop key="cuestionario.html">preguntasController</prop>
+                <prop key="CrearPreguntas.html">preguntasController</prop>
+                <prop key="ActualizarPreguntas.html">preguntasController</prop>
+                <prop key="EliminarPreguntas.html">preguntasController</prop>
+                
+                <!--Mapeo de MiCuestionario-->
+                <prop key="CrearMiCuestionario.html">miCuestionarioController</prop>
+                <prop key="ActualizarMiCuestionario.html">miCuestionarioController</prop>
+                <prop key="EliminarMiCuestionario.html">miCuestionarioController</prop>
             </props>
         </property>
     </bean>
@@ -95,6 +112,9 @@
     <bean name="moduloControler" class="Elearning.controler.ModuloControler"/>
     <bean name="usuarioControler" class="Elearning.controler.UsuarioControler"/>
     <bean name="archivoControler" class="Elearning.controler.ArchivoControler"/>
+    <bean name="cuestionarioController" class="Elearning.controler.CuestionarioController"/>
+    <bean name="preguntasController" class="Elearning.controler.PreguntasController"/>
+    <bean name="miCuestionarioController" class="Elearning.controler.MiCuestionarioController"/>
 
     <!--Validacion de Autowired y Repositories de Spring
     <tx:annotation-driven />-->

@@ -1,11 +1,22 @@
 package Elearning.pruebas;
 
+import Elearning.dao.impl.CuestionarioDaoImpl;
 import Elearning.dao.impl.CursoDaoImpl;
+import Elearning.dao.impl.MiCuestionarioDaoImpl;
+import Elearning.dao.impl.MiCursoDaoImpl;
+import Elearning.dao.impl.ModuloDaoImpl;
 import Elearning.dao.impl.UsuarioDaoImpl;
-import Elearning.modelo.Curso;
+import Elearning.dao.impl.PreguntasDaoImpl;
+import Elearning.modelo.Cuestionario;
+import Elearning.modelo.Preguntas;
+import Elearning.modelo.Modulo;
 import Elearning.modelo.Usuario;
+import Elearning.modelo.Curso;
+import Elearning.modelo.MiCuestionario;
+import Elearning.modelo.MiCurso;
 import Elearning.util.HibernateUtil;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import javax.swing.JOptionPane;
 import org.hibernate.Session;
@@ -15,14 +26,106 @@ import org.hibernate.Session;
  * @author sergi
  */
 public class PruebasDao {
-/*
+
     public static void main(String[] args) {
+        //----------CREAR CUESTIONARIO----------
+        /*//Obtener el Modulo
+        Modulo ModuloPrueba = new Modulo();
+        ModuloDaoImpl ModuloImpl = new ModuloDaoImpl();
+        ModuloPrueba = ModuloImpl.getModulo(101); //--> Establecer el ID del Modulo que se recupera
+        //Crear el Cuestionario
+        Cuestionario Cuest = new Cuestionario("Cuestionario Prueba7");
+        //Agregar Cuestionario al Modulo (Solo relaciona las tablas)
+        ModuloPrueba.addCuestionarios(Cuest);
+        //Agregar Cuestionario a la BD (Previamente se tuvieron que relacionar las tablas)
+        CuestionarioDaoImpl CuestDao = new CuestionarioDaoImpl();
+        Cuest = CuestDao.create(Cuest);*/
+        
+        //----------OBTENER CUESTIONARIO----------
+        /*CuestionarioDaoImpl CuestDao = new CuestionarioDaoImpl();
+        List<Cuestionario> cuestionarios = CuestDao.findAll();
+      
+        for(Cuestionario u : cuestionarios){
+            System.out.println(u.getNombre());
+        }*/
+        
+        //----------CREAR PREGUNTA----------
+        //Obtener el Cuestionario
+        /*Cuestionario Cuest = new Cuestionario();
+        CuestionarioDaoImpl CuestDao = new CuestionarioDaoImpl();
+        Cuest = CuestDao.getCuestionario(4); //--> Establecer el ID del Cuestionario que se recupera
+        //Crear la Pregunta
+        Preguntas Pre = new Preguntas("¿Esta es la primera pregunta?","RespuestaA","RespuestaB","RespuestaC");
+        //Agregar Pregunta al Cuestionario (Solo relaciona las tablas)
+        Cuest.addPreguntas(Pre);
+        //Agregar Pregunta a la BD (Previamente se tuvieron que relacionar las tablas)
+        PreguntasDaoImpl PreguntasDao = new PreguntasDaoImpl();
+        Pre = PreguntasDao.create(Pre);*/
+        
+        //----------CREAR MICUESTIONARIO----------
+        //Obtener el Usuario
+        /*Usuario User = new Usuario();
+        UsuarioDaoImpl UserDao = new UsuarioDaoImpl();
+        User = UserDao.getUsuario(70); //--> Establecer el ID del Usuario que se recupera
+        //Obtener el Cuestionario
+        Cuestionario Cuest = new Cuestionario();
+        CuestionarioDaoImpl CuestDao = new CuestionarioDaoImpl();
+        Cuest = CuestDao.getCuestionario(14); //--> Establecer el ID del Cuestionario que se recupera
+        //Crear MiCuestionario
+        MiCuestionario miCuestionario = new MiCuestionario();
+        miCuestionario.setEvaluacion(true);
+        miCuestionario.setUsuario(User);
+        miCuestionario.setCuestionario(Cuest);
+        //Agregar MiCuestionario a Usuario (Solo relaciona las tablas)
+        User.addMiCuestionario(miCuestionario);
+        //Agregar MiCuestionario a Cuestionario (Solo relaciona las tablas)
+        Cuest.addMiCuestionario(miCuestionario);
+        //Agregar MiCuestionario a la BD (Previamente se tuvieron que relacionar las tablas)
+        MiCuestionarioDaoImpl MiCuestionarioDao = new MiCuestionarioDaoImpl();
+        miCuestionario = MiCuestionarioDao.create(miCuestionario);*/
+        
+        //----------OBTENER CUESTIONARIO----------
+        /*MiCuestionarioDaoImpl MiCuestionarioDao = new MiCuestionarioDaoImpl();
+        List<MiCuestionario> miCuestionarios = MiCuestionarioDao.findAll();
+      
+        System.out.println("LISTANDO MICUESTIONARIO...");
+        for(MiCuestionario u : miCuestionarios){
+            System.out.println(u.getIdMiCuestionario());
+        }*/
+        
+        //----------ESTABLECER PROGRESO (MICURSO) EN RELACION CON MICUESTIONARIO----------
+        CuestionarioDaoImpl CuestionarioDao = new CuestionarioDaoImpl();
+        int CuestionariosByCurso = 0;
+        CuestionariosByCurso = CuestionarioDao.countByCurso(27); //--> Establecer ID del Curso.
+      
+        System.out.println("Total de Cuestionarios por Curso: " + CuestionariosByCurso);
+        
+        //Establecer Progreso en base al Total de Cuestionarios por Curso y a la Evaluacion de MiCuestionario. 
+        MiCuestionarioDaoImpl miCuestionarioDao = new MiCuestionarioDaoImpl();
+        int CuestionariosAprobados = miCuestionarioDao.countApproved(69, 27);
+        
+        int ProgresoObtenido = (CuestionariosAprobados * 100) / CuestionariosByCurso;
+        
+        System.out.println("Cuestionarios Aprobados: " + CuestionariosAprobados);
+        System.out.println("Progreso Obtenido: " + ProgresoObtenido);
+        
+        MiCursoDaoImpl miCursoDao = new MiCursoDaoImpl();
+        List<MiCurso> miCursos = miCursoDao.getMiCurso(63);
+        
+        System.out.println("LISTANDO MICURSO...");
+        for(MiCurso u : miCursos){
+            //u.setProgreso(ProgresoObtenido);
+            System.out.println(u.getIdCurso());
+        }
+                
+        //System.out.println("Modulo: " + ModuloPrueba.toString());
+        //System.out.println("Cuestionario: " + ModuloPrueba.getIdCuestionario().toString());
 
        //Session session = HibernateUtil.getSessionFactory().openSession();
 
-       UsuarioDaoImpl user = new UsuarioDaoImpl();
+       //UsuarioDaoImpl user = new UsuarioDaoImpl();
        
-       CursoDaoImpl curso = new CursoDaoImpl();
+       //CursoDaoImpl curso = new CursoDaoImpl();
       //  CursoDaoImpl cur = new CursoDaoImpl();
         //Usuario usuario1 = new Usuario("Prueba", "nose", "nose", "Masculino", "karina@gmail.com", "contrasena", "semillero", "sdasd");
 
@@ -73,12 +176,12 @@ public class PruebasDao {
         user.loginUsuario(newUser);
         */
        // System.out.println(user);
-/*
-        List<Usuario> usuarios = user.findAll();
 
-        for (Usuario u : usuarios) {
-            System.out.println(u);
-        }
+//        List<Usuario> usuarios = user.findAll();
+//
+//        for (Usuario u : usuarios) {
+//            System.out.println(u);
+//        }
        
        /* 
         String email ="otro@gmail.com";
@@ -121,7 +224,7 @@ public class PruebasDao {
         
       // Usuario usuarioa = new Usuario("Administrador","Administrador","Administrador","Administrador","administradorb1@gmail.com","12345","Administrador","ADMIN");
       // user.create(usuarioa);
-    //}
+    }
    
    
 }

@@ -1,7 +1,9 @@
 package Elearning.modelo;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -13,6 +15,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 //Mapero ORM
@@ -54,6 +57,14 @@ public class Usuario implements Serializable {
     @JoinTable(name = "MiCurso",joinColumns = {@JoinColumn(name = "idUsuario")},inverseJoinColumns = {@JoinColumn(name = "idCurso")})
     private Set<Curso> cursos= new HashSet<>();
 
+    //Relacion UNO A MUCHOS con MiCuestionario --> "MUCHOS A MUCHOS"
+    @OneToMany(mappedBy = "usuario",fetch=FetchType.LAZY,cascade = CascadeType.PERSIST)
+    private List<MiCuestionario> miCuestionario;
+    
+    //Relacion MUCHOS A MUCHOS con Cuestionario
+//    @ManyToMany(cascade = {CascadeType.PERSIST,CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH},fetch = FetchType.EAGER)
+//    @JoinTable(name = "MiCuestionario",joinColumns = {@JoinColumn(name = "idUsuario")},inverseJoinColumns = {@JoinColumn(name = "idCuestionario")})
+//    private Set<Cuestionario> cuestionarios = new HashSet<>();
     
     public Usuario() {
     }
@@ -148,7 +159,22 @@ public class Usuario implements Serializable {
     public void setCursos(Set<Curso> cursos) {
         this.cursos = cursos;
     }
+    
+    public List<MiCuestionario> getMiCuestionario() {
+        return miCuestionario;
+    }
 
+    public void setMiCuestionario(List<MiCuestionario> miCuestionario) {
+        this.miCuestionario = miCuestionario;
+    }
+    
+    public void addMiCuestionario(MiCuestionario miCuestionario){   
+        if(this.miCuestionario != null){
+            this.miCuestionario = new ArrayList<>();
+            this.miCuestionario.add(miCuestionario);
+            miCuestionario.setUsuario(this);
+        }    
+    }
     
     @Override
     public String toString() {

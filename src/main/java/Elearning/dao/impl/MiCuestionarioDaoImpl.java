@@ -1,8 +1,7 @@
-
 package Elearning.dao.impl;
 
-import Elearning.dao.ArchivoDao;
-import Elearning.modelo.Archivo;
+import Elearning.dao.MiCuestionarioDao;
+import Elearning.modelo.MiCuestionario;
 import Elearning.util.HibernateUtil;
 import java.util.List;
 import org.hibernate.HibernateException;
@@ -11,27 +10,41 @@ import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
 
-@Repository("ArchivoDao")
-public class ArchivoDaoImpl implements ArchivoDao{
+@Repository("MiCuestionarioDao")
+public class MiCuestionarioDaoImpl implements MiCuestionarioDao{
 
     @Override
-    public List<Archivo> findAll() {
-          //Obtener la secion 
+    public List<MiCuestionario> findAll() {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         //Ocupamos la transaccion en caso de error la base de datos se restaura a como estaba
+        Transaction transaccion = session.getTransaction();
         //Declaramos la lista donde almacenara el conjunto de datos de la tabla 
-        List<Archivo> lista = null;
+        List<MiCuestionario> lista = null;
+
+        try {
+            //Iniciamos Transaccion
+            transaccion.begin();
             //crea la consulta Query
-            Query<Archivo> miQuery = session.createQuery("from Archivo id order by id.idArchivo");
+            Query<MiCuestionario> miQuery = session.createQuery("from MiCuestionario id order by id.idMiCuestionario");
             //Amacenamos los datos en la lista declarada anteriormente 
             lista = miQuery.list();
- 
+            lista.size();
+            //regresa el commit
+            transaccion.commit();
+        } catch (HibernateException e) {
+            //Si la transaccion esta bacia y ademas esta activa que regrese el estado en el que se encontraba la Base de Datos
+            if (transaccion != null && transaccion.isActive()) {
+                transaccion.rollback();
+            }
+        } finally {
+            //Finalmente cerramos la sesion 
+            session.close();
+        }
         return lista;
     }
 
     @Override
-    public Archivo create(Archivo elArchivo) {
-         //Obtener la secion 
+    public MiCuestionario create(MiCuestionario entidad) {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         //Ocupamos la transaccion en caso de error la base de datos se restaura a como estaba
         Transaction transaccion = session.getTransaction();
@@ -40,9 +53,8 @@ public class ArchivoDaoImpl implements ArchivoDao{
             //Iniciamos Transaccion
             transaccion.begin();
             //Guardamos la transaccion
-            Integer id = (Integer) session.save(elArchivo);
+            session.save(entidad);
             transaccion.commit();
-            elArchivo.setIdArchivo(id);
 
         } catch (HibernateException e) {
             //Si la transaccion esta bacia y ademas esta activa que regrese el estado en el que se encontraba la Base de Dato
@@ -53,25 +65,25 @@ public class ArchivoDaoImpl implements ArchivoDao{
             //Finalmente cerramos la sesion 
             session.close();
         }
-        return elArchivo;
+        return entidad;
     }
 
     @Override
-    public Archivo getArchivo(Integer idArchivo) {
-        //Obtener la secion 
+    public MiCuestionario getMiCuestionario(Integer idMiCuestionario) {
+        //Obtener la sesion 
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         //Ocupamos la transaccion en caso de error la base de datos se restaura a como estaba
         Transaction transaccion = session.getTransaction();
-        Archivo entidad = null;
+        MiCuestionario entidad = null;
         try {
             //Iniciamos Transaccion
             transaccion.begin();
-            //Obtener por medio del id llamamos a la Tabla usuario y que haga de parametro el idUsuario
-            entidad = session.get(Archivo.class, idArchivo);
+            //Obtener por medio del id llamamos a la Tabla MiCuestionario y que haga de parametro el idMiCuestionario
+            entidad = session.get(MiCuestionario.class, idMiCuestionario);
             transaccion.commit();
 
         } catch (HibernateException e) {
-            //Si la transaccion esta bacia y ademas esta activa que regrese el estado en el que se encontraba la Base de Dato
+            //Si la transaccion esta bacia y ademas esta activa que regrese el estado en el que se encontraba la Base de Datos
             if (transaccion != null && transaccion.isActive()) {
                 transaccion.rollback();
             }
@@ -84,8 +96,7 @@ public class ArchivoDaoImpl implements ArchivoDao{
     }
 
     @Override
-    public Archivo update(Archivo elArchivo) {
-        //Obtener la secion 
+    public MiCuestionario update(MiCuestionario entidad) {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         //Ocupamos la transaccion en caso de error la base de datos se restaura a como estaba
         Transaction transaccion = session.getTransaction();
@@ -94,7 +105,7 @@ public class ArchivoDaoImpl implements ArchivoDao{
             //Iniciamos Transaccion
             transaccion.begin();
             //Actualizamos los datos 
-            session.update(elArchivo);
+            session.update(entidad);
             transaccion.commit();
 
         } catch (HibernateException e) {
@@ -107,12 +118,11 @@ public class ArchivoDaoImpl implements ArchivoDao{
             session.close();
         }
 
-        return elArchivo;
+        return entidad;
     }
 
     @Override
-    public boolean delete(Archivo elArchivo) {
-         //Obtener la secion 
+    public boolean delete(MiCuestionario entidad) {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         //Ocupamos la transaccion en caso de error la base de datos se restaura a como estaba
         Transaction transaccion = session.getTransaction();
@@ -122,7 +132,7 @@ public class ArchivoDaoImpl implements ArchivoDao{
             //Iniciamos Transaccion
             transaccion.begin();
             //Actualizamos los datos 
-            session.delete(elArchivo);
+            session.delete(entidad);
             transaccion.commit();
 
         } catch (HibernateException e) {
@@ -141,29 +151,27 @@ public class ArchivoDaoImpl implements ArchivoDao{
     }
 
     @Override
-    public List<Archivo> findbyCurso(int idCurso) {
-        
-        //Obtener la secion 
+    public Integer countApproved(int idUsuario, int idCurso) {
+        //Obtener la sesion 
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         //Ocupamos la transaccion en caso de error la base de datos se restaura a como estaba
         Transaction transaccion = session.getTransaction();
+        //Declaramos el entero donde almacenara el total de cuestionarios
+        int count = 0;
 
-        List<Archivo> lista = null;
         try {
             //Iniciamos Transaccion
             transaccion.begin();
-            //crea la consulta Query
-            Query <Archivo> query = session.createSQLQuery("select * from Archivo mo where mo.idCurso=:c")
-                    .addEntity(Archivo.class)
-                    .setParameter("c", idCurso);
-                    
-            //Amacenamos los datos en la lista declarada anteriormente 
-            lista = query.list();
-            lista.size();
-            //regresa el commit
+            //Crear la consulta SQLQuery
+            Query miQuery;
+            miQuery = session.createSQLQuery("SELECT COUNT(MiCuestionario.idMiCuestionario) AS 'Aprobados' FROM MiCuestionario INNER JOIN Cuestionario ON MiCuestionario.idCuestionario = Cuestionario.idCuestionario INNER JOIN Modulo ON Cuestionario.idModulo = Modulo.idModulo INNER JOIN Curso ON Modulo.idCurso = Curso.idCurso INNER JOIN " + 
+                    "(SELECT Cuestionario.idCuestionario FROM Cuestionario INNER JOIN Modulo ON Cuestionario.idModulo = Modulo.idModulo INNER JOIN Curso ON Modulo.idCurso = Curso.idCurso WHERE Curso.idCurso = " + idCurso + ") Sub ON Sub.idCuestionario = Cuestionario.idCuestionario WHERE MiCuestionario.evaluacion = 1 AND MiCuestionario.idUsuario = " + idUsuario);
+            //Almacenamos los datos
+            count = (Integer)miQuery.uniqueResult();
+            //Regresa el commit
             transaccion.commit();
         } catch (HibernateException e) {
-            //Si la transaccion esta bacia y ademas esta activa que regrese el estado en el que se encontraba la Base de Datos
+            //Si la transaccion esta vacia y ademas esta activa que regrese el estado en el que se encontraba la Base de Datos
             if (transaccion != null && transaccion.isActive()) {
                 transaccion.rollback();
             }
@@ -171,8 +179,6 @@ public class ArchivoDaoImpl implements ArchivoDao{
             //Finalmente cerramos la sesion 
             session.close();
         }
-        return lista;
-        
+        return count;
     }
-    
 }

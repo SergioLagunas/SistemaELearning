@@ -1,6 +1,7 @@
 package Elearning.modelo;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.CascadeType;
@@ -12,6 +13,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -32,13 +35,16 @@ public class Modulo implements Serializable {
     @Column(name = "url")
     private String url;
 
-   
+    //Relación MUCHOS a UNO con Curso
     @ManyToOne(fetch = FetchType.LAZY,cascade = {CascadeType.ALL,CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH})
     @JoinColumn(name="idCurso")
     private Curso idCurso;
+    
+    //Relación UNO a MUCHOS con Cuestionario
+    @OneToMany(mappedBy = "idModulo",fetch=FetchType.LAZY,cascade = {CascadeType.PERSIST,CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH})
+    private List<Cuestionario> idCuestionario;
 
-    public Modulo() {
-    }
+    public Modulo() {}
 
     public Modulo(String titulo, String descripcion, String url) {
         this.titulo = titulo;
@@ -54,8 +60,6 @@ public class Modulo implements Serializable {
         this.url = url;
     }
     
-
-
     public Integer getIdModulo() {
         return idModulo;
     }
@@ -88,11 +92,24 @@ public class Modulo implements Serializable {
         this.idCurso = idCurso;
     }
     
+    public List<Cuestionario> getIdCuestionario() {
+        return idCuestionario;
+    }
 
+    public void setIdCuestionario(List<Cuestionario> idCuestionario) {
+        this.idCuestionario = idCuestionario;
+    }
+
+    public void addCuestionarios(Cuestionario cuestionario){   
+        if(idCuestionario != null){
+            idCuestionario = new ArrayList<>();
+            idCuestionario.add(cuestionario);
+            cuestionario.setIdModulo(this);
+        }    
+    }
+    
     @Override
     public String toString() {
         return "Modulo{" + "idModulo=" + idModulo + ", titulo=" + titulo + ", descripcion=" + descripcion + ", url=" + url + ", idCurso=" + idCurso + '}';
     }
-
-
 }
