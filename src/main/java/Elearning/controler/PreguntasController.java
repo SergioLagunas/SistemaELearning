@@ -14,14 +14,14 @@ public class PreguntasController {
     private PreguntasService preguntasService;
     
     //Al entrar a la vista --> "cuestionario.jsp"
-    @RequestMapping(value = "cuestionario.html", method = RequestMethod.GET)
-    public String listPreguntas(Model model) {
-        System.out.println("LISTANDO PREGUNTAS...");
-        return preguntasService.listAllPreguntas(model);
-    }
+//    @RequestMapping(value = "cuestionario.html", method = RequestMethod.GET)
+//    public String listPreguntas(Model model) {
+//        System.out.println("LISTANDO PREGUNTAS...");
+//        return preguntasService.listAllPreguntas(model);
+//    }
     
     //Crear nueva Pregunta  --> "cuestionario.jsp" 
-    @RequestMapping(value = "CrearPreguntas.html", method = RequestMethod.GET)
+    @RequestMapping(value = "CrearPreguntas.html", method = RequestMethod.POST)
     public String crearPreguntas
         (
             @RequestParam("IdCuestionario") int IdCuestionario, 
@@ -32,7 +32,7 @@ public class PreguntasController {
         ){
         String Redirect;
         if (preguntasService.createNewPreguntas(IdCuestionario, Pregunta, RespuestaA, RespuestaB, RespuestaC).equals("Pregunta creada")) {
-            Redirect = "redirect:/cuestionario.html"; 
+            Redirect = "redirect:/cuestionario.html?Modulo="+77; 
         } else
             Redirect = "redirect:/error.html"; 
         return Redirect;

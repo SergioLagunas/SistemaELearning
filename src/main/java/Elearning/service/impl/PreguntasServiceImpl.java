@@ -18,11 +18,11 @@ public class PreguntasServiceImpl implements PreguntasService {
     @Autowired
     private CuestionarioDao cuestionarioDao;
     
-    @Override
-    public String listAllPreguntas(Model model) {
-        model.addAttribute("preguntas", preguntasDao.findAll());
-        return "cuestionario";
-    }
+//    @Override
+//    public String listAllPreguntas(Model model) {
+//        model.addAttribute("preguntas", preguntasDao.findAll());
+//        return "cuestionario";
+//    }
 
     @Override
     public String createNewPreguntas(int IdCuestionario, String pregunta, String respuestaA, String respuestaB, String respuestaC) {

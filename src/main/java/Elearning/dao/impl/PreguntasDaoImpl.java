@@ -1,6 +1,7 @@
 package Elearning.dao.impl;
 
 import Elearning.dao.PreguntasDao;
+import Elearning.modelo.Cuestionario;
 import Elearning.modelo.Preguntas;
 import Elearning.util.HibernateUtil;
 import java.util.List;
@@ -14,7 +15,8 @@ import org.springframework.stereotype.Repository;
 public class PreguntasDaoImpl implements PreguntasDao{
 
     @Override
-    public List<Preguntas> findAll() {
+    public List<Preguntas> findAll(int idCuestionario) {
+        //Obtener la secion 
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         //Ocupamos la transaccion en caso de error la base de datos se restaura a como estaba
         Transaction transaccion = session.getTransaction();
@@ -25,7 +27,8 @@ public class PreguntasDaoImpl implements PreguntasDao{
             //Iniciamos Transaccion
             transaccion.begin();
             //crea la consulta Query
-            Query<Preguntas> miQuery = session.createQuery("from Preguntas id order by id.idPregunta");
+            Query miQuery = session.createSQLQuery("select * from Preguntas c where c.idCuestionario=:id").addEntity(Preguntas.class)
+                    .setParameter("id",idCuestionario);
             //Amacenamos los datos en la lista declarada anteriormente 
             lista = miQuery.list();
             lista.size();

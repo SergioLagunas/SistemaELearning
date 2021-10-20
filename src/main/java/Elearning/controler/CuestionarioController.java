@@ -13,19 +13,22 @@ public class CuestionarioController {
     @Autowired
     private CuestionarioService cuestionarioService;
     
+    int moduloRecuperado = 0;
+    
     //Al entrar a la vista --> "cuestionario.jsp"
     @RequestMapping(value = "cuestionario.html", method = RequestMethod.GET)
-    public String listCuestionario(Model model) {
+    public String listCuestionario(@RequestParam("Modulo") int IdModulo, Model model) {
+        moduloRecuperado = IdModulo;
         System.out.println("LISTANDO CUESTIONARIOS...");
-        return cuestionarioService.listAllCuestionarios(model);
+        return cuestionarioService.listAllCuestionarios(model, moduloRecuperado);
     }
     
     //Crear nuevo Cuestionario  --> "cuestionario.jsp" 
     @RequestMapping(value = "CrearCuestionario.html", method = RequestMethod.GET)
-    public String crearCuestionario(@RequestParam("IdModulo") int IdModulo, @RequestParam("InputNombre") String Nombre){
+    public String crearCuestionario(@RequestParam("InputNombre") String Nombre){
         String Redirect;
-        if (cuestionarioService.createNewCuestionario(IdModulo, Nombre).equals("Cuestionario creado")) {
-            Redirect = "redirect:/cuestionario.html"; 
+        if (cuestionarioService.createNewCuestionario(moduloRecuperado, Nombre).equals("Cuestionario creado")) {
+            Redirect = "cuestionario"; 
         } else
             Redirect = "redirect:/error.html"; 
         return Redirect;

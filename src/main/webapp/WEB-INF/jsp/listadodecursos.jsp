@@ -1,10 +1,9 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="UTF-8">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/newheader.css" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/footer.css" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -295,8 +294,8 @@
                         <li><a href="nuevosemillero.html">Semilleros</a></li>
                         <li><a href="listadodecursos.html">Cursos</a></li>
                         <li><a href="nuevocurso.html">Agregar nuevo curso</a></li>
-                        <!--<li><a href="#">Cerrar sesiÃ³n</a></li>-->
-                        <li><span><a onclick="cerrarSession()" class="cta">Cerrar sesiÃ³n</a></span></li>
+                        <!--<li><a href="#">Cerrar sesión</a></li>-->
+                        <li><span><a onclick="cerrarSession()" class="cta">Cerrar sesión</a></span></li>
                     </ul>
                 </div>
             </nav>
@@ -306,9 +305,9 @@
     <div class="caja" id="formActualizar">
         <form id="from1" action="ActualizarCurso.html" method="POST" enctype="multipart/form-data">
             <center>
-                <label for="nom"></label> <input type="text" id="nom" placeholder="ïŠ½ Nombre" name="nombre" required>
+                <label for="nom"></label> <input type="text" id="nom" placeholder="? Nombre" name="nombre" required>
                 <br>
-                <label for="des"></label> <input type="text" id="des" placeholder="ïƒ† DescripciÃ³n" name="descripcion" required>
+                <label for="des"></label> <input type="text" id="des" placeholder="? Descripción" name="descripcion" required>
 
                 <label for="cat"></label>
                 <select name="categoria" id="cat" class="k-textbox">
@@ -350,7 +349,7 @@
                 <thead>
                     <tr> 
                         <th>Nombre</th> 
-                        <th>DescripciÃ³n</th>
+                        <th>Descripción</th>
                         <th>Categoria</th>
                         <th class="opciones">Opciones</th>
                     </tr>
@@ -404,7 +403,7 @@
             reader.onabort = function (e) {
                 //alert('Carga de archivo cancelada');
                 Swal.fire({
-                    title: 'Â¡Cancelado!',
+                    title: '¡Cancelado!',
                     text: 'Carga de archivo cancelada',
                     icon: 'warning',
                     iconColor: '#B15D28',
@@ -472,7 +471,7 @@
                 e.preventDefault(); // <--- prevent form from submitting
 
                 Swal.fire({
-                    title: 'Â¿Quieres Actualizar los datos?',
+                    title: '¿Quieres Actualizar los datos?',
                     icon: 'warning',
                     iconColor: '#B15D28',
                     showCancelButton: true,
@@ -485,7 +484,7 @@
                         .then((result) => {
                             if (result.isConfirmed) {
                                 Swal.fire({
-                                    title: 'Â¡Actualizado!',
+                                    title: '¡Actualizado!',
                                     text: 'Se Actualizaron los datos',
                                     icon: 'success',
                                     iconColor: '#203853',
@@ -498,7 +497,7 @@
                                         });
                             } else if (result.dismiss === Swal.DismissReason.cancel) {
                                 Swal.fire({
-                                    title: 'Â¡Cancelado!',
+                                    title: '¡Cancelado!',
                                     text: 'No se actualizo ningun dato',
                                     icon: 'error',
                                     iconColor: '#B15D28',
@@ -578,7 +577,7 @@
             //document.getElementById('enlace').setAttribute('href', "index.html");
 
             Swal.fire({
-                title: 'Â¿Estas seguro de eliminar el Curso?',
+                title: '¿Estas seguro de eliminar el Curso?',
                 text: "Si se elimina no se podra revertir",
                 icon: 'warning',
                 iconColor: '#B15D28',
@@ -594,7 +593,7 @@
                     document.getElementById("tabla").deleteRow(row.rowIndex);
                     document.location.href = "borrarCursos.html?CursoE=" + id;
                     Swal.fire({
-                        title: 'Â¡Eliminado!',
+                        title: '¡Eliminado!',
                         text: 'Se elimino el Curso',
                         icon: 'success',
                         iconColor: '#203853',
@@ -604,7 +603,7 @@
                         result.dismiss === Swal.DismissReason.cancel
                         ) {
                     Swal.fire({
-                        title: 'Â¡Cancelado!',
+                        title: '¡Cancelado!',
                         text: 'No se elimino ningun Curso',
                         icon: 'error',
                         iconColor: '#B15D28',

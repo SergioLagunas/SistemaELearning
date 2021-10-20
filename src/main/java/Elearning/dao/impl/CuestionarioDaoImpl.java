@@ -16,7 +16,7 @@ import org.springframework.stereotype.Repository;
 public class CuestionarioDaoImpl implements CuestionarioDao {
 
     @Override
-    public List<Cuestionario> findAll() {
+    public List<Cuestionario> findAll(int idModulo) {
         //Obtener la secion 
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         //Ocupamos la transaccion en caso de error la base de datos se restaura a como estaba
@@ -28,7 +28,8 @@ public class CuestionarioDaoImpl implements CuestionarioDao {
             //Iniciamos Transaccion
             transaccion.begin();
             //crea la consulta Query
-            Query<Cuestionario> miQuery = session.createQuery("from Cuestionario id order by id.idCuestionario");
+            Query miQuery = session.createSQLQuery("select * from Cuestionario c where c.idModulo=:id").addEntity(Cuestionario.class)
+                    .setParameter("id",idModulo);
             //Amacenamos los datos en la lista declarada anteriormente 
             lista = miQuery.list();
             lista.size();
@@ -183,6 +184,37 @@ public class CuestionarioDaoImpl implements CuestionarioDao {
         }
 
         return flag;
+    }
+
+    @Override
+    public Integer getIdByModulo(Integer idModulo) {
+                //Obtener la sesion 
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        //Ocupamos la transaccion en caso de error la base de datos se restaura a como estaba
+        Transaction transaccion = session.getTransaction();
+        //Declaramos el entero donde almacenara el total de cuestionarios
+        int idCuestionario = 0;
+
+        try {
+            //Iniciamos Transaccion
+            transaccion.begin();
+            //Crear la consulta SQLQuery
+            Query miQuery;
+            miQuery = session.createSQLQuery("SELECT idCuestionario FROM Cuestionario WHERE idModulo = " + idModulo);
+            //Almacenamos los datos
+            idCuestionario = (Integer)miQuery.uniqueResult();
+            //Regresa el commit
+            transaccion.commit();
+        } catch (HibernateException e) {
+            //Si la transaccion esta vacia y ademas esta activa que regrese el estado en el que se encontraba la Base de Datos
+            if (transaccion != null && transaccion.isActive()) {
+                transaccion.rollback();
+            }
+        } finally {
+            //Finalmente cerramos la sesion 
+            session.close();
+        }
+        return idCuestionario;
     }
 
 }

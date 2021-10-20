@@ -3,6 +3,7 @@ package Elearning.service.impl;
 import Elearning.dao.CuestionarioDao;
 import Elearning.dao.MiCuestionarioDao;
 import Elearning.dao.ModuloDao;
+import Elearning.dao.PreguntasDao;
 import Elearning.modelo.Cuestionario;
 import Elearning.modelo.Modulo;
 import Elearning.service.CuestionarioService;
@@ -16,14 +17,24 @@ import org.springframework.ui.Model;
 public class CuestionarioServiceImpl implements CuestionarioService {
     @Autowired
     private CuestionarioDao cuestionarioDao;
+    
+    @Autowired
+    private PreguntasDao preguntasDao;
 
     @Autowired
     private ModuloDao moduloDao;
     
     @Override
-    public String listAllCuestionarios(Model model) {
-        model.addAttribute("cuestionarios", cuestionarioDao.findAll());
-        return "cuestionario";
+    public String listAllCuestionarios(Model model, int idModulo) {
+        String salida;
+        model.addAttribute("cuestionarios", cuestionarioDao.findAll(idModulo));
+        if (cuestionarioDao.getIdByModulo(idModulo) != null){
+            model.addAttribute("preguntas", preguntasDao.findAll(cuestionarioDao.getIdByModulo(idModulo)));
+            salida = "cuestionario";
+        } else 
+            salida = "redirect:/error.html"; 
+//return "cuestionario";
+        return salida;
     }
 
     @Override
