@@ -1,4 +1,4 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
@@ -80,24 +80,24 @@
             <div id="EditDialog"></div>
             <div id="dialogUsuarios"></div>
             <div id="example"></div>
-            <!-- boton crear cuenta y olvidaste tu contraseÃ±a -->
+            <!-- boton crear cuenta y olvidaste tu contraseña -->
 
             <div id="dialog">
             </div>
             <!--<p>
-                <a href=""><button id="BotonIS" class="primary">Iniciar sesiÃ³n</button></a>
+                <a href=""><button id="BotonIS" class="primary">Iniciar sesión</button></a>
 
             </p>-->
             
             <p>
                 <button id="BotonFormulario" class="k-secundary">Crear Cuenta</button>
             </p>
-            <a class="link" >Â¿Olvidaste tu contraseÃ±a?</a>
+            <a class="link" >¿Olvidaste tu contraseña?</a>
 
         </div>
     </div>
     </center>
-    <!-- MODAL OLVIDASTE LA CONTRASEÃ‘A -->
+    <!-- MODAL OLVIDASTE LA CONTRASEÑA -->
     <div></div>
     <div id="EditDialog1"></div>
     <div id="dialogUsuarios1"></div>
@@ -115,20 +115,20 @@
                 {
                     field: "email",
                     label: "Correo:",
-                    validation: {required: {message: "Ingresa tu correo electrÃ³nico"}, email: {message: "Ingresa un correo electrÃ³nico vÃ¡lido"}}
+                    validation: {required: {message: "Ingresa tu correo electrónico"}, email: {message: "Ingresa un correo electrónico válido"}}
                 },
                 {
                     field: "contrasena",
-                    label: "ContraseÃ±a:",
-                    validation: {required: {message: "Ingresa tu contraseÃ±a"}, contrasena: {message: "Ingresa tu contraseÃ±a"}},
+                    label: "Contraseña:",
+                    validation: {required: {message: "Ingresa tu contraseña"}, contrasena: {message: "Ingresa tu contraseña"}},
                     editor: function (container, options) {
-                        container.append($("<input type='password' class='k-textbox k-valid' id='contrasena' name='contrasena' required='Ingresa tu contraseÃ±a' autocomplete='off' aria-labelledby='Password-form-label' data-bind='value:Password' aria-describedby='Password-form-hint' >"));
+                        container.append($("<input type='password' class='k-textbox k-valid' id='contrasena' name='contrasena' required='Ingresa tu contraseña' autocomplete='off' aria-labelledby='Password-form-label' data-bind='value:Password' aria-describedby='Password-form-hint' >"));
                     }
                 }
             ],
             // "evita que aparezcan los botones de kendo"
 
-            buttonsTemplate: "<input type='submit' value='Iniciar SesiÃ³n' id='BotonIS' class='primary' style='margin:auto;'/>"
+            buttonsTemplate: "<input type='submit' value='Iniciar Sesión' id='BotonIS' class='primary' style='margin:auto;'/>"
         });
     });
 // formulario crear cuenta
@@ -163,12 +163,12 @@
                         {
                             field: "email",
                             label: "Correo:",
-                            validation: {required: {message: "Ingresa un correo electrÃ³nico"}, email: {message: "Ingresa un correo electrÃ³nico vÃ¡lido"}}
+                            validation: {required: {message: "Ingresa un correo electrónico"}, email: {message: "Ingresa un correo electrónico válido"}}
                         },
                         {
                             field: "Confcontrasena",
-                            label: "Confirmar contraseÃ±a:",
-                            validation: {required: {message: "Confirma tu contraseÃ±a"}},
+                            label: "Confirmar contraseña:",
+                            validation: {required: {message: "Confirma tu contraseña"}},
                             editor: function (container, options) {
                                 container.append($("<input type='password' class='k-textbox k-valid' id='Password' name='contrasena' title='Password' required='required' autocomplete='off' aria-labelledby='Password-form-label' data-bind='value:Password' aria-describedby='Password-form-hint'>"));
                             }
@@ -191,7 +191,7 @@
                             field: "genero",
                             editor: "DropDownList",
                             label: "Genero",
-                            validation: {required: {message: "Elige una opciÃ³n"}},
+                            validation: {required: {message: "Elige una opción"}},
                             colSpan: 2,
                             editorOptions: {
                                 optionLabel: "Seleccionar",
@@ -205,9 +205,9 @@
                         },
                         {
                             field: "contrasena",
-                            label: "ContraseÃ±a:",
+                            label: "Contraseña:",
                             colSpan: 2,
-                            validation: {required: {message: "Ingresa una contraseÃ±a"}},
+                            validation: {required: {message: "Ingresa una contraseña"}},
                             editor: function (container, options) {
                                 container.append($("<input type='password' class='k-textbox k-valid' id='Password1' name='contrasena' title='Password' required='required' autocomplete='off' aria-labelledby='Password-form-label' data-bind='value:Password' aria-describedby='Password-form-hint'>"));
                             }
@@ -215,7 +215,7 @@
                         {
                             field: "rfc",
                             label: "RFC:",
-                            validation: {required: {message: "Ingresa tu RFC"}, "RFC": {message: "Ingresa de 10 a 13 carÃ¡cteres"}, maxlength: 13, pattern: "^[A-Za-z0-9]+$"},
+                            validation: {required: {message: "Ingresa tu RFC"}, "RFC": {message: "Ingresa de 10 a 13 carácteres"}, maxlength: 13, pattern: "^[A-Za-z0-9]+$"},
                             colSpan: 2
                         }
                     ]
@@ -268,7 +268,7 @@
             closable: true
         });
     });
-    // MODAL Â¿olvidaste tu contraseÃ±a?
+    // MODAL ¿olvidaste tu contraseña?
     function onOpenformulario1() {
         var dialog = $('#EditDialog1');
         dialog.empty();
@@ -284,7 +284,7 @@
             items: [
                 {
                     type: "group",
-                    label: "Ingresa tu correo electrÃ³nico con el cual te registraste: ",
+                    label: "Ingresa tu correo electrónico con el cual te registraste: ",
                     layout: "grid",
                     grid: {cols: 1, gutter: 10},
 
@@ -292,7 +292,7 @@
                         {
                             field: "email",
                             label: "Correo:",
-                            validation: {required: {message: "Ingresa tu correo electrÃ³nico"}, email: {mesagge: "Ingresa un correo electrÃ³nico vÃ¡lido"}}
+                            validation: {required: {message: "Ingresa tu correo electrónico"}, email: {mesagge: "Ingresa un correo electrónico válido"}}
                         }
                     ]
                 }

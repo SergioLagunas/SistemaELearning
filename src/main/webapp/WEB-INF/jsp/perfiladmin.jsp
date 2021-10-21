@@ -4,12 +4,11 @@
     Author     : Karina Romero
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Perfil Admin</title>
@@ -158,8 +157,8 @@
                         <li><a href="nuevosemillero.html">Semilleros</a></li>
                         <li><a href="listadodecursos.html">Cursos</a></li>
                         <li><a href="nuevocurso.html">Agregar nuevo curso</a></li>
-                        <!--<li><a href="#">Cerrar sesiÃ³n</a></li>-->
-                        <li><span><a onclick="cerrarSession()" class="cta">Cerrar sesiÃ³n</a></span></li>
+                        <!--<li><a href="#">Cerrar sesión</a></li>-->
+                        <li><span><a onclick="cerrarSession()" class="cta">Cerrar sesión</a></span></li>
                     </ul>
                 </div>
             </nav>
@@ -179,7 +178,7 @@
                     <input class="controls" type="text" name="aMaterno" id="apellidomat" placeholder="Apellido materno" value="<c:out value="${usuario.aMaterno}"></c:out>">
                     <input class="controls" type="hidden" name="genero" id="genero" value="<c:out value="${usuario.genero}"></c:out>">
                     <input class="controls" type="hidden" name="email" id="email" value="<c:out value="${usuario.email}"></c:out>">
-                    <input class="controls" type="password" name="contrasena" id="password" placeholder="Nueva contraseÃ±a" value="<c:out value="${usuario.contrasena}"></c:out>">
+                    <input class="controls" type="password" name="contrasena" id="password" placeholder="Nueva contraseña" value="<c:out value="${usuario.contrasena}"></c:out>">
                     <input class="controls" type="text" name="rfc" id="rfc" placeholder="RFC" value="<c:out value="${usuario.rfc}"></c:out>">
                     <br>
                     <center><input class="btn-guardar" type="submit" onclick="alertActualizar()" value="Guardar"></center>
@@ -192,7 +191,7 @@
                                 e.preventDefault(); // <--- prevent form from submitting
 
                                 Swal.fire({
-                                    title: 'Â¿Quieres Actualizar los datos?',
+                                    title: '¿Quieres Actualizar los datos?',
                                     icon: 'warning',
                                     iconColor: '#B15D28',
                                     showCancelButton: true,
@@ -205,7 +204,7 @@
                                         .then((result) => {
                                             if (result.isConfirmed) {
                                                 Swal.fire({
-                                                    title: 'Â¡Actualizado!',
+                                                    title: '¡Actualizado!',
                                                     text: 'Se Actualizaron los datos',
                                                     icon: 'success',
                                                     iconColor: '#203853',
@@ -218,7 +217,7 @@
                                                         });
                                             } else if (result.dismiss === Swal.DismissReason.cancel) {
                                                 Swal.fire({
-                                                    title: 'Â¡Cancelado!',
+                                                    title: '¡Cancelado!',
                                                     text: 'No se actualizo ningun dato',
                                                     icon: 'error',
                                                     iconColor: '#B15D28',

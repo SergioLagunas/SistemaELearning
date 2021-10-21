@@ -4,7 +4,7 @@
     Author     : Karina Romero
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
@@ -14,7 +14,6 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -82,14 +81,14 @@
                     <ul>
                         <li><a href="perfilsem.html">Mi perfil</a></li>
                         <li><a href="ProgressBar.html">Mis Cursos</a></li>
-                        <!--<li><a href="#">Cerrar sesiÃ³n</a></li>-->
-                        <li><span><a onclick="cerrarSession()" class="cta">Cerrar sesiÃ³n</a></span></li>
+                        <!--<li><a href="#">Cerrar sesión</a></li>-->
+                        <li><span><a onclick="cerrarSession()" class="cta">Cerrar sesión</a></span></li>
                     </ul>
                 </div>
             </nav>
         </header>
         <br>
-        <!-- Titulo de la PÃ¡gina -->
+        <!-- Titulo de la Página -->
         <h1><c:out value="${categoria}"></c:out></h1>
             <div class="cards-container">
             <c:forEach items="${cursos}" var="curso"> 

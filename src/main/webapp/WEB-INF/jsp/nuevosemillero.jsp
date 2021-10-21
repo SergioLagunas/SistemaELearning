@@ -4,12 +4,11 @@
     Author     : Karina Romero
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="UTF-8">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/newheader.css" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/footer.css" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -166,8 +165,8 @@
                         <li><a href="nuevosemillero.html">Semilleros</a></li>
                         <li><a href="listadodecursos.html">Cursos</a></li>
                         <li><a href="nuevocurso.html">Agregar nuevo curso</a></li>
-                        <!--<li><a href="#">Cerrar sesiÃ³n</a></li>-->
-                        <li><span><a onclick="cerrarSession()" class="cta">Cerrar sesiÃ³n</a></span></li>
+                        <!--<li><a href="#">Cerrar sesión</a></li>-->
+                        <li><span><a onclick="cerrarSession()" class="cta">Cerrar sesión</a></span></li>
                     </ul>
                 </div>
             </nav>
@@ -222,7 +221,7 @@
             function confirm(id) {
 
                 Swal.fire({
-                    title: 'Â¿Estas seguro de eliminar el Semillero?',
+                    title: '¿Estas seguro de eliminar el Semillero?',
                     text: "Si se elimina no se podra revertir",
                     icon: 'warning',
                     iconColor: '#B15D28',
@@ -236,7 +235,7 @@
                     if (result.isConfirmed) {
                         document.location.href = "eliminarSemillero.html?idUsuario=" + id;
                         Swal.fire({
-                            title: 'Â¡Eliminado!',
+                            title: '¡Eliminado!',
                             text: 'Se elimino el Semillero',
                             icon: 'success',
                             iconColor: '#203853',
@@ -247,7 +246,7 @@
                             result.dismiss === Swal.DismissReason.cancel
                             ) {
                         Swal.fire({
-                            title: 'Â¡Cancelado!',
+                            title: '¡Cancelado!',
                             text: 'No se elimino ningun Semillero',
                             icon: 'error',
                             iconColor: '#B15D28',
@@ -313,7 +312,7 @@
                 document.getElementById("nom").focus()
             }
             function Borrarr(td) {
-                if (confirm('Â¿EstÃ¡s Seguro de borrar este mÃ³dulo?')) {
+                if (confirm('¿Estás Seguro de borrar este módulo?')) {
                     row = td.parentElement.parentElement
                     document.getElementById("tabla").deleteRow(row.rowIndex)
                     Vaciar()

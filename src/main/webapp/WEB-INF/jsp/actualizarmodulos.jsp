@@ -1,10 +1,9 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="UTF-8">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/newheader.css" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/footer.css" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -259,8 +258,8 @@
                         <li><a href="nuevosemillero.html">Semilleros</a></li>
                         <li><a href="listadodecursos.html">Cursos</a></li>
                         <li><a href="nuevocurso.html">Agregar nuevo curso</a></li>
-                        <!--<li><a href="#">Cerrar sesiÃ³n</a></li>-->
-                        <li><span><a onclick="cerrarSession()" class="cta">Cerrar sesiÃ³n</a></span></li>
+                        <!--<li><a href="#">Cerrar sesión</a></li>-->
+                        <li><span><a onclick="cerrarSession()" class="cta">Cerrar sesión</a></span></li>
                     </ul>
                 </div>
             </nav>
@@ -326,7 +325,7 @@
                 <thead>
                     <tr> 
                         <th>Nombre</th> 
-                        <th>DescripciÃ³n</th>
+                        <th>Descripción</th>
                         <th>Archivos</th>
                         <th class="opciones">Opciones</th>
                     </tr>
@@ -390,7 +389,7 @@
             reader.onabort = function (e) {
                 //alert('Carga de archivo cancelada');
                 Swal.fire({
-                    title: 'Â¡Cancelado!',
+                    title: '¡Cancelado!',
                     text: 'Carga de archivo cancelada',
                     icon: 'warning',
                     iconColor: '#B15D28',
@@ -455,11 +454,11 @@
                 e.preventDefault();
 
                 swal.fire({
-                    title: "Â¿Desea Actualizar el Modulo?",
+                    title: "¿Desea Actualizar el Modulo?",
                     text: "",
                     icon: 'warning',
                     showCancelButton: true,
-                    confirmButtonText: "SÃ­, Actualizar",
+                    confirmButtonText: "Sí, Actualizar",
                     confirmButtonColor: '#203853',
                     cancelButtonColor: '#B15D28',
                     cancelButtonText: "Cancelar"
@@ -500,11 +499,11 @@
                 e.preventDefault();
 
                 swal.fire({
-                    title: "Â¿Desea Agregar un nuevo Modulo?",
+                    title: "¿Desea Agregar un nuevo Modulo?",
                     text: "",
                     icon: 'warning',
                     showCancelButton: true,
-                    confirmButtonText: "SÃ­, Agregar",
+                    confirmButtonText: "Sí, Agregar",
                     confirmButtonColor: '#203853',
                     cancelButtonColor: '#B15D28',
                     cancelButtonText: "Cancelar"
@@ -563,7 +562,7 @@
                                                                   </svg>
                                                             </button>
         
-                                                        <button type="button" class="btn btn-warning" onClick="aÃ±adirCuestionario(` + data.id + `)">
+                                                        <button type="button" class="btn btn-warning" onClick="añadirCuestionario(` + data.id + `)">
                                                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
                                                                 <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
                                                                 <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
@@ -599,11 +598,11 @@
 
         function Borrarr(td, id) {
             swal.fire({
-                title: "Â¿Desea eliminar el Modulo?",
+                title: "¿Desea eliminar el Modulo?",
                 text: "Al realizar esta operacion no se podra revertir",
                 icon: 'warning',
                 showCancelButton: true,
-                confirmButtonText: "SÃ­, eliminar",
+                confirmButtonText: "Sí, eliminar",
                 confirmButtonColor: '#203853',
                 cancelButtonColor: '#B15D28',
                 cancelButtonText: "Cancelar"
@@ -633,7 +632,7 @@
                     });
         }
 
-        function aÃ±adirCuestionario(id) {
+        function añadirCuestionario(id) {
            document.location.href = "cuestionario.html?Modulo=" + id;
         }
         

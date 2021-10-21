@@ -1,11 +1,10 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="UTF-8">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/newheader.css" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/footer.css" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -243,19 +242,19 @@
                         <li><a href="nuevosemillero.html">Semilleros</a></li>
                         <li><a href="listadodecursos.html">Cursos</a></li>
                         <li><a href="nuevocurso.html">Agregar nuevo curso</a></li>
-                        <!--<li><a href="#">Cerrar sesiÃ³n</a></li>-->
-                        <li><span><a onclick="cerrarSession()" class="cta">Cerrar sesiÃ³n</a></span></li>
+                        <!--<li><a href="#">Cerrar sesión</a></li>-->
+                        <li><span><a onclick="cerrarSession()" class="cta">Cerrar sesión</a></span></li>
                     </ul>
                 </div>
             </nav>
         </header>
         <br>
 
-    <center> <h1>AÃ±adir Archivos</h1></center>
+    <center> <h1>Añadir Archivos</h1></center>
     <div id="DivAgregar" class="caja">
         <form id="form" action="addArchivos.html" method="POST" enctype="multipart/form-data">
             <center>
-                <label for="nom"></label> <input type="text" name="nombre" id="nom" placeholder=" ïŠ»  Nombre" required>
+                <label for="nom"></label> <input type="text" name="nombre" id="nom" placeholder=" ?  Nombre" required>
                 <br>
                 <label for="arch"></label> <input type="file" id="arch" name="archivo" required accept=".pdf,.txt,.docx,.xlsx,.pptx">
             </center>
@@ -359,7 +358,7 @@
             reader.onabort = function (e) {
                 //alert('Carga de archivo cancelada');
                 Swal.fire({
-                    title: 'Â¡Cancelado!',
+                    title: '¡Cancelado!',
                     text: 'Carga de archivo cancelada',
                     icon: 'warning',
                     iconColor: '#B15D28',
@@ -424,11 +423,11 @@
                 e.preventDefault();
 
                 swal.fire({
-                    title: "Â¿Desea Actualizar el Archivo?",
+                    title: "¿Desea Actualizar el Archivo?",
                     text: "",
                     icon: 'warning',
                     showCancelButton: true,
-                    confirmButtonText: "SÃ­, Actualizar",
+                    confirmButtonText: "Sí, Actualizar",
                     confirmButtonColor: '#203853',
                     cancelButtonColor: '#B15D28',
                     cancelButtonText: "Cancelar"
@@ -469,11 +468,11 @@
                 e.preventDefault();
 
                 swal.fire({
-                    title: "Â¿Desea Agregar el Archivo?",
+                    title: "¿Desea Agregar el Archivo?",
                     text: "",
                     icon: 'warning',
                     showCancelButton: true,
-                    confirmButtonText: "SÃ­, Agregar",
+                    confirmButtonText: "Sí, Agregar",
                     confirmButtonColor: '#203853',
                     cancelButtonColor: '#B15D28',
                     cancelButtonText: "Cancelar"
@@ -558,11 +557,11 @@
 
         function Borrarr(td, id) {
             swal.fire({
-                title: "Â¿Desea eliminar el Archivo?",
+                title: "¿Desea eliminar el Archivo?",
                 text: "Al realizar esta operacion no se podra revertir",
                 icon: 'warning',
                 showCancelButton: true,
-                confirmButtonText: "SÃ­, eliminar",
+                confirmButtonText: "Sí, eliminar",
                 confirmButtonColor: '#203853',
                 cancelButtonColor: '#B15D28',
                 cancelButtonText: "Cancelar"
