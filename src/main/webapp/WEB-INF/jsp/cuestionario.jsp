@@ -270,7 +270,7 @@
             <center> 
                 <h1><input type="text" id="titulo" placeholder="Título del formulario"></h1>
                 <a><img src="${pageContext.request.contextPath}/resources/imagenes/editar.png"></a>
-                <a onclick="alertBorrarCurso()"><img src="${pageContext.request.contextPath}/resources/imagenes/delete.png"></a>
+                <a onclick="alertBorrarCuestionario()"><img src="${pageContext.request.contextPath}/resources/imagenes/delete.png"></a>
             </center>
         </div>    
         <div class="DivAgregar" id="formExamen">
@@ -559,10 +559,10 @@
                         }
                     });
         }
-        function alertBorrarCurso() {
+        function alertBorrarCuestionario() {
             swal.fire({
                 title: "¿Desea eliminar el cuestionario?",
-                text: "Al realizar esta operacion no se podra revertir",
+                text: "Al realizar esta operacion se eliminara todo el contenido del cuestionario",
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonText: "Sí, eliminar",
