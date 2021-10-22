@@ -37,11 +37,11 @@ public class Cuestionario implements Serializable{
     private Modulo idModulo;
     
     //Relacion UNO A MUCHOS con Preguntas
-    @OneToMany(mappedBy = "idCuestionario",fetch=FetchType.LAZY,cascade = {CascadeType.PERSIST,CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH})
+    @OneToMany(mappedBy = "idCuestionario",fetch=FetchType.LAZY,cascade = {CascadeType.ALL,CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH})
     private List<Preguntas> idPregunta;
 
     //Relacion UNO A MUCHOS con MiCuestionario --> "MUCHOS A MUCHOS"
-    @OneToMany(mappedBy = "cuestionario",fetch=FetchType.LAZY,cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "cuestionario",fetch=FetchType.LAZY,cascade = CascadeType.ALL)
     private List<MiCuestionario> miCuestionario;
     
     //Relacion MUCHOS A MUCHOS con Usuario

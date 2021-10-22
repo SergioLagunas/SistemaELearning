@@ -627,7 +627,17 @@
         
         function CrearCuestionario() {
             if (id == "undefined" || id == null)
-                document.location.href = "CrearCuestionario.html?InputNombre=" + document.getElementById("titulo").value;
+                if(document.getElementById("titulo").value != "" && document.getElementById("titulo").value != null)
+                    document.location.href = "CrearCuestionario.html?InputNombre=" + document.getElementById("titulo").value;
+                else {
+                    swal.fire({
+                    title: "¡Campo vacio!",
+                    text: "Ingresa un nombre para el cuestionario.",
+                    icon: 'warning',
+                    confirmButtonText: "OK",
+                    confirmButtonColor: '#203853'
+                });
+                }
             else{
                 swal.fire({
                     title: "¡Ya se ha creado un cuestionario!",

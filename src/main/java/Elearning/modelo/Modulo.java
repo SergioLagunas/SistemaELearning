@@ -41,7 +41,7 @@ public class Modulo implements Serializable {
     private Curso idCurso;
     
     //Relación UNO a MUCHOS con Cuestionario
-    @OneToMany(mappedBy = "idModulo",fetch=FetchType.LAZY,cascade = {CascadeType.PERSIST,CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH})
+    @OneToMany(mappedBy = "idModulo",fetch=FetchType.LAZY,cascade = {CascadeType.ALL,CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH})
     private List<Cuestionario> idCuestionario;
 
     public Modulo() {}
