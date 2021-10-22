@@ -18,7 +18,6 @@ import Elearning.util.HibernateUtil;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import javax.swing.JOptionPane;
 import org.hibernate.Session;
 
 /**
@@ -42,12 +41,12 @@ public class PruebasDao {
         Cuest = CuestDao.create(Cuest);*/
         
         //----------OBTENER CUESTIONARIO----------
-        /*CuestionarioDaoImpl CuestDao = new CuestionarioDaoImpl();
-        List<Cuestionario> cuestionarios = CuestDao.findAll();
-      
-        for(Cuestionario u : cuestionarios){
-            System.out.println(u.getNombre());
-        }*/
+//        CuestionarioDaoImpl CuestDao = new CuestionarioDaoImpl();
+//        List<Cuestionario> cuestionarios = CuestDao.findAll();
+//      
+//        for(Cuestionario u : cuestionarios){
+//            System.out.println(u.getNombre());
+//        }
         
         //----------CREAR PREGUNTA----------
         //Obtener el Cuestionario
@@ -85,13 +84,13 @@ public class PruebasDao {
         miCuestionario = MiCuestionarioDao.create(miCuestionario);*/
         
         //----------OBTENER CUESTIONARIO----------
-        /*MiCuestionarioDaoImpl MiCuestionarioDao = new MiCuestionarioDaoImpl();
-        List<MiCuestionario> miCuestionarios = MiCuestionarioDao.findAll();
-      
-        System.out.println("LISTANDO MICUESTIONARIO...");
-        for(MiCuestionario u : miCuestionarios){
-            System.out.println(u.getIdMiCuestionario());
-        }*/
+//        MiCuestionarioDaoImpl MiCuestionarioDao = new MiCuestionarioDaoImpl();
+//        List<MiCuestionario> miCuestionarios = MiCuestionarioDao.findAll();
+//      
+//        System.out.println("LISTANDO MICUESTIONARIO...");
+//        for(MiCuestionario u : miCuestionarios){
+//            System.out.println(u.getIdMiCuestionario());
+//        }
         
         //----------ESTABLECER PROGRESO (MICURSO) EN RELACION CON MICUESTIONARIO----------
         CuestionarioDaoImpl CuestionarioDao = new CuestionarioDaoImpl();
@@ -110,13 +109,15 @@ public class PruebasDao {
         System.out.println("Progreso Obtenido: " + ProgresoObtenido);
         
         MiCursoDaoImpl miCursoDao = new MiCursoDaoImpl();
-        List<MiCurso> miCursos = miCursoDao.getMiCurso(63);
+        MiCurso miCurso = miCursoDao.getMiCursoByUsuarioCurso(69, 27);
         
-        System.out.println("LISTANDO MICURSO...");
-        for(MiCurso u : miCursos){
-            //u.setProgreso(ProgresoObtenido);
-            System.out.println(u.getIdCurso());
-        }
+        System.out.println("Estableciendo Progreso Obtenido...");
+        //miCurso.setProgreso(ProgresoObtenido);
+        System.out.println("MiCurso Obtenido: " + miCurso.getProgreso());
+        System.out.println("MiCurso Obtenido: " + miCurso.getIdUsuario());
+        System.out.println("MiCurso Obtenido: " + miCurso.getIdCurso());
+        miCurso.setProgreso(ProgresoObtenido);
+        miCurso = miCursoDao.update(miCurso);
                 
         //System.out.println("Modulo: " + ModuloPrueba.toString());
         //System.out.println("Cuestionario: " + ModuloPrueba.getIdCuestionario().toString());

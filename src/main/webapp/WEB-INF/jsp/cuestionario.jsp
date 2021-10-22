@@ -1,9 +1,3 @@
-<%-- 
-    Document   : CRUDexamen
-    Created on : 18-oct-2021, 22:13:06
-    Author     : Karina Romero
---%>
-
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
@@ -269,12 +263,12 @@
         <div class="titedit">
             <center> 
                 <h1><input type="text" id="titulo" placeholder="Título del formulario"></h1>
-                <a><img src="${pageContext.request.contextPath}/resources/imagenes/editar.png"></a>
+                <a onclick="alertEditarCuestionario()"><img src="${pageContext.request.contextPath}/resources/imagenes/editar.png"></a>
                 <a onclick="alertBorrarCuestionario()"><img src="${pageContext.request.contextPath}/resources/imagenes/delete.png"></a>
             </center>
         </div>    
-        <div class="DivAgregar" id="formExamen">
-            <form id="from" action="CrearPreguntas.html" method="POST" enctype="multipart/form-data">
+        <div class="DivAgregar" id="DivAgregar">
+            <form id="form" action="CrearPreguntas.html" method="POST" enctype="multipart/form-data">
                 <center>
                     <h4>Instrucciones: Es importante que en la "opción A" siempre coloque la respuesta correcta.</h4>
                     <br>
@@ -287,26 +281,27 @@
                     <label for="resC"></label> <input type="text" id="resC" placeholder="Opción C" name="InputRespuestaC" required>
                     <br>     
                     <input type="text" id="idCues" name="IdCuestionario">
-                    <input class="submit" type="submit" onclick="alertActualizar()" value="Guardar">
+                    <input class="submit" type="submit" onclick="alertAgregar()" value="Guardar">
 
                     <input class="btnCR" type="button" onclick="" value="Vista previa">
                 </center>
             </form>
         </div>
-        <div class="DivActualizar" id="formExamen">
-            <form id="formActualizar" action="" method="POST" enctype="multipart/form-data">
+        <div class="DivActualizar" id="DivActualizar">
+            <form id="formActualizar" action="ActualizarPreguntas.html" method="POST" enctype="multipart/form-data">
                 <center>
                     <h4>Instrucciones: Es importante que en la "opción A" siempre coloque la respuesta correcta.</h4>
                     <br>
-                    <label for="preg"></label> <input type="text" id="pregAct" placeholder="Pregunta" name="pregunta" required>
+                    <label for="preg"></label> <input type="text" id="pregAct" placeholder="Pregunta" name="InputPreguntaAct" required>
                     <br>
-                    <label for="resA"></label> <input type="text" id="resAAct" placeholder="Opción A" name="opcA" required>
+                    <label for="resA"></label> <input type="text" id="resAAct" placeholder="Opción A" name="InputRespuestaAAct" required>
                     <br>
-                    <label for="resB"></label> <input type="text" id="resBAct" placeholder="Opción B" name="opcB" required>
+                    <label for="resB"></label> <input type="text" id="resBAct" placeholder="Opción B" name="InputRespuestaBAct" required>
                     <br>
-                    <label for="resC"></label> <input type="text" id="resCAct" placeholder="Opción C" name="opcC" required>
-                    <br>                                
-                    <input class="submit" type="submit" onclick="alertActualizar()" value="Guardar">
+                    <label for="resC"></label> <input type="text" id="resCAct" placeholder="Opción C" name="InputRespuestaCAct" required>
+                    <br>   
+                    <input type="text" id="idPregAct" name="IdPreguntaAct">
+                    <input class="submit" type="submit" onclick="alertActualizar()" value="Actualizar">
 
                     <input class="btnCR" type="button" onclick="cancelActualizar()" value="Cancelar">
                 </center>
@@ -335,34 +330,35 @@
         var id;
         let DataForm = {};
 
+        document.getElementById('DivActualizar').style.display = 'none';
+        document.getElementById('idCues').style.display = 'none';
+
         <c:forEach var="cues" items="${cuestionarios}">
-        id = "${cues.idCuestionario}";
-        nombre = "${cues.nombre}";
-        console.log("id: " + id);
-        console.log("nombre: " + nombre);
-        //InsertarDatos(id, nombre);
+            id = "${cues.idCuestionario}";
+            nombre = "${cues.nombre}";
+            document.getElementById('idCues').value = id;
         </c:forEach>
 
         <c:forEach var="preg" items="${preguntas}">
-        DataForm["id"] = "${preg.idPregunta}";
-        DataForm["pregu"] = "${preg.pregunta}";
-        DataForm["resA"] = "${preg.respuestaA}";
-        DataForm["resB"] = "${preg.respuestaB}";
-        DataForm["resC"] = "${preg.respuestaC}";
-        InsertarDatos(DataForm);
+            DataForm["id"] = "${preg.idPregunta}";
+            DataForm["pregu"] = "${preg.pregunta}";
+            DataForm["resA"] = "${preg.respuestaA}";
+            DataForm["resB"] = "${preg.respuestaB}";
+            DataForm["resC"] = "${preg.respuestaC}";
+            InsertarDatos(DataForm);
         </c:forEach>
 
-        console.log("--id: " + id);
-        console.log("--nombre: " + nombre);
+        console.log("id: " + id);
+        console.log("nombre: " + nombre);
+        console.log("--id Pregunta: " + DataForm.id);
 
-        document.getElementById('idCues').value = id;
-
-        if (id != "undefined" && id != null) {
-            document.getElementById('Divtablita').style.display = 'block';
+        if (id != "undefined" && id != null)
             document.getElementById('titulo').value = nombre;
-        } else {
+        
+        if (DataForm.id != "undefined" && DataForm.id != null)
+            document.getElementById('Divtablita').style.display = 'block';
+        else
             document.getElementById('Divtablita').style.display = 'none';
-        }
 
         //Evento que detecta la tecla enter para ejecutar el metodo crear cuestionario
         var inputTitulo = document.getElementById("titulo");
@@ -371,7 +367,6 @@
                 CrearCuestionario();
             }
         });
-        document.getElementById('DivActualizar').style.display = 'none';
 
         function cancelActualizar() {
             document.getElementById('DivActualizar').style.display = 'none';
@@ -503,17 +498,17 @@
             Fila = null;
         }
 
-        function Editarr(td, id) {
+        function Editarr(td, idP) {
             document.getElementById('DivActualizar').style.display = 'block';
             document.getElementById('DivAgregar').style.display = 'none';
 
             Fila = td.parentElement.parentElement;
+            document.getElementById("idPregAct").value = idP;
             document.getElementById("pregAct").value = Fila.cells[0].innerHTML;
             document.getElementById("resAAct").value = Fila.cells[1].innerHTML;
             document.getElementById("resBAct").value = Fila.cells[2].innerHTML;
             document.getElementById("resCAct").value = Fila.cells[3].innerHTML;
-            document.getElementById("moduid").value = id;
-            document.getElementById("nomAc").focus();
+            document.getElementById("pregAct").focus();
         }
 
         function Actualizar(DataForm) {
@@ -524,7 +519,7 @@
             document.getElementById("preg").focus();
         }
 
-        function Borrarr(td, id) {
+        function Borrarr(td, idP) {
             swal.fire({
                 title: "¿Desea eliminar la pregunta?",
                 text: "Al realizar esta operacion no se podra revertir",
@@ -546,7 +541,7 @@
                             }).then(function () {
                                 row = td.parentElement.parentElement;
                                 document.getElementById("tabla").deleteRow(row.rowIndex);
-                                document.location.href = "EliminarPreguntas.html?IdPregunta=" + id;
+                                document.location.href = "EliminarPreguntas.html?IdPregunta=" + idP + "&IdCuestionario=" + id;
                             });
                         } else {
                             swal.fire({
@@ -559,10 +554,45 @@
                         }
                     });
         }
+        
+        function alertEditarCuestionario() {
+            swal.fire({
+                title: "¿Desea editar el cuestionario?",
+                text: "Al realizar esta operacion no se podra revertir",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: "Sí, editar",
+                confirmButtonColor: '#203853',
+                cancelButtonColor: '#B15D28',
+                cancelButtonText: "Cancelar"
+            })
+                    .then((willDelete) => {
+                        if (willDelete.value) {
+                            swal.fire({
+                                title: "El cuestionario se edito correctamente",
+                                text: "",
+                                icon: "success",
+                                iconColor: '#203853',
+                                confirmButtonColor: '#B15D28'
+                            }).then(function () {
+                                document.location.href = "ActualizarCuestionario.html?IdCuestionario=" + id + "&InputNombre=" + document.getElementById('titulo').value;
+                            });
+                        } else {
+                            swal.fire({
+                                title: "No se edito ningun cuestionario",
+                                text: "",
+                                icon: "error",
+                                iconColor: '#B15D28',
+                                confirmButtonColor: '#203853'
+                            });
+                        }
+                    });
+        }
+        
         function alertBorrarCuestionario() {
             swal.fire({
                 title: "¿Desea eliminar el cuestionario?",
-                text: "Al realizar esta operacion se eliminara todo el contenido del cuestionario",
+                text: "Al realizar esta operacion no se podra revertir",
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonText: "Sí, eliminar",
@@ -579,9 +609,7 @@
                                 iconColor: '#203853',
                                 confirmButtonColor: '#B15D28'
                             }).then(function () {
-                                row = td.parentElement.parentElement;
-                                document.getElementById("tabla").deleteRow(row.rowIndex);
-                                document.location.href = "borrarModulo.html?ModuloE=" + id + "&VistaB=2";
+                                document.location.href = "EliminarCuestionario.html?IdCuestionario=" + id;
                             });
                         } else {
                             swal.fire({
@@ -594,17 +622,19 @@
                         }
                     });
         }
+        
         function CrearCuestionario() {
-            var Nombre = document.getElementById("titulo").value;
-            document.location.href = "CrearCuestionario.html?InputNombre=" + Nombre;
-        }
-        function CrearP() {
-            var IdCuestionario = 26;
-            var Pregunta = document.getElementById("preg").value;
-            var RespuestaA = document.getElementById("resA").value;
-            var RespuestaB = document.getElementById("resB").value;
-            var RespuestaC = document.getElementById("resC").value;
-            document.location.href = "CrearPreguntas.html?IdCuestionario=" + IdCuestionario + "&InputPregunta=" + Pregunta + "&InputRespuestaA=" + RespuestaA + "&InputRespuestaB=" + RespuestaB + "&InputRespuestaC=" + RespuestaC;
+            if (id == "undefined" || id == null)
+                document.location.href = "CrearCuestionario.html?InputNombre=" + document.getElementById("titulo").value;
+            else{
+                swal.fire({
+                    title: "¡Ya se ha creado un cuestionario!",
+                    text: "Ya existe un cuestionario para este modulo",
+                    icon: 'warning',
+                    confirmButtonText: "OK",
+                    confirmButtonColor: '#203853'
+                });
+            }
         }
     </script>
     <br>

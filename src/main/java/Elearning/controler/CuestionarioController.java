@@ -28,7 +28,7 @@ public class CuestionarioController {
     public String crearCuestionario(@RequestParam("InputNombre") String Nombre){
         String Redirect;
         if (cuestionarioService.createNewCuestionario(moduloRecuperado, Nombre).equals("Cuestionario creado")) {
-            Redirect = "cuestionario"; 
+            Redirect = "redirect:/cuestionario.html?Modulo=" + moduloRecuperado;
         } else
             Redirect = "redirect:/error.html"; 
         return Redirect;
@@ -39,7 +39,7 @@ public class CuestionarioController {
     public String actualizarCuestionario(@RequestParam("IdCuestionario") int IdCuestionario, @RequestParam("InputNombre") String Nombre){
         String Redirect;
         if (cuestionarioService.updateCuestionario(IdCuestionario, Nombre).equals("Cuestionario actualizado")) {
-            Redirect = "redirect:/cuestionario.html"; 
+            Redirect = "redirect:/cuestionario.html?Modulo=" + moduloRecuperado;
         } else
             Redirect = "redirect:/error.html"; 
         return Redirect;
@@ -50,7 +50,7 @@ public class CuestionarioController {
     public String eliminarCuestionario(@RequestParam("IdCuestionario") int IdCuestionario){
         String Redirect;
         if (cuestionarioService.deleteCuestionario(IdCuestionario)) {
-            Redirect = "redirect:/cuestionario.html"; 
+            Redirect = "redirect:/cuestionario.html?Modulo=" + moduloRecuperado;
         } else
             Redirect = "redirect:/error.html"; 
         return Redirect;

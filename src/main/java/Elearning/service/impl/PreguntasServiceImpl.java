@@ -5,10 +5,8 @@ import Elearning.dao.PreguntasDao;
 import Elearning.modelo.Cuestionario;
 import Elearning.modelo.Preguntas;
 import Elearning.service.PreguntasService;
-import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.ui.Model;
 
 @Service("PreguntasService")
 public class PreguntasServiceImpl implements PreguntasService {
@@ -54,14 +52,10 @@ public class PreguntasServiceImpl implements PreguntasService {
             //Recuperar por Id la Pregunta ya existente
             preguntas = preguntasDao.getPregunta(idPregunta);
             //Modificar los datos de la Pregunta
-            if(!pregunta.equals(""))
-                preguntas.setPregunta(pregunta);
-            else if(!respuestaA.equals(""))
-                preguntas.setRespuestaA(respuestaA);
-            else if(!respuestaB.equals(""))
-                preguntas.setRespuestaB(respuestaB);
-            else if(!respuestaC.equals(""))
-                preguntas.setRespuestaC(respuestaC);
+            preguntas.setPregunta(pregunta);
+            preguntas.setRespuestaA(respuestaA);
+            preguntas.setRespuestaB(respuestaB);
+            preguntas.setRespuestaC(respuestaC);
             //Actualizar Pregunta en la BD
             preguntas = preguntasDao.update(preguntas);
 

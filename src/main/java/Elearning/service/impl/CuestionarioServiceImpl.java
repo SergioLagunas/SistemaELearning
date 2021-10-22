@@ -1,14 +1,11 @@
 package Elearning.service.impl;
 
 import Elearning.dao.CuestionarioDao;
-import Elearning.dao.MiCuestionarioDao;
 import Elearning.dao.ModuloDao;
 import Elearning.dao.PreguntasDao;
 import Elearning.modelo.Cuestionario;
 import Elearning.modelo.Modulo;
 import Elearning.service.CuestionarioService;
-import java.util.List;
-import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
@@ -26,15 +23,12 @@ public class CuestionarioServiceImpl implements CuestionarioService {
     
     @Override
     public String listAllCuestionarios(Model model, int idModulo) {
-        String salida;
         model.addAttribute("cuestionarios", cuestionarioDao.findAll(idModulo));
-        if (cuestionarioDao.getIdByModulo(idModulo) != null){
+        
+        if(cuestionarioDao.findAll(idModulo) != null && !cuestionarioDao.findAll(idModulo).isEmpty()){
             model.addAttribute("preguntas", preguntasDao.findAll(cuestionarioDao.getIdByModulo(idModulo)));
-            salida = "cuestionario";
-        } else 
-            salida = "redirect:/error.html"; 
-//return "cuestionario";
-        return salida;
+        }
+        return "cuestionario";
     }
 
     @Override
@@ -70,7 +64,7 @@ public class CuestionarioServiceImpl implements CuestionarioService {
             cuestionario.setNombre(nombre);
             //Actualizar Cuestionario en la BD
             cuestionario = cuestionarioDao.update(cuestionario);
-
+            
             //Retornar respuesta de exito
             return "Cuestionario actualizado";
         } catch(Exception e){

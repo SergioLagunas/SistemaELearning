@@ -1,7 +1,6 @@
 package Elearning.dao.impl;
 
 import Elearning.dao.MiCursoDao;
-import Elearning.modelo.Curso;
 import Elearning.modelo.MiCurso;
 import Elearning.modelo.Usuario;
 import Elearning.util.HibernateUtil;
@@ -97,6 +96,38 @@ public class MiCursoDaoImpl implements MiCursoDao {
         }
         //regresamos el objeto por su id 
         return lista;
+    }
+    
+    @Override
+    public MiCurso getMiCursoByUsuarioCurso(int idUsuario, int idCurso) {
+        //Obtener la sesion 
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        //Ocupamos la transaccion en caso de error la base de datos se restaura a como estaba
+        Transaction transaccion = session.getTransaction();
+        MiCurso entidad = null;
+
+        try {
+            //Iniciamos Transaccion
+            transaccion.begin();
+            //Crea la consulta SQLQuery
+            Query<MiCurso> query = session.createSQLQuery("Select * from MiCurso mc where mc.idUsuario=:u and mc.idCurso=:cu")
+                    .addEntity(MiCurso.class)
+                    .setParameter("u", idUsuario)
+                    .setParameter("cu", idCurso);
+            
+            entidad = query.getSingleResult();
+
+            transaccion.commit();
+        } catch (HibernateException e) {
+            //Si la transaccion esta vacia y ademas esta activa que regrese el estado en el que se encontraba la Base de Datos
+            if (transaccion != null && transaccion.isActive()) {
+                transaccion.rollback();
+            }
+        } finally {
+            //Finalmente cerramos la sesion 
+            session.close();
+        }
+        return entidad;
     }
 
     @Override
