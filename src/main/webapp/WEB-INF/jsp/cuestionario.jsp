@@ -55,7 +55,7 @@
             }
 
             h1::after{
-                right: -180px;
+                right: -220px;
 
             }
 
@@ -262,7 +262,8 @@
         <br>
         <div class="titedit">
             <center> 
-                <h1><input type="text" id="titulo" placeholder="Título del formulario"></h1>
+                <h1><input type="text" id="titulo" style ="text-align: center;"  placeholder="Título del formulario"></h1>
+                <a onclick="CrearCuestionario()"><img src="${pageContext.request.contextPath}/resources/imagenes/add.png"></a>
                 <a onclick="alertEditarCuestionario()"><img src="${pageContext.request.contextPath}/resources/imagenes/editar.png"></a>
                 <a onclick="alertBorrarCuestionario()"><img src="${pageContext.request.contextPath}/resources/imagenes/delete.png"></a>
             </center>
@@ -555,6 +556,7 @@
                     });
         }
         
+        
         function alertEditarCuestionario() {
             swal.fire({
                 title: "¿Desea editar el cuestionario?",
@@ -569,7 +571,7 @@
                     .then((willDelete) => {
                         if (willDelete.value) {
                             swal.fire({
-                                title: "El cuestionario se edito correctamente",
+                                title: "El nombre del cuestionario se edito correctamente",
                                 text: "",
                                 icon: "success",
                                 iconColor: '#203853',
@@ -592,7 +594,7 @@
         function alertBorrarCuestionario() {
             swal.fire({
                 title: "¿Desea eliminar el cuestionario?",
-                text: "Al realizar esta operacion no se podra revertir",
+                text: "Al realizar esta operacion se eliminaran todas las evaluaciones ya realizadas y las preguntas",
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonText: "Sí, eliminar",
