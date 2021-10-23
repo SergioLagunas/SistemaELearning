@@ -55,7 +55,7 @@
             }
 
             h1::after{
-                right: -220px;
+                right: -180px;
 
             }
 
@@ -196,6 +196,10 @@
             .titedit img {
                 cursor: pointer;
             }
+            #DivSpreguntas img{
+                width: 50%;
+            }
+
             /*propiedad responsive*/
             @media(max-width:820px){
                 form{
@@ -228,7 +232,9 @@
                     margin-left: 8%;
                     font-size: 9px;
                 }
-
+                #DivSpreguntas img{
+                    width: 80%;
+                }
             }
         </style>
     </head>
@@ -262,10 +268,13 @@
         <br>
         <div class="titedit">
             <center> 
+                <div id="btnCrearCues"><a onclick="CrearCuestionario()"><img src="${pageContext.request.contextPath}/resources/imagenes/add.png"></a></div>
+                <div id="btnEBCues">
+                    <a onclick="alertEditarCuestionario()"><img src="${pageContext.request.contextPath}/resources/imagenes/editar.png"></a>
+                    <a onclick="alertBorrarCuestionario()"><img src="${pageContext.request.contextPath}/resources/imagenes/delete.png"></a>
+                </div>
+                <br>
                 <h1><input type="text" id="titulo" style ="text-align: center;"  placeholder="Título del formulario"></h1>
-                <a onclick="CrearCuestionario()"><img src="${pageContext.request.contextPath}/resources/imagenes/add.png"></a>
-                <a onclick="alertEditarCuestionario()"><img src="${pageContext.request.contextPath}/resources/imagenes/editar.png"></a>
-                <a onclick="alertBorrarCuestionario()"><img src="${pageContext.request.contextPath}/resources/imagenes/delete.png"></a>
             </center>
         </div>    
         <div class="DivAgregar" id="DivAgregar">
@@ -324,7 +333,12 @@
                 <tbody></tbody>
             </table>
         </div>
+        <br>
+        <div id="DivSpreguntas">
+            <img src="${pageContext.request.contextPath}/resources/imagenes/divSpreguntas.png">
+        </div>
     </center>
+    <br>
     <script>
         var Fila = null;
         var nombre;
@@ -332,42 +346,46 @@
         let DataForm = {};
 
         document.getElementById('DivActualizar').style.display = 'none';
+        document.getElementById('idPregAct').style.display = 'none';
         document.getElementById('idCues').style.display = 'none';
-
+        
         <c:forEach var="cues" items="${cuestionarios}">
-            id = "${cues.idCuestionario}";
-            nombre = "${cues.nombre}";
-            document.getElementById('idCues').value = id;
+        id = "${cues.idCuestionario}";
+        nombre = "${cues.nombre}";
+        document.getElementById('idCues').value = id;
         </c:forEach>
 
         <c:forEach var="preg" items="${preguntas}">
-            DataForm["id"] = "${preg.idPregunta}";
-            DataForm["pregu"] = "${preg.pregunta}";
-            DataForm["resA"] = "${preg.respuestaA}";
-            DataForm["resB"] = "${preg.respuestaB}";
-            DataForm["resC"] = "${preg.respuestaC}";
-            InsertarDatos(DataForm);
+        DataForm["id"] = "${preg.idPregunta}";
+        DataForm["pregu"] = "${preg.pregunta}";
+        DataForm["resA"] = "${preg.respuestaA}";
+        DataForm["resB"] = "${preg.respuestaB}";
+        DataForm["resC"] = "${preg.respuestaC}";
+        InsertarDatos(DataForm);
         </c:forEach>
 
         console.log("id: " + id);
         console.log("nombre: " + nombre);
         console.log("--id Pregunta: " + DataForm.id);
 
-        if (id != "undefined" && id != null)
+        //validar si ya hay datos en la tabla cuestionario
+        if (id != "undefined" && id != null) {
             document.getElementById('titulo').value = nombre;
+            document.getElementById('btnEBCues').style.display = 'block';
+            document.getElementById('btnCrearCues').style.display = 'none';
+        } else {
+            document.getElementById('btnEBCues').style.display = 'none';
+            document.getElementById('btnCrearCues').style.display = 'block';
+        }
         
-        if (DataForm.id != "undefined" && DataForm.id != null)
+        //validar si ya hay datos en la tabla preguntas
+        if (DataForm.id != "undefined" && DataForm.id != null) {
             document.getElementById('Divtablita').style.display = 'block';
-        else
+            document.getElementById('DivSpreguntas').style.display = 'none';
+        } else {
             document.getElementById('Divtablita').style.display = 'none';
-
-        //Evento que detecta la tecla enter para ejecutar el metodo crear cuestionario
-        var inputTitulo = document.getElementById("titulo");
-        inputTitulo.addEventListener("keydown", function (e) {
-            if (e.keyCode === 13) {  //checks whether the pressed key is "Enter"
-                CrearCuestionario();
-            }
-        });
+            document.getElementById('DivSpreguntas').style.display = 'block';
+        }
 
         function cancelActualizar() {
             document.getElementById('DivActualizar').style.display = 'none';
@@ -555,8 +573,8 @@
                         }
                     });
         }
-        
-        
+
+
         function alertEditarCuestionario() {
             swal.fire({
                 title: "¿Desea editar el cuestionario?",
@@ -590,7 +608,7 @@
                         }
                     });
         }
-        
+
         function alertBorrarCuestionario() {
             swal.fire({
                 title: "¿Desea eliminar el cuestionario?",
@@ -624,21 +642,21 @@
                         }
                     });
         }
-        
+
         function CrearCuestionario() {
             if (id == "undefined" || id == null)
-                if(document.getElementById("titulo").value != "" && document.getElementById("titulo").value != null)
+                if (document.getElementById("titulo").value != "" && document.getElementById("titulo").value != null)
                     document.location.href = "CrearCuestionario.html?InputNombre=" + document.getElementById("titulo").value;
                 else {
                     swal.fire({
-                    title: "¡Campo vacio!",
-                    text: "Ingresa un nombre para el cuestionario.",
-                    icon: 'warning',
-                    confirmButtonText: "OK",
-                    confirmButtonColor: '#203853'
-                });
+                        title: "¡Campo vacio!",
+                        text: "Ingresa un nombre para el cuestionario.",
+                        icon: 'warning',
+                        confirmButtonText: "OK",
+                        confirmButtonColor: '#203853'
+                    });
                 }
-            else{
+            else {
                 swal.fire({
                     title: "¡Ya se ha creado un cuestionario!",
                     text: "Ya existe un cuestionario para este modulo",

@@ -202,6 +202,9 @@
                 margin-left: 8%;
                 font-size: 14px;
             }
+            #DivSCursos img{
+                width: 50%;
+            }
             /*propiedad responsive*/
             @media(max-width:820px){
                 form{
@@ -232,6 +235,9 @@
                 }
                 #progress_bar{
                     width:60%
+                }
+                #DivSCursos img{
+                    width: 80%;
                 }
 
             }
@@ -333,6 +339,11 @@
                 <tbody></tbody>
             </table>
         </div>
+        <br>
+        <br>
+        <div id="DivSCursos">
+            <img src="${pageContext.request.contextPath}/resources/imagenes/divSmodulos.png">
+        </div>
     </center>
     <br/>
     <script>
@@ -355,10 +366,13 @@
             InsertarDatos(DataForm);
         </c:forEach>
 
-            if (DataForm.id != "undefined" && DataForm.id != null)
+            if (DataForm.id != "undefined" && DataForm.id != null) {
                 document.getElementById('Divtablita').style.display = 'block';
-            else
+                document.getElementById('DivSCursos').style.display = 'none';
+            } else {
                 document.getElementById('Divtablita').style.display = 'none';
+                document.getElementById('DivSCursos').style.display = 'block';
+            }
 
             console.log("ID: ", DataForm.id);
             console.log("Nombre: ", DataForm.nom);
