@@ -23,6 +23,18 @@ public class CuestionarioController {
         return cuestionarioService.listAllCuestionarios(model, moduloRecuperado);
     }
     
+        //Al entrar a la vista --> "previewexamenadmin.jsp"
+    @RequestMapping(value = "previewexamadmin.html", method = RequestMethod.GET)
+    public String previewCuestionario(@RequestParam("idCuestionario") int idCuestionario, Model model) {
+        String Redirect;
+        if (cuestionarioService.listAllCuestionarios(model, moduloRecuperado).equals("cuestionario")) {
+            //Redirect = "redirect:/previewexamadmin.html?Cuestionario=" + idCuestionario;
+            Redirect = "previewexamadmin";
+        } else
+            Redirect = "redirect:/error.html"; 
+        return Redirect;
+    }
+    
     //Crear nuevo Cuestionario  --> "cuestionario.jsp" 
     @RequestMapping(value = "CrearCuestionario.html", method = RequestMethod.GET)
     public String crearCuestionario(@RequestParam("InputNombre") String Nombre){

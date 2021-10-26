@@ -293,7 +293,7 @@
                     <input type="text" id="idCues" name="IdCuestionario">
                     <input class="submit" type="submit" onclick="alertAgregar()" value="Guardar">
 
-                    <input class="btnCR" type="button" onclick="" value="Vista previa">
+                    <input class="btnCR" type="button" onclick="enviarVistaPreview()" value="Vista previa">
                 </center>
             </form>
         </div>
@@ -665,6 +665,10 @@
                     confirmButtonColor: '#203853'
                 });
             }
+        }
+        
+        function enviarVistaPreview() {
+             document.location.href = "previewexamadmin.html?idCuestionario=" + id;
         }
     </script>
     <br>

@@ -84,6 +84,7 @@
                 <prop key="CrearCuestionario.html">cuestionarioController</prop>
                 <prop key="ActualizarCuestionario.html">cuestionarioController</prop>
                 <prop key="EliminarCuestionario.html">cuestionarioController</prop>
+                <prop key="previewexamadmin.html">cuestionarioController</prop>
                 
                 <!--Mapeo de Preguntas-->
                 <prop key="CrearPreguntas.html">preguntasController</prop>
