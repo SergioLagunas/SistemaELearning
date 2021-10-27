@@ -31,6 +31,13 @@ public class CuestionarioServiceImpl implements CuestionarioService {
         return "cuestionario";
     }
 
+        @Override
+    public String listAllCuestionariosById(Model model, int idCuestionario) {
+        model.addAttribute("cuestionarioById", cuestionarioDao.getCuestionario(idCuestionario));
+        
+        return "examenuser";
+    }
+    
     @Override
     public String createNewCuestionario(int IdModulo, String nombre) {
         try{

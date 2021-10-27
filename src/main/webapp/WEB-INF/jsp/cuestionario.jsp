@@ -199,7 +199,9 @@
             #DivSpreguntas img{
                 width: 50%;
             }
-
+            #DivScuestionario img{
+                width: 50%;
+            }
             /*propiedad responsive*/
             @media(max-width:820px){
                 form{
@@ -233,6 +235,9 @@
                     font-size: 9px;
                 }
                 #DivSpreguntas img{
+                    width: 80%;
+                }
+                #DivScuestionario img{
                     width: 80%;
                 }
             }
@@ -334,6 +339,10 @@
             </table>
         </div>
         <br>
+        <div id="DivScuestionario">
+            <img src="${pageContext.request.contextPath}/resources/imagenes/divScuestionario.png">
+        </div>
+
         <div id="DivSpreguntas">
             <img src="${pageContext.request.contextPath}/resources/imagenes/divSpreguntas.png">
         </div>
@@ -348,7 +357,8 @@
         document.getElementById('DivActualizar').style.display = 'none';
         document.getElementById('idPregAct').style.display = 'none';
         document.getElementById('idCues').style.display = 'none';
-        
+        document.getElementById('DivSpreguntas').style.display = 'none';
+
         <c:forEach var="cues" items="${cuestionarios}">
         id = "${cues.idCuestionario}";
         nombre = "${cues.nombre}";
@@ -373,18 +383,22 @@
             document.getElementById('titulo').value = nombre;
             document.getElementById('btnEBCues').style.display = 'block';
             document.getElementById('btnCrearCues').style.display = 'none';
+            document.getElementById('DivAgregar').style.display = 'block';
+            document.getElementById('DivScuestionario').style.display = 'none';
+            document.getElementById('DivSpreguntas').style.display = 'block';
         } else {
             document.getElementById('btnEBCues').style.display = 'none';
             document.getElementById('btnCrearCues').style.display = 'block';
+            document.getElementById('DivAgregar').style.display = 'none';
+            document.getElementById('DivScuestionario').style.display = 'block';
         }
-        
+
         //validar si ya hay datos en la tabla preguntas
         if (DataForm.id != "undefined" && DataForm.id != null) {
             document.getElementById('Divtablita').style.display = 'block';
             document.getElementById('DivSpreguntas').style.display = 'none';
         } else {
             document.getElementById('Divtablita').style.display = 'none';
-            document.getElementById('DivSpreguntas').style.display = 'block';
         }
 
         function cancelActualizar() {
@@ -666,9 +680,9 @@
                 });
             }
         }
-        
+
         function enviarVistaPreview() {
-             document.location.href = "previewexamadmin.html?idCuestionario=" + id;
+            document.location.href = "previewexamadmin.html?idCuestionario=" + id;
         }
     </script>
     <br>

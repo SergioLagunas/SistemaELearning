@@ -94,7 +94,8 @@
         </header>
     <br>
     <center>
-      <h1>Nombre del formulario</h1>
+      <h1>${cuestionarioById.nombre}</h1>
+      <h1>${UsuarioID}</h1>
     </center>
     <br>
     <div class="formulario">

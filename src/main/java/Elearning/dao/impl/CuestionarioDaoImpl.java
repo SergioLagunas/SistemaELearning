@@ -217,4 +217,36 @@ public class CuestionarioDaoImpl implements CuestionarioDao {
         return idCuestionario;
     }
 
+    @Override
+    public List<Cuestionario> findAllByCurso(int idCurso) {
+         //Obtener la secion 
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        //Ocupamos la transaccion en caso de error la base de datos se restaura a como estaba
+        Transaction transaccion = session.getTransaction();
+        //Declaramos la lista donde almacenara el conjunto de datos de la tabla 
+        List<Cuestionario> lista = null;
+
+        try {
+            //Iniciamos Transaccion
+            transaccion.begin();
+            //crea la consulta Query
+            Query miQuery = session.createSQLQuery("SELECT Cuestionario.idCuestionario, Cuestionario.nombre, Cuestionario.idModulo FROM Cuestionario INNER JOIN Modulo ON Cuestionario.idModulo = Modulo.idModulo INNER JOIN Curso ON Modulo.idCurso = Curso.idCurso WHERE Curso.idCurso =:id").addEntity(Cuestionario.class)
+            .setParameter("id",idCurso);
+            //Amacenamos los datos en la lista declarada anteriormente 
+            lista = miQuery.list();
+            lista.size();
+            //regresa el commit
+            transaccion.commit();
+        } catch (HibernateException e) {
+            //Si la transaccion esta bacia y ademas esta activa que regrese el estado en el que se encontraba la Base de Datos
+            if (transaccion != null && transaccion.isActive()) {
+                transaccion.rollback();
+            }
+        } finally {
+            //Finalmente cerramos la sesion 
+            session.close();
+        }
+        return lista;
+    }
+
 }

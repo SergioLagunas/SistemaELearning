@@ -219,6 +219,7 @@ public class UsuarioServiceImpl implements UsuarioService {
         user = usuarioDao.loginUsuario(user);
         elUsuario = user.getIdUsuario();
         HttpSession session = request.getSession();
+        session.setAttribute("UsuarioID", user.getIdUsuario());
         if (user != null) {
             rol = user.gettUsuario();
             if (rol.equals("Administrador")) {

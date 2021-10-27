@@ -6,6 +6,7 @@ import Elearning.modelo.Cuestionario;
 public interface CuestionarioDao {
 
     public List<Cuestionario> findAll(int idModulo);
+    public List<Cuestionario> findAllByCurso(int idCurso);
     public Integer countByCurso(final Integer idCurso);
     public Cuestionario getCuestionario(final Integer idCuestionario);
     public Integer getIdByModulo(final Integer idModulo);

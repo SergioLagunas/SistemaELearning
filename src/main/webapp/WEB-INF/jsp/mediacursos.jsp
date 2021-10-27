@@ -222,6 +222,10 @@
                             this.select(this.content.children().first());
                         }
                     });
+
+                    function enviarVistaExamenUser(idCuestionario) {
+                        document.location.href = "examenuser.html?idUsuario=${UsuarioID}&idCuestionario=" + idCuestionario;
+                    }
             </script>
 
             <script type="text/x-kendo-template" id="template">
@@ -275,12 +279,12 @@
             <h1>Examenes</h1>
             <div class="cards-container">
                 <!-- Cartas -->
-                <c:if test = "${archivos != null}">
-                    <c:forEach items="${archivos}" var="archivo">
+                <c:if test = "${cuestionarios != null}">
+                    <c:forEach items="${cuestionarios}" var="cuestionario">
                         <div class="k-card">
-                            <a href="${archivo.archivo}" target="_blank"><img class="k-card-image" src="${pageContext.request.contextPath}/resources/imagenes/EXAMEN.png" /></a>
+                            <a onClick="enviarVistaExamenUser(${cuestionario.idCuestionario})" target="_blank"><img class="k-card-image" src="${pageContext.request.contextPath}/resources/imagenes/EXAMEN.png" /></a>
                             <div class="k-card-body">
-                                <center><h4>${archivo.nombre}</h4></center>
+                                <center><h4>${cuestionario.nombre}</h4></center>
                             </div>
                         </div>
                     </c:forEach>

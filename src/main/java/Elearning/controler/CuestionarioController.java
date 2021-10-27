@@ -35,6 +35,12 @@ public class CuestionarioController {
         return Redirect;
     }
     
+            //Al entrar a la vista --> "examenuser.jsp"
+    @RequestMapping(value = "examenuser.html", method = RequestMethod.GET)
+    public String tomarCuestionario(@RequestParam("idUsuario") int idUsuario, @RequestParam("idCuestionario") int idCuestionario, Model model) {
+        return cuestionarioService.listAllCuestionariosById(model, idCuestionario); 
+    }
+    
     //Crear nuevo Cuestionario  --> "cuestionario.jsp" 
     @RequestMapping(value = "CrearCuestionario.html", method = RequestMethod.GET)
     public String crearCuestionario(@RequestParam("InputNombre") String Nombre){

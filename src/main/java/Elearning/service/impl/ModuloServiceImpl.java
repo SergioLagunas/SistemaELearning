@@ -1,6 +1,7 @@
 package Elearning.service.impl;
 
 import Elearning.dao.ArchivoDao;
+import Elearning.dao.CuestionarioDao;
 import Elearning.dao.CursoDao;
 import Elearning.dao.MiCursoDao;
 import Elearning.dao.ModuloDao;
@@ -56,6 +57,9 @@ public class ModuloServiceImpl implements ModuloService {
 
     @Autowired
     private MiCursoDao micursoDao;
+    
+    @Autowired
+    private CuestionarioDao cuestionarioDao;
 
     @Override
     public String readModulo(int idCurso, Model model) {
@@ -70,6 +74,7 @@ public class ModuloServiceImpl implements ModuloService {
             model.addAttribute("detacurso", curso);
             model.addAttribute("modulos", moduloDao.findbyCurso(idCurso));
             model.addAttribute("archivos", archivoDao.findbyCurso(idCurso));
+            model.addAttribute("cuestionarios", cuestionarioDao.findAllByCurso(idCurso));
             return "mediacursos";
         } else {
             //Si el Usuario va tomar el curso entonces en necesario relacionar 
@@ -84,6 +89,7 @@ public class ModuloServiceImpl implements ModuloService {
             model.addAttribute("detacurso", curso);
             model.addAttribute("modulos", moduloDao.findbyCurso(idCurso));
             model.addAttribute("archivos", archivoDao.findbyCurso(idCurso));
+            model.addAttribute("cuestionarios", cuestionarioDao.findAllByCurso(idCurso));
         }
         return "mediacursos";
     }
