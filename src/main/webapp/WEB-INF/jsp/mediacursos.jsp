@@ -103,6 +103,9 @@
                 padding: 7px 20px;
                 background-color: #203853;
             }
+            .cards-container{
+                cursor: pointer;
+            }
             /*propiedad responsive*/
             @media(max-width:820px){
                 h1{
@@ -184,8 +187,10 @@
                 </c:forEach>
                         if (DataForm.id != "undefined" && DataForm.id != null) {
                             document.getElementById('mostrararchivos').style.display = 'block';
+                            document.getElementById('mostrarexamenes').style.display = 'block';
                         } else {
                             document.getElementById('mostrararchivos').style.display = 'none';
+                            document.getElementById('mostrarexamenes').style.display = 'none';
                         }
                         $("#mediaplayer").kendoMediaPlayer({
                             autoPlay: false,
@@ -276,6 +281,7 @@
                 </div>
             </div>
             <!--En este caso lista los mismos archivos devido a que todavia no hay un diferenciador de los archivos normales a los que son examen-->
+            <div id="mostrarexamenes">
             <h1>Examenes</h1>
             <div class="cards-container">
                 <!-- Cartas -->
@@ -289,6 +295,7 @@
                         </div>
                     </c:forEach>
                 </c:if>
+            </div>
             </div>
             <style>
                 .k-mediaplayer {
