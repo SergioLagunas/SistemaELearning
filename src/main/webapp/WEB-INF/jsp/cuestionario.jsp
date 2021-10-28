@@ -359,7 +359,7 @@
         document.getElementById('idCues').style.display = 'none';
         document.getElementById('DivSpreguntas').style.display = 'none';
 
-        <c:forEach var="cues" items="${cuestionarios}">
+        <c:forEach var="cues" items="${cuestionario}">
         id = "${cues.idCuestionario}";
         nombre = "${cues.nombre}";
         document.getElementById('idCues').value = id;

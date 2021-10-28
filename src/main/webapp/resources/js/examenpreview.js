@@ -3,80 +3,85 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+function pasarVariables (dato) {
+    preguntas = dato.slice();
+    console.log("arreglo copiado: " + dato[0].pregunta);
+}
 const contenedor = document.getElementById("test");
 const botonRes = document.getElementById("botonresultado");
 const resultadoTest = document.getElementById("resultado");
 
-const preguntas = [
-  {
-    pregunta: "¿Qué significa css?",
-    respuestas: {
-        a: "Cascade Style Sheet",
-        b: "Diseño para html",
-        c: "No sé bruh",
-    },
-    respuestaCorrecta: "a"
-},
-{
-    pregunta: "¿Para qué sirve css?",
-    respuestas: {
-        a: "Sirve para dar estilo a html",
-        b: "Es un framework de html",
-        c: "No se usa"
-    },
-    respuestaCorrecta: "a"
-},
-{
-    pregunta: "¿Cómo se usa css?",
-    respuestas: {
-        a: "Se importa en el header del html",
-        b: "No tiene utilidad",
-        c: "Se escribe '.css' al final de cada etiqueta"
-
-    },
-    respuestaCorrecta: "a"
-},
-{
-    pregunta: "¿Qué es spring?",
-    respuestas: {
-        a: "Es un framework de java",
-        b: "Obviamente primavera en inglés",
-        c: "Una epoca del año :3"
-
-    },
-    respuestaCorrecta: "a"
-},
-{
-    pregunta: "¿Qué es hibernate?",
-    respuestas: {
-        a: "Un framework de Java",
-        b: "No lo sé",
-        c: "Hibernar"
-
-    },
-    respuestaCorrecta: "a"
-},
-{
-    pregunta: "¿Qué es hibernate?",
-    respuestas: {
-        a: "Un framework de Java",
-        b: "No lo sé",
-        c: "Hibernar"
-
-    },
-    respuestaCorrecta: "a"
-},
-{
-    pregunta: "¿Qué es hibernate?",
-    respuestas: {
-        a: "Un framework de Java",
-        b: "No lo sé",
-        c: "Hibernar"
-
-    },
-    respuestaCorrecta: "a"
-},
-];
+var preguntas = [];
+//const preguntas = [
+//  {
+//    pregunta: "¿Qué significa css?",
+//    respuestas: {
+//        a: "Cascade Style Sheet",
+//        b: "Diseño para html",
+//        c: "No sé bruh",
+//    },
+//    respuestaCorrecta: "a"
+//},
+//{
+//    pregunta: "¿Para qué sirve css?",
+//    respuestas: {
+//        a: "Sirve para dar estilo a html",
+//        b: "Es un framework de html",
+//        c: "No se usa"
+//    },
+//    respuestaCorrecta: "a"
+//},
+//{
+//    pregunta: "¿Cómo se usa css?",
+//    respuestas: {
+//        a: "Se importa en el header del html",
+//        b: "No tiene utilidad",
+//        c: "Se escribe '.css' al final de cada etiqueta"
+//
+//    },
+//    respuestaCorrecta: "a"
+//},
+//{
+//    pregunta: "¿Qué es spring?",
+//    respuestas: {
+//        a: "Es un framework de java",
+//        b: "Obviamente primavera en inglés",
+//        c: "Una epoca del año :3"
+//
+//    },
+//    respuestaCorrecta: "a"
+//},
+//{
+//    pregunta: "¿Qué es hibernate?",
+//    respuestas: {
+//        a: "Un framework de Java",
+//        b: "No lo sé",
+//        c: "Hibernar"
+//
+//    },
+//    respuestaCorrecta: "a"
+//},
+//{
+//    pregunta: "¿Qué es hibernate?",
+//    respuestas: {
+//        a: "Un framework de Java",
+//        b: "No lo sé",
+//        c: "Hibernar"
+//
+//    },
+//    respuestaCorrecta: "a"
+//},
+//{
+//    pregunta: "¿Qué es hibernate?",
+//    respuestas: {
+//        a: "Un framework de Java",
+//        b: "No lo sé",
+//        c: "Hibernar"
+//
+//    },
+//    respuestaCorrecta: "a"
+//},
+//];
 
 function mostrarTest() {
   const preguntasYrespuestas = [];
@@ -104,7 +109,7 @@ function mostrarTest() {
   contenedor.innerHTML = preguntasYrespuestas.join("");
 }
 
-mostrarTest();
+//mostrarTest();
 
 function mostrarResultado() {
   const respuestas = contenedor.querySelectorAll(".respuestas");

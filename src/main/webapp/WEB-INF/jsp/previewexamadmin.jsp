@@ -126,29 +126,22 @@
         </div>
     </footer> 
     <script>
-        var nombre;
-        var id;
-        let DataForm = {};
-
-        <c:forEach var="cues" items="${cuestionarios}">
-        id = "${cues.idCuestionario}";
-        nombre = "${cues.nombre}";
-        </c:forEach>
-
+        var Quizz = [];
         <c:forEach var="preg" items="${preguntas}">
-        DataForm["id"] = "${preg.idPregunta}";
-        DataForm["pregu"] = "${preg.pregunta}";
-        DataForm["resA"] = "${preg.respuestaA}";
-        DataForm["resB"] = "${preg.respuestaB}";
-        DataForm["resC"] = "${preg.respuestaC}";
+        Quizz.push({
+        pregunta: "${preg.pregunta}",
+        respuestas: {
+        a: "${preg.respuestaA}",
+        b: "${preg.respuestaB}",
+        c: "${preg.respuestaC}"
+                },
+                respuestaCorrecta: "a"
+            });
         </c:forEach>
 
-        console.log("id: " + id);
-        console.log("nombre: " + nombre);
-        console.log("--id Pregunta: " + DataForm.id);
-
-        document.getElementById("nombreCuestionario").innerHTML = nombre;
-
+        console.log("arreglo Pregunta: " + Quizz[0].pregunta);
+        pasarVariables(Quizz);
+        mostrarTest();
     </script>
 </body>
 <script>

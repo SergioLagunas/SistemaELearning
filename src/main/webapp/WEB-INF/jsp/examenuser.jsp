@@ -94,8 +94,7 @@
         </header>
     <br>
     <center>
-      <h1>${cuestionarioById.nombre}</h1>
-      <h1>${UsuarioID}</h1>
+      <h1>${cuestionario.nombre}</h1>
     </center>
     <br>
     <div class="formulario">
@@ -123,6 +122,24 @@
             <p>2021. <span>B1 SOFT</span></p>
         </div>
     </footer> 
+    <script> 
+        var Quizz = [];
+        <c:forEach var="preg" items="${preguntas}">
+        Quizz.push({
+        pregunta: "${preg.pregunta}",
+        respuestas: {
+        a: "${preg.respuestaA}",
+        b: "${preg.respuestaB}",
+        c: "${preg.respuestaC}"
+                },
+                respuestaCorrecta: "a"
+            });
+        </c:forEach>
+
+        console.log("arreglo Pregunta: " + Quizz[0].pregunta);
+        pasarVariables(Quizz);
+        mostrarTest();
+    </script>
   </body>
   <script>
     function cerrarSession() {
