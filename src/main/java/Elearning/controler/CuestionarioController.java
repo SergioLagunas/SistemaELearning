@@ -73,4 +73,16 @@ public class CuestionarioController {
             Redirect = "redirect:/error.html"; 
         return Redirect;
     }
+    
+//            //Evaluar cuestionario --> "examenuser.jsp"
+//    @RequestMapping(value = "examenuser.html", method = RequestMethod.GET)
+//    public String evaluarCuestionario(@RequestParam("idCuestionario") int idCuestionario, Model model) {
+//        String Redirect;
+//        if (cuestionarioService.listAllCuestionarios(model, moduloRecuperado).equals("cuestionario")) {
+//            //Redirect = "redirect:/previewexamadmin.html?Cuestionario=" + idCuestionario;
+//            Redirect = "previewexamadmin";
+//        } else
+//            Redirect = "redirect:/error.html"; 
+//        return Redirect;
+//    }
 }

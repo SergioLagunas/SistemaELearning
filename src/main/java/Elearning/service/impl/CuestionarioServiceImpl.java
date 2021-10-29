@@ -23,11 +23,15 @@ public class CuestionarioServiceImpl implements CuestionarioService {
     
     @Override
     public String listAllCuestionarios(Model model, int idModulo) {
-        Cuestionario cuestionario = cuestionarioDao.getCuestionario(cuestionarioDao.getIdByModulo(idModulo));
+        Cuestionario cuestionario = null;
+        if (cuestionarioDao.findAll(idModulo) != null && !cuestionarioDao.findAll(idModulo).isEmpty()) {
+            cuestionario= cuestionarioDao.getCuestionario(cuestionarioDao.getIdByModulo(idModulo));
+        }
         model.addAttribute("cuestionario", cuestionario);
         
         if(cuestionario != null){
             model.addAttribute("preguntas", preguntasDao.findAll(cuestionarioDao.getIdByModulo(idModulo)));
+            model.addAttribute("IdModulo", idModulo);
         }
         return "cuestionario";
     }

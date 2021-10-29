@@ -93,37 +93,37 @@ public class PruebasDao {
 //        }
         
 //        //----------ESTABLECER PROGRESO (MICURSO) EN RELACION CON MICUESTIONARIO----------
-//        CuestionarioDaoImpl CuestionarioDao = new CuestionarioDaoImpl();
-//        int CuestionariosByCurso = 0;
-//        CuestionariosByCurso = CuestionarioDao.countByCurso(27); //--> Establecer ID del Curso.
-//      
-//        System.out.println("Total de Cuestionarios por Curso: " + CuestionariosByCurso);
-//        
-//        //Establecer Progreso en base al Total de Cuestionarios por Curso y a la Evaluacion de MiCuestionario. 
-//        MiCuestionarioDaoImpl miCuestionarioDao = new MiCuestionarioDaoImpl();
-//        int CuestionariosAprobados = miCuestionarioDao.countApproved(69, 27);
-//        
-//        int ProgresoObtenido = (CuestionariosAprobados * 100) / CuestionariosByCurso;
-//        
-//        System.out.println("Cuestionarios Aprobados: " + CuestionariosAprobados);
-//        System.out.println("Progreso Obtenido: " + ProgresoObtenido);
-//        
-//        MiCursoDaoImpl miCursoDao = new MiCursoDaoImpl();
-//        MiCurso miCurso = miCursoDao.getMiCursoByUsuarioCurso(69, 27);
-//        
-//        System.out.println("Estableciendo Progreso Obtenido...");
-//        //miCurso.setProgreso(ProgresoObtenido);
-//        System.out.println("MiCurso Obtenido: " + miCurso.getProgreso());
-//        System.out.println("MiCurso Obtenido: " + miCurso.getIdUsuario());
-//        System.out.println("MiCurso Obtenido: " + miCurso.getIdCurso());
-//        miCurso.setProgreso(ProgresoObtenido);
-//        miCurso = miCursoDao.update(miCurso);
-
         CuestionarioDaoImpl CuestionarioDao = new CuestionarioDaoImpl();
-        List<Cuestionario> Cuestionarios = CuestionarioDao.findAllByCurso(27);
-        for (Cuestionario c : Cuestionarios) {
-            System.out.println(c.getNombre());
-        }
+        int CuestionariosByCurso = 0;
+        CuestionariosByCurso = CuestionarioDao.countByCurso(27); //--> Establecer ID del Curso.
+      
+        System.out.println("Total de Cuestionarios por Curso: " + CuestionariosByCurso);
+        
+        //Establecer Progreso en base al Total de Cuestionarios por Curso y a la Evaluacion de MiCuestionario. 
+        MiCuestionarioDaoImpl miCuestionarioDao = new MiCuestionarioDaoImpl();
+        int CuestionariosAprobados = miCuestionarioDao.countApproved(69, 27);
+        
+        int ProgresoObtenido = (CuestionariosAprobados * 100) / CuestionariosByCurso;
+        
+        System.out.println("Cuestionarios Aprobados: " + CuestionariosAprobados);
+        System.out.println("Progreso Obtenido: " + ProgresoObtenido);
+        
+        MiCursoDaoImpl miCursoDao = new MiCursoDaoImpl();
+        MiCurso miCurso = miCursoDao.getMiCursoByUsuarioCurso(69, 27);
+        
+        System.out.println("Estableciendo Progreso Obtenido...");
+        //miCurso.setProgreso(ProgresoObtenido);
+        System.out.println("MiCurso Obtenido: " + miCurso.getProgreso());
+        System.out.println("MiCurso Obtenido: " + miCurso.getIdUsuario());
+        System.out.println("MiCurso Obtenido: " + miCurso.getIdCurso());
+        miCurso.setProgreso(ProgresoObtenido);
+        miCurso = miCursoDao.update(miCurso);
+
+//        CuestionarioDaoImpl CuestionarioDao = new CuestionarioDaoImpl();
+//        List<Cuestionario> Cuestionarios = CuestionarioDao.findAllByCurso(27);
+//        for (Cuestionario c : Cuestionarios) {
+//            System.out.println(c.getNombre());
+//        }
                 
         //System.out.println("Modulo: " + ModuloPrueba.toString());
         //System.out.println("Cuestionario: " + ModuloPrueba.getIdCuestionario().toString());

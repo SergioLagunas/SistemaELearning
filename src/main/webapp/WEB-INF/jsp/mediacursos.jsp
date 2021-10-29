@@ -229,7 +229,7 @@
                     });
 
                     function enviarVistaExamenUser(idCuestionario) {
-                        document.location.href = "examenuser.html?idUsuario=${UsuarioID}&idCuestionario=" + idCuestionario;
+                        document.location.href = "CrearMiCuestionario.html?Evaluacion=0&IdUsuario=${UsuarioID}&IdCuestionario=" + idCuestionario;
                     }
             </script>
 

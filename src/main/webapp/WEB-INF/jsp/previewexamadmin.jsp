@@ -97,14 +97,13 @@
         </header>
         <br>
     <center>
-        <h1 id="nombreCuestionario">Titulo del cuestionario</h1>
+        <h1>${cuestionario.nombre}</h1>
     </center>
     <br>
     <div class="formulario">
-        <div id="resultado"></div>
         <div id="test"></div>
         <br>
-        <center> <button id="botonresultado">Regresar</button> </center>
+        <center> <button onclick="RegresarCuestionario()">Regresar</button> </center>
         <script src="${pageContext.request.contextPath}/resources/js/examenpreview.js"></script>
     </div>
     <br>
@@ -142,6 +141,10 @@
         console.log("arreglo Pregunta: " + Quizz[0].pregunta);
         pasarVariables(Quizz);
         mostrarTest();
+        
+        function RegresarCuestionario() {
+            document.location.href = "cuestionario.html?Modulo=" + ${IdModulo};
+        }
     </script>
 </body>
 <script>

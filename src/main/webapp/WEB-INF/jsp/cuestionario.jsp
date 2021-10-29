@@ -350,20 +350,16 @@
     <br>
     <script>
         var Fila = null;
-        var nombre;
-        var id;
+        var nombre = "${cuestionario.nombre}";
+        var id = "${cuestionario.idCuestionario}";
         let DataForm = {};
 
+        document.getElementById('idCues').value = id;
+        
         document.getElementById('DivActualizar').style.display = 'none';
         document.getElementById('idPregAct').style.display = 'none';
         document.getElementById('idCues').style.display = 'none';
         document.getElementById('DivSpreguntas').style.display = 'none';
-
-        <c:forEach var="cues" items="${cuestionario}">
-        id = "${cues.idCuestionario}";
-        nombre = "${cues.nombre}";
-        document.getElementById('idCues').value = id;
-        </c:forEach>
 
         <c:forEach var="preg" items="${preguntas}">
         DataForm["id"] = "${preg.idPregunta}";
@@ -379,7 +375,7 @@
         console.log("--id Pregunta: " + DataForm.id);
 
         //validar si ya hay datos en la tabla cuestionario
-        if (id != "undefined" && id != null) {
+        if (id != "undefined" && id != null && id != "") {
             document.getElementById('titulo').value = nombre;
             document.getElementById('btnEBCues').style.display = 'block';
             document.getElementById('btnCrearCues').style.display = 'none';
@@ -658,7 +654,7 @@
         }
 
         function CrearCuestionario() {
-            if (id == "undefined" || id == null)
+            if (id == "undefined" || id == null || id == "" )
                 if (document.getElementById("titulo").value != "" && document.getElementById("titulo").value != null)
                     document.location.href = "CrearCuestionario.html?InputNombre=" + document.getElementById("titulo").value;
                 else {

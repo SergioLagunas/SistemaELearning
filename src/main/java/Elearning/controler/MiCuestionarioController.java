@@ -12,12 +12,12 @@ public class MiCuestionarioController {
     @Autowired
     private MiCuestionarioService miCuestionarioService;
     
-    //Crear nuevo MiCuestionario  --> "cuestionario.jsp" 
+    //Crear nuevo MiCuestionario  --> "mediacursos.jsp" 
     @RequestMapping(value = "CrearMiCuestionario.html", method = RequestMethod.GET)
     public String crearMiCuestionario(@RequestParam("Evaluacion") boolean Evaluacion, @RequestParam("IdUsuario") int IdUsuario, @RequestParam("IdCuestionario") int IdCuestionario){
         String Redirect;
         if (miCuestionarioService.createNewMiCuestionario(Evaluacion, IdUsuario, IdCuestionario).equals("MiCuestionario creado")) {
-            Redirect = "redirect:/cuestionario.html"; 
+            Redirect = "redirect:/examenuser.html?idUsuario="+IdUsuario+"&idCuestionario=" +IdCuestionario; 
         } else
             Redirect = "redirect:/error.html"; 
         return Redirect;
@@ -44,4 +44,15 @@ public class MiCuestionarioController {
             Redirect = "redirect:/error.html"; 
         return Redirect;
     }
+    
+//        //Relacionar tablas Cuestionario - Usuario  --> "mediacursos.jsp" 
+//    @RequestMapping(value = "relacionarM.html", method = RequestMethod.GET)
+//    public String crearMiCuestionario(@RequestParam("Evaluacion") boolean Evaluacion, @RequestParam("IdUsuario") int IdUsuario, @RequestParam("IdCuestionario") int IdCuestionario){
+//        String Redirect;
+//        if (miCuestionarioService.createNewMiCuestionario(Evaluacion, IdUsuario, IdCuestionario).equals("MiCuestionario creado")) {
+//            Redirect = "redirect:/cuestionario.html"; 
+//        } else
+//            Redirect = "redirect:/error.html"; 
+//        return Redirect;
+//    }
 }
