@@ -7,6 +7,7 @@ import Elearning.modelo.Cuestionario;
 import Elearning.modelo.MiCuestionario;
 import Elearning.modelo.Usuario;
 import Elearning.service.MiCuestionarioService;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
@@ -98,6 +99,15 @@ public class MiCuestionarioServiceImpl implements MiCuestionarioService {
             System.out.println("Hubo un error en deleteMiCuestionario - MiCuestionarioServiceImpl.java ---> " + e);
             return false;
         }
+    }
+
+    @Override
+    public boolean validateMiCuestionario(int idUsuario, int idCuestionario) {
+        List<MiCuestionario> list=miCuestionarioDao.findByUsuarioByCuestionario(idUsuario, idCuestionario);
+        if (list.isEmpty() || list == null)
+            return false;
+        else
+            return true;
     }
     
 }

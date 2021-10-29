@@ -150,7 +150,7 @@
 <script>
     function cerrarSession() {
 
-        $(location).attr('href', "cerrarSession.html")
+        document.location.href = "cerrarSession.html";
 
     }
 </script>

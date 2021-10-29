@@ -16,10 +16,14 @@ public class MiCuestionarioController {
     @RequestMapping(value = "CrearMiCuestionario.html", method = RequestMethod.GET)
     public String crearMiCuestionario(@RequestParam("Evaluacion") boolean Evaluacion, @RequestParam("IdUsuario") int IdUsuario, @RequestParam("IdCuestionario") int IdCuestionario){
         String Redirect;
-        if (miCuestionarioService.createNewMiCuestionario(Evaluacion, IdUsuario, IdCuestionario).equals("MiCuestionario creado")) {
-            Redirect = "redirect:/examenuser.html?idUsuario="+IdUsuario+"&idCuestionario=" +IdCuestionario; 
-        } else
-            Redirect = "redirect:/error.html"; 
+        if (miCuestionarioService.validateMiCuestionario(IdUsuario, IdCuestionario))
+            Redirect = "redirect:/examenuser.html?idUsuario="+IdUsuario+"&idCuestionario=" +IdCuestionario;
+        else {
+            if (miCuestionarioService.createNewMiCuestionario(Evaluacion, IdUsuario, IdCuestionario).equals("MiCuestionario creado")) {
+                Redirect = "redirect:/examenuser.html?idUsuario="+IdUsuario+"&idCuestionario=" +IdCuestionario; 
+            } else
+                Redirect = "redirect:/error.html"; 
+        }
         return Redirect;
     }
     
