@@ -55,7 +55,7 @@ h1::before{
    border-radius: 15px;
 }
 
-
+/*
 
 .img1{
     background-image: url(/resources/imagenes/Adminsemillero.png);
@@ -65,7 +65,7 @@ h1::before{
 }
 .img3{
     background-image: url(cursos.png);
-}
+}*/
 .card2 p{
     padding: 5px;
     font-size: 20px;
