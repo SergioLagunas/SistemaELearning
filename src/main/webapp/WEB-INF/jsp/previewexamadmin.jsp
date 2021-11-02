@@ -48,6 +48,23 @@
         h1::after {
             right: -140px;
         }
+        .btnresultado {
+            width: 35%;
+            height: 8%;
+            background-color: #b15d28;
+            font-size: 25px;
+            color: black;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease 0s;
+        }
+
+        .btnresultado:hover {
+            background-color: #203853;
+            color: white;
+        }
         /*propiedad responsive*/
         @media(max-width:820px){
             h1::after,h1::before{
@@ -60,7 +77,7 @@
                 border-radius: 10px;
                 border:5px outset gray;
             }
-            #botonresultado {
+            .btnresultado {
                 width: 20%;
                 height: 8%;
                 background-color: #b15d28;
@@ -103,7 +120,7 @@
     <div class="formulario">
         <div id="test"></div>
         <br>
-        <center> <button onclick="RegresarCuestionario()">Regresar</button> </center>
+        <center> <button class="btnresultado" onclick="RegresarCuestionario()">Regresar</button> </center>
         <script src="${pageContext.request.contextPath}/resources/js/examenpreview.js"></script>
     </div>
     <br>
@@ -125,26 +142,26 @@
         </div>
     </footer> 
     <script>
-        var Quizz = [];
+            var Quizz = [];
         <c:forEach var="preg" items="${preguntas}">
-        Quizz.push({
-        pregunta: "${preg.pregunta}",
-        respuestas: {
-        a: "${preg.respuestaA}",
-        b: "${preg.respuestaB}",
-        c: "${preg.respuestaC}"
+            Quizz.push({
+                pregunta: "${preg.pregunta}",
+                respuestas: {
+                    a: "${preg.respuestaA}",
+                    b: "${preg.respuestaB}",
+                    c: "${preg.respuestaC}"
                 },
                 respuestaCorrecta: "a"
             });
         </c:forEach>
 
-        console.log("arreglo Pregunta: " + Quizz[0].pregunta);
-        pasarVariables(Quizz);
-        mostrarTest();
-        
-        function RegresarCuestionario() {
-            document.location.href = "cuestionario.html?Modulo=" + ${IdModulo};
-        }
+            console.log("arreglo Pregunta: " + Quizz[0].pregunta);
+            pasarVariables(Quizz);
+            mostrarTest();
+
+            function RegresarCuestionario() {
+                document.location.href = "cuestionario.html?Modulo=" + ${IdModulo};
+            }
     </script>
 </body>
 <script>

@@ -10,8 +10,6 @@
         <link href="https://fonts.googleapis.com/css?family=Quicksand:600&display=swap" rel="stylesheet">
         <title>Examen</title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="${pageContext.request.contextPath}/resources/js/header.js" defer></script>
@@ -89,7 +87,7 @@
                 text-decoration: none;
                 border-radius: 5px;
                 box-sizing: border-box;
-
+                font-family: 'Varela Round', sans-serif;
                 font-size: 18px;
                 border: none;
                 background: #181716;
@@ -98,15 +96,6 @@
 
             }
 
-
-            input[type="file"]{
-                width: 90%;
-                height: 45px;
-                margin-bottom: 0;
-
-                background: #181716;
-                color: white;
-            }
 
             input[type="submit"]{
 
@@ -170,6 +159,7 @@
                 color: white;
             }
             #titulo{
+                font-family: 'Varela Round', sans-serif;
                 background-color: #EAECE8;
                 font-size: 28px;
                 color: black;
@@ -201,6 +191,35 @@
             }
             #DivScuestionario img{
                 width: 50%;
+            }
+            .btnbtn-danger{
+                width: 40px;
+                height: 40px;
+                background: #DD3545;
+                text-align: center;
+                viewBox: 0 0 16 16;
+                cursor: pointer;
+                border:none;
+                border-radius: 5px;
+                color: white;
+            }
+            .btnbtn-danger:hover {
+                background: #C82333;
+            }
+
+            .btnbtn-success{
+                width: 40px;
+                height: 40px;
+                background: #28A845;
+                text-align: center;
+                viewBox: 0 0 16 16;
+                cursor: pointer;
+                border:none;
+                border-radius: 5px;
+                color: white;
+            }
+            .btnbtn-success:hover {
+                background: #218837;
             }
             /*propiedad responsive*/
             @media(max-width:820px){
@@ -355,7 +374,7 @@
         let DataForm = {};
 
         document.getElementById('idCues').value = id;
-        
+
         document.getElementById('DivActualizar').style.display = 'none';
         document.getElementById('idPregAct').style.display = 'none';
         document.getElementById('idCues').style.display = 'none';
@@ -503,14 +522,14 @@
             columna3 = Fila.insertCell(2).innerHTML = data.resB;
             columna4 = Fila.insertCell(3).innerHTML = data.resC;
             columna5 = Fila.insertCell(4).innerHTML = `
-                                                            <button type="button" class="btn btn-danger" onClick="Borrarr(this,` + data.id + `)">
+                                                            <button type="button" class="btnbtn-danger" onClick="Borrarr(this,` + data.id + `)">
                                                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-trash " viewBox="0 0 16 16">
                                                                     <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
                                                                     <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
                                                                 </svg>
                                                             </button>
                     
-                                                            <button type="button" class="btn btn-success" onClick="Editarr(this,` + data.id + `)" >
+                                                            <button type="button" class="btnbtn-success" onClick="Editarr(this,` + data.id + `)" >
                                                                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-upload" viewBox="0 0 16 16">
                                                                     <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
                                                                     <path d="M7.646 1.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 2.707V11.5a.5.5 0 0 1-1 0V2.707L5.354 4.854a.5.5 0 1 1-.708-.708l3-3z"/>
@@ -654,7 +673,7 @@
         }
 
         function CrearCuestionario() {
-            if (id == "undefined" || id == null || id == "" )
+            if (id == "undefined" || id == null || id == "")
                 if (document.getElementById("titulo").value != "" && document.getElementById("titulo").value != null)
                     document.location.href = "CrearCuestionario.html?InputNombre=" + document.getElementById("titulo").value;
                 else {

@@ -16,12 +16,9 @@
         <link href="https://fonts.googleapis.com/css?family=Quicksand:600&display=swap" rel="stylesheet">
         <title>Nuevos admin</title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="${pageContext.request.contextPath}/resources/js/header.js" defer></script>
-
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -87,7 +84,7 @@
                 text-decoration: none;
                 border-radius: 5px;
                 box-sizing: border-box;
-                font-family: "Font Awesome 5 Free"; 
+                font-family: 'Varela Round', sans-serif;
                 font-weight: 900;
                 font-size: 18px;
                 border: none;
@@ -102,8 +99,8 @@
                 width: 93%;
                 padding: 5px;
                 outline: none;
-                font-family: "Font Awesome 5 Free"; 
                 font-weight: 900;
+                font-family: 'Varela Round', sans-serif;
                 font-size: 18px;
                 background: #181716;
                 color:white;
@@ -160,6 +157,20 @@
                 color: black;
                 font-weight: bold;
             }
+            .btnbtn-danger{
+                width: 40px;
+                height: 40px;
+                background: #DD3545;
+                text-align: center;
+                viewBox: 0 0 16 16;
+                cursor: pointer;
+                border:none;
+                border-radius: 5px;
+                color: white;
+            }
+            .btnbtn-danger:hover {
+               background: #C82333;
+            }
             /*propiedad responsive*/
             @media(max-width:820px){
                 form{
@@ -214,17 +225,17 @@
 
     <form autocomplete="off" method="POST" action="addAdministrador.html">
         <center>
-            <label for="nom"></label> <input type="text" id="nom" placeholder=" ? Nombre" required name="nombre">
-            <label for="apeP"></label> <input type="text" id="apeP" placeholder=" ?  Apellido paterno" required name="aPaterno">
-            <label for="apeM"></label> <input type="text" id="apeM" placeholder=" ? Apellido materno" required name="aMaterno">
+            <label for="nom"></label> <input type="text" id="nom" placeholder="Nombre" required name="nombre">
+            <label for="apeP"></label> <input type="text" id="apeP" placeholder="Apellido paterno" required name="aPaterno">
+            <label for="apeM"></label> <input type="text" id="apeM" placeholder="Apellido materno" required name="aMaterno">
             <select  name="genero" id="gen">
-                <option disabled selected value="g">? Género:</option>
+                <option disabled selected value="g">Género:</option>
                 <option value="Femenino">Femenino</option>
                 <option value="Masculino">Masculino</option>
             </select>
-            <label for="RFC"></label> <input type="text" id="RFC" placeholder=" ?  RFC" required name="rfc">
-            <label for="email"></label> <input type="text" id="cont" placeholder=" ? Correo" required name="email">
-            <label for="contrasena"></label> <input type="password" id="cont" placeholder=" ? Contraseña" required name="contrasena">
+            <label for="RFC"></label> <input type="text" id="RFC" placeholder=" RFC" required name="rfc">
+            <label for="email"></label> <input type="text" id="correo" placeholder="Correo" required name="email">
+            <label for="contrasena"></label> <input type="password" id="cont" placeholder="Contraseña" required name="contrasena">
             <br>
             <br>
             <center><input class="submit" type="submit" value="Guardar"></center> 
@@ -256,7 +267,7 @@
                         <td><c:out value="${admin.rfc}"></c:out></td>
                             <td>
                                 <a  onclick="return confirm(${admin.idUsuario});"  >
-                                <button type="button"  class="btn btn-danger"  >
+                                <button type="button"  class="btnbtn-danger"  >
                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-trash " viewBox="0 0 16 16">
                                     <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
                                     <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
