@@ -80,8 +80,9 @@ public class UsuarioServiceImpl implements UsuarioService {
     
 
     @Override
-    public String barProgress(Model modelo) {
-        int idUsuario = elUsuario;
+    public String barProgress(Model modelo, HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        int idUsuario = (int)session.getAttribute("UsuarioID");
         Usuario user = new Usuario();
         MiCurso micurso = new MiCurso();
         user = usuarioDao.getUsuario(idUsuario);
@@ -386,5 +387,4 @@ public class UsuarioServiceImpl implements UsuarioService {
         boolean flag = usuarioDao.delete(elimUsuario);
         return flag;
     }
-
 }

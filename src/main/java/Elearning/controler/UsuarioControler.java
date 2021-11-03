@@ -1,4 +1,3 @@
-
 package Elearning.controler;
 
 import Elearning.service.UsuarioService;
@@ -10,8 +9,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -45,7 +42,6 @@ public class UsuarioControler {
         return usuarioService.updateUsuarioAdmin(request);
     }
     
-    
       //Listado de los Adminisradores 
     @RequestMapping(value = "nuevoadmin.html", method = RequestMethod.GET)
     public String listarAdmin(Model model){
@@ -72,8 +68,8 @@ public class UsuarioControler {
     
     
     @RequestMapping(value = "ProgressBar.html", method = RequestMethod.GET)
-    public String ProgressBar(Model modelo){
-        return usuarioService.barProgress(modelo);
+    public String ProgressBar(Model modelo, HttpServletRequest request){
+        return usuarioService.barProgress(modelo, request);
     }
     
     @RequestMapping(value = "eliminarAdmin.html", method = RequestMethod.GET)
@@ -97,5 +93,4 @@ public class UsuarioControler {
         }  
         return mo;
     }
-  
 }

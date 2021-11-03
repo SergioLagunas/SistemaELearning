@@ -91,6 +91,13 @@ public class PruebasDao {
 //        for(MiCuestionario u : miCuestionarios){
 //            System.out.println(u.getIdMiCuestionario());
 //        }
+
+        //----------OBTENER MICUESTIONARIO----------
+//        MiCuestionarioDaoImpl MiCuestionarioDao = new MiCuestionarioDaoImpl();
+//        MiCuestionario miCuestionario = MiCuestionarioDao.getByUsuarioByCuestionario(63, 1);
+//      
+//        System.out.println("ID MICUESTIONARIO: " + miCuestionario.getIdMiCuestionario());
+
         
 //        //----------ESTABLECER PROGRESO (MICURSO) EN RELACION CON MICUESTIONARIO----------
         CuestionarioDaoImpl CuestionarioDao = new CuestionarioDaoImpl();

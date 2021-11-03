@@ -27,12 +27,15 @@ public class MiCuestionarioController {
         return Redirect;
     }
     
-    //Actualizar MiCuestionario  --> "cuestionario.jsp" 
+    //Actualizar MiCuestionario  --> "examenuser.jsp" 
     @RequestMapping(value = "ActualizarMiCuestionario.html", method = RequestMethod.GET)
-    public String actualizarMiCuestionario(@RequestParam("IdMiCuestionario") int IdMiCuestionario, @RequestParam("Evaluacion") boolean Evaluacion){
+    public String actualizarMiCuestionario(@RequestParam("idCurso") int idCurso, @RequestParam("idUsuario") int idUsuario, @RequestParam("idCuestionario") int idCuestionario, @RequestParam("Evaluacion") boolean Evaluacion){
         String Redirect;
-        if (miCuestionarioService.updateMiCuestionario(IdMiCuestionario, Evaluacion).equals("MiCuestionario actualizado")) {
-            Redirect = "redirect:/cuestionario.html"; 
+        if (miCuestionarioService.updateMiCuestionario(miCuestionarioService.getIdMiCuestionario(idUsuario, idCuestionario), Evaluacion).equals("MiCuestionario actualizado")) {  
+            if(miCuestionarioService.defineProgress(idCurso, idUsuario).equals("Progreso establecido"))
+                Redirect = "redirect:/mediacursos.html?idCurso=" + idCurso; 
+            else
+                Redirect = "redirect:/error.html"; 
         } else
             Redirect = "redirect:/error.html"; 
         return Redirect;
@@ -48,15 +51,4 @@ public class MiCuestionarioController {
             Redirect = "redirect:/error.html"; 
         return Redirect;
     }
-    
-//        //Relacionar tablas Cuestionario - Usuario  --> "mediacursos.jsp" 
-//    @RequestMapping(value = "relacionarM.html", method = RequestMethod.GET)
-//    public String crearMiCuestionario(@RequestParam("Evaluacion") boolean Evaluacion, @RequestParam("IdUsuario") int IdUsuario, @RequestParam("IdCuestionario") int IdCuestionario){
-//        String Redirect;
-//        if (miCuestionarioService.createNewMiCuestionario(Evaluacion, IdUsuario, IdCuestionario).equals("MiCuestionario creado")) {
-//            Redirect = "redirect:/cuestionario.html"; 
-//        } else
-//            Redirect = "redirect:/error.html"; 
-//        return Redirect;
-//    }
 }

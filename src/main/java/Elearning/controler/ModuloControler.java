@@ -1,33 +1,21 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Elearning.controler;
 
 import Elearning.dao.ModuloDao;
-import Elearning.dao.impl.ModuloDaoImpl;
 import Elearning.modelo.Curso;
 import Elearning.modelo.Modulo;
 import Elearning.modelo.formModel.ModuloModel;
 import Elearning.service.ModuloService;
-import java.lang.reflect.Method;
+import javax.servlet.http.HttpServletRequest;
 import org.springframework.ui.Model;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-/**
- *
- * @author sergi
- */
 @Controller
 public class ModuloControler {
 
@@ -45,8 +33,8 @@ public class ModuloControler {
     }
 
     @RequestMapping(value = "mediacursos.html", method = RequestMethod.GET)
-    public String listadoCursos(@RequestParam("idCurso") int idCurso, Model model) {
-        return moduloService.readModulo(idCurso, model);
+    public String listadoCursos(@RequestParam("idCurso") int idCurso, Model model, HttpServletRequest request) {
+        return moduloService.readModulo(idCurso, model, request);
     }
 
     //Para el crud que esta al insertar los modulos
@@ -113,6 +101,4 @@ public class ModuloControler {
     public String errorMo(){
         return "primerosmodulos";
     }
-
-
 }

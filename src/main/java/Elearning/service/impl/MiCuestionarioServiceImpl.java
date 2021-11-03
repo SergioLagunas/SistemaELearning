@@ -2,9 +2,11 @@ package Elearning.service.impl;
 
 import Elearning.dao.CuestionarioDao;
 import Elearning.dao.MiCuestionarioDao;
+import Elearning.dao.MiCursoDao;
 import Elearning.dao.UsuarioDao;
 import Elearning.modelo.Cuestionario;
 import Elearning.modelo.MiCuestionario;
+import Elearning.modelo.MiCurso;
 import Elearning.modelo.Usuario;
 import Elearning.service.MiCuestionarioService;
 import java.util.List;
@@ -22,6 +24,9 @@ public class MiCuestionarioServiceImpl implements MiCuestionarioService {
 
     @Autowired
     private UsuarioDao usuarioDao;
+    
+    @Autowired
+    private MiCursoDao miCursoDao;
     
     @Override
     public String listAllMiCuestionario(Model model) {
@@ -110,4 +115,34 @@ public class MiCuestionarioServiceImpl implements MiCuestionarioService {
             return true;
     }
     
+    @Override
+    public int getIdMiCuestionario(int idUsuario, int idCuestionario) {
+        return miCuestionarioDao.getByUsuarioByCuestionario(idUsuario, idCuestionario).getIdMiCuestionario();
+    }
+
+    @Override
+    public String defineProgress(int idCurso, int idUsuario) {
+        try{
+            //Obtener el total de Cuestionarios del Curso
+            int CuestionariosByCurso = 0;
+            CuestionariosByCurso = cuestionarioDao.countByCurso(idCurso);
+            System.out.println("Total de Cuestionarios del Curso " + idCurso + ": " + CuestionariosByCurso);
+            //Obtener el total de Cuestionarios aprobados por el Usuario
+            int CuestionariosAprobados = miCuestionarioDao.countApproved(idUsuario, idCurso);
+            //Establecer el progreso obtenido hasta el momento, mediante una regla de 3
+            int ProgresoObtenido = (CuestionariosAprobados * 100) / CuestionariosByCurso;
+            System.out.println("Cuestionarios Aprobados: " + CuestionariosAprobados);
+            System.out.println("Progreso Obtenido: " + ProgresoObtenido);
+            //Establecer el Progreso obtenido en la Base de Datos(Tabla MiCurso) 
+            MiCurso miCurso = miCursoDao.getMiCursoByUsuarioCurso(idUsuario, idCurso);
+            System.out.println("Estableciendo Progreso Obtenido...");
+            miCurso.setProgreso(ProgresoObtenido);
+            miCurso = miCursoDao.update(miCurso);
+            
+            return "Progreso establecido";
+        } catch(Exception e){
+            System.out.println("Hubo un error en defineProgress - MiCuestionarioServiceImpl.java ---> " + e);
+            return "Progreso NO establecido";
+        }
+    }
 }

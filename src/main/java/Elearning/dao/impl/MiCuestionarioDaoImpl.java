@@ -1,7 +1,6 @@
 package Elearning.dao.impl;
 
 import Elearning.dao.MiCuestionarioDao;
-import Elearning.modelo.Cuestionario;
 import Elearning.modelo.MiCuestionario;
 import Elearning.util.HibernateUtil;
 import java.util.List;
@@ -185,7 +184,7 @@ public class MiCuestionarioDaoImpl implements MiCuestionarioDao{
 
     @Override
     public List<MiCuestionario> findByUsuarioByCuestionario(int idUsuario, int idCuestionario) {
-                //Obtener la secion 
+        //Obtener la sesion 
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         //Ocupamos la transaccion en caso de error la base de datos se restaura a como estaba
         Transaction transaccion = session.getTransaction();
@@ -214,5 +213,44 @@ public class MiCuestionarioDaoImpl implements MiCuestionarioDao{
             session.close();
         }
         return lista;
+    }
+
+    @Override
+    public MiCuestionario getByUsuarioByCuestionario(int idUsuario, int idCuestionario) {
+        //Obtener la sesion 
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        //Ocupamos la transaccion en caso de error la base de datos se restaura a como estaba
+        Transaction transaccion = session.getTransaction();
+        //Declaramos la lista donde almacenara el conjunto de datos de la tabla 
+        MiCuestionario entidad = null;
+        List<MiCuestionario> lista = null;
+
+        try {
+            //Iniciamos Transaccion
+            transaccion.begin();
+            //crea la consulta Query
+            Query miQuery = session.createSQLQuery("SELECT * FROM MiCuestionario m WHERE m.idUsuario =:idU AND m.idCuestionario =:idC").addEntity(MiCuestionario.class)
+                    .setParameter("idU",idUsuario)
+                    .setParameter("idC", idCuestionario);
+            //Amacenamos los datos en la lista declarada anteriormente 
+            lista = miQuery.list();
+            lista.size();
+            //regresa el commit
+            transaccion.commit();
+        } catch (HibernateException e) {
+            //Si la transaccion esta bacia y ademas esta activa que regrese el estado en el que se encontraba la Base de Datos
+            if (transaccion != null && transaccion.isActive()) {
+                transaccion.rollback();
+            }
+        } finally {
+            //Finalmente cerramos la sesion 
+            session.close();
+        }
+        
+        for(MiCuestionario u : lista){
+            entidad = getMiCuestionario(u.getIdMiCuestionario());
+        }
+        
+        return entidad;
     }
 }

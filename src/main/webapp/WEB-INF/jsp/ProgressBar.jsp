@@ -1,9 +1,3 @@
-<%-- 
-    Document   : ProgressBar
-    Created on : 16-jul-2021, 17:41:43
-    Author     : Karina Romero
---%>
-
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
@@ -96,7 +90,7 @@
         <br>
     <center><h1>Mis Cursos</h1></center>
         <c:forEach var="cursos" items="${miscursos}">  
-            <div>      
+            <div>
                 <div class="bar">
                     <h3 style="margin-left: 35px;">${cursos.nombre}</h3>
                     <div class="barraProgreso k-content">
@@ -108,27 +102,27 @@
                 </div>   
             </c:forEach>
             <c:forEach var="progress" items="${progreso}">   
-                <h5 style="margin-left: 20px;"><span id="completed">${progress.progreso} %</span> Completado</h5>
-                <div style="display: flex;"></div>
+                    <h5 style="margin-left: 20px;"><span id="completed">${progress.progreso} %</span> Completado</h5>
+                    <div style="display: flex;"></div>
             </c:forEach>
-            <script>
-                $(document).ready(function () {
+                <script>
+                    $(document).ready(function () {
                 <c:forEach var="cursos" items="${miscursos}">
                     var pb = $("#profileCompleteness${cursos.idCurso}").kendoProgressBar({
-                        type: "chunk",
-                        chunkCount: 100,
-                        min: 0,
-                        max: 100,
+                            type: "chunk",
+                            chunkCount: 100,
+                            min: 0,
+                            max: 100,
                         value: ${cursos.progreso}
-                    }).data("kendoProgressBar");
+                        }).data("kendoProgressBar");
                 </c:forEach>
                 <c:forEach var="cursos" items="${miscursos}">
                     pb.value(completeness);
                     $("#completed").text((completeness * 20) + "%");
                 </c:forEach>
-                });
-            </script>
-        </div>
+                    });
+                </script>
+            </div>
 
         <!--Footer-->
         <br>

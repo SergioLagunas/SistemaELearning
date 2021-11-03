@@ -7,38 +7,24 @@ import Elearning.dao.MiCursoDao;
 import Elearning.dao.ModuloDao;
 import Elearning.dao.UsuarioDao;
 import Elearning.modelo.Modulo;
-import Elearning.dto.ModuloDto;
 import Elearning.modelo.Curso;
-import Elearning.modelo.MiCurso;
 import Elearning.modelo.Usuario;
-import Elearning.modelo.formModel.CursoModel;
 import Elearning.modelo.formModel.ModuloModel;
 import Elearning.service.ModuloService;
 import Elearning.util.JavaDropBox;
 import com.dropbox.core.DbxException;
-import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.http.HttpSession;
 import org.springframework.ui.Model;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-/**
- *
- * @author sergi
- */
 @Service("ModuloService")
 public class ModuloServiceImpl implements ModuloService {
 
@@ -62,8 +48,10 @@ public class ModuloServiceImpl implements ModuloService {
     private CuestionarioDao cuestionarioDao;
 
     @Override
-    public String readModulo(int idCurso, Model model) {
+    public String readModulo(int idCurso, Model model, HttpServletRequest request) {
         System.out.println("idCurso: " + idCurso);
+        HttpSession session = request.getSession();
+        session.setAttribute("CursoID", idCurso);
         int usuario = UsuarioServiceImpl.elUsuario;
         System.out.println("id de Usuario: " + usuario);
         Curso curso = new Curso();

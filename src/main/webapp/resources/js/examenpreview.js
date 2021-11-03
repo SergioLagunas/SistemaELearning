@@ -1,17 +1,19 @@
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-function pasarVariables(dato) {
-    preguntas = dato.slice();
-    console.log("arreglo copiado: " + dato[0].pregunta);
-}
 const contenedor = document.getElementById("test");
 const botonRes = document.getElementById("botonresultado");
 const resultadoTest = document.getElementById("resultado");
 
 var preguntas = [];
+let promedio = 0;
+
+function pasarVariables(dato) {
+    preguntas = dato.slice();
+    console.log("arreglo copiado: " + dato[0].pregunta);
+}
+
+function returnCalificacion(){
+    console.log("Promedio: " + promedio);
+    return promedio;
+}
 
 function mostrarTest() {
     const preguntasYrespuestas = [];
@@ -66,7 +68,7 @@ function mostrarResultado() {
             respuestas[numeroDePregunta].style.pointerEvents = "none";
         }
     });
-    let promedio = (respuestasCorrectas / preguntas.length) * 10;
+    promedio = (respuestasCorrectas / preguntas.length) * 10;
     console.log(promedio);
     if (promedio > 8) {
         resultadoTest.innerHTML =
@@ -98,6 +100,7 @@ function mostrarResultado() {
         resultadoTest.style.borderRadius = "10px";
         resultadoTest.style.transitionDuration = ".5s";
     }
+    return promedio;
 }
 
-botonRes.addEventListener("click", mostrarResultado);
+//botonRes.addEventListener("click", mostrarResultado);

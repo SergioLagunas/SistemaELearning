@@ -1,9 +1,3 @@
-<%-- 
-    Document   : examenuser
-    Created on : 22-oct-2021, 16:21:09
-    Author     : Karina Romero
---%>
-
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
@@ -17,6 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   </head>
   <style>
     .body1 {
@@ -101,7 +96,7 @@
       <div id="resultado"></div>
       <div id="test"></div>
       <br>
-     <center> <button id="botonresultado">Ver resultado</button> </center>
+      <center> <button id="botonresultado" onclick="AsignarCalificacion()">Ver resultado</button> </center>
       <script src="${pageContext.request.contextPath}/resources/js/examenpreview.js"></script>
     </div>
     <br>
@@ -139,6 +134,41 @@
         console.log("arreglo Pregunta: " + Quizz[0].pregunta);
         pasarVariables(Quizz);
         mostrarTest();
+        
+        function AsignarCalificacion(){
+            var Calificacion = 0;
+            Calificacion = mostrarResultado();
+            if(Calificacion >= 7)
+                ScoreApro(Calificacion); 
+            else 
+                ScoreRepro(Calificacion);
+            
+            console.log("Calificacion: " + Calificacion);
+        }
+        
+        function ScoreApro(Calificacion){
+            swal.fire({
+                title: "¡Buen trabajo!",
+                text: "APROBADO - Calificación: " + Calificacion,
+                icon: 'success',
+                confirmButtonText: "OK",
+                confirmButtonColor: '#203853'
+            }).then(function () {
+                document.location.href = "ActualizarMiCuestionario.html?idCurso=" + ${CursoID} + "&idUsuario=" + ${UsuarioID} + "&idCuestionario=" + ${cuestionario.idCuestionario} + "&Evaluacion=1";
+            });
+        }
+        
+        function ScoreRepro(Calificacion){
+            swal.fire({
+                title: "¡Esfuerzate más!",
+                text: "REPROBADO - Calificación: " + Calificacion,
+                icon: 'warning',
+                confirmButtonText: "OK",
+                confirmButtonColor: '#203853'
+            }).then(function () {
+                document.location.href = "mediacursos.html?idCurso=" + ${CursoID};
+            });
+        }
     </script>
   </body>
   <script>
