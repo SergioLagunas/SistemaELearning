@@ -36,15 +36,38 @@
                 justify-content: center;
                 background:  #EAECE8;
             }
-            h1 {
-                text-align:center;
-                font-size:2.5em;
-                font-family: 'Varela Round', sans-serif;
-                margin:20px 0;
+            h1{
+                text-align: center;
+                display: inline-block;
+                position: relative;
+                font-size: 35px;
                 color: black;
                 font-weight: bold;
             }
 
+            h1::after,h1::before{
+
+                content: '';
+                position: absolute;
+                width: 120px;
+                height: 3px;
+                background-color: #B15D28;
+                top: 0.6em;
+
+            }
+
+            h1::before{
+                left: -140px;
+
+            }
+
+            h1::after{
+                right: -140px;
+
+            }
+            .footer-content h3{
+                font-family: "Open Sans";
+            }
             .k-card:hover{
                 background-color: #B15D28;
                 color: white;
@@ -59,6 +82,10 @@
             @media(max-width:820px){
                 #DivSCursos img{
                     width: 80%;
+                }
+                h1::after,h1::before{
+                    display: none;
+
                 }
             }
         </style>
@@ -89,17 +116,17 @@
         </header>
         <br>
         <!-- Titulo de la Página -->
-        <h1><c:out value="${categoria}"></c:out></h1>
-            <div class="cards-container">
-            <c:forEach items="${cursos}" var="curso"> 
-                <div class="k-card">
-                    <a href="mediacursos.html?idCurso=${curso.idCurso}"><img class="k-card-image"  src="${curso.caratula}"/></a>
-                    <div class="k-card-body">
-                        <center> <h3><c:out value="${curso.nombre}"></c:out></h3> </center> 
-                        </div>
+    <center><h1><c:out value="${categoria}"></c:out></h1></center>
+        <div class="cards-container">
+        <c:forEach items="${cursos}" var="curso"> 
+            <div class="k-card">
+                <a href="mediacursos.html?idCurso=${curso.idCurso}"><img class="k-card-image"  src="${curso.caratula}"/></a>
+                <div class="k-card-body">
+                    <center> <h3><c:out value="${curso.nombre}"></c:out></h3> </center> 
                     </div>
-            </c:forEach>
-        </div>
+                </div>
+        </c:forEach>
+    </div>
     <center>
         <div id="DivSCursos">
             <img src="${pageContext.request.contextPath}/resources/imagenes/divScursos.png">
@@ -139,7 +166,7 @@
             </ul>
         </div>
         <div class="footer-bottom">
-            <p>2021. <span>B1 SOFT</span></p>
+            <p>designed by <span>B1 SOFT</span></p>
         </div>
     </footer>
 </body>

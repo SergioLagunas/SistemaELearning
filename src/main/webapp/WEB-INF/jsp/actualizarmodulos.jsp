@@ -708,7 +708,7 @@
 
 <footer>
     <div class="footer-content">
-        <h3>B1 SOFT</h3>
+        <h3>B1 SOFT LATINOAMERICA</h3>
 
         <ul class="socials">
             <li><a href="#"><i class="fa fa-facebook"></i></a></li>

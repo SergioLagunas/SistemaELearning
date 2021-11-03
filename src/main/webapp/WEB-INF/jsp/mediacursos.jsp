@@ -75,34 +75,6 @@
                 text-align: left;
             }
 
-            .botoncurso{
-                font-family: "roboto",sans-serif;
-                font-weight: 500;
-                font-size: 20px;
-                color: black;
-                text-decoration: none;
-            }
-            .botoncurso{
-                padding: 5px 17px;
-                background-color: #B15D28;
-                border: none;
-                border-radius: 10px;
-                cursor: pointer;
-                transition: all 0.3s ease 0s;
-            }
-            .botoncurso:hover{
-                background-color: #203853;
-                color: white;
-            }
-            .Archivos{
-                font-family: "roboto",sans-serif;
-                font-weight: 500;
-                font-size: 20px;
-                color: white;
-                text-decoration: none;
-                padding: 7px 20px;
-                background-color: #203853;
-            }
             .cards-container{
                 cursor: pointer;
             }
@@ -400,7 +372,7 @@
                 </ul>
             </div>
             <div class="footer-bottom">
-                <p>2021. <span>B1 SOFT</span></p>
+                <p>designed by <span>B1 SOFT</span></p>
             </div>
         </footer> </center>
 </body>

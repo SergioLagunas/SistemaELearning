@@ -278,7 +278,7 @@
         </ul>
     </div>
     <div class="footer-bottom">
-        <p>2021. <span>B1 SOFT</span></p>
+        <p>designed by <span>B1 SOFT</span></p>
     </div>
 </footer>
     </body>

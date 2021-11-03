@@ -27,18 +27,45 @@
         <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <style>
-
-            h1 {
-                text-align:center;
-                text-transform:uppercase;
-                letter-spacing:-2px;
-                font-size:2.5em;
-                margin:20px 0;
+            h1{
+                text-align: center;
+                display: inline-block;
+                position: relative;
+                font-size: 35px;
                 color: black;
+                font-weight: bold;
+            }
+
+            h1::after,h1::before{
+
+                content: '';
+                position: absolute;
+                width: 120px;
+                height: 3px;
+                background-color: #B15D28;
+                top: 0.6em;
+
+            }
+
+            h1::before{
+                left: -140px;
+
+            }
+
+            h1::after{
+                right: -140px;
+
             }
             h2,h3,h4,h5, h6{
                 font-family: Arial, Helvetica, sans-serif;
                 margin: auto;
+            }
+            /*propiedad responsive*/
+            @media(max-width:820px){
+                h1::after,h1::before{
+                    display: none;
+
+                }
             }
         </style>
     </head>
@@ -66,8 +93,8 @@
                 </div>
             </nav>
         </header>
-        <br><br>
-        <h1>Mis Cursos</h1>
+        <br>
+    <center><h1>Mis Cursos</h1></center>
         <c:forEach var="cursos" items="${miscursos}">  
             <div>      
                 <div class="bar">
@@ -75,6 +102,7 @@
                     <div class="barraProgreso k-content">
                         <div id="profileCompleteness${cursos.idCurso}"></div>
                     </div>
+                    <br>
                     <center><a href="mediacursos.html?idCurso=${cursos.idCurso}"><button>Continuar Curso</button></a></center>
                     <br/>
                 </div>   
@@ -126,7 +154,7 @@
         </ul>
     </div>
     <div class="footer-bottom">
-        <p>2021. <span>B1 SOFT</span></p>
+        <p>designed by <span>B1 SOFT</span></p>
     </div>
 </footer>
     </body>
