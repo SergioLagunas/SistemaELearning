@@ -115,6 +115,16 @@
         </style>
     </head>
     <body class="body1">
+        <%
+            String tipoUsuario = (String) session.getAttribute("tUsuario");
+            if (tipoUsuario != null) {
+                if (tipoUsuario.equals("Administrador")) {
+                    response.sendRedirect("admin.html");
+                }
+            } else {
+                response.sendRedirect("index.html");
+            }
+        %>
         <header>
             <nav class="navbar">
                 <!--<div class="brand-title">Brand Name</div>-->

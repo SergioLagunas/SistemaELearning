@@ -13,14 +13,14 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Perfil semillero</title>
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/newheader.css" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/footer.css" />
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-       <script src="${pageContext.request.contextPath}/resources/js/jquery.min.js"></script>
+        <script src="${pageContext.request.contextPath}/resources/js/jquery.min.js"></script>
         <script src="${pageContext.request.contextPath}/resources/js/header.js" defer></script>
         <style>
             body {
@@ -28,7 +28,7 @@
                 justify-content: center;
                 background:  #EAECE8;
             }
-                        h1{
+            h1{
 
                 text-align: center;
                 display: inline-block;
@@ -138,6 +138,16 @@
         </style>
     </head>
     <body class="body1">
+        <%
+            String tipoUsuario = (String) session.getAttribute("tUsuario");
+            if (tipoUsuario != null) {
+                if (tipoUsuario.equals("Administrador")) {
+                    response.sendRedirect("admin.html");
+                }
+            } else {
+                response.sendRedirect("index.html");
+            }
+        %>
         <header>
             <nav class="navbar">
                 <!--<div class="brand-title">Brand Name</div>-->
@@ -251,21 +261,21 @@
         <br>
         <br>
         <footer>
-    <div class="footer-content">
-        <h3>B1 SOFT LATINOAMERICA</h3>
+            <div class="footer-content">
+                <h3>B1 SOFT LATINOAMERICA</h3>
 
-        <ul class="socials">
-            <li><a href="#"><i class="fab fa-facebook"></i></a>
-                     <li><a href="#"><i class="fab fa-twitter"></i></a>
-                     <li><a href="#"><i class="fab fa-google"></i></a>
-                     <li><a href="#"><i class="fab fa-youtube"></i></a>
-                     <li><a href="#"><i class="fab fa-linkedin"></i></a>
-        </ul>
-    </div>
-    <div class="footer-bottom">
-        <p>2021. <span>B1 SOFT</span></p>
-    </div>
-</footer>
+                <ul class="socials">
+                    <li><a href="#"><i class="fab fa-facebook"></i></a>
+                    <li><a href="#"><i class="fab fa-twitter"></i></a>
+                    <li><a href="#"><i class="fab fa-google"></i></a>
+                    <li><a href="#"><i class="fab fa-youtube"></i></a>
+                    <li><a href="#"><i class="fab fa-linkedin"></i></a>
+                </ul>
+            </div>
+            <div class="footer-bottom">
+                <p>2021. <span>B1 SOFT</span></p>
+            </div>
+        </footer>
     </body>
-  
+
 </html>
