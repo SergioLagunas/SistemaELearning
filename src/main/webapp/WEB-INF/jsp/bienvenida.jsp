@@ -12,7 +12,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Bienvenida</title>
-             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/kendo.common.min.css" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/kendo.black.min.css" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/kendo.default.mobile.min.css" />
@@ -37,45 +37,45 @@
                 margin-bottom: 40px;
                 margin-left: 60px;
                 margin-top: 50px;
-              
-                
-            
+
+
+
             }
-            
-          .container1{
-                 display: flex;
-           justify-content: center;
-               flex-wrap: wrap;
+
+            .container1{
+                display: flex;
+                justify-content: center;
+                flex-wrap: wrap;
                 color:#fff;
             }
 
             /*estilo de card*/
             .container1 .card1{
                 background: white;
-              width: 350px;
-           text-align: center;
+                width: 350px;
+                text-align: center;
                 margin: 10px;
-              border-radius: 15px;
+                border-radius: 15px;
                 background-color: #2C2635;
 
             }
 
             /*estilo de card cuando le damos con el mouse*/
             .container1 .card1:hover{
-               background-color: #B15D28;
-    color: white;
-    cursor: pointer;
-    transform: scale(1.03);
-    transition: all 1s ease;
+                background-color: #B15D28;
+                color: white;
+                cursor: pointer;
+                transform: scale(1.03);
+                transition: all 1s ease;
             }
 
             /*imagen de la card*/
             .container1 .card1 img{
-                 width: 350px;
+                width: 350px;
                 height: 170px;
-    margin-bottom: 15px;
-    background-size: cover;
-    border-radius: 15px 15px 0 0;
+                margin-bottom: 15px;
+                background-size: cover;
+                border-radius: 15px 15px 0 0;
             }
 
             /*titulo de card*/
@@ -83,8 +83,8 @@
                 font-weight: 500;
                 font-size: 24px;
                 color: #fff;
-                 padding: 10px;
-}
+                padding: 10px;
+            }
 
             /*responsive*/ 
             @media(max-width:820px){
@@ -120,30 +120,40 @@
             }
         </style> 
     </head>
-    <body class="body1"> 
-         <header>
-      <nav class="navbar">
-        <!--<div class="brand-title">Brand Name</div>-->
-        <div class="logo">
-          <div>
-              <a href="bienvenida.html"><img src="${pageContext.request.contextPath}/resources/imagenes/B1SOFT-LOGO.gif"></a>
-          </div>
-      </div>
-        <a href="#" class="toggle-button">
-          <span class="bar"></span>
-          <span class="bar"></span>
-          <span class="bar"></span>
-        </a>
-        <div class="navbar-links">
-          <ul>
-            <li><a href="perfilsem.html">Mi perfil</a></li>
-            <li><a href="ProgressBar.html">Mis Cursos</a></li>
-            <!--<li><a href="#">Cerrar sesión</a></li>-->
-            <li><span><a onclick="cerrarSession()" class="cta">Cerrar sesión</a></span></li>
-          </ul>
-        </div>
-      </nav>
-    </header>
+    <body class="body1">
+        <%
+            String tipoUsuario = (String) session.getAttribute("tUsuario");
+            if (tipoUsuario != null) {
+                if (tipoUsuario.equals("Administrador")) {
+                    response.sendRedirect("admin.html");
+                }
+            } else {
+                response.sendRedirect("index.html");
+            }
+        %>
+        <header>
+            <nav class="navbar">
+                <!--<div class="brand-title">Brand Name</div>-->
+                <div class="logo">
+                    <div>
+                        <a href="bienvenida.html"><img src="${pageContext.request.contextPath}/resources/imagenes/B1SOFT-LOGO.gif"></a>
+                    </div>
+                </div>
+                <a href="#" class="toggle-button">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </a>
+                <div class="navbar-links">
+                    <ul>
+                        <li><a href="perfilsem.html">Mi perfil</a></li>
+                        <li><a href="ProgressBar.html">Mis Cursos</a></li>
+                        <!--<li><a href="#">Cerrar sesión</a></li>-->
+                        <li><span><a onclick="cerrarSession()" class="cta">Cerrar sesión</a></span></li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
 
         <div id="container">
             <div id="Scroll">
@@ -265,22 +275,22 @@
         <br>
         <br>
 
- <footer>
-    <div class="footer-content">
-        <h3>B1 SOFT LATINOAMERICA</h3>
+        <footer>
+            <div class="footer-content">
+                <h3>B1 SOFT LATINOAMERICA</h3>
 
-        <ul class="socials">
-            <li><a href="#"><i class="fab fa-facebook"></i></a>
-                     <li><a href="#"><i class="fab fa-twitter"></i></a>
-                     <li><a href="#"><i class="fab fa-google"></i></a>
-                     <li><a href="#"><i class="fab fa-youtube"></i></a>
-                     <li><a href="#"><i class="fab fa-linkedin"></i></a>
-        </ul>
-    </div>
-    <div class="footer-bottom">
-        <p>designed by <span>B1 SOFT</span></p>
-    </div>
-</footer>
+                <ul class="socials">
+                    <li><a href="#"><i class="fab fa-facebook"></i></a>
+                    <li><a href="#"><i class="fab fa-twitter"></i></a>
+                    <li><a href="#"><i class="fab fa-google"></i></a>
+                    <li><a href="#"><i class="fab fa-youtube"></i></a>
+                    <li><a href="#"><i class="fab fa-linkedin"></i></a>
+                </ul>
+            </div>
+            <div class="footer-bottom">
+                <p>designed by <span>B1 SOFT</span></p>
+            </div>
+        </footer>
     </body>
     <script>
         function cerrarSession() {
