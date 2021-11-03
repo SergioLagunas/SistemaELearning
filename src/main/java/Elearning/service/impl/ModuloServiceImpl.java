@@ -51,8 +51,7 @@ public class ModuloServiceImpl implements ModuloService {
     public String readModulo(int idCurso, Model model, HttpServletRequest request) {
         System.out.println("idCurso: " + idCurso);
         HttpSession session = request.getSession();
-        session.setAttribute("CursoID", idCurso);
-        int usuario = UsuarioServiceImpl.elUsuario;
+        int usuario = (int) session.getAttribute("UsuarioID");
         System.out.println("id de Usuario: " + usuario);
         Curso curso = new Curso();
         curso = cursoDao.getCurso(idCurso);
@@ -83,11 +82,11 @@ public class ModuloServiceImpl implements ModuloService {
     }
 
     @Override
-    public String readModuloMoment(Model model) {
-        int curso = CursoServiceImpl.elcurso;
-        System.out.println("Listando Modulos de Curso: " + curso);
+    public String readModuloMoment(Model model,HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        System.out.println("Listando Modulos de Curso: " + session.getAttribute("CursoID"));
         System.out.println("Añadiendo los modulos: ");
-        model.addAttribute("modulos", moduloDao.findbyCurso(curso));
+        model.addAttribute("modulos", moduloDao.findbyCurso((int)session.getAttribute("CursoID")));
         return "anadirmodulos";
     }
 
@@ -104,14 +103,14 @@ public class ModuloServiceImpl implements ModuloService {
     }
 
     @Override
-    public ModelAndView createNewModulo(ModuloModel moduloM) {
+    public ModelAndView createNewModulo(ModuloModel moduloM,HttpServletRequest request) {
         ModelAndView mo = new ModelAndView("html_utf8");
         //Recibo el parametro del curso que se creo anteriormente 
-        int curso = CursoServiceImpl.elcurso;
         Curso cursoentidad = new Curso();
         Modulo entidad = new Modulo();
+        HttpSession session = request.getSession();
         //Aca busco por el id el curso que se obtuvo anteriormente
-        cursoentidad = cursoDao.getCurso(curso);
+        cursoentidad = cursoDao.getCurso((int)session.getAttribute("CursoID"));
         try {
             entidad.setTitulo(moduloM.getTitulo());
             entidad.setDescripcion(moduloM.getDescripcion());

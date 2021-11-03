@@ -6,6 +6,7 @@ import Elearning.modelo.Archivo;
 import Elearning.modelo.Curso;
 import Elearning.modelo.formModel.ArchivoModel;
 import Elearning.service.ArchivoService;
+import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,14 +29,14 @@ public class ArchivoControler {
 
     //Al entrar a la vista --> "anadirarchivos.jsp"
     @RequestMapping(value = "anadirarchivos.html", method = RequestMethod.GET)
-    public String vistaArchivos(Model model) {
-        return archivoService.readArchivoMoment(model);
+    public String vistaArchivos(Model model,HttpServletRequest request) {
+        return archivoService.readArchivoMoment(model,request);
     }
 
     //Agregar nuevos archivos  --> "anadirarchivos.jsp" 
     @RequestMapping(value = "addArchivos.html", method = RequestMethod.POST)
-    public String agregarArchivo(@ModelAttribute ArchivoModel Archivo) {
-        return archivoService.createArchivo(Archivo);
+    public String agregarArchivo(@ModelAttribute ArchivoModel Archivo,HttpServletRequest request) {
+        return archivoService.createArchivo(Archivo,request);
     }
 
     //Al entrar a la vista, con Id del curso que se actualizará --> "anadirNuevosarchivos.jsp"

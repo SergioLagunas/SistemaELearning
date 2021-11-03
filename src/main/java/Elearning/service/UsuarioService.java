@@ -6,8 +6,8 @@ import org.springframework.ui.Model;
 public interface UsuarioService {
     public String readAdmin(Model model);
     public String readSem(Model model);
-    public String readUser(Model model);
-    public String readUserSem(Model model);
+    public String readUser(Model model,HttpServletRequest request);
+    public String readUserSem(Model model,HttpServletRequest request);
     public String createNewSemillero(final HttpServletRequest request);
     public String createNewAdminsitrador(final HttpServletRequest request);
     public String loginUser(HttpServletRequest request);

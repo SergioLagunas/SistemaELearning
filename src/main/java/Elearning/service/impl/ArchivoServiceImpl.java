@@ -13,6 +13,8 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
@@ -28,10 +30,10 @@ public class ArchivoServiceImpl implements ArchivoService {
     private ArchivoDao archivoDao;
 
     @Override
-    public String readArchivoMoment(Model model) {
-        int curso = CursoServiceImpl.elcurso;
-        System.out.println("Listando Archivos de Curso: " + curso);
-        model.addAttribute("archivos", archivoDao.findbyCurso(curso));
+    public String readArchivoMoment(Model model, HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        System.out.println("Listando Archivos de Curso: " + session.getAttribute("CursoID"));
+        model.addAttribute("archivos", archivoDao.findbyCurso((int) session.getAttribute("CursoID")));
         return "anadirarchivos";
     }
 
@@ -45,11 +47,11 @@ public class ArchivoServiceImpl implements ArchivoService {
 
     //Agregar Archivos al crar un curso por primera ves 
     @Override
-    public String createArchivo(ArchivoModel Archivo) {
-        int curso = CursoServiceImpl.elcurso;
+    public String createArchivo(ArchivoModel Archivo,HttpServletRequest request) {
         Curso cursoentidad = new Curso();
         Archivo entidad = new Archivo();
-        cursoentidad = cursoDao.getCurso(curso);
+        HttpSession session = request.getSession();
+        cursoentidad = cursoDao.getCurso((int) session.getAttribute("CursoID"));
         try {
             entidad.setNombre(Archivo.getNombre());
             String enlace = guardarDropBox(Archivo);

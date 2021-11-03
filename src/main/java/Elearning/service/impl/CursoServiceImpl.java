@@ -25,15 +25,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.http.HttpSession;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Service("CursoService")
 public class CursoServiceImpl implements CursoService {
-
-    //Aqui almacenaremos el id del curso para que se puede hacer la relacion con la otra tabla 
-    static int elcurso = 0;
 
     @Autowired
     private CursoDao cursoDao;
@@ -57,14 +55,13 @@ public class CursoServiceImpl implements CursoService {
     }
 
     @Override
-    public String createNewCurso(CursoModel CursoF) {
+    public String createNewCurso(CursoModel CursoF,HttpServletRequest request) {
         //Obtenemos el id del Usuario que se logeo en este caso sera solo de administradores ya que solo ellos 
         //Pueden crear cursos
-        int usuario = UsuarioServiceImpl.elUsuario;
         Usuario user = new Usuario();
-
+        HttpSession session = request.getSession();
         //Obtenemos por el id el Administrador que se logeo 
-        user = usuarioDao.getUsuario(usuario);
+        user = usuarioDao.getUsuario((int)session.getAttribute("UsuarioID"));
 
         try {
             Curso entidad = new Curso();
@@ -86,8 +83,8 @@ public class CursoServiceImpl implements CursoService {
                 entidad.getUsuarios().add(user);
                 usuarioDao.update(user);
 
-                //Almaceno en un variable global el id del curso que se creo en ese momento 
-                elcurso = entidad.getIdCurso();
+                //Almaceno en un variable global el id del curso que se creo en ese momento
+                session.setAttribute("CursoID", entidad.getIdCurso());
                 System.out.println("La Imagen se Guardo correctamente");
                 return "redirect:/anadirmodulos.html";
             } else {

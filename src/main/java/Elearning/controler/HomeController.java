@@ -83,6 +83,8 @@ public class HomeController {
         HttpSession session = request.getSession(false);
         session.removeAttribute("usuario");
         session.removeAttribute("tUsuario");
+        session.removeAttribute("UsuarioID");
+        session.removeAttribute("CursoID");
         session.invalidate();
         System.out.println("SESION CERRADA");
         mo.setViewName("redirect:/index.html");

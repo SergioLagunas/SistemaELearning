@@ -48,7 +48,6 @@ public class UsuarioServiceImpl implements UsuarioService {
     @Autowired
     private CursoDao cursoDao;
 
-    static int elUsuario = 0;
 
     @Override
     public String readAdmin(Model model) {
@@ -65,16 +64,16 @@ public class UsuarioServiceImpl implements UsuarioService {
     }
 
     @Override
-    public String readUser(Model model) {
-        int idUsuario = elUsuario;
-        model.addAttribute("usuario", usuarioDao.getUsuario(idUsuario));
+    public String readUser(Model model, HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        model.addAttribute("usuario", usuarioDao.getUsuario((int)session.getAttribute("UsuarioID")));
         return "perfiladmin";
     }
     
     @Override
-    public String readUserSem(Model model) {
-        int idUsuario = elUsuario;
-        model.addAttribute("usuario", usuarioDao.getUsuario(idUsuario));
+    public String readUserSem(Model model,HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        model.addAttribute("usuario", usuarioDao.getUsuario((int)session.getAttribute("UsuarioID")));
         return "perfilsem";
     }
     
@@ -218,7 +217,6 @@ public class UsuarioServiceImpl implements UsuarioService {
         user.setEmail(correo);
         user.setContrasena(contraseña);
         user = usuarioDao.loginUsuario(user);
-        elUsuario = user.getIdUsuario();
         HttpSession session = request.getSession();
         session.setAttribute("UsuarioID", user.getIdUsuario());
         if (user != null) {

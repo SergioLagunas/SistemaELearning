@@ -9,9 +9,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 public interface ModuloService {
     public String readModulo(int idCurso, Model model, HttpServletRequest request);
-    public String readModuloMoment(Model model);
+    public String readModuloMoment(Model model,HttpServletRequest request);
     public String readModuloActualizar(int idCurso, Model model);
-    public ModelAndView createNewModulo(ModuloModel moduloM);
+    public ModelAndView createNewModulo(ModuloModel moduloM,HttpServletRequest request);
     public String anadirModulos(int idCurso, String titulo,String descripcion, MultipartFile url);
     public String updateModulo(int Vista,int idModulo,String titulo,String descripcion, MultipartFile url);
     public boolean deleteModulo(int idModulo);

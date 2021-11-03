@@ -40,8 +40,8 @@ public class CursoControler {
    
     //Creacion de los Cursos
     @RequestMapping(value="crearCurso.html",method = RequestMethod.POST)
-    public String crearCurso(@ModelAttribute CursoModel CursoF){
-        return cursoService.createNewCurso(CursoF);
+    public String crearCurso(@ModelAttribute CursoModel CursoF,HttpServletRequest request){
+        return cursoService.createNewCurso(CursoF,request);
     }
     
     //Listado de los curso de acuerdo a su categoria

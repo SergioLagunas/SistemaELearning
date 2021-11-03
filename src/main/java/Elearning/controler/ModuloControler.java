@@ -28,8 +28,8 @@ public class ModuloControler {
      int IDCurso = 0;
 
     @RequestMapping(value = "addModulo.html", method = RequestMethod.POST)
-    public ModelAndView addModulo(@ModelAttribute ModuloModel moduloM) {
-        return moduloService.createNewModulo(moduloM);
+    public ModelAndView addModulo(@ModelAttribute ModuloModel moduloM,HttpServletRequest request) {
+        return moduloService.createNewModulo(moduloM,request);
     }
 
     @RequestMapping(value = "mediacursos.html", method = RequestMethod.GET)
@@ -39,8 +39,8 @@ public class ModuloControler {
 
     //Para el crud que esta al insertar los modulos
     @RequestMapping(value = "anadirmodulos.html", method = RequestMethod.GET)
-    public String listadoModulo(Model model) {
-        return moduloService.readModuloMoment(model);
+    public String listadoModulo(Model model,HttpServletRequest request) {
+        return moduloService.readModuloMoment(model,request);
     }
 
     //este es la pagina para agregar mas modulos si se desea una vez acabando de crear el curso
