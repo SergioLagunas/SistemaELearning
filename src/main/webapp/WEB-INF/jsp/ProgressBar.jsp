@@ -6,7 +6,7 @@
     <head>
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/kendo.common.min.css" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/kendo.black.min.css" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/kendo.default.mobile.min.css" />
@@ -54,6 +54,9 @@
                 font-family: Arial, Helvetica, sans-serif;
                 margin: auto;
             }
+            .estiloProgressB{
+                background-color:red;
+            }
             /*propiedad responsive*/
             @media(max-width:820px){
                 h1::after,h1::before{
@@ -99,74 +102,58 @@
         </header>
         <br>
     <center><h1>Mis Cursos</h1></center>
-        <c:forEach var="cursos" items="${miscursos}">  
-            <div>
-                <div class="bar">
-                    <h3 style="margin-left: 35px;">${cursos.nombre}</h3>
-                    <div class="barraProgreso k-content">
-                        <div id="profileCompleteness${cursos.idCurso}"></div>
-                    </div>
-                    <br>
-                    <center><a href="mediacursos.html?idCurso=${cursos.idCurso}"><button>Continuar Curso</button></a></center>
-                    <br/>
-                </div>   
-            </c:forEach>
-            <c:forEach var="progress" items="${progreso}">   
-                    <h5 style="margin-left: 20px;"><span id="completed">${progress.progreso} %</span> Completado</h5>
-                    <div style="display: flex;"></div>
-            </c:forEach>
-                <script>
-                    $(document).ready(function () {
-                <c:forEach var="cursos" items="${miscursos}">
-                    var pb = $("#profileCompleteness${cursos.idCurso}").kendoProgressBar({
-                            type: "chunk",
-                            chunkCount: 100,
-                            min: 0,
-                            max: 100,
-                        value: ${cursos.progreso}
-                        }).data("kendoProgressBar");
-                </c:forEach>
-                <c:forEach var="cursos" items="${miscursos}">
-                    pb.value(completeness);
-                    $("#completed").text((completeness * 20) + "%");
-                </c:forEach>
-                    });
-                </script>
-            </div>
+    <c:forEach var="miCurso" items="${progreso}"> 
+        <script>
+            var ProgressB${miCurso.idCurso}=${miCurso.progreso};
+        </script>
+    </c:forEach>
+    <c:forEach var="cursos" items="${miscursos}"> 
+        <h2>${cursos.nombre}</h2>
+        <div class="estiloProgressB" id="progressbar${cursos.idCurso}"></div>
+        <script>
+            $(document).ready(function () {
+                $("#progressbar${cursos.idCurso}").kendoProgressBar({
+                    min: 0,
+                    max: 100,
+                    value: ProgressB${cursos.idCurso},
+                    type: "percent",
+                    orientation: "horizontal"
+                });
+            });
+        </script>
+    </c:forEach>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <footer>
+        <div class="footer-content">
+            <h3>B1 SOFT LATINOAMERICA</h3>
 
-        <!--Footer-->
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <footer>
-    <div class="footer-content">
-        <h3>B1 SOFT LATINOAMERICA</h3>
+            <ul class="socials">
+                <li><a href="#"><i class="fab fa-facebook"></i></a>
+                <li><a href="#"><i class="fab fa-twitter"></i></a>
+                <li><a href="#"><i class="fab fa-google"></i></a>
+                <li><a href="#"><i class="fab fa-youtube"></i></a>
+                <li><a href="#"><i class="fab fa-linkedin"></i></a>
+            </ul>
+        </div>
+        <div class="footer-bottom">
+            <p>designed by <span>B1 SOFT</span></p>
+        </div>
+    </footer>
+</body>
+<script>
+    function cerrarSession() {
 
-        <ul class="socials">
-            <li><a href="#"><i class="fab fa-facebook"></i></a>
-                     <li><a href="#"><i class="fab fa-twitter"></i></a>
-                     <li><a href="#"><i class="fab fa-google"></i></a>
-                     <li><a href="#"><i class="fab fa-youtube"></i></a>
-                     <li><a href="#"><i class="fab fa-linkedin"></i></a>
-        </ul>
-    </div>
-    <div class="footer-bottom">
-        <p>designed by <span>B1 SOFT</span></p>
-    </div>
-</footer>
-    </body>
-    <script>
-        function cerrarSession() {
+        $(location).attr('href', "cerrarSession.html")
 
-            $(location).attr('href', "cerrarSession.html")
-
-        }
-    </script>
+    }
+</script>
 </html>
