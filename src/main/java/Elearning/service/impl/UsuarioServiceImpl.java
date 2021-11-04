@@ -41,13 +41,12 @@ public class UsuarioServiceImpl implements UsuarioService {
 
     @Autowired
     private UsuarioDao usuarioDao;
-    
+
     @Autowired
     private MiCursoDao micursoDao;
-    
+
     @Autowired
     private CursoDao cursoDao;
-
 
     @Override
     public String readAdmin(Model model) {
@@ -66,22 +65,21 @@ public class UsuarioServiceImpl implements UsuarioService {
     @Override
     public String readUser(Model model, HttpServletRequest request) {
         HttpSession session = request.getSession();
-        model.addAttribute("usuario", usuarioDao.getUsuario((int)session.getAttribute("UsuarioID")));
+        model.addAttribute("usuario", usuarioDao.getUsuario((int) session.getAttribute("UsuarioID")));
         return "perfiladmin";
     }
-    
+
     @Override
-    public String readUserSem(Model model,HttpServletRequest request) {
+    public String readUserSem(Model model, HttpServletRequest request) {
         HttpSession session = request.getSession();
-        model.addAttribute("usuario", usuarioDao.getUsuario((int)session.getAttribute("UsuarioID")));
+        model.addAttribute("usuario", usuarioDao.getUsuario((int) session.getAttribute("UsuarioID")));
         return "perfilsem";
     }
-    
 
     @Override
     public String barProgress(Model modelo, HttpServletRequest request) {
         HttpSession session = request.getSession();
-        int idUsuario = (int)session.getAttribute("UsuarioID");
+        int idUsuario = (int) session.getAttribute("UsuarioID");
         Usuario user = new Usuario();
         MiCurso micurso = new MiCurso();
         user = usuarioDao.getUsuario(idUsuario);
@@ -92,12 +90,12 @@ public class UsuarioServiceImpl implements UsuarioService {
         System.out.println("Imprecion de MiCurso");
         //En esta parte lo que hago es comparar los id de los cursos del usuario con los idCurso de la tabla intermedia
         //ya que cuando relacionas las tablas el progreso es null y aqui es donde le asigno el valor de 0 y se quite el valor null
-        for(int i=0;i<mcur.size();i++){
-            if(mcur.get(i).getIdCurso()==cursos.get(i).getIdCurso() && mcur.get(i).getProgreso()==null){
+        for (int i = 0; i < mcur.size(); i++) {
+            if (mcur.get(i).getIdCurso() == cursos.get(i).getIdCurso() && mcur.get(i).getProgreso() == null) {
                 mcur.get(i).setProgreso(0);
                 micursoDao.update(mcur.get(i));
-                
-            }else if(mcur.get(i).getProgreso()!=null){
+
+            } else if (mcur.get(i).getProgreso() != null) {
                 //en esta parte traspaso los cursos a otra lista ya que en ocaciones hibernate cambia el orden de la lista de los cursos
                 //lo realizo asi con el objetivo que que coinsida el progreso con el curso relacionado por el usuario
                 //ya que si lo hacia directo los cursos cambiaban de orden 
@@ -108,7 +106,7 @@ public class UsuarioServiceImpl implements UsuarioService {
         //y la lista de MiCurso para obtener el progreso
         modelo.addAttribute("miscursos", losCursos);
         modelo.addAttribute("progreso", mcur);
-        
+
         return "ProgressBar";
     }
 
@@ -212,28 +210,32 @@ public class UsuarioServiceImpl implements UsuarioService {
         String correo = request.getParameter("email");
         String contraseña = request.getParameter("contrasena");
 
-        Usuario user = new Usuario();
-        String rol = "";
-        user.setEmail(correo);
-        user.setContrasena(contraseña);
-        user = usuarioDao.loginUsuario(user);
-        HttpSession session = request.getSession();
-        session.setAttribute("UsuarioID", user.getIdUsuario());
-        if (user != null) {
-            rol = user.gettUsuario();
-            if (rol.equals("Administrador")) {
-                session.setAttribute("usuario", user.getNombre());
-                session.setAttribute("tUsuario", rol);
-                return rol;
-            } else if (rol.equals("Semillero")) {
-                session.setAttribute("usuario", user.getNombre());
-                session.setAttribute("tUsuario", rol);
-                return rol;
+        try {
+            Usuario user = new Usuario();
+            String rol = "";
+            user.setEmail(correo);
+            user.setContrasena(contraseña);
+            user = usuarioDao.loginUsuario(user);
+            HttpSession session = request.getSession();
+            session.setAttribute("UsuarioID", user.getIdUsuario());
+            if (user != null) {
+                rol = user.gettUsuario();
+                if (rol.equals("Administrador")) {
+                    session.setAttribute("usuario", user.getNombre());
+                    session.setAttribute("tUsuario", rol);
+                    return rol;
+                } else if (rol.equals("Semillero")) {
+                    session.setAttribute("usuario", user.getNombre());
+                    session.setAttribute("tUsuario", rol);
+                    return rol;
+                } else {
+                    return "errorL";
+                }
             } else {
                 return "errorL";
             }
-        }else{
-            return "errorL";
+        } catch (Exception e) {
+            return "error";
         }
     }
 
@@ -288,7 +290,6 @@ public class UsuarioServiceImpl implements UsuarioService {
         editUsuario.setRfc(rfc);
 
         editUsuario = usuarioDao.update(editUsuario);
-        
 
         return "admin";
     }
