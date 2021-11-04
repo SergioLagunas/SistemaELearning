@@ -192,6 +192,16 @@
         </style>
     </head>
     <body class="body1">
+        <%
+            String tipoUsuario = (String) session.getAttribute("tUsuario");
+            if (tipoUsuario != null) {
+                if (tipoUsuario.equals("Semillero")) {
+                    response.sendRedirect("bienvenida.html");
+                }
+            } else {
+                response.sendRedirect("index.html");
+            }
+        %>
         <!-- Navigation-->
         <header>
             <nav class="navbar">
