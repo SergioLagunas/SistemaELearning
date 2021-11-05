@@ -25,12 +25,12 @@ public class MiCuestionario implements Serializable{
     private boolean evaluacion;
     
     //Relación MUCHOS a UNO con Usuario --> "MUCHOS A MUCHOS"
-    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.PERSIST)
+    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     @JoinColumn(name="idUsuario", referencedColumnName = "idUsuario")
     private Usuario usuario;
     
     //Relación MUCHOS a UNO con Cuestionario --> "MUCHOS A MUCHOS"
-    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.PERSIST)
+    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     @JoinColumn(name="idCuestionario", referencedColumnName = "idCuestionario")
     private Cuestionario cuestionario;
     

@@ -15,6 +15,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -60,6 +61,11 @@ public class Usuario implements Serializable {
     //Relacion UNO A MUCHOS con MiCuestionario --> "MUCHOS A MUCHOS"
     @OneToMany(mappedBy = "usuario",fetch=FetchType.LAZY,cascade = CascadeType.PERSIST)
     private List<MiCuestionario> miCuestionario;
+    
+     //Relación MUCHOS a UNO con idArchivoUsuario
+    @ManyToOne(fetch = FetchType.LAZY,cascade = {CascadeType.ALL,CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH})
+    @JoinColumn(name="idArchivoUsuario")
+    private ArchivoUsuario idArchivoUsuario;
     
     //Relacion MUCHOS A MUCHOS con Cuestionario
 //    @ManyToMany(cascade = {CascadeType.PERSIST,CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH},fetch = FetchType.EAGER)
@@ -167,7 +173,15 @@ public class Usuario implements Serializable {
     public void setMiCuestionario(List<MiCuestionario> miCuestionario) {
         this.miCuestionario = miCuestionario;
     }
-    
+
+    public ArchivoUsuario getIdArchivoUsuario() {
+        return idArchivoUsuario;
+    }
+
+    public void setIdArchivoUsuario(ArchivoUsuario idArchivoUsuario) {
+        this.idArchivoUsuario = idArchivoUsuario;
+    }
+
     public void addMiCuestionario(MiCuestionario miCuestionario){   
         if(this.miCuestionario != null){
             this.miCuestionario = new ArrayList<>();
