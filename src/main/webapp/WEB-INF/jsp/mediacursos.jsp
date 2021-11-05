@@ -61,8 +61,6 @@
 
             }
 
-
-
             table{
                 text-align:justify-all;
                 padding: 30px;
@@ -163,229 +161,242 @@
                 </div>
                 <script type="text/javascript">
                     let DataForm = {};
+                    let cues = {};
                     $(document).ready(function () {
+
+                <c:forEach items="${cuestionarios}" var="cuestionario">
+                    cues["id"] = "${cuestionario.idCuestionario}";
+                </c:forEach>
+                
                 <c:forEach var="arch" items="${archivos}">
-                        DataForm["id"] = "${arch.idArchivo}";
+                    DataForm["id"] = "${arch.idArchivo}";
                 </c:forEach>
-                        if (DataForm.id != "undefined" && DataForm.id != null) {
-                            document.getElementById('mostrararchivos').style.display = 'block';
-                            document.getElementById('mostrarexamenes').style.display = 'block';
-                        } else {
-                            document.getElementById('mostrararchivos').style.display = 'none';
-                            document.getElementById('mostrarexamenes').style.display = 'none';
-                        }
-                        $("#mediaplayer").kendoMediaPlayer({
-                            autoPlay: false,
-                        });
 
-                        var videos = new kendo.data.DataSource({
-                            data: [
+                if (DataForm.id != "undefined" && DataForm.id != null) {
+                document.getElementById('mostrararchivos').style.display = 'block';
+                } else {
+                document.getElementById('mostrararchivos').style.display = 'none';
+                }
+
+                if (cues.id != "undefined" && cues.id != null && cues.id != "") {
+                document.getElementById('mostrarexamenes').style.display = 'block';
+                } else {
+                document.getElementById('mostrarexamenes').style.display = 'none';
+                }
+
+                $("#mediaplayer").kendoMediaPlayer({
+                autoPlay: false,
+                });
+
+                var videos = new kendo.data.DataSource({
+                data: [
                 <c:forEach items="${modulos}" var="modulo">
-                                {
-                                    title: "${modulo.titulo}",
-                                    poster: "${detacurso.caratula}",
-                                    source: "${modulo.url}",
-                                },
+                    {
+                    title: "${modulo.titulo}",
+                    poster: "${detacurso.caratula}",
+                    source: "${modulo.url}",
+                    },
                 </c:forEach>
-                            ],
-                        });
+                ],
+                });
 
-                        var listView = $("#listView").kendoListView({
-                            dataSource: videos,
-                            selectable: true,
-                            scrollable: false,
-                            template: kendo.template($("#template").html()),
-                            change: onChange,
-                            dataBound: onDataBound,
-                        });
+                var listView = $("#listView").kendoListView({
+                dataSource: videos,
+                selectable: true,
+                scrollable: false,
+                template: kendo.template($("#template").html()),
+                change: onChange,
+                dataBound: onDataBound,
+                });
 
-                        function onChange() {
-                            var index = this.select().index();
-                            var dataItem = this.dataSource.view()[index];
-                            $("#mediaplayer").data("kendoMediaPlayer").media(dataItem);
-                        }
+                function onChange() {
+                var index = this.select().index();
+                var dataItem = this.dataSource.view()[index];
+                $("#mediaplayer").data("kendoMediaPlayer").media(dataItem);
+                }
 
-                        function onDataBound(e) {
-                            this.select(this.content.children().first());
-                        }
-                    });
+                function onDataBound(e) {
+                this.select(this.content.children().first());
+                }
+                });
 
-                    function enviarVistaExamenUser(idCuestionario) {
-                        document.location.href = "CrearMiCuestionario.html?Evaluacion=0&IdUsuario=${UsuarioID}&IdCuestionario=" + idCuestionario;
-                    }
-            </script>
+                function enviarVistaExamenUser(idCuestionario) {
+                document.location.href = "CrearMiCuestionario.html?Evaluacion=0&IdUsuario=${UsuarioID}&IdCuestionario=" + idCuestionario;
+                }
+                </script>
 
-            <script type="text/x-kendo-template" id="template">
-                <li class="k-item k-state-default" onmouseover="$(this).addClass('k-state-hover')"
-                onmouseout="$(this).removeClass('k-state-hover')">
-                <span>
-                <img src="#:poster#" />
-                <h5>#:title#</h5>
-                </span>
-                </li>
-            </script>
-            <br/>
-            <br/>
-            <br/>
+                <script type="text/x-kendo-template" id="template">
+                    <li class="k-item k-state-default" onmouseover="$(this).addClass('k-state-hover')"
+                    onmouseout="$(this).removeClass('k-state-hover')">
+                    <span>
+                    <img src="#:poster#" />
+                    <h5>#:title#</h5>
+                    </span>
+                    </li>
+                </script>
+                <br/>
+                <br/>
+                <br/>
 
 
 
-            <table>
-                <tr>
-                    <th width="1400" scope="col">Descripción del curso</th>
-                </tr>
-                <tr>
-                    <th width="1332" scope="col"><c:out value="${detacurso.descripcion}"></c:out></th>
+                <table>
+                    <tr>
+                        <th width="1400" scope="col">Descripción del curso</th>
                     </tr>
+                    <tr>
+                        <th width="1332" scope="col"><c:out value="${detacurso.descripcion}"></c:out></th>
+                        </tr>
 
-                    <!--Esta es una lista que desplegara los archivos en una lista y cuando le des en el boton de "Obten Documento" 
-                    te dirijira al enlce ya sea txt o inclusive los pdf te los descargara automaticamente
-                    Nota: esta lista solo sera visible si el curso contiene archivos
-                    
-                    Suerte Amigosss <3-->
+                        <!--Esta es una lista que desplegara los archivos en una lista y cuando le des en el boton de "Obten Documento" 
+                        te dirijira al enlce ya sea txt o inclusive los pdf te los descargara automaticamente
+                        Nota: esta lista solo sera visible si el curso contiene archivos
+                        
+                        Suerte Amigosss <3-->
 
-                </table>
-                <!--Ya esta la parte de listar los archivos el archivo lo abre en otra pestaña-->
-                <div id="mostrararchivos">
-                    <h1>Archivos</h1>
+                    </table>
+                    <!--Ya esta la parte de listar los archivos el archivo lo abre en otra pestaña-->
+                    <div id="mostrararchivos">
+                        <h1>Archivos</h1>
+                        <div class="cards-container">
+                            <!-- Cartas -->
+                        <c:if test = "${archivos != null}">
+                            <c:forEach items="${archivos}" var="archivo">
+                                <div class="k-card">
+                                    <a href="${archivo.archivo}" target="_blank"><img class="k-card-image" src="${pageContext.request.contextPath}/resources/imagenes/ARCHIVOS.png" /></a>
+                                    <div class="k-card-body">
+                                        <center><h4>${archivo.nombre}</h4></center>
+                                    </div>
+                                </div>
+                            </c:forEach>
+                        </c:if>
+                    </div>
+                </div>
+                <!--En este caso lista los mismos archivos devido a que todavia no hay un diferenciador de los archivos normales a los que son examen-->
+                <div id="mostrarexamenes">
+                    <h1>Examenes</h1>
                     <div class="cards-container">
                         <!-- Cartas -->
-                    <c:if test = "${archivos != null}">
-                        <c:forEach items="${archivos}" var="archivo">
-                            <div class="k-card">
-                                <a href="${archivo.archivo}" target="_blank"><img class="k-card-image" src="${pageContext.request.contextPath}/resources/imagenes/ARCHIVOS.png" /></a>
-                                <div class="k-card-body">
-                                    <center><h4>${archivo.nombre}</h4></center>
+                        <c:if test = "${cuestionarios != null}">
+                            <c:forEach items="${cuestionarios}" var="cuestionario">
+                                <script> cues["id"] = "${cuestionario.idCuestionario}";</script>
+                                <div class="k-card">
+                                    <a onClick="enviarVistaExamenUser(${cuestionario.idCuestionario})" target="_blank"><img class="k-card-image" src="${pageContext.request.contextPath}/resources/imagenes/EXAMEN.png" /></a>
+                                    <div class="k-card-body">
+                                        <center><h4>${cuestionario.nombre}</h4></center>
+                                    </div>
                                 </div>
-                            </div>
-                        </c:forEach>
-                    </c:if>
+                            </c:forEach>
+                        </c:if>
+                    </div>
                 </div>
-            </div>
-            <!--En este caso lista los mismos archivos devido a que todavia no hay un diferenciador de los archivos normales a los que son examen-->
-            <div id="mostrarexamenes">
-            <h1>Examenes</h1>
-            <div class="cards-container">
-                <!-- Cartas -->
-                <c:if test = "${cuestionarios != null}">
-                    <c:forEach items="${cuestionarios}" var="cuestionario">
-                        <div class="k-card">
-                            <a onClick="enviarVistaExamenUser(${cuestionario.idCuestionario})" target="_blank"><img class="k-card-image" src="${pageContext.request.contextPath}/resources/imagenes/EXAMEN.png" /></a>
-                            <div class="k-card-body">
-                                <center><h4>${cuestionario.nombre}</h4></center>
-                            </div>
-                        </div>
-                    </c:forEach>
-                </c:if>
-            </div>
-            </div>
-            <style>
-                .k-mediaplayer {
-                    float: left;
-                    box-sizing: border-box;
-                    width: 70%;
-                }
-
-                .playlist {
-                    float: left;
-                    height: 500px;
-                    overflow: auto;
-                    width: 30%;
-
-                }
-                @media (max-width: 500px) {
-                    .playlist,
+                <style>
                     .k-mediaplayer {
-                        width: 100%;
+                        float: left;
+                        box-sizing: border-box;
+                        width: 70%;
+                    }
+
+                    .playlist {
+                        float: left;
+                        height: 500px;
+                        overflow: auto;
+                        width: 30%;
 
                     }
-                }
+                    @media (max-width: 500px) {
+                        .playlist,
+                        .k-mediaplayer {
+                            width: 100%;
 
-                .playlist ul,
-                .playlist li {
-                    list-style-type: none;
-                    margin: 0;
-                    padding: 0;
+                        }
+                    }
 
-                }
+                    .playlist ul,
+                    .playlist li {
+                        list-style-type: none;
+                        margin: 0;
+                        padding: 0;
 
-                .playlist .k-item {
-                    border-bottom-style: solid;
-                    border-bottom-width: 1px;
-                    padding: 14px 15px;
+                    }
 
-                }
+                    .playlist .k-item {
+                        border-bottom-style: solid;
+                        border-bottom-width: 1px;
+                        padding: 14px 15px;
 
-                .playlist .k-item:last-child {
-                    border-bottom-width: 0;
+                    }
 
-                }
+                    .playlist .k-item:last-child {
+                        border-bottom-width: 0;
 
-                .playlist span {
-                    cursor: pointer;
-                    display: block;
-                    overflow: hidden;
-                    text-decoration: none;
-                }
+                    }
 
-                .playlist span img {
-                    border: 0 none;
-                    display: block;
-                    height: 56px;
-                    object-fit: cover;
-                    width: 100px;
-                    float: left;
-                }
+                    .playlist span {
+                        cursor: pointer;
+                        display: block;
+                        overflow: hidden;
+                        text-decoration: none;
+                    }
 
-                .playlist h5 {
-                    display: block;
-                    font-weight: normal;
-                    margin: 0;
-                    overflow: hidden;
-                    padding-left: 10px;
-                    text-align: left;
-                }
-            </style>
-        </div></center>
+                    .playlist span img {
+                        border: 0 none;
+                        display: block;
+                        height: 56px;
+                        object-fit: cover;
+                        width: 100px;
+                        float: left;
+                    }
 
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
+                    .playlist h5 {
+                        display: block;
+                        font-weight: normal;
+                        margin: 0;
+                        overflow: hidden;
+                        padding-left: 10px;
+                        text-align: left;
+                    }
+                </style>
+            </div></center>
 
-    <center><footer>
-            <div class="footer-content">
-                <h3>B1 SOFT LATINOAMERICA</h3>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
 
-                <ul class="socials">
-                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                    <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                    <li><a href="#"><i class="fa fa-youtube"></i></a></li>
-                    <li><a href="#"><i class="fa fa-linkedin-square"></i></a></li>
-                </ul>
-            </div>
-            <div class="footer-bottom">
-                <p>designed by <span>B1 SOFT</span></p>
-            </div>
-        </footer> </center>
-</body>
+        <center><footer>
+                <div class="footer-content">
+                    <h3>B1 SOFT LATINOAMERICA</h3>
+
+                    <ul class="socials">
+                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                        <li><a href="#"><i class="fa fa-youtube"></i></a></li>
+                        <li><a href="#"><i class="fa fa-linkedin-square"></i></a></li>
+                    </ul>
+                </div>
+                <div class="footer-bottom">
+                    <p>designed by <span>B1 SOFT</span></p>
+                </div>
+            </footer> </center>
+    </body>
 <script>
     function cerrarSession() {
 

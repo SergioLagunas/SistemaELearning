@@ -50,12 +50,18 @@
                 right: -140px;
 
             }
-            h2,h3,h4,h5, h6{
-                font-family: Arial, Helvetica, sans-serif;
-                margin: auto;
+            
+            contenerdor{
+                width: 80%;
+            }
+            #progressB{
+                margin-left: 22%
             }
             .estiloProgressB{
-                background-color:red;
+                width: 65%;
+            }
+            .footer-content h3{
+                font-family: "Open Sans";
             }
             /*propiedad responsive*/
             @media(max-width:820px){
@@ -63,6 +69,16 @@
                     display: none;
 
                 }
+                #progressB{
+                    margin-left: 10%
+                }
+                .estiloProgressB{
+                    width: 70%;
+                }
+                h2{
+                    font-size: 16px;
+                }
+
             }
         </style>
     </head>
@@ -102,30 +118,30 @@
         </header>
         <br>
     <center><h1>Mis Cursos</h1></center>
-    <c:forEach var="miCurso" items="${progreso}"> 
-        <script>
-            var ProgressB${miCurso.idCurso}=${miCurso.progreso};
-        </script>
-    </c:forEach>
-    <c:forEach var="cursos" items="${miscursos}"> 
-        <h2>${cursos.nombre}</h2>
-        <div class="estiloProgressB" id="progressbar${cursos.idCurso}"></div>
-        <script>
-            $(document).ready(function () {
-                $("#progressbar${cursos.idCurso}").kendoProgressBar({
-                    min: 0,
-                    max: 100,
-                    value: ProgressB${cursos.idCurso},
-                    type: "percent",
-                    orientation: "horizontal"
+    <div id="progressB">
+        <c:forEach var="miCurso" items="${progreso}"> 
+            <script>
+                var ProgressB${miCurso.idCurso} =${miCurso.progreso};
+            </script>
+        </c:forEach>
+        <c:forEach var="cursos" items="${miscursos}"> 
+            <h2 style="margin-left: 35px;">${cursos.nombre}</h2>
+            <div class="estiloProgressB" id="progressbar${cursos.idCurso}"></div>
+            <br>
+            <br>
+            <script>
+                $(document).ready(function () {
+                    $("#progressbar${cursos.idCurso}").kendoProgressBar({
+                        min: 0,
+                        max: 100,
+                        value: ProgressB${cursos.idCurso},
+                        type: "percent",
+                        orientation: "horizontal"
+                    });
                 });
-            });
-        </script>
-    </c:forEach>
-    <br>
-    <br>
-    <br>
-    <br>
+            </script>
+        </c:forEach>
+    </div>
     <br>
     <br>
     <br>
