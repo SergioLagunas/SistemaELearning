@@ -21,15 +21,15 @@ public class ModuloControler {
 
     @Autowired
     private ModuloService moduloService;
-    
+
     @Autowired
     private ModuloDao moduloDao;
 
-     int IDCurso = 0;
+    int IDCurso = 0;
 
     @RequestMapping(value = "addModulo.html", method = RequestMethod.POST)
-    public ModelAndView addModulo(@ModelAttribute ModuloModel moduloM,HttpServletRequest request) {
-        return moduloService.createNewModulo(moduloM,request);
+    public ModelAndView addModulo(@ModelAttribute ModuloModel moduloM, HttpServletRequest request) {
+        return moduloService.createNewModulo(moduloM, request);
     }
 
     @RequestMapping(value = "mediacursos.html", method = RequestMethod.GET)
@@ -39,13 +39,13 @@ public class ModuloControler {
 
     //Para el crud que esta al insertar los modulos
     @RequestMapping(value = "anadirmodulos.html", method = RequestMethod.GET)
-    public String listadoModulo(Model model,HttpServletRequest request) {
-        return moduloService.readModuloMoment(model,request);
+    public String listadoModulo(Model model, HttpServletRequest request) {
+        return moduloService.readModuloMoment(model, request);
     }
 
     //este es la pagina para agregar mas modulos si se desea una vez acabando de crear el curso
     @RequestMapping(value = "actualizarmodulos.html", method = RequestMethod.GET)
-    public String actualizarModulos(@RequestParam("CursoE")int idCurso, Model model) {
+    public String actualizarModulos(@RequestParam("CursoE") int idCurso, Model model) {
         IDCurso = idCurso;
         return moduloService.readModuloActualizar(idCurso, model);
     }
@@ -57,9 +57,10 @@ public class ModuloControler {
             @RequestParam("titulo") String titulo,
             @RequestParam("descripcion") String descripcion,
             @RequestParam("url") MultipartFile url,
+             @RequestParam("youtubeUrl") String youtubeUrl,
             @RequestParam("moduid") int idModulo) {
         System.out.println("VistaA: " + VistaA);
-        return moduloService.updateModulo(VistaA, idModulo, titulo, descripcion, url);
+        return moduloService.updateModulo(VistaA, idModulo, titulo, descripcion, url, youtubeUrl);
     }
 
     //Este es del Crud para insertar mas modulos una ves que el curso ya fue creado
@@ -67,38 +68,39 @@ public class ModuloControler {
     public String anadirModulos(
             @RequestParam("titulo") String titulo,
             @RequestParam("descripcion") String descripcion,
-            @RequestParam("url") MultipartFile url) {
-        return moduloService.anadirModulos(IDCurso, titulo, descripcion, url);
+            @RequestParam("url") MultipartFile url,
+            @RequestParam("youtubeUrl") String youtubeUrl) {
+        return moduloService.anadirModulos(IDCurso, titulo, descripcion, url, youtubeUrl);
     }
 
     @RequestMapping(value = "borrarModulo.html", method = RequestMethod.GET)
-    public ModelAndView listadodecursos(@RequestParam("ModuloE") int ModuloE, @RequestParam("VistaB") int VistaB ,Model model) {
+    public ModelAndView listadodecursos(@RequestParam("ModuloE") int ModuloE, @RequestParam("VistaB") int VistaB, Model model) {
         ModelAndView mo = new ModelAndView();
         Curso curso = new Curso();
         Modulo mod = new Modulo();
-        
+
         mod = moduloDao.getModulo(ModuloE);
         curso = mod.getIdCurso();
-     
+
         if (moduloService.deleteModulo(ModuloE)) {
             System.out.println("Se elimino el modulo con ID: " + ModuloE);
-            if(VistaB == 1){
-                    mo.setViewName("redirect:/anadirmodulos.html");
-                } else {
-                    mo.setViewName("redirect:/actualizarmodulos.html?CursoE="+curso.getIdCurso());
-                }
+            if (VistaB == 1) {
+                mo.setViewName("redirect:/anadirmodulos.html");
+            } else {
+                mo.setViewName("redirect:/actualizarmodulos.html?CursoE=" + curso.getIdCurso());
+            }
         } else {
             System.out.println("No se ha borrado el modulo...");
             //checar si si redirecciona bien a esta paguina 
-            mo.setViewName("redirect:/actualizarmodulos.html?CursoE="+curso.getIdCurso());
+            mo.setViewName("redirect:/actualizarmodulos.html?CursoE=" + curso.getIdCurso());
         }
 
         return mo;
     }
-    
-     //Vistas de error Modulo
+
+    //Vistas de error Modulo
     @RequestMapping(value = "primerosmodulos.html")
-    public String errorMo(){
+    public String errorMo() {
         return "primerosmodulos";
     }
 }

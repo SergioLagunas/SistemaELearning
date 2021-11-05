@@ -8,10 +8,10 @@ public class ModuloModel {
     private String titulo;
     private String descripcion;
     private MultipartFile url;
+    private String youtubeUrl;
 
     public ModuloModel() {
     }
-
 
     public ModuloModel(String tirulo, String descripcion, MultipartFile url) {
         this.titulo = tirulo;
@@ -43,9 +43,16 @@ public class ModuloModel {
         this.url = url;
     }
 
+    public String getYoutubeUrl() {
+        return youtubeUrl;
+    }
+
+    public void setYoutubeUrl(String youtubeUrl) {
+        this.youtubeUrl = youtubeUrl;
+    }
+
     @Override
     public String toString() {
-        return "ModuloModel{" + "tirulo=" + titulo + ", descripcion=" + descripcion + ", url=" + url + '}';
-    } 
-    
+        return "ModuloModel{" + "titulo=" + titulo + ", descripcion=" + descripcion + ", url=" + url + ", youtubeUrl=" + youtubeUrl + '}';
+    }  
 }

@@ -201,8 +201,8 @@
             #DivSCursos img{
                 width: 50%;
             }
-            
-                        .btnbtn-danger{
+
+            .btnbtn-danger{
                 width: 40px;
                 height: 40px;
                 background: #DD3545;
@@ -214,9 +214,9 @@
                 color: white;
             }
             .btnbtn-danger:hover {
-               background: #C82333;
+                background: #C82333;
             }
-            
+
             .btnbtn-success{
                 width: 40px;
                 height: 40px;
@@ -229,9 +229,9 @@
                 color: white;
             }
             .btnbtn-success:hover {
-               background: #218837;
+                background: #218837;
             }
-            
+
             .btnbtn-warning{
                 width: 40px;
                 height: 40px;
@@ -242,8 +242,8 @@
                 border:none;
                 border-radius: 5px;
             }
-             .btnbtn-warning:hover {
-               background: #E5AB00;
+            .btnbtn-warning:hover {
+                background: #E5AB00;
             }
             /*propiedad responsive*/
             @media(max-width:820px){
@@ -329,7 +329,10 @@
                 <br>
                 <label for="des"></label> <input type="text" name="descripcion" id="des" placeholder="Descripcion" required>
                 <br>
-                <label for="arch"></label> <input type="file" id="arch" name="url" accept=".mp4,.avi,.wmv" required>
+                <label for="arch"></label> <input type="file" id="arch" name="url" accept=".mp4,.avi,.wmv">
+                <br>
+                <br>
+                <label for="des"></label> <input type="text" name="youtubeUrl" id="des" placeholder="Url de Youtube">
                 <!--<div id="DividAg" style="display:none;">
                 <!--<div id="DividAg">
                     <label for="curid"></label> <input type="text" id="curid" placeholder="Id" name="curid">
@@ -359,6 +362,8 @@
                 <label for="des"></label> <input type="text" name="descripcion" id="desAc" placeholder="Descripcion" required>
                 <br>
                 <label for="arc"></label> <input type="file" id="archAc" name="url" accept=".mp4,.avi,.wmv">
+                <br> 
+                <label for="des"></label> <input type="text" name="youtubeUrl" id="desAc" placeholder="Url de Youtube">
             </center>
             <br>
             <center>
@@ -610,7 +615,11 @@
             let Fila = table.insertRow(table.length);
             columna1 = Fila.insertCell(0).innerHTML = data.nom;
             columna2 = Fila.insertCell(1).innerHTML = data.des;
-            columna3 = Fila.insertCell(2).innerHTML = `<button onClick="alertVideo('` + data.url + `')"><video src="` + data.url + `" width="240" height="140"></video></button>`;
+            if (data.url.includes('www.youtube.com')) {
+                columna3 = Fila.insertCell(2).innerHTML = `<a href="` + data.url + `" target="_blank" style="text-decoration: none; color:#FFFFFF;">VER VIDEO DE YOUTUBE</a>`;
+            } else {
+                columna3 = Fila.insertCell(2).innerHTML = `<button onClick="alertVideo('` + data.url + `')"><video src="` + data.url + `" width="240" height="140"></video></button>`;
+            }
             columna3 = Fila.insertCell(3).innerHTML = `
                                                             <button type="button" class="btnbtn-danger" onClick="Borrarr(this,` + data.id + `)">
                                                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-trash " viewBox="0 0 16 16">
@@ -697,9 +706,9 @@
         }
 
         function añadirCuestionario(id) {
-           document.location.href = "cuestionario.html?Modulo=" + id;
+            document.location.href = "cuestionario.html?Modulo=" + id;
         }
-        
+
     </script>
 
 

@@ -314,7 +314,10 @@
 
                 <label for="des"></label> <input type="text" name="descripcion" id="des" placeholder="Descripción" required>
 
-                <label for="arch"></label> <input type="file" id="arch" name="url" accept=".mp4,.avi,.wmv" required>
+                <label for="arch"></label> <input type="file" id="arch" name="url" accept=".mp4,.avi,.wmv">
+                <br>
+                <br> 
+                <label for="des"></label> <input type="text" name="youtubeUrl" id="des" placeholder="Url de Youtube">
             </center>
             <br>
             <div id="CargaProgress">
@@ -339,6 +342,9 @@
             <label for="des"></label> <input type="text" name="descripcion" id="desAc" placeholder="Descripción"  required>
             <br>
             <label for="arc"></label> <input type="file" id="archAc" name="url" accept=".mp4,.avi,.wmv">
+            <br>
+            <br> 
+            <label for="des"></label> <input type="text" name="youtubeUrl" id="des" placeholder="Url de Youtube">
             <div id="Divid" style="display:none;">
                 <!--<div id="Divid">-->
                 <label for="moduid"></label> <input type="text" id="moduid" placeholder="Id" name="moduid">
@@ -579,7 +585,11 @@
             let Fila = table.insertRow(table.length);
             columna1 = Fila.insertCell(0).innerHTML = data.nom;
             columna2 = Fila.insertCell(1).innerHTML = data.des;
-            columna3 = Fila.insertCell(2).innerHTML = `<button onClick="alertVideo('` + data.url + `')"><video src="` + data.url + `" width="240" height="140"></video></button>`;
+            if (data.url.includes('www.youtube.com')) {
+                columna3 = Fila.insertCell(2).innerHTML = `<a href="` + data.url + `" target="_blank" style="text-decoration: none; color:#FFFFFF;">VER VIDEO DE YOUTUBE</a>`;
+            } else {
+                columna3 = Fila.insertCell(2).innerHTML = `<button onClick="alertVideo('` + data.url + `')"><video src="` + data.url + `" width="240" height="140"></video></button>`;
+            }
             columna3 = Fila.insertCell(3).innerHTML = `
                                                             <button type="button" class="btnbtn-danger" onClick="Borrarr(this,` + data.id + `)">
                                                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-trash " viewBox="0 0 16 16">

@@ -28,7 +28,6 @@ import org.springframework.web.servlet.ModelAndView;
 @Service("ModuloService")
 public class ModuloServiceImpl implements ModuloService {
 
-  
     @Autowired
     private ModuloDao moduloDao;
 
@@ -43,7 +42,7 @@ public class ModuloServiceImpl implements ModuloService {
 
     @Autowired
     private MiCursoDao micursoDao;
-    
+
     @Autowired
     private CuestionarioDao cuestionarioDao;
 
@@ -82,11 +81,11 @@ public class ModuloServiceImpl implements ModuloService {
     }
 
     @Override
-    public String readModuloMoment(Model model,HttpServletRequest request) {
+    public String readModuloMoment(Model model, HttpServletRequest request) {
         HttpSession session = request.getSession();
         System.out.println("Listando Modulos de Curso: " + session.getAttribute("CursoID"));
         System.out.println("Añadiendo los modulos: ");
-        model.addAttribute("modulos", moduloDao.findbyCurso((int)session.getAttribute("CursoID")));
+        model.addAttribute("modulos", moduloDao.findbyCurso((int) session.getAttribute("CursoID")));
         return "anadirmodulos";
     }
 
@@ -98,35 +97,47 @@ public class ModuloServiceImpl implements ModuloService {
         Curso curso = new Curso();
         curso = cursoDao.getCurso(idCurso);
         model.addAttribute("modulosAc", moduloDao.findbyCurso(idCurso));
-         model.addAttribute("idCurso", curso.getIdCurso());
+        model.addAttribute("idCurso", curso.getIdCurso());
         return "actualizarmodulos";
     }
 
     @Override
-    public ModelAndView createNewModulo(ModuloModel moduloM,HttpServletRequest request) {
+    public ModelAndView createNewModulo(ModuloModel moduloM, HttpServletRequest request) {
         ModelAndView mo = new ModelAndView("html_utf8");
         //Recibo el parametro del curso que se creo anteriormente 
         Curso cursoentidad = new Curso();
         Modulo entidad = new Modulo();
         HttpSession session = request.getSession();
         //Aca busco por el id el curso que se obtuvo anteriormente
-        cursoentidad = cursoDao.getCurso((int)session.getAttribute("CursoID"));
+        cursoentidad = cursoDao.getCurso((int) session.getAttribute("CursoID"));
         try {
-            entidad.setTitulo(moduloM.getTitulo());
-            entidad.setDescripcion(moduloM.getDescripcion());
-            String enlace = guardarDropBox(moduloM);
-            if (!enlace.equals("")) {
-                entidad.setUrl(enlace);
-                System.out.println("El video se Guardo correctamente y ya esta creada la url de DropBox");
+            if (!moduloM.getUrl().isEmpty()) {
+                System.out.println("El video es Local");
+                entidad.setTitulo(moduloM.getTitulo());
+                entidad.setDescripcion(moduloM.getDescripcion());
+                String enlace = guardarDropBox(moduloM);
+                if (!enlace.equals("")) {
+                    entidad.setUrl(enlace);
+                    System.out.println("El video se Guardo correctamente y ya esta creada la url de DropBox");
 //Aca es donde estoy agregando los modulos a el array de Curso creando la relacion en las tablas y agregando 
 //cantidad n de videos al curso 
+                    cursoentidad.addModulos(entidad);
+                    entidad = moduloDao.create(entidad);
+                    mo.setViewName("redirect:/anadirmodulos.html");
+                } else {
+                    mo.setViewName("primerosmodulos.html");
+                    System.out.println("Error al crear la Url de DropBox");
+                    return mo;
+                }
+            } else {
+                System.out.println("El video es de Youtube");
+                entidad.setTitulo(moduloM.getTitulo());
+                entidad.setDescripcion(moduloM.getDescripcion());
+                entidad.setUrl(moduloM.getYoutubeUrl());
+                System.out.println("La URL es de youtube y ya esta almacenada en la Base de datos");
                 cursoentidad.addModulos(entidad);
                 entidad = moduloDao.create(entidad);
                 mo.setViewName("redirect:/anadirmodulos.html");
-            } else {
-                mo.setViewName("primerosmodulos.html");
-                System.out.println("Error al crear la Url de DropBox");
-                return mo;
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -138,28 +149,38 @@ public class ModuloServiceImpl implements ModuloService {
 
     //Este es para añadir mas modulos si se desea 
     @Override
-    public String anadirModulos(int idCurso, String titulo, String descripcion, MultipartFile url) {
+    public String anadirModulos(int idCurso, String titulo, String descripcion, MultipartFile url, String youtubeUrl) {
         Curso cursoentidad = new Curso();
         Modulo entidad = new Modulo();
         ModuloModel updateMultimedia = new ModuloModel();
         cursoentidad = cursoDao.getCurso(idCurso);
+        System.out.println("video de youtube: "+youtubeUrl);
         try {
-          if(!url.isEmpty()){
-              updateMultimedia.setUrl(url);
-              String enlace = guardarDropBox(updateMultimedia);
             
-              entidad.setTitulo(titulo);
-              entidad.setDescripcion(descripcion);
-              entidad.setUrl(enlace);
-              
-              cursoentidad.addModulos(entidad);
-              entidad = moduloDao.create(entidad);
-              System.out.println("El video se Guardo correctamente y ya esta creada la url de DropBox");
-              return "redirect:/actualizarmodulos.html?CursoE="+cursoentidad.getIdCurso();
-          }else{ 
-              System.out.println("Error al crear la Url de DropBox");
-              return "error";
-          }
+            if (!url.isEmpty()) {
+                System.out.println("El video es Local: agregando nuevo video de drop box");
+                updateMultimedia.setUrl(url);
+                String enlace = guardarDropBox(updateMultimedia);
+
+                entidad.setTitulo(titulo);
+                entidad.setDescripcion(descripcion);
+                entidad.setUrl(enlace);
+
+                cursoentidad.addModulos(entidad);
+                entidad = moduloDao.create(entidad);
+                System.out.println("El video se Guardo correctamente y ya esta creada la url de DropBox");
+                return "redirect:/actualizarmodulos.html?CursoE=" + cursoentidad.getIdCurso();
+            } else {
+                System.out.println("El video es de Youtube agregando otro video es de youtube");
+                entidad.setTitulo(titulo);
+                entidad.setDescripcion(descripcion);
+                entidad.setUrl(youtubeUrl);
+                
+                cursoentidad.addModulos(entidad);
+                entidad = moduloDao.create(entidad);
+                System.out.println("La URL es de youtube y ya esta almacenada en la Base de datos");
+                return "redirect:/actualizarmodulos.html?CursoE=" + cursoentidad.getIdCurso();
+            }
         } catch (Exception e) {
             e.printStackTrace();
             Logger.getLogger(ModuloServiceImpl.class.getName()).log(Level.SEVERE, null, e);
@@ -168,14 +189,16 @@ public class ModuloServiceImpl implements ModuloService {
     }
 
     @Override
-    public String updateModulo(int Vista, int idModulo, String titulo, String descripcion, MultipartFile url) {
+    public String updateModulo(int Vista, int idModulo, String titulo, String descripcion, MultipartFile url, String youtubeUrl) {
         ModuloModel updateMultimedia = new ModuloModel();
         Modulo updatemodulo = new Modulo();
         updatemodulo = moduloDao.getModulo(idModulo);
         Curso curso = new Curso();
         curso = updatemodulo.getIdCurso();
+        System.out.println(youtubeUrl);
         try {
             if (!url.isEmpty()) {
+                System.out.println("Detectando Nuevo video para drop box");
                 updateMultimedia.setUrl(url);
                 String enlaceNuevo = guardarDropBox(updateMultimedia);
 
@@ -184,22 +207,33 @@ public class ModuloServiceImpl implements ModuloService {
                 updatemodulo.setUrl(enlaceNuevo);
                 updatemodulo = moduloDao.update(updatemodulo);
                 System.out.println("Modulo Actualizado con nueva url");
-                if(Vista == 1){
+                if (Vista == 1) {
                     return "redirect:/anadirmodulos.html";
                 } else {
-                    return "redirect:/actualizarmodulos.html?CursoE="+curso.getIdCurso();
-                }       
-
+                    return "redirect:/actualizarmodulos.html?CursoE=" + curso.getIdCurso();
+                }
+            } else if (!youtubeUrl.equals("")) {
+                System.out.println("Detectado Nueva URL de youtube");
+                updatemodulo.setTitulo(titulo);
+                updatemodulo.setDescripcion(descripcion);
+                updatemodulo.setUrl(youtubeUrl);
+                updatemodulo = moduloDao.update(updatemodulo);
+                System.out.println("Modulo Actualizado con nueva Url de Youtube");
+                if (Vista == 1) {
+                    return "redirect:/anadirmodulos.html";
+                } else {
+                    return "redirect:/actualizarmodulos.html?CursoE=" + curso.getIdCurso();
+                }
             } else {
                 updatemodulo.setTitulo(titulo);
                 updateMultimedia.setDescripcion(descripcion);
                 updatemodulo.setUrl(updatemodulo.getUrl());
                 updatemodulo = moduloDao.update(updatemodulo);
                 System.out.println("Modulo actualizado sin url nueva");
-                if(Vista == 1){
+                if (Vista == 1) {
                     return "redirect:/anadirmodulos.html";
                 } else {
-                    return "redirect:/actualizarmodulos.html?CursoE="+curso.getIdCurso();
+                    return "redirect:/actualizarmodulos.html?CursoE=" + curso.getIdCurso();
                 }
             }
         } catch (Exception e) {
