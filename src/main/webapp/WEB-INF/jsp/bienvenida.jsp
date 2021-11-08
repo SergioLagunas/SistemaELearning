@@ -225,14 +225,14 @@
                         <a href="Cartas.html?categoria=Back-End"> <img src="${pageContext.request.contextPath}/resources/imagenes/Back.jpg"></a>
                         <br>
                         <br>
-                        <h4>Back-End</h4>
+                        <h4>Backend</h4>
                     </div>
 
                     <div class="card1">
                         <a href="Cartas.html?categoria=Front-End"><img src="${pageContext.request.contextPath}/resources/imagenes/front_1.jpg"></a>
                         <br>
                         <br>
-                        <h4>Front-end</h4>
+                        <h4>Frontend</h4>
                     </div>
 
                     <div class="card1">
@@ -246,22 +246,8 @@
                         <a href="Cartas.html?categoria=Redes"> <img src="${pageContext.request.contextPath}/resources/imagenes/redes_1.jpg"></a>
                         <br>
                         <br>
-                        <h4>Redes</h4>
+                        <h4>Marketing Digital</h4>
                     </div>
-
-                    <div class="card1">
-                        <a href="Cartas.html?categoria=Seguridad en redes"><img src="${pageContext.request.contextPath}/resources/imagenes/seguridadred.jpg"></a>
-                        <br>
-                        <br>
-                        <h4>Seguridad en redes</h4>
-                    </div>  
-
-                    <div class="card1">
-                        <a href="Cartas.html?categoria=otro"><img src="${pageContext.request.contextPath}/resources/imagenes/otro.jpg"></a>
-                        <br>
-                        <br>
-                        <h4>Otros Cursos</h4>
-                    </div>  
 
                 </div>
             </div>

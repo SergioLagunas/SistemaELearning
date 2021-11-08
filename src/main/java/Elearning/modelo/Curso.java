@@ -38,9 +38,6 @@ public class Curso implements Serializable{
     @Column(name="caratula")
     private String caratula;
     
-    @Column(name="progreso")
-    private int progreso;
-    
     @Column(name="categoria")
     private String categoria;
     
@@ -64,20 +61,9 @@ public class Curso implements Serializable{
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.caratula = caratula;
-        this.progreso = progreso;
         this.categoria = categoria;
     }
-
-    public int getProgreso() {
-        return progreso;
-    }
-
-    public void setProgreso(int progreso) {
-        this.progreso = progreso;
-    }
-
     
-
     public Integer getIdCurso() {
         return idCurso;
     }
@@ -163,7 +149,7 @@ public class Curso implements Serializable{
   
     @Override
     public String toString() {
-        return "Curso{" + "idCurso=" + idCurso + ", nombre=" + nombre + ", descripcion=" + descripcion + ", caratula=" + caratula + ", progreso=" + progreso + ", categoria=" + categoria + '}';
+        return "Curso{" + "idCurso=" + idCurso + ", nombre=" + nombre + ", descripcion=" + descripcion + ", caratula=" + caratula + ", categoria=" + categoria + '}';
     }
 
 

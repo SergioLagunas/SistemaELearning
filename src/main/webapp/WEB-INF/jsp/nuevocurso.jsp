@@ -168,9 +168,7 @@
                                     <option>Back-End</option>
                                     <option>Front-End</option>
                                     <option>Bases de Datos</option>
-                                    <option>Redes</option>
-                                    <option>Seguridad en redes</option>   
-                                    <option>Otro</option>
+                                    <option>Marketing Digital</option>
                                 </select>
                                 <br>
                                 <br>

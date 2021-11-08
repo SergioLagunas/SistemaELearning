@@ -15,6 +15,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -31,8 +32,12 @@ public class ArchivoUsuario implements Serializable {
     private String archivoPortafolio;
 
     //Relacion UNO A MUCHOS con idArchivoUsuario
-    @OneToMany(mappedBy = "idArchivoUsuario", fetch = FetchType.LAZY, cascade = {CascadeType.ALL, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
-    private List<Usuario> idUsuario;
+//    @OneToMany(mappedBy = "idArchivoUsuario", fetch = FetchType.LAZY, cascade = {CascadeType.ALL, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+//    private List<Usuario> idUsuario;
+    
+    @ManyToOne(fetch = FetchType.LAZY,cascade = {CascadeType.PERSIST,CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH})
+    @JoinColumn(name="idUsuario")
+    private Usuario idUsuario;
 
     public ArchivoUsuario() {
     }
@@ -59,19 +64,12 @@ public class ArchivoUsuario implements Serializable {
         this.archivoPortafolio = archivoPortafolio;
     }
 
-    public List<Usuario> getIdUsuario() {
+    public Usuario getIdUsuario () {
         return idUsuario;
     }
-
-    public void setIdUsuario(List<Usuario> idUsuario) {
+    
+    public void setIdUsuario (Usuario idUsuario) {
         this.idUsuario = idUsuario;
-    }
-
-    public void addUsuario(Usuario usuario) {
-        if (idUsuario != null) {
-            idUsuario = new ArrayList<>();
-            idUsuario.add(usuario);
-        }
     }
 
     @Override

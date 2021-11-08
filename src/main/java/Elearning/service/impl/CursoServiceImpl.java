@@ -67,7 +67,6 @@ public class CursoServiceImpl implements CursoService {
             Curso entidad = new Curso();
             entidad.setNombre(CursoF.getNombre());
             entidad.setDescripcion(CursoF.getDescripcion());
-            entidad.setProgreso(0);
             entidad.setCategoria(CursoF.getCategoria());
 
             //String enlacel = guardarImagen(CursoF.getCaratula(),request);

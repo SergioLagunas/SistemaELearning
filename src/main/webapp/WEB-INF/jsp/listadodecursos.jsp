@@ -233,9 +233,9 @@
                 color: white;
             }
             .btnbtn-danger:hover {
-               background: #C82333;
+                background: #C82333;
             }
-            
+
             .btnbtn-success{
                 width: 40px;
                 height: 40px;
@@ -248,9 +248,9 @@
                 color: white;
             }
             .btnbtn-success:hover {
-               background: #218837;
+                background: #218837;
             }
-            
+
             .btnbtn-warning{
                 width: 40px;
                 height: 40px;
@@ -261,8 +261,11 @@
                 border:none;
                 border-radius: 5px;
             }
-             .btnbtn-warning:hover {
-               background: #E5AB00;
+            .btnbtn-warning:hover {
+                background: #E5AB00;
+            }
+            #DivSCursos img{
+                width: 50%;
             }
             /*propiedad responsive*/
             @media(max-width:820px){
@@ -310,7 +313,9 @@
                 #progress_bar{
                     width:60%
                 }
-
+                #DivSCursos img{
+                    width: 80%;
+                }
             }
         </style>
     </head>
@@ -408,9 +413,11 @@
                 <tbody></tbody>
             </table>
         </div> 
-        <div id="DivSCursos">
-            <h2>No hay cursos disponibles</h2>
-        </div>
+        <center>
+            <div id="DivSCursos">
+                <img src="${pageContext.request.contextPath}/resources/imagenes/divScursos.png">
+            </div>
+        </center>
         <br/>
     </center>
     <script>

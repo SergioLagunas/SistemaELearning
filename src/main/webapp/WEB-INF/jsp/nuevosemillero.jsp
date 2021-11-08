@@ -123,7 +123,10 @@
                 color: white;
             }
             .btnbtn-danger:hover {
-               background: #C82333;
+                background: #C82333;
+            }
+            #DivSsemilleros img{
+                width: 50%;
             }
             /*propiedad responsive*/
             @media(max-width:820px){
@@ -150,6 +153,9 @@
                 h1::after{
                     right: -30px;
 
+                }
+                #DivSsemilleros img{
+                    width: 80%;
                 }
             }
 
@@ -198,7 +204,7 @@
     <center><h1>Semilleros</h1></center>
     <form autocomplete="off" method="POST" action="addAdministrador.html">
         <center>
-            <div class="tablita">
+            <div class="tablita" id="tablita">
                 <table class="tabla" id="tabla">
                     <tbody>
 
@@ -238,8 +244,27 @@
                 </table>
             </div>
         </center>
+        <center>
+            <div id="DivSsemilleros">
+                <img src="${pageContext.request.contextPath}/resources/imagenes/divSsemilleros.png">
+            </div>
+        </center>
         <br/>
         <script>
+            let Data = {};
+
+            <c:forEach items="${semilleros}" var="semillero">
+            Data["id"] = "${semillero.idUsuario}";
+            </c:forEach>
+
+            if (Data.id != "undefined" && Data.id  != null && Data.id  != "") {
+                document.getElementById('tablita').style.display = 'block';
+                document.getElementById('DivSsemilleros').style.display = 'none';
+            } else {
+                document.getElementById('tablita').style.display = 'none';
+                document.getElementById('DivSsemilleros').style.display = 'block';
+            }
+
             function confirm(id) {
 
                 Swal.fire({
@@ -356,7 +381,9 @@
 <br>
 <br>
 <br>
-
+<br>
+<br>
+<br>
 <footer>
     <div class="footer-content">
         <h3>B1 SOFT LATINOAMERICA</h3>

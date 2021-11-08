@@ -63,9 +63,13 @@ public class Usuario implements Serializable {
     private List<MiCuestionario> miCuestionario;
     
      //Relación MUCHOS a UNO con idArchivoUsuario
-    @ManyToOne(fetch = FetchType.LAZY,cascade = {CascadeType.ALL,CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH})
-    @JoinColumn(name="idArchivoUsuario")
-    private ArchivoUsuario idArchivoUsuario;
+//    @ManyToOne(fetch = FetchType.LAZY,cascade = {CascadeType.ALL,CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH})
+//    @JoinColumn(name="idArchivoUsuario")
+//    private ArchivoUsuario idArchivoUsuario;
+    
+//    Relacion UNO A MUCHOS con idArchivoUsuario
+    @OneToMany(mappedBy = "idUsuario", fetch = FetchType.LAZY, cascade = {CascadeType.ALL, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    private List<ArchivoUsuario> idArchivoUsuario;
     
     //Relacion MUCHOS A MUCHOS con Cuestionario
 //    @ManyToMany(cascade = {CascadeType.PERSIST,CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH},fetch = FetchType.EAGER)
@@ -174,11 +178,11 @@ public class Usuario implements Serializable {
         this.miCuestionario = miCuestionario;
     }
 
-    public ArchivoUsuario getIdArchivoUsuario() {
+    public List<ArchivoUsuario> getIdArchivoUsuario () {
         return idArchivoUsuario;
     }
-
-    public void setIdArchivoUsuario(ArchivoUsuario idArchivoUsuario) {
+    
+    public void setIdArchivoUsuario (List <ArchivoUsuario> idArchivoUsuario) {
         this.idArchivoUsuario = idArchivoUsuario;
     }
 
