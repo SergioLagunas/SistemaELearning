@@ -71,7 +71,7 @@
                 }
                 #progressB{
                     margin-left: 10%
-                }
+            }
                 .estiloProgressB{
                     width: 70%;
                 }
@@ -119,28 +119,51 @@
         <br>
     <center><h1>Mis Cursos</h1></center>
     <div id="progressB">
-        <c:forEach var="miCurso" items="${progreso}"> 
-            <script>
-                var ProgressB${miCurso.idCurso} =${miCurso.progreso};
-            </script>
-        </c:forEach>
-        <c:forEach var="cursos" items="${miscursos}"> 
-            <h2 style="margin-left: 35px;">${cursos.nombre}</h2>
-            <div class="estiloProgressB" id="progressbar${cursos.idCurso}"></div>
-            <br>
-            <br>
-            <script>
-                $(document).ready(function () {
-                    $("#progressbar${cursos.idCurso}").kendoProgressBar({
-                        min: 0,
-                        max: 100,
-                        value: ProgressB${cursos.idCurso},
-                        type: "percent",
-                        orientation: "horizontal"
-                    });
+    <c:forEach var="miCurso" items="${progreso}"> 
+        <script>
+            var ProgressB${miCurso.idCurso} = ${miCurso.progreso};
+        </script>
+    </c:forEach>
+    <c:forEach var="cursos" items="${miscursos}"> 
+        <h2 style="margin-left: 35px;">${cursos.nombre}</h2>
+        <div class="estiloProgressB" id="progressbar${cursos.idCurso}"></div>
+        <button id="BtnContinuar${cursos.idCurso}">Continuar</button>
+        <button id="BtnCertificado${cursos.idCurso}">Certificado</button>
+        <br>
+        <br>
+        <script>
+            $(document).ready(function(){
+                $("#progressbar${cursos.idCurso}").kendoProgressBar({
+                    min: 0,
+                    max: 100,
+                    type: "percent",
+                    orientation: "horizontal",
+                    complete: Completado,
+                    animation: {
+                     duration: 2500
+                    }
                 });
-            </script>
-        </c:forEach>
+
+                $(function(){
+                    var PB = $("#progressbar${cursos.idCurso}").data("kendoProgressBar");
+                    PB.value(ProgressB${cursos.idCurso});
+                    $("#BtnCertificado${cursos.idCurso}").hide();
+                });
+
+                function Completado(e){
+                    $("#BtnCertificado${cursos.idCurso}").show("slow");
+                }
+
+                $("#BtnCertificado${cursos.idCurso}").click(function () {
+                    document.location.href = "mediacursos.html?idCurso=${cursos.idCurso}";
+                });
+                
+                $("#BtnContinuar${cursos.idCurso}").click(function () {
+                    document.location.href = "mediacursos.html?idCurso=${cursos.idCurso}";
+                });
+            });
+        </script>
+    </c:forEach>
     </div>
     <br>
     <br>

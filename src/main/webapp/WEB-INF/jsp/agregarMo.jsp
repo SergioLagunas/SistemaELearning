@@ -1,9 +1,3 @@
-<%-- 
-    Document   : agregarMo
-    Created on : 21/07/2021, 05:07:21 PM
-    Author     : sergi
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>

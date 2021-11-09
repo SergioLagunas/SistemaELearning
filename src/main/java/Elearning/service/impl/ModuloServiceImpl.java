@@ -42,7 +42,7 @@ public class ModuloServiceImpl implements ModuloService {
 
     @Autowired
     private MiCursoDao micursoDao;
-
+    
     @Autowired
     private CuestionarioDao cuestionarioDao;
 
@@ -50,6 +50,7 @@ public class ModuloServiceImpl implements ModuloService {
     public String readModulo(int idCurso, Model model, HttpServletRequest request) {
         System.out.println("idCurso: " + idCurso);
         HttpSession session = request.getSession();
+        session.setAttribute("CursoID", idCurso);
         int usuario = (int) session.getAttribute("UsuarioID");
         System.out.println("id de Usuario: " + usuario);
         Curso curso = new Curso();
@@ -92,8 +93,10 @@ public class ModuloServiceImpl implements ModuloService {
     //este se usara para hacer el listado de los modulos una ves que el curso ya haya sido creado y se desee agregar mas 
     // solo lista los videos del curso 
     @Override
-    public String readModuloActualizar(int idCurso, Model model) {
+    public String readModuloActualizar(int idCurso, Model model, HttpServletRequest request) {
         System.out.println("ID Curso: " + idCurso);
+        HttpSession session = request.getSession();
+        session.setAttribute("CursoID", idCurso);
         Curso curso = new Curso();
         curso = cursoDao.getCurso(idCurso);
         model.addAttribute("modulosAc", moduloDao.findbyCurso(idCurso));
@@ -119,8 +122,8 @@ public class ModuloServiceImpl implements ModuloService {
                 if (!enlace.equals("")) {
                     entidad.setUrl(enlace);
                     System.out.println("El video se Guardo correctamente y ya esta creada la url de DropBox");
-//Aca es donde estoy agregando los modulos a el array de Curso creando la relacion en las tablas y agregando 
-//cantidad n de videos al curso 
+                    //Aca es donde estoy agregando los modulos a el array de Curso creando la relacion en las tablas y agregando 
+                    //cantidad n de videos al curso 
                     cursoentidad.addModulos(entidad);
                     entidad = moduloDao.create(entidad);
                     mo.setViewName("redirect:/anadirmodulos.html");
@@ -149,14 +152,14 @@ public class ModuloServiceImpl implements ModuloService {
 
     //Este es para añadir mas modulos si se desea 
     @Override
-    public String anadirModulos(int idCurso, String titulo, String descripcion, MultipartFile url, String youtubeUrl) {
+    public String anadirModulos(String titulo, String descripcion, MultipartFile url, String youtubeUrl, HttpServletRequest request) {
+        HttpSession session = request.getSession();
         Curso cursoentidad = new Curso();
         Modulo entidad = new Modulo();
         ModuloModel updateMultimedia = new ModuloModel();
-        cursoentidad = cursoDao.getCurso(idCurso);
+        cursoentidad = cursoDao.getCurso((int)session.getAttribute("CursoID"));
         System.out.println("video de youtube: "+youtubeUrl);
-        try {
-            
+        try {      
             if (!url.isEmpty()) {
                 System.out.println("El video es Local: agregando nuevo video de drop box");
                 updateMultimedia.setUrl(url);
@@ -180,7 +183,7 @@ public class ModuloServiceImpl implements ModuloService {
                 entidad = moduloDao.create(entidad);
                 System.out.println("La URL es de youtube y ya esta almacenada en la Base de datos");
                 return "redirect:/actualizarmodulos.html?CursoE=" + cursoentidad.getIdCurso();
-            }
+          }
         } catch (Exception e) {
             e.printStackTrace();
             Logger.getLogger(ModuloServiceImpl.class.getName()).log(Level.SEVERE, null, e);
@@ -211,7 +214,7 @@ public class ModuloServiceImpl implements ModuloService {
                     return "redirect:/anadirmodulos.html";
                 } else {
                     return "redirect:/actualizarmodulos.html?CursoE=" + curso.getIdCurso();
-                }
+                }       
             } else if (!youtubeUrl.equals("")) {
                 System.out.println("Detectado Nueva URL de youtube");
                 updatemodulo.setTitulo(titulo);
