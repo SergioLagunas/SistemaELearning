@@ -227,6 +227,7 @@ public class UsuarioServiceImpl implements UsuarioService {
                 } else if (rol.equals("Semillero")) {
                     session.setAttribute("usuario", user.getNombre());
                     session.setAttribute("tUsuario", rol);
+                    session.setAttribute("datosUsuario", user);
                     return rol;
                 } else {
                     return "errorL";
@@ -385,5 +386,11 @@ public class UsuarioServiceImpl implements UsuarioService {
         elimUsuario.setIdUsuario(idUsuario);
         boolean flag = usuarioDao.delete(elimUsuario);
         return flag;
+    }
+
+    @Override
+    public String readCertificado(String nombreCurso, Model model) {
+       model.addAttribute("nombreCurso", nombreCurso);
+       return "certificado";
     }
 }

@@ -13,14 +13,14 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class UsuarioControler {
-    
+
     @Autowired
     private UsuarioService usuarioService;
-    
+
     //Crear un Administrador 
-     @RequestMapping(value = "addAdministrador.html", method = RequestMethod.POST)
-      public ModelAndView addAdministrador(HttpServletRequest request, HttpServletResponse response){
-         ModelAndView mo = new ModelAndView();
+    @RequestMapping(value = "addAdministrador.html", method = RequestMethod.POST)
+    public ModelAndView addAdministrador(HttpServletRequest request, HttpServletResponse response) {
+        ModelAndView mo = new ModelAndView();
         switch (usuarioService.createNewAdminsitrador(request)) {
             case "existente":
                 mo.setViewName("error");
@@ -29,68 +29,72 @@ public class UsuarioControler {
                 mo.setViewName("redirect:/nuevoadmin.html");
                 break;
         }
-         return mo;
-     }
-      
+        return mo;
+    }
+
     @RequestMapping(value = "actualizarSemillero.html", method = RequestMethod.POST)
-    public String actualizar(HttpServletRequest request){
+    public String actualizar(HttpServletRequest request) {
         return usuarioService.updateUsuario(request);
     }
-    
+
     @RequestMapping(value = "actualizarAdmin.html", method = RequestMethod.POST)
-    public String actualizarAdmin(HttpServletRequest request){
+    public String actualizarAdmin(HttpServletRequest request) {
         return usuarioService.updateUsuarioAdmin(request);
     }
-    
-      //Listado de los Adminisradores 
+
+    //Listado de los Adminisradores 
     @RequestMapping(value = "nuevoadmin.html", method = RequestMethod.GET)
-    public String listarAdmin(Model model){
-         return usuarioService.readAdmin(model);
+    public String listarAdmin(Model model) {
+        return usuarioService.readAdmin(model);
     }
-    
+
     //Listado de Semilleros 
-     @RequestMapping(value = "nuevosemillero.html", method = RequestMethod.GET)
-    public String listarSemilleros(Model model){
-         return usuarioService.readSem(model);
+    @RequestMapping(value = "nuevosemillero.html", method = RequestMethod.GET)
+    public String listarSemilleros(Model model) {
+        return usuarioService.readSem(model);
     }
-    
+
     //Mostrar los datos en la pantalla de actualizar datos 
     @RequestMapping(value = "perfilsem.html", method = RequestMethod.GET)
-    public String listarDatosUser(Model model,HttpServletRequest request){
-        return usuarioService.readUserSem(model,request);
+    public String listarDatosUser(Model model, HttpServletRequest request) {
+        return usuarioService.readUserSem(model, request);
     }
-    
+
     //Mostrar los datos en la pantalla de actualizar datos Administrador 
     @RequestMapping(value = "perfiladmin.html", method = RequestMethod.GET)
-    public String listarDatosAdmin(Model model,HttpServletRequest request){
-        return usuarioService.readUser(model,request);
+    public String listarDatosAdmin(Model model, HttpServletRequest request) {
+        return usuarioService.readUser(model, request);
     }
-    
-    
+
     @RequestMapping(value = "ProgressBar.html", method = RequestMethod.GET)
-    public String ProgressBar(Model modelo, HttpServletRequest request){
+    public String ProgressBar(Model modelo, HttpServletRequest request) {
         return usuarioService.barProgress(modelo, request);
     }
-    
+
     @RequestMapping(value = "eliminarAdmin.html", method = RequestMethod.GET)
     public ModelAndView eliminarAdmin(@RequestParam("idUsuario") int idUsuario, Model model) {
         ModelAndView mo = new ModelAndView();
-        if(usuarioService.deleteUsusario(idUsuario)){
+        if (usuarioService.deleteUsusario(idUsuario)) {
             mo.setViewName("redirect:/nuevoadmin.html");
-        }else{
+        } else {
             mo.setViewName("redirect:/error.html");
-        }  
+        }
         return mo;
     }
-   
+
     @RequestMapping(value = "eliminarSemillero.html", method = RequestMethod.GET)
     public ModelAndView eliminarSemillero(@RequestParam("idUsuario") int idUsuario, Model model) {
         ModelAndView mo = new ModelAndView();
-        if(usuarioService.deleteUsusario(idUsuario)){
+        if (usuarioService.deleteUsusario(idUsuario)) {
             mo.setViewName("redirect:/nuevosemillero.html");
-        }else{
+        } else {
             mo.setViewName("redirect:/error.html");
-        }  
+        }
         return mo;
+    }
+
+    @RequestMapping(value = "certificado.html", method = RequestMethod.GET)
+    public String certificado(@RequestParam("nombreCurso") String nombreCurso, Model model) {
+        return usuarioService.readCertificado(nombreCurso, model);
     }
 }

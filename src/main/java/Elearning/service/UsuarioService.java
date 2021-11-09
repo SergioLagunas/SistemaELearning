@@ -16,4 +16,5 @@ public interface UsuarioService {
     public boolean deleteUsusario(int idUsuario);
     public boolean recuperarContraseña(HttpServletRequest request);
     public String barProgress(Model modelo, HttpServletRequest request);
+    public String readCertificado (String nombreCurso, Model model);
 }

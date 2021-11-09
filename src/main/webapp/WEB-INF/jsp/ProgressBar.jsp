@@ -155,7 +155,7 @@
                 }
 
                 $("#BtnCertificado${cursos.idCurso}").click(function () {
-                    document.location.href = "mediacursos.html?idCurso=${cursos.idCurso}";
+                    document.location.href = "certificado.html?nombreCurso=${cursos.nombre}";
                 });
                 
                 $("#BtnContinuar${cursos.idCurso}").click(function () {

@@ -17,7 +17,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
+        <script src="${pageContext.request.contextPath}/resources/js/jquery.min.js"></script>
         <style>
             /*Estilo header*/
             .body1 {
@@ -428,11 +428,9 @@
         var progress = document.querySelector('.percent');
         //Escucha la entrada de archivos del Input File
         document.getElementById('cara').addEventListener('change', handleFileSelect, false);
-
         $(function () {
             document.getElementById('formActualizar').style.display = 'none';
             document.getElementById('CargaProgress').style.display = 'none';
-
         <c:forEach var="cur" items="${cursos}">
             DataForm["id"] = "${cur.idCurso}";
             DataForm["nom"] = "${cur.nombre}";
@@ -449,12 +447,10 @@
                 document.getElementById('DivSCursos').style.display = 'block';
             }
         });
-
         function handleFileSelect(evt) {
             document.getElementById('CargaProgress').style.display = 'block';
             progress.style.width = '0%';
             progress.textContent = '0%';
-
             reader = new FileReader();
             reader.onerror = errorHandler;
             reader.onprogress = updateProgress;
@@ -476,10 +472,8 @@
             reader.onload = function (e) {
                 progress.style.width = '100%';
                 progress.textContent = '100%';
-
                 setTimeout("document.getElementById('progress_bar').className='';document.getElementById('CargaProgress').style.display = 'none';", 2000);
             };
-
             reader.readAsBinaryString(evt.target.files[0]);
         }
 
@@ -519,7 +513,7 @@
         }
 
         function cancelActualizar() {
-            document.getElementById('formActualizar').style.display = 'none';
+            $("#formActualizar").hide("normal");
         }
 
         function alertActualizar() {
@@ -528,41 +522,55 @@
                 var form = this;
                 e.preventDefault(); // <--- prevent form from submitting
 
-                Swal.fire({
-                    title: '¿Quieres Actualizar los datos?',
+
+                var valorNom = parseInt(document.querySelector('#nom').value);
+                var valorDesc = parseInt(document.querySelector('#des').value);
+                if (!isNaN(valorNom) || !isNaN(valorDesc)) {
+                    swal.fire({
+                    title: "¡Dato invalido!",
+                    text: "El titulo o la descripción que ha intentado añadir, no son validas, inténtelo de nuevo",
                     icon: 'warning',
-                    iconColor: '#B15D28',
-                    showCancelButton: true,
-                    confirmButtonText: 'Actualizar',
-                    confirmButtonColor: '#203853',
-                    cancelButtonColor: '#B15D28',
-                    cancelButtonText: 'Cancelar',
-                    reverseButtons: true
-                })
-                        .then((result) => {
-                            if (result.isConfirmed) {
-                                Swal.fire({
-                                    title: '¡Actualizado!',
-                                    text: 'Se Actualizaron los datos',
-                                    icon: 'success',
-                                    iconColor: '#203853',
-                                    confirmButtonColor: '#B15D28'
-                                })
-                                        .then(function () {
-                                            Actualizar(Leer());
-                                            form.submit();
-                                            console.log("BIEN");
-                                        });
-                            } else if (result.dismiss === Swal.DismissReason.cancel) {
-                                Swal.fire({
-                                    title: '¡Cancelado!',
-                                    text: 'No se actualizo ningun dato',
-                                    icon: 'error',
-                                    iconColor: '#B15D28',
-                                    confirmButtonColor: '#203853'
-                                });
-                            }
-                        });
+                    confirmButtonText: "OK",
+                    confirmButtonColor: '#203853'
+                });
+                } else if (isNaN(valorNom)) {
+                    Swal.fire({
+                        title: '¿Quieres Actualizar los datos?',
+                        icon: 'warning',
+                        iconColor: '#B15D28',
+                        showCancelButton: true,
+                        confirmButtonText: 'Actualizar',
+                        confirmButtonColor: '#203853',
+                        cancelButtonColor: '#B15D28',
+                        cancelButtonText: 'Cancelar',
+                        reverseButtons: true
+                    })
+                            .then((result) => {
+                                if (result.isConfirmed) {
+                                    Swal.fire({
+                                        title: '¡Actualizado!',
+                                        text: 'Se Actualizaron los datos',
+                                        icon: 'success',
+                                        iconColor: '#203853',
+                                        confirmButtonColor: '#B15D28'
+                                    })
+                                            .then(function () {
+                                                Actualizar(Leer());
+                                                form.submit();
+                                                console.log("BIEN");
+                                            });
+                                } else if (result.dismiss === Swal.DismissReason.cancel) {
+                                    Swal.fire({
+                                        title: '¡Cancelado!',
+                                        text: 'No se actualizo ningun dato',
+                                        icon: 'error',
+                                        iconColor: '#B15D28',
+                                        confirmButtonColor: '#203853'
+                                    });
+                                }
+                            });
+                }
+
             });
         }
 
@@ -612,10 +620,8 @@
         }
 
         function Editarr(td, id) {
-            document.getElementById('formActualizar').style.display = 'block';
-
+            $("#formActualizar").show("normal");
             Fila = td.parentElement.parentElement;
-
             document.getElementById("nom").value = Fila.cells[0].innerHTML;
             document.getElementById("des").value = Fila.cells[1].innerHTML;
             document.getElementById("cat").value = Fila.cells[2].innerHTML;
@@ -627,7 +633,6 @@
             Fila.cells[0].innerHTML = DataForm.nom;
             Fila.cells[1].innerHTML = DataForm.des;
             Fila.cells[2].innerHTML = DataForm.cat;
-
             document.getElementById('formActualizar').style.display = 'none';
         }
 

@@ -313,9 +313,12 @@
                 <label for="nom"></label> <input type="text" name="titulo" id="nom" placeholder="Nombre"  required>
 
                 <label for="des"></label> <input type="text" name="descripcion" id="des" placeholder="Descripción" required>
-
+                <br>
+                <h3 style="color: white;"> Subir archivo de video: </h3> 
+                <br>
                 <label for="arch"></label> <input type="file" id="arch" name="url" accept=".mp4,.avi,.wmv">
                 <br>
+                <h3 style="color: white;"> O compartir URL de YouTube: </h3> 
                 <br> 
                 <label for="des"></label> <input type="text" name="youtubeUrl" id="des" placeholder="Url de Youtube">
             </center>
@@ -341,8 +344,11 @@
             <br> 
             <label for="des"></label> <input type="text" name="descripcion" id="desAc" placeholder="Descripción"  required>
             <br>
+            <h3 style="color: white;"> Subir archivo de video: </h3> 
+            <br>
             <label for="arc"></label> <input type="file" id="archAc" name="url" accept=".mp4,.avi,.wmv">
             <br>
+            <h3 style="color: white;"> O compartir URL de YouTube: </h3> 
             <br> 
             <label for="des"></label> <input type="text" name="youtubeUrl" id="des" placeholder="Url de Youtube">
             <div id="Divid" style="display:none;">

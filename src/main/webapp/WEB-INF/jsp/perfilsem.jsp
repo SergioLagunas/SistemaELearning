@@ -8,6 +8,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Perfil semillero</title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/kendo.common.min.css" />
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/kendo.black.min.css" />
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/kendo.default.mobile.min.css" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/newheader.css" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/footer.css" />
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
@@ -15,6 +18,7 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script src="${pageContext.request.contextPath}/resources/js/jquery.min.js"></script>
+        <script src="${pageContext.request.contextPath}/resources/js/kendo.all.min.js"></script>
         <script src="${pageContext.request.contextPath}/resources/js/header.js" defer></script>
         <style>
             body {
@@ -100,6 +104,44 @@
                 display: block;
 
             }
+            #form{
+                width: 550px;
+                margin: auto;
+                background: #203853;
+                padding: 20px 20px;
+                box-sizing: border-box;
+                margin-top: 20px;
+                border-radius: 15px;
+                border: none;
+
+
+            }
+            .btn-guardarArc{
+                font-family: "roboto",sans-serif;
+                font-weight: 500;
+                font-size: 20px;
+                color: black;
+                text-decoration: none;
+            }
+            .btn-guardarArc{
+                padding: 9px 25px;
+                background-color: #B15D28;
+                border: none;
+                border-radius: 50px;
+                cursor: pointer;
+                transition: all 0.3s ease 0s;
+            }
+            .btn-guardarArc:hover{
+                background-color: white;
+            }
+
+            .btn-guardarArc span{
+
+                position: absolute;
+                display: block;
+
+            }
+
             /*propiedad responsive*/
             @media(max-width:600px){
                 h1::after,h1::before{
@@ -125,6 +167,9 @@
                 .form-register{
                     width: 80%;
                     box-shadow: 5px 10px 25px #000;
+                }
+                #form{
+                    width: 90%;
                 }
             }
 
@@ -185,61 +230,77 @@
                     <input class="controls" type="text" name="rfc" id="rfc" placeholder="RFC" value="<c:out value="${usuario.rfc}"></c:out>">
                     <br>
                     <center><input class="btn-guardar" type="submit" onclick="alertActualizar()" value="Guardar"></center>
-
-                    <script>
-                        function alertActualizar() {
-                            document.querySelector('#from2').addEventListener('submit', function (e) {
-
-                                var form = this;
-                                e.preventDefault(); // <--- prevent form from submitting
-
-                                Swal.fire({
-                                    title: '¿Quieres Actualizar los datos?',
-                                    icon: 'warning',
-                                    iconColor: '#B15D28',
-                                    showCancelButton: true,
-                                    confirmButtonText: 'Actualizar',
-                                    confirmButtonColor: '#203853',
-                                    cancelButtonColor: '#B15D28',
-                                    cancelButtonText: 'Cancelar',
-                                    reverseButtons: true
-                                })
-                                        .then((result) => {
-                                            if (result.isConfirmed) {
-                                                Swal.fire({
-                                                    title: '¡Actualizado!',
-                                                    text: 'Se Actualizaron los datos',
-                                                    icon: 'success',
-                                                    iconColor: '#203853',
-                                                    confirmButtonColor: '#B15D28'
-                                                })
-                                                        .then(function () {
-                                                            //document.getElementById("from1").submit(); // <--- submit form programmatically
-                                                            form.submit();
-                                                            console.log("BIEN");
-                                                        });
-                                            } else if (result.dismiss === Swal.DismissReason.cancel) {
-                                                Swal.fire({
-                                                    title: '¡Cancelado!',
-                                                    text: 'No se actualizo ningun dato',
-                                                    icon: 'error',
-                                                    iconColor: '#B15D28',
-                                                    confirmButtonColor: '#203853'
-                                                })
-                                            }
-                                        })
-                            });
-
-                        }
-
-                        function cerrarSession() {
-
-                            $(location).attr('href', "cerrarSession.html")
-
-                        }
-                    </script>
                 </form>
             </section>
+            <br>
+            <br>
+            <br>
+            <div id="Titulo2">
+                <center><h1>Mis archivos</h1></center>
+            </div>
+            <br>
+            <div id="form">
+                <center>
+                    <h3 style="color: white;"> En esta sección puedes subir las evidencias de tus cursos: </h3> 
+                    <br>
+                    <input id="simple-input" type="file" name="caratula" class="k-textbox" style="width: 100%;" />
+                    <br>
+                    <br>
+                    <center><input class="btn-guardarArc" type="submit" value="Guardar"></center>
+                </center>
+            </div>
+            <script>
+                function alertActualizar() {
+                    document.querySelector('#from2').addEventListener('submit', function (e) {
+
+                        var form = this;
+                        e.preventDefault(); // <--- prevent form from submitting
+
+                        Swal.fire({
+                            title: '¿Quieres Actualizar los datos?',
+                            icon: 'warning',
+                            iconColor: '#B15D28',
+                            showCancelButton: true,
+                            confirmButtonText: 'Actualizar',
+                            confirmButtonColor: '#203853',
+                            cancelButtonColor: '#B15D28',
+                            cancelButtonText: 'Cancelar',
+                            reverseButtons: true
+                        })
+                                .then((result) => {
+                                    if (result.isConfirmed) {
+                                        Swal.fire({
+                                            title: '¡Actualizado!',
+                                            text: 'Se Actualizaron los datos',
+                                            icon: 'success',
+                                            iconColor: '#203853',
+                                            confirmButtonColor: '#B15D28'
+                                        })
+                                                .then(function () {
+                                                    //document.getElementById("from1").submit(); // <--- submit form programmatically
+                                                    form.submit();
+                                                    console.log("BIEN");
+                                                });
+                                    } else if (result.dismiss === Swal.DismissReason.cancel) {
+                                        Swal.fire({
+                                            title: '¡Cancelado!',
+                                            text: 'No se actualizo ningun dato',
+                                            icon: 'error',
+                                            iconColor: '#B15D28',
+                                            confirmButtonColor: '#203853'
+                                        })
+                                    }
+                                })
+                    });
+
+                }
+
+                function cerrarSession() {
+
+                    $(location).attr('href', "cerrarSession.html")
+
+                }
+            </script>
 
         </div>
         <!--Footer-->
