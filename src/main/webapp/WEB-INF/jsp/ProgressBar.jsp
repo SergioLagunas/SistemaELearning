@@ -50,7 +50,7 @@
                 right: -140px;
 
             }
-            
+
             contenerdor{
                 width: 80%;
             }
@@ -63,6 +63,14 @@
             .footer-content h3{
                 font-family: "Open Sans";
             }
+            #botones{
+                display: inline-block;
+            }
+            button{
+                border-color: #B15D28;
+                background: #B15D28;
+                color: white;
+            }
             /*propiedad responsive*/
             @media(max-width:820px){
                 h1::after,h1::before{
@@ -71,12 +79,16 @@
                 }
                 #progressB{
                     margin-left: 10%
-            }
+                }
                 .estiloProgressB{
-                    width: 70%;
+                    width: 85%;
                 }
                 h2{
                     font-size: 16px;
+                }
+                #botones{
+                    padding: 10px;
+                    display: inline-block;
                 }
 
             }
@@ -119,52 +131,66 @@
         <br>
     <center><h1>Mis Cursos</h1></center>
     <div id="progressB">
-    <c:forEach var="miCurso" items="${progreso}"> 
-        <script>
-            var ProgressB${miCurso.idCurso} = ${miCurso.progreso};
-        </script>
-    </c:forEach>
-    <c:forEach var="cursos" items="${miscursos}"> 
-        <h2 style="margin-left: 35px;">${cursos.nombre}</h2>
-        <div class="estiloProgressB" id="progressbar${cursos.idCurso}"></div>
-        <button id="BtnContinuar${cursos.idCurso}">Continuar</button>
-        <button id="BtnCertificado${cursos.idCurso}">Certificado</button>
-        <br>
-        <br>
-        <script>
-            $(document).ready(function(){
-                $("#progressbar${cursos.idCurso}").kendoProgressBar({
-                    min: 0,
-                    max: 100,
-                    type: "percent",
-                    orientation: "horizontal",
-                    complete: Completado,
-                    animation: {
-                     duration: 2500
+        <c:forEach var="miCurso" items="${progreso}"> 
+            <script>
+                var ProgressB${miCurso.idCurso} = ${miCurso.progreso};
+            </script>
+        </c:forEach>
+        <c:forEach var="cursos" items="${miscursos}"> 
+            <h2 style="margin-left: 35px;">${cursos.nombre}</h2>
+            <div class="estiloProgressB" id="progressbar${cursos.idCurso}"></div>
+            <div id="botones">
+                <button id="BtnContinuar${cursos.idCurso}">Continuar</button>
+                <button id="BtnCertificado${cursos.idCurso}">Certificado</button>
+            </div>
+            <br>
+            <br>
+            <script>
+                $(document).ready(function () {
+                    $("#progressbar${cursos.idCurso}").kendoProgressBar({
+                        min: 0,
+                        max: 100,
+                        type: "percent",
+                        orientation: "horizontal",
+                        complete: Completado,
+                        animation: {
+                            duration: 2500
+                        }
+                    });
+
+                    $(function () {
+                        var PB = $("#progressbar${cursos.idCurso}").data("kendoProgressBar");
+                        PB.value(ProgressB${cursos.idCurso});
+                        $("#BtnCertificado${cursos.idCurso}").hide();
+                    });
+
+                    function Completado(e) {
+                        $("#BtnCertificado${cursos.idCurso}").show("slow");
                     }
-                });
 
-                $(function(){
-                    var PB = $("#progressbar${cursos.idCurso}").data("kendoProgressBar");
-                    PB.value(ProgressB${cursos.idCurso});
-                    $("#BtnCertificado${cursos.idCurso}").hide();
-                });
+                    $("#BtnCertificado${cursos.idCurso}").click(function () {
+                        document.location.href = "certificado.html?nombreCurso=${cursos.nombre}";
+                    });
 
-                function Completado(e){
-                    $("#BtnCertificado${cursos.idCurso}").show("slow");
-                }
-
-                $("#BtnCertificado${cursos.idCurso}").click(function () {
-                    document.location.href = "certificado.html?nombreCurso=${cursos.nombre}";
+                    $("#BtnContinuar${cursos.idCurso}").click(function () {
+                        document.location.href = "mediacursos.html?idCurso=${cursos.idCurso}";
+                    });
                 });
-                
-                $("#BtnContinuar${cursos.idCurso}").click(function () {
-                    document.location.href = "mediacursos.html?idCurso=${cursos.idCurso}";
-                });
-            });
-        </script>
-    </c:forEach>
+            </script>
+        </c:forEach>
     </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
     <br>
     <br>
     <br>

@@ -17,6 +17,8 @@
         <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="${pageContext.request.contextPath}/resources/js/jquery.min.js"></script>
         <script src="${pageContext.request.contextPath}/resources/js/kendo.all.min.js"></script>
         <script src="${pageContext.request.contextPath}/resources/js/header.js" defer></script>
@@ -141,6 +143,46 @@
                 display: block;
 
             }
+            table{
+                background-color: #203853;
+                width: 50%;
+                text-align: center;
+                color: white;
+                border-collapse: collapse;
+
+            }
+
+            th, td{
+
+                padding: 10px;
+
+            }
+            tr {
+                border: #B15D28 2px solid;
+            }
+            .opciones{
+                width: 200px;
+            }
+
+            thead{
+                background-color:  #203853;
+                border-bottom: solid 5px #B15D28;
+                color: white;
+            }
+            .btnbtn-danger{
+                width: 40px;
+                height: 40px;
+                background: #DD3545;
+                text-align: center;
+                viewBox: 0 0 16 16;
+                cursor: pointer;
+                border:none;
+                border-radius: 5px;
+                color: white;
+            }
+            .btnbtn-danger:hover {
+                background: #C82333;
+            }
 
             /*propiedad responsive*/
             @media(max-width:600px){
@@ -170,6 +212,14 @@
                 }
                 #form{
                     width: 90%;
+                }
+                .opciones{
+                    width: 100px;
+                }
+                table {
+                    width: 50%;
+                    display: block;
+                    overflow-x: auto;
                 }
             }
 
@@ -228,27 +278,44 @@
                     <input class="controls" type="hidden" name="email" id="email" value="<c:out value="${usuario.email}"></c:out>">
                     <input class="controls" type="password" name="contrasena" id="password" placeholder="Nueva contraseña" value="<c:out value="${usuario.contrasena}"></c:out>">
                     <input class="controls" type="text" name="rfc" id="rfc" placeholder="RFC" value="<c:out value="${usuario.rfc}"></c:out>">
-                    <br>
-                    <center><input class="btn-guardar" type="submit" onclick="alertActualizar()" value="Guardar"></center>
-                </form>
-            </section>
-            <br>
-            <br>
-            <br>
-            <div id="Titulo2">
-                <center><h1>Mis archivos</h1></center>
-            </div>
-            <br>
-            <div id="form">
+                        <br>
+                        <center><input class="btn-guardar" type="submit" onclick="alertActualizar()" value="Guardar"></center>
+                    </form>
+                </section>
+                <br>
+                <br>
+                <br>
+                <div id="misArchivos">
+                <div id="Titulo2">
+                    <center><h1>Mis archivos</h1></center>
+                </div>
+                <br>
+                <div id="form">
+                    <center>
+                        <h3 style="color: white;"> En esta sección puedes subir las evidencias de tus cursos: </h3> 
+                        <br>
+                        <input id="simple-input" type="file" name="caratula" class="k-textbox" style="width: 100%;" />
+                        <br>
+                        <br>
+                        <center><input class="btn-guardarArc" type="submit" value="Guardar"></center>
+                    </center>
+                </div>
+                <br>
                 <center>
-                    <h3 style="color: white;"> En esta sección puedes subir las evidencias de tus cursos: </h3> 
-                    <br>
-                    <input id="simple-input" type="file" name="caratula" class="k-textbox" style="width: 100%;" />
-                    <br>
-                    <br>
-                    <center><input class="btn-guardarArc" type="submit" value="Guardar"></center>
+                    <div id="Divtablita" class="tablita">
+                        <table class="tabla" id="tabla">
+                            <thead>
+                                <tr> 
+                                    <th class="opciones">Archivo</th> 
+                                    <th class="opciones">Opciones</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div> 
+                <br/>
                 </center>
-            </div>
+                </div> 
             <script>
                 function alertActualizar() {
                     document.querySelector('#from2').addEventListener('submit', function (e) {

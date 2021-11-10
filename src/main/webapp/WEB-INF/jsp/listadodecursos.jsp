@@ -687,7 +687,12 @@
 <br>
 <br>
 <br>
-
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 <footer>
     <div class="footer-content">
         <h3>B1 SOFT LATINOAMERICA</h3>

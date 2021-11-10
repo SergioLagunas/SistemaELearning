@@ -71,6 +71,7 @@
                 <prop key="actualizarSemillero.html">usuarioControler</prop>
                 <prop key="actualizarAdmin.html">usuarioControler</prop>
                 <prop key="certificado.html">usuarioControler</prop>
+                <prop key="informeUsuario.html">usuarioControler</prop>
                 
                 <!--Mapeo de Archivos-->
                 <prop key="anadirarchivos.html">archivoControler</prop>

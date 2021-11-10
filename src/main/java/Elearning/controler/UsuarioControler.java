@@ -97,4 +97,10 @@ public class UsuarioControler {
     public String certificado(@RequestParam("nombreCurso") String nombreCurso, Model model) {
         return usuarioService.readCertificado(nombreCurso, model);
     }
+    
+    //Informe del usuario 
+    @RequestMapping(value = "informeUsuario.html", method = RequestMethod.GET)
+    public String informeUsuario() {
+        return "informeUsuario";
+    }
 }

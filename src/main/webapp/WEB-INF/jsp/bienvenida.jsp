@@ -237,7 +237,7 @@
                     </div>
 
                     <div class="card1">
-                        <a href="Cartas.html?categoria=Redes"> <img src="${pageContext.request.contextPath}/resources/imagenes/redes_1.jpg"></a>
+                        <a href="Cartas.html?categoria=Redes"> <img src="${pageContext.request.contextPath}/resources/imagenes/marketingdigital.jpg"></a>
                         <br>
                         <br>
                         <h4>Marketing Digital</h4>

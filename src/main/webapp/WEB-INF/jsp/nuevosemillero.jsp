@@ -7,7 +7,6 @@
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/footer.css" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="CRUD dinamico con HTMLS, CSS and JS">
-        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
         <title>Semilleros</title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -118,6 +117,19 @@
             }
             .btnbtn-danger:hover {
                 background: #C82333;
+            }
+            .btnbtn-warning{
+                width: 40px;
+                height: 40px;
+                background: #FFC107;
+                text-align: center;
+                viewBox: 0 0 16 16;
+                cursor: pointer;
+                border:none;
+                border-radius: 5px;
+            }
+            .btnbtn-warning:hover {
+                background: #E5AB00;
             }
             #DivSsemilleros img{
                 width: 50%;
@@ -232,6 +244,12 @@
                                         </svg>
                                     </button>
                                 </a>
+                                <button type="button" class="btnbtn-warning">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
+                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                    <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                                    </svg>
+                                </button>
                             </td>
                         </tr>
                     </c:forEach>
@@ -251,7 +269,7 @@
             Data["id"] = "${semillero.idUsuario}";
             </c:forEach>
 
-            if (Data.id != "undefined" && Data.id  != null && Data.id  != "") {
+            if (Data.id != "undefined" && Data.id != null && Data.id != "") {
                 document.getElementById('tablita').style.display = 'block';
                 document.getElementById('DivSsemilleros').style.display = 'none';
             } else {

@@ -17,9 +17,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <script src="${pageContext.request.contextPath}/resources/js/jquery.min.js"></script>
-
         <script src="${pageContext.request.contextPath}/resources/js/jszip.min.js"></script>
-
         <script src="${pageContext.request.contextPath}/resources/js/kendo.all.min.js"></script>
 
 
@@ -49,12 +47,12 @@
             </nav>
         </header>
         <div id="example">
-            <div class="box wide hidden-on-narrow">
-                <div class="box-col">
-                    <h4>Get PDF</h4>
-                    <button class="export-pdf k-button" onclick="getPDF('.pdf-page')">Export</button>
+            <br>
+            <center>
+                <div class="exportPDF">
+                    <button class="export-pdf" onclick="getPDF('.pdf-page')">Obtener PDF</button>
                 </div>
-            </div>
+            </center>
 
             <div class="page-container hidden-on-narrow">
                 <div class="pdf-page size-a4">
@@ -139,8 +137,8 @@
 
                                         </script>
                                         <style>
-                                            .box-col{
-                                                margin-left: 10%;
+                                            .exportPDF{
+                                                display: inline;
                                             }
 
                                             .pdf-page {
@@ -262,7 +260,7 @@
                                             .brown{
                                                 width: 100%;
                                                 height: 15px;
-                                                background-color: brown;
+                                                background-color: #B15D28;
                                                 display: flex;
                                             }
                                             .blue{
@@ -271,11 +269,27 @@
                                                 background-color: #203853;
                                                 display: flex;
                                             }
+                                            .export-pdf{
+                                                border-color: #B15D28;
+                                                background: #B15D28;
+                                                color: white;
+                                            }
+                                            /*propiedad responsive*/
+                                            @media(max-width:820px){
+                                                .page-container hidden-on-narrow{
+                                                    height: 80%;
+                                                }
+
+                                            }
                                         </style>
 
                                         </div>
-
-
-
                                         </body>
+                                        <script>
+                                            function cerrarSession() {
+
+                                                $(location).attr('href', "cerrarSession.html")
+
+                                            }
+                                        </script>
                                         </html>
