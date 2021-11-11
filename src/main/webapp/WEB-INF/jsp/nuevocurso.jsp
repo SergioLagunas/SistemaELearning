@@ -110,7 +110,6 @@
         <!-- Navigation-->
         <header>
             <nav class="navbar">
-                <!--<div class="brand-title">Brand Name</div>-->
                 <div class="logo">
                     <div>
                         <a href="admin.html"><img src="${pageContext.request.contextPath}/resources/imagenes/B1SOFT-LOGO.gif"></a>
@@ -152,8 +151,6 @@
                                 <input id="simple-input" type="text" placeholder="Nombre" class="k-textbox" style="width: 100%;" name="nombre" />
                                 <br>
                                 <br>
-
-
                                 <input id="simple-input" type="text" placeholder="Descripción" class="k-textbox" style="width: 100%;" name="descripcion"  />
                                 <br>
                                 <br>
@@ -167,12 +164,10 @@
                                 <br>
                                 <br>
                                 <h3 style="color: white;"> Selecciona la caratula del curso: </h3> 
-                                <input id="simple-input" type="file" name="caratula" class="k-textbox" style="width: 100%;" />
-
+                                <input id="simple-input" type="file" accept=".jpg,.png" name="caratula" class="k-textbox" style="width: 100%;" />
                                 <br>
                                 <br>
                                 <center><button class="k-button" type="submit">Guardar curso</button>&nbsp;</center> 
-
                                 <br>
                                 <br>
                                 <br>
@@ -183,8 +178,6 @@
                                 background-color: rgba(255, 255, 255, 0);
 
                             }
-
-
 
                             .fieldlist {
 
@@ -221,8 +214,6 @@
 
                                 }
                             }
-
-
                         </style>
                     </div>
                 </div>
@@ -234,7 +225,6 @@
         <br>
         <br>
         <br>
-
         <br>
         <br>
         <br>
@@ -243,7 +233,6 @@
         <footer>
             <div class="footer-content">
                 <h3>B1 SOFT LATINOAMERICA</h3>
-
                 <ul class="socials">
                     <li><a href="#"><i class="fab fa-facebook"></i></a>
                     <li><a href="#"><i class="fab fa-twitter"></i></a>
@@ -259,9 +248,7 @@
     </body>
     <script>
         function cerrarSession() {
-
-            $(location).attr('href', "cerrarSession.html")
-
+            $(location).attr('href', "cerrarSession.html");
         }
     </script>
 </html>

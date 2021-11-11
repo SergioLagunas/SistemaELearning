@@ -98,7 +98,6 @@
         %>
         <header>
             <nav class="navbar">
-                <!--<div class="brand-title">Brand Name</div>-->
                 <div class="logo">
                     <div>
                         <a href="admin.html"><img src="${pageContext.request.contextPath}/resources/imagenes/B1SOFT-LOGO.gif"></a>
@@ -116,7 +115,6 @@
                         <li><a href="nuevosemillero.html">Semilleros</a></li>
                         <li><a href="listadodecursos.html">Cursos</a></li>
                         <li><a href="nuevocurso.html">Agregar nuevo curso</a></li>
-                        <!--<li><a href="#">Cerrar sesión</a></li>-->
                         <li><span><a onclick="cerrarSession()" class="cta">Cerrar sesión</a></span></li>
                     </ul>
                 </div>
@@ -157,7 +155,6 @@
     <footer>
         <div class="footer-content">
             <h3>B1 SOFT LATINOAMERICA</h3>
-
             <ul class="socials">
                 <li><a href="#"><i class="fab fa-facebook"></i></a>
                 <li><a href="#"><i class="fab fa-twitter"></i></a>
@@ -171,46 +168,30 @@
         </div>
     </footer> 
     <script>
-                var Quizz = [];
+        var Quizz = [];
         <c:forEach var="preg" items="${preguntas}">
-                var Validar = `${preg.pregunta}`;
-                if (Validar === "undefined" || Validar === "") {
-                   Quizz.push({
-                    pregunta: "${preg.pregunta}",
-                    respuestas: {
-                        a: "${preg.respuestaA}",
-                        b: "${preg.respuestaB}",
-                        c: "${preg.respuestaC}"
-                    },
-                    respuestaCorrecta: "a"
-                }); 
-                }
-               
+            Quizz.push({
+                pregunta: "${preg.pregunta}",
+                respuestas: {
+                    a: "${preg.respuestaA}",
+                    b: "${preg.respuestaB}",
+                    c: "${preg.respuestaC}"
+                },
+                respuestaCorrecta: "a"
+            });
         </c:forEach>
-                console.log("array" + Quizz.length);
-                //validar si ya hay preguntas
-                if (Quizz.length === 0) {
-                    document.getElementById('formu').style.display = 'none';
-                    document.getElementById('DivSpreguntas').style.display = 'block';
-                } else {
-                    document.getElementById('formu').style.display = 'block';
-                    document.getElementById('DivSpreguntas').style.display = 'none';
-                    pasarVariables(Quizz);
-                    mostrarTest();
-                }
-                console.log("arreglo Pregunta: " + Quizz[0].pregunta);
+    
+        pasarVariables(Quizz);
+        mostrarTest();
 
-
-                function RegresarCuestionario() {
-                    document.location.href = "cuestionario.html?Modulo=" + ${IdModulo};
-                }
+        function RegresarCuestionario() {
+            document.location.href = "cuestionario.html?Modulo=" + ${IdModulo};
+        }
     </script>
 </body>
 <script>
     function cerrarSession() {
-
-        document.location.href = "cerrarSession.html";
-
+        document.location.href = "cerrarSession.html";;
     }
 </script>
 </html>
