@@ -133,11 +133,6 @@
             <script src="${pageContext.request.contextPath}/resources/js/examenpreview.js"></script>
         </div>
     </div>
-    <center>
-        <div id="DivSpreguntas">
-            <img src="${pageContext.request.contextPath}/resources/imagenes/divSpreguntas.png">
-        </div>
-    </center>
     <br>
     <br>
     <br>

@@ -153,12 +153,12 @@
                         {
                             field: "nombre",
                             label: "Nombre:",
-                            validation: {required: {message: "Ingresa tu nombre"}, "Nombre": {message: "Ingresa solo letras"}, pattern: "^[A-Za-z]+$"}
+                            validation: {required: {message: "Ingresa tu nombre"}, "Nombre": {message: "Ingresa solo letras"}, pattern: "^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$"}
                         },
                         {
                             field: "aMaterno",
                             label: "Apellido materno:",
-                            validation: {required: {message: "Ingresa tu apellido materno"}, pattern: "^[A-Za-z]+$"}
+                            validation: {required: {message: "Ingresa tu apellido materno"}, pattern: "^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$"}
                         },
                         {
                             field: "email",
@@ -185,7 +185,7 @@
                             field: "aPaterno",
                             label: "Apellido paterno:",
                             colSpan: 2,
-                            validation: {required: {message: "Ingresa tu apellido paterno"}, APaterno: {message: "Ingresa solo letras"}, pattern: "^[A-Za-z]+$"}
+                            validation: {required: {message: "Ingresa tu apellido paterno"}, APaterno: {message: "Ingresa solo letras"}, pattern: "^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$"}
                         },
                         {
                             field: "genero",
