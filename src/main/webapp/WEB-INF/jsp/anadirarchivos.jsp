@@ -306,7 +306,7 @@
             <br>
             <center>
                 <input class="submit" type="submit" onclick="alertAgregar()" value="Agregar">
-                <a class="btnCR" href="anadirmodulos.html">Cancelar</a>
+                <a class="btnCR" href="anadirmodulos.html">Regresar</a>
             </center>
         </form>
     </div>

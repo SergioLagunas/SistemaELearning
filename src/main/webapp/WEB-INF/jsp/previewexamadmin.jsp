@@ -59,6 +59,9 @@
             background-color: #203853;
             color: white;
         }
+        #DivSpreguntas img{
+            width: 50%;
+        }
         /*propiedad responsive*/
         @media(max-width:820px){
             h1::after,h1::before{
@@ -76,6 +79,9 @@
                 height: 8%;
                 background-color: #b15d28;
                 font-size: 10px;
+            }
+            #DivSpreguntas img{
+                width: 80%;
             }
         }
     </style>
@@ -121,12 +127,31 @@
         <h1>${cuestionario.nombre}</h1>
     </center>
     <br>
-    <div class="formulario">
-        <div id="test"></div>
-        <br>
-        <center> <button class="btnresultado" onclick="RegresarCuestionario()">Regresar</button> </center>
-        <script src="${pageContext.request.contextPath}/resources/js/examenpreview.js"></script>
+    <div id="formu">
+        <div class="formulario">
+            <div id="test"></div>
+            <br>
+            <center> <button class="btnresultado" onclick="RegresarCuestionario()">Regresar</button> </center>
+            <script src="${pageContext.request.contextPath}/resources/js/examenpreview.js"></script>
+        </div>
     </div>
+    <center>
+        <div id="DivSpreguntas">
+            <img src="${pageContext.request.contextPath}/resources/imagenes/divSpreguntas.png">
+        </div>
+    </center>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
     <br>
     <br>
     <footer>
@@ -146,26 +171,39 @@
         </div>
     </footer> 
     <script>
-            var Quizz = [];
+                var Quizz = [];
         <c:forEach var="preg" items="${preguntas}">
-            Quizz.push({
-                pregunta: "${preg.pregunta}",
-                respuestas: {
-                    a: "${preg.respuestaA}",
-                    b: "${preg.respuestaB}",
-                    c: "${preg.respuestaC}"
-                },
-                respuestaCorrecta: "a"
-            });
+                var Validar = `${preg.pregunta}`;
+                if (Validar === "undefined" || Validar === "") {
+                   Quizz.push({
+                    pregunta: "${preg.pregunta}",
+                    respuestas: {
+                        a: "${preg.respuestaA}",
+                        b: "${preg.respuestaB}",
+                        c: "${preg.respuestaC}"
+                    },
+                    respuestaCorrecta: "a"
+                }); 
+                }
+               
         </c:forEach>
+                console.log("array" + Quizz.length);
+                //validar si ya hay preguntas
+                if (Quizz.length === 0) {
+                    document.getElementById('formu').style.display = 'none';
+                    document.getElementById('DivSpreguntas').style.display = 'block';
+                } else {
+                    document.getElementById('formu').style.display = 'block';
+                    document.getElementById('DivSpreguntas').style.display = 'none';
+                    pasarVariables(Quizz);
+                    mostrarTest();
+                }
+                console.log("arreglo Pregunta: " + Quizz[0].pregunta);
 
-            console.log("arreglo Pregunta: " + Quizz[0].pregunta);
-            pasarVariables(Quizz);
-            mostrarTest();
 
-            function RegresarCuestionario() {
-                document.location.href = "cuestionario.html?Modulo=" + ${IdModulo};
-            }
+                function RegresarCuestionario() {
+                    document.location.href = "cuestionario.html?Modulo=" + ${IdModulo};
+                }
     </script>
 </body>
 <script>

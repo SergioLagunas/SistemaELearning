@@ -333,8 +333,10 @@
             </div>
             <br>
             <br>
+            <center>
             <input class="submit" type="submit" onclick="alertActualizar()" value="Actualizar">
             <input class="btnCR" type="button" onclick="cancelActualizar()" value="Cancelar">
+            </center>
         </form>
     </div>
     <br>
