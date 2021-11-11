@@ -296,7 +296,6 @@
         %>
         <header>
             <nav class="navbar">
-                <!--<div class="brand-title">Brand Name</div>-->
                 <div class="logo">
                     <div>
                         <a href="admin.html"><img src="${pageContext.request.contextPath}/resources/imagenes/B1SOFT-LOGO.gif"></a>
@@ -335,11 +334,7 @@
                 <br>
                 <h3 style="color: white;"> O compartir URL de YouTube: </h3> 
                 <br> 
-                <label for="des"></label> <input type="text" name="youtubeUrl" id="des" placeholder="Url de Youtube">
-                <!--<div id="DividAg" style="display:none;">
-                <!--<div id="DividAg">
-                    <label for="curid"></label> <input type="text" id="curid" placeholder="Id" name="curid">
-                </div>-->
+                <label for="des"></label> <input type="text" name="youtubeUrl" id="urlYoutube" placeholder="Url de Youtube">
             </center>
             <br>
             <div id="CargaProgress">
@@ -370,12 +365,11 @@
                 <br>
                 <h3 style="color: white;"> O compartir URL de YouTube: </h3> 
                 <br> 
-                <label for="des"></label> <input type="text" name="youtubeUrl" id="desAc" placeholder="Url de Youtube">
+                <label for="des"></label> <input type="text" name="youtubeUrl" id="urlYoutubeAc" placeholder="Url de Youtube">
             </center>
             <br>
             <center>
                 <div id="Divid" style="display:none;">
-                    <!--<div id="Divid">-->
                     <label for="moduid"></label> <input type="text" id="moduid" placeholder="Id" name="moduid">
                 </div>
                 <br>
@@ -421,10 +415,10 @@
             document.getElementById('DivActualizar').style.display = 'none';
             document.getElementById('CargaProgress').style.display = 'none';
         <c:forEach var="modu" items="${modulosAc}">
-            DataForm["id"] = "${modu.idModulo}";
-            DataForm["nom"] = "${modu.titulo}";
-            DataForm["des"] = "${modu.descripcion}";
-            DataForm["url"] = "${modu.url}";
+            DataForm["id"] = `${modu.idModulo}`;
+            DataForm["nom"] = `${modu.titulo}`;
+            DataForm["des"] = `${modu.descripcion}`;
+            DataForm["url"] = `${modu.url}`;
             InsertarDatos(DataForm);
         </c:forEach>
 
@@ -435,23 +429,14 @@
                 document.getElementById('Divtablita').style.display = 'none';
                 document.getElementById('DivSCursos').style.display = 'block';
             }
-
-            console.log("ID: ", DataForm.id);
-            console.log("Nombre: ", DataForm.nom);
         });
 
         function alertVideo(url) {
-            //https://dl.dropboxusercontent.com/s/8c69iw8s5bppw07/org.springframework.web.multipart.commons.CommonsMultipartFile%4019663056_Video.mp4?dl=0
-            //console.log("URL: ",url);
             swal.fire({
                 width: '80%',
                 background: '#00000000',
                 showConfirmButton: false,
                 html: '<video controls src="' + url + '" width="100%" height="98%"></video>'
-                        /*customClass: {
-                         container: 'sweet_containerImportant',
-                         tittle: 'sweet_containerImportant'
-                         }*/
             });
         }
         function handleFileSelect(evt) {
@@ -463,7 +448,6 @@
             reader.onerror = errorHandler;
             reader.onprogress = updateProgress;
             reader.onabort = function (e) {
-                //alert('Carga de archivo cancelada');
                 Swal.fire({
                     title: '¡Cancelado!',
                     text: 'Carga de archivo cancelada',
@@ -488,7 +472,6 @@
         }
 
         function updateProgress(evt) {
-            // evt es un ProgressEvent
             if (evt.lengthComputable) {
                 var percentLoaded = Math.round((evt.loaded / evt.total) * 100);
                 if (percentLoaded < 100) {
@@ -529,42 +512,54 @@
                 var form = this;
                 e.preventDefault();
 
-                swal.fire({
-                    title: "¿Desea Actualizar el Modulo?",
-                    text: "",
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonText: "Sí, Actualizar",
-                    confirmButtonColor: '#203853',
-                    cancelButtonColor: '#B15D28',
-                    cancelButtonText: "Cancelar"
-                })
-                        .then(function (isConfirm) {
-                            if (isConfirm.value) {
-                                swal.fire({
-                                    title: "El Modulo se actualizo correctamente",
-                                    text: "",
-                                    icon: 'success',
-                                    iconColor: '#203853',
-                                    confirmButtonColor: '#B15D28'
-                                })
-                                        .then(function () {
-                                            form.submit();
-                                        });
-                            } else {
-                                swal.fire({
-                                    title: "No se actualizo ningun Modulo",
-                                    text: "",
-                                    icon: 'error',
-                                    iconColor: '#B15D28',
-                                    confirmButtonColor: '#203853'
-                                })
-                                        .then(function () {
-                                            document.getElementById('DivActualizar').style.display = 'none';
-                                            document.getElementById('DivAgregar').style.display = 'block';
-                                        });
-                            }
-                        });
+                var valorNom = parseInt(document.querySelector('#nomAc').value);
+                var valorDesc = parseInt(document.querySelector('#desAc').value);
+                if (!isNaN(valorNom) || !isNaN(valorDesc)) {
+                    swal.fire({
+                        title: "¡Dato invalido!",
+                        text: "El titulo o la descripción que ha intentado añadir, no son validas, inténtelo de nuevo",
+                        icon: 'warning',
+                        confirmButtonText: "OK",
+                        confirmButtonColor: '#203853'
+                    });
+                } else if (isNaN(valorNom)) {
+                    swal.fire({
+                        title: "¿Desea Actualizar el Modulo?",
+                        text: "",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonText: "Sí, Actualizar",
+                        confirmButtonColor: '#203853',
+                        cancelButtonColor: '#B15D28',
+                        cancelButtonText: "Cancelar"
+                    })
+                    .then(function (isConfirm) {
+                        if (isConfirm.value) {
+                            swal.fire({
+                                title: "El Modulo se actualizo correctamente",
+                                text: "",
+                                icon: 'success',
+                                iconColor: '#203853',
+                                confirmButtonColor: '#B15D28'
+                            })
+                            .then(function () {
+                                form.submit();
+                            });
+                        } else {
+                            swal.fire({
+                                title: "No se actualizo ningun Modulo",
+                                text: "",
+                                icon: 'error',
+                                iconColor: '#B15D28',
+                                confirmButtonColor: '#203853'
+                            })
+                            .then(function () {
+                                document.getElementById('DivActualizar').style.display = 'none';
+                                document.getElementById('DivAgregar').style.display = 'block';
+                            });
+                        }
+                    });
+                }
             });
         }
 
@@ -574,38 +569,50 @@
                 var form = this;
                 e.preventDefault();
 
-                swal.fire({
-                    title: "¿Desea Agregar un nuevo Modulo?",
-                    text: "",
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonText: "Sí, Agregar",
-                    confirmButtonColor: '#203853',
-                    cancelButtonColor: '#B15D28',
-                    cancelButtonText: "Cancelar"
-                })
-                        .then(function (isConfirm) {
-                            if (isConfirm.value) {
-                                swal.fire({
-                                    title: "El Modulo se agrego correctamente",
-                                    text: "",
-                                    icon: "success",
-                                    iconColor: '#203853',
-                                    confirmButtonColor: '#B15D28'
-                                })
-                                        .then(function () {
-                                            form.submit();
-                                        });
-                            } else {
-                                swal.fire({
-                                    title: "No se agrego ningun Modulo",
-                                    text: "",
-                                    icon: "error",
-                                    iconColor: '#B15D28',
-                                    confirmButtonColor: '#203853'
-                                });
-                            }
-                        });
+                var valorNom = parseInt(document.querySelector('#nom').value);
+                var valorDesc = parseInt(document.querySelector('#des').value);
+                if (!isNaN(valorNom) || !isNaN(valorDesc)) {
+                    swal.fire({
+                        title: "¡Dato invalido!",
+                        text: "El titulo o la descripción que ha intentado añadir, no son validas, inténtelo de nuevo",
+                        icon: 'warning',
+                        confirmButtonText: "OK",
+                        confirmButtonColor: '#203853'
+                    });
+                } else if (isNaN(valorNom)) {
+                        swal.fire({
+                        title: "¿Desea Agregar un nuevo Modulo?",
+                        text: "",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonText: "Sí, Agregar",
+                        confirmButtonColor: '#203853',
+                        cancelButtonColor: '#B15D28',
+                        cancelButtonText: "Cancelar"
+                    })
+                    .then(function (isConfirm) {
+                        if (isConfirm.value) {
+                            swal.fire({
+                                title: "El Modulo se agrego correctamente",
+                                text: "",
+                                icon: "success",
+                                iconColor: '#203853',
+                                confirmButtonColor: '#B15D28'
+                            })
+                            .then(function () {
+                                form.submit();
+                            });
+                        } else {
+                            swal.fire({
+                                title: "No se agrego ningun Modulo",
+                                text: "",
+                                icon: "error",
+                                iconColor: '#B15D28',
+                                confirmButtonColor: '#203853'
+                            });
+                        }
+                    });
+                }
             });
         }
 
@@ -687,29 +694,29 @@
                 cancelButtonColor: '#B15D28',
                 cancelButtonText: "Cancelar"
             })
-                    .then((willDelete) => {
-                        if (willDelete.value) {
-                            swal.fire({
-                                title: "El Modulo se elimino correctamente",
-                                text: "",
-                                icon: "success",
-                                iconColor: '#203853',
-                                confirmButtonColor: '#B15D28'
-                            }).then(function () {
-                                row = td.parentElement.parentElement;
-                                document.getElementById("tabla").deleteRow(row.rowIndex);
-                                document.location.href = "borrarModulo.html?ModuloE=" + id + "&VistaB=2";
-                            });
-                        } else {
-                            swal.fire({
-                                title: "No se elimino ningun Modulo",
-                                text: "",
-                                icon: "error",
-                                iconColor: '#B15D28',
-                                confirmButtonColor: '#203853'
-                            });
-                        }
+            .then((willDelete) => {
+                if (willDelete.value) {
+                    swal.fire({
+                        title: "El Modulo se elimino correctamente",
+                        text: "",
+                        icon: "success",
+                        iconColor: '#203853',
+                        confirmButtonColor: '#B15D28'
+                    }).then(function () {
+                        row = td.parentElement.parentElement;
+                        document.getElementById("tabla").deleteRow(row.rowIndex);
+                        document.location.href = "borrarModulo.html?ModuloE=" + id + "&VistaB=2";
                     });
+                } else {
+                    swal.fire({
+                        title: "No se elimino ningun Modulo",
+                        text: "",
+                        icon: "error",
+                        iconColor: '#B15D28',
+                        confirmButtonColor: '#203853'
+                    });
+                }
+            });
         }
 
         function añadirCuestionario(id) {
@@ -717,8 +724,6 @@
         }
 
     </script>
-
-
     <br/>
     <br/>
 </div>
@@ -751,9 +756,7 @@
 </body>
 <script>
     function cerrarSession() {
-
-        $(location).attr('href', "cerrarSession.html")
-
+        $(location).attr('href', "cerrarSession.html");
     }
 </script>
 </html>

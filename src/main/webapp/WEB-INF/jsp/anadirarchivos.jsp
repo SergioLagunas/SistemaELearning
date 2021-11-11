@@ -262,7 +262,6 @@
         %>
         <header>
             <nav class="navbar">
-                <!--<div class="brand-title">Brand Name</div>-->
                 <div class="logo">
                     <div>
                         <a href="admin.html"><img src="${pageContext.request.contextPath}/resources/imagenes/B1SOFT-LOGO.gif"></a>
@@ -280,7 +279,6 @@
                         <li><a href="nuevosemillero.html">Semilleros</a></li>
                         <li><a href="listadodecursos.html">Cursos</a></li>
                         <li><a href="nuevocurso.html">Agregar nuevo curso</a></li>
-                        <!--<li><a href="#">Cerrar sesión</a></li>-->
                         <li><span><a onclick="cerrarSession()" class="cta">Cerrar sesión</a></span></li>
                     </ul>
                 </div>
@@ -318,7 +316,6 @@
                 <label for="arc"></label> <input type="file" id="archAc" name="archivo" accept=".pdf,.txt,.docx,.xlsx,.pptx">
             </center>
             <div id="Divid" style="display:none;">
-                <!--<div id="Divid">-->
                 <label for="moduid"></label> <input type="text" id="moduid" placeholder="Id" name="archid">
             </div>
             <br>
@@ -362,9 +359,9 @@
             document.getElementById('DivActualizar').style.display = 'none';
             document.getElementById('CargaProgress').style.display = 'none';
         <c:forEach var="arch" items="${archivos}">
-            DataForm["id"] = "${arch.idArchivo}";
-            DataForm["nom"] = "${arch.nombre}";
-            DataForm["url"] = "${arch.archivo}";
+            DataForm["id"] = `${arch.idArchivo}`;
+            DataForm["nom"] = `${arch.nombre}`;
+            DataForm["url"] = `${arch.archivo}`;
             InsertarDatos(DataForm);
         </c:forEach>
 
@@ -375,8 +372,6 @@
                 document.getElementById('Divtablita').style.display = 'none';
                 document.getElementById('DivSCursos').style.display = 'block';
             }
-            console.log("ID: ", DataForm.id);
-            console.log("Nombre: ", DataForm.nom);
         });
 
         function alertArchivo(url) {
@@ -398,7 +393,6 @@
             reader.onerror = errorHandler;
             reader.onprogress = updateProgress;
             reader.onabort = function (e) {
-                //alert('Carga de archivo cancelada');
                 Swal.fire({
                     title: '¡Cancelado!',
                     text: 'Carga de archivo cancelada',
@@ -423,7 +417,6 @@
         }
 
         function updateProgress(evt) {
-            // evt es un ProgressEvent
             if (evt.lengthComputable) {
                 var percentLoaded = Math.round((evt.loaded / evt.total) * 100);
                 if (percentLoaded < 100) {
@@ -474,32 +467,32 @@
                     cancelButtonColor: '#B15D28',
                     cancelButtonText: "Cancelar"
                 })
-                        .then(function (isConfirm) {
-                            if (isConfirm.value) {
-                                swal.fire({
-                                    title: "El Archivo se actualizo correctamente",
-                                    text: "",
-                                    icon: 'success',
-                                    iconColor: '#203853',
-                                    confirmButtonColor: '#B15D28'
-                                })
-                                        .then(function () {
-                                            form.submit();
-                                        });
-                            } else {
-                                swal.fire({
-                                    title: "No se actualizo el Archivo",
-                                    text: "",
-                                    icon: 'error',
-                                    iconColor: '#B15D28',
-                                    confirmButtonColor: '#203853'
-                                })
-                                        .then(function () {
-                                            document.getElementById('DivActualizar').style.display = 'none';
-                                            document.getElementById('DivAgregar').style.display = 'block';
-                                        });
-                            }
+                .then(function (isConfirm) {
+                    if (isConfirm.value) {
+                        swal.fire({
+                            title: "El Archivo se actualizo correctamente",
+                            text: "",
+                            icon: 'success',
+                            iconColor: '#203853',
+                            confirmButtonColor: '#B15D28'
+                        })
+                        .then(function () {
+                            form.submit();
                         });
+                    } else {
+                        swal.fire({
+                            title: "No se actualizo el Archivo",
+                            text: "",
+                            icon: 'error',
+                            iconColor: '#B15D28',
+                            confirmButtonColor: '#203853'
+                        })
+                        .then(function () {
+                            document.getElementById('DivActualizar').style.display = 'none';
+                            document.getElementById('DivAgregar').style.display = 'block';
+                        });
+                    }
+                });
             });
         }
 
@@ -519,28 +512,28 @@
                     cancelButtonColor: '#B15D28',
                     cancelButtonText: "Cancelar"
                 })
-                        .then(function (isConfirm) {
-                            if (isConfirm.value) {
-                                swal.fire({
-                                    title: "El Archivo se agrego correctamente",
-                                    text: "",
-                                    icon: "success",
-                                    iconColor: '#203853',
-                                    confirmButtonColor: '#B15D28'
-                                })
-                                        .then(function () {
-                                            form.submit();
-                                        });
-                            } else {
-                                swal.fire({
-                                    title: "No se agrego ningun Archivo",
-                                    text: "",
-                                    icon: "error",
-                                    iconColor: '#B15D28',
-                                    confirmButtonColor: '#203853'
-                                });
-                            }
+                .then(function (isConfirm) {
+                    if (isConfirm.value) {
+                        swal.fire({
+                            title: "El Archivo se agrego correctamente",
+                            text: "",
+                            icon: "success",
+                            iconColor: '#203853',
+                            confirmButtonColor: '#B15D28'
+                        })
+                        .then(function () {
+                            form.submit();
                         });
+                    } else {
+                        swal.fire({
+                            title: "No se agrego ningun Archivo",
+                            text: "",
+                            icon: "error",
+                            iconColor: '#B15D28',
+                            confirmButtonColor: '#203853'
+                        });
+                    }
+                });
             });
         }
 
@@ -571,8 +564,6 @@
                                                                   </svg>
                                                             </button>
                                                             `;
-            //document.getElementById("nom").focus();
-            //Vaciar();
         }
 
         function Vaciar() {
@@ -608,31 +599,30 @@
                 cancelButtonColor: '#B15D28',
                 cancelButtonText: "Cancelar"
             })
-                    .then((willDelete) => {
-                        if (willDelete.value) {
-                            swal.fire({
-                                title: "El Archivo se elimino correctamente",
-                                text: "",
-                                icon: "success",
-                                iconColor: '#203853',
-                                confirmButtonColor: '#B15D28'
-                            }).then(function () {
-                                row = td.parentElement.parentElement;
-                                document.getElementById("tabla").deleteRow(row.rowIndex);
-                                document.location.href = "deleteArchivo.html?ArchivoE=" + id + "&VistaB=1";
-                            });
-                        } else {
-                            swal.fire({
-                                title: "No se elimino ningun Archivo",
-                                text: "",
-                                icon: "error",
-                                iconColor: '#B15D28',
-                                confirmButtonColor: '#203853'
-                            });
-                        }
+            .then((willDelete) => {
+                if (willDelete.value) {
+                    swal.fire({
+                        title: "El Archivo se elimino correctamente",
+                        text: "",
+                        icon: "success",
+                        iconColor: '#203853',
+                        confirmButtonColor: '#B15D28'
+                    }).then(function () {
+                        row = td.parentElement.parentElement;
+                        document.getElementById("tabla").deleteRow(row.rowIndex);
+                        document.location.href = "deleteArchivo.html?ArchivoE=" + id + "&VistaB=1";
                     });
+                } else {
+                    swal.fire({
+                        title: "No se elimino ningun Archivo",
+                        text: "",
+                        icon: "error",
+                        iconColor: '#B15D28',
+                        confirmButtonColor: '#203853'
+                    });
+                }
+            });
         }
-
     </script>
     <br/>
     <br/>
@@ -644,12 +634,9 @@
     <br>
     <br>
     <br>
-
-
     <footer>
         <div class="footer-content">
             <h3>B1 SOFT LATINOAMERICA</h3>
-
             <ul class="socials">
                 <li><a href="#"><i class="fab fa-facebook"></i></a>
                 <li><a href="#"><i class="fab fa-twitter"></i></a>
@@ -665,9 +652,7 @@
 </body>
 <script>
     function cerrarSession() {
-
-        $(location).attr('href', "cerrarSession.html")
-
+        $(location).attr('href', "cerrarSession.html");
     }
 </script>
 </html>

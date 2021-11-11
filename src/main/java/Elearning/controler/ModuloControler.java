@@ -41,7 +41,7 @@ public class ModuloControler {
         return moduloService.readModuloMoment(model, request);
     }
 
-    //este es la pagina para agregar mas modulos si se desea una vez acabando de crear el curso
+    //Este es la pagina para agregar mas modulos si se desea una vez acabando de crear el curso
     @RequestMapping(value = "actualizarmodulos.html", method = RequestMethod.GET)
     public String actualizarModulos(@RequestParam("CursoE")int idCurso, Model model, HttpServletRequest request) {
         return moduloService.readModuloActualizar(idCurso, model, request);
@@ -56,7 +56,6 @@ public class ModuloControler {
             @RequestParam("url") MultipartFile url,
             @RequestParam("youtubeUrl") String youtubeUrl,
             @RequestParam("moduid") int idModulo) {
-        System.out.println("VistaA: " + VistaA);
         return moduloService.updateModulo(VistaA, idModulo, titulo, descripcion, url, youtubeUrl);
     }
 
@@ -89,14 +88,13 @@ public class ModuloControler {
                 }
         } else {
             System.out.println("No se ha borrado el modulo...");
-            //checar si si redirecciona bien a esta paguina 
             mo.setViewName("redirect:/actualizarmodulos.html?CursoE=" + curso.getIdCurso());
         }
 
         return mo;
     }
     
-     //Vistas de error Modulo
+    //Vistas de error Modulo
     @RequestMapping(value = "primerosmodulos.html")
     public String errorMo() {
         return "primerosmodulos";

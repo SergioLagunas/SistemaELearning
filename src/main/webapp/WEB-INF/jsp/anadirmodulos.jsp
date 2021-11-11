@@ -8,7 +8,7 @@
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/footer.css" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="CRUD dinamico con HTMLS, CSS and JS">
-        <title>modulos</title>
+        <title>Modulos</title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
@@ -279,7 +279,6 @@
         %>
         <header>
             <nav class="navbar">
-                <!--<div class="brand-title">Brand Name</div>-->
                 <div class="logo">
                     <div>
                         <a href="admin.html"><img src="${pageContext.request.contextPath}/resources/imagenes/B1SOFT-LOGO.gif"></a>
@@ -320,7 +319,7 @@
                 <br>
                 <h3 style="color: white;"> O compartir URL de YouTube: </h3> 
                 <br> 
-                <label for="des"></label> <input type="text" name="youtubeUrl" id="des" placeholder="Url de Youtube">
+                <label for="des"></label> <input type="text" name="youtubeUrl" id="urlYoutube" placeholder="Url de Youtube">
             </center>
             <br>
             <div id="CargaProgress">
@@ -350,9 +349,8 @@
             <br>
             <h3 style="color: white;"> O compartir URL de YouTube: </h3> 
             <br> 
-            <label for="des"></label> <input type="text" name="youtubeUrl" id="des" placeholder="Url de Youtube">
+            <label for="des"></label> <input type="text" name="youtubeUrl" id="urlYoutubeAc" placeholder="Url de Youtube">
             <div id="Divid" style="display:none;">
-                <!--<div id="Divid">-->
                 <label for="moduid"></label> <input type="text" id="moduid" placeholder="Id" name="moduid">
             </div>
             <br>
@@ -395,10 +393,10 @@
             document.getElementById('CargaProgress').style.display = 'none';
 
         <c:forEach var="modu" items="${modulos}">
-            DataForm["id"] = "${modu.idModulo}";
-            DataForm["nom"] = "${modu.titulo}";
-            DataForm["des"] = "${modu.descripcion}";
-            DataForm["url"] = "${modu.url}";
+            DataForm["id"] = `${modu.idModulo}`;
+            DataForm["nom"] = `${modu.titulo}`;
+            DataForm["des"] = `${modu.descripcion}`;
+            DataForm["url"] = `${modu.url}`;
             InsertarDatos(DataForm);
         </c:forEach>
 
@@ -409,13 +407,9 @@
                 document.getElementById('Divtablita').style.display = 'none';
                 document.getElementById('DivSCursos').style.display = 'block';
             }
-            console.log("ID: ", DataForm.id);
-            console.log("Nombre: ", DataForm.nom);
         });
 
         function alertVideo(url) {
-            //https://dl.dropboxusercontent.com/s/8c69iw8s5bppw07/org.springframework.web.multipart.commons.CommonsMultipartFile%4019663056_Video.mp4?dl=0
-            //console.log("URL: ",url);
             swal.fire({
                 width: '80%',
                 background: '#00000000',
@@ -432,7 +426,6 @@
             reader.onerror = errorHandler;
             reader.onprogress = updateProgress;
             reader.onabort = function (e) {
-                //alert('Carga de archivo cancelada');
                 Swal.fire({
                     title: '¡Cancelado!',
                     text: 'Carga de archivo cancelada',
@@ -457,7 +450,6 @@
         }
 
         function updateProgress(evt) {
-            // evt es un ProgressEvent
             if (evt.lengthComputable) {
                 var percentLoaded = Math.round((evt.loaded / evt.total) * 100);
                 if (percentLoaded < 100) {
@@ -508,32 +500,32 @@
                     cancelButtonColor: '#B15D28',
                     cancelButtonText: "Cancelar"
                 })
-                        .then(function (isConfirm) {
-                            if (isConfirm.value) {
-                                swal.fire({
-                                    title: "El Modulo se actualizo correctamente",
-                                    text: "",
-                                    icon: 'success',
-                                    iconColor: '#203853',
-                                    confirmButtonColor: '#B15D28'
-                                })
-                                        .then(function () {
-                                            form.submit();
-                                        });
-                            } else {
-                                swal.fire({
-                                    title: "No se actualizo ningun Modulo",
-                                    text: "",
-                                    icon: 'error',
-                                    iconColor: '#B15D28',
-                                    confirmButtonColor: '#203853'
-                                })
-                                        .then(function () {
-                                            document.getElementById('DivActualizar').style.display = 'none';
-                                            document.getElementById('DivAgregar').style.display = 'block';
-                                        });
-                            }
+                .then(function (isConfirm) {
+                    if (isConfirm.value) {
+                        swal.fire({
+                            title: "El Modulo se actualizo correctamente",
+                            text: "",
+                            icon: 'success',
+                            iconColor: '#203853',
+                            confirmButtonColor: '#B15D28'
+                        })
+                        .then(function () {
+                            form.submit();
                         });
+                    } else {
+                        swal.fire({
+                            title: "No se actualizo ningun Modulo",
+                            text: "",
+                            icon: 'error',
+                            iconColor: '#B15D28',
+                            confirmButtonColor: '#203853'
+                        })
+                        .then(function () {
+                            document.getElementById('DivActualizar').style.display = 'none';
+                            document.getElementById('DivAgregar').style.display = 'block';
+                        });
+                    }
+                });
             });
         }
 
@@ -553,28 +545,28 @@
                     cancelButtonColor: '#B15D28',
                     cancelButtonText: "Cancelar"
                 })
-                        .then(function (isConfirm) {
-                            if (isConfirm.value) {
-                                swal.fire({
-                                    title: "El Modulo se agrego correctamente",
-                                    text: "",
-                                    icon: "success",
-                                    iconColor: '#203853',
-                                    confirmButtonColor: '#B15D28'
-                                })
-                                        .then(function () {
-                                            form.submit();
-                                        });
-                            } else {
-                                swal.fire({
-                                    title: "No se agrego ningun Modulo",
-                                    text: "",
-                                    icon: "error",
-                                    iconColor: '#B15D28',
-                                    confirmButtonColor: '#203853'
-                                });
-                            }
+                .then(function (isConfirm) {
+                    if (isConfirm.value) {
+                        swal.fire({
+                            title: "El Modulo se agrego correctamente",
+                            text: "",
+                            icon: "success",
+                            iconColor: '#203853',
+                            confirmButtonColor: '#B15D28'
+                        })
+                        .then(function () {
+                            form.submit();
                         });
+                    } else {
+                        swal.fire({
+                            title: "No se agrego ningun Modulo",
+                            text: "",
+                            icon: "error",
+                            iconColor: '#B15D28',
+                            confirmButtonColor: '#203853'
+                        });
+                    }
+                });
             });
         }
 
@@ -611,8 +603,6 @@
                                                                   </svg>
                                                             </button>
                                                             `;
-            //document.getElementById("nom").focus();
-            //Vaciar();
         }
 
         function Vaciar() {
@@ -651,38 +641,34 @@
                 cancelButtonColor: '#B15D28',
                 cancelButtonText: "Cancelar"
             })
-                    .then((willDelete) => {
-                        if (willDelete.value) {
-                            swal.fire({
-                                title: "El Modulo se elimino correctamente",
-                                text: "",
-                                icon: "success",
-                                iconColor: '#203853',
-                                confirmButtonColor: '#B15D28'
-                            }).then(function () {
-                                row = td.parentElement.parentElement;
-                                document.getElementById("tabla").deleteRow(row.rowIndex);
-                                document.location.href = "borrarModulo.html?ModuloE=" + id + "&VistaB=1";
-                            });
-                        } else {
-                            swal.fire({
-                                title: "No se elimino ningun Modulo",
-                                text: "",
-                                icon: "error",
-                                iconColor: '#B15D28',
-                                confirmButtonColor: '#203853'
-                            });
-                        }
+            .then((willDelete) => {
+                if (willDelete.value) {
+                    swal.fire({
+                        title: "El Modulo se elimino correctamente",
+                        text: "",
+                        icon: "success",
+                        iconColor: '#203853',
+                        confirmButtonColor: '#B15D28'
+                    }).then(function () {
+                        row = td.parentElement.parentElement;
+                        document.getElementById("tabla").deleteRow(row.rowIndex);
+                        document.location.href = "borrarModulo.html?ModuloE=" + id + "&VistaB=1";
                     });
+                } else {
+                    swal.fire({
+                        title: "No se elimino ningun Modulo",
+                        text: "",
+                        icon: "error",
+                        iconColor: '#B15D28',
+                        confirmButtonColor: '#203853'
+                    });
+                }
+            });
         }
-
     </script>
-
-
     <br/>
     <br/>
 </div>
-
 <!--Footer-->
 <br>
 <br>
@@ -692,12 +678,9 @@
 <br>
 <br>
 <br>
-
-
 <footer>
     <div class="footer-content">
         <h3>B1 SOFT LATINOAMERICA</h3>
-
         <ul class="socials">
             <li><a href="#"><i class="fab fa-facebook"></i></a>
             <li><a href="#"><i class="fab fa-twitter"></i></a>

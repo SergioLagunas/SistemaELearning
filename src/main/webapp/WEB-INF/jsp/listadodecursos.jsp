@@ -332,7 +332,6 @@
         %>
         <header>
             <nav class="navbar">
-                <!--<div class="brand-title">Brand Name</div>-->
                 <div class="logo">
                     <div>
                         <a href="admin.html"><img src="${pageContext.request.contextPath}/resources/imagenes/B1SOFT-LOGO.gif"></a>
@@ -350,7 +349,6 @@
                         <li><a href="nuevosemillero.html">Semilleros</a></li>
                         <li><a href="listadodecursos.html">Cursos</a></li>
                         <li><a href="nuevocurso.html">Agregar nuevo curso</a></li>
-                        <!--<li><a href="#">Cerrar sesión</a></li>-->
                         <li><span><a onclick="cerrarSession()" class="cta">Cerrar sesión</a></span></li>
                     </ul>
                 </div>
@@ -387,7 +385,6 @@
             </div>
             <center>
                 <div id="Caratula" style="display:none;">
-                    <!-- <div id="Caratula">-->
                     <label for="curid"></label> <input type="text" id="curid" placeholder="Id" name="curid">
                 </div>
                 <br>
@@ -432,10 +429,10 @@
             document.getElementById('formActualizar').style.display = 'none';
             document.getElementById('CargaProgress').style.display = 'none';
         <c:forEach var="cur" items="${cursos}">
-            DataForm["id"] = "${cur.idCurso}";
-            DataForm["nom"] = "${cur.nombre}";
-            DataForm["des"] = "${cur.descripcion}";
-            DataForm["cat"] = "${cur.categoria}";
+            DataForm["id"] = `${cur.idCurso}`;
+            DataForm["nom"] = `${cur.nombre}`;
+            DataForm["des"] = `${cur.descripcion}`;
+            DataForm["cat"] = `${cur.categoria}`;
             InsertarDatos(DataForm);
         </c:forEach>
 
@@ -447,6 +444,7 @@
                 document.getElementById('DivSCursos').style.display = 'block';
             }
         });
+        
         function handleFileSelect(evt) {
             document.getElementById('CargaProgress').style.display = 'block';
             progress.style.width = '0%';
@@ -455,7 +453,6 @@
             reader.onerror = errorHandler;
             reader.onprogress = updateProgress;
             reader.onabort = function (e) {
-                //alert('Carga de archivo cancelada');
                 Swal.fire({
                     title: '¡Cancelado!',
                     text: 'Carga de archivo cancelada',
@@ -478,7 +475,6 @@
         }
 
         function updateProgress(evt) {
-            // evt es un ProgressEvent
             if (evt.lengthComputable) {
                 var percentLoaded = Math.round((evt.loaded / evt.total) * 100);
                 if (percentLoaded < 100) {
@@ -520,19 +516,18 @@
             document.querySelector('#from1').addEventListener('submit', function (e) {
 
                 var form = this;
-                e.preventDefault(); // <--- prevent form from submitting
-
+                e.preventDefault();
 
                 var valorNom = parseInt(document.querySelector('#nom').value);
                 var valorDesc = parseInt(document.querySelector('#des').value);
                 if (!isNaN(valorNom) || !isNaN(valorDesc)) {
                     swal.fire({
-                    title: "¡Dato invalido!",
-                    text: "El titulo o la descripción que ha intentado añadir, no son validas, inténtelo de nuevo",
-                    icon: 'warning',
-                    confirmButtonText: "OK",
-                    confirmButtonColor: '#203853'
-                });
+                        title: "¡Dato invalido!",
+                        text: "El titulo o la descripción que ha intentado añadir, no son validas, inténtelo de nuevo",
+                        icon: 'warning',
+                        confirmButtonText: "OK",
+                        confirmButtonColor: '#203853'
+                    });
                 } else if (isNaN(valorNom)) {
                     Swal.fire({
                         title: '¿Quieres Actualizar los datos?',
@@ -545,30 +540,30 @@
                         cancelButtonText: 'Cancelar',
                         reverseButtons: true
                     })
-                            .then((result) => {
-                                if (result.isConfirmed) {
-                                    Swal.fire({
-                                        title: '¡Actualizado!',
-                                        text: 'Se Actualizaron los datos',
-                                        icon: 'success',
-                                        iconColor: '#203853',
-                                        confirmButtonColor: '#B15D28'
-                                    })
-                                            .then(function () {
-                                                Actualizar(Leer());
-                                                form.submit();
-                                                console.log("BIEN");
-                                            });
-                                } else if (result.dismiss === Swal.DismissReason.cancel) {
-                                    Swal.fire({
-                                        title: '¡Cancelado!',
-                                        text: 'No se actualizo ningun dato',
-                                        icon: 'error',
-                                        iconColor: '#B15D28',
-                                        confirmButtonColor: '#203853'
-                                    });
-                                }
+                    .then((result) => {
+                        if (result.isConfirmed) {
+                            Swal.fire({
+                                title: '¡Actualizado!',
+                                text: 'Se Actualizaron los datos',
+                                icon: 'success',
+                                iconColor: '#203853',
+                                confirmButtonColor: '#B15D28'
+                            })
+                            .then(function () {
+                                Actualizar(Leer());
+                                form.submit();
+                                console.log("BIEN");
                             });
+                        } else if (result.dismiss === Swal.DismissReason.cancel) {
+                            Swal.fire({
+                                title: '¡Cancelado!',
+                                text: 'No se actualizo ningun dato',
+                                icon: 'error',
+                                iconColor: '#B15D28',
+                                confirmButtonColor: '#203853'
+                            });
+                        }
+                    });
                 }
 
             });
@@ -637,8 +632,6 @@
         }
 
         function Borrarr(td, id) {
-            //document.getElementById('enlace').setAttribute('href', "index.html");
-
             Swal.fire({
                 title: '¿Estas seguro de eliminar el Curso?',
                 text: "Si se elimina no se podra revertir",
@@ -696,7 +689,6 @@
 <footer>
     <div class="footer-content">
         <h3>B1 SOFT LATINOAMERICA</h3>
-
         <ul class="socials">
             <li><a href="#"><i class="fab fa-facebook"></i></a>
             <li><a href="#"><i class="fab fa-twitter"></i></a>
@@ -712,9 +704,7 @@
 </body>
 <script>
     function cerrarSession() {
-
-        $(location).attr('href', "cerrarSession.html")
-
+        $(location).attr('href', "cerrarSession.html");
     }
 </script>
 </html>

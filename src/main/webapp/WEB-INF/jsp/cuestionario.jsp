@@ -8,7 +8,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="CRUD dinamico con HTMLS, CSS and JS">
         <link href="https://fonts.googleapis.com/css?family=Quicksand:600&display=swap" rel="stylesheet">
-        <title>Examen</title>
+        <title>Cuestionario</title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
@@ -275,7 +275,6 @@
         %>
         <header>
             <nav class="navbar">
-                <!--<div class="brand-title">Brand Name</div>-->
                 <div class="logo">
                     <div>
                         <a href="admin.html"><img src="${pageContext.request.contextPath}/resources/imagenes/B1SOFT-LOGO.gif"></a>
@@ -293,7 +292,6 @@
                         <li><a href="nuevosemillero.html">Semilleros</a></li>
                         <li><a href="listadodecursos.html">Cursos</a></li>
                         <li><a href="nuevocurso.html">Agregar nuevo curso</a></li>
-                        <!--<li><a href="#">Cerrar sesión</a></li>-->
                         <li><span><a onclick="cerrarSession()" class="cta">Cerrar sesión</a></span></li>
                     </ul>
                 </div>
@@ -379,8 +377,8 @@
     <br>
     <script>
         var Fila = null;
-        var nombre = "${cuestionario.nombre}";
-        var id = "${cuestionario.idCuestionario}";
+        var nombre = `${cuestionario.nombre}`;
+        var id = `${cuestionario.idCuestionario}`;
         let DataForm = {};
 
         document.getElementById('idCues').value = id;
@@ -391,17 +389,13 @@
         document.getElementById('DivSpreguntas').style.display = 'none';
 
         <c:forEach var="preg" items="${preguntas}">
-        DataForm["id"] = "${preg.idPregunta}";
-        DataForm["pregu"] = "${preg.pregunta}";
-        DataForm["resA"] = "${preg.respuestaA}";
-        DataForm["resB"] = "${preg.respuestaB}";
-        DataForm["resC"] = "${preg.respuestaC}";
+        DataForm["id"] = `${preg.idPregunta}`;
+        DataForm["pregu"] = `${preg.pregunta}`;
+        DataForm["resA"] = `${preg.respuestaA}`;
+        DataForm["resB"] = `${preg.respuestaB}`;
+        DataForm["resC"] = `${preg.respuestaC}`;
         InsertarDatos(DataForm);
         </c:forEach>
-
-        console.log("id: " + id);
-        console.log("nombre: " + nombre);
-        console.log("--id Pregunta: " + DataForm.id);
 
         //validar si ya hay datos en la tabla cuestionario
         if (id != "undefined" && id != null && id != "") {
@@ -437,7 +431,20 @@
                 var form = this;
                 e.preventDefault();
 
-                swal.fire({
+                var valorPreg = parseInt(document.querySelector('#pregAct').value);
+                var valorResA = parseInt(document.querySelector('#resAct').value);
+                var valorResB = parseInt(document.querySelector('#resBAct').value);
+                var valorResC = parseInt(document.querySelector('#resCAct').value);
+                if (!isNaN(valorPreg) || !isNaN(valorResA) || !isNaN(valorResB) || !isNaN(valorResC)) {
+                    swal.fire({
+                        title: "¡Dato invalido!",
+                        text: "El titulo o la descripción que ha intentado añadir, no son validas, inténtelo de nuevo",
+                        icon: 'warning',
+                        confirmButtonText: "OK",
+                        confirmButtonColor: '#203853'
+                    });
+                } else if (isNaN(valorPreg)) {
+                    swal.fire({
                     title: "¿Desea Actualizar la pregunta?",
                     text: "",
                     icon: 'warning',
@@ -446,33 +453,34 @@
                     confirmButtonColor: '#203853',
                     cancelButtonColor: '#B15D28',
                     cancelButtonText: "Cancelar"
-                })
-                        .then(function (isConfirm) {
-                            if (isConfirm.value) {
-                                swal.fire({
-                                    title: "La pregunta se actualizo correctamente",
-                                    text: "",
-                                    icon: 'success',
-                                    iconColor: '#203853',
-                                    confirmButtonColor: '#B15D28'
-                                })
-                                        .then(function () {
-                                            form.submit();
-                                        });
-                            } else {
-                                swal.fire({
-                                    title: "No se actualizo ninguna pregunta",
-                                    text: "",
-                                    icon: 'error',
-                                    iconColor: '#B15D28',
-                                    confirmButtonColor: '#203853'
-                                })
-                                        .then(function () {
-                                            document.getElementById('DivActualizar').style.display = 'none';
-                                            document.getElementById('DivAgregar').style.display = 'block';
-                                        });
-                            }
-                        });
+                    })
+                    .then(function (isConfirm) {
+                        if (isConfirm.value) {
+                            swal.fire({
+                                title: "La pregunta se actualizo correctamente",
+                                text: "",
+                                icon: 'success',
+                                iconColor: '#203853',
+                                confirmButtonColor: '#B15D28'
+                            })
+                            .then(function () {
+                                form.submit();
+                            });
+                        } else {
+                            swal.fire({
+                                title: "No se actualizo ninguna pregunta",
+                                text: "",
+                                icon: 'error',
+                                iconColor: '#B15D28',
+                                confirmButtonColor: '#203853'
+                            })
+                            .then(function () {
+                                document.getElementById('DivActualizar').style.display = 'none';
+                                document.getElementById('DivAgregar').style.display = 'block';
+                            });
+                        }
+                    });
+                }
             });
         }
         function alertAgregar() {
@@ -481,7 +489,20 @@
                 var form = this;
                 e.preventDefault();
 
-                swal.fire({
+                var valorPreg = parseInt(document.querySelector('#preg').value);
+                var valorResA = parseInt(document.querySelector('#resA').value);
+                var valorResB = parseInt(document.querySelector('#resB').value);
+                var valorResC = parseInt(document.querySelector('#resC').value);
+                if (!isNaN(valorPreg) || !isNaN(valorResA) || !isNaN(valorResB) || !isNaN(valorResC)) {
+                    swal.fire({
+                        title: "¡Dato invalido!",
+                        text: "El titulo o la descripción que ha intentado añadir, no son validas, inténtelo de nuevo",
+                        icon: 'warning',
+                        confirmButtonText: "OK",
+                        confirmButtonColor: '#203853'
+                    });
+                } else if (isNaN(valorPreg)) {
+                    swal.fire({
                     title: "¿Desea Agregar una nueva pregunta?",
                     text: "",
                     icon: 'warning',
@@ -490,31 +511,33 @@
                     confirmButtonColor: '#203853',
                     cancelButtonColor: '#B15D28',
                     cancelButtonText: "Cancelar"
-                })
-                        .then(function (isConfirm) {
-                            if (isConfirm.value) {
-                                swal.fire({
-                                    title: "La pregunta se agrego correctamente",
-                                    text: "",
-                                    icon: "success",
-                                    iconColor: '#203853',
-                                    confirmButtonColor: '#B15D28'
-                                })
-                                        .then(function () {
-                                            form.submit();
-                                        });
-                            } else {
-                                swal.fire({
-                                    title: "No se agrego ninguna pregunta",
-                                    text: "",
-                                    icon: "error",
-                                    iconColor: '#B15D28',
-                                    confirmButtonColor: '#203853'
-                                });
-                            }
-                        });
+                    })
+                    .then(function (isConfirm) {
+                        if (isConfirm.value) {
+                            swal.fire({
+                                title: "La pregunta se agrego correctamente",
+                                text: "",
+                                icon: "success",
+                                iconColor: '#203853',
+                                confirmButtonColor: '#B15D28'
+                            })
+                            .then(function () {
+                                form.submit();
+                            });
+                        } else {
+                            swal.fire({
+                                title: "No se agrego ninguna pregunta",
+                                text: "",
+                                icon: "error",
+                                iconColor: '#B15D28',
+                                confirmButtonColor: '#203853'
+                            });
+                        }
+                    });
+                }
             });
         }
+        
         function Leer() {
             let DataForm = {};
             DataForm["preg"] = document.getElementById("preg").value;
@@ -588,64 +611,75 @@
                 cancelButtonColor: '#B15D28',
                 cancelButtonText: "Cancelar"
             })
-                    .then((willDelete) => {
-                        if (willDelete.value) {
-                            swal.fire({
-                                title: "La pregunta se elimino correctamente",
-                                text: "",
-                                icon: "success",
-                                iconColor: '#203853',
-                                confirmButtonColor: '#B15D28'
-                            }).then(function () {
-                                row = td.parentElement.parentElement;
-                                document.getElementById("tabla").deleteRow(row.rowIndex);
-                                document.location.href = "EliminarPreguntas.html?IdPregunta=" + idP + "&IdCuestionario=" + id;
-                            });
-                        } else {
-                            swal.fire({
-                                title: "No se elimino ninguna pregunta",
-                                text: "",
-                                icon: "error",
-                                iconColor: '#B15D28',
-                                confirmButtonColor: '#203853'
-                            });
-                        }
+            .then((willDelete) => {
+                if (willDelete.value) {
+                    swal.fire({
+                        title: "La pregunta se elimino correctamente",
+                        text: "",
+                        icon: "success",
+                        iconColor: '#203853',
+                        confirmButtonColor: '#B15D28'
+                    }).then(function () {
+                        row = td.parentElement.parentElement;
+                        document.getElementById("tabla").deleteRow(row.rowIndex);
+                        document.location.href = "EliminarPreguntas.html?IdPregunta=" + idP + "&IdCuestionario=" + id;
                     });
+                } else {
+                    swal.fire({
+                        title: "No se elimino ninguna pregunta",
+                        text: "",
+                        icon: "error",
+                        iconColor: '#B15D28',
+                        confirmButtonColor: '#203853'
+                    });
+                }
+            });
         }
 
 
         function alertEditarCuestionario() {
-            swal.fire({
-                title: "¿Desea editar el cuestionario?",
-                text: "Al realizar esta operacion no se podra revertir",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonText: "Sí, editar",
-                confirmButtonColor: '#203853',
-                cancelButtonColor: '#B15D28',
-                cancelButtonText: "Cancelar"
-            })
-                    .then((willDelete) => {
-                        if (willDelete.value) {
-                            swal.fire({
-                                title: "El nombre del cuestionario se edito correctamente",
-                                text: "",
-                                icon: "success",
-                                iconColor: '#203853',
-                                confirmButtonColor: '#B15D28'
-                            }).then(function () {
-                                document.location.href = "ActualizarCuestionario.html?IdCuestionario=" + id + "&InputNombre=" + document.getElementById('titulo').value;
-                            });
-                        } else {
-                            swal.fire({
-                                title: "No se edito ningun cuestionario",
-                                text: "",
-                                icon: "error",
-                                iconColor: '#B15D28',
-                                confirmButtonColor: '#203853'
-                            });
-                        }
-                    });
+            var valorTitulo = parseInt(document.querySelector('#titulo').value);
+            if (!isNaN(valorTitulo)) {
+                swal.fire({
+                    title: "¡Dato invalido!",
+                    text: "El titulo o la descripción que ha intentado añadir, no son validas, inténtelo de nuevo",
+                    icon: 'warning',
+                    confirmButtonText: "OK",
+                    confirmButtonColor: '#203853'
+                });
+            } else if (isNaN(valorTitulo)) {
+                swal.fire({
+                    title: "¿Desea editar el cuestionario?",
+                    text: "Al realizar esta operacion no se podra revertir",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: "Sí, editar",
+                    confirmButtonColor: '#203853',
+                    cancelButtonColor: '#B15D28',
+                    cancelButtonText: "Cancelar"
+                })
+                .then((willDelete) => {
+                    if (willDelete.value) {
+                        swal.fire({
+                            title: "El nombre del cuestionario se edito correctamente",
+                            text: "",
+                            icon: "success",
+                            iconColor: '#203853',
+                            confirmButtonColor: '#B15D28'
+                        }).then(function () {
+                            document.location.href = "ActualizarCuestionario.html?IdCuestionario=" + id + "&InputNombre=" + document.getElementById('titulo').value;
+                        });
+                    } else {
+                        swal.fire({
+                            title: "No se edito ningun cuestionario",
+                            text: "",
+                            icon: "error",
+                            iconColor: '#B15D28',
+                            confirmButtonColor: '#203853'
+                        });
+                    }
+                });
+            }
         }
 
         function alertBorrarCuestionario() {
@@ -659,50 +693,61 @@
                 cancelButtonColor: '#B15D28',
                 cancelButtonText: "Cancelar"
             })
-                    .then((willDelete) => {
-                        if (willDelete.value) {
-                            swal.fire({
-                                title: "El cuestionario se elimino correctamente",
-                                text: "",
-                                icon: "success",
-                                iconColor: '#203853',
-                                confirmButtonColor: '#B15D28'
-                            }).then(function () {
-                                document.location.href = "EliminarCuestionario.html?IdCuestionario=" + id;
-                            });
-                        } else {
-                            swal.fire({
-                                title: "No se elimino ningun cuestionario",
-                                text: "",
-                                icon: "error",
-                                iconColor: '#B15D28',
-                                confirmButtonColor: '#203853'
-                            });
-                        }
+            .then((willDelete) => {
+                if (willDelete.value) {
+                    swal.fire({
+                        title: "El cuestionario se elimino correctamente",
+                        text: "",
+                        icon: "success",
+                        iconColor: '#203853',
+                        confirmButtonColor: '#B15D28'
+                    }).then(function () {
+                        document.location.href = "EliminarCuestionario.html?IdCuestionario=" + id;
                     });
+                } else {
+                    swal.fire({
+                        title: "No se elimino ningun cuestionario",
+                        text: "",
+                        icon: "error",
+                        iconColor: '#B15D28',
+                        confirmButtonColor: '#203853'
+                    });
+                }
+            });
         }
 
         function CrearCuestionario() {
-            if (id == "undefined" || id == null || id == "")
-                if (document.getElementById("titulo").value != "" && document.getElementById("titulo").value != null)
-                    document.location.href = "CrearCuestionario.html?InputNombre=" + document.getElementById("titulo").value;
+            var valorTitulo = parseInt(document.querySelector('#titulo').value);
+            if (!isNaN(valorTitulo)) {
+                swal.fire({
+                    title: "¡Dato invalido!",
+                    text: "El titulo o la descripción que ha intentado añadir, no son validas, inténtelo de nuevo",
+                    icon: 'warning',
+                    confirmButtonText: "OK",
+                    confirmButtonColor: '#203853'
+                });
+            } else if (isNaN(valorTitulo)) {
+                if (id == "undefined" || id == null || id == "")
+                    if (document.getElementById("titulo").value != "" && document.getElementById("titulo").value != null)
+                        document.location.href = "CrearCuestionario.html?InputNombre=" + document.getElementById("titulo").value;
+                    else {
+                        swal.fire({
+                            title: "¡Campo vacio!",
+                            text: "Ingresa un nombre para el cuestionario.",
+                            icon: 'warning',
+                            confirmButtonText: "OK",
+                            confirmButtonColor: '#203853'
+                        });
+                    }
                 else {
                     swal.fire({
-                        title: "¡Campo vacio!",
-                        text: "Ingresa un nombre para el cuestionario.",
+                        title: "¡Ya se ha creado un cuestionario!",
+                        text: "Ya existe un cuestionario para este modulo",
                         icon: 'warning',
                         confirmButtonText: "OK",
                         confirmButtonColor: '#203853'
                     });
                 }
-            else {
-                swal.fire({
-                    title: "¡Ya se ha creado un cuestionario!",
-                    text: "Ya existe un cuestionario para este modulo",
-                    icon: 'warning',
-                    confirmButtonText: "OK",
-                    confirmButtonColor: '#203853'
-                });
             }
         }
 
@@ -717,7 +762,6 @@
     <footer>
         <div class="footer-content">
             <h3>B1 SOFT LATINOAMERICA</h3>
-
             <ul class="socials">
                 <li><a href="#"><i class="fab fa-facebook"></i></a>
                 <li><a href="#"><i class="fab fa-twitter"></i></a>
@@ -733,9 +777,7 @@
 </body>
 <script>
     function cerrarSession() {
-
-        $(location).attr('href', "cerrarSession.html")
-
+        $(location).attr('href', "cerrarSession.html");
     }
 </script>
 </html>

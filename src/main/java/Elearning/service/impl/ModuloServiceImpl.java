@@ -48,15 +48,13 @@ public class ModuloServiceImpl implements ModuloService {
 
     @Override
     public String readModulo(int idCurso, Model model, HttpServletRequest request) {
-        System.out.println("idCurso: " + idCurso);
         HttpSession session = request.getSession();
         session.setAttribute("CursoID", idCurso);
         int usuario = (int) session.getAttribute("UsuarioID");
-        System.out.println("id de Usuario: " + usuario);
         Curso curso = new Curso();
         curso = cursoDao.getCurso(idCurso);
         if (micursoDao.RelacionSem(usuario, idCurso)) {
-            //Si el usuario ya le dio clic para tomar este curso no es necesario que vuleva a relacionar de lo contrario dara error
+            //Si el usuario ya le dio clic para tomar este curso no es necesario que vuelva a relacionar, de lo contrario dara error
             System.out.println("No es necesario volver a relacionar");
             model.addAttribute("detacurso", curso);
             model.addAttribute("modulos", moduloDao.findbyCurso(idCurso));
@@ -67,9 +65,9 @@ public class ModuloServiceImpl implements ModuloService {
             //Si el Usuario va tomar el curso entonces en necesario relacionar 
             System.out.println("Hay que relacionar");
             Usuario user = new Usuario();
-            //Obtengo por el id el Semillero que se logeo 
+            //Obtener por el id el Semillero que se inicio sesion
             user = usuarioDao.getUsuario(usuario);
-            //Relacion de MuchosaMuchos en este caso relacionara a los semilleros con los cursos que tomaran 
+            //Relacion de MuchosaMuchos, en este caso relacionara a los semilleros con los cursos que tomaran 
             user.getCursos().add(curso);
             curso.getUsuarios().add(user);
             usuarioDao.update(user);
@@ -90,7 +88,7 @@ public class ModuloServiceImpl implements ModuloService {
         return "anadirmodulos";
     }
 
-    //este se usara para hacer el listado de los modulos una ves que el curso ya haya sido creado y se desee agregar mas 
+    //Se usara para hacer el listado de los modulos una ves que el curso ya haya sido creado y se desee agregar mas 
     // solo lista los videos del curso 
     @Override
     public String readModuloActualizar(int idCurso, Model model, HttpServletRequest request) {
@@ -229,7 +227,7 @@ public class ModuloServiceImpl implements ModuloService {
                 }
             } else {
                 updatemodulo.setTitulo(titulo);
-                updateMultimedia.setDescripcion(descripcion);
+                updatemodulo.setDescripcion(descripcion);
                 updatemodulo.setUrl(updatemodulo.getUrl());
                 updatemodulo = moduloDao.update(updatemodulo);
                 System.out.println("Modulo actualizado sin url nueva");
@@ -270,7 +268,6 @@ public class ModuloServiceImpl implements ModuloService {
 
     private String getExtention(String string) {
         return string.substring(string.lastIndexOf("."), string.length());
-
     }
 
     public static String reemplazar(String cadena, String busqueda, String reemplazo) {
