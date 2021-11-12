@@ -18,6 +18,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="${pageContext.request.contextPath}/resources/js/jquery.min.js"></script>
         <style>
             /*Estilo header*/
             .body1 {
@@ -488,22 +489,40 @@
         function errorHandler(evt) {
             switch (evt.target.error.code) {
                 case evt.target.error.NOT_FOUND_ERR:
-                    alert('Archivo no encontrado!');
+                    swal.fire({
+                        title: "¡Error!",
+                        text: "Archivo no encontrado",
+                        icon: 'warning',
+                        confirmButtonText: "OK",
+                        confirmButtonColor: '#203853'
+                    });
                     break;
                 case evt.target.error.NOT_READABLE_ERR:
-                    alert('No se puede leer el archivo');
+                    swal.fire({
+                        title: "¡Error!",
+                        text: "No se puede leer el archivo",
+                        icon: 'warning',
+                        confirmButtonText: "OK",
+                        confirmButtonColor: '#203853'
+                    });
                     break;
                 case evt.target.error.ABORT_ERR:
                     break;
                 default:
-                    alert('Ha ocurrido un error al leer el archivo');
+                    swal.fire({
+                        title: "¡Error!",
+                        text: "Ha ocurrido un error al leer el archivo",
+                        icon: 'warning',
+                        confirmButtonText: "OK",
+                        confirmButtonColor: '#203853'
+                    });
             }
             ;
         }
 
         function cancelActualizar() {
-            document.getElementById('DivActualizar').style.display = 'none';
-            document.getElementById('DivAgregar').style.display = 'block';
+            $("#DivActualizar").hide("normal");
+            $("#DivAgregar").show("normal");
         }
 
         function alertActualizar() {
@@ -666,8 +685,8 @@
         }
 
         function Editarr(td, id) {
-            document.getElementById('DivActualizar').style.display = 'block';
-            document.getElementById('DivAgregar').style.display = 'none';
+            $("#DivActualizar").show("normal");
+            $("#DivAgregar").hide("normal");
 
             Fila = td.parentElement.parentElement;
             document.getElementById("nomAc").value = Fila.cells[0].innerHTML;

@@ -58,18 +58,13 @@ function mostrarResultado() {
 
         if (respuestaElegida === preguntaActual.respuestaCorrecta) {
             respuestasCorrectas++;
-
-            respuestas[numeroDePregunta].style.color = "blue";
-            respuestas[numeroDePregunta].style.opacity = 0.5;
             respuestas[numeroDePregunta].style.pointerEvents = "none";
         } else {
-            respuestas[numeroDePregunta].style.color = "red";
-            respuestas[numeroDePregunta].style.opacity = 0.5;
             respuestas[numeroDePregunta].style.pointerEvents = "none";
         }
     });
     promedio = (respuestasCorrectas / preguntas.length) * 10;
-    console.log(promedio);
+    
     if (promedio > 8) {
         resultadoTest.innerHTML =
                 "Usted ha acertado " +

@@ -17,6 +17,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="${pageContext.request.contextPath}/resources/js/jquery.min.js"></script>
         <style>
             /*Estilo header*/
             .body1 {
@@ -421,8 +422,8 @@
         }
 
         function cancelActualizar() {
-            document.getElementById('DivActualizar').style.display = 'none';
-            document.getElementById('DivAgregar').style.display = 'block';
+            $("#DivActualizar").hide("normal");
+            $("#DivAgregar").show("normal");
         }
 
         function alertActualizar() {
@@ -580,8 +581,8 @@
         }
 
         function Editarr(td, idP) {
-            document.getElementById('DivActualizar').style.display = 'block';
-            document.getElementById('DivAgregar').style.display = 'none';
+            $("#DivActualizar").show("normal");
+            $("#DivAgregar").hide("normal");
 
             Fila = td.parentElement.parentElement;
             document.getElementById("idPregAct").value = idP;

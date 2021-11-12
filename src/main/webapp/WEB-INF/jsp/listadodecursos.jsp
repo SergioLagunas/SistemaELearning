@@ -491,15 +491,33 @@
         function errorHandler(evt) {
             switch (evt.target.error.code) {
                 case evt.target.error.NOT_FOUND_ERR:
-                    alert('Archivo no encontrado!');
+                    swal.fire({
+                        title: "¡Error!",
+                        text: "Archivo no encontrado",
+                        icon: 'warning',
+                        confirmButtonText: "OK",
+                        confirmButtonColor: '#203853'
+                    });
                     break;
                 case evt.target.error.NOT_READABLE_ERR:
-                    alert('No se puede leer el archivo');
+                    swal.fire({
+                        title: "¡Error!",
+                        text: "No se puede leer el archivo",
+                        icon: 'warning',
+                        confirmButtonText: "OK",
+                        confirmButtonColor: '#203853'
+                    });
                     break;
                 case evt.target.error.ABORT_ERR:
                     break;
                 default:
-                    alert('Ha ocurrido un error al leer el archivo');
+                    swal.fire({
+                        title: "¡Error!",
+                        text: "Ha ocurrido un error al leer el archivo",
+                        icon: 'warning',
+                        confirmButtonText: "OK",
+                        confirmButtonColor: '#203853'
+                    });
             }
             ;
         }
@@ -552,7 +570,6 @@
                             .then(function () {
                                 Actualizar(Leer());
                                 form.submit();
-                                console.log("BIEN");
                             });
                         } else if (result.dismiss === Swal.DismissReason.cancel) {
                             Swal.fire({
